@@ -1,7 +1,8 @@
 import { createClient } from "@/lib/supabase/server"
 import { type NextRequest, NextResponse } from "next/server"
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const supabase = createClient()
 
   const { data: product, error } = await supabase
@@ -14,7 +15,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
         slug
       )
     `)
-    .eq("id", params.id)
+    .eq("id", id)
     .single()
 
   if (error) {
@@ -24,7 +25,8 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   return NextResponse.json({ product })
 }
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const supabase = createClient()
 
   try {
@@ -33,7 +35,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     const { data: product, error } = await supabase
       .from("products")
       .update({ ...body, updated_at: new Date().toISOString() })
-      .eq("id", params.id)
+      .eq("id", id)
       .select()
       .single()
 
@@ -47,10 +49,11 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const supabase = createClient()
 
-  const { error } = await supabase.from("products").delete().eq("id", params.id)
+  const { error } = await supabase.from("products").delete().eq("id", id)
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 400 })
