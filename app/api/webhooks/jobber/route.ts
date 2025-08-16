@@ -249,7 +249,7 @@ async function handleJobCompleted(data: JobberWebhookPayload['data']) {
 export async function POST(request: NextRequest) {
   try {
     // Get headers
-    const headersList = headers();
+    const headersList = await headers();
     const signature = headersList.get('x-jobber-signature');
     
     // Parse request body

@@ -1,35 +1,33 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { createClient } from "@/lib/supabase/server"
 import { Package, ShoppingCart, TrendingUp, Users } from "lucide-react"
+import { reninProducts } from "@/lib/renin-products"
 
-export default async function AdminDashboard() {
-  const supabase = createClient()
-
-  // Get basic stats
-  const [{ count: totalProducts }, { count: activeProducts }, { count: totalCategories }] = await Promise.all([
-    supabase.from("products").select("*", { count: "exact", head: true }),
-    supabase.from("products").select("*", { count: "exact", head: true }).eq("is_active", true),
-    supabase.from("categories").select("*", { count: "exact", head: true }),
-  ])
+export default function AdminDashboard() {
+  // Get basic stats from Renin products
+  const allBarnDoors = reninProducts.getBarnDoors()
+  const allHardware = reninProducts.getHardware()
+  const totalProducts = allBarnDoors.length + allHardware.length
+  const activeProducts = totalProducts // All Renin products are active
+  const totalCategories = 2 // Barn doors and hardware
 
   const stats = [
     {
       title: "Total Products",
-      value: totalProducts || 0,
+      value: totalProducts,
       description: "All products in catalog",
       icon: Package,
       color: "text-blue-600",
     },
     {
       title: "Active Products",
-      value: activeProducts || 0,
+      value: activeProducts,
       description: "Currently available",
       icon: ShoppingCart,
       color: "text-green-600",
     },
     {
       title: "Categories",
-      value: totalCategories || 0,
+      value: totalCategories,
       description: "Product categories",
       icon: TrendingUp,
       color: "text-purple-600",

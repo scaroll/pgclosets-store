@@ -32,7 +32,7 @@ export function HeroWithForm() {
               <div className="grid gap-3">
                 {[
                   { icon: '📐', text: 'Free Design Consultation & 3D Renderings' },
-                  { icon: '⭐', text: 'Premium Renin Products with Lifetime Warranty' },
+                  { icon: '⭐', text: 'Premium Products with Lifetime Warranty' },
                   { icon: '🔧', text: 'Professional Installation by Licensed Contractors' },
                   { icon: '💰', text: 'Competitive Pricing with Transparent Quotes' }
                 ].map((item, index) => (

@@ -2,7 +2,8 @@
 
 import { Button } from '@/components/ui/button'
 import { usePaddle, type PaddleItem, type PaddleCustomer } from '@/hooks/use-paddle'
-import { useCart, type CartItem } from '@/hooks/use-cart'
+import { useCart } from '@/components/commerce/cart-context'
+import type { PGCartItem } from '@/lib/pgclosets/types'
 import { useState } from 'react'
 import { Loader2, ShoppingCart } from 'lucide-react'
 import { toast } from 'sonner'
@@ -28,11 +29,13 @@ export function CartCheckoutButton({
   className,
   disabled = false,
 }: CartCheckoutButtonProps) {
-  const { items, total, clearCart, formatPrice } = useCart()
+  const { cart } = useCart()
+  const items = cart?.lines || []
+  const total = cart ? parseFloat(cart.cost.subtotalAmount.amount) : 0
   const { isLoaded, isLoading, error, openCheckout } = usePaddle()
   const [localLoading, setLocalLoading] = useState(false)
 
-  const formatCartPrice = (amount: number) => {
+  const formatPrice = (amount: number) => {
     return new Intl.NumberFormat("en-CA", {
       style: "currency",
       currency: "CAD",
@@ -46,8 +49,8 @@ export function CartCheckoutButton({
 
     try {
       // Convert cart items to Paddle items
-      const paddleItems: PaddleItem[] = items.map((item: CartItem) => ({
-        priceId: item.id, // In a real app, this would be the Paddle price ID
+      const paddleItems: PaddleItem[] = items.map((item: PGCartItem) => ({
+        priceId: item.paddleProductId || item.merchandise.id, // Use paddle product ID if available
         quantity: item.quantity
       }))
 
@@ -64,12 +67,11 @@ export function CartCheckoutButton({
         }
       })
 
-      // Clear cart on successful checkout initiation
-      clearCart()
+      // Note: Cart clearing would need to be implemented in the new cart system
       onSuccess?.(paddleItems)
       
       toast.success("Checkout initiated!", {
-        description: `Total: ${formatCartPrice(total)} • ${items.length} items`
+        description: `Total: ${formatPrice(total)} • ${items.length} items`
       })
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Checkout failed'
@@ -107,7 +109,7 @@ export function CartCheckoutButton({
       ) : (
         <>
           <ShoppingCart className="mr-2 h-4 w-4" />
-          Checkout {formatCartPrice(total)} ({items.length} items)
+          Checkout {formatPrice(total)} ({items.length} items)
         </>
       )}
     </Button>
@@ -119,7 +121,10 @@ interface CartSummaryProps {
 }
 
 export function CartSummary({ className }: CartSummaryProps) {
-  const { items, total, itemCount } = useCart()
+  const { cart } = useCart()
+  const items = cart?.lines || []
+  const total = cart ? parseFloat(cart.cost.subtotalAmount.amount) : 0
+  const itemCount = cart?.totalQuantity || 0
 
   const formatPrice = (amount: number) => {
     return new Intl.NumberFormat("en-CA", {

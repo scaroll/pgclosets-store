@@ -4,17 +4,20 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { QuickBuyButton, AddToCartButton } from "@/components/ui/paddle-button"
-import { reninProducts, type ReninProduct } from "@/lib/renin-products"
+import { PriceComparison } from "@/components/checkout/paddle-price-display"
+import { reninProducts, type ReninProduct, type ReninHardware } from "@/lib/renin-products"
+
+type Product = ReninProduct | ReninHardware
 import Link from "next/link"
 import { toast } from "sonner"
 import { useState, useEffect } from "react"
 
 interface FeaturedProductsProps {
-  products?: ReninProduct[]
+  products?: Product[]
 }
 
 export function FeaturedProducts({ products: propProducts }: FeaturedProductsProps) {
-  const [products, setProducts] = useState<ReninProduct[]>([])
+  const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
     // Use provided products or fetch featured products from Renin database
@@ -77,9 +80,9 @@ export function FeaturedProducts({ products: propProducts }: FeaturedProductsPro
               <div className="space-y-4">
                 <div>
                   <Badge variant="secondary" className="mb-2">
-                    {product.style} • {product.material}
+                    {'style' in product ? `${product.style} • ${product.material}` : `Hardware • ${product.material}`}
                   </Badge>
-                  {product.sale_price && (
+                  {'sale_price' in product && product.sale_price && (
                     <Badge variant="destructive" className="mb-2 ml-2">
                       Sale
                     </Badge>
@@ -90,27 +93,22 @@ export function FeaturedProducts({ products: propProducts }: FeaturedProductsPro
                     </h3>
                   </Link>
                   <p className="text-muted-foreground line-clamp-2">
-                    {product.features.slice(0, 2).join(' • ')} • {product.size} • {product.finish}
+                    {product.features.slice(0, 2).join(' • ')}
+                    {'size' in product ? ` • ${product.size} • ${product.finish}` : ''}
                   </p>
                 </div>
 
                 <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    {product.sale_price ? (
-                      <>
-                        <div className="text-2xl font-bold text-foreground">{formatPrice(product.sale_price)}</div>
-                        <div className="text-lg text-muted-foreground line-through">{formatPrice(product.price)}</div>
-                      </>
-                    ) : (
-                      <div className="text-2xl font-bold text-foreground">{formatPrice(product.price)}</div>
-                    )}
-                  </div>
+                  <PriceComparison
+                    originalPrice={product.price}
+                    salePrice={'sale_price' in product ? product.sale_price : undefined}
+                  />
                   
                   <div className="flex gap-2">
                     <AddToCartButton
                       productId={product.id}
                       productName={product.name}
-                      price={product.sale_price || product.price}
+                      price={('sale_price' in product && product.sale_price) || product.price}
                       onAddToCart={handleAddToCart}
                       size="sm"
                       variant="outline"
@@ -118,7 +116,7 @@ export function FeaturedProducts({ products: propProducts }: FeaturedProductsPro
                     />
                     <QuickBuyButton
                       productId={product.id}
-                      price={product.sale_price || product.price}
+                      price={('sale_price' in product && product.sale_price) || product.price}
                       productName={product.name}
                       onSuccess={handleQuickBuySuccess}
                       onError={handleQuickBuyError}

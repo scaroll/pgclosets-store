@@ -23,7 +23,6 @@ declare global {
         container: HTMLElement;
       }) => void;
     };
-    gtag?: (...args: any[]) => void;
     fbq?: (...args: any[]) => void;
   }
 }

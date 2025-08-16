@@ -73,7 +73,7 @@ class PaddleAnalyticsIntegration {
   }
 
   private setupPaddleEventListeners() {
-    if (!window.Paddle) return
+    if (!window.Paddle || !window.Paddle.on) return
 
     // Checkout opened
     window.Paddle.on('checkout.loaded', (data: any) => {
@@ -423,14 +423,5 @@ export const paddleAnalytics = new PaddleAnalyticsIntegration(
   process.env.NODE_ENV === 'development'
 )
 
-// Extend Window interface for Paddle
-declare global {
-  interface Window {
-    Paddle?: {
-      on: (event: string, callback: (data: any) => void) => void
-      [key: string]: any
-    }
-  }
-}
 
 export { PaddleAnalyticsIntegration }

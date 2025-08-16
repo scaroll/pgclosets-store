@@ -257,5 +257,4 @@ export class ReninProductService {
 // Export singleton instance
 export const reninProducts = new ReninProductService()
 
-// Export types for external use
-export type { ReninDatabase }
+// Types already exported above

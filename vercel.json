@@ -4,11 +4,35 @@
   "outputDirectory": ".next",
   "installCommand": "npm install --legacy-peer-deps",
   "devCommand": "npm run dev",
-  "regions": ["cle1"],
+  "regions": ["iad1"],
   "public": true,
+  "crons": [
+    {
+      "path": "/api/cron/refresh-sitemap",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/reindex",
+      "schedule": "0 3 * * 0"
+    },
+    {
+      "path": "/api/cron/warm-cache",
+      "schedule": "0 1 * * *"
+    },
+    {
+      "path": "/api/cron/ai-content-update",
+      "schedule": "0 4 * * 1"
+    }
+  ],
   "functions": {
     "app/api/**": {
       "maxDuration": 30
+    },
+    "app/api/cron/**": {
+      "maxDuration": 60
+    },
+    "app/api/chat/**": {
+      "maxDuration": 45
     }
   },
   "headers": [

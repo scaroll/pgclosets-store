@@ -2,6 +2,7 @@
 
 import { Badge } from "@/components/ui/badge"
 import { ProductActions } from "@/components/ui/paddle-button"
+import { PriceComparison } from "@/components/checkout/paddle-price-display"
 import { reninProducts, type ReninProduct, type ReninHardware } from "@/lib/renin-products"
 import { Star, Truck, Shield, Award } from "lucide-react"
 import { useState } from "react"
@@ -120,23 +121,10 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         </div>
 
         {/* Price */}
-        <div className="space-y-2">
-          <div className="flex items-center gap-3">
-            <div className="text-3xl font-bold text-foreground">
-              {formatPrice(displayPrice)}
-            </div>
-            {salePrice && (
-              <div className="text-xl text-muted-foreground line-through">
-                {formatPrice(regularPrice)}
-              </div>
-            )}
-          </div>
-          {displayPrice && (
-            <p className="text-sm text-muted-foreground">
-              Price includes 13% HST for Ontario customers
-            </p>
-          )}
-        </div>
+        <PriceComparison
+          originalPrice={regularPrice}
+          salePrice={salePrice}
+        />
 
         {/* Quantity Selector */}
         <div className="space-y-2">
@@ -206,14 +194,12 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         </div>
 
         {/* Product Description */}
-        {product.description && (
-          <div className="space-y-4 pt-6 border-t">
-            <h3 className="text-lg font-semibold">Description</h3>
-            <div className="prose prose-sm max-w-none text-muted-foreground">
-              <p>{product.description}</p>
-            </div>
+        <div className="space-y-4 pt-6 border-t">
+          <h3 className="text-lg font-semibold">Description</h3>
+          <div className="prose prose-sm max-w-none text-muted-foreground">
+            <p>{product.features.slice(0, 3).join('. ')}.</p>
           </div>
-        )}
+        </div>
 
         {/* Product Details */}
         <div className="space-y-4 pt-6 border-t">

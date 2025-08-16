@@ -13,6 +13,7 @@ declare global {
       Checkout: {
         open: (options: PaddleCheckoutOptions) => void
       }
+      on?: (event: string, callback: (data: any) => void) => void
     }
   }
 }

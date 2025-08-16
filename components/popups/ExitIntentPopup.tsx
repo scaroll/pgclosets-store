@@ -164,7 +164,7 @@ export function ExitIntentPopup({
               {[
                 'Free in-home consultation & measurement',
                 '3D design rendering included',
-                'Premium Renin products with warranty',
+                'Premium products with warranty',
                 'Professional installation team'
               ].map((benefit, index) => (
                 <div key={index} className="flex items-center space-x-2 text-sm text-gray-700">

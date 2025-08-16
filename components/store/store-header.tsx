@@ -4,11 +4,15 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Menu, Search, ShoppingCart, User } from "lucide-react"
+import { CartSidebar } from "@/components/checkout/cart-sidebar"
+import { useCart } from "@/components/commerce/cart-context"
 import Link from "next/link"
 import { useState } from "react"
 
 export function StoreHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { cart } = useCart()
+  const itemCount = cart?.totalQuantity || 0
 
   return (
     <header className="bg-background border-b border-border sticky top-0 z-50">
@@ -61,12 +65,16 @@ export function StoreHeader() {
               <User className="h-4 w-4 mr-2" />
               Account
             </Button>
-            <Button variant="ghost" size="sm" className="relative">
-              <ShoppingCart className="h-4 w-4" />
-              <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-secondary">
-                0
-              </Badge>
-            </Button>
+            <CartSidebar>
+              <Button variant="ghost" size="sm" className="relative">
+                <ShoppingCart className="h-4 w-4" />
+                {itemCount > 0 && (
+                  <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-destructive">
+                    {itemCount}
+                  </Badge>
+                )}
+              </Button>
+            </CartSidebar>
             <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <Menu className="h-4 w-4" />
             </Button>

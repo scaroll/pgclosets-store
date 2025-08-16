@@ -2,8 +2,11 @@ import { HeroWithForm } from "@/components/sections/HeroWithForm"
 import { FeaturedProducts } from "@/components/store/featured-products"
 import { CategoryShowcase } from "@/components/store/category-showcase"
 import { TrustSignals } from "@/components/store/trust-signals"
+import { ProductConfigurator } from "@/components/store/product-configurator"
 import { ExitIntentPopup } from "@/components/popups/ExitIntentPopup"
 import { reninProducts } from "@/lib/renin-products"
+
+export const dynamic = 'force-dynamic'
 
 export default function StorePage() {
   // Get featured products from Renin database
@@ -41,6 +44,15 @@ export default function StorePage() {
     <>
       <div className="space-y-16">
         <HeroWithForm />
+        <section className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Design Your Perfect Door</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Use our interactive configurator to customize your ideal closet door with real-time pricing.
+            </p>
+          </div>
+          <ProductConfigurator />
+        </section>
         <FeaturedProducts products={productsToShow} />
         <CategoryShowcase categories={categories} />
         <TrustSignals />

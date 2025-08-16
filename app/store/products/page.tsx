@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { FeaturedProducts } from "@/components/store/featured-products"
 import { reninProducts } from "@/lib/renin-products"
 import { Card, CardContent } from "@/components/ui/card"
@@ -8,11 +10,12 @@ interface SearchParams {
   search?: string
 }
 
-export default function ProductsPage({
+export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: SearchParams
+  searchParams: Promise<SearchParams>
 }) {
+  const params = await searchParams
   // Get all products from Renin database
   const allBarnDoors = reninProducts.getBarnDoors()
   const allHardware = reninProducts.getHardware()
@@ -20,16 +23,16 @@ export default function ProductsPage({
   let filteredProducts = [...allBarnDoors, ...allHardware]
   
   // Apply filters
-  if (searchParams.category) {
-    if (searchParams.category === 'barn-doors') {
+  if (params.category) {
+    if (params.category === 'barn-doors') {
       filteredProducts = allBarnDoors
-    } else if (searchParams.category === 'hardware') {
+    } else if (params.category === 'hardware') {
       filteredProducts = allHardware
     }
   }
   
-  if (searchParams.search) {
-    const searchTerm = searchParams.search.toLowerCase()
+  if (params.search) {
+    const searchTerm = params.search.toLowerCase()
     filteredProducts = reninProducts.searchProducts(searchTerm)
   }
 
@@ -65,7 +68,7 @@ export default function ProductsPage({
               <div className="space-y-2">
                 <a 
                   href="/store/products"
-                  className={`block p-2 rounded-md transition-colors ${!searchParams.category ? 'bg-primary text-primary-foreground' : 'hover:bg-accent'}`}
+                  className={`block p-2 rounded-md transition-colors ${!params.category ? 'bg-primary text-primary-foreground' : 'hover:bg-accent'}`}
                 >
                   All Products ({allBarnDoors.length + allHardware.length})
                 </a>
@@ -73,7 +76,7 @@ export default function ProductsPage({
                   <a
                     key={category.id}
                     href={`/store/products?category=${category.slug}`}
-                    className={`block p-2 rounded-md transition-colors ${searchParams.category === category.slug ? 'bg-primary text-primary-foreground' : 'hover:bg-accent'}`}
+                    className={`block p-2 rounded-md transition-colors ${params.category === category.slug ? 'bg-primary text-primary-foreground' : 'hover:bg-accent'}`}
                   >
                     {category.name} ({category.count})
                   </a>
@@ -88,9 +91,9 @@ export default function ProductsPage({
             <p className="text-sm text-muted-foreground">
               Showing {filteredProducts.length} products
             </p>
-            {searchParams.category && (
+            {params.category && (
               <Badge variant="secondary">
-                {categories.find(c => c.slug === searchParams.category)?.name}
+                {categories.find(c => c.slug === params.category)?.name}
               </Badge>
             )}
           </div>

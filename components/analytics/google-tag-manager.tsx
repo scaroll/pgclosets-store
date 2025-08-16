@@ -60,10 +60,4 @@ export function GoogleTagManager({ measurementId, debug = false }: GoogleTagMana
   )
 }
 
-// Extend Window interface for TypeScript
-declare global {
-  interface Window {
-    dataLayer: any[]
-    gtag: (...args: any[]) => void
-  }
-}
+// Window interface is already declared in types/analytics.ts
