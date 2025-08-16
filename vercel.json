@@ -50,13 +50,6 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/store",
-      "permanent": false
-    }
-  ],
   "rewrites": [
     {
       "source": "/sitemap.xml",
