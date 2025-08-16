@@ -5,6 +5,7 @@
   "installCommand": "npm install --legacy-peer-deps",
   "devCommand": "npm run dev",
   "regions": ["cle1"],
+  "public": true,
   "functions": {
     "app/api/**": {
       "maxDuration": 30
