@@ -25,6 +25,9 @@ export default function HomePage() {
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Custom Image Gallery</h2>
           <p className="text-gray-600">Showcase your custom images and placeholders</p>
+          <div className="mt-2 text-sm text-blue-600 font-medium">
+            ✨ TEST 2: UI Change - Should trigger full CI/CD pipeline
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
