@@ -6,6 +6,12 @@
   "devCommand": "npm run dev",
   "regions": ["iad1"],
   "public": true,
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    },
+    "ignoreCommand": "bash -lc 'git diff --name-only HEAD^ | grep -E \"^(app|src|public|components|lib|next\\.config\\.(js|mjs|ts)|package\\.json|package-lock\\.json|yarn\\.lock|pnpm-lock\\.yaml)\" >/dev/null'"
+  },
   "crons": [
     {
       "path": "/api/cron/refresh-sitemap",
