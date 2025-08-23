@@ -1,8 +1,10 @@
 {
+  "name": "pgclosets-store",
+  "scope": "peoples-group",
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "installCommand": "npm install --legacy-peer-deps",
+  "installCommand": "npm ci --legacy-peer-deps || npm install --legacy-peer-deps",
   "devCommand": "npm run dev",
   "regions": ["iad1"],
   "public": true,
@@ -40,6 +42,9 @@
     "app/api/chat/**": {
       "maxDuration": 45
     }
+  },
+  "env": {
+    "NPM_CONFIG_LEGACY_PEER_DEPS": "true"
   },
   "headers": [
     {
