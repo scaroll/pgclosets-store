@@ -292,7 +292,7 @@ const reninProductsData: ReninProduct[] = [
     "name": "Euro Bifold",
     "category": "bifold",
     "price": 349,
-    "image": "https://images.homedepot.ca/productimages/p_1000740462.jpg",
+    "image": "/renin_images/barn_doors/product-6.jpgp_1000740462.jpg",
     "sizes": [
       "24\"",
       "30\"",
@@ -319,7 +319,7 @@ const reninProductsData: ReninProduct[] = [
     "name": "Louver Bifold",
     "category": "bifold",
     "price": 269,
-    "image": "https://images.homedepot.ca/productimages/p_1000168984.jpg",
+    "image": "/renin_images/barn_doors/product-6.jpgp_1000168984.jpg",
     "sizes": [
       "24\"",
       "30\"",
@@ -346,7 +346,7 @@ const reninProductsData: ReninProduct[] = [
     "name": "Panel Bifold",
     "category": "bifold",
     "price": 249,
-    "image": "https://images.homedepot.ca/productimages/p_1000114326.jpg",
+    "image": "/renin_images/barn_doors/product-6.jpgp_1000114326.jpg",
     "sizes": [
       "24\"",
       "30\"",
@@ -373,7 +373,7 @@ const reninProductsData: ReninProduct[] = [
     "name": "Mirror Bifold",
     "category": "bifold",
     "price": 429,
-    "image": "https://images.homedepot.ca/productimages/p_1000786970.jpg",
+    "image": "/renin_images/barn_doors/product-6.jpgp_1000786970.jpg",
     "sizes": [
       "24\"",
       "30\"",
@@ -400,7 +400,7 @@ const reninProductsData: ReninProduct[] = [
     "name": "Crochet Pivot",
     "category": "pivot",
     "price": 459,
-    "image": "https://images.homedepot.ca/productimages/p_1001054574.jpg",
+    "image": "/renin_images/barn_doors/product-6.jpgp_1001054574.jpg",
     "sizes": [
       "24\"",
       "30\"",
@@ -427,7 +427,7 @@ const reninProductsData: ReninProduct[] = [
     "name": "Provincial Pivot",
     "category": "pivot",
     "price": 479,
-    "image": "https://images.homedepot.ca/productimages/p_1001054575.jpg",
+    "image": "/renin_images/barn_doors/product-6.jpgp_1001054575.jpg",
     "sizes": [
       "24\"",
       "30\"",
@@ -454,7 +454,7 @@ const reninProductsData: ReninProduct[] = [
     "name": "Colonial",
     "category": "sliding",
     "price": 379,
-    "image": "https://images.homedepot.ca/productimages/p_1000408962.jpg",
+    "image": "/renin_images/barn_doors/product-6.jpgp_1000408962.jpg",
     "sizes": [
       "48\"",
       "60\"",
@@ -481,7 +481,7 @@ const reninProductsData: ReninProduct[] = [
     "name": "Shaker",
     "category": "sliding",
     "price": 359,
-    "image": "https://images.homedepot.ca/productimages/p_1000409177.jpg",
+    "image": "/renin_images/barn_doors/product-6.jpgp_1000409177.jpg",
     "sizes": [
       "48\"",
       "60\"",
@@ -508,7 +508,7 @@ const reninProductsData: ReninProduct[] = [
     "name": "Rustic Ranch",
     "category": "barn",
     "price": 599,
-    "image": "https://images.homedepot.ca/productimages/p_1001238039.jpg",
+    "image": "/renin_images/barn_doors/product-6.jpgp_1001238039.jpg",
     "sizes": [
       "36\"",
       "42\""
@@ -535,7 +535,7 @@ const reninProductsData: ReninProduct[] = [
     "name": "Modern Farmhouse",
     "category": "barn",
     "price": 549,
-    "image": "https://images.homedepot.ca/productimages/p_1001529905.jpg",
+    "image": "/renin_images/barn_doors/product-6.jpgp_1001529905.jpg",
     "sizes": [
       "36\"",
       "42\""
@@ -627,5 +627,19 @@ export const reninProducts = {
     reninProductsData.filter(p => 
       p.name.toLowerCase().includes(query.toLowerCase()) ||
       p.description.toLowerCase().includes(query.toLowerCase())
+    ),
+  
+  // Get barn door products
+  getBarnDoors: () => reninProductsData.filter(p => p.category === 'barn'),
+  
+  // Get hardware products  
+  getHardware: () => reninHardware,
+  
+  // Search products (alias for compatibility)
+  searchProducts: (query: string) => 
+    [...reninProductsData, ...reninHardware].filter(p => 
+      p.name.toLowerCase().includes(query.toLowerCase()) ||
+      (p as any).description?.toLowerCase().includes(query.toLowerCase()) ||
+      p.features.some(f => f.toLowerCase().includes(query.toLowerCase()))
     )
 };
