@@ -1,260 +1,631 @@
-import reninDatabase from './renin-products-database.json'
 
 export interface ReninProduct {
-  id: string
-  name: string
-  slug: string
-  price: number
-  sale_price?: number
-  currency: string
-  style: string
-  material: string
-  finish: string
-  size: string
-  width: number
-  height: number
-  thickness: number
-  hardware_included: boolean
-  track_length: string
-  features: string[]
-  images: {
-    main: string
-    lifestyle?: string
-    detail?: string
-  }
+  id: number;
+  sku: string;
+  name: string;
+  category: string;
+  price: number;
+  image: string;
+  sizes: string[];
+  finishes: string[];
+  features: string[];
+  description: string;
+  installTime: string;
+  inStock: boolean;
 }
 
+const reninProductsData: ReninProduct[] = [
+  {
+    "id": 1,
+    "sku": "BD1L",
+    "name": "Euro 1-Lite",
+    "category": "sliding",
+    "price": 459,
+    "image": "/renin_images/barn_doors/product-1.jpg",
+    "sizes": [
+      "48\"",
+      "60\"",
+      "72\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Euro 1-Lite sliding door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 2,
+    "sku": "BD3L",
+    "name": "Euro 3-Lite",
+    "category": "sliding",
+    "price": 489,
+    "image": "/renin_images/barn_doors/product-2.jpg",
+    "sizes": [
+      "48\"",
+      "60\"",
+      "72\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Euro 3-Lite sliding door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 3,
+    "sku": "BD5L",
+    "name": "Euro 5-Lite",
+    "category": "sliding",
+    "price": 519,
+    "image": "/renin_images/barn_doors/product-3.jpg",
+    "sizes": [
+      "48\"",
+      "60\"",
+      "72\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Euro 5-Lite sliding door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 4,
+    "sku": "HARM48",
+    "name": "Harmony Mirror",
+    "category": "sliding",
+    "price": 429,
+    "image": "/renin_images/barn_doors/product-4.jpg",
+    "sizes": [
+      "48\"",
+      "60\"",
+      "72\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Harmony Mirror sliding door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 5,
+    "sku": "TWIL48",
+    "name": "Twilight Frosted",
+    "category": "sliding",
+    "price": 399,
+    "image": "/renin_images/barn_doors/product-5.jpg",
+    "sizes": [
+      "48\"",
+      "60\"",
+      "72\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Twilight Frosted sliding door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 6,
+    "sku": "SALZ36",
+    "name": "Heritage Z-Design",
+    "category": "barn",
+    "price": 659,
+    "image": "/renin_images/barn_doors/gatsby-chevron-white-main.jpg",
+    "sizes": [
+      "36\"",
+      "42\""
+    ],
+    "finishes": [
+      "Natural Wood",
+      "White",
+      "Espresso",
+      "Gray"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Heritage Z-Design barn door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "2-3 hours",
+    "inStock": true
+  },
+  {
+    "id": 7,
+    "sku": "SALK36",
+    "name": "Heritage K-Design",
+    "category": "barn",
+    "price": 679,
+    "image": "/renin_images/barn_doors/herringbone-chevron-main.jpg",
+    "sizes": [
+      "36\"",
+      "42\""
+    ],
+    "finishes": [
+      "Natural Wood",
+      "White",
+      "Espresso",
+      "Gray"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Heritage K-Design barn door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "2-3 hours",
+    "inStock": true
+  },
+  {
+    "id": 8,
+    "sku": "CONT36",
+    "name": "Continental",
+    "category": "barn",
+    "price": 589,
+    "image": "/renin_images/barn_doors/industrial-x-frame-main.jpg",
+    "sizes": [
+      "36\"",
+      "42\""
+    ],
+    "finishes": [
+      "Natural Wood",
+      "White",
+      "Espresso",
+      "Gray"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Continental barn door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "2-3 hours",
+    "inStock": true
+  },
+  {
+    "id": 9,
+    "sku": "BRWN36",
+    "name": "Brownstone",
+    "category": "barn",
+    "price": 719,
+    "image": "/renin_images/barn_doors/metal-works-geometric-main.jpg",
+    "sizes": [
+      "36\"",
+      "42\"",
+      "42\"x84\""
+    ],
+    "finishes": [
+      "Natural Wood",
+      "White",
+      "Espresso",
+      "Gray"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Brownstone barn door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "2-3 hours",
+    "inStock": true
+  },
+  {
+    "id": 10,
+    "sku": "TRIB36",
+    "name": "Industrial Tribeca",
+    "category": "barn",
+    "price": 849,
+    "image": "/renin_images/barn_doors/salinas-z-pine-main.jpg",
+    "sizes": [
+      "36\"",
+      "42\""
+    ],
+    "finishes": [
+      "Natural Wood",
+      "White",
+      "Espresso",
+      "Gray"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Industrial Tribeca barn door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "2-3 hours",
+    "inStock": true
+  },
+  {
+    "id": 11,
+    "sku": "BFEU30",
+    "name": "Euro Bifold",
+    "category": "bifold",
+    "price": 349,
+    "image": "https://images.homedepot.ca/productimages/p_1000740462.jpg",
+    "sizes": [
+      "24\"",
+      "30\"",
+      "36\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Euro Bifold bifold door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 12,
+    "sku": "BFLV30",
+    "name": "Louver Bifold",
+    "category": "bifold",
+    "price": 269,
+    "image": "https://images.homedepot.ca/productimages/p_1000168984.jpg",
+    "sizes": [
+      "24\"",
+      "30\"",
+      "36\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Louver Bifold bifold door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 13,
+    "sku": "BFPN30",
+    "name": "Panel Bifold",
+    "category": "bifold",
+    "price": 249,
+    "image": "https://images.homedepot.ca/productimages/p_1000114326.jpg",
+    "sizes": [
+      "24\"",
+      "30\"",
+      "36\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Panel Bifold bifold door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 14,
+    "sku": "BFMR30",
+    "name": "Mirror Bifold",
+    "category": "bifold",
+    "price": 429,
+    "image": "https://images.homedepot.ca/productimages/p_1000786970.jpg",
+    "sizes": [
+      "24\"",
+      "30\"",
+      "36\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Mirror Bifold bifold door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 15,
+    "sku": "CRCH30",
+    "name": "Crochet Pivot",
+    "category": "pivot",
+    "price": 459,
+    "image": "https://images.homedepot.ca/productimages/p_1001054574.jpg",
+    "sizes": [
+      "24\"",
+      "30\"",
+      "36\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Crochet Pivot pivot door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 16,
+    "sku": "PROV30",
+    "name": "Provincial Pivot",
+    "category": "pivot",
+    "price": 479,
+    "image": "https://images.homedepot.ca/productimages/p_1001054575.jpg",
+    "sizes": [
+      "24\"",
+      "30\"",
+      "36\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Provincial Pivot pivot door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 17,
+    "sku": "COL48",
+    "name": "Colonial",
+    "category": "sliding",
+    "price": 379,
+    "image": "https://images.homedepot.ca/productimages/p_1000408962.jpg",
+    "sizes": [
+      "48\"",
+      "60\"",
+      "72\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Colonial sliding door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 18,
+    "sku": "SHAK48",
+    "name": "Shaker",
+    "category": "sliding",
+    "price": 359,
+    "image": "https://images.homedepot.ca/productimages/p_1000409177.jpg",
+    "sizes": [
+      "48\"",
+      "60\"",
+      "72\""
+    ],
+    "finishes": [
+      "Off-White",
+      "Mirror",
+      "Frosted"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Shaker sliding door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "1-2 hours",
+    "inStock": true
+  },
+  {
+    "id": 19,
+    "sku": "RUST36",
+    "name": "Rustic Ranch",
+    "category": "barn",
+    "price": 599,
+    "image": "https://images.homedepot.ca/productimages/p_1001238039.jpg",
+    "sizes": [
+      "36\"",
+      "42\""
+    ],
+    "finishes": [
+      "Natural Wood",
+      "White",
+      "Espresso",
+      "Gray"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Rustic Ranch barn door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "2-3 hours",
+    "inStock": true
+  },
+  {
+    "id": 20,
+    "sku": "FARM36",
+    "name": "Modern Farmhouse",
+    "category": "barn",
+    "price": 549,
+    "image": "https://images.homedepot.ca/productimages/p_1001529905.jpg",
+    "sizes": [
+      "36\"",
+      "42\""
+    ],
+    "finishes": [
+      "Natural Wood",
+      "White",
+      "Espresso",
+      "Gray"
+    ],
+    "features": [
+      "Professional Grade",
+      "Easy Installation",
+      "Canadian Stock",
+      "Warranty Included"
+    ],
+    "description": "Premium Renin Modern Farmhouse barn door. Official dealer pricing, professional installation available in Ottawa.",
+    "installTime": "2-3 hours",
+    "inStock": true
+  }
+];
+
+// Hardware products interface
 export interface ReninHardware {
-  id: string
-  name: string
-  slug: string
-  price: number
-  currency: string
-  material: string
-  finish: string
-  length?: number
-  weight_capacity?: number
-  features: string[]
-  images: {
-    main: string
-    detail?: string
-  }
+  id: string;
+  name: string;
+  slug: string;
+  price: number;
+  sale_price?: number;
+  material: string;
+  finish: string;
+  features: string[];
+  image: string;
 }
 
-export interface ReninDatabase {
-  metadata: {
-    source: string
-    currency: string
-    tax_rate: number
-    updated: string
-    note: string
+// Sample hardware products
+export const reninHardware: ReninHardware[] = [
+  {
+    id: "hw1",
+    name: "Standard Track System",
+    slug: "standard-track-system", 
+    price: 169,
+    material: "Steel",
+    finish: "Satin Nickel",
+    features: ["6ft Track", "All Hardware Included", "Easy Installation"],
+    image: "/renin_images/hardware/standard-track-6ft-main.jpg"
+  },
+  {
+    id: "hw2", 
+    name: "Premium InvisiGlide System",
+    slug: "premium-invisiglide-system",
+    price: 399,
+    material: "Aluminum",
+    finish: "Brushed Nickel", 
+    features: ["Smooth Gliding", "Soft Close", "Premium Quality"],
+    image: "/renin_images/hardware/invisiglide-premium-main.jpg"
   }
-  categories: {
-    barn_doors: {
-      name: string
-      description: string
-      products: ReninProduct[]
-    }
-    hardware: {
-      name: string
-      description: string
-      products: ReninHardware[]
-    }
-  }
-  installation: {
-    services: Record<string, {
-      name: string
-      price: number
-      description: string
-      includes: string[]
-      time_estimate: string
-    }>
-    warranty: Record<string, string>
-  }
-  shipping: Record<string, Record<string, {
-    price: number
-    description: string
-    time: string
-  }>>
-}
+];
 
-// Type the imported database
-const database = reninDatabase as ReninDatabase
+// Export the data array for backward compatibility
+export const reninProductsArray = reninProductsData;
 
-export class ReninProductService {
-  private database: ReninDatabase
-
-  constructor() {
-    this.database = database
-  }
-
-  // Get all barn doors
-  getBarnDoors(): ReninProduct[] {
-    return this.database.categories.barn_doors.products
-  }
-
-  // Get all hardware
-  getHardware(): ReninHardware[] {
-    return this.database.categories.hardware.products
-  }
-
-  // Get product by ID
-  getProductById(id: string): ReninProduct | ReninHardware | null {
-    const barnDoors = this.getBarnDoors()
-    const hardware = this.getHardware()
+// Export object with utility methods
+export const reninProducts = {
+  // Get all products
+  getAllProducts: () => reninProductsData,
+  
+  // Get featured products (first 6)
+  getFeaturedProducts: () => reninProductsData.slice(0, 6),
+  
+  // Get products by category
+  getProductsByCategory: (category: string) => 
+    reninProductsData.filter(p => p.category === category),
     
-    return [...barnDoors, ...hardware].find(product => product.id === id) || null
-  }
-
-  // Get product by slug
-  getProductBySlug(slug: string): ReninProduct | ReninHardware | null {
-    const barnDoors = this.getBarnDoors()
-    const hardware = this.getHardware()
-    
-    return [...barnDoors, ...hardware].find(product => product.slug === slug) || null
-  }
-
-  // Filter barn doors by criteria
-  filterBarnDoors(filters: {
-    style?: string
-    material?: string
-    finish?: string
-    size?: string
-    priceRange?: { min: number; max: number }
-  }): ReninProduct[] {
-    let products = this.getBarnDoors()
-
-    if (filters.style) {
-      products = products.filter(p => p.style.toLowerCase() === filters.style!.toLowerCase())
-    }
-
-    if (filters.material) {
-      products = products.filter(p => p.material.toLowerCase() === filters.material!.toLowerCase())
-    }
-
-    if (filters.finish) {
-      products = products.filter(p => p.finish.toLowerCase().includes(filters.finish!.toLowerCase()))
-    }
-
-    if (filters.size) {
-      products = products.filter(p => p.size.includes(filters.size!))
-    }
-
-    if (filters.priceRange) {
-      products = products.filter(p => {
-        const price = p.sale_price || p.price
-        return price >= filters.priceRange!.min && price <= filters.priceRange!.max
-      })
-    }
-
-    return products
-  }
-
-  // Get featured/sale products
-  getFeaturedProducts(): ReninProduct[] {
-    return this.getBarnDoors().filter(product => product.sale_price !== undefined)
-  }
-
-  // Calculate price with tax
-  calculatePriceWithTax(price: number): {
-    subtotal: number
-    tax: number
-    total: number
-    taxRate: number
-  } {
-    const taxRate = this.database.metadata.tax_rate
-    const subtotal = price
-    const tax = price * taxRate
-    const total = price + tax
-
-    return {
-      subtotal,
-      tax,
-      total,
-      taxRate
-    }
-  }
-
-  // Format price for display
-  formatPrice(price: number, showCurrency = true): string {
-    const formatted = new Intl.NumberFormat('en-CA', {
+  // Format price with CAD currency
+  formatPrice: (price: number | null) => {
+    if (!price) return "Contact for pricing";
+    return new Intl.NumberFormat('en-CA', {
       style: 'currency',
-      currency: 'CAD',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    }).format(price)
-
-    return showCurrency ? formatted : formatted.replace('CA$', '$')
-  }
-
-  // Get installation services
-  getInstallationServices() {
-    return this.database.installation.services
-  }
-
-  // Get shipping options for location
-  getShippingOptions(location: 'ottawa_area' | 'ontario' = 'ottawa_area') {
-    return this.database.shipping[location] || this.database.shipping.ontario
-  }
-
-  // Get product recommendations based on current product
-  getRecommendations(currentProductId: string, limit = 3): (ReninProduct | ReninHardware)[] {
-    const currentProduct = this.getProductById(currentProductId)
-    if (!currentProduct) return []
-
-    // For barn doors, recommend similar style or complementary hardware
-    if ('style' in currentProduct) {
-      const similarDoors = this.filterBarnDoors({ 
-        style: currentProduct.style 
-      }).filter(p => p.id !== currentProductId)
-
-      const complementaryHardware = this.getHardware().filter(h => {
-        // Recommend premium hardware for premium doors
-        if (currentProduct.price > 800) {
-          return h.price > 200
-        }
-        return h.price <= 200
-      })
-
-      return [...similarDoors.slice(0, 2), ...complementaryHardware.slice(0, 1)].slice(0, limit)
-    }
-
-    // For hardware, recommend doors that work well with it
-    const compatibleDoors = this.getBarnDoors().filter(door => {
-      // Match finish compatibility
-      if (currentProduct.finish.toLowerCase().includes('black')) {
-        return door.style === 'Industrial' || door.style === 'Modern'
-      }
-      if (currentProduct.finish.toLowerCase().includes('nickel')) {
-        return door.style === 'Modern' || door.finish.toLowerCase().includes('white')
-      }
-      return true
-    })
-
-    return compatibleDoors.slice(0, limit)
-  }
-
+      currency: 'CAD'
+    }).format(price);
+  },
+  
+  // Get product by ID
+  getById: (id: number) => reninProductsData.find(p => p.id === id),
+  
   // Search products
-  searchProducts(query: string): (ReninProduct | ReninHardware)[] {
-    const searchTerm = query.toLowerCase()
-    const allProducts = [...this.getBarnDoors(), ...this.getHardware()]
-
-    return allProducts.filter(product => 
-      product.name.toLowerCase().includes(searchTerm) ||
-      product.features.some(feature => feature.toLowerCase().includes(searchTerm)) ||
-      ('style' in product && product.style.toLowerCase().includes(searchTerm)) ||
-      product.material.toLowerCase().includes(searchTerm) ||
-      product.finish.toLowerCase().includes(searchTerm)
+  search: (query: string) => 
+    reninProductsData.filter(p => 
+      p.name.toLowerCase().includes(query.toLowerCase()) ||
+      p.description.toLowerCase().includes(query.toLowerCase())
     )
-  }
-
-  // Get metadata
-  getMetadata() {
-    return this.database.metadata
-  }
-}
-
-// Export singleton instance
-export const reninProducts = new ReninProductService()
-
-// Types already exported above
+};

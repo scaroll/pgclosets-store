@@ -67,7 +67,7 @@ export function FeaturedProducts({ products: propProducts }: FeaturedProductsPro
             <div className="aspect-square overflow-hidden rounded-t-lg bg-card">
               <Link href={`/store/products/${product.slug}`}>
                 <img
-                  src={product.images.main || `/abstract-geometric-shapes.png?height=400&width=400&query=${product.name}`}
+                  src={product.image || `/abstract-geometric-shapes.png?height=400&width=400&query=${product.name}`}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
                   onError={(e) => {
