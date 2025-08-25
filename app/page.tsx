@@ -10,10 +10,6 @@ export const metadata: Metadata = {
   title: 'Premium Closet Doors Ottawa | Official Renin Dealer | Custom Installation | PG Closets',
   description: 'Transform your Ottawa home with premium Renin closet doors. Expert installation of barn doors, bypass doors, bifold doors & pivot doors. Free consultation, lifetime warranty, 2-week delivery. Serving Ottawa, Kanata, Nepean, Orleans, Barrhaven.',
   keywords: 'closet doors Ottawa, barn doors Ottawa, Renin dealer, bypass doors, bifold doors, pivot doors, custom closet installation, professional installation Ottawa, home renovation, interior design, space optimization, premium doors Canada, closet solutions Ottawa',
-  author: 'PG Closets',
-  creator: 'PG Closets',
-  publisher: 'PG Closets',
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   openGraph: {
     title: 'Premium Closet Doors Ottawa | Official Renin Dealer | PG Closets',
     description: 'Transform your Ottawa home with premium Renin closet doors. Expert installation, lifetime warranty, transparent Canadian pricing.',
@@ -38,12 +34,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://pgclosets.com'
   },
-  other: {
-    'geo.region': 'CA-ON',
-    'geo.placename': 'Ottawa',
-    'geo.position': '45.4215;-75.6972',
-    'ICBM': '45.4215, -75.6972'
-  }
 }
 
 export default function HomePage() {
