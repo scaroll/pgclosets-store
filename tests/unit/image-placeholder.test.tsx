@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import { ImagePlaceholder } from '@/components/ui/image-placeholder'
 
 describe('ImagePlaceholder', () => {

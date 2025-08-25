@@ -58,7 +58,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
             <div className="aspect-square overflow-hidden rounded-t-lg bg-card">
               <Link href={`/store/products/${product.slug}`}>
                 <img
-                  src={product.images.main || `/abstract-geometric-shapes.png?height=300&width=300&query=${product.name}`}
+                  src={product.images?.main || product.image || `/abstract-geometric-shapes.png?height=300&width=300&query=${product.name}`}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
                   onError={(e) => {
@@ -71,7 +71,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
             <CardContent className="p-4 space-y-3">
               <div>
                 <Badge variant="secondary" className="mb-2 text-xs">
-                  {'style' in product ? product.style : product.material}
+                  {product.style || ('category' in product ? product.category : product.material)}
                 </Badge>
                 {'sale_price' in product && product.sale_price && (
                   <Badge variant="destructive" className="mb-2 ml-1 text-xs">
@@ -108,7 +108,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
 
                 <div className="space-y-2">
                   <AddToCartButton
-                    productId={product.id}
+                    productId={product.id.toString()}
                     productName={product.name}
                     price={('sale_price' in product && product.sale_price) || product.price}
                     onAddToCart={handleAddToCart}
@@ -116,7 +116,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
                     className="w-full"
                   />
                   <QuickBuyButton
-                    productId={product.id}
+                    productId={product.id.toString()}
                     price={('sale_price' in product && product.sale_price) || product.price}
                     productName={product.name}
                     onSuccess={handleQuickBuySuccess}

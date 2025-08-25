@@ -50,17 +50,17 @@ export function ProductConfigurator({ onConfigurationChange, className }: Produc
 
   // Filter available options based on current selections
   const availableDoors = barnDoors.filter(door => {
-    if (config.doorType && door.style !== config.doorType) return false
-    if (config.size && door.size !== config.size) return false
+    if (config.doorType && door.category !== config.doorType) return false
+    if (config.size && door.sizes && !door.sizes.includes(config.size)) return false
     if (config.material && door.material !== config.material) return false
-    if (config.finish && !door.finish.toLowerCase().includes(config.finish.toLowerCase())) return false
+    if (config.finish && door.finishes && !door.finishes.some(f => f.toLowerCase().includes(config.finish.toLowerCase()))) return false
     return true
   })
 
-  const doorTypes = [...new Set(barnDoors.map(door => door.style))]
-  const sizes = [...new Set(barnDoors.map(door => door.size))]
-  const materials = [...new Set(barnDoors.map(door => door.material))]
-  const finishes = [...new Set(barnDoors.map(door => door.finish))]
+  const doorTypes = [...new Set(barnDoors.map(door => door.category))]
+  const sizes = [...new Set(barnDoors.flatMap(door => door.sizes))]
+  const materials = [...new Set(barnDoors.map(door => door.material || "Wood"))]
+  const finishes = [...new Set(barnDoors.flatMap(door => door.finishes))]
 
   const updateConfig = (field: keyof ConfigurationState, value: any) => {
     const newConfig = { ...config, [field]: value }
@@ -72,10 +72,10 @@ export function ProductConfigurator({ onConfigurationChange, className }: Produc
     // Find matching door
     if (newConfig.doorType || newConfig.size || newConfig.material || newConfig.finish) {
       const matchingDoor = availableDoors.find(door => {
-        return (!newConfig.doorType || door.style === newConfig.doorType) &&
-               (!newConfig.size || door.size === newConfig.size) &&
+        return (!newConfig.doorType || door.category === newConfig.doorType) &&
+               (!newConfig.size || (door.sizes && door.sizes.includes(newConfig.size))) &&
                (!newConfig.material || door.material === newConfig.material) &&
-               (!newConfig.finish || door.finish.toLowerCase().includes(newConfig.finish.toLowerCase()))
+               (!newConfig.finish || (door.finishes && door.finishes.some(f => f.toLowerCase().includes(newConfig.finish.toLowerCase()))))
       })
       
       if (matchingDoor) {
@@ -95,7 +95,7 @@ export function ProductConfigurator({ onConfigurationChange, className }: Produc
 
     // Add installation price
     if (newConfig.installation) {
-      const installationService = installationServices.barn_door_installation
+      const installationService = installationServices[0] // Use first installation service
       if (installationService) {
         selectedProducts.installation = installationService
         totalPrice += installationService.price
@@ -288,7 +288,7 @@ export function ProductConfigurator({ onConfigurationChange, className }: Produc
                 className="rounded border-gray-300"
               />
               <label htmlFor="installation" className="text-sm">
-                Include professional installation (+{reninProducts.formatPrice(installationServices.barn_door_installation?.price || 0)})
+                Include professional installation (+{reninProducts.formatPrice(installationServices[0]?.price || 0)})
               </label>
             </div>
           </div>

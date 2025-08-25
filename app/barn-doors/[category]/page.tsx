@@ -161,7 +161,7 @@ export default async function CategoryPage({
             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
               <div className="aspect-square relative">
                 <img
-                  src={product.images.main}
+                  src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />

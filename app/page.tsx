@@ -20,6 +20,28 @@ export default function HomePage() {
       <ThreeItemGrid />
       <Carousel />
       
+      {/* Dog Image Section */}
+      <section className="mx-auto max-w-screen-2xl px-4 py-8 bg-gradient-to-r from-amber-50 to-orange-50">
+        <div className="text-center mb-6">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">🐕 Adorable Dog Gallery</h2>
+          <p className="text-lg text-gray-600 mb-6">Man's best friend captured in beautiful photography</p>
+        </div>
+        
+        <div className="flex justify-center">
+          <div className="bg-white rounded-lg shadow-xl p-8 max-w-lg">
+            <div className="w-80 h-60 mx-auto mb-4 rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&h=400&fit=crop&auto=format&q=80" 
+                alt="Happy golden retriever dog with tongue out" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">Happy Golden Retriever</h3>
+            <p className="text-gray-600 text-center">Pure joy and loyalty captured in a single moment</p>
+          </div>
+        </div>
+      </section>
+
       {/* Custom Image Placeholder Section */}
       <section className="mx-auto max-w-screen-2xl px-4 py-8">
         <div className="text-center mb-6">

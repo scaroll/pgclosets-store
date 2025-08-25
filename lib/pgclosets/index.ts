@@ -58,9 +58,19 @@ export function adaptReninProductToPGProduct(reninProduct: ReninProduct | ReninH
   ];
 
   // Add size variants if available
-  if ('size' in reninProduct && reninProduct.size) {
-    const sizes = reninProduct.size.split(',').map(s => s.trim());
+  if (reninProduct.size) {
+    const sizes = Array.isArray(reninProduct.size) ? reninProduct.size : reninProduct.size.split(',').map(s => s.trim());
     sizes.forEach((size, index) => {
+      variants.push({
+        id: `${reninProduct.id}-size-${index}`,
+        title: `Size: ${size}`,
+        availableForSale: true,
+        selectedOptions: [{ name: 'Size', value: size }],
+        price: formatPrice(price)
+      });
+    });
+  } else if ('sizes' in reninProduct && reninProduct.sizes) {
+    reninProduct.sizes.forEach((size, index) => {
       variants.push({
         id: `${reninProduct.id}-size-${index}`,
         title: `Size: ${size}`,
@@ -71,14 +81,14 @@ export function adaptReninProductToPGProduct(reninProduct: ReninProduct | ReninH
     });
   }
 
-  const featuredImage = createImageFromUrl(reninProduct.images.main, reninProduct.name);
+  const featuredImage = createImageFromUrl(reninProduct.images?.main || reninProduct.image, reninProduct.name);
 
   // Determine category and product type
-  const category = 'style' in reninProduct ? 'barn-doors' : 'hardware';
+  const category = 'category' in reninProduct ? 'barn-doors' : 'hardware';
   const description = reninProduct.features.join('. ');
 
   return {
-    id: reninProduct.id,
+    id: reninProduct.id.toString(),
     handle,
     availableForSale: true,
     title: reninProduct.name,
@@ -88,12 +98,12 @@ export function adaptReninProductToPGProduct(reninProduct: ReninProduct | ReninH
       {
         id: 'size',
         name: 'Size',
-        values: 'size' in reninProduct ? [reninProduct.size] : ['Standard']
+        values: reninProduct.size ? (Array.isArray(reninProduct.size) ? reninProduct.size : [reninProduct.size]) : ('sizes' in reninProduct && reninProduct.sizes ? reninProduct.sizes : ['Standard'])
       },
       {
         id: 'finish',
         name: 'Finish',
-        values: [reninProduct.finish]
+        values: reninProduct.finish ? [reninProduct.finish] : ('finishes' in reninProduct && reninProduct.finishes ? reninProduct.finishes : ['Natural'])
       }
     ],
     priceRange: {
@@ -110,17 +120,17 @@ export function adaptReninProductToPGProduct(reninProduct: ReninProduct | ReninH
     tags: [
       category,
       reninProduct.material || '',
-      'style' in reninProduct ? reninProduct.style : '',
-      reninProduct.finish
+      reninProduct.style || ('category' in reninProduct ? reninProduct.category : ''),
+      reninProduct.finish || ('finishes' in reninProduct && reninProduct.finishes?.[0] ? reninProduct.finishes[0] : '')
     ].filter(Boolean),
     updatedAt: new Date().toISOString(),
     category: mapCategoryToPGCategory(category),
     specifications: {
       material: reninProduct.material,
       finish: reninProduct.finish,
-      size: 'size' in reninProduct ? reninProduct.size : undefined,
-      style: 'style' in reninProduct ? reninProduct.style : undefined,
-      dimensions: 'width' in reninProduct ? {
+      size: reninProduct.size,
+      style: reninProduct.style,
+      dimensions: reninProduct.width && reninProduct.height && reninProduct.thickness ? {
         width: `${reninProduct.width}"`,
         height: `${reninProduct.height}"`,
         thickness: `${reninProduct.thickness}"`

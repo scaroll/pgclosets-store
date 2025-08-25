@@ -146,7 +146,7 @@ export function generateProductSchema(productSlug: string) {
       '@type': 'Organization',
       name: 'Renin Corp.'
     },
-    image: product.images.main,
+    image: product.images?.main || product.image,
     sku: product.id,
     mpn: product.id,
     category: isHardware ? 'Hardware' : 'Barn Doors',

@@ -1,0 +1,31 @@
+{
+  "project": "pgclosets-store",
+  "deployment": {
+    "always_use_script": "./deploy-to-pgclosets.sh",
+    "pre_deploy_check": "./verify-deployment-target.sh",
+    "environment": {
+      "VERCEL_ORG_ID": "team_Xzht85INUsoW05STx9DMMyLX",
+      "VERCEL_PROJECT_ID": "prj_SmzgeYTYp4LHGzkYTLKJAZJg9718",
+      "VERCEL_SCOPE": "peoples-group"
+    }
+  },
+  "rules": [
+    "NEVER use 'vercel' command directly for deployment",
+    "ALWAYS use ./deploy-to-pgclosets.sh for deployments",
+    "ALWAYS run ./verify-deployment-target.sh before deploying",
+    "NEVER delete .vercel/project.json",
+    "NEVER modify VERCEL_PROJECT_ID or VERCEL_ORG_ID",
+    "ALWAYS verify deployments go to pgclosets-store project",
+    "Creating new projects is a FAILURE condition"
+  ],
+  "verification": {
+    "target_project": "pgclosets-store",
+    "target_url": "https://vercel.com/peoples-group/pgclosets-store",
+    "required_files": [
+      ".vercel/project.json",
+      "deploy-to-pgclosets.sh",
+      "verify-deployment-target.sh",
+      ".env.vercel"
+    ]
+  }
+}

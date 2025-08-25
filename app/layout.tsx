@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { GeistSans } from 'geist/font/sans'
 import { Toaster } from "sonner"
 import { CartProvider } from "@/components/commerce/cart-context"
+import { MedusaCartProvider } from "@/components/medusa/cart-provider"
 import { AnalyticsProvider, AnalyticsDebugInfo } from "@/components/analytics/analytics-provider"
 import { PG_CLOSETS_TRACKING } from "@/lib/analytics"
 import { getCart } from "@/lib/pgclosets"
@@ -77,9 +78,11 @@ export default async function RootLayout({
           debug={process.env.NODE_ENV === 'development'}
         >
           <CartProvider cartPromise={cart}>
-            {children}
-            <Toaster position="bottom-right" closeButton />
-            <AnalyticsDebugInfo />
+            <MedusaCartProvider>
+              {children}
+              <Toaster position="bottom-right" closeButton />
+              <AnalyticsDebugInfo />
+            </MedusaCartProvider>
           </CartProvider>
         </AnalyticsProvider>
         <Analytics />

@@ -51,7 +51,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
       <div className="space-y-4">
         <div className="aspect-square overflow-hidden rounded-lg bg-card border">
           <img
-            src={product.images.main || `/abstract-geometric-shapes.png?height=600&width=600&query=${product.name}`}
+            src={product.image || `/abstract-geometric-shapes.png?height=600&width=600&query=${product.name}`}
             alt={product.name}
             className="w-full h-full object-cover"
             onError={(e) => {
@@ -63,10 +63,10 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         {/* Thumbnail images */}
         <div className="grid grid-cols-4 gap-2">
           {[
-            product.images.main,
-            'lifestyle' in product.images ? product.images.lifestyle : undefined,
-            'detail' in product.images ? product.images.detail : undefined,
-            product.images.main // Fallback to main image
+            product.image,
+            product.image, // Use same image for now since we have one high-quality image
+            product.image,
+            product.image
           ].filter(Boolean).slice(0, 4).map((imageSrc, index) => (
             <div key={index} className="aspect-square overflow-hidden rounded-md bg-card border cursor-pointer hover:border-primary transition-colors">
               <img
@@ -88,7 +88,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         <div className="space-y-4">
           <div className="flex gap-2">
             <Badge variant="secondary">
-              {'style' in product ? product.style : product.material}
+              {'category' in product ? product.category : product.material}
             </Badge>
             {salePrice && (
               <Badge variant="destructive">Sale</Badge>
@@ -100,8 +100,8 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           </h1>
           
           <p className="text-xl text-muted-foreground">
-            {'style' in product 
-              ? `${product.material} • ${product.finish} • ${product.size}` 
+            {'category' in product 
+              ? `${product.material || 'Wood'} • ${product.finish || product.finishes?.[0] || 'Natural'}` 
               : `${product.finish} • ${product.material}`
             }
           </p>
@@ -158,7 +158,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         {/* Action Buttons */}
         {displayPrice && (
           <ProductActions
-            productId={product.id}
+            productId={product.id.toString()}
             productName={product.name}
             price={displayPrice}
             onAddToCart={handleAddToCart}
@@ -207,47 +207,47 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
             <div className="flex justify-between">
               <span className="text-muted-foreground">SKU:</span>
-              <span className="font-medium">{product.id}</span>
+              <span className="font-medium">{'sku' in product ? product.sku : product.id}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Material:</span>
-              <span className="font-medium">{product.material}</span>
+              <span className="font-medium">{product.material || 'Wood'}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Finish:</span>
-              <span className="font-medium">{product.finish}</span>
+              <span className="font-medium">{product.finish || ('finishes' in product ? product.finishes?.[0] : 'Natural') || 'Natural'}</span>
             </div>
             {'style' in product && (
               <>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Style:</span>
-                  <span className="font-medium">{product.style}</span>
+                  <span className="font-medium">{'category' in product ? product.category : 'N/A'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Size:</span>
-                  <span className="font-medium">{product.size}</span>
+                  <span className="font-medium">{'sizes' in product ? product.sizes?.join(', ') : 'Standard'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Dimensions:</span>
-                  <span className="font-medium">{product.width}" × {product.height}" × {product.thickness}"</span>
+                  <span className="font-medium">Standard Size</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Hardware:</span>
-                  <span className="font-medium">{product.hardware_included ? 'Included' : 'Sold separately'}</span>
+                  <span className="font-medium">Sold separately</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Track Length:</span>
-                  <span className="font-medium">{product.track_length}</span>
+                  <span className="text-muted-foreground">Installation:</span>
+                  <span className="font-medium">Professional Available</span>
                 </div>
               </>
             )}
-            {'length' in product && (
+            {product.length && (
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Length:</span>
                 <span className="font-medium">{product.length} inches</span>
               </div>
             )}
-            {'weight_capacity' in product && (
+            {product.weight_capacity && (
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Weight Capacity:</span>
                 <span className="font-medium">{product.weight_capacity} lbs</span>

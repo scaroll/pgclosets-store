@@ -46,7 +46,7 @@ export async function generateMetadata({
     title,
     description,
     path: `/store/products/${slug}`,
-    images: [product.images.main]
+    images: [product.image]
   })
 
   // Add product schema

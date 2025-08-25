@@ -67,26 +67,28 @@ export class EmbeddingService {
         finish: product.finish,
         features: product.features,
         ...(isProduct ? {
-          style: (product as ReninProduct).style,
-          size: (product as ReninProduct).size,
-          width: (product as ReninProduct).width,
-          height: (product as ReninProduct).height
+          style: product.style,
+          size: product.size,
+          width: product.width,
+          height: product.height
         } : {})
       }
     }
   }
 
   private generateProductDescription(product: ReninProduct | ReninHardware, type: string): string {
-    const isProduct = 'style' in product
+    const isProduct = 'category' in product
     const pricing = reninProducts.calculatePriceWithTax(('sale_price' in product && product.sale_price) || product.price)
     
     let description = `${product.name} is a premium ${type} `
     
     if (isProduct) {
       const p = product as ReninProduct
-      description += `featuring ${p.style.toLowerCase()} style design. `
-      description += `Made from high-quality ${product.material.toLowerCase()} with ${product.finish.toLowerCase()} finish. `
-      description += `Available in ${p.size} size (${p.width}cm W x ${p.height}cm H x ${p.thickness}cm thick). `
+      if (p.style) description += `featuring ${p.style.toLowerCase()} style design. `
+      description += `Made from high-quality ${(product.material || 'wood').toLowerCase()} with ${(product.finish || p.finishes?.[0] || 'natural').toLowerCase()} finish. `
+      if (p.size && p.width && p.height && p.thickness) {
+        description += `Available in ${p.size} size (${p.width}cm W x ${p.height}cm H x ${p.thickness}cm thick). `
+      }
     } else {
       description += `made from durable ${product.material.toLowerCase()} with ${product.finish.toLowerCase()} finish. `
     }

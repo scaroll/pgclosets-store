@@ -26,3 +26,11 @@ export const ensureStartsWith = (stringToCheck: string, startsWith: string) =>
 export const generateId = () => {
   return Date.now().toString() + Math.random().toString(36).substring(2);
 };
+
+// Format price for display
+export const formatPrice = (amount: number, currencyCode: string = 'CAD') => {
+  return new Intl.NumberFormat('en-CA', {
+    style: 'currency',
+    currency: currencyCode,
+  }).format(amount / 100); // Assuming amount is in cents
+};

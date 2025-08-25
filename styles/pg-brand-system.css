@@ -1,0 +1,443 @@
+/* PG Brand Design System - Kit and Ace Inspired */
+:root {
+  /* Core Brand Palette - From PG Logo */
+  --color-navy: #3d4a7c;        /* Primary brand navy */
+  --color-navy-dark: #2e3a5f;   /* Darker variant for depth */
+  --color-sky: #a8d0f0;          /* Signature sky blue */
+  --color-sky-light: #c4dff6;   /* Lighter variant */
+  --color-sky-accent: #7bb8e7;  /* Medium blue for CTAs */
+  
+  /* Extended Navy Palette */
+  --color-navy-50: #f8f9fb;
+  --color-navy-100: #f0f2f7;
+  --color-navy-200: #d9dfeb;
+  --color-navy-300: #bcc5d9;
+  --color-navy-400: #8a96b8;
+  --color-navy-500: #3d4a7c;
+  --color-navy-600: #2e3a5f;
+  --color-navy-700: #232b47;
+  --color-navy-800: #1a1f32;
+  --color-navy-900: #121521;
+  
+  /* Extended Sky Palette */
+  --color-sky-50: #f8fcff;
+  --color-sky-100: #f0f8ff;
+  --color-sky-200: #e6f3ff;
+  --color-sky-300: #c4dff6;
+  --color-sky-400: #a8d0f0;
+  --color-sky-500: #7bb8e7;
+  --color-sky-600: #5a9dd8;
+  --color-sky-700: #4a82c4;
+  --color-sky-800: #3d6ba8;
+  --color-sky-900: #2f5487;
+  
+  /* Neutral System */
+  --color-white: #ffffff;
+  --color-cream: #fafbfc;       /* Soft background */
+  --color-gray-50: #f8f9fa;
+  --color-gray-100: #f1f3f5;
+  --color-gray-200: #e9ecef;
+  --color-gray-300: #dee2e6;
+  --color-gray-400: #adb5bd;
+  --color-gray-500: #868e96;
+  --color-gray-600: #6c757d;
+  --color-gray-700: #495057;
+  --color-gray-800: #343a40;
+  --color-charcoal: #1a1f2e;    /* Premium text */
+  
+  /* Material Accents - Product Context */
+  --color-oak: #d4a574;         /* Warm wood tone */
+  --color-walnut: #6b5b54;      /* Dark wood */
+  --color-chrome: #e5e7eb;      /* Hardware finish */
+  --color-brass: #b08d57;       /* Premium hardware */
+  
+  /* Typography Scale - Kit and Ace Inspired */
+  --font-display: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  
+  /* Font Weights */
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  /* Spacing System */
+  --space-xs: 0.5rem;   /* 8px */
+  --space-sm: 1rem;     /* 16px */
+  --space-md: 2rem;     /* 32px */
+  --space-lg: 4rem;     /* 64px */
+  --space-xl: 6rem;     /* 96px */
+  --space-2xl: 8rem;    /* 128px */
+  
+  /* Border Radius - Clean edges */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  
+  /* Shadows - Subtle depth */
+  --shadow-sm: 0 1px 2px 0 rgb(61 74 124 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(61 74 124 / 0.08), 0 2px 4px -1px rgb(61 74 124 / 0.06);
+  --shadow-lg: 0 10px 15px -3px rgb(61 74 124 / 0.1), 0 4px 6px -2px rgb(61 74 124 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(61 74 124 / 0.15), 0 10px 10px -5px rgb(61 74 124 / 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgb(61 74 124 / 0.25);
+  
+  /* Animation Easing */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Utility Classes for PG Brand */
+.text-navy { color: var(--color-navy); }
+.text-navy-50 { color: var(--color-navy-50); }
+.text-navy-100 { color: var(--color-navy-100); }
+.text-navy-200 { color: var(--color-navy-200); }
+.text-navy-300 { color: var(--color-navy-300); }
+.text-navy-400 { color: var(--color-navy-400); }
+.text-navy-500 { color: var(--color-navy-500); }
+.text-navy-600 { color: var(--color-navy-600); }
+.text-navy-700 { color: var(--color-navy-700); }
+.text-navy-800 { color: var(--color-navy-800); }
+.text-navy-900 { color: var(--color-navy-900); }
+
+.text-sky { color: var(--color-sky); }
+.text-sky-50 { color: var(--color-sky-50); }
+.text-sky-100 { color: var(--color-sky-100); }
+.text-sky-200 { color: var(--color-sky-200); }
+.text-sky-300 { color: var(--color-sky-300); }
+.text-sky-400 { color: var(--color-sky-400); }
+.text-sky-500 { color: var(--color-sky-500); }
+.text-sky-600 { color: var(--color-sky-600); }
+.text-sky-700 { color: var(--color-sky-700); }
+.text-sky-800 { color: var(--color-sky-800); }
+.text-sky-900 { color: var(--color-sky-900); }
+
+.bg-navy { background-color: var(--color-navy); }
+.bg-navy-50 { background-color: var(--color-navy-50); }
+.bg-navy-600 { background-color: var(--color-navy-600); }
+.bg-navy-700 { background-color: var(--color-navy-700); }
+
+.bg-sky { background-color: var(--color-sky); }
+.bg-sky-50 { background-color: var(--color-sky-50); }
+.bg-sky-100 { background-color: var(--color-sky-100); }
+.bg-sky-200 { background-color: var(--color-sky-200); }
+.bg-sky-400 { background-color: var(--color-sky-400); }
+.bg-sky-500 { background-color: var(--color-sky-500); }
+
+.border-sky { border-color: var(--color-sky); }
+.border-sky-200 { border-color: var(--color-sky-200); }
+.border-sky-500 { border-color: var(--color-sky-500); }
+
+.hover\:border-sky:hover { border-color: var(--color-sky); }
+.hover\:border-sky-500:hover { border-color: var(--color-sky-500); }
+.hover\:bg-sky-50:hover { background-color: var(--color-sky-50); }
+
+/* Premium Product Card Component - PG Brand */
+.product-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s var(--ease-out-quart);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-sky);
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: var(--font-medium);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.product-card__image {
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-card__image {
+  transform: scale(1.05);
+}
+
+.product-card__content {
+  padding: var(--space-md);
+  min-height: 120px;
+}
+
+.product-card__title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: var(--font-medium);
+  color: var(--color-charcoal);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-xs);
+}
+
+.product-card__price {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: var(--font-light);
+  color: var(--color-navy);
+}
+
+.product-card__price-label {
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Button System - PG Brand */
+.btn {
+  font-family: var(--font-body);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s var(--ease-out-quart);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-navy);
+  color: var(--color-white);
+  border: 2px solid var(--color-navy);
+}
+
+.btn-primary:hover {
+  background: var(--color-navy-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: var(--color-white);
+  color: var(--color-navy);
+  border: 2px solid var(--color-sky);
+}
+
+.btn-secondary:hover {
+  background: var(--color-sky-light);
+  border-color: var(--color-sky-accent);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-navy);
+  border: 2px solid transparent;
+}
+
+.btn-ghost:hover {
+  background: var(--color-gray-50);
+}
+
+/* Navigation Header - Clean & Premium */
+.nav-header {
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-100);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-logo__icon {
+  width: 40px;
+  height: 40px;
+  background: var(--color-navy);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-sky);
+  font-weight: var(--font-semibold);
+  font-size: 1.25rem;
+}
+
+.nav-link {
+  color: var(--color-charcoal);
+  font-weight: var(--font-regular);
+  padding: 0.5rem 1rem;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-navy);
+}
+
+.nav-link--active {
+  color: var(--color-navy);
+  font-weight: var(--font-medium);
+}
+
+/* Hero Section - Premium Landing */
+.hero {
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-dark) 100%);
+  min-height: 90vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -30%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--color-sky) 20%, transparent);
+  opacity: 0.1;
+  transform: skewX(-15deg);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-2xl) 0;
+}
+
+.hero__title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: var(--font-light);
+  color: var(--color-white);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-md);
+}
+
+.hero__title strong {
+  font-weight: var(--font-semibold);
+  color: var(--color-sky);
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  color: var(--color-sky-light);
+  font-weight: var(--font-light);
+  margin-bottom: var(--space-lg);
+  opacity: 0.95;
+}
+
+.hero__cta-group {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.hero__trust-badges {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(168, 208, 240, 0.2);
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-sky-light);
+}
+
+.trust-badge__icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-sky);
+}
+
+.trust-badge__text {
+  font-size: 0.875rem;
+  font-weight: var(--font-medium);
+}
+
+/* Trust Signal Components */
+.trust-badges .badge {
+  transition: all 0.3s var(--ease-out-quart);
+}
+
+.trust-badges .badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Review Components */
+.reviews-section {
+  background: var(--color-gray-50);
+}
+
+.review-card {
+  transition: all 0.3s var(--ease-out-quart);
+}
+
+.review-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.6s var(--ease-out-quart);
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s var(--ease-out-quart);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Focus styles for accessibility */
+.btn:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-sky-500);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .hero::before,
+  .trust-badges,
+  .reviews-section {
+    display: none;
+  }
+}

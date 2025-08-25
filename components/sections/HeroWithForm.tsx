@@ -72,7 +72,7 @@ export function HeroWithForm() {
           {/* Right Column - Jobber Form */}
           <div className="relative">
             {/* Form Container with decorative elements */}
-            <div className="relative bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
+            <div className="relative bg-white rounded-lg shadow-2xl p-8 border border-gray-100">
               {/* Decorative corner accent */}
               <div className="absolute -top-3 -right-3 w-6 h-6 bg-blue-500 rounded-full"></div>
               <div className="absolute -bottom-3 -left-3 w-4 h-4 bg-blue-400 rounded-full"></div>

@@ -1,0 +1,14 @@
+# VERCEL PROJECT LOCK FILE
+# CRITICAL: This file ensures pgclosets-store is the ONLY project receiving Claude CLI uploads
+
+PROJECT_NAME=pgclosets-store
+PROJECT_ID=prj_SmzgeYTYp4LHGzkYTLKJAZJg9718
+ORG_ID=team_Xzht85INUsoW05STx9DMMyLX
+SCOPE=peoples-group
+
+# LOCK STATUS: ACTIVE
+# CREATED: $(date)
+# PURPOSE: Prevent Claude CLI from creating new projects or deploying elsewhere
+
+# DO NOT DELETE THIS FILE
+# DO NOT MODIFY THE PROJECT_ID OR ORG_ID VALUES

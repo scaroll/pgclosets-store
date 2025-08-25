@@ -3,6 +3,9 @@
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
 
+/* Import PG Brand System */
+@import '../styles/pg-brand-system.css';
+
 @layer base {
   *,
   ::after,
@@ -70,7 +73,7 @@ button {
   --chart-3: #3b82f6;
   --chart-4: #34d399;
   --chart-5: #f97316;
-  --radius: 0.375rem;
+  --radius: 0rem;
   --sidebar: #f1f5f9;
   --sidebar-foreground: #4b5563;
   --sidebar-primary: #ffffff;
