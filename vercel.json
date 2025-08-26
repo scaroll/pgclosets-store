@@ -108,5 +108,7 @@
       "source": "/robots.txt",
       "destination": "/api/robots"
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }
