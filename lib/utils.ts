@@ -1,36 +1,63 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-import { ReadonlyURLSearchParams } from 'next/navigation';
+export type ClassValue = string | number | boolean | undefined | null | ClassValue[]
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+// Fallback clsx implementation
+export function clsx(...inputs: ClassValue[]): string {
+  const classes: string[] = []
+
+  for (const input of inputs) {
+    if (!input) continue
+
+    if (typeof input === "string" || typeof input === "number") {
+      classes.push(String(input))
+    } else if (Array.isArray(input)) {
+      const result = clsx(...input)
+      if (result) classes.push(result)
+    } else if (typeof input === "object") {
+      for (const [key, value] of Object.entries(input)) {
+        if (value) classes.push(key)
+      }
+    }
+  }
+
+  return classes.join(" ")
 }
 
-// URL utilities from latest Vercel Commerce
-export const createUrl = (
-  pathname: string,
-  params: URLSearchParams | ReadonlyURLSearchParams
-) => {
-  const paramsString = params.toString();
-  const queryString = `${paramsString.length ? '?' : ''}${paramsString}`;
+// Fallback tailwind-merge implementation
+export function twMerge(...inputs: string[]): string {
+  // Simple deduplication - in production, this would be more sophisticated
+  const classes = inputs.join(" ").split(" ").filter(Boolean)
+  const uniqueClasses = [...new Set(classes)]
+  return uniqueClasses.join(" ")
+}
 
-  return `${pathname}${queryString}`;
-};
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(...inputs))
+}
 
-export const ensureStartsWith = (stringToCheck: string, startsWith: string) =>
-  stringToCheck.startsWith(startsWith)
-    ? stringToCheck
-    : `${startsWith}${stringToCheck}`;
+export type VariantProps<T extends (...args: any) => any> = Omit<Parameters<T>[0], "class" | "className">
 
-// Generate unique IDs for cart items
-export const generateId = () => {
-  return Date.now().toString() + Math.random().toString(36).substring(2);
-};
+interface CVAConfig {
+  variants?: Record<string, Record<string, string>>
+  defaultVariants?: Record<string, string>
+}
 
-// Format price for display
-export const formatPrice = (amount: number, currencyCode: string = 'CAD') => {
-  return new Intl.NumberFormat('en-CA', {
-    style: 'currency',
-    currency: currencyCode,
-  }).format(amount / 100); // Assuming amount is in cents
-};
+export function cva(base: string, config?: CVAConfig) {
+  return (props: Record<string, any> = {}) => {
+    let classes = base
+
+    if (config?.variants) {
+      for (const [key, variants] of Object.entries(config.variants)) {
+        const value = props[key] || config.defaultVariants?.[key]
+        if (value && variants[value]) {
+          classes += ` ${variants[value]}`
+        }
+      }
+    }
+
+    if (props.className) {
+      classes += ` ${props.className}`
+    }
+
+    return classes
+  }
+}

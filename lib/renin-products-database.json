@@ -1,342 +1,211 @@
 {
-  "metadata": {
-    "source": "Renin Official Product Catalog",
-    "currency": "CAD",
-    "tax_rate": 0.13,
-    "updated": "2025-08-15",
-    "note": "Prices include 13% HST for Ontario market"
-  },
-  "categories": {
-    "barn_doors": {
+  "products": [
+    {
+      "id": "barn-gatsby-chevron",
+      "name": "Gatsby Chevron Barn Door",
+      "slug": "gatsby-chevron-barn-door",
+      "price": 799,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "/renin_images/barn_doors/gatsby_chevron_main.jpg",
+        "/renin_images/barn_doors/gatsby_chevron_detail.jpg",
+        "/renin_images/barn_doors/gatsby_chevron_installed.jpg"
+      ],
+      "description": "Premium sliding barn door featuring distinctive chevron pattern design. Crafted from high-quality materials with smooth-gliding hardware system.",
+      "features": [
+        "Chevron pattern design",
+        "Smooth-gliding track system",
+        "Premium hardware included",
+        "Professional installation available",
+        "Lifetime warranty"
+      ],
+      "specifications": {
+        "Material": "Engineered wood with laminate finish",
+        "Thickness": "1.375 inches",
+        "Standard Sizes": "24\", 28\", 30\", 32\", 36\"",
+        "Hardware": "Soft-close track system included",
+        "Finish": "Multiple finish options available"
+      },
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "barn-sherwood-invisiglide",
+      "name": "Sherwood InvisiGlide Barn Door",
+      "slug": "sherwood-invisiglide-barn-door",
+      "price": 899,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "/renin_images/barn_doors/sherwood_invisiglide_main.jpg",
+        "/renin_images/barn_doors/sherwood_invisiglide_detail.jpg"
+      ],
+      "description": "Elegant barn door with InvisiGlide technology for ultra-quiet operation. Features rich wood grain texture and premium finish.",
+      "features": [
+        "InvisiGlide quiet operation",
+        "Rich wood grain texture",
+        "Premium finish options",
+        "Easy installation system",
+        "Canadian craftsmanship"
+      ],
+      "specifications": {
+        "Material": "Solid wood construction",
+        "Thickness": "1.5 inches",
+        "Standard Sizes": "28\", 30\", 32\", 36\"",
+        "Hardware": "InvisiGlide track system",
+        "Finish": "Natural wood stains available"
+      },
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "bypass-harmony-1-lite",
+      "name": "Harmony 1-Lite Bypass Door",
+      "slug": "harmony-1-lite-bypass-door",
+      "price": 549,
+      "category": "bypass",
+      "subcategory": "sliding",
+      "images": [
+        "/renin_images/bypass_doors/harmony_1_lite_main.jpg",
+        "/renin_images/bypass_doors/harmony_1_lite_detail.jpg"
+      ],
+      "description": "Space-saving bypass door system with single frosted glass panel. Perfect for modern closet applications.",
+      "features": [
+        "Space-saving design",
+        "Frosted glass panel",
+        "Smooth bypass operation",
+        "Modern aesthetic",
+        "Easy maintenance"
+      ],
+      "specifications": {
+        "Material": "Aluminum frame with glass",
+        "Glass Type": "Frosted safety glass",
+        "Standard Sizes": "48\", 60\", 72\", 96\"",
+        "Hardware": "Bypass track system included",
+        "Frame": "Anodized aluminum"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "bifold-euro-3-lite",
+      "name": "Euro 3-Lite Bifold Door",
+      "slug": "euro-3-lite-bifold-door",
+      "price": 449,
+      "category": "bifold",
+      "subcategory": "folding",
+      "images": [
+        "/renin_images/bifold_doors/euro_3_lite_main.jpg",
+        "/renin_images/bifold_doors/euro_3_lite_detail.jpg"
+      ],
+      "description": "Contemporary bifold door with three glass panels. Maximizes opening space while maintaining style.",
+      "features": [
+        "Three glass panel design",
+        "Space-maximizing fold",
+        "Contemporary styling",
+        "Smooth operation",
+        "Durable construction"
+      ],
+      "specifications": {
+        "Material": "Wood frame with glass panels",
+        "Glass Type": "Clear tempered glass",
+        "Standard Sizes": "24\", 30\", 32\", 36\"",
+        "Hardware": "Pivot hinge system",
+        "Frame": "Solid wood construction"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "pivot-provincial-8-lite",
+      "name": "Provincial 8-Lite Pivot Door",
+      "slug": "provincial-8-lite-pivot-door",
+      "price": 499,
+      "category": "pivot",
+      "subcategory": "hinged",
+      "images": [
+        "/renin_images/pivot_doors/provincial_8_lite_main.jpg",
+        "/renin_images/pivot_doors/provincial_8_lite_detail.jpg"
+      ],
+      "description": "Classic pivot door with eight glass panels in traditional provincial style. Timeless elegance for any home.",
+      "features": [
+        "Eight glass panel design",
+        "Provincial styling",
+        "Pivot hinge system",
+        "Traditional elegance",
+        "Quality craftsmanship"
+      ],
+      "specifications": {
+        "Material": "Solid wood with glass",
+        "Glass Type": "Clear glass panels",
+        "Standard Sizes": "28\", 30\", 32\", 36\"",
+        "Hardware": "Heavy-duty pivot hinges",
+        "Frame": "Solid wood construction"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "hardware-soft-close-track",
+      "name": "Soft-Close Track System",
+      "slug": "soft-close-track-system",
+      "price": 159,
+      "category": "hardware",
+      "subcategory": "tracks",
+      "images": [
+        "/renin_images/hardware/soft_close_track_main.jpg",
+        "/renin_images/hardware/soft_close_track_detail.jpg"
+      ],
+      "description": "Premium soft-close track system for barn doors. Ensures quiet, controlled closing every time.",
+      "features": [
+        "Soft-close mechanism",
+        "Quiet operation",
+        "Easy installation",
+        "Adjustable settings",
+        "Premium materials"
+      ],
+      "specifications": {
+        "Material": "Stainless steel",
+        "Length": "6ft, 8ft, 10ft options",
+        "Weight Capacity": "Up to 200 lbs",
+        "Finish": "Brushed stainless steel",
+        "Installation": "Wall-mounted"
+      },
+      "inStock": true,
+      "featured": false
+    }
+  ],
+  "categories": [
+    {
+      "id": "barn",
       "name": "Barn Doors",
-      "description": "Complete barn door kits with track and hardware",
-      "products": [
-        {
-          "id": "renin-herringbone-chevron-42",
-          "name": "Herringbone Chevron Design Complete Barn Door Kit",
-          "slug": "herringbone-chevron-design-complete-barn-door-kit",
-          "price": 849.99,
-          "sale_price": 679.99,
-          "currency": "CAD",
-          "style": "Modern",
-          "material": "Engineered Wood",
-          "finish": "Grey Stain",
-          "size": "42-inch",
-          "width": 42,
-          "height": 84,
-          "thickness": 1.375,
-          "hardware_included": true,
-          "track_length": "6 feet",
-          "features": [
-            "Herringbone pattern design",
-            "Satin nickel hardware",
-            "Easy installation",
-            "Complete kit included"
-          ],
-          "images": {
-            "main": "/renin_images/barn_doors/herringbone-chevron-main.jpg",
-            "lifestyle": "/renin_images/barn_doors/herringbone-chevron-lifestyle.jpg",
-            "detail": "/renin_images/barn_doors/herringbone-chevron-detail.jpg"
-          }
-        },
-        {
-          "id": "renin-salinas-z-design-pine",
-          "name": "Salinas Z Design Pine Complete Barn Door Kit",
-          "slug": "salinas-z-design-pine-complete-barn-door-kit",
-          "price": 729.99,
-          "currency": "CAD",
-          "style": "Rustic",
-          "material": "Solid Wood",
-          "finish": "Natural Pine",
-          "size": "36-inch",
-          "width": 36,
-          "height": 84,
-          "thickness": 1.375,
-          "hardware_included": true,
-          "track_length": "6 feet",
-          "features": [
-            "Classic Z-pattern design",
-            "Solid pine construction",
-            "Black matte hardware",
-            "Pre-drilled holes"
-          ],
-          "images": {
-            "main": "/renin_images/barn_doors/salinas-z-pine-main.jpg",
-            "lifestyle": "/renin_images/barn_doors/salinas-z-pine-lifestyle.jpg",
-            "detail": "/renin_images/barn_doors/salinas-z-pine-detail.jpg"
-          }
-        },
-        {
-          "id": "renin-sherwood-invisiglide",
-          "name": "Sherwood InvisiGlide Barn Door Kit",
-          "slug": "sherwood-invisiglide-barn-door-kit",
-          "price": 1049.99,
-          "currency": "CAD",
-          "style": "Modern",
-          "material": "Engineered Wood",
-          "finish": "Espresso",
-          "size": "42-inch",
-          "width": 42,
-          "height": 84,
-          "thickness": 1.375,
-          "hardware_included": true,
-          "track_length": "8 feet",
-          "features": [
-            "InvisiGlide soft-close technology",
-            "Premium espresso finish",
-            "Concealed track system",
-            "Whisper-quiet operation"
-          ],
-          "images": {
-            "main": "/renin_images/barn_doors/sherwood-invisiglide-main.jpg",
-            "lifestyle": "/renin_images/barn_doors/sherwood-invisiglide-lifestyle.jpg",
-            "detail": "/renin_images/barn_doors/sherwood-invisiglide-detail.jpg"
-          }
-        },
-        {
-          "id": "renin-gatsby-chevron-white",
-          "name": "Gatsby Chevron White Barn Door",
-          "slug": "gatsby-chevron-white-barn-door",
-          "price": 899.99,
-          "currency": "CAD",
-          "style": "Modern",
-          "material": "Engineered Wood",
-          "finish": "White",
-          "size": "36-inch",
-          "width": 36,
-          "height": 84,
-          "thickness": 1.375,
-          "hardware_included": true,
-          "track_length": "6 feet",
-          "features": [
-            "Chevron pattern design",
-            "Clean white finish",
-            "Brushed nickel hardware",
-            "Modern farmhouse style"
-          ],
-          "images": {
-            "main": "/renin_images/barn_doors/gatsby-chevron-white-main.jpg",
-            "lifestyle": "/renin_images/barn_doors/gatsby-chevron-white-lifestyle.jpg",
-            "detail": "/renin_images/barn_doors/gatsby-chevron-white-detail.jpg"
-          }
-        },
-        {
-          "id": "renin-industrial-x-frame",
-          "name": "Industrial X-Frame Metal Barn Door",
-          "slug": "industrial-x-frame-metal-barn-door",
-          "price": 1249.99,
-          "currency": "CAD",
-          "style": "Industrial",
-          "material": "Metal",
-          "finish": "Black Steel",
-          "size": "42-inch",
-          "width": 42,
-          "height": 84,
-          "thickness": 1.5,
-          "hardware_included": true,
-          "track_length": "8 feet",
-          "features": [
-            "Industrial X-frame design",
-            "Heavy-duty steel construction",
-            "Powder-coated finish",
-            "Professional-grade hardware"
-          ],
-          "images": {
-            "main": "/renin_images/barn_doors/industrial-x-frame-main.jpg",
-            "lifestyle": "/renin_images/barn_doors/industrial-x-frame-lifestyle.jpg",
-            "detail": "/renin_images/barn_doors/industrial-x-frame-detail.jpg"
-          }
-        },
-        {
-          "id": "renin-metal-works-geometric",
-          "name": "Metal Works Geometric Barn Door",
-          "slug": "metal-works-geometric-barn-door",
-          "price": 679.99,
-          "currency": "CAD",
-          "style": "Modern",
-          "material": "Metal",
-          "finish": "Gunmetal Grey",
-          "size": "36-inch",
-          "width": 36,
-          "height": 84,
-          "thickness": 1.25,
-          "hardware_included": true,
-          "track_length": "6 feet",
-          "features": [
-            "Geometric pattern design",
-            "Lightweight aluminum frame",
-            "Contemporary styling",
-            "Easy installation system"
-          ],
-          "images": {
-            "main": "/renin_images/barn_doors/metal-works-geometric-main.jpg",
-            "lifestyle": "/renin_images/barn_doors/metal-works-geometric-lifestyle.jpg",
-            "detail": "/renin_images/barn_doors/metal-works-geometric-detail.jpg"
-          }
-        }
-      ]
+      "description": "Sliding barn doors for modern and rustic applications",
+      "image": "/categories/barn-doors.jpg"
     },
-    "hardware": {
-      "name": "Barn Door Hardware",
-      "description": "Professional-grade tracks, handles, and accessories",
-      "products": [
-        {
-          "id": "renin-standard-track-6ft",
-          "name": "Standard Barn Door Track Kit - 6 Feet",
-          "slug": "standard-barn-door-track-kit-6-feet",
-          "price": 169.99,
-          "currency": "CAD",
-          "material": "Steel",
-          "finish": "Black Matte",
-          "length": 72,
-          "weight_capacity": 200,
-          "features": [
-            "6-foot track length",
-            "Adjustable rollers",
-            "All mounting hardware included",
-            "Supports up to 200 lbs"
-          ],
-          "images": {
-            "main": "/renin_images/hardware/standard-track-6ft-main.jpg",
-            "detail": "/renin_images/hardware/standard-track-6ft-detail.jpg"
-          }
-        },
-        {
-          "id": "renin-soft-close-track-8ft",
-          "name": "Soft-Close Track System - 8 Feet",
-          "slug": "soft-close-track-system-8-feet",
-          "price": 289.99,
-          "currency": "CAD",
-          "material": "Steel",
-          "finish": "Brushed Nickel",
-          "length": 96,
-          "weight_capacity": 250,
-          "features": [
-            "8-foot track with soft-close",
-            "Hydraulic dampening system",
-            "Premium brushed nickel finish",
-            "Whisper-quiet operation"
-          ],
-          "images": {
-            "main": "/renin_images/hardware/soft-close-track-8ft-main.jpg",
-            "detail": "/renin_images/hardware/soft-close-track-8ft-detail.jpg"
-          }
-        },
-        {
-          "id": "renin-invisiglide-premium",
-          "name": "InvisiGlide Premium Track System",
-          "slug": "invisiglide-premium-track-system",
-          "price": 399.99,
-          "currency": "CAD",
-          "material": "Aluminum",
-          "finish": "Anodized Silver",
-          "length": 96,
-          "weight_capacity": 300,
-          "features": [
-            "Concealed track design",
-            "Ball-bearing rollers",
-            "Adjustable soft-close",
-            "Premium aluminum construction"
-          ],
-          "images": {
-            "main": "/renin_images/hardware/invisiglide-premium-main.jpg",
-            "detail": "/renin_images/hardware/invisiglide-premium-detail.jpg"
-          }
-        },
-        {
-          "id": "renin-barn-door-handle-set",
-          "name": "Barn Door Handle and Pull Set",
-          "slug": "barn-door-handle-and-pull-set",
-          "price": 89.99,
-          "currency": "CAD",
-          "material": "Steel",
-          "finish": "Black Matte",
-          "features": [
-            "Ergonomic design",
-            "Mounting hardware included",
-            "Durable powder coating",
-            "Universal fit"
-          ],
-          "images": {
-            "main": "/renin_images/hardware/handle-pull-set-main.jpg",
-            "detail": "/renin_images/hardware/handle-pull-set-detail.jpg"
-          }
-        },
-        {
-          "id": "renin-floor-guide-adjustable",
-          "name": "Adjustable Floor Guide",
-          "slug": "adjustable-floor-guide",
-          "price": 24.99,
-          "currency": "CAD",
-          "material": "Steel",
-          "finish": "Black",
-          "features": [
-            "Adjustable width design",
-            "Non-marking rubber guide",
-            "Easy installation",
-            "Prevents door swing"
-          ],
-          "images": {
-            "main": "/renin_images/hardware/floor-guide-main.jpg",
-            "detail": "/renin_images/hardware/floor-guide-detail.jpg"
-          }
-        }
-      ]
-    }
-  },
-  "installation": {
-    "services": {
-      "basic_installation": {
-        "name": "Basic Installation Service",
-        "price": 299.99,
-        "description": "Professional installation of barn door and track system",
-        "includes": [
-          "Track mounting",
-          "Door hanging",
-          "Hardware adjustment",
-          "Final alignment"
-        ],
-        "time_estimate": "2-3 hours"
-      },
-      "premium_installation": {
-        "name": "Premium Installation with Consultation",
-        "price": 449.99,
-        "description": "Complete installation with design consultation",
-        "includes": [
-          "Pre-installation consultation",
-          "Track mounting and alignment",
-          "Door hanging and adjustment",
-          "Hardware optimization",
-          "Final walkthrough and warranty"
-        ],
-        "time_estimate": "3-4 hours"
-      }
+    {
+      "id": "bypass",
+      "name": "Bypass Doors",
+      "description": "Space-saving bypass door systems",
+      "image": "/categories/bypass-doors.jpg"
     },
-    "warranty": {
-      "hardware": "5 years",
-      "doors": "2 years",
-      "installation": "1 year"
-    }
-  },
-  "shipping": {
-    "ottawa_area": {
-      "standard": {
-        "price": 0,
-        "description": "Free standard delivery",
-        "time": "3-5 business days"
-      },
-      "expedited": {
-        "price": 49.99,
-        "description": "Next day delivery",
-        "time": "1 business day"
-      }
+    {
+      "id": "bifold",
+      "name": "Bifold Doors",
+      "description": "Folding doors that maximize opening space",
+      "image": "/categories/bifold-doors.jpg"
     },
-    "ontario": {
-      "standard": {
-        "price": 29.99,
-        "description": "Standard shipping",
-        "time": "5-7 business days"
-      }
+    {
+      "id": "pivot",
+      "name": "Pivot Doors",
+      "description": "Traditional hinged doors with pivot systems",
+      "image": "/categories/pivot-doors.jpg"
+    },
+    {
+      "id": "hardware",
+      "name": "Hardware",
+      "description": "Premium hardware and accessories",
+      "image": "/categories/hardware.jpg"
     }
-  }
+  ]
 }

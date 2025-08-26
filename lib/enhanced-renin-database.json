@@ -1,0 +1,313 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Euro 1-Lite",
+      "slug": "euro-1-lite",
+      "category": "sliding",
+      "price": 459,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054571.jpg",
+      "arcatImages": [
+        "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg",
+        "/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg"
+      ],
+      "description": "Premium Renin Euro 1-Lite sliding door. Official dealer pricing, professional installation available in Ottawa.",
+      "features": ["Premium glass panel", "Smooth sliding mechanism", "Professional installation included"],
+      "specifications": {
+        "width": "24-72 inches",
+        "height": "80 inches",
+        "thickness": "1.375 inches",
+        "material": "MDF with glass insert"
+      },
+      "installationTime": "2-3 hours",
+      "inStock": true
+    },
+    {
+      "id": 2,
+      "name": "Euro 3-Lite",
+      "slug": "euro-3-lite",
+      "category": "sliding",
+      "price": 589,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054572.jpg",
+      "arcatImages": [
+        "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg",
+        "/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite_v2.jpg"
+      ],
+      "description": "Elegant Euro 3-Lite sliding door with triple glass panels for maximum light transmission.",
+      "features": ["Triple glass panels", "Enhanced light transmission", "Premium hardware included"],
+      "specifications": {
+        "width": "24-72 inches",
+        "height": "80 inches",
+        "thickness": "1.375 inches",
+        "material": "MDF with triple glass inserts"
+      },
+      "installationTime": "2-3 hours",
+      "inStock": true
+    },
+    {
+      "id": 3,
+      "name": "Heritage Barn Door",
+      "slug": "heritage-barn-door",
+      "category": "barn",
+      "price": 749,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054573.jpg",
+      "arcatImages": [
+        "/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg",
+        "/images/arcat/renin_192859_Heritage_Gladstone_2_Lite_Angled_Plank_Design.jpg"
+      ],
+      "description": "Rustic Heritage barn door with authentic herringbone chevron design. Perfect for modern farmhouse aesthetics.",
+      "features": ["Herringbone chevron pattern", "Rustic finish", "Heavy-duty hardware included"],
+      "specifications": {
+        "width": "32-42 inches",
+        "height": "84 inches",
+        "thickness": "1.5 inches",
+        "material": "Solid wood construction"
+      },
+      "installationTime": "3-4 hours",
+      "inStock": true
+    },
+    {
+      "id": 4,
+      "name": "Continental Barn Door",
+      "slug": "continental-barn-door",
+      "category": "barn",
+      "price": 679,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054574.jpg",
+      "arcatImages": [
+        "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg",
+        "/images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg"
+      ],
+      "description": "Modern Continental barn door with clean lines and contemporary styling.",
+      "features": ["Contemporary design", "Smooth finish", "Premium sliding hardware"],
+      "specifications": {
+        "width": "32-42 inches",
+        "height": "84 inches",
+        "thickness": "1.5 inches",
+        "material": "Engineered wood with laminate finish"
+      },
+      "installationTime": "3-4 hours",
+      "inStock": true
+    },
+    {
+      "id": 5,
+      "name": "Harmony Bifold",
+      "slug": "harmony-bifold",
+      "category": "bifold",
+      "price": 389,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054575.jpg",
+      "arcatImages": ["/images/arcat/renin_199064_hd.jpg", "/images/arcat/renin_199063_hd.jpg"],
+      "description": "Versatile Harmony bifold door system with space-saving design and smooth operation.",
+      "features": ["Space-saving bifold design", "Smooth operation", "Adjustable hinges"],
+      "specifications": {
+        "width": "24-48 inches",
+        "height": "80 inches",
+        "thickness": "1.375 inches",
+        "material": "MDF with painted finish"
+      },
+      "installationTime": "2-3 hours",
+      "inStock": true
+    },
+    {
+      "id": 6,
+      "name": "Twilight Sliding Door",
+      "slug": "twilight-sliding-door",
+      "category": "sliding",
+      "price": 529,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054576.jpg",
+      "arcatImages": ["/images/arcat/renin_205717_Heritage_Sierra_K_Design.jpg", "/images/arcat/renin_205718_hd.jpg"],
+      "description": "Sophisticated Twilight sliding door with frosted glass panels for privacy and style.",
+      "features": ["Frosted glass panels", "Privacy design", "Smooth sliding track"],
+      "specifications": {
+        "width": "24-72 inches",
+        "height": "80 inches",
+        "thickness": "1.375 inches",
+        "material": "MDF with frosted glass"
+      },
+      "installationTime": "2-3 hours",
+      "inStock": true
+    },
+    {
+      "id": 7,
+      "name": "InvisiGlide Hardware Kit",
+      "slug": "invisiglide-hardware-kit",
+      "category": "hardware",
+      "price": 299,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054577.jpg",
+      "arcatImages": [
+        "/images/arcat/renin_192853_Heritage_Authentic_Cross_Brace_Design.jpg",
+        "/images/arcat/renin_192856_Continental_Metal_Works_3_Panel_Metal_Inserts.jpg"
+      ],
+      "description": "Premium InvisiGlide hardware kit for barn doors with smooth, quiet operation.",
+      "features": ["Invisible track design", "Quiet operation", "Heavy-duty construction"],
+      "specifications": {
+        "trackLength": "6-8 feet",
+        "weightCapacity": "200 lbs",
+        "finish": "Black powder coat",
+        "material": "Steel construction"
+      },
+      "installationTime": "1-2 hours",
+      "inStock": true
+    },
+    {
+      "id": 8,
+      "name": "Vienna Mirror 30x42",
+      "slug": "vienna-mirror-30x42",
+      "category": "mirrors",
+      "price": 199,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054578.jpg",
+      "arcatImages": [
+        "/images/arcat/renin_199088_Mirror_Florence_21_x_31.jpg",
+        "/images/arcat/renin_199089_Mirror_Melody_32_x_24.jpg"
+      ],
+      "description": "Elegant Vienna mirror with beveled edges, perfect for closet doors or wall mounting.",
+      "features": ["Beveled edges", "High-quality glass", "Versatile mounting options"],
+      "specifications": {
+        "width": "30 inches",
+        "height": "42 inches",
+        "thickness": "0.25 inches",
+        "material": "High-quality mirror glass"
+      },
+      "installationTime": "1 hour",
+      "inStock": true
+    },
+    {
+      "id": 9,
+      "name": "Steel Frame Bifold",
+      "slug": "steel-frame-bifold",
+      "category": "bifold",
+      "price": 449,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054579.jpg",
+      "arcatImages": ["/images/arcat/renin_199065_hd.jpg", "/images/arcat/renin_199064_hd.jpg"],
+      "description": "Industrial-style steel frame bifold door with glass panels for modern aesthetics.",
+      "features": ["Steel frame construction", "Industrial design", "Glass panel inserts"],
+      "specifications": {
+        "width": "24-48 inches",
+        "height": "80 inches",
+        "thickness": "1.5 inches",
+        "material": "Steel frame with glass"
+      },
+      "installationTime": "2-3 hours",
+      "inStock": true
+    },
+    {
+      "id": 10,
+      "name": "Provincial Pivot Door",
+      "slug": "provincial-pivot-door",
+      "category": "pivot",
+      "price": 599,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054580.jpg",
+      "arcatImages": ["/images/arcat/renin_205720_hd.jpg", "/images/arcat/renin_205721_hd.jpg"],
+      "description": "Classic Provincial pivot door with traditional styling and premium hardware.",
+      "features": ["Traditional styling", "Pivot mechanism", "Premium hardware included"],
+      "specifications": {
+        "width": "28-36 inches",
+        "height": "80 inches",
+        "thickness": "1.375 inches",
+        "material": "MDF with painted finish"
+      },
+      "installationTime": "2-3 hours",
+      "inStock": true
+    },
+    {
+      "id": 11,
+      "name": "Crochet Pivot Door",
+      "slug": "crochet-pivot-door",
+      "category": "pivot",
+      "price": 549,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054581.jpg",
+      "arcatImages": ["/images/arcat/renin_205722_hd.jpg", "/images/arcat/renin_205723_hd.jpg"],
+      "description": "Decorative Crochet pivot door with intricate panel design and smooth operation.",
+      "features": ["Decorative panel design", "Smooth pivot operation", "Adjustable hinges"],
+      "specifications": {
+        "width": "28-36 inches",
+        "height": "80 inches",
+        "thickness": "1.375 inches",
+        "material": "MDF with decorative panels"
+      },
+      "installationTime": "2-3 hours",
+      "inStock": true
+    },
+    {
+      "id": 12,
+      "name": "Euro 5-Lite Sliding",
+      "slug": "euro-5-lite-sliding",
+      "category": "sliding",
+      "price": 649,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054582.jpg",
+      "arcatImages": [
+        "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg",
+        "/images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg"
+      ],
+      "description": "Premium Euro 5-Lite sliding door with maximum glass panels for exceptional light transmission.",
+      "features": ["Five glass panels", "Maximum light transmission", "Premium sliding hardware"],
+      "specifications": {
+        "width": "24-72 inches",
+        "height": "80 inches",
+        "thickness": "1.375 inches",
+        "material": "MDF with five glass inserts"
+      },
+      "installationTime": "2-3 hours",
+      "inStock": true
+    },
+    {
+      "id": 13,
+      "name": "Industrial Barn Hardware",
+      "slug": "industrial-barn-hardware",
+      "category": "hardware",
+      "price": 399,
+      "homeDepotImage": "https://images.homedepot.ca/productimages/p_1001054583.jpg",
+      "arcatImages": [
+        "/images/arcat/renin_199080_Replacement_Part_Spectrum_Track.jpg",
+        "/images/arcat/renin_199072_Accessories_Spectrum_Bypass_Barn_Door_Bracket_Kit.jpg"
+      ],
+      "description": "Heavy-duty industrial barn door hardware kit with exposed track design for authentic industrial look.",
+      "features": ["Exposed track design", "Heavy-duty construction", "Industrial aesthetic"],
+      "specifications": {
+        "trackLength": "6-10 feet",
+        "weightCapacity": "300 lbs",
+        "finish": "Raw steel with clear coat",
+        "material": "Heavy-gauge steel"
+      },
+      "installationTime": "2-3 hours",
+      "inStock": true
+    }
+  ],
+  "categories": [
+    {
+      "id": "sliding",
+      "name": "Sliding Doors",
+      "description": "Premium sliding closet doors with smooth operation",
+      "heroImage": "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg"
+    },
+    {
+      "id": "barn",
+      "name": "Barn Doors",
+      "description": "Rustic and modern barn door styles",
+      "heroImage": "/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg"
+    },
+    {
+      "id": "bifold",
+      "name": "Bifold Doors",
+      "description": "Space-saving bifold closet door solutions",
+      "heroImage": "/images/arcat/renin_199064_hd.jpg"
+    },
+    {
+      "id": "pivot",
+      "name": "Pivot Doors",
+      "description": "Elegant pivot door systems with smooth operation",
+      "heroImage": "/images/arcat/renin_205720_hd.jpg"
+    },
+    {
+      "id": "hardware",
+      "name": "Hardware",
+      "description": "Premium hardware kits and accessories",
+      "heroImage": "/images/arcat/renin_199080_Replacement_Part_Spectrum_Track.jpg"
+    },
+    {
+      "id": "mirrors",
+      "name": "Mirrors",
+      "description": "High-quality mirrors for closet doors",
+      "heroImage": "/images/arcat/renin_199088_Mirror_Florence_21_x_31.jpg"
+    }
+  ]
+}
