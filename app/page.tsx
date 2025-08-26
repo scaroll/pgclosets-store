@@ -39,6 +39,18 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      {/* Claude Code Connection Test - Remove after verification */}
+      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
+        <div className="flex">
+          <div className="ml-3">
+            <p className="text-sm text-blue-700">
+              🤖 <strong>Claude Code Connected</strong> - Test deployment successful! 
+              <span className="text-xs block mt-1">Deployment time: {new Date().toISOString()}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      
       <HeroSection />
       
       {/* Trust Signals Section */}
