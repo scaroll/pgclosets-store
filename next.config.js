@@ -6,16 +6,19 @@ const nextConfig = {
     },
   },
   images: {
-    unoptimized: true,
-    domains: ['*'],
+    unoptimized: false,
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 768, 1024, 1280, 1600],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
+    domains: ['www.pgclosets.com', 'pgclosets.com'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'www.pgclosets.com',
       },
       {
-        protocol: 'http',
-        hostname: '**',
+        protocol: 'https',
+        hostname: 'pgclosets.com',
       },
     ],
   },
@@ -41,7 +44,6 @@ const nextConfig = {
     ];
   },
   trailingSlash: false,
-  output: 'standalone',
 };
 
 module.exports = nextConfig;
