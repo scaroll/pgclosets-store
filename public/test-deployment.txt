@@ -1,0 +1,3 @@
+Test file to verify static file deployment to Vercel.
+Created at: 2025-08-26 19:17:00
+This file should be accessible at: https://www.pgclosets.com/test-deployment.txt
