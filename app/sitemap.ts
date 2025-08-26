@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next"
-import { reninProducts } from "../data/renin-products"
+import { reninProducts } from "../lib/renin-products"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.pgclosets.ca"
