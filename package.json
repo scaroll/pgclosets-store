@@ -74,6 +74,7 @@
     "lucide-react": "^0.454.0",
     "next": "15.3.0-canary.13",
     "next-themes": "^0.4.6",
+    "playwright": "^1.55.0",
     "react": "^19",
     "react-day-picker": "9.8.0",
     "react-dom": "^19",
@@ -113,7 +114,7 @@
   "peerDependencies": {
     "@mikro-orm/core": "^6.4.16",
     "@mikro-orm/knex": "^6.4.16",
-    "@mikro-orm/migrations": "^6.4.16", 
+    "@mikro-orm/migrations": "^6.4.16",
     "@mikro-orm/postgresql": "^6.4.16",
     "awilix": "^12.0.5"
   }
