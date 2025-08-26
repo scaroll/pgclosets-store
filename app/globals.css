@@ -34,6 +34,45 @@ button {
   @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
 }
 
+/* Mobile Touch Target Improvements */
+@media (max-width: 768px) {
+  button,
+  a[role="button"],
+  input[type="button"],
+  input[type="submit"],
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Specific touch target improvements for interactive elements */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+  }
+  
+  /* Navigation links */
+  nav a,
+  .nav-link {
+    min-height: 44px;
+    padding: 12px 16px;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  /* Icon buttons */
+  .icon-button {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
+  }
+}
+
 @keyframes carousel {
   0% {
     transform: translateX(0);
