@@ -13,6 +13,8 @@
     "test:e2e:ui": "playwright test --ui",
     "test:smoke": "playwright test --grep smoke",
     "test:visual": "playwright test --grep visual",
+    "deploy": "./deploy-pgclosets.sh",
+    "deploy-pgclosets": "./deploy-pgclosets.sh",
     "automation:harvest": "node scripts/automation/shopify-harvest.js",
     "automation:optimize": "node scripts/automation/image-optimizer.js",
     "automation:generate": "node scripts/automation/content-generator.js",
