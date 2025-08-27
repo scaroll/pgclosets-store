@@ -303,6 +303,7 @@ export async function getMenu(handle: string): Promise<Menu[]> {
       title: collection.title,
       path: collection.path
     })),
+    { title: 'Custom Closets', path: '/custom-walk-in-closets' },
     { title: 'Custom Quote', path: '/quote' },
     { title: 'Installation', path: '/installation' }
   ];
