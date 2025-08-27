@@ -25,6 +25,20 @@ export interface Category {
 export const products: Product[] = productsData.products
 export const categories: Category[] = productsData.categories
 
+// Legacy export for compatibility
+export const reninProducts = {
+  getBarnDoors: () => products.filter(p => p.category === "barn"),
+  getBypassDoors: () => products.filter(p => p.category === "bypass"),
+  getBifoldDoors: () => products.filter(p => p.category === "bifold"),
+  getHardware: () => products.filter(p => p.category === "hardware"),
+  getAllProducts: () => products,
+  searchProducts: (query: string) => searchProducts(query),
+  getFeaturedProducts: () => getFeaturedProducts(),
+  getProductBySlug: (slug: string) => getProductBySlug(slug),
+  formatPrice: (price: number) => formatPrice(price),
+  calculateTax: (price: number, province?: string) => calculateTax(price, province)
+}
+
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((product) => product.slug === slug)
 }

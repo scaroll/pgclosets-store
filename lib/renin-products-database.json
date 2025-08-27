@@ -1,176 +1,829 @@
 {
+  "metadata": {
+    "extraction_date": "2025-01-27",
+    "method": "Manual comprehensive extraction from HTML files and JavaScript databases",
+    "files_processed": [
+      "/Users/spencercarroll/pgclosets-with-full-renin-integration.html",
+      "/Users/spencercarroll/pg-closets-apple-inspired-configurator.html",
+      "/Users/spencercarroll/pg-closets-immersive-shopping-experience.html",
+      "/Users/spencercarroll/pg-closets-bulletproof.html",
+      "/Users/spencercarroll/pg-closets-complete-production-configurator.html",
+      "/Users/spencercarroll/renin-official-catalog-data.js",
+      "/Users/spencercarroll/renin-complete-product-database.js"
+    ],
+    "total_products": 28,
+    "total_series": 15,
+    "official_renin_catalog_data": true
+  },
   "products": [
     {
-      "id": "barn-gatsby-chevron",
-      "name": "Gatsby Chevron Barn Door",
-      "slug": "gatsby-chevron-barn-door",
-      "price": 799,
-      "category": "barn",
-      "subcategory": "sliding",
-      "images": [
-        "/renin_images/barn_doors/gatsby_chevron_main.jpg",
-        "/renin_images/barn_doors/gatsby_chevron_detail.jpg",
-        "/renin_images/barn_doors/gatsby_chevron_installed.jpg"
-      ],
-      "description": "Premium sliding barn door featuring distinctive chevron pattern design. Crafted from high-quality materials with smooth-gliding hardware system.",
-      "features": [
-        "Chevron pattern design",
-        "Smooth-gliding track system",
-        "Premium hardware included",
-        "Professional installation available",
-        "Lifetime warranty"
-      ],
-      "specifications": {
-        "Material": "Engineered wood with laminate finish",
-        "Thickness": "1.375 inches",
-        "Standard Sizes": "24\", 28\", 30\", 32\", 36\"",
-        "Hardware": "Soft-close track system included",
-        "Finish": "Multiple finish options available"
-      },
-      "inStock": true,
-      "featured": true
-    },
-    {
-      "id": "barn-sherwood-invisiglide",
-      "name": "Sherwood InvisiGlide Barn Door",
-      "slug": "sherwood-invisiglide-barn-door",
+      "id": "chalet-barn-door",
+      "name": "Chalet Barn Door",
+      "slug": "chalet-barn-door",
+      "description": "The Chalet barn door features a contemporary design with clean lines that will complement any home. The rich Chocolate Ash finish adds warmth and sophistication to your space.",
       "price": 899,
       "category": "barn",
       "subcategory": "sliding",
       "images": [
-        "/renin_images/barn_doors/sherwood_invisiglide_main.jpg",
-        "/renin_images/barn_doors/sherwood_invisiglide_detail.jpg"
+        "https://cdn.renin.com/catalog/barn-doors/chalet-chocolate-ash-hero.jpg",
+        "https://cdn.renin.com/catalog/barn-doors/chalet-chocolate-ash-detail.jpg"
       ],
-      "description": "Elegant barn door with InvisiGlide technology for ultra-quiet operation. Features rich wood grain texture and premium finish.",
       "features": [
-        "InvisiGlide quiet operation",
-        "Rich wood grain texture",
-        "Premium finish options",
-        "Easy installation system",
-        "Canadian craftsmanship"
+        "Contemporary design with clean lines",
+        "Rich Chocolate Ash finish",
+        "Engineered wood construction",
+        "1-panel with horizontal planks",
+        "Professional installation available"
       ],
       "specifications": {
-        "Material": "Solid wood construction",
-        "Thickness": "1.5 inches",
-        "Standard Sizes": "28\", 30\", 32\", 36\"",
-        "Hardware": "InvisiGlide track system",
-        "Finish": "Natural wood stains available"
+        "Material": "Engineered Wood Construction",
+        "Thickness": "1-3/8 inches",
+        "Standard Sizes": "36\" × 84\", 42\" × 84\"",
+        "Finish": "Chocolate Ash",
+        "Weight": "85-95 lbs"
       },
       "inStock": true,
       "featured": true
     },
     {
-      "id": "bypass-harmony-1-lite",
-      "name": "Harmony 1-Lite Bypass Door",
-      "slug": "harmony-1-lite-bypass-door",
-      "price": 549,
-      "category": "bypass",
+      "id": "mountain-barn-door",
+      "name": "Mountain Barn Door",
+      "slug": "mountain-barn-door",
+      "description": "The Mountain barn door brings a rustic charm to your home with its classic Z-brace design and rich Barrel Brown finish.",
+      "price": 849,
+      "category": "barn",
       "subcategory": "sliding",
       "images": [
-        "/renin_images/bypass_doors/harmony_1_lite_main.jpg",
-        "/renin_images/bypass_doors/harmony_1_lite_detail.jpg"
+        "https://cdn.renin.com/catalog/barn-doors/mountain-barrel-brown-hero.jpg",
+        "https://cdn.renin.com/catalog/barn-doors/mountain-barrel-brown-detail.jpg"
       ],
-      "description": "Space-saving bypass door system with single frosted glass panel. Perfect for modern closet applications.",
       "features": [
-        "Space-saving design",
-        "Frosted glass panel",
-        "Smooth bypass operation",
-        "Modern aesthetic",
-        "Easy maintenance"
-      ],
-      "specifications": {
-        "Material": "Aluminum frame with glass",
-        "Glass Type": "Frosted safety glass",
-        "Standard Sizes": "48\", 60\", 72\", 96\"",
-        "Hardware": "Bypass track system included",
-        "Frame": "Anodized aluminum"
-      },
-      "inStock": true,
-      "featured": false
-    },
-    {
-      "id": "bifold-euro-3-lite",
-      "name": "Euro 3-Lite Bifold Door",
-      "slug": "euro-3-lite-bifold-door",
-      "price": 449,
-      "category": "bifold",
-      "subcategory": "folding",
-      "images": [
-        "/renin_images/bifold_doors/euro_3_lite_main.jpg",
-        "/renin_images/bifold_doors/euro_3_lite_detail.jpg"
-      ],
-      "description": "Contemporary bifold door with three glass panels. Maximizes opening space while maintaining style.",
-      "features": [
-        "Three glass panel design",
-        "Space-maximizing fold",
-        "Contemporary styling",
-        "Smooth operation",
+        "Classic Z-brace design",
+        "Rich Barrel Brown finish",
+        "Rustic charm styling",
+        "Engineered Wood, MDF construction",
         "Durable construction"
       ],
       "specifications": {
-        "Material": "Wood frame with glass panels",
-        "Glass Type": "Clear tempered glass",
-        "Standard Sizes": "24\", 30\", 32\", 36\"",
-        "Hardware": "Pivot hinge system",
-        "Frame": "Solid wood construction"
+        "Material": "Engineered Wood, MDF",
+        "Thickness": "1-3/8 inches",
+        "Standard Sizes": "36\" × 84\", 42\" × 84\"",
+        "Finish": "Barrel Brown",
+        "Weight": "85-95 lbs"
       },
       "inStock": true,
-      "featured": false
+      "featured": true
     },
     {
-      "id": "pivot-provincial-8-lite",
-      "name": "Provincial 8-Lite Pivot Door",
-      "slug": "provincial-8-lite-pivot-door",
-      "price": 499,
-      "category": "pivot",
-      "subcategory": "hinged",
+      "id": "shaker-1panel-barn-door",
+      "name": "Shaker 1-Panel Barn Door",
+      "slug": "shaker-1panel-barn-door",
+      "description": "The Shaker barn door offers a timeless design that blends seamlessly with any decor. Its simple, clean lines and primed white finish provide a versatile canvas for your home.",
+      "price": 749,
+      "category": "barn",
+      "subcategory": "sliding",
       "images": [
-        "/renin_images/pivot_doors/provincial_8_lite_main.jpg",
-        "/renin_images/pivot_doors/provincial_8_lite_detail.jpg"
+        "https://cdn.renin.com/catalog/barn-doors/shaker-1panel-primed-hero.jpg",
+        "https://cdn.renin.com/catalog/barn-doors/shaker-1panel-primed-detail.jpg"
       ],
-      "description": "Classic pivot door with eight glass panels in traditional provincial style. Timeless elegance for any home.",
       "features": [
-        "Eight glass panel design",
-        "Provincial styling",
-        "Pivot hinge system",
-        "Traditional elegance",
-        "Quality craftsmanship"
+        "Timeless shaker design",
+        "Clean, simple lines",
+        "Primed white finish",
+        "Versatile styling",
+        "Ready to paint"
       ],
       "specifications": {
-        "Material": "Solid wood with glass",
-        "Glass Type": "Clear glass panels",
-        "Standard Sizes": "28\", 30\", 32\", 36\"",
-        "Hardware": "Heavy-duty pivot hinges",
-        "Frame": "Solid wood construction"
+        "Material": "Molded Panel, Engineered Wood",
+        "Thickness": "1-3/8 inches",
+        "Standard Sizes": "24\" × 80.5\", 30\" × 80.5\", 32\" × 80.5\", 36\" × 80.5\"",
+        "Finish": "Primed White",
+        "Weight": "70-85 lbs"
       },
       "inStock": true,
       "featured": false
     },
     {
-      "id": "hardware-soft-close-track",
-      "name": "Soft-Close Track System",
-      "slug": "soft-close-track-system",
-      "price": 159,
+      "id": "k-design-barn-door",
+      "name": "K-Design Barn Door",
+      "slug": "k-design-barn-door",
+      "description": "The K-Design barn door adds a touch of country charm to any room. The classic K-brace design and clean Snow White finish create a timeless look.",
+      "price": 799,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "https://cdn.renin.com/catalog/barn-doors/kdesign-snow-white-hero.jpg",
+        "https://cdn.renin.com/catalog/barn-doors/kdesign-snow-white-detail.jpg"
+      ],
+      "features": [
+        "Classic K-brace design",
+        "Country charm styling",
+        "Clean Snow White finish",
+        "MDF construction",
+        "Timeless appeal"
+      ],
+      "specifications": {
+        "Material": "MDF",
+        "Thickness": "1-3/8 inches",
+        "Standard Sizes": "36\" × 84\", 42\" × 84\"",
+        "Finish": "Snow White",
+        "Weight": "85-95 lbs"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "z-brace-barn-door",
+      "name": "Z-Brace Barn Door",
+      "slug": "z-brace-barn-door",
+      "description": "The Z-Brace barn door combines rustic style with a modern Stone Gray finish, making it a versatile choice for a variety of interiors.",
+      "price": 799,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "https://cdn.renin.com/catalog/barn-doors/zbrace-stone-gray-hero.jpg",
+        "https://cdn.renin.com/catalog/barn-doors/zbrace-stone-gray-detail.jpg"
+      ],
+      "features": [
+        "Classic Z-brace design",
+        "Modern Stone Gray finish",
+        "Rustic with modern appeal",
+        "MDF construction",
+        "Versatile styling"
+      ],
+      "specifications": {
+        "Material": "MDF",
+        "Thickness": "1-3/8 inches",
+        "Standard Sizes": "36\" × 84\", 42\" × 84\"",
+        "Finish": "Stone Gray",
+        "Weight": "85-95 lbs"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "twist-barn-door",
+      "name": "Twist Barn Door",
+      "slug": "twist-barn-door",
+      "description": "The Twist barn door is a true statement piece, featuring a dynamic pattern that adds a contemporary flair to any room. The Silver Oak finish provides a sophisticated, modern look.",
+      "price": 999,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "https://cdn.renin.com/catalog/barn-doors/twist-silver-oak-hero.jpg",
+        "https://cdn.renin.com/catalog/barn-doors/twist-silver-oak-detail.jpg"
+      ],
+      "features": [
+        "Dynamic twist pattern",
+        "Contemporary flair",
+        "Silver Oak finish",
+        "Statement piece design",
+        "Multi-panel with angled planks"
+      ],
+      "specifications": {
+        "Material": "Engineered Wood, MDF",
+        "Thickness": "1-3/8 inches",
+        "Standard Sizes": "36\" × 84\", 42\" × 84\"",
+        "Finish": "Silver Oak",
+        "Weight": "90-100 lbs"
+      },
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "loft-barn-door",
+      "name": "Loft Barn Door",
+      "slug": "loft-barn-door",
+      "description": "Inspired by urban loft living, this door features a bold geometric design. The Smoked Gray finish adds an industrial-chic touch that's perfect for contemporary spaces.",
+      "price": 999,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "https://cdn.renin.com/catalog/barn-doors/loft-smoked-gray-hero.jpg",
+        "https://cdn.renin.com/catalog/barn-doors/loft-smoked-gray-detail.jpg"
+      ],
+      "features": [
+        "Bold geometric design",
+        "Urban loft inspiration",
+        "Smoked Gray finish",
+        "Industrial-chic styling",
+        "Contemporary appeal"
+      ],
+      "specifications": {
+        "Material": "Engineered Wood, MDF",
+        "Thickness": "1-3/8 inches",
+        "Standard Sizes": "36\" × 84\", 42\" × 84\"",
+        "Finish": "Smoked Gray",
+        "Weight": "90-100 lbs"
+      },
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "gatsby-chevron-36",
+      "name": "Gatsby Chevron 2-Panel Shaker - 36\"",
+      "slug": "gatsby-chevron-36",
+      "description": "Premium engineered wood with sophisticated chevron patterns. The Gatsby Chevron barn door brings rustic elegance to modern spaces. Perfect for closets, room dividers, and architectural accents in Ottawa homes.",
+      "price": 679,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "/images/products/gatsby-2panel-36-hero.jpg",
+        "/images/products/gatsby-2panel-36-detail.jpg"
+      ],
+      "features": [
+        "Sophisticated chevron pattern",
+        "Premium engineered wood",
+        "Rustic elegance styling",
+        "2-panel shaker design",
+        "Perfect for Ottawa homes"
+      ],
+      "specifications": {
+        "Material": "Engineered Wood",
+        "Thickness": "1.5 inches",
+        "Standard Sizes": "36\" × 84\"",
+        "Finish": "Ready to Paint/Stain",
+        "Weight": "85 lbs"
+      },
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "gatsby-chevron-42",
+      "name": "Gatsby Chevron 2-Panel Shaker - 42\"",
+      "slug": "gatsby-chevron-42",
+      "description": "Premium engineered wood with sophisticated chevron patterns. The Gatsby Chevron barn door brings rustic elegance to modern spaces. Perfect for closets, room dividers, and architectural accents in Ottawa homes.",
+      "price": 759,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "/images/products/gatsby-2panel-42-hero.jpg",
+        "/images/products/gatsby-2panel-42-detail.jpg"
+      ],
+      "features": [
+        "Sophisticated chevron pattern",
+        "Premium engineered wood",
+        "Rustic elegance styling",
+        "2-panel shaker design",
+        "Perfect for Ottawa homes"
+      ],
+      "specifications": {
+        "Material": "Engineered Wood",
+        "Thickness": "1.5 inches",
+        "Standard Sizes": "42\" × 84\"",
+        "Finish": "Ready to Paint/Stain",
+        "Weight": "95 lbs"
+      },
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "sherwood-arrow-36",
+      "name": "Sherwood Extra Tall Arrow Design - 36\"",
+      "slug": "sherwood-arrow-36",
+      "description": "Extra-tall doors with innovative InvisiGlide technology. Silent operation with completely hidden track system.",
+      "price": 1049,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "/images/products/sherwood-arrow-36-hero.jpg",
+        "/images/products/sherwood-arrow-36-detail.jpg"
+      ],
+      "features": [
+        "Extra-tall design",
+        "InvisiGlide technology",
+        "Silent operation",
+        "Hidden track system",
+        "Contemporary arrow pattern"
+      ],
+      "specifications": {
+        "Material": "Engineered Wood",
+        "Thickness": "1.5 inches",
+        "Standard Sizes": "36\" × 88\"",
+        "Finish": "Pre-finished Espresso",
+        "Weight": "92 lbs"
+      },
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "metalworks-z-36",
+      "name": "Metal Works Z-Pattern Industrial - 36\"",
+      "slug": "metalworks-z-36",
+      "description": "Modern industrial design with metal accents. Mixed material construction with black metal accents.",
+      "price": 679,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "/images/products/metalworks-z-36-hero.jpg",
+        "/images/products/metalworks-z-36-detail.jpg"
+      ],
+      "features": [
+        "Modern industrial design",
+        "Metal accents",
+        "Mixed material construction",
+        "Z-pattern styling",
+        "Contemporary appeal"
+      ],
+      "specifications": {
+        "Material": "Wood with Metal Inserts",
+        "Thickness": "1.5 inches",
+        "Standard Sizes": "36\" × 84\"",
+        "Finish": "Black Metal with Natural Wood",
+        "Weight": "88 lbs"
+      },
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "euro-1lite-bypass-72",
+      "name": "Euro 1-Lite Steel Frame Bypass - 72\"",
+      "slug": "euro-1lite-bypass-72",
+      "description": "Premium steel frame bypass doors with glass options. Steel frame construction with single glass lite and smooth sliding operation.",
+      "price": 649,
+      "category": "bypass",
+      "subcategory": "sliding",
+      "images": [
+        "/images/products/euro-1lite-72-hero.jpg",
+        "/images/products/euro-1lite-72-detail.jpg"
+      ],
+      "features": [
+        "Premium steel frame",
+        "Single glass lite",
+        "Smooth sliding operation",
+        "Contemporary styling",
+        "Durable construction"
+      ],
+      "specifications": {
+        "Material": "Steel Frame with Glass",
+        "Standard Sizes": "72\" × 84\" (2 panels)",
+        "Finish": "Off White Steel",
+        "Weight": "110 lbs",
+        "Glass Type": "Tempered glass"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "georgian-6panel-bifold-36",
+      "name": "Georgian 6-Panel Traditional Bifold - 36\"",
+      "slug": "georgian-6panel-bifold-36",
+      "description": "Classic 6-panel traditional bifold doors. Primed and ready to paint with space-efficient folding design.",
+      "price": 389,
+      "category": "bifold",
+      "subcategory": "folding",
+      "images": [
+        "/images/products/georgian-6panel-36-hero.jpg",
+        "/images/products/georgian-6panel-36-detail.jpg"
+      ],
+      "features": [
+        "Classic 6-panel design",
+        "Traditional styling",
+        "Primed and ready to paint",
+        "Space-efficient folding",
+        "Durable construction"
+      ],
+      "specifications": {
+        "Material": "Engineered Wood",
+        "Standard Sizes": "36\" × 84\" (6 panels)",
+        "Finish": "Primed White",
+        "Weight": "65 lbs",
+        "Panel Count": "6 panels"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "euro-1lite-sliding",
+      "name": "Euro 1-Lite Sliding",
+      "slug": "euro-1lite-sliding",
+      "description": "Italian-designed sliding door with Iron Age prefinished frame and contemporary frosted glass insert.",
+      "price": 524,
+      "category": "bypass",
+      "subcategory": "sliding",
+      "images": [
+        "/s/product-euro-1-lite-main.jpg",
+        "/s/product-euro-1-lite-detail.jpg"
+      ],
+      "features": [
+        "Italian design heritage",
+        "Iron Age prefinished frame",
+        "Contemporary frosted glass",
+        "Tool-free roller hardware",
+        "Trackless design"
+      ],
+      "specifications": {
+        "Material": "Tempered frosted glass",
+        "Standard Sizes": "47-72\" width options",
+        "Finish": "Iron Age prefinished frame",
+        "Glass Type": "Frosted glass",
+        "Hardware": "Tool-free roller"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "euro-3lite-sliding",
+      "name": "Euro 3-Lite Sliding",
+      "slug": "euro-3lite-sliding",
+      "description": "Italian heritage meets contemporary European styling with 3-lite frosted glass configuration and Iron Age finish.",
+      "price": 524,
+      "category": "bypass",
+      "subcategory": "sliding",
+      "images": [
+        "/s/product-euro-3-lite-main.jpg",
+        "/s/product-euro-3-lite-detail.jpg"
+      ],
+      "features": [
+        "Italian heritage design",
+        "3-lite frosted glass",
+        "Contemporary European styling",
+        "Dial-adjust rollers",
+        "Scratch-resistant finish"
+      ],
+      "specifications": {
+        "Material": "3-lite glass panels",
+        "Finish": "Iron Age finish",
+        "Hardware": "Dial-adjust rollers",
+        "Track": "No-bottom track",
+        "Glass Type": "Frosted glass"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "harmony-1lite-mirror",
+      "name": "Harmony 1-Lite Mirror",
+      "slug": "harmony-1lite-mirror",
+      "description": "Full-length copper-free crystal-clear mirrors with narrow framing for traditional and modern design harmony.",
+      "price": 474,
+      "category": "bypass",
+      "subcategory": "sliding",
+      "images": [
+        "/s/product-harmony-1-lite-main.jpg",
+        "/s/product-harmony-1-lite-detail.jpg"
+      ],
+      "features": [
+        "Full-length crystal-clear mirrors",
+        "Copper-free construction",
+        "Narrow framing design",
+        "Safety Shield backing",
+        "Tool-free installation"
+      ],
+      "specifications": {
+        "Material": "Crystal-clear mirrors with Safety Shield backing",
+        "Frame": "Narrow frame design",
+        "Installation": "Tool-free",
+        "Mirror Type": "Copper-free",
+        "Safety": "Safety Shield backing"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "twilight-1lite-sliding",
+      "name": "Twilight 1-Lite Sliding",
+      "slug": "twilight-1lite-sliding",
+      "description": "Full-height frosted glass in Bright White frame provides privacy while maintaining elegant light flow.",
+      "price": 474,
+      "category": "bypass",
+      "subcategory": "sliding",
+      "images": [
+        "/s/product-twilight-1-lite-main.jpg",
+        "/s/product-twilight-1-lite-detail.jpg"
+      ],
+      "features": [
+        "Full-height frosted glass",
+        "Bright White frame",
+        "Privacy with light flow",
+        "Trackless operation",
+        "Elegant styling"
+      ],
+      "specifications": {
+        "Material": "Full-height frosted glass",
+        "Finish": "Bright White frame",
+        "Operation": "Trackless",
+        "Privacy": "Frosted glass provides privacy",
+        "Light": "Maintains light flow"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "lace-multi-x-mirror",
+      "name": "Lace Multi-X Mirror",
+      "slug": "lace-multi-x-mirror",
+      "description": "Cosmopolitan glamour meets traditional charm with decorative Multi-X overlay on full-length mirrors.",
+      "price": 474,
+      "category": "bypass",
+      "subcategory": "sliding",
+      "images": [
+        "/s/product-lace-multi-x-design-main.jpg",
+        "/s/product-lace-multi-x-design-detail.jpg"
+      ],
+      "features": [
+        "Decorative Multi-X overlay",
+        "Full-length mirror base",
+        "Cosmopolitan glamour styling",
+        "Traditional charm elements",
+        "Dial-adjust rollers"
+      ],
+      "specifications": {
+        "Material": "Full-length mirror base with Multi-X decorative design",
+        "Finish": "Pure/Bright White options",
+        "Hardware": "Dial-adjust rollers",
+        "Style": "Multi-X decorative overlay",
+        "Mirror": "Full-length base"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "trident-double-k-sliding",
+      "name": "Trident Double-K Sliding",
+      "slug": "trident-double-k-sliding",
+      "description": "Creative modern interpretation of traditional barn doors with Silver Oak finish and innovative Double-K design.",
+      "price": 474,
+      "category": "bypass",
+      "subcategory": "sliding",
+      "images": [
+        "/s/product-trident-double-k-design-main.jpg",
+        "/s/product-trident-double-k-design-detail.jpg"
+      ],
+      "features": [
+        "Modern interpretation of barn doors",
+        "Silver Oak finish",
+        "Innovative Double-K design",
+        "Tool-free installation",
+        "Creative styling"
+      ],
+      "specifications": {
+        "Material": "Double-K barn door style",
+        "Finish": "Silver Oak finish",
+        "Installation": "Tool-free",
+        "Style": "Double-K design",
+        "Inspiration": "Modern barn door"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "arrow-hardware-kit",
+      "name": "Arrow Barn Door Hardware Kit",
+      "slug": "arrow-hardware-kit",
+      "description": "The Arrow hardware kit features a distinctive arrow-shaped design that adds industrial style to your barn door installation.",
+      "price": 299,
       "category": "hardware",
       "subcategory": "tracks",
       "images": [
-        "/renin_images/hardware/soft_close_track_main.jpg",
-        "/renin_images/hardware/soft_close_track_detail.jpg"
+        "https://cdn.renin.com/catalog/hardware/arrow-hardware-kit-hero.jpg",
+        "https://cdn.renin.com/catalog/hardware/arrow-hardware-kit-detail.jpg"
       ],
-      "description": "Premium soft-close track system for barn doors. Ensures quiet, controlled closing every time.",
       "features": [
-        "Soft-close mechanism",
-        "Quiet operation",
-        "Easy installation",
-        "Adjustable settings",
-        "Premium materials"
+        "Distinctive arrow-shaped design",
+        "Industrial styling",
+        "Top mount system",
+        "Steel construction",
+        "Matte Black finish"
       ],
       "specifications": {
-        "Material": "Stainless steel",
-        "Length": "6ft, 8ft, 10ft options",
-        "Weight Capacity": "Up to 200 lbs",
-        "Finish": "Brushed stainless steel",
-        "Installation": "Wall-mounted"
+        "Material": "Steel with Matte Black powder coat finish",
+        "Track Length": "78-3/4 inches",
+        "Weight Capacity": "250 lbs",
+        "Mounting": "Top mount",
+        "Finish": "Matte Black"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "bent-strap-hardware-kit",
+      "name": "Bent Strap Barn Door Hardware Kit",
+      "slug": "bent-strap-hardware-kit",
+      "description": "The classic Bent Strap design provides reliable, smooth operation with a timeless look that complements any barn door style.",
+      "price": 279,
+      "category": "hardware",
+      "subcategory": "tracks",
+      "images": [
+        "https://cdn.renin.com/catalog/hardware/bent-strap-hardware-kit-hero.jpg",
+        "https://cdn.renin.com/catalog/hardware/bent-strap-hardware-kit-detail.jpg"
+      ],
+      "features": [
+        "Classic bent strap design",
+        "Reliable smooth operation",
+        "Timeless styling",
+        "Top mount system",
+        "Steel construction"
+      ],
+      "specifications": {
+        "Material": "Steel with Matte Black powder coat finish",
+        "Track Length": "78-3/4 inches",
+        "Weight Capacity": "250 lbs",
+        "Mounting": "Top mount",
+        "Finish": "Matte Black"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "spoke-wheel-hardware-kit",
+      "name": "Spoke Wheel Barn Door Hardware Kit",
+      "slug": "spoke-wheel-hardware-kit",
+      "description": "The distinctive Spoke Wheel design adds rustic charm and industrial appeal to your barn door installation.",
+      "price": 319,
+      "category": "hardware",
+      "subcategory": "tracks",
+      "images": [
+        "https://cdn.renin.com/catalog/hardware/spoke-wheel-hardware-kit-hero.jpg",
+        "https://cdn.renin.com/catalog/hardware/spoke-wheel-hardware-kit-detail.jpg"
+      ],
+      "features": [
+        "Distinctive spoke wheel design",
+        "Rustic charm styling",
+        "Industrial appeal",
+        "Top mount system",
+        "Steel construction"
+      ],
+      "specifications": {
+        "Material": "Steel with Matte Black powder coat finish",
+        "Track Length": "78-3/4 inches",
+        "Weight Capacity": "250 lbs",
+        "Mounting": "Top mount",
+        "Finish": "Matte Black"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "standard-track-6ft",
+      "name": "Standard Track System - 6ft",
+      "slug": "standard-track-6ft",
+      "description": "Heavy-duty standard track system with smooth rolling bearings and easy installation.",
+      "price": 169,
+      "category": "hardware",
+      "subcategory": "tracks",
+      "images": [
+        "/images/hardware/track-standard-6ft-hero.jpg",
+        "/images/hardware/track-standard-6ft-detail.jpg"
+      ],
+      "features": [
+        "Heavy-duty construction",
+        "Smooth rolling bearings",
+        "Easy installation",
+        "Steel construction",
+        "Black finish"
+      ],
+      "specifications": {
+        "Material": "Steel",
+        "Track Length": "6ft",
+        "Weight Capacity": "200lb",
+        "Finish": "Black Finish",
+        "Mounting": "Wall mounted"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "soft-close-track-6ft",
+      "name": "Soft-Close Track System - 6ft",
+      "slug": "soft-close-track-6ft",
+      "description": "Premium soft-close track with silent operation and smooth rolling technology.",
+      "price": 289,
+      "category": "hardware",
+      "subcategory": "tracks",
+      "images": [
+        "/images/hardware/track-soft-close-6ft-hero.jpg",
+        "/images/hardware/track-soft-close-6ft-detail.jpg"
+      ],
+      "features": [
+        "Soft-close technology",
+        "Silent operation",
+        "Smooth rolling technology",
+        "Premium construction",
+        "Easy installation"
+      ],
+      "specifications": {
+        "Material": "Steel with Soft-Close Technology",
+        "Track Length": "6ft",
+        "Weight Capacity": "200lb",
+        "Finish": "Premium Black Finish",
+        "Technology": "Soft-close mechanism"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "premium-track-6ft",
+      "name": "Premium Track System - 6ft",
+      "slug": "premium-track-6ft",
+      "description": "Premium track with InvisiGlide technology - completely hidden track with whisper-quiet operation.",
+      "price": 399,
+      "category": "hardware",
+      "subcategory": "tracks",
+      "images": [
+        "/images/hardware/track-premium-6ft-hero.jpg",
+        "/images/hardware/track-premium-6ft-detail.jpg"
+      ],
+      "features": [
+        "InvisiGlide technology",
+        "Completely hidden track",
+        "Whisper-quiet operation",
+        "Stainless steel components",
+        "Premium construction"
+      ],
+      "specifications": {
+        "Material": "Stainless Steel Components",
+        "Track Length": "6ft",
+        "Weight Capacity": "300lb",
+        "Technology": "InvisiGlide Technology",
+        "Visibility": "Completely Hidden Track"
+      },
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "modern-bar-handle-12",
+      "name": "Modern Bar Handle - 12\"",
+      "slug": "modern-bar-handle-12",
+      "description": "Contemporary stainless steel bar handle with multiple finish options and modern design.",
+      "price": 89,
+      "category": "hardware",
+      "subcategory": "handles",
+      "images": [
+        "/images/hardware/handle-modern-bar-12-hero.jpg",
+        "/images/hardware/handle-modern-bar-12-detail.jpg"
+      ],
+      "features": [
+        "Contemporary design",
+        "Stainless steel construction",
+        "Multiple finish options",
+        "Modern styling",
+        "Versatile compatibility"
+      ],
+      "specifications": {
+        "Material": "Stainless Steel Construction",
+        "Length": "12\"",
+        "Finishes": "Brushed Stainless, Matte Black, Oil Rubbed Bronze",
+        "Compatibility": "Barn doors, bypass doors, bifold doors",
+        "Style": "Modern bar"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "euro-3lite-bifold",
+      "name": "Euro 3-Lite Bifold",
+      "slug": "euro-3lite-bifold",
+      "description": "Stack window design with contemporary frosted glass inserts providing privacy while adding natural light.",
+      "price": 407,
+      "category": "bifold",
+      "subcategory": "folding",
+      "images": [
+        "/s/product-euro-3-lite-main.jpg",
+        "/s/product-euro-3-lite-detail.jpg"
+      ],
+      "features": [
+        "Stack window design",
+        "Contemporary frosted glass",
+        "Privacy with natural light",
+        "3-wheel connector",
+        "Trackless operation"
+      ],
+      "specifications": {
+        "Material": "3-lite stack window design",
+        "Standard Sizes": "24-36\" width options",
+        "Hardware": "Sliding 3-wheel connector",
+        "Operation": "Trackless",
+        "Glass Type": "Frosted glass inserts"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "euro-1lite-bifold",
+      "name": "Euro 1-Lite Bifold",
+      "slug": "euro-1lite-bifold",
+      "description": "Italian design heritage with stylish sophistication. Contemporary frosted glass in Iron Age frame.",
+      "price": 407,
+      "category": "bifold",
+      "subcategory": "folding",
+      "images": [
+        "/s/product-euro-1-lite-main.jpg",
+        "/s/product-euro-1-lite-detail.jpg"
+      ],
+      "features": [
+        "Italian design heritage",
+        "Stylish sophistication",
+        "Contemporary frosted glass",
+        "Iron Age frame",
+        "Scratch-resistant finish"
+      ],
+      "specifications": {
+        "Material": "Italian design with Iron Age finish",
+        "Hardware": "3-wheel connector",
+        "Finish": "Iron Age with scratch-resistant coating",
+        "Glass Type": "Contemporary frosted glass",
+        "Heritage": "Italian design"
       },
       "inStock": true,
       "featured": false
@@ -194,12 +847,6 @@
       "name": "Bifold Doors",
       "description": "Folding doors that maximize opening space",
       "image": "/categories/bifold-doors.jpg"
-    },
-    {
-      "id": "pivot",
-      "name": "Pivot Doors",
-      "description": "Traditional hinged doors with pivot systems",
-      "image": "/categories/pivot-doors.jpg"
     },
     {
       "id": "hardware",
