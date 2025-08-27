@@ -294,8 +294,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = blogPosts[params.slug as keyof typeof blogPosts]
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params
+  const post = blogPosts[resolvedParams.slug as keyof typeof blogPosts]
 
   if (!post) {
     return {
@@ -318,8 +319,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogPosts[params.slug as keyof typeof blogPosts]
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params
+  const post = blogPosts[resolvedParams.slug as keyof typeof blogPosts]
 
   if (!post) {
     notFound()
@@ -350,7 +352,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://pgclosets.com/blog/${params.slug}`,
+              "@id": `https://pgclosets.com/blog/${resolvedParams.slug}`,
             },
           }),
         }}
