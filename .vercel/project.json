@@ -1,1 +1,11 @@
-{"orgId":"team_Xzht85INUsoW05STx9DMMyLX","projectId":"prj_ySW3kS1J66EbmuWRC6q6QN3gww6w","projectName":"pgclosets-store"}
+{
+  "projectId": "prj_ySW3kS1J66EbmuWRC6q6QN3gww6w",
+  "orgId": "team_Xzht85INUsoW05STx9DMMyLX",
+  "settings": {
+    "createdAt": 1672531200000,
+    "framework": "nextjs",
+    "name": "pgclosets-store",
+    "nodeVersion": "20.x",
+    "outputDirectory": ".next"
+  }
+}

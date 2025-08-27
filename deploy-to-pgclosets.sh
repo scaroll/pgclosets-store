@@ -17,7 +17,7 @@ fi
 
 # MISSION CRITICAL: These IDs must match your pgclosets-store project
 export VERCEL_ORG_ID="team_Xzht85INUsoW05STx9DMMyLX"
-export VERCEL_PROJECT_ID="prj_SmzgeYTYp4LHGzkYTLKJAZJg9718"
+export VERCEL_PROJECT_ID="prj_ySW3kS1J66EbmuWRC6q6QN3gww6w"
 
 # Verify we're targeting the correct project
 if [ "$VERCEL_PROJECT_ID" != "$PROJECT_ID" ]; then

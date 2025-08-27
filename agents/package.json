@@ -1,0 +1,17 @@
+{
+  "name": "pgclosets-chatgpt-agents",
+  "version": "1.0.0",
+  "description": "ChatGPT and Codex CLI integration for PG Closets debugging",
+  "main": "orchestrator.js",
+  "type": "module",
+  "scripts": {
+    "debug": "node orchestrator.js debug",
+    "agent": "node chatgpt-agent.js", 
+    "codex": "node codex-cli.js",
+    "setup": "npm install && cp .env.template .env"
+  },
+  "dependencies": {
+    "openai": "^4.52.7",
+    "dotenv": "^16.4.5"
+  }
+}

@@ -1,25 +1,35 @@
-import { TrustBadges } from '@/components/trust/trust-badges'
-import { FeaturedProducts } from '@/components/store/featured-products'
-import { HeroSection } from '@/components/store/hero-section'
+import Image from 'next/image'
 import type { Metadata } from "next"
 
 // Enable ISR with 24 hour revalidation for homepage
 export const revalidate = 86400
 
 export const metadata: Metadata = {
-  title: 'Premium Closet Doors Ottawa | Official Renin Dealer | Custom Installation | PG Closets',
-  description: 'Transform your Ottawa home with premium Renin closet doors. Expert installation of barn doors, bypass doors, bifold doors & pivot doors. Free consultation, lifetime warranty, 2-week delivery. Serving Ottawa, Kanata, Nepean, Orleans, Barrhaven.',
-  keywords: 'closet doors Ottawa, barn doors Ottawa, Renin dealer, bypass doors, bifold doors, pivot doors, custom closet installation, professional installation Ottawa, home renovation, interior design, space optimization, premium doors Canada, closet solutions Ottawa',
+  title: 'PG Closets | Custom Closets & Storage Solutions in Ottawa',
+  description: 'Custom closets, pantries, and storage solutions in Ottawa and the NCR. Professional design, installation, and service by local experts. Request your free quote today.',
+  keywords: 'custom closets Ottawa, closet design Ottawa, storage solutions Ottawa, pantry organization, garage storage, closet installation, home organization Ottawa, custom storage NCR',
+  authors: [{ name: 'PG Closets' }],
+  creator: 'PG Closets',
+  publisher: 'PG Closets',
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+  other: {
+    'geo.region': 'CA-ON',
+    'geo.placename': 'Ottawa',
+    'geo.position': '45.4215;-75.6972',
+    'ICBM': '45.4215, -75.6972'
+  },
   openGraph: {
-    title: 'Premium Closet Doors Ottawa | Official Renin Dealer | PG Closets',
-    description: 'Transform your Ottawa home with premium Renin closet doors. Expert installation, lifetime warranty, transparent Canadian pricing.',
+    title: 'PG Closets | Custom Closets & Storage Solutions in Ottawa',
+    description: 'Custom closets, pantries, and storage solutions in Ottawa and the NCR. Professional design, installation, and service by local experts.',
+    url: 'https://www.pgclosets.ca',
+    siteName: 'PG Closets',
     locale: 'en_CA',
     images: [
       {
-        url: 'https://www.pgclosets.ca/products/bypass-harmony-1-lite-hero.png',
+        url: 'https://www.pgclosets.ca/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'PG Closets - Premium Renin Closet Doors Ottawa'
+        alt: 'PG Closets - Custom Storage Solutions Ottawa'
       }
     ],
     type: 'website'
@@ -32,175 +42,180 @@ export const metadata: Metadata = {
     images: ['https://www.pgclosets.ca/og-image.jpg']
   },
   alternates: {
-    canonical: 'https://pgclosets.com'
+    canonical: 'https://www.pgclosets.ca'
   },
 }
 
 export default function HomePage() {
   return (
-    <>
-      {/* Claude Code Connection Test - Remove after verification */}
-      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
-        <div className="flex">
-          <div className="ml-3">
-            <p className="text-sm text-blue-700">
-              🤖 <strong>Claude Code Connected</strong> - Test deployment successful! 
-              <span className="text-xs block mt-1">Deployment time: {new Date().toISOString()}</span>
-            </p>
+    <div className="min-h-screen bg-white font-sans">
+      {/* Header */}
+      <header className="fixed top-0 w-full z-50 bg-white shadow-lg">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white text-center py-3 text-sm tracking-wide">
+            <div className="flex items-center justify-center space-x-8 text-xs uppercase font-light">
+              <span className="flex items-center space-x-1">
+                <span className="w-1 h-1 bg-amber-400 rounded-full"></span>
+                <span>Ottawa&apos;s Premier Atelier</span>
+              </span>
+              <span className="flex items-center space-x-1">
+                <span className="w-1 h-1 bg-amber-400 rounded-full"></span>
+                <span>500+ Luxury Installations</span>
+              </span>
+              <span className="flex items-center space-x-1">
+                <span className="w-1 h-1 bg-amber-400 rounded-full"></span>
+                <span>Award-Winning Design</span>
+              </span>
+            </div>
+          </div>
+          <div className="flex justify-between items-center h-20">
+            <a href="/" className="flex items-center space-x-4">
+              <Image
+                alt="PG Closets"
+                width={48}
+                height={48}
+                className="w-12 h-12 object-contain"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PG%20Logo.jpg-PA2Pv0eQKuJGkzYoQf9wsC86lYSKGa.jpeg"
+              />
+              <div>
+                <h1 className="text-2xl font-light tracking-wide text-slate-900">PG CLOSETS</h1>
+                <p className="text-xs text-slate-500 font-light uppercase tracking-widest">Ottawa Design Atelier</p>
+              </div>
+            </a>
+            <nav className="hidden lg:flex items-center space-x-8">
+              <a href="/" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">Home</a>
+              <a href="/products" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">Collection</a>
+              <a href="/about" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">Atelier</a>
+              <a href="/services" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">Services</a>
+              <a href="/contact" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">Contact</a>
+              <div className="flex items-center space-x-6 ml-8 pl-8 border-l border-slate-200">
+                <a href="tel:6135550123" className="text-slate-600 hover:text-slate-900 font-light tracking-wide transition-colors">(613) 555-0123</a>
+                <button className="bg-slate-900 text-white px-8 py-2.5 text-sm font-light tracking-wide hover:bg-slate-800 transition-all duration-300">Schedule Consultation</button>
+              </div>
+            </nav>
+            <div className="lg:hidden">
+              <button className="text-slate-700 hover:text-slate-900 p-2">
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <HeroSection />
-      
-      {/* Trust Signals Section */}
-      <section className="py-12 bg-gray-50" itemScope itemType="https://schema.org/Organization">
-        <div className="max-w-7xl mx-auto px-4">
-          <TrustBadges />
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100"></div>
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-slate-400 rounded-full blur-3xl"></div>
+        </div>
+        <div className="relative z-20 text-center px-4 max-w-7xl mx-auto">
+          <div className="mb-8">
+            <div className="inline-flex items-center space-x-2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-light tracking-wide">
+              <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span>
+              <span>Exclusive December Availability • 3 Consultations Remaining</span>
+            </div>
+          </div>
+          <h1 className="text-5xl lg:text-7xl font-extralight mb-8 leading-[1.1] text-slate-900 tracking-tight">
+            Bespoke Closet Doors
+            <br/>
+            <span className="text-slate-600">For Distinguished Homes</span>
+          </h1>
+          <p className="text-xl lg:text-2xl mb-12 max-w-4xl mx-auto text-slate-600 font-light leading-relaxed">
+            Ottawa&apos;s premier design atelier crafting luxury closet solutions with
+            <span className="text-slate-900 font-normal"> meticulous attention to detail</span>
+             and
+            <span className="text-slate-900 font-normal"> uncompromising quality</span>
+          </p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto">
+            <div className="text-center group">
+              <div className="text-3xl lg:text-4xl font-light text-slate-900 mb-2">500+</div>
+              <div className="text-sm text-slate-500 uppercase tracking-widest font-light">Luxury Installations</div>
+            </div>
+            <div className="text-center group">
+              <div className="text-3xl lg:text-4xl font-light text-slate-900 mb-2">★★★★★</div>
+              <div className="text-sm text-slate-500 uppercase tracking-widest font-light">Client Satisfaction</div>
+            </div>
+            <div className="text-center group">
+              <div className="text-3xl lg:text-4xl font-light text-slate-900 mb-2">15+</div>
+              <div className="text-sm text-slate-500 uppercase tracking-widest font-light">Years Mastery</div>
+            </div>
+            <div className="text-center group">
+              <div className="text-3xl lg:text-4xl font-light text-slate-900 mb-2">Award</div>
+              <div className="text-sm text-slate-500 uppercase tracking-widest font-light">Winning Design</div>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <button className="group bg-slate-900 text-white hover:bg-slate-800 font-light px-12 py-4 text-lg tracking-wide transition-all duration-500 hover:shadow-2xl hover:scale-105">
+              <span className="group-hover:hidden">Request Private Consultation</span>
+              <span className="hidden group-hover:inline-flex items-center space-x-2">
+                <span>Schedule Your Visit</span>
+                <span>→</span>
+              </span>
+            </button>
+            <a href="/products" className="group border border-slate-300 text-slate-700 hover:border-slate-900 hover:text-slate-900 font-light px-12 py-4 text-lg tracking-wide transition-all duration-300 text-center">
+              <span className="group-hover:hidden">Explore Collection</span>
+              <span className="hidden group-hover:inline">View Curated Designs</span>
+            </a>
+          </div>
         </div>
       </section>
-      
-      {/* Featured Products */}
-      <FeaturedProducts />
-      
-      {/* Service Area Section */}
-      <section className="py-16 bg-gradient-to-br from-pg-off-white to-white" itemScope itemType="https://schema.org/ServiceArea">
+
+      {/* Products Section */}
+      <section id="products" className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-pg-navy mb-4" itemProp="headline">
-              Serving Ottawa & Surrounding Areas
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto" itemProp="description">
-              Professional closet door installation across the National Capital Region
+            <div className="inline-block text-xs uppercase tracking-[0.3em] text-slate-500 font-light mb-4">Curated Collection</div>
+            <h2 className="text-4xl lg:text-5xl font-extralight mb-6 text-slate-900 tracking-tight">Signature Door Designs</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed">
+              Each piece in our collection represents the pinnacle of craftsmanship,
+              <span className="text-slate-900"> handpicked for discerning homeowners</span>
+               who appreciate exceptional design
             </p>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: 'Ottawa', population: '1M+' },
-              { name: 'Kanata', population: '90K+' },
-              { name: 'Nepean', population: '180K+' },
-              { name: 'Orleans', population: '110K+' },
-              { name: 'Barrhaven', population: '95K+' }
-            ].map((city) => (
-              <div 
-                key={city.name}
-                className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-lg transition-all duration-300 group"
-                itemScope 
-                itemType="https://schema.org/City"
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-pg-navy to-pg-sky rounded-full mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                  </svg>
+              { name: 'Continental', image: '/images/arcat/renin_176732_hd.jpg', price: 459, description: 'Premium engineered wood core, durable laminate surface' },
+              { name: 'Provincial', image: '/images/arcat/renin_205750_hd.jpg', price: 549, description: 'Traditional styling, heavy-duty pivot hinges' },
+              { name: 'Gatsby', image: '/images/arcat/renin_205729_hd.jpg', price: 799, description: 'Modern barn door design, premium hardware included' },
+              { name: 'Euro', image: '/images/arcat/renin_199063_hd.jpg', price: 899, description: 'Contemporary European styling, soft-close mechanism' }
+            ].map((product) => (
+              <div key={product.name} className="group bg-white overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                <div className="aspect-[4/5] relative overflow-hidden">
+                  <Image
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
+                    src={product.image}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="bg-black/70 backdrop-blur-sm text-white px-3 py-1.5 text-xs font-light tracking-wide">SIGNATURE PIECE</div>
+                  </div>
                 </div>
-                <h3 className="text-pg-navy font-semibold text-lg mb-1" itemProp="name">
-                  {city.name}
-                </h3>
-                <p className="text-sm text-gray-500">
-                  {city.population} residents
-                </p>
+                <div className="p-8">
+                  <div className="text-xs uppercase tracking-[0.2em] text-slate-400 font-light mb-2">COLLECTION</div>
+                  <h3 className="text-2xl font-light text-slate-900 mb-3 tracking-wide">{product.name}</h3>
+                  <p className="text-slate-600 text-sm mb-6 leading-relaxed font-light">{product.description}</p>
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="text-2xl font-light text-slate-900">
+                      From ${product.price}
+                    </div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide">CAD</div>
+                  </div>
+                  <div className="space-y-3">
+                    <button className="w-full bg-slate-900 text-white py-3.5 font-light text-sm tracking-wide hover:bg-slate-800 transition-all duration-300">Request Consultation</button>
+                    <a href="/products" className="block w-full border border-slate-300 text-slate-700 hover:border-slate-900 hover:text-slate-900 py-3.5 font-light text-sm tracking-wide transition-all duration-300 text-center">View Details</a>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
-          
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-6 py-3 rounded-full text-sm font-medium border border-green-200 shadow-sm">
-              <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-              </svg>
-              <span>Free consultation within 30km of Ottawa • Same-day quotes available</span>
-            </div>
-          </div>
         </div>
       </section>
-      
-      {/* Pricing Section */}
-      <section className="py-16 bg-white" itemScope itemType="https://schema.org/PriceSpecification">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-pg-navy mb-4" itemProp="headline">
-              Transparent Canadian Pricing
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto" itemProp="description">
-              No hidden fees, no surprises. Choose the perfect solution for your budget and style preferences.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Value Package */}
-            <div className="bg-white rounded-lg border border-gray-200 p-8 text-center shadow-sm hover:shadow-lg transition-all duration-300" itemScope itemType="https://schema.org/Offer">
-              <h3 className="text-xl font-semibold text-pg-navy mb-2" itemProp="name">Value</h3>
-              <div className="text-3xl font-bold text-pg-navy mb-1" itemProp="priceRange">$259-$449</div>
-              <p className="text-gray-600 mb-6">Quality doors, professional install</p>
-              
-              <div className="space-y-3 text-left mb-8">
-                {['Basic styles', 'Standard colors', '1-year warranty'].map((feature) => (
-                  <div key={feature} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                    </svg>
-                    <span className="text-gray-700">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <a href="/contact" className="block w-full bg-gray-100 hover:bg-pg-navy hover:text-white text-gray-900 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
-                Get Quote
-              </a>
-            </div>
-            
-            {/* Designer Package - Most Popular */}
-            <div className="bg-white rounded-lg border-2 border-pg-sky p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 relative" itemScope itemType="https://schema.org/Offer">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span className="bg-pg-sky text-white px-4 py-1 rounded-full text-sm font-medium">Most Popular</span>
-              </div>
-              
-              <h3 className="text-xl font-semibold text-pg-navy mb-2" itemProp="name">Designer</h3>
-              <div className="text-3xl font-bold text-pg-navy mb-1" itemProp="priceRange">$459-$649</div>
-              <p className="text-gray-600 mb-6">Premium materials and finishes</p>
-              
-              <div className="space-y-3 text-left mb-8">
-                {['Premium styles', 'Custom colors', '3-year warranty'].map((feature) => (
-                  <div key={feature} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                    </svg>
-                    <span className="text-gray-700">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <a href="/contact" className="block w-full bg-pg-navy hover:bg-pg-navy/90 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
-                Get Quote
-              </a>
-            </div>
-            
-            {/* Premium Package */}
-            <div className="bg-white rounded-lg border border-gray-200 p-8 text-center shadow-sm hover:shadow-lg transition-all duration-300" itemScope itemType="https://schema.org/Offer">
-              <h3 className="text-xl font-semibold text-pg-navy mb-2" itemProp="name">Premium</h3>
-              <div className="text-3xl font-bold text-pg-navy mb-1" itemProp="priceRange">$679-$1,115</div>
-              <p className="text-gray-600 mb-6">Luxury barn doors and custom solutions</p>
-              
-              <div className="space-y-3 text-left mb-8">
-                {['Luxury styles', 'Full customization', 'Lifetime warranty'].map((feature) => (
-                  <div key={feature} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                    </svg>
-                    <span className="text-gray-700">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <a href="/contact" className="block w-full bg-gray-100 hover:bg-pg-navy hover:text-white text-gray-900 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
-                Get Quote
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   )
 }
