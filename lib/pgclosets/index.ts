@@ -1,4 +1,4 @@
-import { reninProducts, type ReninProduct, type ReninHardware } from '@/lib/renin-products';
+import { reninProducts, type Product } from '@/lib/renin-products';
 import type {
   PGProduct,
   PGProductVariant,
@@ -41,9 +41,9 @@ function createImageFromUrl(url: string, alt: string): Image {
 }
 
 // Adapter functions
-export function adaptReninProductToPGProduct(reninProduct: ReninProduct | ReninHardware): PGProduct {
+export function adaptReninProductToPGProduct(reninProduct: Product): PGProduct {
   const handle = createSlug(reninProduct.name);
-  const price = ('sale_price' in reninProduct && reninProduct.sale_price) ? reninProduct.sale_price : reninProduct.price;
+  const price = reninProduct.price;
   const originalPrice = reninProduct.price;
   
   // Create variants based on available options
@@ -57,20 +57,11 @@ export function adaptReninProductToPGProduct(reninProduct: ReninProduct | ReninH
     }
   ];
 
-  // Add size variants if available
-  if (reninProduct.size) {
-    const sizes = Array.isArray(reninProduct.size) ? reninProduct.size : reninProduct.size.split(',').map(s => s.trim());
+  // Add size variants if available (commented out due to schema changes)
+  // Use specifications for size info instead
+  if (reninProduct.specifications["Standard Sizes"]) {
+    const sizes = reninProduct.specifications["Standard Sizes"].split(',').map(s => s.trim());
     sizes.forEach((size, index) => {
-      variants.push({
-        id: `${reninProduct.id}-size-${index}`,
-        title: `Size: ${size}`,
-        availableForSale: true,
-        selectedOptions: [{ name: 'Size', value: size }],
-        price: formatPrice(price)
-      });
-    });
-  } else if ('sizes' in reninProduct && reninProduct.sizes) {
-    reninProduct.sizes.forEach((size, index) => {
       variants.push({
         id: `${reninProduct.id}-size-${index}`,
         title: `Size: ${size}`,
@@ -81,7 +72,7 @@ export function adaptReninProductToPGProduct(reninProduct: ReninProduct | ReninH
     });
   }
 
-  const featuredImage = createImageFromUrl(reninProduct.images?.main || reninProduct.image, reninProduct.name);
+  const featuredImage = createImageFromUrl(reninProduct.images[0], reninProduct.name);
 
   // Determine category and product type
   const category = 'category' in reninProduct ? 'barn-doors' : 'hardware';
@@ -98,12 +89,12 @@ export function adaptReninProductToPGProduct(reninProduct: ReninProduct | ReninH
       {
         id: 'size',
         name: 'Size',
-        values: reninProduct.size ? (Array.isArray(reninProduct.size) ? reninProduct.size : [reninProduct.size]) : ('sizes' in reninProduct && reninProduct.sizes ? reninProduct.sizes : ['Standard'])
+        values: reninProduct.specifications["Standard Sizes"] ? reninProduct.specifications["Standard Sizes"].split(',').map(s => s.trim()) : ['Standard']
       },
       {
         id: 'finish',
         name: 'Finish',
-        values: reninProduct.finish ? [reninProduct.finish] : ('finishes' in reninProduct && reninProduct.finishes ? reninProduct.finishes : ['Natural'])
+        values: [reninProduct.specifications.Finish || 'Natural']
       }
     ],
     priceRange: {
@@ -119,22 +110,19 @@ export function adaptReninProductToPGProduct(reninProduct: ReninProduct | ReninH
     },
     tags: [
       category,
-      reninProduct.material || '',
-      reninProduct.style || ('category' in reninProduct ? reninProduct.category : ''),
-      reninProduct.finish || ('finishes' in reninProduct && reninProduct.finishes?.[0] ? reninProduct.finishes[0] : '')
+      reninProduct.specifications.Material || '',
+      reninProduct.category || '',
+      reninProduct.specifications.Finish || ''
     ].filter(Boolean),
     updatedAt: new Date().toISOString(),
     category: mapCategoryToPGCategory(category),
     specifications: {
-      material: reninProduct.material,
-      finish: reninProduct.finish,
-      size: reninProduct.size,
-      style: reninProduct.style,
-      dimensions: reninProduct.width && reninProduct.height && reninProduct.thickness ? {
-        width: `${reninProduct.width}"`,
-        height: `${reninProduct.height}"`,
-        thickness: `${reninProduct.thickness}"`
-      } : undefined
+      material: reninProduct.specifications.Material || '',
+      finish: reninProduct.specifications.Finish || '',
+      size: reninProduct.specifications["Standard Sizes"] || '',
+      dimensions: {
+        thickness: reninProduct.specifications.Thickness || ''
+      }
     },
     paddleProductId: undefined,
     isCustomizable: category === 'barn-doors'

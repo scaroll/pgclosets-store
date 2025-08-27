@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { QuickBuyButton, AddToCartButton } from '@/components/ui/paddle-button'
 import { PaddlePriceDisplay } from '@/components/checkout/paddle-price-display'
-import { reninProducts, type ReninProduct, type ReninHardware } from '@/lib/renin-products'
+import { reninProducts, type Product } from '@/lib/renin-products'
 import { toast } from 'sonner'
 import { Ruler, Palette, Settings, Truck } from 'lucide-react'
 
@@ -25,8 +25,8 @@ interface ConfigurationState {
   installation: boolean
   totalPrice: number
   selectedProducts: {
-    door?: ReninProduct
-    hardware?: ReninHardware
+    door?: Product
+    hardware?: Product
     installation?: any
   }
 }
@@ -46,21 +46,24 @@ export function ProductConfigurator({ onConfigurationChange, className }: Produc
   // Get products from Renin database
   const barnDoors = reninProducts.getBarnDoors()
   const hardware = reninProducts.getHardware()
-  const installationServices = reninProducts.getInstallationServices()
+  const installationServices = [
+    { id: 'basic', name: 'Basic Installation', price: 150 },
+    { id: 'premium', name: 'Premium Installation', price: 250 }
+  ]
 
   // Filter available options based on current selections
   const availableDoors = barnDoors.filter(door => {
     if (config.doorType && door.category !== config.doorType) return false
-    if (config.size && door.sizes && !door.sizes.includes(config.size)) return false
-    if (config.material && door.material !== config.material) return false
-    if (config.finish && door.finishes && !door.finishes.some(f => f.toLowerCase().includes(config.finish.toLowerCase()))) return false
+    // Simplified filtering - using name and features for basic filtering
+    if (config.material && !door.name.toLowerCase().includes(config.material.toLowerCase())) return false
+    if (config.finish && !door.features.some(f => f.toLowerCase().includes(config.finish.toLowerCase()))) return false
     return true
   })
 
   const doorTypes = [...new Set(barnDoors.map(door => door.category))]
-  const sizes = [...new Set(barnDoors.flatMap(door => door.sizes))]
-  const materials = [...new Set(barnDoors.map(door => door.material || "Wood"))]
-  const finishes = [...new Set(barnDoors.flatMap(door => door.finishes))]
+  const sizes = ['24"', '30"', '32"', '36"', '48"'] // Standard sizes
+  const materials = ['Wood', 'Steel', 'MDF', 'Composite'] // Common materials
+  const finishes = ['Natural', 'White', 'Black', 'Stained'] // Standard finishes
 
   const updateConfig = (field: keyof ConfigurationState, value: any) => {
     const newConfig = { ...config, [field]: value }
@@ -73,14 +76,13 @@ export function ProductConfigurator({ onConfigurationChange, className }: Produc
     if (newConfig.doorType || newConfig.size || newConfig.material || newConfig.finish) {
       const matchingDoor = availableDoors.find(door => {
         return (!newConfig.doorType || door.category === newConfig.doorType) &&
-               (!newConfig.size || (door.sizes && door.sizes.includes(newConfig.size))) &&
-               (!newConfig.material || door.material === newConfig.material) &&
-               (!newConfig.finish || (door.finishes && door.finishes.some(f => f.toLowerCase().includes(newConfig.finish.toLowerCase()))))
+               (!newConfig.material || door.name.toLowerCase().includes(newConfig.material.toLowerCase())) &&
+               (!newConfig.finish || door.features.some(f => f.toLowerCase().includes(newConfig.finish.toLowerCase())))
       })
       
       if (matchingDoor) {
         selectedProducts.door = matchingDoor
-        totalPrice += matchingDoor.sale_price || matchingDoor.price
+        totalPrice += ('sale_price' in matchingDoor ? matchingDoor.sale_price as number : null) || matchingDoor.price
       }
     }
 
@@ -309,7 +311,7 @@ export function ProductConfigurator({ onConfigurationChange, className }: Produc
                   {config.selectedProducts.door && (
                     <li className="flex justify-between">
                       <span>{config.selectedProducts.door.name}</span>
-                      <span>{reninProducts.formatPrice(config.selectedProducts.door.sale_price || config.selectedProducts.door.price)}</span>
+                      <span>{reninProducts.formatPrice(('sale_price' in config.selectedProducts.door ? config.selectedProducts.door.sale_price as number : null) || config.selectedProducts.door.price)}</span>
                     </li>
                   )}
                   {config.selectedProducts.hardware && (

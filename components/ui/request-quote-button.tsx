@@ -1,20 +1,20 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { MessageCircle } from "@/components/ui/icons"
+import { MessageCircle } from "lucide-react"
 import type { Product } from "@/lib/renin-products"
 
 interface RequestQuoteButtonProps {
   product: Product
-  variant?: "primary" | "secondary" | "outline"
-  size?: "sm" | "md" | "lg"
+  variant?: "default" | "secondary" | "outline"
+  size?: "sm" | "default" | "lg"
   className?: string
 }
 
 export function RequestQuoteButton({
   product,
   variant = "outline",
-  size = "md",
+  size = "default",
   className = "",
 }: RequestQuoteButtonProps) {
   const handleRequestQuote = () => {

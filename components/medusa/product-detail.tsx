@@ -4,7 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import { HttpTypes } from "@/lib/medusa"
 import { useMedusaCart } from "./cart-provider"
-import { formatPrice } from "@/lib/utils"
+import { formatPrice } from "@/lib/renin-products"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { 
@@ -36,8 +36,8 @@ export function MedusaProductDetail({ product, region }: ProductDetailProps) {
   }
 
   const selectedPrice = selectedVariant?.calculated_price
-  const formattedPrice = selectedPrice && region 
-    ? formatPrice(selectedPrice.calculated_amount, region.currency_code)
+  const formattedPrice = selectedPrice 
+    ? formatPrice(selectedPrice.calculated_amount)
     : null
 
   return (
@@ -141,7 +141,7 @@ export function MedusaProductDetail({ product, region }: ProductDetailProps) {
                         {variant.title}
                         {variant.calculated_price && region && (
                           <span className="ml-2 text-gray-500">
-                            {formatPrice(variant.calculated_price.calculated_amount, region.currency_code)}
+                            {formatPrice(variant.calculated_price.calculated_amount)}
                           </span>
                         )}
                       </SelectItem>

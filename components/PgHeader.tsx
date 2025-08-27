@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { PGLogo } from "./ui/pg-logo"
+import { PGLogo } from "./brand/pg-logo"
 
 export default function PgHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -24,7 +24,7 @@ export default function PgHeader() {
             className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded-lg p-1"
             aria-label="PG Closets - Go to homepage"
           >
-            <PGLogo width={24} height={24} aria-hidden="true" />
+            <PGLogo size={24} showText={false} />
             <span className="font-extrabold text-pg-navy" style={{ fontSize: "24px", fontWeight: 800 }}>
               PG Closets
             </span>

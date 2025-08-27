@@ -61,3 +61,28 @@ export function cva(base: string, config?: CVAConfig) {
     return classes
   }
 }
+
+// URL creation utility for navigation
+export function createUrl(pathname: string, params?: URLSearchParams | Record<string, string>): string {
+  const url = new URL(pathname, 'https://example.com')
+  
+  if (params) {
+    if (params instanceof URLSearchParams) {
+      url.search = params.toString()
+    } else {
+      Object.entries(params).forEach(([key, value]) => {
+        url.searchParams.set(key, value)
+      })
+    }
+  }
+  
+  return `${url.pathname}${url.search}`
+}
+
+// Price formatting utility
+export function formatPrice(price: number): string {
+  return new Intl.NumberFormat("en-CA", {
+    style: "currency",
+    currency: "CAD",
+  }).format(price)
+}

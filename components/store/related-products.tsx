@@ -3,11 +3,9 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { QuickBuyButton, AddToCartButton } from "@/components/ui/paddle-button"
-import { reninProducts, type ReninProduct, type ReninHardware } from "@/lib/renin-products"
+import { reninProducts, type Product } from "@/lib/renin-products"
 import Link from "next/link"
 import { toast } from "sonner"
-
-type Product = ReninProduct | ReninHardware
 
 interface RelatedProductsProps {
   products: Product[]
@@ -58,7 +56,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
             <div className="aspect-square overflow-hidden rounded-t-lg bg-card">
               <Link href={`/store/products/${product.slug}`}>
                 <img
-                  src={product.images?.main || product.image || `/abstract-geometric-shapes.png?height=300&width=300&query=${product.name}`}
+                  src={product.images[0] || `/abstract-geometric-shapes.png?height=300&width=300&query=${product.name}`}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
                   onError={(e) => {
@@ -71,13 +69,8 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
             <CardContent className="p-4 space-y-3">
               <div>
                 <Badge variant="secondary" className="mb-2 text-xs">
-                  {product.style || ('category' in product ? product.category : product.material)}
+                  {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
                 </Badge>
-                {'sale_price' in product && product.sale_price && (
-                  <Badge variant="destructive" className="mb-2 ml-1 text-xs">
-                    Sale
-                  </Badge>
-                )}
                 <Link href={`/store/products/${product.slug}`}>
                   <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors cursor-pointer line-clamp-2">
                     {product.name}
@@ -90,34 +83,23 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
 
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  {'sale_price' in product && product.sale_price ? (
-                    <>
-                      <div className="text-lg font-bold text-foreground">
-                        {formatPrice(product.sale_price)}
-                      </div>
-                      <div className="text-sm text-muted-foreground line-through">
-                        {formatPrice(product.price)}
-                      </div>
-                    </>
-                  ) : (
-                    <div className="text-lg font-bold text-foreground">
-                      {formatPrice(product.price)}
-                    </div>
-                  )}
+                  <div className="text-lg font-bold text-foreground">
+                    {formatPrice(product.price)}
+                  </div>
                 </div>
 
                 <div className="space-y-2">
                   <AddToCartButton
                     productId={product.id.toString()}
                     productName={product.name}
-                    price={('sale_price' in product && product.sale_price) || product.price}
+                    price={product.price}
                     onAddToCart={handleAddToCart}
                     size="sm"
                     className="w-full"
                   />
                   <QuickBuyButton
                     productId={product.id.toString()}
-                    price={('sale_price' in product && product.sale_price) || product.price}
+                    price={product.price}
                     productName={product.name}
                     onSuccess={handleQuickBuySuccess}
                     onError={handleQuickBuyError}

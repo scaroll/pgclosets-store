@@ -23,12 +23,12 @@ export function Carousel() {
                   className="h-full w-full object-cover transition duration-300 ease-in-out group-hover:scale-105"
                   fill
                   sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
-                  src={product.image || '/placeholder.jpg'}
+                  src={product.images[0] || '/placeholder.jpg'}
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 text-white">
                   <h3 className="text-sm font-semibold">{product.name}</h3>
                   <p className="text-xs">
-                    {product.sale_price || product.price || '0'} CAD
+                    {(product as any).sale_price || product.price || '0'} CAD
                   </p>
                 </div>
               </div>

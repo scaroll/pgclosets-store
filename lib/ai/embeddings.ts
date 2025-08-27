@@ -1,5 +1,5 @@
 import { reninProducts } from '../renin-products'
-import type { ReninProduct, ReninHardware } from '../renin-products'
+import type { Product } from '../renin-products'
 
 export interface ProductEmbedding {
   id: string
@@ -49,8 +49,8 @@ export class EmbeddingService {
     this.addGeneralKnowledge()
   }
 
-  private productToContentChunk(product: ReninProduct | ReninHardware, type: string): ContentChunk {
-    const isProduct = 'style' in product
+  private productToContentChunk(product: Product, type: string): ContentChunk {
+    const isProduct = 'category' in product
     const content = this.generateProductDescription(product, type)
     
     return {
@@ -62,42 +62,33 @@ export class EmbeddingService {
         name: product.name,
         slug: product.slug,
         price: product.price,
-        sale_price: (product as any).sale_price,
-        material: product.material,
-        finish: product.finish,
+        category: product.category,
+        material: product.specifications.Material || 'Unknown',
+        finish: product.specifications.Finish || 'Unknown',
         features: product.features,
-        ...(isProduct ? {
-          style: product.style,
-          size: product.size,
-          width: product.width,
-          height: product.height
-        } : {})
+        specifications: product.specifications
       }
     }
   }
 
-  private generateProductDescription(product: ReninProduct | ReninHardware, type: string): string {
-    const isProduct = 'category' in product
-    const pricing = reninProducts.calculatePriceWithTax(('sale_price' in product && product.sale_price) || product.price)
+  private generateProductDescription(product: Product, type: string): string {
+    const pricing = reninProducts.calculatePriceWithTax(product.price)
     
-    let description = `${product.name} is a premium ${type} `
+    let description = `${product.name} is a premium ${product.category} `
     
-    if (isProduct) {
-      const p = product as ReninProduct
-      if (p.style) description += `featuring ${p.style.toLowerCase()} style design. `
-      description += `Made from high-quality ${(product.material || 'wood').toLowerCase()} with ${(product.finish || p.finishes?.[0] || 'natural').toLowerCase()} finish. `
-      if (p.size && p.width && p.height && p.thickness) {
-        description += `Available in ${p.size} size (${p.width}cm W x ${p.height}cm H x ${p.thickness}cm thick). `
-      }
-    } else {
-      description += `made from durable ${product.material.toLowerCase()} with ${product.finish.toLowerCase()} finish. `
+    // Use specifications for material and finish info
+    if (product.specifications.Material) {
+      description += `made from high-quality ${product.specifications.Material.toLowerCase()} `
+    }
+    if (product.specifications.Finish) {
+      description += `with ${product.specifications.Finish.toLowerCase()} finish. `
+    }
+    
+    if (product.specifications["Standard Sizes"]) {
+      description += `Available in ${product.specifications["Standard Sizes"]}. `
     }
     
     description += `Priced at $${pricing.total.toFixed(2)} CAD (including 13% HST). `
-    
-    if ('sale_price' in product && product.sale_price) {
-      description += `Currently on sale from regular price of $${reninProducts.calculatePriceWithTax(product.price).total.toFixed(2)} CAD. `
-    }
     
     description += `Key features include: ${product.features.join(', ')}. `
     description += `Professional installation available throughout Ottawa, Kanata, Orleans, Nepean, and surrounding areas. `

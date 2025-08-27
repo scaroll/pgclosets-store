@@ -7,7 +7,7 @@ import { MedusaCartProvider } from "@/components/medusa/cart-provider"
 import { AnalyticsProvider, AnalyticsDebugInfo } from "@/components/analytics/analytics-provider"
 import { PG_CLOSETS_TRACKING } from "@/lib/analytics"
 import { getCart } from "@/lib/pgclosets"
-import { generateOrganizationSchema, generateBaseMetadata } from "@/lib/seo"
+// import { generateOrganizationSchema, generateBaseMetadata } from "@/lib/seo"
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { FontPreloader, CriticalCSS } from "@/components/performance/font-optimization"
@@ -15,10 +15,8 @@ import "./globals.css"
 
 
 export const metadata: Metadata = {
-  ...generateBaseMetadata({
-    title: "PG Closets - Premium Barn Doors & Closet Systems Ottawa | Authorized Renin Dealer",
-    description: "Transform your Ottawa home with premium barn doors and closet systems. Authorized Renin dealer offering professional installation, custom solutions, and quality craftsmanship. Free consultation available."
-  }),
+  title: "PG Closets - Premium Barn Doors & Closet Systems Ottawa | Authorized Renin Dealer",
+  description: "Transform your Ottawa home with premium barn doors and closet systems. Authorized Renin dealer offering professional installation, custom solutions, and quality craftsmanship. Free consultation available.",
   keywords: [
     'barn doors Ottawa',
     'closet systems Ottawa',
@@ -57,7 +55,19 @@ export default async function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateOrganizationSchema())
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "PG Closets",
+              "description": "Premium closet doors and custom storage solutions in Ottawa",
+              "url": "https://www.pgclosets.ca",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Ottawa",
+                "addressRegion": "ON",
+                "addressCountry": "CA"
+              }
+            })
           }}
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

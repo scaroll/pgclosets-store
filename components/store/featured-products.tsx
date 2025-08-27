@@ -6,9 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { QuickBuyButton, AddToCartButton } from "@/components/ui/paddle-button"
 import { PriceComparison } from "@/components/checkout/paddle-price-display"
-import { reninProducts, type ReninProduct, type ReninHardware } from "@/lib/renin-products"
-
-type Product = ReninProduct | ReninHardware
+import { reninProducts, type Product } from "@/lib/renin-products"
 import Link from "next/link"
 import { toast } from "sonner"
 import { useState, useEffect } from "react"
@@ -78,7 +76,7 @@ export function FeaturedProducts({ products: propProducts }: FeaturedProductsPro
             <div className="aspect-square overflow-hidden rounded-t-lg bg-gradient-to-br from-muted/50 to-muted/20 relative">
               <Link href={`/store/products/${product.slug}`}>
                 <img
-                  src={product.image || `/abstract-geometric-shapes.png?height=400&width=400&query=${product.name}`}
+                  src={product.images[0] || `/abstract-geometric-shapes.png?height=400&width=400&query=${product.name}`}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 cursor-pointer"
                   onError={(e) => {
@@ -95,7 +93,7 @@ export function FeaturedProducts({ products: propProducts }: FeaturedProductsPro
               <div className="space-y-4">
                 <div>
                   <Badge variant="secondary" className="mb-2">
-                    {product.style ? `${product.style} • ${product.material}` : ('category' in product ? `${product.category} • ${product.material || 'Wood'}` : `Hardware • ${product.material}`)}
+                    {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
                   </Badge>
                   {'sale_price' in product && product.sale_price && (
                     <Badge variant="destructive" className="mb-2 ml-2">
@@ -109,21 +107,20 @@ export function FeaturedProducts({ products: propProducts }: FeaturedProductsPro
                   </Link>
                   <p className="text-muted-foreground line-clamp-2">
                     {product.features.slice(0, 2).join(' • ')}
-                    {product.size ? ` • ${product.size} • ${product.finish || 'Natural'}` : (product.finish ? ` • ${product.finish}` : '')}
                   </p>
                 </div>
 
                 <div className="space-y-3">
                   <PriceComparison
                     originalPrice={product.price}
-                    salePrice={'sale_price' in product ? product.sale_price : undefined}
+                    salePrice={'sale_price' in product ? product.sale_price as number : undefined}
                   />
                   
                   <div className="flex gap-3">
                     <AddToCartButton
                       productId={product.id.toString()}
                       productName={product.name}
-                      price={('sale_price' in product && product.sale_price) || product.price}
+                      price={('sale_price' in product && product.sale_price as number) || product.price}
                       onAddToCart={handleAddToCart}
                       size="sm"
                       variant="outline"
@@ -131,7 +128,7 @@ export function FeaturedProducts({ products: propProducts }: FeaturedProductsPro
                     />
                     <QuickBuyButton
                       productId={product.id.toString()}
-                      price={('sale_price' in product && product.sale_price) || product.price}
+                      price={('sale_price' in product && product.sale_price as number) || product.price}
                       productName={product.name}
                       onSuccess={handleQuickBuySuccess}
                       onError={handleQuickBuyError}

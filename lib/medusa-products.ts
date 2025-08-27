@@ -1,5 +1,5 @@
-import { medusaClient } from "./medusa-client"
-import type { Product, ProductCollection } from "@medusajs/medusa"
+// import { medusaClient } from "./medusa-client"
+// import type { Product, ProductCollection } from "@medusajs/medusa"
 
 // Product data adapter to convert local products to Medusa format
 export interface MedusaProductData {
@@ -100,8 +100,8 @@ function createVariantsFromProduct(localProduct: any) {
   }))
 }
 
-// Medusa product service for frontend
-export const medusaProducts = {
+// Medusa product service for frontend - commented out due to missing dependency
+/* export const medusaProducts = {
   // Get all products with optional filtering
   async getProducts(params?: {
     category?: string
@@ -189,10 +189,10 @@ export const medusaProducts = {
       return []
     }
   },
-}
+} */
 
-// Migration utility (for development/admin use)
-export async function migrateLocalProductsToMedusa(localProducts: any[]) {
+// Migration utility (for development/admin use) - commented out due to missing dependency
+/* export async function migrateLocalProductsToMedusa(localProducts: any[]) {
   const results = {
     success: [],
     errors: [],
@@ -213,4 +213,4 @@ export async function migrateLocalProductsToMedusa(localProducts: any[]) {
   }
 
   return results
-}
+} */

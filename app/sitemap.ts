@@ -58,7 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // Dynamic product pages - high SEO value
-  const productPages = reninProducts.map((product) => ({
+  const productPages = reninProducts.getAllProducts().map((product) => ({
     url: `${baseUrl}/products/${product.id}`,
     lastModified: currentDate,
     changeFrequency: "weekly" as const,

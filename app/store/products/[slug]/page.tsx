@@ -2,7 +2,7 @@ import { ProductDetails } from "@/components/store/product-details"
 import { RelatedProducts } from "@/components/store/related-products"
 import { reninProducts } from "@/lib/renin-products"
 import { notFound } from "next/navigation"
-import { generateProductSchema, generateBreadcrumbSchema, generateBaseMetadata } from "@/lib/seo"
+// import { generateProductSchema, generateBreadcrumbSchema, generateBaseMetadata } from "@/lib/seo"
 import type { Metadata } from "next"
 
 // Enable ISR with 1 hour revalidation
@@ -40,31 +40,21 @@ export async function generateMetadata({
   const productType = isHardware ? 'Hardware' : 'Barn Door'
   
   const title = `${product.name} - ${productType} | PG Closets Ottawa`
-  const description = `${product.name} - Premium ${productType.toLowerCase()} made from ${product.material} with ${product.finish} finish. $${pricing.total.toFixed(2)} CAD including HST. Professional installation available in Ottawa.`
+  const description = `${product.name} - Premium ${productType.toLowerCase()} with professional features and quality construction. $${pricing.total.toFixed(2)} CAD including HST. Professional installation available in Ottawa.`
 
-  const metadata = generateBaseMetadata({
+  const metadata = {
     title,
     description,
-    path: `/store/products/${slug}`,
-    images: [product.image]
-  })
-
-  // Add product schema
-  const productSchema = generateProductSchema(slug)
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: '/' },
-    { name: 'Store', url: '/store' },
-    { name: 'Products', url: '/store/products' },
-    { name: product.name, url: `/store/products/${slug}` }
-  ])
-
-  return {
-    ...metadata,
-    other: {
-      'product:schema': JSON.stringify(productSchema),
-      'breadcrumb:schema': JSON.stringify(breadcrumbSchema)
+    openGraph: {
+      title,
+      description,
+      url: `/store/products/${slug}`,
+      images: [product.images[0]]
     }
   }
+
+
+  return metadata
 }
 
 export default async function ProductPage({
@@ -83,14 +73,33 @@ export default async function ProductPage({
   // Get related products (recommendations)
   const relatedProducts = reninProducts.getRecommendations(product.id, 4)
 
-  // Generate schemas for this product
-  const productSchema = generateProductSchema(slug)
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: process.env.NEXT_PUBLIC_SITE_URL || '' },
-    { name: 'Store', url: `${process.env.NEXT_PUBLIC_SITE_URL}/store` },
-    { name: 'Products', url: `${process.env.NEXT_PUBLIC_SITE_URL}/store/products` },
-    { name: product.name, url: `${process.env.NEXT_PUBLIC_SITE_URL}/store/products/${slug}` }
-  ])
+  // Calculate pricing
+  const pricing = reninProducts.calculatePriceWithTax((product as any).sale_price || product.price)
+
+  // Add product schema
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "description": product.description,
+    "image": product.images[0],
+    "offers": {
+      "@type": "Offer",
+      "price": pricing.total,
+      "priceCurrency": "CAD",
+      "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+    }
+  }
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "/" },
+      { "@type": "ListItem", "position": 2, "name": "Store", "item": "/store" },
+      { "@type": "ListItem", "position": 3, "name": "Products", "item": "/store/products" },
+      { "@type": "ListItem", "position": 4, "name": product.name, "item": `/store/products/${slug}` }
+    ]
+  }
 
   return (
     <>

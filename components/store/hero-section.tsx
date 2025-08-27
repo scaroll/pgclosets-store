@@ -9,7 +9,7 @@ export function HeroSection() {
   // Get the featured sale product for hero pricing
   const featuredProducts = reninProducts.getFeaturedProducts()
   const heroProduct = featuredProducts[0] || reninProducts.getBarnDoors()[0]
-  const heroPrice = heroProduct?.sale_price || heroProduct?.price || 679
+  const heroPrice = (heroProduct && 'sale_price' in heroProduct ? heroProduct.sale_price as number : null) || heroProduct?.price || 679
   
   return (
     <section className="relative min-h-screen bg-animated-gradient animate-gradient overflow-hidden" style={{backgroundSize: '400% 400%'}}>
@@ -103,7 +103,7 @@ export function HeroSection() {
               <GlassCardContent className="p-0">
                 <div className="aspect-square rounded-lg overflow-hidden">
                   <img
-                    src={heroProduct?.image || "/modern-walk-in-closet-barn-doors.png"}
+                    src={heroProduct?.images[0] || "/modern-walk-in-closet-barn-doors.png"}
                     alt={heroProduct?.name || "AI-optimized closet system"}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     onError={(e) => {

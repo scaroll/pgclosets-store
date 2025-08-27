@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { HttpTypes } from "@/lib/medusa"
-import { formatPrice } from "@/lib/utils"
+import { formatPrice } from "@/lib/renin-products"
 
 interface ProductCardProps {
   product: HttpTypes.StoreProduct
@@ -16,8 +16,8 @@ export function MedusaProductCard({ product, region, className }: ProductCardPro
   const productPrice = product.variants?.[0]?.calculated_price || null
   
   // Format price based on region currency
-  const formattedPrice = productPrice && region 
-    ? formatPrice(productPrice.calculated_amount, region.currency_code)
+  const formattedPrice = productPrice 
+    ? formatPrice(productPrice.calculated_amount)
     : null
 
   return (

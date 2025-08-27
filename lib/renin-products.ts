@@ -22,7 +22,7 @@ export interface Category {
   image: string
 }
 
-export const products: Product[] = productsData.products
+export const products: Product[] = productsData.products as Product[]
 export const categories: Category[] = productsData.categories
 
 // Legacy export for compatibility
@@ -36,7 +36,38 @@ export const reninProducts = {
   getFeaturedProducts: () => getFeaturedProducts(),
   getProductBySlug: (slug: string) => getProductBySlug(slug),
   formatPrice: (price: number) => formatPrice(price),
-  calculateTax: (price: number, province?: string) => calculateTax(price, province)
+  calculateTax: (price: number, province?: string) => calculateTax(price, province),
+  calculatePriceWithTax: (price: number, province?: string) => calculatePriceWithTax(price, province),
+  getRecommendations: (productId: string, limit: number = 4) => {
+    const currentProduct = products.find(p => p.id === productId)
+    if (!currentProduct) return products.slice(0, limit)
+    
+    // Get products from same category first, then others
+    const sameCategory = products.filter(p => p.id !== productId && p.category === currentProduct.category)
+    const otherProducts = products.filter(p => p.id !== productId && p.category !== currentProduct.category)
+    
+    return [...sameCategory, ...otherProducts].slice(0, limit)
+  },
+  filterBarnDoors: (filters: Record<string, string>) => {
+    let barnDoors = products.filter(p => p.category === "barn")
+    
+    // Apply filters based on the filters object
+    if (filters.style) {
+      barnDoors = barnDoors.filter(p => 
+        p.name.toLowerCase().includes(filters.style.toLowerCase()) ||
+        p.features.some(f => f.toLowerCase().includes(filters.style.toLowerCase()))
+      )
+    }
+    
+    if (filters.material) {
+      barnDoors = barnDoors.filter(p => 
+        p.specifications?.Material?.toLowerCase().includes(filters.material.toLowerCase()) ||
+        p.name.toLowerCase().includes(filters.material.toLowerCase())
+      )
+    }
+    
+    return barnDoors
+  }
 }
 
 export function getProductBySlug(slug: string): Product | undefined {
@@ -87,4 +118,16 @@ export function calculateTax(price: number, province = "ON"): number {
   }
 
   return price * (taxRates[province] || 0.13)
+}
+
+export function calculatePriceWithTax(price: number, province = "ON"): { subtotal: number; tax: number; total: number } {
+  const subtotal = price
+  const tax = calculateTax(price, province)
+  const total = subtotal + tax
+  
+  return {
+    subtotal,
+    tax,
+    total
+  }
 }

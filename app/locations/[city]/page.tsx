@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { generateBaseMetadata, generateBreadcrumbSchema, generateServiceSchema } from "@/lib/seo"
+// import { generateBaseMetadata, generateBreadcrumbSchema, generateServiceSchema } from "@/lib/seo"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
@@ -84,12 +84,16 @@ export async function generateMetadata({
   const title = `Barn Doors ${location.name} - Professional Installation | PG Closets Ottawa`
   const description = `${location.description} Premium Renin barn doors with expert installation in ${location.name}. Free consultation available.`
 
-  return generateBaseMetadata({
+  return {
     title,
     description,
-    path: `/locations/${city}`,
-    images: ['/renin_images/barn_doors/gatsby-chevron-white-main.jpg']
-  })
+    openGraph: {
+      title,
+      description,
+      url: `/locations/${city}`,
+      images: ['/renin_images/barn_doors/gatsby-chevron-white-main.jpg']
+    }
+  }
 }
 
 export default async function LocationPage({
@@ -105,13 +109,29 @@ export default async function LocationPage({
   }
 
   // Generate schemas
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: process.env.NEXT_PUBLIC_SITE_URL || '' },
-    { name: 'Service Areas', url: `${process.env.NEXT_PUBLIC_SITE_URL}/locations` },
-    { name: location.name, url: `${process.env.NEXT_PUBLIC_SITE_URL}/locations/${city}` }
-  ])
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": process.env.NEXT_PUBLIC_SITE_URL || '' },
+      { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": `${process.env.NEXT_PUBLIC_SITE_URL}/locations` },
+      { "@type": "ListItem", "position": 3, "name": location.name, "item": `${process.env.NEXT_PUBLIC_SITE_URL}/locations/${city}` }
+    ]
+  }
 
-  const serviceSchema = generateServiceSchema()
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "PG Closets",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": location.name,
+      "addressRegion": "ON",
+      "addressCountry": "CA"
+    },
+    "telephone": "+1-613-555-0123",
+    "url": `${process.env.NEXT_PUBLIC_SITE_URL}/locations/${city}`
+  }
 
   return (
     <>

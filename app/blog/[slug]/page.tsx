@@ -417,22 +417,24 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             Get expert advice and professional installation from Ottawa's trusted Renin dealer
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              variant="primary"
-              size="lg"
-              href="/request-work"
-              className="bg-white text-blue-600 hover:bg-gray-100"
-            >
-              Get Free Quote →
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              href="/products"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
-            >
-              Browse Products
-            </Button>
+            <Link href="/request-work">
+              <Button
+                variant="default"
+                size="lg"
+                className="bg-white text-blue-600 hover:bg-gray-100"
+              >
+                Get Free Quote →
+              </Button>
+            </Link>
+            <Link href="/products">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
+              >
+                Browse Products
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

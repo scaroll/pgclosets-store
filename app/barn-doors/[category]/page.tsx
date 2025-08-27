@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { reninProducts } from "@/lib/renin-products"
-import { generateBaseMetadata, generateBreadcrumbSchema } from "@/lib/seo"
+// Temporarily disable SEO imports until they are implemented
+// import { generateBaseMetadata, generateBreadcrumbSchema } from "@/lib/seo"
 // import ProductGrid from "@/components/commerce/product-grid"
 import type { Metadata } from "next"
 
@@ -38,12 +39,16 @@ export async function generateMetadata({
   const title = `${formattedValue} ${type === 'style' ? 'Style' : 'Material'} Barn Doors Ottawa | PG Closets`
   const description = `Discover premium ${formattedValue.toLowerCase()} ${type === 'style' ? 'style' : 'material'} barn doors in Ottawa. Professional installation, quality craftsmanship, and competitive pricing. Browse our ${formattedValue.toLowerCase()} collection.`
 
-  return generateBaseMetadata({
+  return {
     title,
     description,
-    path: `/barn-doors/${category}`,
-    images: ['/renin_images/barn_doors/gatsby-chevron-white-main.jpg']
-  })
+    openGraph: {
+      title,
+      description,
+      url: `/barn-doors/${category}`,
+      images: ['/renin_images/barn_doors/gatsby-chevron-white-main.jpg']
+    }
+  }
 }
 
 export default async function CategoryPage({
@@ -73,11 +78,15 @@ export default async function CategoryPage({
   const categoryName = `${formattedValue} ${type === 'style' ? 'Style' : 'Material'}`
   
   // Generate breadcrumb schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: process.env.NEXT_PUBLIC_SITE_URL || '' },
-    { name: 'Barn Doors', url: `${process.env.NEXT_PUBLIC_SITE_URL}/barn-doors` },
-    { name: categoryName, url: `${process.env.NEXT_PUBLIC_SITE_URL}/barn-doors/${category}` }
-  ])
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": process.env.NEXT_PUBLIC_SITE_URL || '' },
+      { "@type": "ListItem", "position": 2, "name": "Barn Doors", "item": `${process.env.NEXT_PUBLIC_SITE_URL}/barn-doors` },
+      { "@type": "ListItem", "position": 3, "name": categoryName, "item": `${process.env.NEXT_PUBLIC_SITE_URL}/barn-doors/${category}` }
+    ]
+  }
 
   return (
     <>
@@ -161,7 +170,7 @@ export default async function CategoryPage({
             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
               <div className="aspect-square relative">
                 <img
-                  src={product.image}
+                  src={product.images[0]}
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />

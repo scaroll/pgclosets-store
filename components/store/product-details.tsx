@@ -3,12 +3,10 @@
 import { Badge } from "@/components/ui/badge"
 import { ProductActions } from "@/components/ui/paddle-button"
 import { PriceComparison } from "@/components/checkout/paddle-price-display"
-import { reninProducts, type ReninProduct, type ReninHardware } from "@/lib/renin-products"
+import { reninProducts, type Product } from "@/lib/renin-products"
 import { Star, Truck, Shield, Award } from "lucide-react"
 import { useState } from "react"
 import { toast } from "sonner"
-
-type Product = ReninProduct | ReninHardware
 
 interface ProductDetailsProps {
   product: Product
@@ -22,10 +20,9 @@ export function ProductDetails({ product }: ProductDetailsProps) {
     return reninProducts.formatPrice(price)
   }
 
-  // Check if product has sale price
-  const salePrice = 'sale_price' in product ? product.sale_price : undefined
+  // Use regular price (no sale prices in current dataset)
   const regularPrice = product.price
-  const displayPrice = salePrice || regularPrice
+  const displayPrice = regularPrice
 
   const handleAddToCart = (item: { id: string; name: string; price: number; quantity: number }) => {
     toast.success(`Added ${item.name} to cart!`, {
@@ -51,7 +48,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
       <div className="space-y-4">
         <div className="aspect-square overflow-hidden rounded-lg bg-card border">
           <img
-            src={product.image || `/abstract-geometric-shapes.png?height=600&width=600&query=${product.name}`}
+            src={product.images[0] || `/abstract-geometric-shapes.png?height=600&width=600&query=${product.name}`}
             alt={product.name}
             className="w-full h-full object-cover"
             onError={(e) => {
@@ -63,10 +60,10 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         {/* Thumbnail images */}
         <div className="grid grid-cols-4 gap-2">
           {[
-            product.image,
-            product.image, // Use same image for now since we have one high-quality image
-            product.image,
-            product.image
+            product.images[0],
+            product.images[0], // Use same image for now since we have one high-quality image
+            product.images[0],
+            product.images[0]
           ].filter(Boolean).slice(0, 4).map((imageSrc, index) => (
             <div key={index} className="aspect-square overflow-hidden rounded-md bg-card border cursor-pointer hover:border-primary transition-colors">
               <img
@@ -88,11 +85,8 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         <div className="space-y-4">
           <div className="flex gap-2">
             <Badge variant="secondary">
-              {'category' in product ? product.category : product.material}
+              {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
             </Badge>
-            {salePrice && (
-              <Badge variant="destructive">Sale</Badge>
-            )}
           </div>
           
           <h1 className="text-3xl lg:text-4xl font-bold text-foreground">
@@ -100,10 +94,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           </h1>
           
           <p className="text-xl text-muted-foreground">
-            {'category' in product 
-              ? `${product.material || 'Wood'} • ${product.finish || product.finishes?.[0] || 'Natural'}` 
-              : `${product.finish} • ${product.material}`
-            }
+            {`${product.specifications.Material || 'Wood'} • ${product.specifications.Finish || 'Natural'}`}
           </p>
 
           {/* Rating */}
@@ -123,7 +114,6 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         {/* Price */}
         <PriceComparison
           originalPrice={regularPrice}
-          salePrice={salePrice}
         />
 
         {/* Quantity Selector */}
@@ -207,55 +197,31 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
             <div className="flex justify-between">
               <span className="text-muted-foreground">SKU:</span>
-              <span className="font-medium">{'sku' in product ? product.sku : product.id}</span>
+              <span className="font-medium">{product.id}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Material:</span>
-              <span className="font-medium">{product.material || 'Wood'}</span>
+              <span className="font-medium">{product.specifications.Material || 'Wood'}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Finish:</span>
-              <span className="font-medium">{product.finish || ('finishes' in product ? product.finishes?.[0] : 'Natural') || 'Natural'}</span>
+              <span className="font-medium">{product.specifications.Finish || 'Natural'}</span>
             </div>
-            {'style' in product && (
-              <>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Style:</span>
-                  <span className="font-medium">{'category' in product ? product.category : 'N/A'}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Size:</span>
-                  <span className="font-medium">{'sizes' in product ? product.sizes?.join(', ') : 'Standard'}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Dimensions:</span>
-                  <span className="font-medium">Standard Size</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Hardware:</span>
-                  <span className="font-medium">Sold separately</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Installation:</span>
-                  <span className="font-medium">Professional Available</span>
-                </div>
-              </>
-            )}
-            {product.length && (
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Length:</span>
-                <span className="font-medium">{product.length} inches</span>
-              </div>
-            )}
-            {product.weight_capacity && (
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Weight Capacity:</span>
-                <span className="font-medium">{product.weight_capacity} lbs</span>
-              </div>
-            )}
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Category:</span>
+              <span className="font-medium">{product.category.charAt(0).toUpperCase() + product.category.slice(1)}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Dimensions:</span>
+              <span className="font-medium">{product.specifications["Standard Sizes"] || "Custom sizing available"}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Thickness:</span>
+              <span className="font-medium">{product.specifications.Thickness || "Standard"}</span>
+            </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Installation:</span>
-              <span className="font-medium">Professional service available</span>
+              <span className="font-medium">Professional installation available</span>
             </div>
           </div>
         </div>
