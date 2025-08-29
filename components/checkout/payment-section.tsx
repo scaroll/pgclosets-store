@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { CartCheckoutButton } from "@/components/ui/cart-checkout-button"
 import { formatPrice } from "@/lib/renin-products"
 
 interface ShippingInfo {
@@ -74,7 +73,9 @@ export function PaymentSection({ shippingInfo, total, onSuccess, onBack }: Payme
 
         <div className="text-center">
           <p className="text-lg font-semibold mb-4">Total: {formatPrice(total)}</p>
-          <CartCheckoutButton onSuccess={onSuccess} className="w-full max-w-md mx-auto" />
+          <Button onClick={onSuccess} className="w-full max-w-md mx-auto">
+            Complete Order
+          </Button>
         </div>
       </div>
 

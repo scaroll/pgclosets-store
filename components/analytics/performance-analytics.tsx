@@ -30,12 +30,15 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
         // Track First Input Delay (FID)
         new PerformanceObserver((entryList) => {
           for (const entry of entryList.getEntries()) {
-            gtag("event", "web_vitals", {
-              event_category: "Web Vitals",
-              event_label: "FID",
-              value: Math.round(entry.processingStart - entry.startTime),
-              custom_map: { metric_value: entry.processingStart - entry.startTime },
-            })
+            const fidEntry = entry as any // Type assertion for first-input entries
+            if (fidEntry.processingStart) {
+              gtag("event", "web_vitals", {
+                event_category: "Web Vitals",
+                event_label: "FID",
+                value: Math.round(fidEntry.processingStart - fidEntry.startTime),
+                custom_map: { metric_value: fidEntry.processingStart - fidEntry.startTime },
+              })
+            }
           }
         }).observe({ type: "first-input", buffered: true })
 
@@ -43,8 +46,9 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
         let clsValue = 0
         new PerformanceObserver((entryList) => {
           for (const entry of entryList.getEntries()) {
-            if (!entry.hadRecentInput) {
-              clsValue += entry.value
+            const clsEntry = entry as any // Type assertion for layout-shift entries
+            if (!clsEntry.hadRecentInput) {
+              clsValue += clsEntry.value || 0
             }
           }
           gtag("event", "web_vitals", {

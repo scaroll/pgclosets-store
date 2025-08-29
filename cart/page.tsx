@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { useCart } from "@/lib/useCart"
+import { useCart } from "@/hooks/use-cart"
 import { Minus, Plus, Trash2 } from "lucide-react"
 
 export default function CartPage() {
-  const { items, updateQuantity, removeItem, getTotal, clearCart } = useCart()
+  const { state: { items }, updateQuantity, removeItem, getTotalPrice, clearCart } = useCart()
   const [isCheckingOut, setIsCheckingOut] = useState(false)
 
   const handleCheckout = async () => {
@@ -64,13 +64,13 @@ export default function CartPage() {
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-4">
           {items.map((item) => (
-            <Card key={item.id}>
+            <Card key={item.product.id}>
               <CardContent className="p-4">
                 <div className="flex gap-4">
                   <div className="w-20 h-20 relative flex-shrink-0">
                     <Image
-                      src={item.image || "/placeholder.svg"}
-                      alt={item.name}
+                      src={item.product.images[0] || "/placeholder.svg"}
+                      alt={item.product.name}
                       fill
                       className="object-cover rounded"
                       sizes="80px"
@@ -78,16 +78,16 @@ export default function CartPage() {
                   </div>
 
                   <div className="flex-1">
-                    <h3 className="font-semibold">{item.name}</h3>
-                    <p className="text-gray-600 text-sm">{item.category}</p>
-                    <p className="font-bold mt-2">${item.price}</p>
+                    <h3 className="font-semibold">{item.product.name}</h3>
+                    <p className="text-gray-600 text-sm">{item.product.category}</p>
+                    <p className="font-bold mt-2">${item.product.price}</p>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => updateQuantity(item.id, Math.max(0, item.quantity - 1))}
+                      onClick={() => updateQuantity(item.product.id, Math.max(0, item.quantity - 1))}
                     >
                       <Minus className="w-4 h-4" />
                     </Button>
@@ -95,19 +95,19 @@ export default function CartPage() {
                     <Input
                       type="number"
                       value={item.quantity}
-                      onChange={(e) => updateQuantity(item.id, Number.parseInt(e.target.value) || 0)}
+                      onChange={(e) => updateQuantity(item.product.id, Number.parseInt(e.target.value) || 0)}
                       className="w-16 text-center"
                       min="0"
                     />
 
-                    <Button variant="outline" size="sm" onClick={() => updateQuantity(item.id, item.quantity + 1)}>
+                    <Button variant="outline" size="sm" onClick={() => updateQuantity(item.product.id, item.quantity + 1)}>
                       <Plus className="w-4 h-4" />
                     </Button>
 
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => removeItem(item.id)}
+                      onClick={() => removeItem(item.product.id)}
                       className="text-red-600 hover:text-red-700"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -128,7 +128,7 @@ export default function CartPage() {
             <CardContent className="space-y-4">
               <div className="flex justify-between">
                 <span>Subtotal:</span>
-                <span>${getTotal().toFixed(2)}</span>
+                <span>${getTotalPrice().toFixed(2)}</span>
               </div>
 
               <div className="flex justify-between">
@@ -138,14 +138,14 @@ export default function CartPage() {
 
               <div className="flex justify-between">
                 <span>Tax:</span>
-                <span>${(getTotal() * 0.13).toFixed(2)}</span>
+                <span>${(getTotalPrice() * 0.13).toFixed(2)}</span>
               </div>
 
               <Separator />
 
               <div className="flex justify-between font-bold text-lg">
                 <span>Total:</span>
-                <span>${(getTotal() * 1.13).toFixed(2)}</span>
+                <span>${(getTotalPrice() * 1.13).toFixed(2)}</span>
               </div>
 
               <Button className="w-full" onClick={handleCheckout} disabled={isCheckingOut}>

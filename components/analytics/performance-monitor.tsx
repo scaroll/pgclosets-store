@@ -28,8 +28,9 @@ export function PerformanceMonitor() {
       let clsValue = 0
       const clsObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          if (!entry.hadRecentInput) {
-            clsValue += entry.value
+          const clsEntry = entry as any // Type assertion for layout-shift entries
+          if (!clsEntry.hadRecentInput) {
+            clsValue += clsEntry.value || 0
           }
         }
         console.log("[v0] CLS:", clsValue)
@@ -47,13 +48,16 @@ export function PerformanceMonitor() {
       // Monitor First Input Delay (FID)
       const fidObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          console.log("[v0] FID:", entry.processingStart - entry.startTime)
-          if (window.gtag) {
-            window.gtag("event", "web_vitals", {
-              name: "FID",
-              value: Math.round(entry.processingStart - entry.startTime),
-              event_category: "Performance",
-            })
+          const fidEntry = entry as any // Type assertion for first-input entries
+          if (fidEntry.processingStart) {
+            console.log("[v0] FID:", fidEntry.processingStart - fidEntry.startTime)
+            if (window.gtag) {
+              window.gtag("event", "web_vitals", {
+                name: "FID",
+                value: Math.round(fidEntry.processingStart - fidEntry.startTime),
+                event_category: "Performance",
+              })
+            }
           }
         }
       })
