@@ -61,7 +61,7 @@
 ### **Configured Environment Variables**
 - ✅ `NEXT_PUBLIC_GA4_MEASUREMENT_ID`: G-M01QFYXCDN
 - ✅ `JOBBER_CLIENT_HUB_ID`: 83a3d24e-c18d-441c-80d1-d85419ea28ae
-- ✅ `NEXT_PUBLIC_CONTACT_EMAIL`: info@pgclosets.ca
+- ✅ `NEXT_PUBLIC_CONTACT_EMAIL`: info@pgclosets.com
 - ✅ `NEXT_PUBLIC_CONTACT_PHONE`: (613) 262-2604
 
 ### **Required for Full Functionality**

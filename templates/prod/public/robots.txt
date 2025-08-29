@@ -4,8 +4,9 @@ Allow: /
 
 # Prioritize important pages
 Allow: /store
-Allow: /barn-doors
-Allow: /custom-walk-in-closets
+Allow: /products
+Allow: /services
+Allow: /contact
 Allow: /blog
 
 # Block admin and API endpoints

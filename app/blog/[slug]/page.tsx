@@ -295,8 +295,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const resolvedParams = await params
-  const post = blogPosts[resolvedParams.slug as keyof typeof blogPosts]
+  const { slug } = await params
+  const post = blogPosts[slug as keyof typeof blogPosts]
 
   if (!post) {
     return {
@@ -320,8 +320,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  const resolvedParams = await params
-  const post = blogPosts[resolvedParams.slug as keyof typeof blogPosts]
+  const { slug } = await params
+  const post = blogPosts[slug as keyof typeof blogPosts]
 
   if (!post) {
     notFound()
@@ -352,7 +352,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://pgclosets.com/blog/${resolvedParams.slug}`,
+              "@id": `https://pgclosets.com/blog/${slug}`,
             },
           }),
         }}
@@ -417,24 +417,22 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             Get expert advice and professional installation from Ottawa's trusted Renin dealer
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/request-work">
-              <Button
-                variant="default"
-                size="lg"
-                className="bg-white text-blue-600 hover:bg-gray-100"
-              >
-                Get Free Quote →
-              </Button>
-            </Link>
-            <Link href="/products">
-              <Button
-                variant="secondary"
-                size="lg"
-                className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
-              >
-                Browse Products
-              </Button>
-            </Link>
+            <Button
+              variant="primary"
+              size="lg"
+              href="/request-work"
+              className="bg-white text-blue-600 hover:bg-gray-100"
+            >
+              Get Free Quote →
+            </Button>
+            <Button
+              variant="secondary"
+              size="lg"
+              href="/products"
+              className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
+            >
+              Browse Products
+            </Button>
           </div>
         </div>
       </section>

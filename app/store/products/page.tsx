@@ -1,105 +1,95 @@
-export const dynamic = 'force-dynamic'
+import { arcatProducts, productCategories, getProductsByCategory, searchProducts } from "@/lib/enhanced-renin-products"
+import { ProductGrid } from "@/components/store/product-grid"
+import { ProductFilters } from "@/components/store/product-filters"
 
-import { FeaturedProducts } from "@/components/store/featured-products"
-import { reninProducts } from "@/lib/renin-products"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-
-interface SearchParams {
-  category?: string
-  search?: string
+interface ProductsPageProps {
+  searchParams: Promise<{
+    category?: string
+    search?: string
+    sort?: string
+  }>
 }
 
-export default async function ProductsPage({
-  searchParams,
-}: {
-  searchParams: Promise<SearchParams>
-}) {
-  const params = await searchParams
-  // Get all products from Renin database
-  const allBarnDoors = reninProducts.getBarnDoors()
-  const allHardware = reninProducts.getHardware()
-  
-  let filteredProducts = [...allBarnDoors, ...allHardware]
-  
-  // Apply filters
-  if (params.category) {
-    if (params.category === 'barn-doors') {
-      filteredProducts = allBarnDoors
-    } else if (params.category === 'hardware') {
-      filteredProducts = allHardware
-    }
-  }
-  
-  if (params.search) {
-    const searchTerm = params.search.toLowerCase()
-    filteredProducts = reninProducts.searchProducts(searchTerm)
+export const metadata = {
+  title: "All Products | Premium Closet Doors | PG Closets Ottawa",
+  description:
+    "Browse our complete catalog of premium Renin closet doors. Barn doors, bypass doors, bifold doors, pivot doors and hardware.",
+}
+
+export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+  const { category, search, sort } = await searchParams
+
+  let filteredProducts = arcatProducts
+
+  // Filter by category
+  if (category) {
+    filteredProducts = getProductsByCategory(category)
   }
 
-  // Create category filters
-  const categories = [
-    {
-      id: "barn-doors",
-      name: "Barn Doors",
-      slug: "barn-doors",
-      count: allBarnDoors.length
-    },
-    {
-      id: "hardware", 
-      name: "Hardware",
-      slug: "hardware",
-      count: allHardware.length
+  // Filter by search
+  if (search) {
+    filteredProducts = searchProducts(search)
+    // If category is also selected, filter the search results by category
+    if (category) {
+      filteredProducts = filteredProducts.filter((product) => product.category === category)
     }
-  ]
+  }
+
+  // Sort products
+  if (sort) {
+    switch (sort) {
+      case "price-low":
+        filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price)
+        break
+      case "price-high":
+        filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price)
+        break
+      case "name":
+        filteredProducts = [...filteredProducts].sort((a, b) => a.name.localeCompare(b.name))
+        break
+      default:
+        // Default: in stock first, then by name
+        filteredProducts = [...filteredProducts].sort((a, b) => {
+          if (a.inStock && !b.inStock) return -1
+          if (!a.inStock && b.inStock) return 1
+          return a.name.localeCompare(b.name)
+        })
+    }
+  }
+
+  const selectedCategory = category ? productCategories.find((cat) => cat.id === category) : null
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-foreground mb-2">Our Products</h1>
-        <p className="text-muted-foreground">Discover our premium collection of Renin barn doors and hardware</p>
-      </div>
+    <main className="section-apple">
+      <div className="container-apple">
+        <div className="mb-12">
+          <h1 className="text-h1 mb-4">{selectedCategory ? selectedCategory.name : "All Products"}</h1>
+          <p className="text-body-l text-pg-gray">
+            {selectedCategory
+              ? selectedCategory.description
+              : "Browse our complete catalog of premium Renin closet doors and hardware"}
+          </p>
+        </div>
 
-      <div className="flex flex-col lg:flex-row gap-8">
-        {/* Simple Category Filter */}
-        <aside className="lg:w-64 flex-shrink-0">
-          <Card>
-            <CardContent className="p-4">
-              <h3 className="font-semibold mb-4">Categories</h3>
-              <div className="space-y-2">
-                <a 
-                  href="/store/products"
-                  className={`block p-2 rounded-md transition-colors ${!params.category ? 'bg-primary text-primary-foreground' : 'hover:bg-accent'}`}
-                >
-                  All Products ({allBarnDoors.length + allHardware.length})
-                </a>
-                {categories.map((category) => (
-                  <a
-                    key={category.id}
-                    href={`/store/products?category=${category.slug}`}
-                    className={`block p-2 rounded-md transition-colors ${params.category === category.slug ? 'bg-primary text-primary-foreground' : 'hover:bg-accent'}`}
-                  >
-                    {category.name} ({category.count})
-                  </a>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </aside>
+        <div className="flex flex-col lg:flex-row gap-8">
+          <aside className="lg:w-64 flex-shrink-0">
+            <ProductFilters
+              categories={productCategories.map(cat => ({ ...cat, image: '' }))}
+              selectedCategory={category}
+              currentSearch={search}
+              currentSort={sort}
+            />
+          </aside>
 
-        <div className="flex-1">
-          <div className="mb-4 flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">
-              Showing {filteredProducts.length} products
-            </p>
-            {params.category && (
-              <Badge variant="secondary">
-                {categories.find(c => c.slug === params.category)?.name}
-              </Badge>
-            )}
+          <div className="flex-1">
+            <div className="mb-6 flex items-center justify-between">
+              <p className="text-body-s text-pg-gray">Showing {filteredProducts.length} products</p>
+            </div>
+
+            <ProductGrid products={filteredProducts as any} />
           </div>
-          <FeaturedProducts products={filteredProducts} />
         </div>
       </div>
-    </div>
+    </main>
   )
 }

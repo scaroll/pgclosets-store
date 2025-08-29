@@ -50,7 +50,7 @@ vercel env add NEXT_PUBLIC_PADDLE_ENVIRONMENT
 
 # Contact Info
 vercel env add NEXT_PUBLIC_CONTACT_EMAIL
-# Enter: info@pgclosets.ca
+# Enter: info@pgclosets.com
 
 vercel env add NEXT_PUBLIC_CONTACT_PHONE
 # Enter: (613) 262-2604
@@ -64,7 +64,7 @@ vercel --prod
 ## 📊 Analytics Setup
 
 ### Google Analytics 4
-1. Create GA4 property for pgclosets.ca
+1. Create GA4 property for pgclosets.com
 2. Get Measurement ID (G-XXXXXXXXXX)
 3. Create Measurement Protocol API Secret:
    - GA4 > Admin > Data Streams > [Your Stream] > Measurement Protocol API secrets

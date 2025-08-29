@@ -1,251 +1,125 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable modern JavaScript features
-  swcMinify: true,
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+  eslint: {
+    ignoreDuringBuilds: true,
   },
-
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  
+  // Performance optimizations
+  experimental: {
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+  },
+  
   // Image optimization
   images: {
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 31536000, // 1 year
+    unoptimized: false,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    domains: [
-      'images.renin.ca',
-      'cdn.renin.ca',
-      'www.renin.ca',
-      'paddle-payments-nl5k9vde7-peoples-group.vercel.app'
-    ],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.renin.ca',
-        pathname: '/**',
+        hostname: 'blob.vercel-storage.com',
       },
       {
         protocol: 'https',
-        hostname: '**.vercel.app',
-        pathname: '/**',
-      }
-    ]
+        hostname: '*.public.blob.vercel-storage.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.homedepot.ca',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.homedepot.ca',
+      },
+    ],
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-
-  // Performance optimizations
-  experimental: {
-    // Latest Next.js 15 experimental features
-    ppr: true,
-    inlineCss: true,
-    useCache: true,
-    
-    // Enhanced optimizations
-    optimizeCss: true,
-    optimizeServerReact: true,
-    serverComponentsExternalPackages: ['sharp'],
-    // Enable modern bundling
-    bundlePagesRouterDependencies: true,
-    // Optimize for Core Web Vitals
-    optimizePackageImports: [
-      '@radix-ui/react-accordion',
-      '@radix-ui/react-dialog',
-      '@radix-ui/react-dropdown-menu',
-      '@radix-ui/react-popover',
-      '@radix-ui/react-select',
-      '@radix-ui/react-tabs',
-      'lucide-react'
-    ]
-  },
-
-  // Webpack optimizations
-  webpack: (config, { dev, isServer }) => {
-    // Production optimizations
-    if (!dev) {
-      config.optimization = {
-        ...config.optimization,
-        moduleIds: 'deterministic',
-        sideEffects: false,
-        usedExports: true,
-        providedExports: true,
-      }
-    }
-
-    // Optimize bundle splitting
-    if (!isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-            priority: 10,
-          },
-          common: {
-            name: 'common',
-            minChunks: 2,
-            chunks: 'all',
-            priority: 5,
-            reuseExistingChunk: true,
-          },
-          ui: {
-            test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
-            name: 'ui',
-            chunks: 'all',
-            priority: 15,
-          },
-          icons: {
-            test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
-            name: 'icons',
-            chunks: 'all',
-            priority: 15,
-          }
-        }
-      }
-    }
-
-    return config
-  },
-
-  // Headers for performance and security
+  
+  // Compression
+  compress: true,
+  
+  // Headers for performance and SEO
   async headers() {
     return [
       {
         source: '/(.*)',
         headers: [
           {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on'
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
           },
           {
             key: 'X-Frame-Options',
-            value: 'DENY'
+            value: 'DENY',
           },
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains',
           },
           {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin'
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://blob.vercel-storage.com https://d3ey4dbjkt2f6s.cloudfront.net; style-src 'self' 'unsafe-inline' https://d3ey4dbjkt2f6s.cloudfront.net; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://blob.vercel-storage.com https://clienthub.getjobber.com; media-src 'self' blob: https:; object-src 'none'; base-uri 'self'; form-action 'self' https://clienthub.getjobber.com; frame-ancestors 'none'; frame-src https://clienthub.getjobber.com;",
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()'
-          }
-        ]
-      },
-      {
-        source: '/images/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
-      },
-      {
-        source: '/renin_images/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
+            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+          },
+        ],
       },
       {
         source: '/_next/static/(.*)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
       },
       {
         source: '/sitemap.xml',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=3600, s-maxage=3600'
-          }
-        ]
+            value: 'public, max-age=86400, s-maxage=86400',
+          },
+          {
+            key: 'Content-Type',
+            value: 'application/xml',
+          },
+        ],
       },
       {
         source: '/robots.txt',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=86400'
-          }
-        ]
-      }
+            value: 'public, max-age=86400, s-maxage=86400',
+          },
+          {
+            key: 'Content-Type',
+            value: 'text/plain',
+          },
+        ],
+      },
     ]
   },
-
-  // Redirects for SEO
-  async redirects() {
-    return [
-      {
-        source: '/products/:slug',
-        destination: '/store/products/:slug',
-        permanent: true,
-      },
-      {
-        source: '/product/:slug',
-        destination: '/store/products/:slug',
-        permanent: true,
-      },
-      {
-        source: '/barn-door/:slug',
-        destination: '/store/products/:slug',
-        permanent: true,
-      },
-      {
-        source: '/hardware/:slug',
-        destination: '/store/products/:slug',
-        permanent: true,
-      }
-    ]
-  },
-
-  // Rewrites for clean URLs
-  async rewrites() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap'
-      },
-      {
-        source: '/robots.txt',
-        destination: '/api/robots'
-      }
-    ]
-  },
-
-  // Power optimizations
-  poweredByHeader: false,
-  compress: true,
-  
-  // Output optimizations
-  output: 'standalone',
-  
-  // TypeScript config
-  typescript: {
-    ignoreBuildErrors: true, // Temporarily ignore for deployment
-  },
-
-  // ESLint config  
-  eslint: {
-    ignoreDuringBuilds: false,
-  },
-
-  // Environment variables
-  env: {
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://paddle-payments-nl5k9vde7-peoples-group.vercel.app',
-  }
 }
 
 export default nextConfig
