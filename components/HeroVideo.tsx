@@ -62,7 +62,6 @@ export default function HeroVideo() {
         poster="/renin-closet-doors-thumbnail.png"
         onLoadStart={() => console.log("[v0] Video loading started")}
         style={{ willChange: "opacity" }}
-        fetchPriority="high"
         aria-label="Hero video showcasing premium Renin closet doors and professional installation"
       >
         <source
