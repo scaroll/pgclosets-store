@@ -2,8 +2,14 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { medusaClient } from "@/lib/medusa-client"
-import type { Cart } from "@medusajs/medusa"
+// Using custom cart type since @medusajs/medusa doesn't export Cart type
+interface Cart {
+  id: string
+  subtotal: number
+  tax_total: number
+  shipping_total: number
+  total: number
+}
 
 interface MedusaPaymentSectionProps {
   cart: Cart | null
@@ -27,15 +33,8 @@ export function MedusaPaymentSection({
   const [selectedPaymentProvider, setSelectedPaymentProvider] = useState<string>("")
   const [processing, setProcessing] = useState(false)
 
-  const handlePaymentProviderSelect = async (providerId: string) => {
-    if (!cart?.id) return
-
-    try {
-      setSelectedPaymentProvider(providerId)
-      await medusaClient.setPaymentSession(cart.id, providerId)
-    } catch (error) {
-      console.error("Error setting payment session:", error)
-    }
+  const handlePaymentProviderSelect = (providerId: string) => {
+    setSelectedPaymentProvider(providerId)
   }
 
   const handlePayment = async () => {

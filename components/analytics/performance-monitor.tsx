@@ -75,8 +75,3 @@ export function PerformanceMonitor() {
   return null
 }
 
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void
-  }
-}
