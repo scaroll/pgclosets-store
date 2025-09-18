@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { notFound } from "next/navigation"
 
@@ -386,8 +387,15 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </header>
 
         {/* Featured Image */}
-        <div className="aspect-[16/9] bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg overflow-hidden mb-12">
-          <img src={post.image || "/placeholder.svg"} alt={post.title} className="w-full h-full object-cover" />
+        <div className="aspect-[16/9] bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg overflow-hidden mb-12 relative">
+          <Image 
+            src={post.image || "/placeholder.svg"} 
+            alt={post.title} 
+            fill
+            className="object-cover" 
+            sizes="(max-width: 768px) 100vw, 100vw"
+            priority={true}
+          />
         </div>
 
         {/* Article Content */}

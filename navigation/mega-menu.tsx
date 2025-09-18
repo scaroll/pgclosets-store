@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -274,11 +275,12 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
           >
             <Card className="card-luxury-premium overflow-hidden group hover:shadow-luxury-strong transition-all duration-500 hover:scale-[1.02] transform-gpu">
               <div className="aspect-[4/3] overflow-hidden relative">
-                <img
+                <Image
                   src={menu.featured.image || "/placeholder.svg"}
                   alt={`${menu.featured.name} - Premium custom closet solutions showcase featuring professional installation and design`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  loading="eager"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  priority={true}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
 

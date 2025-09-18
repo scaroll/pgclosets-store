@@ -3,6 +3,13 @@
 import { useEffect } from "react"
 import Script from "next/script"
 
+// Global gtag type declaration
+declare global {
+  interface Window {
+    gtag: (command: string, action: string, parameters?: any) => void
+  }
+}
+
 interface PerformanceAnalyticsProps {
   gaId: string
 }
@@ -12,7 +19,6 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
     // Track Core Web Vitals
     const trackWebVitals = () => {
       if (typeof window !== "undefined" && "gtag" in window) {
-        // @ts-ignore
         const gtag = window.gtag
 
         // Track Largest Contentful Paint (LCP)
@@ -91,7 +97,6 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
 export function SEOAnalytics({ gaId }: PerformanceAnalyticsProps) {
   useEffect(() => {
     if (typeof window !== "undefined" && "gtag" in window) {
-      // @ts-ignore
       const gtag = window.gtag
 
       // Track SEO-specific events
@@ -163,7 +168,6 @@ export function SEOAnalytics({ gaId }: PerformanceAnalyticsProps) {
 export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
   useEffect(() => {
     if (typeof window !== "undefined" && "gtag" in window) {
-      // @ts-ignore
       const gtag = window.gtag
 
       // Track SEO conversion events
@@ -253,10 +257,8 @@ export function SpeedInsights() {
       src="https://unpkg.com/@vercel/speed-insights@1.0.12/dist/index.js"
       strategy="afterInteractive"
       onLoad={() => {
-        // @ts-ignore
-        if (typeof window !== "undefined" && window.si) {
-          // @ts-ignore
-          window.si("track")
+        if (typeof window !== "undefined" && (window as any).si) {
+          (window as any).si("track")
         }
       }}
     />

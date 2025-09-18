@@ -16,7 +16,7 @@ Allow: /contact/
 Allow: /faq/
 
 # Sitemap location
-Sitemap: https://pgclosets.com/sitemap.xml
+Sitemap: https://www.pgclosets.com/sitemap.xml
 
 # Crawl delay (optional)
 Crawl-delay: 1

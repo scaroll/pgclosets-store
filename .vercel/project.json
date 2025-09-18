@@ -1,5 +1,15 @@
 {
-  "projectId": "prj_JjLjLHkMkyBT1n6KH7B2oOuFMkbK",
+  "projectId": "prj_6ANgYbAznEZ15GxIKc3snbPf7DEf",
   "orgId": "team_Xzht85INUsoW05STx9DMMyLX",
-  "projectName": "pgclosets-store"
+  "settings": {
+    "createdAt": 1757185213252,
+    "framework": "nextjs",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": "npm run build",
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "22.x"
+  }
 }

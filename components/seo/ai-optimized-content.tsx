@@ -1,3 +1,5 @@
+import { BUSINESS_INFO, formatServiceAreas } from '@/lib/business-config'
+
 interface LocalBusinessInfoProps {
   businessName: string
   address: string
@@ -26,12 +28,12 @@ export function LocalBusinessInfo({
   businessHours,
 }: LocalBusinessInfoProps) {
   return (
-    <div className="sr-only" aria-hidden="true">
-      {/* Hidden content for AI assistants and voice search */}
+    <div className="visually-hidden">
+      {/* SEO-optimized content for search engines and voice assistants */}
       <div itemScope itemType="https://schema.org/LocalBusiness">
         <span itemProp="name">{businessName}</span>
         <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-          <span itemProp="streetAddress">{address}</span>
+          <span itemProp="addressLocality">{address}</span>
         </div>
         <span itemProp="telephone">{phone}</span>
         <span itemProp="email">{email}</span>
@@ -54,8 +56,8 @@ export function LocalBusinessInfo({
 
 export function VoiceSearchOptimized({ questions }: VoiceSearchOptimizedProps) {
   return (
-    <div className="sr-only" aria-hidden="true">
-      {/* Optimized content for voice search queries */}
+    <div className="visually-hidden">
+      {/* Voice search and FAQ content optimized for search engines */}
       {questions.map((item, index) => (
         <div key={index} itemScope itemType="https://schema.org/Question">
           <h3 itemProp="name">{item.question}</h3>
@@ -63,7 +65,7 @@ export function VoiceSearchOptimized({ questions }: VoiceSearchOptimizedProps) {
             <div itemProp="text">{item.answer}</div>
           </div>
           {item.keywords.map((keyword, keyIndex) => (
-            <span key={keyIndex} className="hidden">
+            <span key={keyIndex} className="visually-hidden" aria-label="SEO keyword">
               {keyword}
             </span>
           ))}
@@ -114,46 +116,19 @@ export function AISearchOptimizedContent() {
   ]
 
   const businessInfo = {
-    businessName: "PG Closets - Official Renin Dealer",
-    address: "456 Sparks Street, Ottawa, ON K1P 5E9",
-    phone: "1-800-PG-CLOSET",
-    email: "hello@pgclosets.com",
-    serviceAreas: [
-      "Ottawa",
-      "Kanata",
-      "Barrhaven",
-      "Orleans",
-      "Nepean",
-      "Gloucester",
-      "Vanier",
-      "Rockcliffe Park",
-      "Westboro",
-      "Hintonburg",
-      "The Glebe",
-      "Old Ottawa South",
-      "Centretown",
-      "ByWard Market",
-      "Gatineau",
-      "Hull",
-      "Aylmer",
-      "Chelsea",
-      "Wakefield",
-      "Manotick",
-      "Stittsville",
-      "Carp",
-      "Dunrobin",
-      "Constance Bay",
-      "Eastern Ontario",
-      "National Capital Region",
-    ],
+    businessName: BUSINESS_INFO.fullName,
+    address: BUSINESS_INFO.address.full,
+    phone: BUSINESS_INFO.phone,
+    email: BUSINESS_INFO.email,
+    serviceAreas: BUSINESS_INFO.serviceAreas,
     businessHours: {
-      Monday: "9:00 AM - 6:00 PM",
-      Tuesday: "9:00 AM - 6:00 PM",
-      Wednesday: "9:00 AM - 6:00 PM",
-      Thursday: "9:00 AM - 6:00 PM",
-      Friday: "9:00 AM - 6:00 PM",
-      Saturday: "10:00 AM - 4:00 PM",
-      Sunday: "Closed",
+      Monday: BUSINESS_INFO.hours.monday,
+      Tuesday: BUSINESS_INFO.hours.tuesday,
+      Wednesday: BUSINESS_INFO.hours.wednesday,
+      Thursday: BUSINESS_INFO.hours.thursday,
+      Friday: BUSINESS_INFO.hours.friday,
+      Saturday: BUSINESS_INFO.hours.saturday,
+      Sunday: BUSINESS_INFO.hours.sunday,
     },
   }
 

@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-// all in fixtures is set to tailwind v3 as interims solutions
+// Performance-optimized Tailwind config for PG Closets Store
 
 const config: Config = {
     darkMode: ["class"],
@@ -8,7 +8,21 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./styles/**/*.{css,scss}",
     "*.{js,ts,jsx,tsx,mdx}"
+  ],
+  // Safelist critical classes to prevent purging
+  safelist: [
+    'animate-pulse',
+    'animate-shimmer',
+    'animate-fade-in',
+    'animate-slide-up',
+    'animate-scale-in',
+    'gpu-accelerated',
+    'will-change-transform',
+    'will-change-opacity',
+    'aspect-square',
+    'aspect-video'
   ],
   theme: {
   	extend: {
@@ -85,11 +99,31 @@ const config: Config = {
   				to: {
   					height: '0'
   				}
+  			},
+  			shimmer: {
+  				'0%': { backgroundPosition: '-200% 0' },
+  				'100%': { backgroundPosition: '200% 0' }
+  			},
+  			'fade-in': {
+  				'0%': { opacity: '0', transform: 'translateY(20px)' },
+  				'100%': { opacity: '1', transform: 'translateY(0)' }
+  			},
+  			'slide-up': {
+  				'0%': { opacity: '0', transform: 'translateY(40px)' },
+  				'100%': { opacity: '1', transform: 'translateY(0)' }
+  			},
+  			'scale-in': {
+  				'0%': { opacity: '0', transform: 'scale(0.95)' },
+  				'100%': { opacity: '1', transform: 'scale(1)' }
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+  			shimmer: 'shimmer 2s infinite ease-in-out',
+  			'fade-in': 'fade-in 0.5s ease-out',
+  			'slide-up': 'slide-up 0.6s ease-out',
+  			'scale-in': 'scale-in 0.4s ease-out'
   		}
   	}
   },

@@ -1,70 +1,82 @@
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import ClientLayout from "./clientLayout"
+import PerformanceMonitor from "@/components/performance/performance-monitor"
+import { BUSINESS_INFO } from "@/lib/business-config"
 import type React from "react"
 import { Suspense } from "react"
 import Script from "next/script"
 // import { Analytics } from "@vercel/analytics/react"
 // import { SpeedInsights } from "@vercel/speed-insights/next"
 
+// Optimized font loading
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
+})
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.pgclosets.com"),
+  metadataBase: new URL(BUSINESS_INFO.urls.main),
   title: {
-    default: "PG Closets | Custom Closets & Storage Solutions in Ottawa",
-    template: "%s | PG Closets",
+    default: `${BUSINESS_INFO.name} | Custom Closets & Storage Solutions in Ottawa`,
+    template: `%s | ${BUSINESS_INFO.name}`,
   },
   description:
-    "Custom closets, pantries, and storage solutions in Ottawa and the NCR. Professional design, installation, and service by local experts. Request your free quote today.",
+    "Custom closets, pantries & storage solutions in Ottawa. Professional design & installation by local experts.",
   keywords:
     "custom closets Ottawa, closet design Ottawa, storage solutions Ottawa, pantry organization, garage storage, closet installation, home organization Ottawa, custom storage NCR",
-  authors: [{ name: "PG Closets" }],
-  creator: "PG Closets",
-  publisher: "PG Closets",
+  authors: [{ name: BUSINESS_INFO.name }],
+  creator: BUSINESS_INFO.name,
+  publisher: BUSINESS_INFO.name,
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
-    siteName: "PG Closets",
-    url: "https://www.pgclosets.com",
-    title: "PG Closets | Custom Closets & Storage Solutions in Ottawa",
+    siteName: BUSINESS_INFO.name,
+    url: BUSINESS_INFO.urls.main,
+    title: `${BUSINESS_INFO.name} | Custom Closets & Storage Solutions in Ottawa`,
     description:
-      "Custom closets, pantries, and storage solutions in Ottawa and the NCR. Professional design, installation, and service by local experts.",
+      "Custom closets, pantries & storage solutions in Ottawa. Professional design & installation by local experts.",
     locale: "en_CA",
     images: [
       {
-        url: "/og-image.jpg",
+        url: BUSINESS_INFO.urls.ogImage,
         width: 1200,
         height: 630,
-        alt: "PG Closets - Custom Storage Solutions Ottawa",
+        alt: `${BUSINESS_INFO.name} - Custom Storage Solutions Ottawa`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PG Closets | Custom Closets & Storage Solutions in Ottawa",
+    title: `${BUSINESS_INFO.name} | Custom Closets & Storage Solutions in Ottawa`,
     description:
-      "Custom closets, pantries, and storage solutions in Ottawa and the NCR. Professional design, installation, and service by local experts.",
-    images: ["/og-image.jpg"],
+      "Custom closets, pantries & storage solutions in Ottawa. Professional design & installation by local experts.",
+    images: [BUSINESS_INFO.urls.ogImage],
     creator: "@pgclosets",
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GA_ID,
   },
   other: {
-    "geo.region": "CA-ON",
-    "geo.placename": "Ottawa",
-    "geo.position": "45.4215;-75.6972",
-    ICBM: "45.4215, -75.6972",
+    "geo.region": `CA-${BUSINESS_INFO.address.province}`,
+    "geo.placename": BUSINESS_INFO.address.city,
+    "geo.position": `${BUSINESS_INFO.coordinates.latitude};${BUSINESS_INFO.coordinates.longitude}`,
+    ICBM: `${BUSINESS_INFO.coordinates.latitude}, ${BUSINESS_INFO.coordinates.longitude}`,
   },
     generator: 'v0.app'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={inter.variable}>
+      <body className={inter.className}>
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
             <Script
@@ -88,6 +100,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Suspense fallback={<div className="min-h-screen bg-gray-50 animate-pulse" />}>
           <ClientLayout>{children}</ClientLayout>
         </Suspense>
+
+        {/* Performance Monitoring */}
+        <PerformanceMonitor />
 
         {/* <Analytics /> */}
         {/* <SpeedInsights /> */}
