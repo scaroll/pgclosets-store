@@ -3,10 +3,10 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import PgHeader from "@/components/PgHeader"
-import PgFooter from "@/components/PgFooter"
-import { Button } from "@/components/ui/button"
-import { getProductImages, handleImageError } from "@/lib/product-utils"
+import PgHeader from "../../components/PgHeader"
+import PgFooter from "../../components/PgFooter"
+import { Button } from "../../../components/ui/button"
+import { getProductImages, handleImageError } from "../../lib/product-utils"
 
 interface Product {
   slug: string

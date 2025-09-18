@@ -1,12 +1,12 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "../../components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card"
+import { Badge } from "../../components/ui/badge"
 import { User, Package, MapPin, CreditCard, Settings, Heart, ArrowRight, ShoppingBag, Clock, Star } from "lucide-react"
 import Link from "next/link"
-import { PageWrapper } from "@/components/layout/page-wrapper"
-import { PageHeader } from "@/components/layout/page-header"
-import { PageContainer } from "@/components/layout/page-container"
-import { H1, Body } from "@/components/typography/typography"
+import { PageWrapper } from "../../components/layout/page-wrapper"
+import { PageHeader } from "../../components/layout/page-header"
+import { PageContainer } from "../../components/layout/page-container"
+import { H1, Body } from "../../components/typography/typography"
 
 export default function AccountPage() {
   const recentOrders = [

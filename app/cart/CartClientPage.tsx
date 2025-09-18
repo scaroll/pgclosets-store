@@ -1,14 +1,14 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "../../components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
+import { Badge } from "../../components/ui/badge"
+import { Input } from "../../components/ui/input"
+import { Separator } from "../../components/ui/separator"
 import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Home, Truck, Shield, Gift, Tag } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
-import { useCart } from "@/contexts/CartContext"
+import { useCart } from "../../contexts/CartContext"
 
 export default function CartClientPage() {
   const { items: cartItems, updateQuantity, removeItem, subtotal, tax, total } = useCart()

@@ -1,4 +1,4 @@
-import { BlobStorageViewer } from "@/components/BlobStorageViewer"
+import { BlobStorageViewer } from "../../components/BlobStorageViewer"
 
 export default function StorageCheckPage() {
   return (

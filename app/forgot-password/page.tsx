@@ -3,12 +3,12 @@
 import type React from "react"
 
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { PageWrapper } from "@/components/layout/page-wrapper"
-import { PageHeader } from "@/components/layout/page-header"
+import { Button } from "../../components/ui/button"
+import { Input } from "../../components/ui/input"
+import { Label } from "../../components/ui/label"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card"
+import { PageWrapper } from "../../components/layout/page-wrapper"
+import { PageHeader } from "../../components/layout/page-header"
 import { ArrowLeft, Mail, CheckCircle } from "lucide-react"
 import { useState } from "react"
 

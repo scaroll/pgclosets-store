@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "../../components/ui/button"
 
 export const metadata = {
   title: "Closet Doors Nepean | Professional Installation | PG Closets",

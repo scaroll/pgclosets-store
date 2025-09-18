@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "../../components/ui/button"
 
 export const metadata = {
   title: "Closet Door Blog | Tips & Guides | PG Closets Ottawa",

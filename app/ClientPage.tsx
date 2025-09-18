@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { LocalBusinessJSONLD } from "@/lib/seo"
-import { Button } from "@/components/ui/button"
+import { LocalBusinessJSONLD } from "../lib/seo"
+import { Button } from "../components/ui/button"
 
 export default function ClientPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

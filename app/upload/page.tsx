@@ -1,9 +1,9 @@
 "use client"
 
-import { SecureImageUploader } from "@/components/SecureImageUploader"
+import { SecureImageUploader } from "../../components/SecureImageUploader"
 import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
+import { Button } from "../../components/ui/button"
 import { ArrowLeft, ImageIcon } from "lucide-react"
 import Link from "next/link"
 

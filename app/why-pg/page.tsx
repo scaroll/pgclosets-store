@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
-import PgHeader from "@/components/PgHeader"
-import PgFooter from "@/components/PgFooter"
-import { Button } from "@/components/ui/button"
+import PgHeader from "../../components/PgHeader"
+import PgFooter from "../../components/PgFooter"
+import { Button } from "../../components/ui/button"
 import Link from "next/link"
 
 export const metadata: Metadata = {

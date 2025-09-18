@@ -1,8 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
 import { Shield, Eye, Lock, Database } from "lucide-react"
-import PgHeader from "@/components/PgHeader"
-import PgFooter from "@/components/PgFooter"
-import { H4, Body, BodySmall } from "@/components/typography/typography"
+import PgHeader from "../../components/PgHeader"
+import PgFooter from "../../components/PgFooter"
+import { H4, Body, BodySmall } from "../../components/typography/typography"
 
 export default function PrivacyPolicyPage() {
   return (

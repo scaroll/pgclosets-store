@@ -1,5 +1,5 @@
 import type React from "react"
-import { Sidebar } from "@/components/admin/AdminLayout"
+import { Sidebar } from "../../components/admin/AdminLayout"
 
 export default function AdminLayout({
   children,

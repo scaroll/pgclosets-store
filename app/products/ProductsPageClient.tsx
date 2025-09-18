@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import PgHeader from "@/components/PgHeader"
-import PgFooter from "@/components/PgFooter"
-import { ProductFilters } from "@/components/store/product-filters"
-import { Button } from "@/components/ui/button"
+import PgHeader from "../../components/PgHeader"
+import PgFooter from "../../components/PgFooter"
+import { ProductFilters } from "../../components/store/product-filters"
+import { Button } from "../../components/ui/button"
 
 const products = [
   // Bypass Doors

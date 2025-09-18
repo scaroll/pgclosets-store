@@ -1,10 +1,10 @@
 "use client"
 import Image from "next/image"
 import Link from "next/link"
-import { useCart } from "@/lib/useCart"
+import { useCart } from "../../lib/useCart"
 import { useRouter } from "next/navigation"
 import { useEffect, useState, Suspense } from "react"
-import { Button } from "@/components/ui/button"
+import { Button } from "../../components/ui/button"
 
 function SimpleCartContent() {
   const { items, remove, clear, setQty } = useCart()
