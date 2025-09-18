@@ -15,6 +15,9 @@
     "perf": "npm run analyze-bundle && npm run build"
   },
   "dependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5",
     "@hookform/resolvers": "^3.9.0",
     "@medusajs/framework": "^2.9.0",
     "@medusajs/medusa": "latest",
@@ -86,14 +89,11 @@
     "@tailwindcss/typography": "^0.5.15",
     "@types/date-fns": "^2.6.0",
     "@types/node": "^22",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.2.4",
     "postcss": "^8.5",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5",
     "webpack-bundle-analyzer": "^4.10.2"
   }
 }
