@@ -1,13 +1,13 @@
 "use client"
 
-import { Button } from "../../../components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card"
-import { Input } from "../../../components/ui/input"
-import { Label } from "../../../components/ui/label"
-import { Textarea } from "../../../components/ui/textarea"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 import { User, Mail, Phone, Calendar, MapPin, ArrowLeft } from "lucide-react"
 import Link from "next/link"
-import { FileUpload } from "../../../components/ui/file-upload"
+import { FileUpload } from "@/components/ui/file-upload"
 import { useState } from "react"
 
 export default function ProfilePage() {
