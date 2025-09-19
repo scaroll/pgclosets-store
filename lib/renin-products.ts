@@ -1,4 +1,7 @@
 import productsData from "./renin-products-database.json"
+import type { ArcatProduct } from "./enhanced-renin-products"
+
+type GenericProduct = Product | ArcatProduct | (Product & Record<string, unknown>) | Record<string, unknown>
 
 export interface Product {
   id: string
@@ -87,18 +90,99 @@ export function calculateTax(price: number, province = "ON"): number {
 }
 
 // Cart compatibility helpers
-export function toCartProduct(product: Product): import('./stores/cart-store').Product {
+const resolveImage = (product: GenericProduct): string | undefined => {
+  const potentialImages = [
+    product && typeof product === "object" ? (product as any).image : undefined,
+    product && typeof product === "object" && Array.isArray((product as any).images)
+      ? (product as any).images[0]
+      : undefined,
+    product && typeof product === "object" ? (product as any).homeDepotImage : undefined,
+    product && typeof product === "object" && Array.isArray((product as any).arcatImages)
+      ? (product as any).arcatImages[0]
+      : undefined,
+  ]
+
+  return potentialImages.find((img): img is string => typeof img === "string" && img.length > 0)
+}
+
+const normalizeSpecifications = (product: GenericProduct): Record<string, string> | undefined => {
+  if (!product || typeof product !== "object") return undefined
+  const specs = (product as any).specifications
+
+  if (!specs || typeof specs !== "object") return undefined
+
+  return Object.entries(specs).reduce<Record<string, string>>((acc, [key, value]) => {
+    if (value === undefined || value === null) return acc
+    acc[key] = typeof value === "string" ? value : String(value)
+    return acc
+  }, {})
+}
+
+const resolveVariants = (product: GenericProduct) => {
+  if (!product || typeof product !== "object") return undefined
+  const variants = (product as any).variants
+  if (Array.isArray(variants)) {
+    return variants
+  }
+  return undefined
+}
+
+const resolveCategory = (product: GenericProduct): string => {
+  if (!product || typeof product !== "object") return "general"
+  const category = (product as any).category ?? (product as any).subcategory
+  return typeof category === "string" && category.length > 0 ? category : "general"
+}
+
+const resolveInStock = (product: GenericProduct): boolean => {
+  if (!product || typeof product !== "object") return true
+  const value = (product as any).inStock
+  return typeof value === "boolean" ? value : true
+}
+
+const resolveId = (product: GenericProduct): string => {
+  if (!product || typeof product !== "object") {
+    return Math.random().toString(36).slice(2)
+  }
+
+  const rawId = (product as any).id ?? (product as any).slug ?? (product as any).name
+  return typeof rawId === "string" ? rawId : String(rawId ?? Math.random().toString(36).slice(2))
+}
+
+const resolvePrice = (product: GenericProduct): number => {
+  if (!product || typeof product !== "object") return 0
+  const price = (product as any).price
+  if (typeof price === "number" && !Number.isNaN(price)) {
+    return price
+  }
+  const numeric = Number(price)
+  return Number.isFinite(numeric) ? numeric : 0
+}
+
+const resolveDescription = (product: GenericProduct): string => {
+  if (!product || typeof product !== "object") return ""
+  const description = (product as any).description
+  return typeof description === "string" ? description : ""
+}
+
+export function toCartProduct(product: GenericProduct): import('./stores/cart-store').Product {
+  const specifications = normalizeSpecifications(product)
+  const id = resolveId(product)
+  const sku =
+    product && typeof product === "object" && typeof (product as any).sku === "string"
+      ? ((product as any).sku as string)
+      : `SKU-${id}`
+
   return {
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    image: product.image || product.images[0] || '/placeholder.svg',
-    description: product.description,
-    category: product.category,
-    inStock: product.inStock,
-    sku: product.sku || `SKU-${product.id}`,
-    specifications: product.specifications,
-    variants: product.variants
+    id,
+    name: (product as any)?.name ?? "Unknown Product",
+    price: resolvePrice(product),
+    image: resolveImage(product) ?? "/placeholder.svg",
+    description: resolveDescription(product),
+    category: resolveCategory(product),
+    inStock: resolveInStock(product),
+    sku,
+    specifications,
+    variants: resolveVariants(product),
   }
 }
 

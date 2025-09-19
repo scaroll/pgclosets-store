@@ -74,7 +74,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         <div className="flex flex-col lg:flex-row gap-8">
           <aside className="lg:w-64 flex-shrink-0">
             <ProductFilters
-              categories={productCategories.map(cat => ({ ...cat, image: '' }))}
+              categories={productCategories}
               selectedCategory={category}
               currentSearch={search}
               currentSort={sort}

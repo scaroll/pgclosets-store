@@ -2,11 +2,11 @@
 
 import { useRouter, useSearchParams } from "next/navigation"
 import { Suspense } from "react"
-import type { Category } from "@/lib/renin-products"
+import type { ProductCategory } from "@/lib/enhanced-renin-products"
 import { Button } from "../ui/button"
 
 interface ProductFiltersProps {
-  categories: Category[]
+  categories: ProductCategory[]
   selectedCategory?: string
   currentSearch?: string
   currentSort?: string

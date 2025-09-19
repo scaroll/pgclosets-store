@@ -1,4 +1,4 @@
-import type { ArcatProduct } from "../../lib/enhanced-renin-products"
+import type { ArcatProduct } from "@/lib/enhanced-renin-products"
 import { ProductCard } from "./product-card"
 
 interface FeaturedProductsProps {

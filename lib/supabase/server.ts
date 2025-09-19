@@ -1,18 +1,31 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
+type FallbackResponse<T = unknown> = Promise<{ data: T | null; error: { message: string } }>
+
+const createFallbackClient = () => {
+  const buildResponse = <T = unknown>(): FallbackResponse<T> =>
+    Promise.resolve({ data: null, error: { message: 'Supabase not configured' } })
+
+  return {
+    from: () => ({
+      select: () => ({
+        limit: () => buildResponse(),
+      }),
+      insert: () => buildResponse(),
+      upsert: () => buildResponse(),
+      update: () => buildResponse(),
+      delete: () => buildResponse(),
+    }),
+  } as any
+}
+
 export function createClient() {
   const cookieStore = cookies()
-  
+
   // Fallback for when Supabase is not configured
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
-    return {
-      from: () => ({
-        select: () => ({
-          limit: () => Promise.resolve({ data: null, error: { message: 'Supabase not configured' } })
-        })
-      })
-    } as any
+    return createFallbackClient()
   }
 
   return createServerClient(

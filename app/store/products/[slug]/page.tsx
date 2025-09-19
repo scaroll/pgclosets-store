@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { getProductBySlug, getProductsByCategory } from "@/lib/renin-products"
+import { getProductBySlug, getProductsByCategory } from "@/lib/enhanced-renin-products"
 import { ProductDetailClient } from "@/components/store/product-detail-client"
 import { RelatedProducts } from "@/components/store/related-products"
 
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
     openGraph: {
       title: product.name,
       description: product.description,
-      images: product.images,
+      images: (product.arcatImages.length > 0 ? product.arcatImages : [product.homeDepotImage]).filter(Boolean),
     },
   }
 }

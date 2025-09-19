@@ -1,7 +1,7 @@
 "use client"
 
-import type { ArcatProduct } from "../../lib/enhanced-renin-products"
-import { formatPrice } from "../../lib/enhanced-renin-products"
+import type { ArcatProduct } from "@/lib/enhanced-renin-products"
+import { formatPrice } from "@/lib/enhanced-renin-products"
 import { Button } from "../ui/button"
 import { AddToCartButton } from "../ui/add-to-cart-button"
 import { RequestQuoteButton } from "../ui/request-quote-button"

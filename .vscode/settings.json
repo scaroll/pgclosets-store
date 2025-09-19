@@ -1,0 +1,158 @@
+{
+  // Codex & AI Optimization Settings
+  "continue.enableCodeLens": true,
+  "continue.enableInlineCompletion": true,
+  "continue.enableQuickActions": true,
+  "continue.maxTokens": 2048,
+  "continue.temperature": 0.3,
+  "continue.enableDebugger": true,
+
+  // Google Gemini Code Assist Settings
+  "gemini.enableCodeCompletion": true,
+  "gemini.enableInlineChat": true,
+  "gemini.maxTokens": 8192,
+  "gemini.temperature": 0.2,
+  "gemini.enableSmartSuggestions": true,
+
+  // Claude Code Integration
+  "claude.enableInlineCompletion": true,
+  "claude.maxContextLength": 200000,
+  "claude.temperature": 0.1,
+  "claude.enableCodeAnalysis": true,
+  "claude.enableOptimizations": true,
+
+  // Editor Settings for AI
+  "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.showToolbar": "always",
+  "editor.suggest.showStatusBar": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "editor.quickSuggestionsDelay": 50,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.parameterHints.enabled": true,
+  "editor.wordBasedSuggestions": "allDocuments",
+
+  // TypeScript & JavaScript AI Enhancement
+  "typescript.suggest.enabled": true,
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.suggest.includeCompletionsForModuleExports": true,
+  "typescript.suggest.includeCompletionsWithSnippetText": true,
+  "javascript.suggest.enabled": true,
+  "javascript.suggest.autoImports": true,
+  "javascript.suggest.completeFunctionCalls": true,
+
+  // File Performance for AI Processing
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.next/**": true,
+    "**/dist/**": true,
+    "**/build/**": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/build": true
+  },
+
+  // AI Context Optimization
+  "files.associations": {
+    "*.tsx": "typescriptreact",
+    "*.ts": "typescript",
+    "*.jsx": "javascriptreact",
+    "*.js": "javascript"
+  },
+
+  // Code Intelligence
+  "editor.semanticHighlighting.enabled": true,
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true
+  },
+
+  // AI-Friendly Formatting
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+
+  // Performance Settings
+  "extensions.experimental.affinity": {
+    "continue.continue": 1,
+    "google.geminicodeassist": 1
+  },
+
+  // Terminal Integration for AI CLI
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.persistentSessionReviveProcess": "onExit",
+  "terminal.integrated.enableVisualBell": false,
+
+  // Workspace Trust for AI Features
+  "security.workspace.trust.enabled": true,
+  "security.workspace.trust.banner": "never",
+  "security.workspace.trust.startupPrompt": "never",
+
+  // AI Debugging Enhancement
+  "debug.allowBreakpointsEverywhere": true,
+  "debug.showInlineBreakpointCandidates": true,
+  "debug.showBreakpointsInOverviewRuler": true,
+
+  // Next.js Specific AI Optimization
+  "nextjs.enableIntelliSense": true,
+  "nextjs.enableAutoImport": true,
+
+  // Tailwind CSS AI Enhancement
+  "tailwindCSS.includeLanguages": {
+    "typescript": "typescript",
+    "typescriptreact": "typescriptreact",
+    "javascript": "javascript",
+    "javascriptreact": "javascriptreact"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+
+  // Git Integration for AI Context
+  "git.enableSmartCommit": true,
+  "git.suggestSmartCommit": true,
+  "git.enableCommitSigning": false,
+
+  // AI Error Lens
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
+  "errorLens.followCursor": "allLines",
+
+  // Bracket Pair Colorization for AI Readability
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+
+  // Minimap for AI Context Awareness
+  "editor.minimap.enabled": true,
+  "editor.minimap.showSlider": "always",
+
+  // AI-Optimized Font and Display
+  "editor.fontFamily": "'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', monospace",
+  "editor.fontSize": 13,
+  "editor.lineHeight": 1.6,
+  "editor.letterSpacing": 0.5,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+
+  // Zen Mode for AI Focus
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.hideTabs": false,
+  "zenMode.centerLayout": false
+}

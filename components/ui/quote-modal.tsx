@@ -1,13 +1,14 @@
 "use client"
 
 import { useState } from 'react'
-import type { Product } from '@/lib/renin-products'
+import type { Product as CoreProduct } from '@/lib/renin-products'
+import type { ArcatProduct } from '@/lib/enhanced-renin-products'
 import { Button } from './button'
 
 interface QuoteModalProps {
   open: boolean
   onClose: () => void
-  product: Product
+  product: CoreProduct | ArcatProduct
   selectedOptions?: Record<string, string>
 }
 
@@ -94,4 +95,3 @@ export function QuoteModal({ open, onClose, product, selectedOptions }: QuoteMod
     </div>
   )
 }
-

@@ -1,8 +1,8 @@
-import type { Product } from "@/lib/renin-products"
+import type { ArcatProduct } from "@/lib/enhanced-renin-products"
 import { ProductCard } from "./product-card"
 
 interface ProductGridProps {
-  products: Product[]
+  products: ArcatProduct[]
 }
 
 export function ProductGrid({ products }: ProductGridProps) {

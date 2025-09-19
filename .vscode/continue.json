@@ -1,0 +1,121 @@
+{
+  "models": [
+    {
+      "title": "OpenAI Codex",
+      "provider": "openai",
+      "model": "gpt-4-turbo",
+      "apiKey": "[YOUR_OPENAI_API_KEY]",
+      "contextLength": 128000,
+      "completionOptions": {
+        "temperature": 0.2,
+        "topP": 0.9,
+        "maxTokens": 4096,
+        "presencePenalty": 0.1,
+        "frequencyPenalty": 0.1
+      }
+    },
+    {
+      "title": "Claude 3.5 Sonnet",
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-20241022",
+      "apiKey": "[YOUR_ANTHROPIC_API_KEY]",
+      "contextLength": 200000,
+      "completionOptions": {
+        "temperature": 0.1,
+        "topP": 0.9,
+        "maxTokens": 8192
+      }
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "Codex Autocomplete",
+    "provider": "openai",
+    "model": "gpt-3.5-turbo-instruct",
+    "apiKey": "[YOUR_OPENAI_API_KEY]",
+    "contextLength": 4096,
+    "completionOptions": {
+      "temperature": 0.3,
+      "maxTokens": 256,
+      "stop": ["\n\n", "```"]
+    }
+  },
+  "customCommands": [
+    {
+      "name": "optimize",
+      "description": "Optimize this code for performance and readability",
+      "prompt": "Please optimize the following code for performance, readability, and best practices while maintaining the same functionality:\n\n{{{ input }}}"
+    },
+    {
+      "name": "explain",
+      "description": "Explain how this code works",
+      "prompt": "Please provide a detailed explanation of how this code works, including its purpose, key components, and any notable patterns or techniques used:\n\n{{{ input }}}"
+    },
+    {
+      "name": "test",
+      "description": "Generate comprehensive tests for this code",
+      "prompt": "Generate comprehensive unit tests for the following code. Include edge cases, error scenarios, and use appropriate testing frameworks:\n\n{{{ input }}}"
+    },
+    {
+      "name": "refactor",
+      "description": "Refactor this code to improve maintainability",
+      "prompt": "Please refactor the following code to improve maintainability, reduce complexity, and follow best practices while preserving functionality:\n\n{{{ input }}}"
+    },
+    {
+      "name": "document",
+      "description": "Add comprehensive documentation to this code",
+      "prompt": "Add comprehensive JSDoc comments and inline documentation to the following code:\n\n{{{ input }}}"
+    }
+  ],
+  "contextProviders": [
+    {
+      "name": "diff",
+      "params": {}
+    },
+    {
+      "name": "folder",
+      "params": {
+        "nRetrieve": 25,
+        "nFinal": 5
+      }
+    },
+    {
+      "name": "codebase",
+      "params": {
+        "nRetrieve": 25,
+        "nFinal": 5,
+        "useRepoMap": true
+      }
+    },
+    {
+      "name": "web",
+      "params": {
+        "maxCharsPerPage": 4096,
+        "domains": ["developer.mozilla.org", "react.dev", "nextjs.org", "tailwindcss.com"]
+      }
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "edit",
+      "description": "Edit selected code"
+    },
+    {
+      "name": "comment",
+      "description": "Write comments for the selected code"
+    },
+    {
+      "name": "share",
+      "description": "Export conversation as markdown"
+    },
+    {
+      "name": "cmd",
+      "description": "Generate a shell command"
+    }
+  ],
+  "allowAnonymousTelemetry": false,
+  "embeddingsProvider": {
+    "provider": "openai",
+    "model": "text-embedding-3-small",
+    "apiKey": "[YOUR_OPENAI_API_KEY]"
+  }
+}

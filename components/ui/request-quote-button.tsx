@@ -3,13 +3,14 @@
 import { useState } from 'react'
 import { Button } from "./button"
 import { MessageCircle } from "./icons"
-import type { Product } from "@/lib/renin-products"
+import type { Product as CoreProduct } from "@/lib/renin-products"
+import type { ArcatProduct } from "@/lib/enhanced-renin-products"
 import { QuoteModal } from './quote-modal'
 
 interface RequestQuoteButtonProps {
-  product: Product
+  product: CoreProduct | ArcatProduct
   variant?: "primary" | "secondary" | "outline"
-  size?: "sm" | "md" | "lg"
+  size?: "sm" | "default" | "lg"
   className?: string
   selectedOptions?: Record<string, string>
 }
@@ -17,7 +18,7 @@ interface RequestQuoteButtonProps {
 export function RequestQuoteButton({
   product,
   variant = "outline",
-  size = "md",
+  size = "default",
   className = "",
   selectedOptions,
 }: RequestQuoteButtonProps) {

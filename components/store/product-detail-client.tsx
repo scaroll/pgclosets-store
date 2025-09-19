@@ -1,19 +1,38 @@
 "use client"
 
-import { useState } from "react"
-import type { Product } from "@/lib/renin-products"
-import { formatPrice } from "@/lib/renin-products"
+import { useMemo, useState } from "react"
+import type { ArcatProduct } from "@/lib/enhanced-renin-products"
+import { formatPrice } from "@/lib/enhanced-renin-products"
 import { RequestQuoteButton } from "../ui/request-quote-button"
 import { Check } from "../ui/icons"
+import { OptimizedImage } from "../ui/optimized-image"
 
 interface ProductDetailClientProps {
-  product: Product
+  product: ArcatProduct
 }
 
 export function ProductDetailClient({ product }: ProductDetailClientProps) {
+  const galleryImages = useMemo(() => {
+    const images = [
+      ...(Array.isArray(product.arcatImages) ? product.arcatImages : []),
+      product.homeDepotImage,
+    ].filter((src): src is string => typeof src === "string" && src.length > 0)
+
+    return images.length > 0 ? images : ["/placeholder.svg?height=600&width=600"]
+  }, [product])
+
   const [selectedImage, setSelectedImage] = useState(0)
   const [selectedSize, setSelectedSize] = useState("")
   const [selectedFinish, setSelectedFinish] = useState("")
+
+  const standardSizes = product.specifications?.["Standard Sizes"]
+  const sizeOptions = typeof standardSizes === "string" ? standardSizes.split(/,\s*/) : []
+
+  const availableFinishes = product.specifications?.Finish?.split(/,\s*/) ?? []
+
+  const visibleSpecifications = Object.entries(product.specifications ?? {}).filter(([, value]) =>
+    Boolean(value),
+  )
 
   return (
     <div className="section-apple">
@@ -22,27 +41,36 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
           {/* Product Images */}
           <div className="space-y-4">
             <div className="aspect-square overflow-hidden rounded-lg bg-gray-100">
-              <img
-                src={product.images[selectedImage] || "/placeholder.svg?height=600&width=600"}
+              <OptimizedImage
+                src={galleryImages[selectedImage]}
                 alt={product.name}
+                width={800}
+                height={800}
                 className="w-full h-full object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={90}
               />
             </div>
 
-            {product.images.length > 1 && (
+            {galleryImages.length > 1 && (
               <div className="flex gap-2 overflow-x-auto">
-                {product.images.map((image, index) => (
+                {galleryImages.map((image, index) => (
                   <button
-                    key={index}
+                    key={image}
                     onClick={() => setSelectedImage(index)}
                     className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-colors ${
                       selectedImage === index ? "border-pg-sky" : "border-transparent"
                     }`}
+                    aria-label={`View product image ${index + 1}`}
                   >
-                    <img
-                      src={image || "/placeholder.svg"}
+                    <OptimizedImage
+                      src={image}
                       alt={`${product.name} view ${index + 1}`}
+                      width={80}
+                      height={80}
                       className="w-full h-full object-cover"
+                      sizes="80px"
+                      quality={80}
                     />
                   </button>
                 ))}
@@ -59,7 +87,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             </div>
 
             {/* Product Options */}
-            {product.specifications["Standard Sizes"] && (
+            {sizeOptions.length > 0 && (
               <div>
                 <label className="block text-sm font-medium text-pg-dark mb-2">Size</label>
                 <select
@@ -68,7 +96,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                   className="w-full px-3 py-2 border border-pg-border rounded-lg focus:outline-none focus:ring-2 focus:ring-pg-sky"
                 >
                   <option value="">Select Size</option>
-                  {product.specifications["Standard Sizes"].split(", ").map((size) => (
+                  {sizeOptions.map((size) => (
                     <option key={size} value={size}>
                       {size}
                     </option>
@@ -77,7 +105,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
               </div>
             )}
 
-            {product.specifications["Finish"] && (
+            {availableFinishes.length > 0 && (
               <div>
                 <label className="block text-sm font-medium text-pg-dark mb-2">Finish</label>
                 <select
@@ -86,10 +114,11 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                   className="w-full px-3 py-2 border border-pg-border rounded-lg focus:outline-none focus:ring-2 focus:ring-pg-sky"
                 >
                   <option value="">Select Finish</option>
-                  <option value="Natural">Natural</option>
-                  <option value="White">White</option>
-                  <option value="Black">Black</option>
-                  <option value="Espresso">Espresso</option>
+                  {availableFinishes.map((finish) => (
+                    <option key={finish} value={finish}>
+                      {finish}
+                    </option>
+                  ))}
                 </select>
               </div>
             )}
@@ -106,7 +135,10 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                   variant="primary"
                   size="lg"
                   className="w-full justify-center"
-                  selectedOptions={{ size: selectedSize, finish: selectedFinish }}
+                  selectedOptions={{
+                    ...(selectedSize ? { size: selectedSize } : {}),
+                    ...(selectedFinish ? { finish: selectedFinish } : {}),
+                  }}
                 />
               </div>
 
@@ -117,30 +149,34 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             </div>
 
             {/* Features */}
-            <div>
-              <h3 className="text-h3 mb-4">Features</h3>
-              <ul className="space-y-2">
-                {product.features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-2 text-sm">
-                    <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {product.features.length > 0 && (
+              <div>
+                <h3 className="text-h3 mb-4">Features</h3>
+                <ul className="space-y-2">
+                  {product.features.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-2 text-sm">
+                      <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Specifications */}
-            <div>
-              <h3 className="text-h3 mb-4">Specifications</h3>
-              <div className="space-y-2">
-                {Object.entries(product.specifications).map(([key, value]) => (
-                  <div key={key} className="flex justify-between text-sm border-b border-pg-border pb-2">
-                    <span className="font-medium">{key}:</span>
-                    <span className="text-pg-gray">{value}</span>
-                  </div>
-                ))}
+            {visibleSpecifications.length > 0 && (
+              <div>
+                <h3 className="text-h3 mb-4">Specifications</h3>
+                <div className="space-y-2">
+                  {visibleSpecifications.map(([key, value]) => (
+                    <div key={key} className="flex justify-between text-sm border-b border-pg-border pb-2">
+                      <span className="font-medium">{key.replace(/_/g, " ")}:</span>
+                      <span className="text-pg-gray">{value}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

@@ -43,8 +43,15 @@ export function AddToCartButton({
     setIsAdding(true)
 
     try {
+      const filteredVariants = Object.fromEntries(
+        Object.entries(selectedVariants).filter(([, value]) => {
+          if (value === undefined || value === null) return false
+          return String(value).trim().length > 0
+        })
+      )
+
       // Add item to cart
-      addItem(cartProduct, quantity, selectedVariants)
+      addItem(cartProduct, quantity, filteredVariants)
 
       // Show success state
       setJustAdded(true)
