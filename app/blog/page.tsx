@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "../../components/ui/button"
 
 export const metadata = {
@@ -125,7 +126,7 @@ export default function BlogPage() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Closet Door Expertise & Tips</h1>
           <p className="text-xl text-blue-100 mb-6">
-            Expert advice from Ottawa's trusted Renin dealer on closet doors, installation, and home improvement
+            Expert advice from Ottawa&apos;s trusted Renin dealer on closet doors, installation, and home improvement
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <span className="bg-blue-500 px-3 py-1 rounded-full">Installation Guides</span>
@@ -150,11 +151,13 @@ export default function BlogPage() {
                 key={post.id}
                 className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
               >
-                <div className="aspect-[16/10] bg-gradient-to-br from-blue-100 to-blue-200">
-                  <img
+                <div className="aspect-[16/10] bg-gradient-to-br from-blue-100 to-blue-200 relative">
+                  <Image
                     src={post.image || "/placeholder.svg"}
                     alt={post.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                     loading="lazy"
                   />
                 </div>
@@ -201,11 +204,13 @@ export default function BlogPage() {
               >
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="md:w-48 flex-shrink-0">
-                    <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden">
-                      <img
+                    <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden relative">
+                      <Image
                         src={post.image || "/placeholder.svg"}
                         alt={post.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 40vw, 320px"
                         loading="lazy"
                       />
                     </div>
@@ -259,7 +264,7 @@ export default function BlogPage() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Closets?</h2>
           <p className="text-lg text-gray-600 mb-8">
-            Get expert advice and professional installation from Ottawa's trusted Renin dealer
+            Get expert advice and professional installation from Ottawa&apos;s trusted Renin dealer
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

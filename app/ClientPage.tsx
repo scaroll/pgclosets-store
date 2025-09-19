@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
+import Image from "next/image"
 import { LocalBusinessJSONLD } from "../lib/seo"
 import { Button } from "../components/ui/button"
 
@@ -16,26 +18,31 @@ export default function ClientPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-gray-900">PG Closets</h1>
+              <Link href="/" className="text-2xl font-bold text-gray-900">
+                PG Closets
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
-              <a href="/" className="text-gray-900 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">
+              <Link
+                href="/"
+                className="text-gray-900 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors"
+              >
                 Home
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/products"
                 className="text-gray-900 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors"
               >
                 Products
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="text-gray-900 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors"
               >
                 Contact
-              </a>
+              </Link>
               <Button variant="default" size="sm" className="bg-blue-900 hover:bg-blue-700">
                 Get Quote
               </Button>
@@ -57,15 +64,15 @@ export default function ClientPage() {
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
             <div className="md:hidden border-t border-gray-200 py-4 space-y-2 animate-in slide-in-from-top duration-200">
-              <a href="/" className="block px-3 py-2 text-gray-900 hover:text-blue-700 font-medium">
+              <Link href="/" className="block px-3 py-2 text-gray-900 hover:text-blue-700 font-medium">
                 Home
-              </a>
-              <a href="/products" className="block px-3 py-2 text-gray-900 hover:text-blue-700 font-medium">
+              </Link>
+              <Link href="/products" className="block px-3 py-2 text-gray-900 hover:text-blue-700 font-medium">
                 Products
-              </a>
-              <a href="/contact" className="block px-3 py-2 text-gray-900 hover:text-blue-700 font-medium">
+              </Link>
+              <Link href="/contact" className="block px-3 py-2 text-gray-900 hover:text-blue-700 font-medium">
                 Contact
-              </a>
+              </Link>
               <Button variant="default" size="sm" className="mx-3 bg-blue-900 hover:bg-blue-700">
                 Get Quote
               </Button>
@@ -77,7 +84,7 @@ export default function ClientPage() {
       {/* <CHANGE> Updated hero section with navy background and exact specifications */}
       <section className="bg-blue-900 text-white py-24">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">Ottawa's Renin Closet Door Experts</h1>
+          <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">{"Ottawa's Renin Closet Door Experts"}</h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">Official dealer • Professional installation</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -132,11 +139,14 @@ export default function ClientPage() {
                 key={index}
                 className="bg-white rounded-lg shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
               >
-                <div className="aspect-video overflow-hidden">
-                  <img
+                <div className="aspect-video overflow-hidden relative">
+                  <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                    quality={80}
                   />
                 </div>
                 <div className="p-6">
@@ -176,7 +186,7 @@ export default function ClientPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">PG Closets</h3>
-              <p className="text-gray-600 mb-4">Ottawa's premier Renin closet door specialists</p>
+              <p className="text-gray-600 mb-4">{"Ottawa's premier Renin closet door specialists"}</p>
               <p className="text-gray-600">Official dealer • Professional installation</p>
             </div>
 

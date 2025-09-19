@@ -135,21 +135,27 @@ export default function AboutPage() {
               <h2 className="text-4xl font-black text-[#1e3a8a] mb-8 tracking-tight">The PG Closets Journey</h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  What started as a small family business has grown into Ottawa's most trusted name in premium door
-                  systems. As an official Renin dealer, we combine the quality and innovation of Canada's leading door
-                  manufacturer with the personal touch and local expertise that only a family business can provide.
+                  {
+                    "What started as a small family business has grown into Ottawa&apos;s most trusted name in premium door " +
+                    "systems. As an official Renin dealer, we combine the quality and innovation of Canada&apos;s leading door " +
+                    "manufacturer with the personal touch and local expertise that only a family business can provide."
+                  }
                 </p>
                 <p>
-                  Our commitment to excellence has earned us the trust of over 500 Ottawa families, and we're proud to
-                  maintain a 98% customer satisfaction rating. Every project, from a simple barn door to a complete
-                  closet system, receives the same attention to detail and dedication to quality that has defined our
-                  business from day one.
+                  {
+                    "Our commitment to excellence has earned us the trust of over 500 Ottawa families, and we&apos;re proud to " +
+                    "maintain a 98% customer satisfaction rating. Every project, from a simple barn door to a complete " +
+                    "closet system, receives the same attention to detail and dedication to quality that has defined our " +
+                    "business from day one."
+                  }
                 </p>
                 <p>
-                  Today, we continue to grow while staying true to our founding principles: transparent pricing, quality
-                  products, professional installation, and exceptional customer service. When you choose PG Closets,
-                  you're not just getting a door system – you're joining a family of satisfied customers who trust us
-                  with their homes.
+                  {
+                    "Today, we continue to grow while staying true to our founding principles: transparent pricing, quality " +
+                    "products, professional installation, and exceptional customer service. When you choose PG Closets, " +
+                    "you&apos;re not just getting a door system – you&apos;re joining a family of satisfied customers who trust us " +
+                    "with their homes."
+                  }
                 </p>
               </div>
             </div>
@@ -215,8 +221,8 @@ export default function AboutPage() {
               </div>
               <h3 className="text-2xl font-black text-[#1e3a8a] mb-6 uppercase tracking-wide">Quality First</h3>
               <p className="text-gray-600 leading-relaxed">
-                We partner exclusively with Renin, Canada's premier door manufacturer, to ensure every product meets the
-                highest standards of excellence and durability.
+                {"We partner exclusively with Renin, Canada&apos;s premier door manufacturer, to ensure every product meets the " +
+                  "highest standards of excellence and durability."}
               </p>
             </div>
 
@@ -237,8 +243,8 @@ export default function AboutPage() {
               </div>
               <h3 className="text-2xl font-black text-[#1e3a8a] mb-6 uppercase tracking-wide">Local Focus</h3>
               <p className="text-gray-600 leading-relaxed">
-                We're proud to call Ottawa home and are committed to serving our community with integrity, excellence,
-                and unwavering dedication.
+                {"We&apos;re proud to call Ottawa home and are committed to serving our community with integrity, excellence, " +
+                  "and unwavering dedication."}
               </p>
             </div>
           </div>
@@ -249,8 +255,8 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-5xl font-black mb-8 tracking-tight">Ready to Work Together?</h2>
           <p className="text-xl mb-12 leading-relaxed max-w-2xl mx-auto">
-            Experience the PG Closets difference for yourself. Let's create something beautiful and functional for your
-            home.
+            {"Experience the PG Closets difference for yourself. Let&apos;s create something beautiful and functional for your " +
+              "home."}
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact">
@@ -286,8 +292,8 @@ export default function AboutPage() {
                 </div>
               </div>
               <p className="text-gray-300 mb-8 leading-relaxed max-w-lg text-lg">
-                Ottawa's premier closet door specialists, transforming homes with premium Renin solutions and
-                award-winning professional installation services since 2010.
+                {"Ottawa&apos;s premier closet door specialists, transforming homes with premium Renin solutions and " +
+                  "award-winning professional installation services since 2010."}
               </p>
             </div>
 

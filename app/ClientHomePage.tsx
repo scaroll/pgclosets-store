@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function ClientHomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -45,7 +46,7 @@ export default function ClientHomePage() {
           </div>
 
           <div className="flex justify-between items-center h-20">
-            <a href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3">
               <div className="w-12 h-12 bg-[#1B4A9C] flex items-center justify-center text-white font-bold text-lg">
                 PG
               </div>
@@ -53,24 +54,24 @@ export default function ClientHomePage() {
                 <h1 className="text-xl font-bold text-[#1B4A9C]">PG CLOSETS</h1>
                 <p className="text-xs text-[#9BC4E2] font-medium">Premium Solutions</p>
               </div>
-            </a>
+            </Link>
 
             <nav className="hidden lg:flex items-center space-x-6">
-              <a href="/" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              <Link href="/" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
                 Home
-              </a>
-              <a href="/products" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/products" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
                 Products
-              </a>
-              <a href="/about" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/about" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
                 About
-              </a>
-              <a href="/services" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/services" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
                 Services
-              </a>
-              <a href="/contact" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/contact" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
                 Contact
-              </a>
+              </Link>
 
               <div className="flex items-center space-x-4 ml-6">
                 <a href="tel:6134225800" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C]">
@@ -103,21 +104,21 @@ export default function ClientHomePage() {
 
           {mobileMenuOpen && (
             <div className="lg:hidden border-t py-4 space-y-2 bg-white">
-              <a href="/" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
+              <Link href="/" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
                 Home
-              </a>
-              <a href="/products" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
+              </Link>
+              <Link href="/products" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
                 Products
-              </a>
-              <a href="/about" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
+              </Link>
+              <Link href="/about" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
                 About
-              </a>
-              <a href="/services" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
+              </Link>
+              <Link href="/services" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
                 Services
-              </a>
-              <a href="/contact" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
+              </Link>
+              <Link href="/contact" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
                 Contact
-              </a>
+              </Link>
 
               <div className="px-4 pt-4 grid grid-cols-2 gap-2">
                 <a href="tel:6134225800" className="bg-[#1B4A9C] text-white py-3 text-center font-semibold">
@@ -177,12 +178,12 @@ export default function ClientHomePage() {
             >
               Calculate Quote →
             </button>
-            <a
+            <Link
               href="/products"
               className="border-2 border-[#9BC4E2] text-[#9BC4E2] hover:bg-[#9BC4E2] hover:text-[#1B4A9C] font-semibold px-8 py-4 transition-all text-center"
             >
               View Products
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -231,12 +232,12 @@ export default function ClientHomePage() {
                     >
                       Get Quote
                     </button>
-                    <a
+                    <Link
                       href="/products"
                       className="px-4 py-3 border-2 border-[#1B4A9C] text-[#1B4A9C] hover:bg-[#1B4A9C] hover:text-white transition-all text-sm uppercase tracking-wide text-center"
                     >
                       Details
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -259,8 +260,8 @@ export default function ClientHomePage() {
                 <div className="ml-2 text-sm text-gray-600">5.0 Google Review</div>
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "Exceptional quality and service. The Continental doors transformed our master bedroom closet
-                completely. Professional installation and great communication throughout."
+                &ldquo;Exceptional quality and service. The Continental doors transformed our master bedroom closet
+                completely. Professional installation and great communication throughout.&rdquo;
               </p>
               <div className="font-semibold text-[#1B4A9C]">- Sarah M., Kanata</div>
             </div>
@@ -271,8 +272,8 @@ export default function ClientHomePage() {
                 <div className="ml-2 text-sm text-gray-600">5.0 Google Review</div>
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "Best investment we made in our home renovation. The Gatsby barn doors are stunning and the installation
-                was flawless. Highly recommend PG Closets!"
+                &ldquo;Best investment we made in our home renovation. The Gatsby barn doors are stunning and the installation
+                was flawless. Highly recommend PG Closets!&rdquo;
               </p>
               <div className="font-semibold text-[#1B4A9C]">- Michael R., Orleans</div>
             </div>
@@ -283,8 +284,8 @@ export default function ClientHomePage() {
                 <div className="ml-2 text-sm text-gray-600">5.0 Google Review</div>
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "From quote to installation, everything was perfect. The Euro doors with soft-close are exactly what we
-                wanted. Professional team, fair pricing."
+                &ldquo;From quote to installation, everything was perfect. The Euro doors with soft-close are exactly what we
+                wanted. Professional team, fair pricing.&rdquo;
               </p>
               <div className="font-semibold text-[#1B4A9C]">- Jennifer L., Nepean</div>
             </div>
@@ -379,12 +380,12 @@ export default function ClientHomePage() {
           </div>
 
           <div className="text-center mt-8">
-            <a
+            <Link
               href="/gallery"
               className="bg-[#1B4A9C] text-white px-8 py-3 font-semibold hover:bg-[#153A7E] transition-all uppercase tracking-wide inline-block"
             >
               View Full Gallery
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -439,12 +440,12 @@ export default function ClientHomePage() {
                       <br />✓ 2-week delivery guarantee
                     </div>
                   </div>
-                  <a
+                  <Link
                     href="/contact"
                     className="bg-[#1B4A9C] text-white px-8 py-3 font-semibold hover:bg-[#153A7E] transition-all uppercase tracking-wide inline-block"
                   >
                     Book Consultation
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
@@ -499,7 +500,7 @@ export default function ClientHomePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <a href="/" className="flex items-center space-x-3 mb-6">
+              <Link href="/" className="flex items-center space-x-3 mb-6">
                 <div className="w-12 h-12 bg-[#9BC4E2] flex items-center justify-center text-[#1B4A9C] font-bold text-lg">
                   PG
                 </div>
@@ -507,30 +508,30 @@ export default function ClientHomePage() {
                   <h3 className="text-2xl font-bold">PG CLOSETS</h3>
                   <p className="text-[#9BC4E2]">Premium Solutions</p>
                 </div>
-              </a>
+              </Link>
               <p className="text-gray-300 mb-6">
-                Ottawa's premier closet door specialists, transforming homes with premium solutions.
+                {"Ottawa's premier closet door specialists, transforming homes with premium solutions."}
               </p>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold mb-4 text-[#9BC4E2]">Sitemap</h4>
               <div className="space-y-2">
-                <a href="/" className="block text-gray-300 hover:text-white">
+                <Link href="/" className="block text-gray-300 hover:text-white">
                   Home
-                </a>
-                <a href="/products" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/products" className="block text-gray-300 hover:text-white">
                   Products
-                </a>
-                <a href="/about" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/about" className="block text-gray-300 hover:text-white">
                   About
-                </a>
-                <a href="/services" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/services" className="block text-gray-300 hover:text-white">
                   Services
-                </a>
-                <a href="/contact" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/contact" className="block text-gray-300 hover:text-white">
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
 

@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../..
 import { Badge } from "../../components/ui/badge"
 import { User, Package, MapPin, CreditCard, Settings, Heart, ArrowRight, ShoppingBag, Clock, Star } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { PageWrapper } from "../../components/layout/page-wrapper"
 import { PageHeader } from "../../components/layout/page-header"
 import { PageContainer } from "../../components/layout/page-container"
@@ -211,7 +212,7 @@ export default function AccountPage() {
                 <CardHeader className="flex flex-row items-center justify-between">
                   <div>
                     <CardTitle className="font-serif">Wishlist</CardTitle>
-                    <CardDescription>Items you're interested in</CardDescription>
+                    <CardDescription>Items you&apos;re interested in</CardDescription>
                   </div>
                   <Link href="/wishlist">
                     <Button variant="outline" size="sm" className="bg-transparent">
@@ -224,11 +225,13 @@ export default function AccountPage() {
                   <div className="grid md:grid-cols-2 gap-4">
                     {wishlistItems.map((item) => (
                       <div key={item.id} className="flex items-center space-x-4 p-4 bg-muted/30 rounded-lg">
-                        <div className="w-16 h-16 bg-muted rounded-lg overflow-hidden">
-                          <img
+                        <div className="w-16 h-16 bg-muted rounded-lg overflow-hidden relative">
+                          <Image
                             src={item.image || "/placeholder.svg"}
                             alt={item.name}
-                            className="w-full h-full object-cover"
+                            fill
+                            className="object-cover"
+                            sizes="64px"
                           />
                         </div>
                         <div className="flex-1">

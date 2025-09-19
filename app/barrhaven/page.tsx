@@ -96,7 +96,7 @@ export default function BarrhavenPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Barrhaven Communities We Serve</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Professional closet door installation throughout Barrhaven's thriving neighborhoods
+              Professional closet door installation throughout Barrhaven&apos;s thriving neighborhoods
             </p>
           </div>
 
@@ -144,7 +144,7 @@ export default function BarrhavenPage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Modern Home Specialists</h3>
               <p className="text-gray-600">
-                Expert installation for Barrhaven's contemporary homes and luxury properties
+                Expert installation for Barrhaven&apos;s contemporary homes and luxury properties
               </p>
             </div>
 
@@ -178,7 +178,7 @@ export default function BarrhavenPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Premium Quality</h3>
-              <p className="text-gray-600">High-end finishes and materials perfect for Barrhaven's upscale homes</p>
+              <p className="text-gray-600">High-end finishes and materials perfect for Barrhaven&apos;s upscale homes</p>
             </div>
           </div>
         </div>
