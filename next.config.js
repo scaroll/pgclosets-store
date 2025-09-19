@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const path = require('path')
+
 const nextConfig = {
   eslint: {
     // Avoid failing the production build on linting issues
@@ -153,22 +155,28 @@ const nextConfig = {
       }
     ];
   },
-  // Bundle analyzer in development
-  ...(process.env.ANALYZE === 'true' && {
-    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-      if (!dev && !isServer) {
-        const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-        config.plugins.push(
-          new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            generateStatsFile: true,
-            openAnalyzer: false,
-          })
-        );
-      }
-      return config;
+  // Webpack configuration
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Add alias for @ path resolution
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname),
+    };
+
+    // Bundle analyzer in development
+    if (process.env.ANALYZE === 'true' && !dev && !isServer) {
+      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          generateStatsFile: true,
+          openAnalyzer: false,
+        })
+      );
     }
-  }),
+
+    return config;
+  },
 };
 
 module.exports = nextConfig;

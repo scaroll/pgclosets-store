@@ -30,8 +30,8 @@ const Trash2 = ({ className }: { className?: string }) => (
 )
 
 import { useCart } from "@/contexts/CartContext"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Button } from "../ui/button"
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "../ui/sheet"
 import Image from "next/image"
 import Link from "next/link"
 

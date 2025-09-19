@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { Button } from "../ui/button"
 // Using custom cart type since @medusajs/medusa doesn't export Cart type
 interface Cart {
   id: string

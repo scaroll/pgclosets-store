@@ -3,8 +3,8 @@
 import { useState } from "react"
 import type { Product } from "@/lib/renin-products"
 import { formatPrice } from "@/lib/renin-products"
-import { RequestQuoteButton } from "@/components/ui/request-quote-button"
-import { Check } from "@/components/ui/icons"
+import { RequestQuoteButton } from "../ui/request-quote-button"
+import { Check } from "../ui/icons"
 
 interface ProductDetailClientProps {
   product: Product

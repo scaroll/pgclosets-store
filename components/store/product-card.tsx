@@ -3,6 +3,7 @@
 import type { ArcatProduct } from "../../lib/enhanced-renin-products"
 import { formatPrice } from "../../lib/enhanced-renin-products"
 import { Button } from "../ui/button"
+import { AddToCartButton } from "../ui/add-to-cart-button"
 import { RequestQuoteButton } from "../ui/request-quote-button"
 import { OptimizedImage } from "../ui/optimized-image"
 import { useState } from "react"
@@ -82,21 +83,41 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         </div>
 
         <div className="space-y-3">
-          <Button
-            variant="primary"
-            size="sm"
-            href={`/store/products/${product.slug}`}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-colors duration-200"
-          >
-            View Details
-          </Button>
+          {product.inStock ? (
+            <AddToCartButton
+              product={product}
+              variant="default"
+              size="sm"
+              className="w-full bg-pg-navy hover:bg-navy text-white font-medium py-2.5 rounded-lg transition-colors duration-200"
+            />
+          ) : (
+            <Button
+              variant="outline"
+              size="sm"
+              disabled
+              className="w-full py-2.5 rounded-lg opacity-50 cursor-not-allowed"
+            >
+              Out of Stock
+            </Button>
+          )}
 
-          <RequestQuoteButton
-            product={product}
-            variant="outline"
-            size="sm"
-            className="w-full justify-center border-gray-300 text-gray-700 hover:bg-gray-50 py-2.5 rounded-lg transition-colors duration-200"
-          />
+          <div className="grid grid-cols-2 gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              href={`/store/products/${product.slug}`}
+              className="border-gray-300 text-gray-700 hover:bg-gray-50 py-2.5 rounded-lg transition-colors duration-200"
+            >
+              Details
+            </Button>
+
+            <RequestQuoteButton
+              product={product}
+              variant="outline"
+              size="sm"
+              className="border-gray-300 text-gray-700 hover:bg-gray-50 py-2.5 rounded-lg transition-colors duration-200"
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { FeaturedProducts } from "../../components/store/featured-products"
 import { HeroSection } from "../../components/store/hero-section"
 import { Button } from "../../components/ui/button"
-import { productCategories, getFeaturedProducts } from "../../lib/enhanced-renin-products"
+import { categories, getFeaturedProducts } from "../../lib/renin-products"
 import Image from "next/image"
 
 export const metadata = {
@@ -54,7 +54,7 @@ function CategoriesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-apple">
-          {productCategories.map((category, index) => (
+          {categories.map((category, index) => (
             <a
               key={category.id}
               href={`/store/products?category=${category.id}`}
@@ -62,7 +62,7 @@ function CategoriesSection() {
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <Image
-                  src={category.heroImage || "/placeholder.svg"}
+                  src={category.image || "/placeholder.svg"}
                   alt={`${category.name} - Premium closet doors by Renin`}
                   width={400}
                   height={300}

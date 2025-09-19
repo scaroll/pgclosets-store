@@ -1,9 +1,9 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import { X, ChevronRight, Home, Search, ShoppingCart, Phone, Mail } from "@/components/ui/icons"
+import { Button } from "../ui/button"
+import { Badge } from "../ui/badge"
+import { Separator } from "../ui/separator"
+import { X, ChevronRight, Home, Search, ShoppingCart, Phone, Mail } from "../ui/icons"
 import Link from "next/link"
 
 interface MobileMenuProps {

@@ -3,8 +3,8 @@
 import type React from "react"
 
 import { useState, useRef, useCallback } from "react"
-import { Button } from "@/components/ui/button"
-import { Progress } from "@/components/ui/progress"
+import { Button } from "./button"
+import { Progress } from "./progress"
 import { Upload, X, FileImage, AlertCircle, CheckCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 

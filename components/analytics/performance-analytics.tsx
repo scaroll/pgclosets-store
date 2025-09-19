@@ -24,12 +24,14 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
         // Track Largest Contentful Paint (LCP)
         new PerformanceObserver((entryList) => {
           for (const entry of entryList.getEntries()) {
-            gtag("event", "web_vitals", {
-              event_category: "Web Vitals",
-              event_label: "LCP",
-              value: Math.round(entry.startTime),
-              custom_map: { metric_value: entry.startTime },
-            })
+            if (gtag) {
+              gtag("event", "web_vitals", {
+                event_category: "Web Vitals",
+                event_label: "LCP",
+                value: Math.round(entry.startTime),
+                custom_map: { metric_value: entry.startTime },
+              })
+            }
           }
         }).observe({ type: "largest-contentful-paint", buffered: true })
 
@@ -37,7 +39,7 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
         new PerformanceObserver((entryList) => {
           for (const entry of entryList.getEntries()) {
             const fidEntry = entry as any // Type assertion for first-input entries
-            if (fidEntry.processingStart) {
+            if (fidEntry.processingStart && gtag) {
               gtag("event", "web_vitals", {
                 event_category: "Web Vitals",
                 event_label: "FID",
@@ -57,17 +59,19 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
               clsValue += clsEntry.value || 0
             }
           }
-          gtag("event", "web_vitals", {
-            event_category: "Web Vitals",
-            event_label: "CLS",
-            value: Math.round(clsValue * 1000),
-            custom_map: { metric_value: clsValue },
-          })
+          if (gtag) {
+            gtag("event", "web_vitals", {
+              event_category: "Web Vitals",
+              event_label: "CLS",
+              value: Math.round(clsValue * 1000),
+              custom_map: { metric_value: clsValue },
+            })
+          }
         }).observe({ type: "layout-shift", buffered: true })
 
         // Track Time to First Byte (TTFB)
         const navigationEntry = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming
-        if (navigationEntry) {
+        if (navigationEntry && gtag) {
           const ttfb = navigationEntry.responseStart - navigationEntry.requestStart
           gtag("event", "web_vitals", {
             event_category: "Web Vitals",
@@ -103,7 +107,7 @@ export function SEOAnalytics({ gaId }: PerformanceAnalyticsProps) {
       const trackSEOEvents = () => {
         // Track organic search traffic
         const referrer = document.referrer
-        if (referrer.includes("google.com") || referrer.includes("bing.com") || referrer.includes("yahoo.com")) {
+        if ((referrer.includes("google.com") || referrer.includes("bing.com") || referrer.includes("yahoo.com")) && gtag) {
           gtag("event", "organic_search_visit", {
             event_category: "SEO",
             event_label: "Organic Search Traffic",
@@ -117,21 +121,25 @@ export function SEOAnalytics({ gaId }: PerformanceAnalyticsProps) {
 
         // Track page depth for SEO analysis
         const pathDepth = window.location.pathname.split("/").filter(Boolean).length
-        gtag("event", "page_depth", {
-          event_category: "SEO",
-          event_label: "Page Depth",
-          value: pathDepth,
-        })
+        if (gtag) {
+          gtag("event", "page_depth", {
+            event_category: "SEO",
+            event_label: "Page Depth",
+            value: pathDepth,
+          })
+        }
 
         // Track time on page for SEO engagement
         const startTime = Date.now()
         const trackTimeOnPage = () => {
           const timeOnPage = Date.now() - startTime
-          gtag("event", "time_on_page", {
-            event_category: "SEO",
-            event_label: "Engagement",
-            value: Math.round(timeOnPage / 1000), // Convert to seconds
-          })
+          if (gtag) {
+            gtag("event", "time_on_page", {
+              event_category: "SEO",
+              event_label: "Engagement",
+              value: Math.round(timeOnPage / 1000), // Convert to seconds
+            })
+          }
         }
 
         // Track when user leaves page
@@ -143,14 +151,16 @@ export function SEOAnalytics({ gaId }: PerformanceAnalyticsProps) {
           const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100)
           if (scrollPercent > maxScroll) {
             maxScroll = scrollPercent
-            if (maxScroll >= 25 && maxScroll < 50) {
-              gtag("event", "scroll_depth_25", { event_category: "SEO", event_label: "Engagement" })
-            } else if (maxScroll >= 50 && maxScroll < 75) {
-              gtag("event", "scroll_depth_50", { event_category: "SEO", event_label: "Engagement" })
-            } else if (maxScroll >= 75 && maxScroll < 90) {
-              gtag("event", "scroll_depth_75", { event_category: "SEO", event_label: "Engagement" })
-            } else if (maxScroll >= 90) {
-              gtag("event", "scroll_depth_90", { event_category: "SEO", event_label: "Engagement" })
+            if (gtag) {
+              if (maxScroll >= 25 && maxScroll < 50) {
+                gtag("event", "scroll_depth_25", { event_category: "SEO", event_label: "Engagement" })
+              } else if (maxScroll >= 50 && maxScroll < 75) {
+                gtag("event", "scroll_depth_50", { event_category: "SEO", event_label: "Engagement" })
+              } else if (maxScroll >= 75 && maxScroll < 90) {
+                gtag("event", "scroll_depth_75", { event_category: "SEO", event_label: "Engagement" })
+              } else if (maxScroll >= 90) {
+                gtag("event", "scroll_depth_90", { event_category: "SEO", event_label: "Engagement" })
+              }
             }
           }
         }
@@ -176,11 +186,13 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
         const contactForms = document.querySelectorAll('form[action*="contact"]')
         contactForms.forEach((form) => {
           form.addEventListener("submit", () => {
-            gtag("event", "contact_form_submit", {
-              event_category: "Conversions",
-              event_label: "Contact Form",
-              value: 1,
-            })
+            if (gtag) {
+              gtag("event", "contact_form_submit", {
+                event_category: "Conversions",
+                event_label: "Contact Form",
+                value: 1,
+              })
+            }
           })
         })
 
@@ -188,11 +200,13 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
         const quoteButtons = document.querySelectorAll('button:contains("Quote"), a:contains("Quote")')
         quoteButtons.forEach((button) => {
           button.addEventListener("click", () => {
-            gtag("event", "quote_request", {
-              event_category: "Conversions",
-              event_label: "Quote Request",
-              value: 1,
-            })
+            if (gtag) {
+              gtag("event", "quote_request", {
+                event_category: "Conversions",
+                event_label: "Quote Request",
+                value: 1,
+              })
+            }
           })
         })
 
@@ -200,11 +214,13 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
         const phoneLinks = document.querySelectorAll('a[href^="tel:"]')
         phoneLinks.forEach((link) => {
           link.addEventListener("click", () => {
-            gtag("event", "phone_click", {
-              event_category: "Conversions",
-              event_label: "Phone Call",
-              value: 1,
-            })
+            if (gtag) {
+              gtag("event", "phone_click", {
+                event_category: "Conversions",
+                event_label: "Phone Call",
+                value: 1,
+              })
+            }
           })
         })
 
@@ -212,16 +228,18 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
         const emailLinks = document.querySelectorAll('a[href^="mailto:"]')
         emailLinks.forEach((link) => {
           link.addEventListener("click", () => {
-            gtag("event", "email_click", {
-              event_category: "Conversions",
-              event_label: "Email Contact",
-              value: 1,
-            })
+            if (gtag) {
+              gtag("event", "email_click", {
+                event_category: "Conversions",
+                event_label: "Email Contact",
+                value: 1,
+              })
+            }
           })
         })
 
         // Track product page views
-        if (window.location.pathname.includes("/products/")) {
+        if (window.location.pathname.includes("/products/") && gtag) {
           gtag("event", "product_view", {
             event_category: "Conversions",
             event_label: "Product Page View",
@@ -230,7 +248,7 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
         }
 
         // Track FAQ engagement
-        if (window.location.pathname.includes("/faq")) {
+        if (window.location.pathname.includes("/faq") && gtag) {
           gtag("event", "faq_visit", {
             event_category: "Conversions",
             event_label: "FAQ Page Visit",

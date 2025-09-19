@@ -1,105 +1,141 @@
+
+> pg-closets-website@0.1.0 build
+> next build
+
    ▲ Next.js 15.2.4
    - Environments: .env.production
 
    Creating an optimized production build ...
  ✓ Compiled successfully
-   Linting and checking validity of types ...
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/191) ...
+   Generating static pages (47/191) 
+   Generating static pages (95/191) 
+   Generating static pages (143/191) 
+[v0] Products loaded: 33
+[v0] Search term: 
+[v0] Category filter: all
+[v0] Filtered products: 33
+[v0] Rendering product: Ashbury 2 Panel Bifold Door Image: /images/arcat/renin_199065_hd.jpg
+[v0] Rendering product: Barn Door Privacy Latch Image: /images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg
+[v0] Rendering product: Cairns Pull Handle Image: /images/arcat/renin_199077_Handles_Pulls_Cairns.jpg
+[v0] Rendering product: Continental Pavilion Barn Door Image: /images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg
+[v0] Rendering product: Crochet Multi-X Pivot Door Image: /images/arcat/renin_205721_hd.jpg
+[v0] Rendering product: Euro 1-Lite Bifold Door Image: /images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg
+[v0] Rendering product: Euro 1-Lite Bypass Door Image: /images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg
+[v0] Rendering product: Euro 1-Lite Pivot Door Image: /images/arcat/renin_205722_hd.jpg
+[v0] Rendering product: Euro 3-Lite Bifold Door Image: /images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite_v2.jpg
+[v0] Rendering product: Euro 3-Lite Bypass Door Image: /images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg
+[v0] Rendering product: Euro 3-Lite Pivot Door Image: /images/arcat/renin_205723_hd.jpg
+[v0] Rendering product: Euro 5-Lite Bypass Door Image: /images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg
+[v0] Rendering product: Florence LED Mirror 21x31 Image: /images/arcat/renin_199088_Mirror_Florence_21_x_31.jpg
+[v0] Rendering product: Georgian 6 Panel Bifold Door Image: /images/arcat/renin_199063_hd.jpg
+[v0] Rendering product: Georgian 6 Panel Bypass Door Image: /images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel.jpg
+[v0] Rendering product: Harmony 1-Lite Bypass Door Image: /images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg
+[v0] Rendering product: Heritage Gladstone Barn Door Image: /images/arcat/renin_192859_Heritage_Gladstone_2_Lite_Angled_Plank_Design.jpg
+[v0] Rendering product: Heritage Glass Panel Barn Door Image: /images/arcat/renin_192857_Heritage_Glass_Panel_Design.jpg
+[v0] Rendering product: Heritage Herringbone Barn Door Image: /images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg
+[v0] Rendering product: Heritage Rustic Plank Barn Door Image: /images/arcat/renin_192853_Heritage_Rustic_Plank_Design.jpg
+[v0] Rendering product: Heritage Salinas Z-Design Barn Door Image: /images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg
+[v0] Rendering product: Heritage Shaker Barn Door Image: /images/arcat/renin_192856_Heritage_Shaker_Design.jpg
+[v0] Rendering product: Heritage Sierra K-Design Barn Door Image: /images/arcat/renin_205717_Heritage_Sierra_K_Design.jpg
+[v0] Rendering product: Melody LED Mirror 32x24 Image: /images/arcat/renin_199089_Mirror_Melody_32_x_24.jpg
+[v0] Rendering product: Parsons Flush Panel Bifold Door Image: /images/arcat/renin_199064_hd.jpg
+[v0] Rendering product: Parsons Flush Panel Bypass Door Image: /images/arcat/renin_176728_Bypass_Closet_Doors_Parsons_Flush_Panel.jpg
+[v0] Rendering product: Provincial 8-Lite Pivot Door Image: /images/arcat/renin_205720_hd.jpg
+[v0] Rendering product: Rectangle Flush Pull Handle Image: /images/arcat/renin_199079_Handles_Pulls_Rectangle_Flush.jpg
+[v0] Rendering product: Round Flush Pull Handle Image: /images/arcat/renin_199074_Handles_Pulls_Round_Flush.jpg
+[v0] Rendering product: Spectrum Bypass Bracket Kit Image: /images/arcat/renin_199072_Accessories_Spectrum_Bypass_Barn_Door_Bracket_Kit.jpg
+[v0] Rendering product: Spectrum Soft Close Kit Image: /images/arcat/renin_199084_Accessories_Easy_Clip_153_Soft_Close.jpg
+[v0] Rendering product: Spectrum Track Hardware Kit Image: /images/arcat/renin_199080_Replacement_Part_Spectrum_Track.jpg
+[v0] Rendering product: Symphony LED Mirror 32x24 Image: /images/arcat/renin_199093_Mirror_Symphony_32_x_24.jpg
+ ✓ Generating static pages (191/191)
+   Finalizing page optimization ...
+   Collecting build traces ...
 
-./app/ClientHomePage.tsx
-48:13  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-59:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-62:15  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-106:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-109:15  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-180:13  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-234:21  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-502:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-519:17  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-522:17  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+Route (app)                                              Size  First Load JS
+┌ ○ /                                                 3.71 kB         109 kB
+├ ○ /_not-found                                         219 B         101 kB
+├ ○ /about                                              199 B         109 kB
+├ ○ /account                                          1.93 kB         114 kB
+├ ○ /account/addresses                                  198 B         104 kB
+├ ○ /account/orders                                     219 B         101 kB
+├ ○ /account/payment-methods                            198 B         104 kB
+├ ○ /account/profile                                   3.3 kB         114 kB
+├ ○ /account/settings                                 2.46 kB         133 kB
+├ ○ /admin/blob-audit                                 4.54 kB         105 kB
+├ ○ /admin/product-images                             2.51 kB         129 kB
+├ ○ /admin/product-mapping                            7.15 kB         128 kB
+├ ○ /admin/products                                   10.8 kB         148 kB
+├ ƒ /api/delete                                         219 B         101 kB
+├ ƒ /api/errors                                         219 B         101 kB
+├ ƒ /api/health                                         219 B         101 kB
+├ ƒ /api/list                                           219 B         101 kB
+├ ƒ /api/simple-checkout                                219 B         101 kB
+├ ƒ /api/status                                         219 B         101 kB
+├ ƒ /api/upload                                         219 B         101 kB
+├ ƒ /api/webhooks/paddle                                219 B         101 kB
+├ ○ /barrhaven                                          219 B         101 kB
+├ ○ /blob-contents                                    4.21 kB         105 kB
+├ ○ /blog                                               198 B         104 kB
+├ ● /blog/[slug]                                        199 B         109 kB
+├   ├ /blog/choosing-right-closet-doors-ottawa-homes
+├   ├ /blog/barn-doors-vs-traditional-doors-ottawa
+├   └ /blog/renin-doors-official-dealer-ottawa
+├ ○ /cart                                             5.62 kB         116 kB
+├ ○ /checkout                                           219 B         101 kB
+├ ○ /checkout/confirmation                              198 B         104 kB
+├ ○ /contact                                             5 kB         111 kB
+├ ○ /faq                                                219 B         101 kB
+├ ○ /files                                            2.35 kB         110 kB
+├ ○ /forgot-password                                  5.68 kB         118 kB
+├ ○ /gallery                                            993 B         106 kB
+├ ○ /installation-ottawa                              1.85 kB         111 kB
+├ ○ /kanata                                             219 B         101 kB
+├ ○ /legal/privacy                                      219 B         101 kB
+├ ○ /legal/terms                                        219 B         101 kB
+├ ○ /nepean                                             219 B         101 kB
+├ ○ /orleans                                            219 B         101 kB
+├ ○ /ottawa                                             219 B         101 kB
+├ ○ /privacy-policy                                   1.84 kB         111 kB
+├ ○ /products                                         7.33 kB         113 kB
+├ ● /products/[slug]                                  1.66 kB         107 kB
+├   ├ /products/continental
+├   ├ /products/brownstone
+├   ├ /products/gatsby
+├   └ [+92 more paths]
+├ ○ /register                                         6.33 kB         118 kB
+├ ○ /request-work                                     4.35 kB         105 kB
+├ ○ /return-policy                                      198 B         104 kB
+├ ○ /robots.txt                                         219 B         101 kB
+├ ○ /search                                           13.8 kB         144 kB
+├ ○ /services                                           199 B         109 kB
+├ ○ /shipping-policy                                    198 B         104 kB
+├ ○ /simple-cart                                       3.1 kB         114 kB
+├ ○ /simple-products                                    199 B         109 kB
+├ ● /simple-products/[slug]                           1.76 kB         112 kB
+├   ├ /simple-products/euro-1-lite-bypass
+├   ├ /simple-products/euro-3-lite-bypass
+├   ├ /simple-products/euro-5-lite-bypass
+├   └ [+30 more paths]
+├ ○ /sitemap.xml                                        219 B         101 kB
+├ ○ /storage-check                                    4.22 kB         105 kB
+├ ○ /store                                              192 B         114 kB
+├ ƒ /store/products                                   1.04 kB         115 kB
+├ ƒ /store/products/[slug]                            3.04 kB         117 kB
+├ ○ /terms-of-service                                   198 B         104 kB
+├ ○ /upload                                           8.16 kB         112 kB
+├ ○ /why-pg                                           1.85 kB         111 kB
+└ ○ /wishlist                                           219 B         101 kB
++ First Load JS shared by all                          100 kB
+  ├ chunks/1684-f9ebd8010e91d569.js                   45.3 kB
+  ├ chunks/4bd1b696-e5fb29c86c2f06f9.js               53.2 kB
+  └ other shared chunks (total)                       1.86 kB
 
-./app/ClientPage.tsx
-24:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-27:15  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-60:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-63:15  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
 
-./app/admin/products/page.tsx
-44:6  Warning: React Hook useEffect has a missing dependency: 'loadProducts'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
 
-./app/contact/ContactClientPage.tsx
-63:13  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-80:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-83:15  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-124:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-127:15  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-150:13  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-247:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-269:17  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-272:17  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-
-./app/files/page.tsx
-106:6  Warning: React Hook useEffect has a missing dependency: 'fetchFiles'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-
-./app/gallery/page.tsx
-13:13  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-24:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-27:15  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-116:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-133:17  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-136:17  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-
-./app/not-found.tsx
-11:13  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-22:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-25:15  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-59:11  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-65:11  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-85:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-102:17  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-105:17  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-
-./app/page.tsx
-48:13  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-59:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-62:15  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-106:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-109:15  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-180:13  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-234:21  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-315:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-332:17  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-335:17  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-
-./app/products/page.tsx
-154:15  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-157:15  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-190:17  Warning: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-193:17  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-491:19  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-496:19  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-501:19  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-506:19  Warning: Do not use an `<a>` element to navigate to `/products/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
-
-./components/MediaGallery.tsx
-123:6  Warning: React Hook useEffect has a missing dependency: 'fetchFiles'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-
-./components/layout/page-header.tsx
-83:6  Warning: React Hook useEffect has a missing dependency: 'navigationItems'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-
-./components/ui/file-upload.tsx
-75:5  Warning: React Hook useCallback has missing dependencies: 'handleUpload' and 'validateFile'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
-Failed to compile.
-
-./components/analytics/performance-analytics.tsx:21:13
-Type error: Cannot invoke an object which is possibly 'undefined'.
-
-[0m [90m 19 |[39m         [36mnew[39m [33mPerformanceObserver[39m((entryList) [33m=>[39m {[0m
-[0m [90m 20 |[39m           [36mfor[39m ([36mconst[39m entry [36mof[39m entryList[33m.[39mgetEntries()) {[0m
-[0m[31m[1m>[22m[39m[90m 21 |[39m             gtag([32m"event"[39m[33m,[39m [32m"web_vitals"[39m[33m,[39m {[0m
-[0m [90m    |[39m             [31m[1m^[22m[39m[0m
-[0m [90m 22 |[39m               event_category[33m:[39m [32m"Web Vitals"[39m[33m,[39m[0m
-[0m [90m 23 |[39m               event_label[33m:[39m [32m"LCP"[39m[33m,[39m[0m
-[0m [90m 24 |[39m               value[33m:[39m [33mMath[39m[33m.[39mround(entry[33m.[39mstartTime)[33m,[39m[0m
-Next.js build worker exited with code: 1 and signal: null

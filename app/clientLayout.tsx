@@ -1,6 +1,7 @@
 "use client"
 import type React from "react"
 import Script from "next/script"
+import { CartDrawer } from "@/components/store/cart-drawer"
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,6 +17,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       </Script>
 
       {children}
+
+      {/* Global Cart Drawer */}
+      <CartDrawer />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { OptimizedImage } from "@/components/ui/optimized-image"
+import { Button } from "../ui/button"
+import { OptimizedImage } from "../ui/optimized-image"
 import { useMedusaCart } from "@/hooks/use-medusa-cart"
 import type { Product } from "@medusajs/medusa"
 

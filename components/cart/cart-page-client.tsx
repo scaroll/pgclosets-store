@@ -1,9 +1,9 @@
 "use client"
 
 import { useCart } from "@/hooks/use-cart"
-import { Button } from "@/components/ui/button"
+import { Button } from "../ui/button"
 import { formatPrice } from "@/lib/renin-products"
-import { ShoppingBag, Minus, Plus, X } from "@/components/ui/icons"
+import { ShoppingBag, Minus, Plus, X } from "../ui/icons"
 
 export function CartPageClient() {
   const { state, removeItem, updateQuantity, getTotalPrice, getTotalItems } = useCart()

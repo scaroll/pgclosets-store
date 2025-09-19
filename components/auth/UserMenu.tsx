@@ -46,14 +46,14 @@ const Package = ({ className }: { className?: string }) => (
 )
 
 import { useAuth } from "../../contexts/AuthContext"
-import { Button } from "@/components/ui/button"
+import { Button } from "../ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "../ui/dropdown-menu"
 import Link from "next/link"
 
 export default function UserMenu() {

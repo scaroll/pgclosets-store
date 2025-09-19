@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 import type { Category } from "@/lib/renin-products"
-import { Button } from "@/components/ui/button"
+import { Button } from "../ui/button"
 
 interface ProductFiltersProps {
   categories: Category[]

@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "../ui/button"
 import { formatPrice } from "@/lib/renin-products"
 
 interface ShippingInfo {

@@ -1,6 +1,6 @@
 "use client"
 import { useCart } from "@/lib/useCart"
-import { Button } from "@/components/ui/button"
+import { Button } from "../ui/button"
 
 type Props = { product: { id: string; slug?: string; title: string; price: number; image: string } }
 

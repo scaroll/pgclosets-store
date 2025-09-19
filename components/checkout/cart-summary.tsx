@@ -1,6 +1,6 @@
 import type { CartItem } from "@/hooks/use-cart"
 import { formatPrice } from "@/lib/renin-products"
-import { OptimizedImage } from "@/components/ui/optimized-image"
+import { OptimizedImage } from "../ui/optimized-image"
 
 interface CartSummaryProps {
   items: CartItem[]

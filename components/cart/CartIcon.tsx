@@ -1,7 +1,7 @@
 "use client"
-import { ShoppingBag } from "@/components/ui/icon-fallback"
+import { ShoppingBag } from "../ui/icon-fallback"
 import { useMedusaCart } from "@/hooks/use-medusa-cart"
-import { Button } from "@/components/ui/button"
+import { Button } from "../ui/button"
 
 export default function CartIcon() {
   const { getTotalItems, cart } = useMedusaCart()

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { Product } from '@/lib/renin-products'
-import { Button } from '@/components/ui/button'
+import { Button } from './button'
 
 interface QuoteModalProps {
   open: boolean

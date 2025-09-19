@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { MessageCircle } from "@/components/ui/icons"
+import { Button } from "./button"
+import { MessageCircle } from "./icons"
 import type { Product } from "@/lib/renin-products"
 import { QuoteModal } from './quote-modal'
 

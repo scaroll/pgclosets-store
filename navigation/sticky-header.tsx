@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { CartIcon } from "@/components/ui/cart-icon"
 import { Phone, Menu, X } from "lucide-react"
 import { useState, useEffect } from "react"
 
@@ -71,6 +72,7 @@ export function StickyHeader({ className = "" }: StickyHeaderProps) {
                   (613) 422-5800
                 </a>
               </div>
+              <CartIcon />
               <Link href="/consultation">
                 <Button className="bg-forest hover:bg-green-700 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                   Free Consultation
@@ -78,14 +80,17 @@ export function StickyHeader({ className = "" }: StickyHeaderProps) {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle mobile menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-charcoal" /> : <Menu className="w-6 h-6 text-charcoal" />}
-            </button>
+            {/* Mobile Actions */}
+            <div className="lg:hidden flex items-center space-x-2">
+              <CartIcon />
+              <button
+                className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle mobile menu"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6 text-charcoal" /> : <Menu className="w-6 h-6 text-charcoal" />}
+              </button>
+            </div>
           </div>
         </div>
 

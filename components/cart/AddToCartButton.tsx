@@ -1,6 +1,6 @@
 "use client"
-import { MessageCircle } from "@/components/ui/icons"
-import { Button } from "@/components/ui/button"
+import { MessageCircle } from "../ui/icons"
+import { Button } from "../ui/button"
 import type { Product } from "@/lib/types"
 
 interface AddToCartButtonProps {

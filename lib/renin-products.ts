@@ -13,6 +13,17 @@ export interface Product {
   specifications: Record<string, string>
   inStock: boolean
   featured: boolean
+  // Enhanced commerce fields
+  sku?: string
+  image?: string // Primary image for cart compatibility
+  variants?: ProductVariant[]
+}
+
+export interface ProductVariant {
+  id: string
+  name: string
+  value: string
+  priceModifier?: number
 }
 
 export interface Category {
@@ -73,4 +84,40 @@ export function calculateTax(price: number, province = "ON"): number {
   }
 
   return price * (taxRates[province] || 0.13)
+}
+
+// Cart compatibility helpers
+export function toCartProduct(product: Product): import('./stores/cart-store').Product {
+  return {
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    image: product.image || product.images[0] || '/placeholder.svg',
+    description: product.description,
+    category: product.category,
+    inStock: product.inStock,
+    sku: product.sku || `SKU-${product.id}`,
+    specifications: product.specifications,
+    variants: product.variants
+  }
+}
+
+export function generateSKU(product: Product): string {
+  const categoryPrefix = {
+    barn: 'BRN',
+    bypass: 'BYP',
+    bifold: 'BIF',
+    pivot: 'PIV',
+    hardware: 'HRW'
+  }
+
+  return `${categoryPrefix[product.category]}-${product.id.slice(-6).toUpperCase()}`
+}
+
+// Enhanced product functions with commerce features
+export function addToCartFormat(products: Product[]): import('./stores/cart-store').Product[] {
+  return products.map(product => ({
+    ...toCartProduct(product),
+    sku: product.sku || generateSKU(product)
+  }))
 }

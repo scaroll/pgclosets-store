@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "../ui/card"
+import { AddToCartButton } from "./ui/add-to-cart-button"
 
 type Props = {
   product: {
@@ -17,17 +18,31 @@ type Props = {
 export function SimpleProductCard({ product }: Props) {
   return (
     <Card className="overflow-hidden hover:shadow-md transition">
-      <Link href={`/simple-products/${product.slug}`} className="block">
-        <div className="relative aspect-[4/3]">
+      <div className="relative aspect-[4/3]">
+        <Link href={`/simple-products/${product.slug}`}>
           <Image src={product.image || "/placeholder.svg"} alt={product.title} fill className="object-cover" />
+        </Link>
+      </div>
+      <CardContent className="p-4">
+        <div className="text-xs uppercase tracking-wide text-muted-foreground">{product.category}</div>
+        <Link href={`/simple-products/${product.slug}`}>
+          <h3 className="mt-1 text-lg font-semibold hover:text-pg-navy transition-colors">{product.title}</h3>
+        </Link>
+        <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{product.description}</p>
+        <div className="mt-3 font-semibold">${(product.price / 100).toFixed(2)}</div>
+
+        <div className="mt-4">
+          <AddToCartButton
+            product={{
+              ...product,
+              name: product.title,
+              inStock: true, // Assume in stock for simple products
+            }}
+            size="sm"
+            className="w-full"
+          />
         </div>
-        <CardContent className="p-4">
-          <div className="text-xs uppercase tracking-wide text-muted-foreground">{product.category}</div>
-          <h3 className="mt-1 text-lg font-semibold">{product.title}</h3>
-          <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{product.description}</p>
-          <div className="mt-3 font-semibold">${(product.price / 100).toFixed(2)}</div>
-        </CardContent>
-      </Link>
+      </CardContent>
     </Card>
   )
 }

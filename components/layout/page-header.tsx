@@ -1,8 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { PGLogo } from "@/components/ui/pg-logo"
+import { Button } from "../ui/button"
+import { PGLogo } from "../ui/pg-logo"
 import { ArrowLeft, Menu, Phone, ChevronDown, MoreHorizontal } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 

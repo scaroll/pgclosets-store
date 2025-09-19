@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { PGLogo } from "./ui/pg-logo"
+import { PGLogo } from "../ui/pg-logo"
 
 export default function PgHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)

@@ -3,11 +3,11 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Button } from "../ui/button"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog"
 import { MediaGallery } from "@/components/MediaGallery"
-import { FileUpload } from "@/components/ui/file-upload"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { FileUpload } from "../ui/file-upload"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs"
 import { useToast } from "@/hooks/use-toast"
 
 interface BlobFile {
