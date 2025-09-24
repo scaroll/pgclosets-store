@@ -1,13 +1,14 @@
 import { arcatProducts, productCategories, getProductsByCategory, searchProducts } from "@/lib/enhanced-renin-products"
 import { ProductGrid } from "@/components/store/product-grid"
 import { ProductFilters } from "@/components/store/product-filters"
+import PgHeader from "../../../PgHeader"
 
 interface ProductsPageProps {
-  searchParams: Promise<{
+  searchParams: {
     category?: string
     search?: string
     sort?: string
-  }>
+  }
 }
 
 export const metadata = {
@@ -17,7 +18,7 @@ export const metadata = {
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const { category, search, sort } = await searchParams
+  const { category, search, sort } = searchParams
 
   let filteredProducts = arcatProducts
 
@@ -61,6 +62,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
   return (
     <main className="section-apple">
+      <PgHeader />
       <div className="container-apple">
         <div className="mb-12">
           <h1 className="text-h1 mb-4">{selectedCategory ? selectedCategory.name : "All Products"}</h1>

@@ -24,7 +24,7 @@ export function NewsletterSignup() {
         </div>
         <h3 className="font-semibold mb-2">Thank you for subscribing!</h3>
         <p className="text-muted-foreground text-sm">
-          You'll receive our latest closet design tips and exclusive offers.
+          You&apos;ll receive our latest closet design tips and exclusive offers.
         </p>
       </div>
     )

@@ -18,6 +18,14 @@ export default function PgHeader() {
   return (
     <>
       <header className="nav-apple sticky top-0 z-40" role="banner">
+        {/* Announcement bar */}
+        <div className="w-full bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white text-center py-2 text-xs tracking-wide">
+          <div className="container-apple flex items-center justify-center gap-6">
+            <span className="inline-flex items-center gap-1"><span className="w-1 h-1 bg-amber-400 rounded-full" />Ottawa Team</span>
+            <span className="inline-flex items-center gap-1"><span className="w-1 h-1 bg-amber-400 rounded-full" />500+ Installations</span>
+            <span className="inline-flex items-center gap-1"><span className="w-1 h-1 bg-amber-400 rounded-full" />Trusted Service</span>
+          </div>
+        </div>
         <div className="container-apple h-full flex items-center justify-between">
           <Link
             href="/"
@@ -43,14 +51,21 @@ export default function PgHeader() {
               className="text-body-s text-pg-navy opacity-90 hover:opacity-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
               style={{ fontWeight: 500 }}
             >
-              Products
+              Collection
             </Link>
             <Link
-              href="/blog"
+              href="/about"
               className="text-body-s text-pg-navy opacity-90 hover:opacity-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
               style={{ fontWeight: 500 }}
             >
-              Blog
+              About
+            </Link>
+            <Link
+              href="/services"
+              className="text-body-s text-pg-navy opacity-90 hover:opacity-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
+              style={{ fontWeight: 500 }}
+            >
+              Services
             </Link>
             <Link
               href="/contact"
@@ -62,9 +77,9 @@ export default function PgHeader() {
 
             <Link
               href="/request-work"
-              className="btn-primary ml-6 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
+              className="ml-6 bg-slate-900 text-white px-5 py-2 rounded-md hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
             >
-              Request a Quote
+              Schedule Consultation
             </Link>
           </nav>
 
@@ -141,14 +156,21 @@ export default function PgHeader() {
                   onClick={closeMobileMenu}
                   className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
                 >
-                  Products
+                  Collection
                 </Link>
                 <Link
-                  href="/blog"
+                  href="/about"
                   onClick={closeMobileMenu}
                   className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
                 >
-                  Blog
+                  About
+                </Link>
+                <Link
+                  href="/services"
+                  onClick={closeMobileMenu}
+                  className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
+                >
+                  Services
                 </Link>
                 <Link
                   href="/contact"
@@ -163,9 +185,9 @@ export default function PgHeader() {
                   <Link
                     href="/request-work"
                     onClick={closeMobileMenu}
-                    className="block w-full text-center bg-pg-navy text-white py-3 px-6 rounded-lg font-medium hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
+                    className="block w-full text-center bg-slate-900 text-white py-3 px-6 rounded-lg font-medium hover:bg-slate-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
                   >
-                    Request a Quote
+                    Schedule Consultation
                   </Link>
                 </div>
               </div>

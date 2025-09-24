@@ -7,7 +7,7 @@ export function CheckoutClient() {
     <div className="text-center py-12">
       <h2 className="text-h2 mb-4">Quote Request System</h2>
       <p className="text-body-l text-pg-gray mb-8 max-w-2xl mx-auto">
-        We've transitioned to a personalized quote system to provide you with the most accurate pricing for your closet
+        We&apos;ve transitioned to a personalized quote system to provide you with the most accurate pricing for your closet
         door project.
       </p>
 

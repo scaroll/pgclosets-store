@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
+import HeroVideo from "../HeroVideo"
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -38,50 +40,55 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white font-sans">
-      <header className="fixed top-0 w-full z-50 bg-white shadow-lg">
+      <header className="fixed top-0 w-full z-50 bg-white shadow-lg" role="banner">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gradient-to-r from-[#1B4A9C] to-[#4A5F8A] text-white text-center py-2 text-sm font-semibold">
-            ⭐ 5.0 • 🏠 500+ Installations • ⏰ 15+ Years • 98% Satisfaction
+          <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white text-center py-3 text-sm tracking-wide">
+            <div className="flex items-center justify-center space-x-8 text-xs uppercase font-light">
+              <span className="flex items-center space-x-1">
+                <span className="w-1 h-1 bg-amber-400 rounded-full"></span>
+                <span>Ottawa Team</span>
+              </span>
+              <span className="flex items-center space-x-1">
+                <span className="w-1 h-1 bg-amber-400 rounded-full"></span>
+                <span>500+ Installations</span>
+              </span>
+              <span className="flex items-center space-x-1">
+                <span className="w-1 h-1 bg-amber-400 rounded-full"></span>
+                <span>Trusted Service</span>
+              </span>
+            </div>
           </div>
 
           <div className="flex justify-between items-center h-20">
-            <a href="/" className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-[#1B4A9C] flex items-center justify-center text-white font-bold text-lg">
-                PG
-              </div>
+            <Link href="/" className="flex items-center space-x-3">
+              <Image src="/brand/pg-logo.png" alt="PG Closets" width={48} height={48} className="object-contain" />
               <div>
-                <div className="text-xl font-bold text-[#1B4A9C]">PG CLOSETS</div>
-                <p className="text-xs text-[#9BC4E2] font-medium">Premium Solutions</p>
+                <div className="text-2xl font-light tracking-wide text-slate-900">PG CLOSETS</div>
+                <p className="text-xs text-slate-500 font-light uppercase tracking-widest">Ottawa Design Atelier</p>
               </div>
-            </a>
+            </Link>
 
             <nav className="hidden lg:flex items-center space-x-6">
-              <a href="/" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              <Link href="/" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
                 Home
-              </a>
-              <a href="/products" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/products" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">
                 Products
-              </a>
-              <a href="/about" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/about" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">
                 About
-              </a>
-              <a href="/services" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/services" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">
                 Services
-              </a>
-              <a href="/contact" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/contact" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">
                 Contact
-              </a>
+              </Link>
 
               <div className="flex items-center space-x-4 ml-6">
-                <a href="tel:6134225800" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C]">
-                  (613) 422-5800
-                </a>
-                <button
-                  onClick={() => setQuoteStep(1)}
-                  className="bg-[#9BC4E2] text-[#1B4A9C] px-6 py-2 font-semibold hover:bg-[#1B4A9C] hover:text-white transition-all"
-                >
-                  Get Quote
-                </button>
+                <Link href="/request-work" className="bg-slate-900 text-white px-8 py-2.5 text-sm font-light tracking-wide hover:bg-slate-800 transition-all duration-300">
+                  Schedule Consultation
+                </Link>
               </div>
             </nav>
 
@@ -103,21 +110,21 @@ export default function Home() {
 
           {mobileMenuOpen && (
             <div className="lg:hidden border-t py-4 space-y-2 bg-white">
-              <a href="/" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
+              <Link href="/" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
                 Home
-              </a>
-              <a href="/products" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
+              </Link>
+              <Link href="/products" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
                 Products
-              </a>
-              <a href="/about" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
+              </Link>
+              <Link href="/about" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
                 About
-              </a>
-              <a href="/services" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
+              </Link>
+              <Link href="/services" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
                 Services
-              </a>
-              <a href="/contact" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
+              </Link>
+              <Link href="/contact" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
                 Contact
-              </a>
+              </Link>
 
               <div className="px-4 pt-4 grid grid-cols-2 gap-2">
                 <a href="tel:6134225800" className="bg-[#1B4A9C] text-white py-3 text-center font-semibold">
@@ -138,51 +145,64 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#1B4A9C] via-[#4A5F8A] to-[#2C5AA0]">
-        <div className="relative z-20 text-center text-white px-4 max-w-6xl mx-auto">
-          <div className="mb-6">
-            <span className="inline-block bg-[#9BC4E2] text-[#1B4A9C] px-4 py-2 text-sm font-semibold">
-              ⚡ December: 3 Slots Left
-            </span>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <HeroVideo />
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 opacity-5 z-10">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-slate-400 rounded-full blur-3xl" />
+        </div>
+        <div className="relative z-20 text-center px-4 max-w-7xl mx-auto">
+          <div className="mb-8">
+            <div className="inline-flex items-center space-x-2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-light tracking-wide">
+              <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
+              <span>Now scheduling in-home consultations</span>
+            </div>
           </div>
-
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">Custom Closets & Storage Solutions in Ottawa</h1>
-          <p className="text-lg lg:text-xl mb-8 max-w-3xl mx-auto">
-            Official Renin Dealer • 500+ Installations • Free Measurement
+          <h1 className="text-5xl lg:text-7xl font-extralight mb-8 leading-[1.1] text-slate-100 tracking-tight">
+            Closet Doors
+            <br />
+            <span className="text-slate-300">For Your Home</span>
+          </h1>
+          <p className="text-xl lg:text-2xl mb-12 max-w-4xl mx-auto text-slate-200 font-light leading-relaxed">
+            We design and install closet doors in Ottawa with quality materials and reliable service.
           </p>
-
-          <div className="flex justify-center space-x-8 mb-8 text-[#9BC4E2]">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto text-white">
             <div className="text-center">
-              <div className="text-2xl font-bold">500+</div>
-              <div className="text-sm">Ottawa Homes</div>
+              <div className="text-3xl lg:text-4xl font-light mb-2">500+</div>
+              <div className="text-sm text-slate-300 uppercase tracking-widest font-light">Luxury Installations</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold">5.0★</div>
-              <div className="text-sm">Google Rating</div>
+              <div className="text-3xl lg:text-4xl font-light mb-2">★★★★★</div>
+              <div className="text-sm text-slate-300 uppercase tracking-widest font-light">Client Satisfaction</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold">15+</div>
-              <div className="text-sm">Years Experience</div>
+              <div className="text-3xl lg:text-4xl font-light mb-2">15+</div>
+              <div className="text-sm text-slate-300 uppercase tracking-widest font-light">Years Mastery</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold">98%</div>
-              <div className="text-sm">Satisfaction Rate</div>
+              <div className="text-3xl lg:text-4xl font-light mb-2">Award</div>
+              <div className="text-sm text-slate-300 uppercase tracking-widest font-light">Winning Design</div>
             </div>
           </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => setQuoteStep(1)}
-              className="bg-[#9BC4E2] text-[#1B4A9C] hover:bg-white font-semibold px-8 py-4 shadow-lg hover:shadow-xl transition-all"
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              href="/request-work"
+              className="group bg-slate-900 text-white hover:bg-slate-800 font-light px-12 py-4 text-lg tracking-wide transition-all duration-500 hover:shadow-2xl hover:scale-105"
             >
-              Calculate Quote →
-            </button>
-            <a
+              <span className="group-hover:hidden">Request Private Consultation</span>
+              <span className="hidden group-hover:inline-flex items-center space-x-2">
+                <span>Schedule Your Visit</span>
+                <span>→</span>
+              </span>
+            </Link>
+            <Link
               href="/products"
-              className="border-2 border-[#9BC4E2] text-[#9BC4E2] hover:bg-[#9BC4E2] hover:text-[#1B4A9C] font-semibold px-8 py-4 transition-all text-center"
+              className="group border border-slate-300 text-slate-100 hover:border-white hover:text-white font-light px-12 py-4 text-lg tracking-wide transition-all duration-300 text-center"
             >
-              View Products
-            </a>
+              <span className="group-hover:hidden">Explore Collection</span>
+              <span className="hidden group-hover:inline">View Curated Designs</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -231,12 +251,12 @@ export default function Home() {
                     >
                       Get Quote
                     </button>
-                    <a
+                    <Link
                       href="/products"
                       className="px-4 py-3 border-2 border-[#1B4A9C] text-[#1B4A9C] hover:bg-[#1B4A9C] hover:text-white transition-all text-sm uppercase tracking-wide text-center"
                     >
                       Details
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -298,12 +318,12 @@ export default function Home() {
                       <br />✓ 2-week delivery guarantee
                     </div>
                   </div>
-                  <a
+                  <Link
                     href="/contact"
                     className="bg-[#1B4A9C] text-white px-8 py-3 font-semibold hover:bg-[#153A7E] transition-all uppercase tracking-wide inline-block"
                   >
                     Book Consultation
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
@@ -315,7 +335,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <a href="/" className="flex items-center space-x-3 mb-6">
+              <Link href="/" className="flex items-center space-x-3 mb-6">
                 <div className="w-12 h-12 bg-[#9BC4E2] flex items-center justify-center text-[#1B4A9C] font-bold text-lg">
                   PG
                 </div>
@@ -323,30 +343,30 @@ export default function Home() {
                   <h3 className="text-2xl font-bold">PG CLOSETS</h3>
                   <p className="text-[#9BC4E2]">Premium Solutions</p>
                 </div>
-              </a>
+              </Link>
               <p className="text-gray-300 mb-6">
-                Ottawa's premier closet door specialists, transforming homes with premium solutions.
+                Ottawa&apos;s premier closet door specialists, transforming homes with premium solutions.
               </p>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold mb-4 text-[#9BC4E2]">Sitemap</h4>
               <div className="space-y-2">
-                <a href="/" className="block text-gray-300 hover:text-white">
+                <Link href="/" className="block text-gray-300 hover:text-white">
                   Home
-                </a>
-                <a href="/products" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/products" className="block text-gray-300 hover:text-white">
                   Products
-                </a>
-                <a href="/about" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/about" className="block text-gray-300 hover:text-white">
                   About
-                </a>
-                <a href="/services" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/services" className="block text-gray-300 hover:text-white">
                   Services
-                </a>
-                <a href="/contact" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/contact" className="block text-gray-300 hover:text-white">
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
 

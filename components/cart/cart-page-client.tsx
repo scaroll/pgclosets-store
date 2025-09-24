@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useCart } from "@/hooks/use-cart"
 import { Button } from "../ui/button"
 import { formatPrice } from "@/lib/renin-products"
@@ -16,7 +17,7 @@ export function CartPageClient() {
             <ShoppingBag className="w-24 h-24 text-pg-gray/30 mx-auto mb-8" />
             <h1 className="text-h1 mb-4">Your Cart is Empty</h1>
             <p className="text-body-l text-pg-gray mb-8 max-w-md mx-auto">
-              Looks like you haven't added any premium closet doors to your cart yet.
+              Looks like you haven&apos;t added any premium closet doors to your cart yet.
             </p>
             <Button variant="primary" size="lg" href="/store">
               Shop Closet Doors
@@ -42,11 +43,16 @@ export function CartPageClient() {
                 key={`${item.product.id}-${item.selectedSize}-${item.selectedFinish}`}
                 className="card-apple p-6 flex gap-6"
               >
-                <img
-                  src={item.product.images[0] || "/placeholder.svg?height=120&width=120"}
-                  alt={item.product.name}
-                  className="w-24 h-24 object-cover rounded-lg"
-                />
+                <div className="w-24 h-24 relative">
+                  <Image
+                    src={item.product.images[0] || "/placeholder.svg?height=120&width=120"}
+                    alt={item.product.name}
+                    fill
+                    className="object-cover rounded-lg"
+                    sizes="96px"
+                    priority={false}
+                  />
+                </div>
 
                 <div className="flex-1">
                   <h3 className="text-h3 mb-2">{item.product.name}</h3>

@@ -1,53 +1,44 @@
 import { medusaClient } from "./medusa-client"
-import type { Product, ProductCollection } from "@medusajs/medusa"
+import type { Product } from "@/types/medusa"
 
-// Product data adapter to convert local products to Medusa format
-export interface MedusaProductData {
-  title: string
-  subtitle?: string
+interface LocalProduct {
+  id: string
+  name: string
   description: string
-  handle: string
-  is_giftcard: boolean
-  status: "draft" | "proposed" | "published" | "rejected"
+  slug: string
+  price: number
   images: string[]
-  thumbnail?: string
-  options: Array<{
-    title: string
-    values: string[]
-  }>
-  variants: Array<{
-    title: string
-    sku: string
-    inventory_quantity: number
-    manage_inventory: boolean
-    allow_backorder: boolean
-    prices: Array<{
-      currency_code: string
-      amount: number
-    }>
-    options: Array<{
-      option_id: string
-      value: string
-    }>
-  }>
-  collection_id?: string
-  categories?: Array<{
-    id: string
-    name: string
-  }>
-  tags?: Array<{
-    value: string
-  }>
-  metadata?: Record<string, any>
+  category: string
+  tags: string[]
 }
 
-// Convert local product format to Medusa format
-export function convertToMedusaProduct(localProduct: any): MedusaProductData {
+interface ConvertResult {
+  success: string[]
+  errors: Array<{
+    id: string
+    error: unknown
+  }>
+}
+
+export function convertToProduct(localProduct: LocalProduct): Product {
   return {
+    id: localProduct.id,
     title: localProduct.name,
-    description: localProduct.description,
     handle: localProduct.slug,
-    is_giftcard: false,
+    description: localProduct.description,
+    images: localProduct.images.map(url => ({ url })),
+    variants: [{
+      id: localProduct.id,
+      title: localProduct.name,
+      sku: localProduct.id,
+      price: localProduct.price,
+      inventory_quantity: 999
+    }],
+    tags: [localProduct.category, ...localProduct.tags],
+    collection: undefined,
+    metadata: {
+      category: localProduct.category
+    }
     status: "published",
     images: localProduct.images || [],
     thumbnail: localProduct.images?.[0],

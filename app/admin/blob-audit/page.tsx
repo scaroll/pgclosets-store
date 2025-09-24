@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "../../../components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card"
 import { Badge } from "../../../components/ui/badge"
@@ -128,11 +129,13 @@ export default function BlobAuditPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {imageFiles.map((file) => (
               <div key={file.url} className="border rounded-lg p-3 space-y-2">
-                <div className="aspect-square bg-gray-100 rounded-md overflow-hidden">
-                  <img
+                <div className="aspect-square bg-gray-100 rounded-md overflow-hidden relative">
+                  <Image
                     src={file.url || "/placeholder.svg"}
                     alt={file.filename}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 240px"
                     loading="lazy"
                   />
                 </div>

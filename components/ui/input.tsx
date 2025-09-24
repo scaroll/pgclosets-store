@@ -1,6 +1,24 @@
-import React from "react"
+import * as React from "react"
 import { cva, type VariantProps } from "@/lib/utils"
 import { cn } from "@/lib/utils"
+
+/**
+ * Valid HTML input types supported by the Input component
+ */
+export type InputType =
+  | "text"
+  | "password"
+  | "email"
+  | "number"
+  | "tel"
+  | "url"
+  | "search"
+  | "date"
+  | "time"
+  | "datetime-local"
+  | "month"
+  | "week"
+  | "file"
 
 const inputVariants = cva(
   "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
@@ -24,22 +42,50 @@ const inputVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 )
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input"> & VariantProps<typeof inputVariants>>(
-  ({ className, type, variant, size, ...props }, ref) => {
+type InputVariantProps = VariantProps<typeof inputVariants>
+
+export interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
+  /** Input type - if invalid type provided, defaults to "text" */
+  type?: InputType
+  /** Visual variant style */
+  variant?: "default" | "brand" | "ghost" | "underline"
+  /** Size variant */
+  size?: "sm" | "default" | "lg" | "xl"
+}
+
+/**
+ * Input component with support for variants and sizes.
+ * Supports all standard HTML input types and includes custom styling variants.
+ * 
+ * @example
+ * ```tsx
+ * <Input
+ *   type="text"
+ *   variant="brand"
+ *   size="lg"
+ *   placeholder="Enter your name"
+ *   aria-label="Name input"
+ * />
+ * ```
+ */
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type = "text", variant, size, ...props }, ref) => {
     return (
       <input
         type={type}
-        data-slot="input"
         className={cn(inputVariants({ variant, size }), className)}
         ref={ref}
+        data-slot="input"
         {...props}
       />
     )
-  },
+  }
 )
+
 Input.displayName = "Input"
 
 export { Input, inputVariants }

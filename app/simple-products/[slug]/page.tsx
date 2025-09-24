@@ -3,14 +3,14 @@ import Link from "next/link"
 import simpleProducts from "@/data/simple-products.json"
 import { SimpleAddToCartButton } from "@/components/simple-add-to-cart-button"
 
-type Props = { params: Promise<{ slug: string }> }
+type Props = { params: { slug: string } }
 
 export function generateStaticParams() {
   return (simpleProducts as any[]).map((p) => ({ slug: p.slug }))
 }
 
 export default async function SimpleProductDetail({ params }: Props) {
-  const { slug } = await params
+  const { slug } = params
   const product = (simpleProducts as any[]).find((p) => p.slug === slug)
   if (!product) return <div className="py-20 text-center">Product not found.</div>
 

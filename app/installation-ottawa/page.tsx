@@ -61,10 +61,10 @@ export default function InstallationOttawaPage() {
             workmanship warranty.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/configurator">
+            <Link href="/request-work">
               <Button className="btn-primary px-8 py-4 text-lg rounded-full">Schedule Installation</Button>
             </Link>
-            <Link href="/contact">
+            <Link href="/request-work">
               <Button className="btn-secondary px-8 py-4 text-lg rounded-full">Get Quote</Button>
             </Link>
           </div>

@@ -2,6 +2,8 @@
 import Script from "next/script"
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
+import PgHeader from "../../PgHeader"
 
 export default function ContactClientPage() {
   const [scriptLoaded, setScriptLoaded] = useState(false)
@@ -52,104 +54,14 @@ export default function ContactClientPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans">
-      <header className="fixed top-0 w-full z-50 bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gradient-to-r from-[#1B4A9C] to-[#4A5F8A] text-white text-center py-2 text-sm font-semibold">
-            ⭐ {siteStats.rating} • 🏠 {siteStats.installations} Installations • ⏰ {siteStats.experience} Years •{" "}
-            {siteStats.satisfaction} Satisfaction
-          </div>
-
-          <div className="flex justify-between items-center h-20">
-            <a href="/" className="flex items-center space-x-3">
-              <div className="relative w-12 h-12">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PG%20Logo.jpg-PA2Pv0eQKuJGkzYoQf9wsC86lYSKGa.jpeg"
-                  alt="PG Closets Logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-[#1B4A9C]">PG CLOSETS</h1>
-                <p className="text-xs text-[#9BC4E2] font-medium">Premium Solutions</p>
-              </div>
-            </a>
-
-            <nav className="hidden lg:flex items-center space-x-6">
-              <a href="/" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                Home
-              </a>
-              <a href="/products" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                Products
-              </a>
-              <a href="/about" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                About
-              </a>
-              <a href="/services" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                Services
-              </a>
-              <a
-                href="/contact"
-                className="text-[#9BC4E2] hover:text-[#1B4A9C] px-3 py-2 text-sm font-medium font-semibold"
-              >
-                Contact
-              </a>
-
-              <div className="flex items-center space-x-4 ml-6">
-                <a href="tel:6134225800" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C]">
-                  (613) 422-5800
-                </a>
-              </div>
-            </nav>
-
-            <div className="lg:hidden">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-[#1B4A9C] hover:text-[#9BC4E2] p-2"
-              >
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  {mobileMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {mobileMenuOpen && (
-            <div className="lg:hidden border-t py-4 space-y-2 bg-white">
-              <a href="/" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
-                Home
-              </a>
-              <a href="/products" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
-                Products
-              </a>
-              <a href="/about" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
-                About
-              </a>
-              <a href="/services" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
-                Services
-              </a>
-              <a
-                href="/contact"
-                className="block px-4 py-2 text-[#9BC4E2] hover:text-[#1B4A9C] font-medium font-semibold"
-              >
-                Contact
-              </a>
-            </div>
-          )}
-        </div>
-      </header>
+      <PgHeader />
 
       <div className="pt-32 pb-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <nav className="text-sm text-gray-600 mb-4">
-            <a href="/" className="hover:text-[#1B4A9C]">
+            <Link href="/" className="hover:text-[#1B4A9C]">
               Home
-            </a>{" "}
+            </Link>{" "}
             / <span className="text-[#1B4A9C] font-medium">Contact</span>
           </nav>
         </div>
@@ -244,7 +156,7 @@ export default function ContactClientPage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <a href="/" className="flex items-center space-x-3 mb-6">
+              <Link href="/" className="flex items-center space-x-3 mb-6">
                 <div className="relative w-12 h-12">
                   <Image
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PG%20Logo.jpg-PA2Pv0eQKuJGkzYoQf9wsC86lYSKGa.jpeg"
@@ -257,30 +169,30 @@ export default function ContactClientPage() {
                   <h3 className="text-2xl font-bold">PG CLOSETS</h3>
                   <p className="text-[#9BC4E2]">Premium Solutions</p>
                 </div>
-              </a>
+              </Link>
               <p className="text-gray-300 mb-6">
-                Ottawa's premier closet door specialists, transforming homes with premium solutions.
+                Ottawa&apos;s premier closet door specialists, transforming homes with premium solutions.
               </p>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold mb-4 text-[#9BC4E2]">Sitemap</h4>
               <div className="space-y-2">
-                <a href="/" className="block text-gray-300 hover:text-white">
+                <Link href="/" className="block text-gray-300 hover:text-white">
                   Home
-                </a>
-                <a href="/products" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/products" className="block text-gray-300 hover:text-white">
                   Products
-                </a>
-                <a href="/about" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/about" className="block text-gray-300 hover:text-white">
                   About
-                </a>
-                <a href="/services" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/services" className="block text-gray-300 hover:text-white">
                   Services
-                </a>
-                <a href="/contact" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/contact" className="block text-gray-300 hover:text-white">
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
 

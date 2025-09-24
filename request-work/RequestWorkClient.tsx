@@ -16,7 +16,6 @@ export default function RequestWorkClient() {
     const checkJobberForm = setTimeout(() => {
       const jobberContainer = document.getElementById("83a3d24e-c18d-441c-80d1-d85419ea28ae")
       if (jobberContainer && jobberContainer.children.length === 0) {
-        console.log("[v0] Jobber form container is empty, script may have failed")
         setScriptError(true)
       }
     }, 5000)
@@ -33,13 +32,11 @@ export default function RequestWorkClient() {
   }, [])
 
   const handleScriptLoad = () => {
-    console.log("[v0] Jobber script loaded successfully")
     setScriptLoaded(true)
     setScriptError(false)
   }
 
   const handleScriptError = () => {
-    console.log("[v0] Jobber script failed to load")
     setScriptError(true)
     setScriptLoaded(false)
   }

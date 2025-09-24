@@ -16,7 +16,7 @@ export default function TermsOfService() {
 
         <div className="space-y-8">
           <p className="text-body-m text-pg-dark mb-6" style={{ opacity: 0.8 }}>
-            Last updated: {new Date().toLocaleDateString("en-CA")}
+            Last updated: January 2025
           </p>
 
           <section>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import PgHeader from "../../PgHeader"
 
 export const metadata: Metadata = {
   title: "Professional Closet Door Services Ottawa | Installation & Consultation | PG Closets",
@@ -20,69 +21,7 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      {/* Header */}
-      <header className="bg-[#1B4A9C] text-white sticky top-0 z-50 shadow-lg">
-        <div className="bg-[#1B4A9C] py-2 text-center text-sm">
-          <div className="flex items-center justify-center gap-4">
-            <span>⭐ 5.0</span>
-            <span>• 500+ Installations</span>
-            <span>• 15+ Years</span>
-            <span>• 98% Satisfaction</span>
-          </div>
-        </div>
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white flex items-center justify-center">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PG%20Logo.jpg-PA2Pv0eQKuJGkzYoQf9wsC86lYSKGa.jpeg"
-                  alt="PG Closets Logo"
-                  width={40}
-                  height={40}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div>
-                <div className="font-bold text-xl">PG CLOSETS</div>
-                <div className="text-xs text-[#9BC4E2]">Premium Solutions</div>
-              </div>
-            </Link>
-
-            <nav className="hidden md:flex items-center gap-8">
-              <Link href="/" className="hover:text-[#9BC4E2] transition-colors">
-                Home
-              </Link>
-              <Link href="/products" className="hover:text-[#9BC4E2] transition-colors">
-                Products
-              </Link>
-              <Link href="/about" className="hover:text-[#9BC4E2] transition-colors">
-                About
-              </Link>
-              <Link href="/services" className="text-[#9BC4E2] font-semibold">
-                Services
-              </Link>
-              <Link href="/contact" className="hover:text-[#9BC4E2] transition-colors">
-                Contact
-              </Link>
-            </nav>
-
-            <div className="flex items-center gap-4">
-              <a
-                href="tel:6134225800"
-                className="hidden md:block text-lg font-semibold hover:text-[#9BC4E2] transition-colors"
-              >
-                (613) 422-5800
-              </a>
-              <Link
-                href="/contact"
-                className="bg-[#9BC4E2] text-[#1B4A9C] px-6 py-2 font-semibold hover:bg-white transition-colors"
-              >
-                Get Quote
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <PgHeader />
 
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">

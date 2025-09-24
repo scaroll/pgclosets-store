@@ -124,11 +124,11 @@ export default function RegisterPage() {
                     <input type="checkbox" required className="rounded border-border mt-0.5" />
                     <span className="text-muted-foreground">
                       I agree to the{" "}
-                      <Link href="/terms" className="text-accent hover:text-accent/80 transition-colors">
+                      <Link href="/legal/terms" className="text-accent hover:text-accent/80 transition-colors">
                         Terms of Service
                       </Link>{" "}
                       and{" "}
-                      <Link href="/privacy" className="text-accent hover:text-accent/80 transition-colors">
+                      <Link href="/legal/privacy" className="text-accent hover:text-accent/80 transition-colors">
                         Privacy Policy
                       </Link>
                     </span>

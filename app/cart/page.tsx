@@ -20,27 +20,9 @@ export default function CartPage() {
 
   const handleCheckout = async () => {
     setIsCheckingOut(true)
-
     try {
-      const response = await fetch("/api/simple-checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ items }),
-      })
-
-      const data = await response.json()
-
-      if (data.success) {
-        // Order placed successfully
-        alert("Order placed successfully!")
-      } else {
-        alert("Checkout failed. Please try again.")
-      }
-    } catch (error) {
-      console.error("Checkout error:", error)
-      alert("Checkout failed. Please try again.")
+      // Redirect to the quote/checkout flow
+      window.location.href = "/checkout"
     } finally {
       setIsCheckingOut(false)
     }

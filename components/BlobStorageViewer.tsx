@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "../ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import { RefreshCw, File, ImageIcon, Video, FileText } from "lucide-react"
@@ -38,7 +39,8 @@ export function BlobStorageViewer() {
 
   useEffect(() => {
     fetchFiles()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  // Disabling eslint since fetchFiles is defined inside the component and won't change
 
   const getFileIcon = (pathname: string) => {
     const ext = pathname.split(".").pop()?.toLowerCase()
@@ -104,9 +106,11 @@ export function BlobStorageViewer() {
                     <div key={index} className="flex items-center gap-4 p-3 border rounded-lg hover:bg-gray-50">
                       <div className="flex-shrink-0">
                         {isImage ? (
-                          <img
+                          <Image
                             src={file.url || "/placeholder.svg"}
                             alt={file.pathname}
+                            width={48}
+                            height={48}
                             className="w-12 h-12 object-cover rounded"
                           />
                         ) : (

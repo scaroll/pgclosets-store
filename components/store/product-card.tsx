@@ -25,11 +25,6 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       sources.push(...product.arcatImages)
     }
 
-    // Priority 2: External Home Depot image
-    if (product.homeDepotImage) {
-      sources.push(product.homeDepotImage)
-    }
-
     // Priority 3: Final fallback placeholder
     sources.push(`/placeholder.svg?height=300&width=300&text=${encodeURIComponent(product.name)}`)
 

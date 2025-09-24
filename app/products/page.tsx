@@ -2,26 +2,23 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import products from "@/data/simple-products.json"
-
+import Link from "next/link"
+import products, { Product } from "../../data/simple-products"
+import PgHeader from "../../components/PgHeader"
 export default function ProductsPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
-  const [categoryFilter, setCategoryFilter] = useState("all")
+  const [selectedCategory, setSelectedCategory] = useState("all")
   const [sortBy, setSortBy] = useState("name")
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
-  const [selectedProduct, setSelectedProduct] = useState<any>(null)
-
-  console.log("[v0] Products loaded:", products.length)
-  console.log("[v0] Search term:", searchTerm)
-  console.log("[v0] Category filter:", categoryFilter)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 
   const filteredProducts = products
-    .filter((product) => {
+    .filter((product: Product) => {
       const matchesSearch =
-        product.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description?.toLowerCase().includes(searchTerm.toLowerCase())
-      const matchesCategory = categoryFilter === "all" || product.category === categoryFilter
+        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase())
+      const matchesCategory = selectedCategory === "all" || product.category === selectedCategory
       return matchesSearch && matchesCategory
     })
     .sort((a, b) => {
@@ -32,16 +29,55 @@ export default function ProductsPage() {
           return b.price - a.price
         case "name":
         default:
-          return (a.title || "").localeCompare(b.title || "")
+          return (a.name || "").localeCompare(b.name || "")
       }
     })
 
-  console.log("[v0] Filtered products:", filteredProducts.length)
+  
 
   const categories = [...new Set(products.map((p) => p.category))]
 
-  const getProductSpecs = (product: any) => {
-    const baseSpecs = {
+  interface BaseSpecs {
+    material: string
+    finish: string
+    hardware: string
+    warranty: string
+    installation: string
+  }
+
+  interface BifoldSpecs extends BaseSpecs {
+    mechanism: string
+    sizes: string
+    thickness: string
+    weight: string
+  }
+
+  interface BypassSpecs extends BaseSpecs {
+    mechanism: string
+    sizes: string
+    thickness: string
+    weight: string
+  }
+
+  interface BarnSpecs extends BaseSpecs {
+    mechanism: string
+    sizes: string
+    thickness: string
+    weight: string
+  }
+
+  interface HardwareSpecs {
+    material: string
+    finish: string
+    capacity: string
+    warranty: string
+    installation: string
+  }
+
+  type ProductSpecs = BaseSpecs | BifoldSpecs | BypassSpecs | BarnSpecs | HardwareSpecs
+
+  const getProductSpecs = (product: Product): ProductSpecs => {
+    const baseSpecs: BaseSpecs = {
       material: "Premium engineered wood core",
       finish: "Durable laminate surface",
       hardware: "Professional-grade components",
@@ -56,7 +92,7 @@ export default function ProductsPage() {
         sizes: '24", 30", 32", 36" widths available',
         thickness: '1-3/8" standard thickness',
         weight: "Lightweight yet durable construction",
-      }
+      } as BifoldSpecs
     } else if (product.category === "Bypass Doors") {
       return {
         ...baseSpecs,
@@ -64,7 +100,7 @@ export default function ProductsPage() {
         sizes: '48", 60", 72", 80", 96" widths available',
         thickness: '1-1/8" or 1-3/8" options',
         weight: "Engineered for easy operation",
-      }
+      } as BypassSpecs
     } else if (product.category === "Barn Doors") {
       return {
         ...baseSpecs,
@@ -72,7 +108,7 @@ export default function ProductsPage() {
         sizes: '30", 32", 36", 42" widths, custom heights',
         thickness: '1-3/4" solid construction',
         weight: "Supports up to 200 lbs capacity",
-      }
+      } as BarnSpecs
     } else if (product.category === "Hardware") {
       return {
         material: "Stainless steel construction",
@@ -80,7 +116,7 @@ export default function ProductsPage() {
         capacity: "Supports doors up to 200 lbs",
         warranty: "Lifetime mechanical warranty",
         installation: "Complete hardware kit included",
-      }
+      } as HardwareSpecs
     }
     return baseSpecs
   }
@@ -133,6 +169,7 @@ export default function ProductsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <PgHeader />
       <header className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
@@ -146,23 +183,23 @@ export default function ProductsPage() {
               />
               <div>
                 <h1 className="text-2xl font-bold text-[#1e3a8a]">PG Closets</h1>
-                <p className="text-sm text-[#9BC4E2]">Ottawa's Premier Door Experts</p>
+                <p className="text-sm text-[#9BC4E2]">Ottawa&apos;s Premier Door Experts</p>
               </div>
             </div>
 
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="/" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
+              <Link href="/" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
                 Home
-              </a>
-              <a href="/products" className="text-[#1e3a8a] font-bold border-b-2 border-[#9BC4E2]">
+              </Link>
+              <Link href="/products" className="text-[#1e3a8a] font-bold border-b-2 border-[#9BC4E2]">
                 Products
-              </a>
-              <a href="/about" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
+              </Link>
+              <Link href="/about" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
                 About
-              </a>
-              <a href="/contact" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
+              </Link>
+              <Link href="/contact" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
                 Contact
-              </a>
+              </Link>
               <a
                 href="tel:613-422-5800"
                 className="bg-[#1e3a8a] text-[#9BC4E2] px-6 py-3 font-bold hover:bg-[#9BC4E2] hover:text-[#1e3a8a] transition-all duration-300 border-2 border-[#1e3a8a]"
@@ -187,18 +224,18 @@ export default function ProductsPage() {
           {isMobileMenuOpen && (
             <div className="md:hidden py-4 border-t border-gray-200">
               <div className="flex flex-col space-y-4">
-                <a href="/" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
+                <Link href="/" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
                   Home
-                </a>
-                <a href="/products" className="text-[#1e3a8a] font-bold">
+                </Link>
+                <Link href="/products" className="text-[#1e3a8a] font-bold">
                   Products
-                </a>
-                <a href="/about" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
+                </Link>
+                <Link href="/about" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
                   About
-                </a>
-                <a href="/contact" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
+                </Link>
+                <Link href="/contact" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
                   Contact
-                </a>
+                </Link>
                 <a
                   href="tel:613-422-5800"
                   className="bg-[#1e3a8a] text-[#9BC4E2] px-6 py-3 font-bold text-center border-2 border-[#1e3a8a]"
@@ -236,8 +273,8 @@ export default function ProductsPage() {
               <div>
                 <label className="block text-sm font-bold text-[#1e3a8a] mb-3">Category</label>
                 <select
-                  value={categoryFilter}
-                  onChange={(e) => setCategoryFilter(e.target.value)}
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
                   className="w-full px-4 py-4 border-2 border-gray-300 focus:ring-2 focus:ring-[#87ceeb] focus:border-[#1e3a8a] transition-all duration-300 font-medium"
                 >
                   <option value="all">All Categories</option>
@@ -266,7 +303,7 @@ export default function ProductsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product, index) => {
-              console.log("[v0] Rendering product:", product.title, "Image:", product.image)
+              console.log("[v0] Rendering product:", product.name, "Image:", product.image)
               const specs = getProductSpecs(product)
 
               return (
@@ -280,17 +317,17 @@ export default function ProductsPage() {
                   >
                     <Image
                       src={product.image || "/placeholder.svg?height=400&width=400&text=No+Image"}
-                      alt={`${product.title} - PG Closets Ottawa`}
+                      alt={`${product.name} - PG Closets Ottawa`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority={index < 6}
                       onError={(e) => {
-                        console.log("[v0] Image load error for:", product.title, product.image)
+                        console.log("[v0] Image load error for:", product.name, product.image)
                         e.currentTarget.src = "/placeholder.svg?height=400&width=400&text=Image+Error"
                       }}
                       onLoad={() => {
-                        console.log("[v0] Image loaded successfully:", product.title)
+                        console.log("[v0] Image loaded successfully:", product.name)
                       }}
                     />
                     <div className="absolute top-4 left-4">
@@ -306,7 +343,7 @@ export default function ProductsPage() {
 
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#1e3a8a] transition-colors duration-300">
-                      {product.title}
+                      {product.name}
                     </h3>
                     <p className="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">{product.description}</p>
 
@@ -404,7 +441,7 @@ export default function ProductsPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-start mb-6">
-              <h2 className="text-3xl font-bold text-[#1e3a8a]">{selectedProduct.title}</h2>
+              <h2 className="text-3xl font-bold text-[#1e3a8a]">{selectedProduct.name}</h2>
               <button
                 onClick={() => setSelectedProduct(null)}
                 className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
@@ -417,7 +454,7 @@ export default function ProductsPage() {
               <div>
                 <Image
                   src={selectedProduct.image || "/placeholder.svg"}
-                  alt={selectedProduct.title}
+                  alt={selectedProduct.name}
                   width={400}
                   height={400}
                   className="w-full object-cover border-2 border-[#87ceeb]"
@@ -476,7 +513,7 @@ export default function ProductsPage() {
                 />
                 <div>
                   <h3 className="text-xl font-bold text-[#9BC4E2]">PG Closets</h3>
-                  <p className="text-sm text-gray-300">Ottawa's Premier Door Experts</p>
+                  <p className="text-sm text-gray-300">Ottawa&apos;s Premier Door Experts</p>
                 </div>
               </div>
               <p className="text-gray-300 leading-relaxed">
@@ -488,24 +525,24 @@ export default function ProductsPage() {
               <h4 className="text-lg font-bold text-[#9BC4E2] mb-4">Products</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <a href="/products" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/products" className="hover:text-[#9BC4E2] transition-colors">
                     Bifold Doors
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/products" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/products" className="hover:text-[#9BC4E2] transition-colors">
                     Bypass Doors
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/products" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/products" className="hover:text-[#9BC4E2] transition-colors">
                     Barn Doors
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/products" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/products" className="hover:text-[#9BC4E2] transition-colors">
                     Hardware
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -514,24 +551,24 @@ export default function ProductsPage() {
               <h4 className="text-lg font-bold text-[#9BC4E2] mb-4">Services</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <a href="/contact" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/contact" className="hover:text-[#9BC4E2] transition-colors">
                     Free Consultation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/contact" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/contact" className="hover:text-[#9BC4E2] transition-colors">
                     Professional Installation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/contact" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/contact" className="hover:text-[#9BC4E2] transition-colors">
                     Custom Solutions
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/contact" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/contact" className="hover:text-[#9BC4E2] transition-colors">
                     Warranty Service
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

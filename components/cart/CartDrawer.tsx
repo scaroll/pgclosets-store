@@ -89,7 +89,9 @@ export default function CartDrawer() {
                         <div className="text-xs text-pg-dark/60 mt-1">
                           {item.customizations.width && item.customizations.height && (
                             <span>
-                              {item.customizations.width}" × {item.customizations.height}"
+                              {item.customizations.width}
+                              &quot; × {item.customizations.height}
+                              &quot;
                             </span>
                           )}
                           {item.customizations.hardware && (

@@ -33,7 +33,7 @@ export function OrderConfirmation({ orderId, shippingInfo }: OrderConfirmationPr
 
       <h2 className="text-h2 mb-4 text-green-700">Order Confirmed!</h2>
       <p className="text-body-l text-pg-gray mb-6">
-        Thank you for your order. We've received your payment and will begin processing your closet doors immediately.
+        Thank you for your order. We&apos;ve received your payment and will begin processing your closet doors immediately.
       </p>
 
       <div className="bg-pg-offwhite p-6 rounded-lg mb-8 text-left">
@@ -66,11 +66,11 @@ export function OrderConfirmation({ orderId, shippingInfo }: OrderConfirmationPr
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-h3">What's Next?</h3>
+        <h3 className="text-h3">What&apos;s Next?</h3>
         <div className="grid md:grid-cols-3 gap-4 text-sm">
           <div className="p-4 bg-blue-50 rounded-lg">
             <div className="font-semibold text-blue-700 mb-2">1. Order Processing</div>
-            <p className="text-blue-600">We'll prepare your custom closet doors (1-2 business days)</p>
+            <p className="text-blue-600">We&apos;ll prepare your custom closet doors (1-2 business days)</p>
           </div>
           <div className="p-4 bg-yellow-50 rounded-lg">
             <div className="font-semibold text-yellow-700 mb-2">2. Manufacturing</div>
@@ -89,7 +89,7 @@ export function OrderConfirmation({ orderId, shippingInfo }: OrderConfirmationPr
 
       <div className="mt-8 space-y-4">
         <p className="text-sm text-pg-gray">
-          You'll receive email updates at each step. Questions? Call us at{" "}
+          You&apos;ll receive email updates at each step. Questions? Call us at{" "}
           <a href="tel:613-422-5800" className="text-pg-navy font-medium">
             (613) 422-5800
           </a>

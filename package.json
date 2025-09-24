@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "22.x"
+    "node": "20.x"
   },
   "scripts": {
     "build": "next build",
@@ -17,8 +17,8 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@medusajs/framework": "^2.9.0",
-    "@medusajs/medusa": "latest",
-    "@medusajs/medusa-js": "^6.1.7",
+    "@medusajs/medusa": "^2.10.3",
+    "@medusajs/medusa-js": "^6.1.10",
     "@mikro-orm/core": "latest",
     "@mikro-orm/knex": "latest",
     "@mikro-orm/migrations": "latest",
@@ -70,6 +70,7 @@
     "immer": "latest",
     "lucide-react": "^0.454.0",
     "next": "15.2.4",
+    "next-themes": "^0.4.6",
     "posthog-node": "latest",
     "react": "^19",
     "react-dom": "^19",
@@ -89,15 +90,22 @@
     "zustand": "latest"
   },
   "devDependencies": {
+    "@playwright/test": "^1.55.1",
     "@swc/core": "^1.7.26",
     "@tailwindcss/typography": "^0.5.15",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
     "@types/date-fns": "^2.6.0",
     "@types/node": "^22",
+    "@vitejs/plugin-react": "^5.0.3",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.2.4",
+    "happy-dom": "^18.0.1",
+    "jsdom": "^27.0.0",
     "postcss": "^8.5",
     "tailwindcss": "^3.4.17",
+    "vitest": "^3.2.4",
     "webpack-bundle-analyzer": "^4.10.2"
   }
 }

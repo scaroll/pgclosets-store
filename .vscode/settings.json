@@ -47,6 +47,60 @@
   "claude.contextAwareness": "maximum",
 
   // ======================================================
+  // GITHUB COPILOT AGENT MODE (2024 REDDIT RECOMMENDATIONS)
+  // ======================================================
+
+  // Enable Agent Mode - Core Feature
+  "chat.agent.enabled": true,
+
+  // Auto Model Selection (GPT-5, Claude Sonnet 4, etc.)
+  "github.copilot.chat.model": "auto",
+  "github.copilot.chat.useModelSelection": true,
+
+  // Agent Mode Task Execution
+  "github.copilot.chat.agent.runTasks": true,
+  "github.copilot.chat.agent.autoFix": true,
+
+  // Auto-Approval for Safe File Patterns (Reddit Best Practice)
+  "chat.tools.edits.autoApprove": {
+    "**/*.ts": true,
+    "**/*.tsx": true,
+    "**/*.js": true,
+    "**/*.jsx": true,
+    "**/*.json": true,
+    "**/*.md": true,
+    "**/*.css": true,
+    "**/*.scss": true,
+    "**/*.html": true,
+    "**/.vscode/*.json": false,
+    "**/.env*": false,
+    "**/package.json": false,
+    "**/package-lock.json": false,
+    "**/yarn.lock": false,
+    "**/pnpm-lock.yaml": false
+  },
+
+  // Terminal Auto-Approval with Security
+  "chat.tools.terminal.enableAutoApprove": true,
+  "chat.tools.terminal.autoApprove": {
+    "npm run *": true,
+    "npm install": true,
+    "yarn *": true,
+    "git status": true,
+    "git diff": true,
+    "git add .": true,
+    "git commit -m *": true,
+    "git push": false,
+    "rm -rf *": false,
+    "sudo *": false
+  },
+
+  // Enhanced Chat Features
+  "github.copilot.chat.followUp": "always",
+  "github.copilot.chat.localeOverride": "auto",
+  "github.copilot.chat.useProjectTemplates": true,
+
+  // ======================================================
   // AI-DRIVEN EDITOR BEHAVIOR
   // ======================================================
 
@@ -274,7 +328,6 @@
   "editor.renderWhitespace": "boundary",
   "editor.renderControlCharacters": false,
   "editor.renderLineHighlight": "all",
-  "editor.renderIndentGuides": true,
   "editor.stickyScroll.enabled": true,
   "editor.stickyTabStops": true,
 
@@ -317,7 +370,6 @@
   // Zen Mode for Deep AI Work
   "zenMode.hideLineNumbers": false,
   "zenMode.hideStatusBar": false,
-  "zenMode.hideTabs": false,
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": false,
   "zenMode.restore": true,
@@ -327,7 +379,6 @@
   // ======================================================
 
   "editor.suggest.maxVisibleSuggestions": 20,
-  "editor.suggest.filteredTypes": {},
   "editor.suggest.showMethods": true,
   "editor.suggest.showFunctions": true,
   "editor.suggest.showConstructors": true,
@@ -434,5 +485,6 @@
   "editor.gotoLocation.multipleDefinitions": "peek",
   "editor.occurrencesHighlight": "singleFile",
   "editor.selectionHighlight": true,
-  "editor.wordHighlight": true
+  "editor.wordHighlight": true,
+  "editor.guides.indentation": true
 }

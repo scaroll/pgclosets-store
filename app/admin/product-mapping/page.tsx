@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Button } from "../../../components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card"
@@ -252,11 +253,13 @@ export default function ProductMappingPage() {
                       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
                         {blobFiles.map((file) => (
                           <div key={file.url} className="space-y-2">
-                            <div className="aspect-square bg-gray-100 rounded-md overflow-hidden">
-                              <img
+                            <div className="aspect-square bg-gray-100 rounded-md overflow-hidden relative">
+                              <Image
                                 src={file.url || "/placeholder.svg"}
                                 alt={file.filename}
-                                className="w-full h-full object-cover cursor-pointer hover:opacity-80"
+                                fill
+                                className="object-cover cursor-pointer hover:opacity-80"
+                                sizes="(max-width: 768px) 100vw, 200px"
                                 onClick={() => addBlobImage(product.slug, file.url)}
                               />
                             </div>
@@ -283,11 +286,13 @@ export default function ProductMappingPage() {
               {/* Current Static Image */}
               <div>
                 <Label className="text-sm font-medium">Current Static Image</Label>
-                <div className="mt-2 aspect-video bg-gray-100 rounded-md overflow-hidden">
-                  <img
+                <div className="mt-2 aspect-video bg-gray-100 rounded-md overflow-hidden relative">
+                  <Image
                     src={product.currentImage || "/placeholder.svg"}
                     alt={product.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 400px"
                   />
                 </div>
               </div>
@@ -311,10 +316,12 @@ export default function ProductMappingPage() {
                             product.primaryBlobImage === imageUrl ? "border-blue-500" : "border-transparent"
                           }`}
                         >
-                          <img
+                          <Image
                             src={imageUrl || "/placeholder.svg"}
                             alt={`${product.title} ${index + 1}`}
-                            className="w-full h-full object-cover"
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 200px"
                           />
                         </div>
                         <div className="absolute top-1 right-1 flex gap-1">

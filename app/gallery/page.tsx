@@ -1,57 +1,15 @@
 import { MediaGallery } from "../../components/MediaGallery"
+import PgHeader from "../../PgHeader"
+
+export const metadata = {
+  title: "Project Gallery | PG Closets Ottawa",
+  description: "Browse our installed closet and door projects across Ottawa. Real homes, premium workmanship.",
+}
 
 export default function GalleryPage() {
   return (
     <div className="min-h-screen bg-white font-sans">
-      <header className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gradient-to-r from-[#1B4A9C] to-[#4A5F8A] text-white text-center py-2 text-sm font-semibold">
-            ⭐ 5.0 • 🏠 500+ Installations • ⏰ 15+ Years • 98% Satisfaction
-          </div>
-
-          <div className="flex justify-between items-center h-20">
-            <a href="/" className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-[#1B4A9C] flex items-center justify-center text-white font-bold text-lg">
-                PG
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-[#1B4A9C]">PG CLOSETS</h1>
-                <p className="text-xs text-[#9BC4E2] font-medium">Premium Solutions</p>
-              </div>
-            </a>
-
-            <nav className="hidden lg:flex items-center space-x-6">
-              <a href="/" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                Home
-              </a>
-              <a href="/products" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                Products
-              </a>
-              <a href="/about" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                About
-              </a>
-              <a href="/services" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                Services
-              </a>
-              <a href="/contact" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                Contact
-              </a>
-
-              <div className="flex items-center space-x-4 ml-6">
-                <a href="tel:6134225800" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C]">
-                  (613) 422-5800
-                </a>
-                <a
-                  href="/contact"
-                  className="bg-[#9BC4E2] text-[#1B4A9C] px-6 py-2 font-semibold hover:bg-[#1B4A9C] hover:text-white transition-all"
-                >
-                  Get Quote
-                </a>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <PgHeader />
 
       <div className="pt-24 pb-20">
         <div className="max-w-6xl mx-auto px-4">

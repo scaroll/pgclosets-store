@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import PgHeader from "../../PgHeader"
 
 export const metadata: Metadata = {
   title: "About PG Closets | Official Renin Dealer Ottawa",
@@ -20,65 +21,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      <header className="fixed top-0 w-full z-50 bg-white/98 backdrop-blur-md border-b-2 border-[#1e3a8a] shadow-xl">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gradient-to-r from-[#1e3a8a] to-[#87ceeb] text-white text-center py-3 text-sm font-bold tracking-wide">
-            ⭐ 5.0 • 🏠 500+ Installations • ⏰ 15+ Years • 98% Satisfaction
-          </div>
-
-          <div className="flex justify-between items-center h-20">
-            <div className="flex-shrink-0">
-              <div className="flex items-center space-x-4">
-                <div className="relative w-16 h-16 overflow-hidden border-2 border-[#87ceeb] shadow-lg">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PG%20Logo.jpg-PA2Pv0eQKuJGkzYoQf9wsC86lYSKGa.jpeg"
-                    alt="PG Closets Logo"
-                    fill
-                    className="object-contain"
-                    priority
-                  />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-black text-[#1e3a8a] tracking-tight">PG CLOSETS</h1>
-                  <p className="text-xs text-[#87ceeb] font-bold tracking-wider">PREMIUM SOLUTIONS</p>
-                </div>
-              </div>
-            </div>
-
-            <nav className="hidden lg:flex items-center space-x-8">
-              {[
-                { name: "Home", href: "/" },
-                { name: "Products", href: "/products" },
-                { name: "Gallery", href: "/gallery" },
-                { name: "Process", href: "/process" },
-                { name: "About", href: "/about" },
-                { name: "Contact", href: "/contact" },
-              ].map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`relative px-4 py-2 text-sm font-bold uppercase tracking-wide transition-all duration-300 group ${
-                    item.name === "About"
-                      ? "text-[#1e3a8a] border-b-2 border-[#87ceeb]"
-                      : "text-gray-800 hover:text-[#1e3a8a]"
-                  }`}
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-1 bg-[#87ceeb] transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              ))}
-              <div className="flex items-center space-x-4">
-                <a href="tel:6134225800" className="text-[#1e3a8a] font-bold hover:text-[#87ceeb] transition-colors">
-                  📞 (613) 422-5800
-                </a>
-                <button className="bg-[#87ceeb] text-white px-8 py-3 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-[#87ceeb] hover:border-[#1e3a8a]">
-                  FREE QUOTE
-                </button>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <PgHeader />
 
       <section className="pt-32 pb-24 bg-gradient-to-br from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

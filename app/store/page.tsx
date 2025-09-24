@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/store/hero-section"
 import { Button } from "@/components/ui/button"
 import { getFeaturedProducts, productCategories } from "@/lib/enhanced-renin-products"
 import Image from "next/image"
+import PgHeader from "../../PgHeader"
 
 export const metadata = {
   title: "Premium Closet Door Store | Renin Products | PG Closets Ottawa",
@@ -15,6 +16,7 @@ export default function StorePage() {
 
   return (
     <main>
+      <PgHeader />
       <HeroSection />
 
       <CategoriesSection />

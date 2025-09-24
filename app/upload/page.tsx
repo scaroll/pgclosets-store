@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { SecureImageUploader } from "../../components/SecureImageUploader"
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
@@ -54,11 +55,15 @@ export default function UploadPage() {
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                   {allUploadedFiles.map((file, index) => (
                     <div key={index} className="space-y-2">
-                      <img
-                        src={file.url || "/placeholder.svg"}
-                        alt={file.filename}
-                        className="w-full h-24 object-cover rounded-lg border"
-                      />
+                      <div className="relative w-full h-24">
+                        <Image
+                          src={file.url || "/placeholder.svg"}
+                          alt={file.filename}
+                          fill
+                          className="object-cover rounded-lg border"
+                          sizes="(max-width: 768px) 100vw, 200px"
+                        />
+                      </div>
                       <p className="text-xs text-gray-600 truncate" title={file.filename}>
                         {file.filename}
                       </p>

@@ -9,15 +9,15 @@ import { QuoteModal } from './quote-modal'
 
 interface RequestQuoteButtonProps {
   product: CoreProduct | ArcatProduct
-  variant?: "primary" | "secondary" | "outline"
-  size?: "sm" | "default" | "lg"
+  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "primary" | "brand-primary" | "brand-secondary" | "brand-outline" | "brand-ghost"
+  size?: "sm" | "default" | "lg" | "xl" | "icon" | "icon-sm" | "icon-lg" | "icon-xl"
   className?: string
   selectedOptions?: Record<string, string>
 }
 
 export function RequestQuoteButton({
   product,
-  variant = "outline",
+  variant = "brand-outline",
   size = "default",
   className = "",
   selectedOptions,

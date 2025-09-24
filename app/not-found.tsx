@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-white font-sans">
@@ -8,7 +10,7 @@ export default function NotFound() {
           </div>
 
           <div className="flex justify-between items-center h-20">
-            <a href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3">
               <div className="w-12 h-12 bg-[#1B4A9C] flex items-center justify-center text-white font-bold text-lg">
                 PG
               </div>
@@ -16,24 +18,24 @@ export default function NotFound() {
                 <h1 className="text-xl font-bold text-[#1B4A9C]">PG CLOSETS</h1>
                 <p className="text-xs text-[#9BC4E2] font-medium">Premium Solutions</p>
               </div>
-            </a>
+            </Link>
 
             <nav className="hidden lg:flex items-center space-x-6">
-              <a href="/" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              <Link href="/" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
                 Home
-              </a>
-              <a href="/products" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/products" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
                 Products
-              </a>
-              <a href="/about" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/about" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
                 About
-              </a>
-              <a href="/services" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/services" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
                 Services
-              </a>
-              <a href="/contact" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link href="/contact" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
                 Contact
-              </a>
+              </Link>
 
               <div className="flex items-center space-x-4 ml-6">
                 <a href="tel:6134225800" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C]">
@@ -50,28 +52,28 @@ export default function NotFound() {
           <div className="text-6xl mb-6 text-[#9BC4E2]">404</div>
           <h1 className="text-3xl md:text-4xl font-bold text-[#1B4A9C] mb-4">Page Not Found</h1>
           <p className="text-lg text-gray-600 mb-8">
-            Sorry, we couldn't find the page you're looking for. Let's get you back to exploring our premium closet
+            Sorry, we couldn&apos;t find the page you&apos;re looking for. Let&apos;s get you back to exploring our premium closet
             doors.
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
+          <Link
             href="/"
             className="bg-[#1B4A9C] text-white px-8 py-3 font-semibold hover:bg-[#153A7E] transition-all uppercase tracking-wide"
           >
             Back to Home
-          </a>
-          <a
+          </Link>
+          <Link
             href="/products"
             className="border-2 border-[#1B4A9C] text-[#1B4A9C] hover:bg-[#1B4A9C] hover:text-white px-8 py-3 font-semibold transition-all uppercase tracking-wide"
           >
             View Products
-          </a>
+          </Link>
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-gray-600 mb-4">Need help finding what you're looking for?</p>
+          <p className="text-gray-600 mb-4">Need help finding what you&apos;re looking for?</p>
           <a href="tel:6134225800" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C] text-lg">
             Call us: (613) 422-5800
           </a>
@@ -82,7 +84,7 @@ export default function NotFound() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <a href="/" className="flex items-center space-x-3 mb-6">
+              <Link href="/" className="flex items-center space-x-3 mb-6">
                 <div className="w-12 h-12 bg-[#9BC4E2] flex items-center justify-center text-[#1B4A9C] font-bold text-lg">
                   PG
                 </div>
@@ -90,30 +92,30 @@ export default function NotFound() {
                   <h3 className="text-2xl font-bold">PG CLOSETS</h3>
                   <p className="text-[#9BC4E2]">Premium Solutions</p>
                 </div>
-              </a>
+              </Link>
               <p className="text-gray-300 mb-6">
-                Ottawa's premier closet door specialists, transforming homes with premium solutions.
+                Ottawa&apos;s premier closet door specialists, transforming homes with premium solutions.
               </p>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold mb-4 text-[#9BC4E2]">Sitemap</h4>
               <div className="space-y-2">
-                <a href="/" className="block text-gray-300 hover:text-white">
+                <Link href="/" className="block text-gray-300 hover:text-white">
                   Home
-                </a>
-                <a href="/products" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/products" className="block text-gray-300 hover:text-white">
                   Products
-                </a>
-                <a href="/about" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/about" className="block text-gray-300 hover:text-white">
                   About
-                </a>
-                <a href="/services" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/services" className="block text-gray-300 hover:text-white">
                   Services
-                </a>
-                <a href="/contact" className="block text-gray-300 hover:text-white">
+                </Link>
+                <Link href="/contact" className="block text-gray-300 hover:text-white">
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
 
