@@ -1,6 +1,15 @@
 import type { Cart } from "@/types/medusa"
 
-import type { Cart, Product, ProductCollection, PaginatedResponse } from "@/types/medusa"
+import   return {
+    id: "placeholder",
+    items: [],
+    subtotal: 0,
+    total: 0,
+    region: {
+      id: "default",
+      name: "Default Region",
+      currency_code: "CAD"
+    },t, ProductCollection, PaginatedResponse } from "@/types/medusa"
 
 /**
  * Simplified Medusa client implementation
@@ -57,12 +66,9 @@ export const medusaClient = {
       region: {
         id: "default",
         name: "Default Region",
-        currency_code: "USD"
-      }
-      region_id: "default",
-      region: {
-        id: "default",
-        name: "Default Region",
+        currency_code: "USD",
+        region_id: "default"
+      },
         currency_code: "USD",
         tax_rate: 0,
         payment_providers: [],

@@ -38,7 +38,7 @@ export function convertToProduct(localProduct: LocalProduct): Product {
     collection: undefined,
     metadata: {
       category: localProduct.category
-    }
+    },
     status: "published",
     images: localProduct.images || [],
     thumbnail: localProduct.images?.[0],

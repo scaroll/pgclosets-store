@@ -1,0 +1,24 @@
+# Production robots.txt for pgclosets.com
+User-agent: *
+Allow: /
+
+# Prioritize important pages
+Allow: /store
+Allow: /products
+Allow: /services
+Allow: /contact
+Allow: /blog
+
+# Block admin and API endpoints
+Disallow: /admin
+Disallow: /api/
+Disallow: /checkout/
+Disallow: /cart/
+
+# Block development files
+Disallow: /_next/
+Disallow: /public/
+
+# Sitemap location
+Sitemap: https://pgclosets.com/sitemap.xml
+Sitemap: https://www.pgclosets.com/sitemap.xml

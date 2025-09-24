@@ -85,8 +85,6 @@ export interface MedusaError {
   code: string
   message: string
   type: string
-}
-}
   tax_total: number
   tax_lines: LineItemTaxLine[]
   created_at: string
