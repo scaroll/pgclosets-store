@@ -72,7 +72,7 @@ export const productService = {
     try {
       const response = await medusaClient.getProducts()
       const products = response.products
-      return [...new Set(products.flatMap(p => p.tags))]
+      return Array.from(new Set(products.flatMap(p => p.tags)))
     } catch (error) {
       console.error("Error getting categories:", error)
       return []

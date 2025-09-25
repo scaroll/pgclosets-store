@@ -1,15 +1,20 @@
 import { medusaClient } from "./medusa-client"
-import type { Product } from "@/types/medusa"
+import type { Product, ProductCollection } from "@/types/medusa"
 
 interface LocalProduct {
-  id: string
-  name: string
-  description: string
-  slug: string
-  price: number
-  images: string[]
-  category: string
-  tags: string[]
+  id: string;
+  name: string;
+  description: string;
+  slug: string;
+  price: number;
+  images: string[];
+  category: string;
+  subcategory: string;
+  tags: string[];
+  specifications: { [key: string]: string };
+  features: string[]; // Added missing property
+  featured: boolean;
+  inStock: boolean;
 }
 
 interface ConvertResult {
@@ -21,39 +26,30 @@ interface ConvertResult {
 }
 
 export function convertToProduct(localProduct: LocalProduct): Product {
+  const variants = createVariantsFromProduct(localProduct);
+
   return {
     id: localProduct.id,
     title: localProduct.name,
     handle: localProduct.slug,
     description: localProduct.description,
     images: localProduct.images.map(url => ({ url })),
-    variants: [{
-      id: localProduct.id,
-      title: localProduct.name,
-      sku: localProduct.id,
-      price: localProduct.price,
-      inventory_quantity: 999
-    }],
-    tags: [localProduct.category, ...localProduct.tags],
-    collection: undefined,
-    metadata: {
-      category: localProduct.category
-    },
-    status: "published",
-    images: localProduct.images || [],
     thumbnail: localProduct.images?.[0],
     options: [
       {
+        id: "size",
         title: "Size",
-        values: localProduct.specifications?.["Standard Sizes"]?.split(", ") || ["Standard"],
+        values: localProduct.specifications?.["Standard Sizes"]?.split(", ")?.map(v => ({value: v})) || [{value: "Standard"}],
       },
     ],
-    variants: createVariantsFromProduct(localProduct),
+    variants: variants,
     tags: [
-      { value: localProduct.category },
-      { value: localProduct.subcategory },
-      ...(localProduct.featured ? [{ value: "featured" }] : []),
+      localProduct.category,
+      localProduct.subcategory,
+      ...localProduct.tags,
+      ...(localProduct.featured ? ["featured"] : []),
     ],
+    collection: undefined, // This can be populated later if needed
     metadata: {
       originalId: localProduct.id,
       category: localProduct.category,
@@ -124,10 +120,11 @@ export const medusaProducts = {
   // Get product by handle/slug
   async getProductByHandle(handle: string): Promise<Product | null> {
     try {
-      return await medusaClient.getProductByHandle(handle)
+      const { product } = await medusaClient.getProductByHandle(handle);
+      return product;
     } catch (error) {
-      console.error("Error fetching product by handle:", error)
-      return null
+      console.error("Error fetching product by handle:", error);
+      return null;
     }
   },
 
@@ -183,15 +180,15 @@ export const medusaProducts = {
 }
 
 // Migration utility (for development/admin use)
-export async function migrateLocalProductsToMedusa(localProducts: any[]) {
-  const results = {
+export async function migrateLocalProductsToMedusa(localProducts: LocalProduct[]) {
+  const results: ConvertResult = {
     success: [],
     errors: [],
   }
 
   for (const localProduct of localProducts) {
     try {
-      const medusaProduct = convertToMedusaProduct(localProduct)
+      const medusaProduct = convertToProduct(localProduct)
       console.log(`Migrating product: ${medusaProduct.title}`)
 
       // Note: This would require admin API access to create products

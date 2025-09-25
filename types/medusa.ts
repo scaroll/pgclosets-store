@@ -3,6 +3,12 @@ export interface Product {
   title: string
   handle: string
   description: string
+  thumbnail?: string
+  options?: Array<{
+    id: string
+    title: string
+    values: Array<{ value: string }>
+  }>
   images: Array<{
     url: string
     altText?: string
@@ -29,11 +35,7 @@ export interface ProductCollection {
 export interface Cart {
   id: string
   items: LineItem[]
-  region: {
-    id: string
-    name: string
-    currency_code: string
-  }
+  region: Region
   shipping_address?: Address
   billing_address?: Address
   payment_sessions?: Array<{
@@ -43,6 +45,12 @@ export interface Cart {
   }>
   subtotal: number
   total: number
+  discounts: Discount[]
+  gift_cards: GiftCard[]
+  shipping_methods: ShippingMethod[]
+  status: CartStatus
+  created_at: string
+  updated_at: string
 }
 
 export interface PaginatedResponse<T> {
@@ -112,24 +120,6 @@ export interface Country {
   name: string
   display_name: string
   region_id: string
-}
-
-export interface Address {
-  id?: string
-  customer_id?: string
-  company?: string
-  first_name?: string
-  last_name?: string
-  address_1: string
-  address_2?: string
-  city: string
-  country_code: string
-  province?: string
-  postal_code: string
-  phone?: string
-  metadata?: Record<string, unknown>
-  created_at?: string
-  updated_at?: string
 }
 
 export interface Discount {
