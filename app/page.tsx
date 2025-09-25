@@ -15,25 +15,25 @@ export default function Home() {
     {
       name: "Continental",
       price: 459,
-      image: "/images/arcat/renin_176732_hd.jpg",
+      image: "/images/renin_176732_hd.jpg",
       specs: "Premium engineered wood core, durable laminate surface",
     },
     {
       name: "Provincial",
       price: 549,
-      image: "/images/arcat/renin_205750_hd.jpg",
+      image: "/images/renin_205750_hd.jpg",
       specs: "Traditional styling, heavy-duty pivot hinges",
     },
     {
       name: "Gatsby",
       price: 799,
-      image: "/images/arcat/renin_205729_hd.jpg",
+      image: "/images/renin_205729_hd.jpg",
       specs: "Modern barn door design, premium hardware included",
     },
     {
       name: "Euro",
       price: 899,
-      image: "/images/arcat/renin_199063_hd.jpg",
+      image: "/images/renin_199063_hd.jpg",
       specs: "Contemporary European styling, soft-close mechanism",
     },
   ]
@@ -61,7 +61,7 @@ export default function Home() {
 
           <div className="flex justify-between items-center h-20">
             <Link href="/" className="flex items-center space-x-3">
-              <Image src="/brand/pg-logo.png" alt="PG Closets" width={48} height={48} className="object-contain" />
+                            <Image src="/brand/pg-logo.png" alt="PG Closets" width={48} height={48} className="object-contain" />
               <div>
                 <div className="text-2xl font-light tracking-wide text-slate-900">PG CLOSETS</div>
                 <p className="text-xs text-slate-500 font-light uppercase tracking-widest">Ottawa Design Atelier</p>
