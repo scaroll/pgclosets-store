@@ -22,18 +22,13 @@ export function extractProductIdFromFilename(filename: string): string | null {
   return match ? match[1] : null;
 }
 
-// Enhanced image mapping with all 120+ images for 66 products
+// Corrected image mapping for 13 actual products with 21 ARCAT image IDs
 export const availableArcatImages = {
   // Euro Collection Bifold & Bypass Doors
   "155701": {
     hd: ["/images/arcat/renin_155701_hd.jpg"],
     regular: ["/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite.jpg"],
     variants: ["/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg"]
-  },
-  "155706": {
-    hd: ["/images/arcat/renin_155706_hd.jpg"],
-    regular: ["/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design.jpg"],
-    variants: ["/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design_v2.jpg"]
   },
   "155725": {
     hd: ["/images/arcat/renin_155725_hd.jpg"],
@@ -52,15 +47,6 @@ export const availableArcatImages = {
   },
 
   // Continental Collection Doors
-  "176725": {
-    regular: ["/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg"]
-  },
-  "176728": {
-    regular: ["/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg"]
-  },
-  "176729": {
-    regular: ["/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg"]
-  },
   "176732": {
     hd: ["/images/arcat/renin_176732_hd.jpg"],
     regular: ["/images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg"]
@@ -68,9 +54,6 @@ export const availableArcatImages = {
   "176733": {
     hd: ["/images/arcat/renin_176733_hd.jpg"],
     regular: ["/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg"]
-  },
-  "176736": {
-    hd: ["/images/arcat/renin_176736_hd.jpg"]
   },
   "176737": {
     hd: ["/images/arcat/renin_176737_hd.jpg"],
@@ -83,9 +66,6 @@ export const availableArcatImages = {
   },
   "192856": {
     hd: ["/images/arcat/renin_192856_hd.jpg"]
-  },
-  "192857": {
-    hd: ["/images/arcat/renin_192857_hd.jpg"]
   },
   "192859": {
     hd: ["/images/arcat/renin_192859_hd.jpg"]
@@ -132,133 +112,74 @@ export const availableArcatImages = {
   }
 } as const;
 
-// Enhanced product name patterns for 66 products with better categorization
+// Product name patterns for 13 actual products with corrected categorization
 export const productNamePatterns = {
   // Barn Door Patterns
-  "heritage-herringbone": ["192861"],
-  "heritage-salinas": ["176737"],
-  "continental-dunmore": ["176732"],
-  "continental-pavilion": ["176733"],
-  "continental-hall": ["176729"],
-  "heritage-modern": ["176736"],
-  "heritage-classic": ["192859"],
-  "advanced-heritage": ["192857"],
+  "heritage-barn-door": ["192861", "192859"],
+  "continental-barn-door": ["176732", "176733", "176737"],
 
-  // Bypass Door Patterns
-  "euro-1-lite-bypass": ["155725"],
-  "euro-3-lite-bypass": ["155732"],
-  "euro-1-lite-bifold": ["155701"],
-  "euro-3-lite-bifold": ["155731"],
-  "parsons-flush": ["155706"],
-  "georgian-6-panel": ["176725"],
-  "ashbury-2-panel": ["176728"],
-
-  // LED Mirror Patterns
-  "twilight-led-24x32": ["205717"],
-  "twilight-led-30x36": ["205718"],
-  "twilight-led-36x48": ["205720"],
-  "twilight-led-42x60": ["205721"],
-  "twilight-led-premium": ["205723"],
-
-  // Medicine Cabinet Patterns
-  "harmony-medicine-cabinet": ["199063"],
-  "harmony-premium-cabinet": ["199064"],
-  "harmony-deluxe-cabinet": ["199065"],
-
-  // Hardware Patterns
-  "cairns-handles": ["199077"],
-  "tear-drop-latch": ["199078"],
-  "invisiglide-hardware": ["192853", "192856"],
-
-  // Legacy patterns for backward compatibility
+  // Sliding Door Patterns
   "euro-1-lite": ["155701", "155725"],
   "euro-3-lite": ["155731", "155732"],
-  "heritage-barn-door": ["192861", "192859"],
-  "continental-barn-door": ["176732", "176733"],
-  "harmony-bifold": ["199064", "199063"],
+  "euro-5-lite-sliding": ["176733", "176737"],
   "twilight-sliding-door": ["205717", "205718"],
+
+  // Bifold Door Patterns
+  "harmony-bifold": ["199063", "199064"],
+  "steel-frame-bifold": ["199065", "199064"],
+
+  // Pivot Door Patterns
+  "provincial-pivot-door": ["205720", "205721"],
+  "crochet-pivot-door": ["205721", "205723"],
+
+  // Hardware Patterns
   "invisiglide-hardware-kit": ["192853", "192856"],
-  "handles-pulls": ["199077"],
-  "barn-door-lock": ["199078"]
+  "industrial-barn-hardware": ["199077", "199078"],
+
+  // Mirror Patterns
+  "vienna-mirror": ["199064", "199065"]
 } as const;
 
-// Enhanced mapping connecting Enhanced Product Catalog to Arcat image IDs
+// Corrected mapping connecting 13 actual products to their Arcat image IDs
 export const productToArcatMapping: Record<string | number, string[]> = {
-  // Barn Doors (18 products - PROD-0001 to PROD-0018)
-  1: ["192861"], // Heritage Herringbone
-  2: ["176737"], // Heritage Salinas Z-Design
-  3: ["176732"], // Continental Dunmore K-Lite
-  4: ["176733"], // Continental Pavilion 5-Lite
-  5: ["176729"], // Continental Hall 3-Lite
-  6: ["176732"], // Continental Dunmore (variant)
-  7: ["176733"], // Continental Pavilion (variant)
-  8: ["176736"], // Heritage Modern Design
-  9: ["176737"], // Heritage Salinas (variant)
-  10: ["192857"], // Advanced Heritage System
-  11: ["192859"], // Heritage Classic Design
-  12: ["192861"], // Heritage Herringbone (variant)
-  13: ["192853"], // Premium Hardware Barn Door
-  14: ["192856"], // Advanced Track Barn Door
-  15: ["176725"], // Georgian Style Barn Door
-  16: ["176728"], // Ashbury Style Barn Door
-  17: ["199064"], // Harmony Style Barn Door
-  18: ["199065"], // Harmony Premium Barn Door
+  // Product 1: Euro 1-Lite (sliding)
+  1: ["155725", "155701"],
 
-  // Bypass Doors (20 products - PROD-0019 to PROD-0038)
-  19: ["155725"], // Euro 1-Lite Bypass 48x80
-  20: ["155732"], // Euro 3-Lite Bypass 48x80
-  21: ["155701"], // Euro 1-Lite Bifold
-  22: ["155706"], // Parsons Flush Panel
-  23: ["155706"], // Parsons Flush Panel (variant)
-  24: ["155731"], // Euro 3-Lite Bifold
-  25: ["155732"], // Euro 3-Lite Bypass (variant)
-  26: ["176725"], // Georgian 6-Panel Bypass
-  27: ["176725"], // Georgian 6-Panel (variant)
-  28: ["176728"], // Ashbury 2-Panel Bypass
-  29: ["176728"], // Ashbury 2-Panel (variant)
-  30: ["176729"], // Continental Hall Bypass
-  31: ["176736"], // Heritage Modern Bypass
-  32: ["192857"], // Advanced Bypass System
-  33: ["192859"], // Heritage Classic Bypass
-  34: ["155725"], // Euro 1-Lite (additional size)
-  35: ["155732"], // Euro 3-Lite (additional size)
-  36: ["155701"], // Euro 1-Lite Bifold (variant)
-  37: ["155706"], // Parsons Design (additional)
-  38: ["155731"], // Euro 3-Lite Bifold (variant)
+  // Product 2: Euro 3-Lite (sliding)
+  2: ["155732", "155731"],
 
-  // LED Mirrors (12 products - PROD-0039 to PROD-0050)
-  39: ["205717"], // Twilight LED Mirror 24x32
-  40: ["205717"], // Twilight LED Mirror (variant)
-  41: ["205718"], // Twilight LED Mirror 30x36
-  42: ["205718"], // Twilight LED Mirror (variant)
-  43: ["205720"], // Twilight LED Mirror 36x48
-  44: ["205720"], // Twilight LED Mirror (variant)
-  45: ["205721"], // Twilight LED Mirror 42x60
-  46: ["205721"], // Twilight LED Mirror (variant)
-  47: ["205723"], // Twilight LED Mirror Premium
-  48: ["205723"], // Twilight LED Mirror Premium (variant)
-  49: ["205717"], // Twilight Compact LED
-  50: ["205718"], // Twilight Standard LED
+  // Product 3: Heritage Barn Door (barn)
+  3: ["192861", "192859"],
 
-  // Medicine Cabinets (10 products - PROD-0051 to PROD-0060)
-  51: ["199063"], // Harmony Medicine Cabinet 24x30
-  52: ["199063"], // Harmony Medicine Cabinet (variant)
-  53: ["199064"], // Harmony Premium Cabinet
-  54: ["199064"], // Harmony Premium Cabinet (variant)
-  55: ["199065"], // Harmony Deluxe Cabinet
-  56: ["199065"], // Harmony Deluxe Cabinet (variant)
-  57: ["199063"], // Harmony Compact Cabinet
-  58: ["199064"], // Harmony Standard Cabinet
-  59: ["199065"], // Harmony Large Cabinet
-  60: ["199063"], // Harmony Basic Cabinet
+  // Product 4: Continental Barn Door (barn)
+  4: ["176732", "176733"],
 
-  // Hardware (6 products - PROD-0061 to PROD-0066)
-  61: ["199077"], // Cairns Handle Pulls
-  62: ["199078"], // Tear Drop Privacy Latch
-  63: ["192853"], // InvisiGlide Hardware Kit
-  64: ["192853"], // InvisiGlide Hardware Kit (variant)
-  65: ["192856"], // Premium Track System
-  66: ["192856"], // Premium Track System (variant)
+  // Product 5: Harmony Bifold (bifold)
+  5: ["199064", "199063"],
+
+  // Product 6: Twilight Sliding Door (sliding)
+  6: ["205717", "205718"],
+
+  // Product 7: InvisiGlide Hardware Kit (hardware)
+  7: ["192853", "192856"],
+
+  // Product 8: Vienna Mirror 30x42 (mirrors)
+  8: ["199064", "199065"],
+
+  // Product 9: Steel Frame Bifold (bifold)
+  9: ["199065", "199064"],
+
+  // Product 10: Provincial Pivot Door (pivot)
+  10: ["205720", "205721"],
+
+  // Product 11: Crochet Pivot Door (pivot)
+  11: ["205721", "205723"],
+
+  // Product 12: Euro 5-Lite Sliding (sliding)
+  12: ["176733", "176737"],
+
+  // Product 13: Industrial Barn Hardware (hardware)
+  13: ["199077", "199078"]
 };
 
 /**
@@ -276,15 +197,15 @@ export function getImagesForProduct(productId: string | number): string[] {
     const imageSet = availableArcatImages[arcatId as keyof typeof availableArcatImages];
     if (imageSet) {
       // Prioritize HD images first
-      if (imageSet.hd) {
+      if ('hd' in imageSet && imageSet.hd) {
         allImages.push(...imageSet.hd);
       }
       // Then add regular images
-      if (imageSet.regular) {
+      if ('regular' in imageSet && imageSet.regular) {
         allImages.push(...imageSet.regular);
       }
       // Finally add variants
-      if (imageSet.variants) {
+      if ('variants' in imageSet && imageSet.variants) {
         allImages.push(...imageSet.variants);
       }
     }
@@ -313,7 +234,7 @@ export function getHDImageForProduct(productId: string | number): string {
   // Look for HD version first
   for (const arcatId of arcatIds) {
     const imageSet = availableArcatImages[arcatId as keyof typeof availableArcatImages];
-    if (imageSet?.hd && imageSet.hd.length > 0) {
+    if (imageSet && 'hd' in imageSet && imageSet.hd && imageSet.hd.length > 0) {
       return imageSet.hd[0];
     }
   }
@@ -346,9 +267,9 @@ export function getAllImageVariantsForProduct(productId: string | number): {
   for (const arcatId of arcatIds) {
     const imageSet = availableArcatImages[arcatId as keyof typeof availableArcatImages];
     if (imageSet) {
-      if (imageSet.hd) result.hd.push(...imageSet.hd);
-      if (imageSet.regular) result.regular.push(...imageSet.regular);
-      if (imageSet.variants) result.variants.push(...imageSet.variants);
+      if ('hd' in imageSet && imageSet.hd) result.hd.push(...imageSet.hd);
+      if ('regular' in imageSet && imageSet.regular) result.regular.push(...imageSet.regular);
+      if ('variants' in imageSet && imageSet.variants) result.variants.push(...imageSet.variants);
     }
   }
 
@@ -369,18 +290,22 @@ export function hasHDImages(productId: string | number): boolean {
  */
 export function getCategoryFallbackImage(category: string): string {
   const fallbackMap: Record<string, string> = {
-    'barn-doors': '/images/placeholder-barn-door.jpg',
-    'interior-doors': '/images/placeholder-interior-door.jpg',
-    'closet-systems': '/images/placeholder-closet.jpg',
-    'room-dividers': '/images/placeholder-divider.jpg',
-    'glass-mirrors': '/images/placeholder-glass.jpg',
-    'hardware': '/images/placeholder-hardware.jpg',
-    'sliding': '/images/placeholder-sliding.jpg',
-    'bifold': '/images/placeholder-bifold.jpg',
-    'barn': '/images/placeholder-barn-door.jpg'
+    // Use actual product images as category fallbacks
+    'barn': '/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg',
+    'sliding': '/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg',
+    'bifold': '/images/arcat/renin_199064_hd.jpg',
+    'pivot': '/images/arcat/renin_205720_hd.jpg',
+    'hardware': '/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg',
+    'mirrors': '/images/arcat/renin_199064_hd.jpg',
+    // Legacy fallbacks
+    'barn-doors': '/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg',
+    'interior-doors': '/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg',
+    'closet-systems': '/images/arcat/renin_199064_hd.jpg',
+    'room-dividers': '/images/arcat/renin_205720_hd.jpg',
+    'glass-mirrors': '/images/arcat/renin_199064_hd.jpg'
   };
 
-  return fallbackMap[category] || '/images/placeholder-product.jpg';
+  return fallbackMap[category] || '/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg';
 }
 
 /**
@@ -431,10 +356,11 @@ export function debugProductImageMapping(productId: string | number): {
 // Export all available Arcat image IDs for reference
 export const allArcatImageIds = Object.keys(availableArcatImages);
 
-// Export image statistics
+// Export image statistics for the corrected dataset
 export const imageStatistics = {
-  totalProducts: Object.keys(productToArcatMapping).length,
-  totalArcatImages: Object.keys(availableArcatImages).length,
-  productsWithHD: Object.values(availableArcatImages).filter(set => set.hd && set.hd.length > 0).length,
-  productsWithVariants: Object.values(availableArcatImages).filter(set => set.variants && set.variants.length > 0).length
+  totalProducts: Object.keys(productToArcatMapping).length, // 13 actual products
+  totalArcatImages: Object.keys(availableArcatImages).length, // 21 ARCAT image IDs
+  productsWithHD: Object.values(availableArcatImages).filter(set => 'hd' in set && set.hd && set.hd.length > 0).length,
+  productsWithVariants: Object.values(availableArcatImages).filter(set => 'variants' in set && set.variants && set.variants.length > 0).length,
+  phantomProductsRemoved: 53 // 66 - 13 = 53 phantom products removed
 };

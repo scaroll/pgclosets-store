@@ -12,6 +12,7 @@ type ProductLike = Product | {
   title: string;
   image?: string;
   images?: string[];
+  arcatImages?: string[];
 }
 
 // Mock storage for product mappings - in real app this would come from database
@@ -25,14 +26,24 @@ export function getProductImages(product: ProductLike): string[] {
     return mapping.blobImages
   }
 
-  // Fallback to static images or generate placeholder images
+  // Priority 1: Use arcatImages if available (from enhanced database)
+  if ('arcatImages' in product && product.arcatImages && Array.isArray(product.arcatImages) && product.arcatImages.length > 0) {
+    return product.arcatImages
+  }
+
+  // Priority 2: Use images array if available
   if (product.images && product.images.length > 0) {
     return product.images
   }
 
-  // Generate default placeholder images
+  // Priority 3: Use single image if available
+  if (product.image) {
+    return [product.image]
+  }
+
+  // Final fallback: Generate placeholder images
   return [
-    product.image || `/placeholder.svg?height=600&width=800&text=${encodeURIComponent(product.title)}+Main`,
+    `/placeholder.svg?height=600&width=800&text=${encodeURIComponent(product.title)}+Main`,
     `/placeholder.svg?height=600&width=800&text=${encodeURIComponent(product.title)}+Detail`,
     `/placeholder.svg?height=600&width=800&text=${encodeURIComponent(product.title)}+Hardware`,
     `/placeholder.svg?height=600&width=800&text=${encodeURIComponent(product.title)}+Installation`,
@@ -53,8 +64,23 @@ export function getPrimaryProductImage(product: ProductLike): string {
     return mapping.blobImages[0]
   }
 
-  // Fallback to static image
-  return product.image || `/placeholder.svg?height=400&width=600&text=${encodeURIComponent(product.title)}`
+  // Priority 1: Use first arcatImage if available
+  if ('arcatImages' in product && product.arcatImages && Array.isArray(product.arcatImages) && product.arcatImages.length > 0) {
+    return product.arcatImages[0]
+  }
+
+  // Priority 2: Use first image from images array
+  if (product.images && product.images.length > 0) {
+    return product.images[0]
+  }
+
+  // Priority 3: Use single image property
+  if (product.image) {
+    return product.image
+  }
+
+  // Final fallback
+  return `/placeholder.svg?height=400&width=600&text=${encodeURIComponent(product.title)}`
 }
 
 export function updateProductMapping(slug: string, mapping: Partial<ProductImageMapping>) {
