@@ -1,11 +1,11 @@
-import { BUSINESS_INFO, formatServiceAreas } from '@/lib/business-config'
+import { BUSINESS_INFO } from '@/lib/business-config'
 
 interface LocalBusinessInfoProps {
   businessName: string
   address: string
   phone: string
   email: string
-  serviceAreas: string[]
+  serviceAreas: readonly string[]
   businessHours: {
     [key: string]: string
   }

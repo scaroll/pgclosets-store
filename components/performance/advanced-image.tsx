@@ -128,8 +128,8 @@ export function AdvancedImage({
       return () => {
         try {
           document.head.removeChild(link)
-        } catch (e) {
-          // Link may have already been removed
+        } catch (_e) {
+          // Link may hav_e alr_eady b_e_en r_emov_ed
         }
       }
     }

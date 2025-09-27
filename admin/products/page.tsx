@@ -48,7 +48,7 @@ export default function ProductManagement() {
       const response = await fetch("/data/products.json")
       const data = await response.json()
       setProducts(data.items || [])
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to load products",
@@ -99,12 +99,12 @@ export default function ProductManagement() {
     setSaving(true)
     try {
       // In a real app, this would save to a database
-      // For now, we'll just show success
+      // For now, we&apos;ll just show success
       toast({
         title: "Success",
         description: "Products updated successfully",
       })
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to save products",

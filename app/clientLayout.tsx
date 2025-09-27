@@ -16,7 +16,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         `}
       </Script>
 
-      {children}
+      <main id="main-content" role="main" tabIndex={-1}>
+        {children}
+      </main>
 
       {/* Global Cart Drawer */}
       <CartDrawer />

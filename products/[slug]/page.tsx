@@ -1,15 +1,26 @@
+import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from "next/navigation"
 import { reninProducts } from "../../../data/renin-products"
 import { ProductJSONLD } from "../../../lib/seo"
 
 export const dynamic = "force-static"
 
+interface ReninProduct {
+  id: string
+  name: string
+  category: string
+  price: number
+  image: string
+  features: string[]
+}
+
 export function generateStaticParams() {
-  return reninProducts.map((p) => ({ slug: p.id }))
+  return (reninProducts as ReninProduct[]).map((p) => ({ slug: p.id }))
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const p = reninProducts.find((product) => product.id === params.slug)
+  const p = (reninProducts as ReninProduct[]).find((product) => product.id === params.slug)
   if (!p) return { title: "Product Not Found | PG Closets" }
   const title = `${p.name} | PG Closets Ottawa`
   const description = `Premium ${p.category} door in Ottawa. ${p.features.join(", ")}. From $${p.price} CAD with professional installation.`
@@ -21,11 +32,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default function PDP({ params }: { params: { slug: string } }) {
-  const p = reninProducts.find((product) => product.id === params.slug)
+  const p = (reninProducts as ReninProduct[]).find((product) => product.id === params.slug)
   if (!p) return notFound()
 
   const priceText = `From $${p.price.toLocaleString()} CAD`
-  const related = reninProducts.filter((product) => product.category === p.category && product.id !== p.id).slice(0, 3)
+  const related = (reninProducts as ReninProduct[])
+    .filter((product) => product.category === p.category && product.id !== p.id)
+    .slice(0, 3)
 
   return (
     <main className="section-apple">
@@ -35,13 +48,16 @@ export default function PDP({ params }: { params: { slug: string } }) {
         <section className="grid lg:grid-cols-2 gap-10 mb-12">
           {/* Image block with exact specifications: white card, sky border, 16px radius, min-height requirements */}
           <div className="card-apple p-0 overflow-hidden min-h-[320px] lg:min-h-[480px]">
-            <img
+            <Image
               src={
                 p.image ||
                 `/placeholder.svg?height=900&width=1200&query=${encodeURIComponent(p.name + " closet door") || "/placeholder.svg"}`
               }
               alt={`${p.name} - PG Closets Ottawa`}
+              width={1200}
+              height={900}
               className="w-full h-full object-cover"
+              unoptimized
             />
           </div>
 
@@ -63,12 +79,12 @@ export default function PDP({ params }: { params: { slug: string } }) {
 
             {/* CTA row with exact 24px spacing from price */}
             <div className="flex flex-col sm:flex-row gap-3">
-              <a href="/contact" className="btn-primary">
+              <Link href="/contact" className="btn-primary">
                 Request Installation Quote
-              </a>
-              <a href="/contact" className="btn-secondary">
+              </Link>
+              <Link href="/contact" className="btn-secondary">
                 Schedule Consultation
-              </a>
+              </Link>
             </div>
 
             {/* Two panels side-by-side with exact 32px spacing from CTA row */}
@@ -116,13 +132,16 @@ export default function PDP({ params }: { params: { slug: string } }) {
                 <a key={r.id} href={`/products/${r.id}`} className="card-apple overflow-hidden group">
                   {/* Small height image (160px) as specified for related products */}
                   <div className="h-40 overflow-hidden">
-                    <img
+                    <Image
                       src={
                         r.image ||
                         `/placeholder.svg?height=160&width=240&query=${encodeURIComponent(r.name + " closet door") || "/placeholder.svg"}`
                       }
                       alt={`${r.name} - PG Closets Ottawa`}
+                      width={240}
+                      height={160}
                       className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
+                      unoptimized
                     />
                   </div>
                   <div className="p-4">

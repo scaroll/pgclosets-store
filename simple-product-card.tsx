@@ -19,7 +19,21 @@ export function SimpleProductCard({ product }: Props) {
     <Card className="overflow-hidden hover:shadow-md transition">
       <Link href={`/simple-products/${product.slug}`} className="block">
         <div className="relative aspect-[4/3]">
-          <Image src={product.image || "/placeholder.svg"} alt={product.title} fill className="object-cover" />
+          {(product.image?.includes('renin_199078') || product.image?.includes('renin_199077')) ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img 
+              src={product.image || "/placeholder.svg"} 
+              alt={product.title} 
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <Image 
+              src={product.image || "/placeholder.svg"} 
+              alt={product.title} 
+              fill 
+              className="object-cover"
+            />
+          )}
         </div>
         <CardContent className="p-4">
           <div className="text-xs uppercase tracking-wide text-muted-foreground">{product.category}</div>

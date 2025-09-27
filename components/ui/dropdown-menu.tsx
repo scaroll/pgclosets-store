@@ -25,18 +25,18 @@ interface DropdownMenuItemProps {
   className?: string
 }
 
-interface DropdownMenuSeparatorProps {}
+type DropdownMenuSeparatorProps = Record<string, never>
 
 // Stub implementations for dropdown menu components
 export function DropdownMenu({ children }: DropdownMenuProps) {
   return <div className="relative inline-block text-left">{children}</div>
 }
 
-export function DropdownMenuTrigger({ children, asChild }: DropdownMenuTriggerProps) {
+export function DropdownMenuTrigger({ children, asChild: _asChild }: DropdownMenuTriggerProps) {
   return <div className="cursor-pointer">{children}</div>
 }
 
-export function DropdownMenuContent({ children, align, sideOffset, className }: DropdownMenuContentProps) {
+export function DropdownMenuContent({ children, align: _align, sideOffset: _sideOffset, className }: DropdownMenuContentProps) {
   return (
     <div className={`absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50 ${className || ''}`}>
       <div className="py-1">{children}</div>

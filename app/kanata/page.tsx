@@ -1,4 +1,5 @@
 import { Button } from "../../components/ui/button"
+import StandardLayout from "@/components/layout/StandardLayout"
 
 export const metadata = {
   title: "Closet Doors Kanata | Professional Installation | PG Closets",
@@ -17,7 +18,7 @@ export const metadata = {
 
 export default function KanataPage() {
   return (
-    <main>
+    <StandardLayout>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -27,7 +28,6 @@ export default function KanataPage() {
             name: "PG Closets Kanata",
             description: "Professional closet door installation in Kanata, Ontario",
             url: "https://pgclosets.com/kanata",
-            telephone: "+1-613-422-5800",
             email: "spencer@peoplesgrp.com",
             address: {
               "@type": "PostalAddress",
@@ -65,7 +65,7 @@ export default function KanataPage() {
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Premium Closet Doors in Kanata</h1>
             <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Serving Kanata Lakes, Bridlewood, Morgan's Grant, and all Kanata neighborhoods with professional Renin
+              Serving Kanata Lakes, Bridlewood, Morgan&apos;s Grant, and all Kanata neighborhoods with professional Renin
               closet door installation
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -96,7 +96,7 @@ export default function KanataPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Kanata Communities We Serve</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Professional closet door installation throughout Kanata's family-friendly neighborhoods
+              Professional closet door installation throughout Kanata&apos;s family-friendly neighborhoods
             </p>
           </div>
 
@@ -144,7 +144,7 @@ export default function KanataPage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Family-Focused Service</h3>
               <p className="text-gray-600">
-                Understanding Kanata families' needs for functional, safe, and beautiful closet solutions
+                Understanding Kanata families&apos; needs for functional, safe, and beautiful closet solutions
               </p>
             </div>
 
@@ -167,7 +167,7 @@ export default function KanataPage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Local Kanata Knowledge</h3>
               <p className="text-gray-600">
-                Familiar with Kanata's home styles, from executive homes to family townhouses
+                Familiar with Kanata&apos;s home styles, from executive homes to family townhouses
               </p>
             </div>
 
@@ -193,7 +193,7 @@ export default function KanataPage() {
 
           <div className="prose prose-lg mx-auto text-gray-600">
             <p className="text-lg leading-relaxed mb-6">
-              Kanata's family-oriented communities feature a mix of executive homes, townhouses, and condos, each with
+              Kanata&apos;s family-oriented communities feature a mix of executive homes, townhouses, and condos, each with
               unique storage needs. From large walk-in closets in Kanata Lakes executive homes to space-saving solutions
               in Bridlewood townhouses, we provide tailored closet door solutions for every Kanata home.
             </p>
@@ -202,7 +202,7 @@ export default function KanataPage() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Executive Home Solutions</h3>
                 <p>
-                  Luxury closet door installations for Kanata's upscale homes, featuring premium finishes and custom
+                  Luxury closet door installations for Kanata&apos;s upscale homes, featuring premium finishes and custom
                   sizing to match your home's elegant design.
                 </p>
               </div>
@@ -216,8 +216,8 @@ export default function KanataPage() {
             </div>
 
             <p className="text-lg leading-relaxed">
-              Our team understands Kanata's building standards and works efficiently to minimize disruption to your
-              family's routine. We're proud to serve this vibrant community with professional installation and ongoing
+              Our team understands Kanata&apos;s building standards and works efficiently to minimize disruption to your
+              family&apos;s routine. We&apos;re proud to serve this vibrant community with professional installation and ongoing
               support.
             </p>
           </div>
@@ -251,6 +251,6 @@ export default function KanataPage() {
           </div>
         </div>
       </section>
-    </main>
+    </StandardLayout>
   )
 }

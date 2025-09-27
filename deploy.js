@@ -37,7 +37,7 @@ function main() {
   // Check if script is executable
   try {
     fs.accessSync(deployScript, fs.constants.F_OK | fs.constants.X_OK);
-  } catch (error) {
+  } catch (_error) {
     log('❌ Deployment script is not executable', 'red');
     log('   Run: chmod +x deploy-pgclosets.sh', 'yellow');
     process.exit(1);

@@ -121,7 +121,7 @@ class ImageOptimizer {
             
             console.log(`✅ ${path.basename(outputPath)} - ${this.formatBytes(outputSize)} (${compressionRatio}% smaller)`);
             
-          } catch (error) {
+          } catch (_error) {
             console.warn(`❌ Failed to generate ${format} variant:`, error.message);
             this.failed++;
           }

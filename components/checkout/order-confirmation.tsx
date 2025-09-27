@@ -89,9 +89,9 @@ export function OrderConfirmation({ orderId, shippingInfo }: OrderConfirmationPr
 
       <div className="mt-8 space-y-4">
         <p className="text-sm text-pg-gray">
-          You&apos;ll receive email updates at each step. Questions? Call us at{" "}
-          <a href="tel:613-422-5800" className="text-pg-navy font-medium">
-            (613) 422-5800
+          You&apos;ll receive email updates at each step. Questions? Email us at{" "}
+          <a href="mailto:spencer@peoplesgrp.com" className="text-pg-navy font-medium">
+            spencer@peoplesgrp.com
           </a>
         </p>
 

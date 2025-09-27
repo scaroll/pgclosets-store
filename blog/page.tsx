@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button"
 export const metadata = {
   title: "Closet Door Blog | Tips & Guides | PG Closets Ottawa",
   description:
-    "Expert tips on closet doors, installation guides, and home improvement advice from Ottawa's trusted Renin dealer. Learn about barn doors, bypass doors, and more.",
+    "Expert tips on closet doors, installation guides, and home improvement advice from Ottawa&apos;s trusted Renin dealer. Learn about barn doors, bypass doors, and more.",
   keywords:
     "closet door tips, home improvement Ottawa, barn door installation, bypass door guide, Renin doors, closet organization, Ottawa home renovation",
   openGraph: {
     title: "Closet Door Blog | Tips & Guides | PG Closets Ottawa",
     description:
-      "Expert tips on closet doors, installation guides, and home improvement advice from Ottawa's trusted Renin dealer.",
+      "Expert tips on closet doors, installation guides, and home improvement advice from Ottawa&apos;s trusted Renin dealer.",
     type: "website",
     locale: "en_CA",
   },
@@ -21,7 +21,7 @@ const blogPosts = [
     id: "choosing-right-closet-doors-ottawa-homes",
     title: "Choosing the Right Closet Doors for Your Ottawa Home",
     excerpt:
-      "A comprehensive guide to selecting the perfect closet doors for Ottawa's diverse housing styles, from heritage homes to modern condos.",
+      "A comprehensive guide to selecting the perfect closet doors for Ottawa&apos;s diverse housing styles, from heritage homes to modern condos.",
     date: "2024-01-15",
     readTime: "8 min read",
     category: "Home Design",
@@ -54,7 +54,7 @@ const blogPosts = [
     id: "closet-door-installation-ottawa-winter",
     title: "Closet Door Installation During Ottawa Winters",
     excerpt:
-      "Tips for successful closet door installation during Ottawa's cold months. Learn about timing, preparation, and what to expect from your installer.",
+      "Tips for successful closet door installation during Ottawa&apos;s cold months. Learn about timing, preparation, and what to expect from your installer.",
     date: "2023-12-20",
     readTime: "7 min read",
     category: "Installation Tips",
@@ -65,7 +65,7 @@ const blogPosts = [
     id: "small-space-closet-solutions-ottawa-condos",
     title: "Small Space Closet Solutions for Ottawa Condos",
     excerpt:
-      "Maximize storage in Ottawa's downtown condos and apartments with smart closet door choices. Space-saving solutions that don't compromise on style.",
+      "Maximize storage in Ottawa&apos;s downtown condos and apartments with smart closet door choices. Space-saving solutions that don't compromise on style.",
     date: "2023-12-15",
     readTime: "6 min read",
     category: "Small Spaces",
@@ -74,7 +74,7 @@ const blogPosts = [
   },
   {
     id: "heritage-home-closet-doors-ottawa",
-    title: "Closet Door Solutions for Ottawa's Heritage Homes",
+    title: "Closet Door Solutions for Ottawa&apos;s Heritage Homes",
     excerpt:
       "Preserve the character of your heritage Ottawa home while adding modern functionality. Expert tips for closet doors in historic properties.",
     date: "2023-12-10",
@@ -125,7 +125,7 @@ export default function BlogPage() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Closet Door Expertise & Tips</h1>
           <p className="text-xl text-blue-100 mb-6">
-            Expert advice from Ottawa's trusted Renin dealer on closet doors, installation, and home improvement
+            Expert advice from Ottawa&apos;s trusted Renin dealer on closet doors, installation, and home improvement
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <span className="bg-blue-500 px-3 py-1 rounded-full">Installation Guides</span>
@@ -259,7 +259,7 @@ export default function BlogPage() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Closets?</h2>
           <p className="text-lg text-gray-600 mb-8">
-            Get expert advice and professional installation from Ottawa's trusted Renin dealer
+            Get expert advice and professional installation from Ottawa&apos;s trusted Renin dealer
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

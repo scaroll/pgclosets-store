@@ -1,31 +1,19 @@
-import { useState } from "react"
-
 interface PGLogoProps {
-  width?: number
-  height?: number
-  className?: string
-  withWordmark?: boolean
+  width?: number;
+  height?: number;
+  className?: string;
+  withWordmark?: boolean;
 }
 
 // Renders a local brand image if present at /brand/pg-logo.png,
 // otherwise falls back to an inline SVG mark.
-export function PGLogo({ width = 140, height = 28, className = "", withWordmark = true }: PGLogoProps) {
-  const [error, setError] = useState(false)
-
-  if (!error) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="/brand/pg-logo.png"
-        width={width}
-        height={height}
-        alt="PG Closets"
-        className={className}
-        onError={() => setError(true)}
-      />
-    )
-  }
-
+export function PGLogo({
+  width = 140,
+  height = 28,
+  className = "",
+  withWordmark = true,
+}: PGLogoProps) {
+  // Always use SVG fallback to avoid SSR issues with missing images
   return (
     <svg
       viewBox="0 0 140 28"
@@ -42,14 +30,29 @@ export function PGLogo({ width = 140, height = 28, className = "", withWordmark 
         </linearGradient>
       </defs>
       <rect x="0" y="0" width="28" height="28" rx="6" fill="url(#pgGrad)" />
-      <text x="14" y="19" textAnchor="middle" fontFamily="Inter, system-ui, sans-serif" fontSize="14" fontWeight="700" fill="#fff">
+      <text
+        x="14"
+        y="19"
+        textAnchor="middle"
+        fontFamily="Inter, system-ui, sans-serif"
+        fontSize="14"
+        fontWeight="700"
+        fill="#fff"
+      >
         PG
       </text>
       {withWordmark && (
-        <text x="36" y="19" fontFamily="Inter, system-ui, sans-serif" fontSize="14" fontWeight="300" fill="#0f172a" letterSpacing="1">
-          PG CLOSETS
+        <text
+          x="38"
+          y="19"
+          fontFamily="Inter, system-ui, sans-serif"
+          fontSize="16"
+          fontWeight="600"
+          fill="#0f172a"
+        >
+          PG Closets
         </text>
       )}
     </svg>
-  )
+  );
 }

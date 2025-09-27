@@ -185,7 +185,7 @@ async function detailedImageAnalysis() {
             statusText: response.statusText
           });
         }
-      } catch (error) {
+      } catch (_error) {
         console.log(`Failed to test ${fullUrl}: ${error.message}`);
       }
     }

@@ -1,4 +1,5 @@
 import { Button } from "../../components/ui/button"
+import StandardLayout from "@/components/layout/StandardLayout"
 
 export const metadata = {
   title: "Closet Doors Barrhaven | Professional Installation | PG Closets",
@@ -17,7 +18,7 @@ export const metadata = {
 
 export default function BarrhavenPage() {
   return (
-    <main>
+    <StandardLayout>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -27,7 +28,6 @@ export default function BarrhavenPage() {
             name: "PG Closets Barrhaven",
             description: "Professional closet door installation in Barrhaven, Ontario",
             url: "https://pgclosets.com/barrhaven",
-            telephone: "+1-613-422-5800",
             email: "spencer@peoplesgrp.com",
             address: {
               "@type": "PostalAddress",
@@ -211,6 +211,6 @@ export default function BarrhavenPage() {
           </div>
         </div>
       </section>
-    </main>
+    </StandardLayout>
   )
 }

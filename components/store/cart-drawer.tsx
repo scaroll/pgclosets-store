@@ -1,23 +1,36 @@
-"use client"
+"use client";
 
-import { useCartStore, formatPrice, calculateItemTotal } from "@/lib/stores/cart-store"
-import { Button } from "../ui/button"
-import { OptimizedImage } from "../ui/optimized-image"
-import { X, Minus, Plus, ShoppingBag } from "../ui/icons"
+import {
+  useCartStore,
+  formatPrice,
+  calculateItemTotal,
+} from "@/lib/stores/cart-store";
+import { Button } from "../ui/button";
+import { OptimizedImage } from "../ui/optimized-image";
+import { X, Minus, Plus, ShoppingBag } from "../ui/icons";
 
-interface CartDrawerProps {
-  // Props can be omitted as we use the store's isOpen state
-}
+type CartDrawerProps = Record<string, never>;
 
 export function CartDrawer({}: CartDrawerProps) {
-  const { items, isOpen, closeCart, updateQuantity, removeItem, totalItems, totalPrice } = useCartStore()
+  const {
+    items,
+    isOpen,
+    closeCart,
+    updateQuantity,
+    removeItem,
+    totalItems,
+    totalPrice,
+  } = useCartStore();
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <>
       {/* Backdrop */}
-      <div className="fixed inset-0 bg-black/50 z-40 transition-opacity" onClick={closeCart} />
+      <div
+        className="fixed inset-0 bg-black/50 z-40 transition-opacity"
+        onClick={closeCart}
+      />
 
       {/* Drawer */}
       <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl z-50 transform transition-transform">
@@ -47,7 +60,10 @@ export function CartDrawer({}: CartDrawerProps) {
             ) : (
               <div className="space-y-4">
                 {items.map((item) => (
-                  <div key={item.id} className="flex gap-4 p-4 border rounded-lg">
+                  <div
+                    key={item.id}
+                    className="flex gap-4 p-4 border rounded-lg"
+                  >
                     <OptimizedImage
                       src={item.product.image || "/placeholder.svg"}
                       alt={`${item.product.name} - Cart item - PG Closets`}
@@ -58,30 +74,47 @@ export function CartDrawer({}: CartDrawerProps) {
                       quality={90}
                     />
                     <div className="flex-1">
-                      <h3 className="font-semibold text-sm">{item.product.name}</h3>
-                      <p className="text-xs text-gray-500">{item.product.description}</p>
-                      <p className="text-sm font-medium text-pg-navy">{formatPrice(item.product.price)}</p>
+                      <h3 className="font-semibold text-sm">
+                        {item.product.name}
+                      </h3>
+                      <p className="text-xs text-gray-500">
+                        {item.product.description}
+                      </p>
+                      <p className="text-sm font-medium text-pg-navy">
+                        {formatPrice(item.product.price)}
+                      </p>
 
                       {/* Display selected variants if any */}
-                      {item.selectedVariants && Object.keys(item.selectedVariants).length > 0 && (
-                        <div className="text-xs text-gray-500 mt-1">
-                          {Object.entries(item.selectedVariants).map(([key, value]) => (
-                            <span key={key} className="mr-2">{key}: {value}</span>
-                          ))}
-                        </div>
-                      )}
+                      {item.selectedVariants &&
+                        Object.keys(item.selectedVariants).length > 0 && (
+                          <div className="text-xs text-gray-500 mt-1">
+                            {Object.entries(item.selectedVariants).map(
+                              ([key, value]) => (
+                                <span key={key} className="mr-2">
+                                  {key}: {value}
+                                </span>
+                              )
+                            )}
+                          </div>
+                        )}
 
                       <div className="flex items-center gap-2 mt-2">
                         <button
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity - 1)
+                          }
                           className="p-1 hover:bg-gray-100 rounded"
                           aria-label="Decrease quantity"
                         >
                           <Minus className="w-4 h-4" />
                         </button>
-                        <span className="w-8 text-center text-sm">{item.quantity}</span>
+                        <span className="w-8 text-center text-sm">
+                          {item.quantity}
+                        </span>
                         <button
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity + 1)
+                          }
                           className="p-1 hover:bg-gray-100 rounded"
                           aria-label="Increase quantity"
                         >
@@ -117,7 +150,11 @@ export function CartDrawer({}: CartDrawerProps) {
                 <Button className="w-full" href="/checkout">
                   Proceed to Checkout
                 </Button>
-                <Button variant="secondary" className="w-full" onClick={closeCart}>
+                <Button
+                  variant="secondary"
+                  className="w-full"
+                  onClick={closeCart}
+                >
                   Continue Shopping
                 </Button>
               </div>
@@ -126,5 +163,5 @@ export function CartDrawer({}: CartDrawerProps) {
         </div>
       </div>
     </>
-  )
+  );
 }

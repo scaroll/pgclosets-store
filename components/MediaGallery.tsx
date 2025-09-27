@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
+import Image from "next/image"
 import { Card, CardContent } from "../ui/card"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
@@ -27,7 +28,7 @@ export function MediaGallery({
   selectable = false,
   onSelect,
   selectedFiles = [],
-  maxSelections = 1,
+  maxSelections: _maxSelections = 1,
   fileTypes = [],
 }: MediaGalleryProps) {
   const [files, setFiles] = useState<BlobFile[]>([])
@@ -38,7 +39,7 @@ export function MediaGallery({
   const [filterType, setFilterType] = useState<"all" | "images" | "documents">("all")
   const { toast } = useToast()
 
-  const fetchFiles = async () => {
+  const fetchFiles = useCallback(async () => {
     try {
       const response = await fetch("/api/list")
       const data = await response.json()
@@ -52,7 +53,7 @@ export function MediaGallery({
 
       setFiles(fileList)
       setFilteredFiles(fileList)
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to load files",
@@ -61,7 +62,7 @@ export function MediaGallery({
     } finally {
       setLoading(false)
     }
-  }
+  }, [fileTypes, toast])
 
   const handleDelete = async (url: string) => {
     try {
@@ -80,7 +81,7 @@ export function MediaGallery({
       } else {
         throw new Error("Delete failed")
       }
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to delete file",
@@ -120,7 +121,7 @@ export function MediaGallery({
 
   useEffect(() => {
     fetchFiles()
-  }, [])
+  }, [fetchFiles])
 
   if (loading) {
     return <div className="text-center py-8">Loading media...</div>
@@ -135,7 +136,7 @@ export function MediaGallery({
             <Input
               placeholder="Search files..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="pl-10"
             />
           </div>
@@ -174,13 +175,15 @@ export function MediaGallery({
               onClick={() => selectable && onSelect?.(file)}
             >
               <CardContent className="p-3">
-                <div className="aspect-square mb-2 bg-muted rounded-lg overflow-hidden">
+                        <div className="aspect-square mb-2 bg-muted rounded-lg overflow-hidden relative">
                   {isImage(file.filename) ? (
-                    <img
-                      src={file.url || "/placeholder.svg"}
-                      alt={file.filename}
-                      className="w-full h-full object-cover"
-                    />
+                            <Image
+                              src={file.url || "/placeholder.svg"}
+                              alt={file.filename}
+                              fill
+                              className="object-cover"
+                              unoptimized
+                            />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-muted-foreground">
                       <div className="text-center">
@@ -252,11 +255,14 @@ export function MediaGallery({
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     {isImage(file.filename) && (
-                      <img
-                        src={file.url || "/placeholder.svg"}
-                        alt={file.filename}
-                        className="w-12 h-12 object-cover rounded"
-                      />
+                        <Image
+                          src={file.url || "/placeholder.svg"}
+                          alt={file.filename}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 object-cover rounded"
+                          unoptimized
+                        />
                     )}
                     <div>
                       <p className="font-medium">{file.filename}</p>

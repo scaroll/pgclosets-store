@@ -1,4 +1,38 @@
 {
-  "extends": ["next/core-web-vitals"],
-  "ignorePatterns": ["dist", "node_modules", ".next", "deploy", "deployment-backup"]
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "root": true,
+  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/no-unused-expressions": "off",
+    "no-var": "off",
+    "react/display-name": "off",
+    "react/no-unescaped-entities": "off"
+  },
+  "settings": {
+    "react": { "version": "detect" }
+  },
+  "ignorePatterns": [
+    "*.config.js",
+    "*.config.mjs",
+    "dist",
+    "node_modules",
+    ".next",
+    "deploy",
+    "deployment-backup",
+    "lib/generated/**"
+  ]
 }

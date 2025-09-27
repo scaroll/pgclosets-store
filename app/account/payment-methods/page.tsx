@@ -24,7 +24,7 @@ export default function PaymentMethodsPage() {
     },
   ]
 
-  const getCardIcon = (type: string) => {
+  const getCardIcon = (_type: string) => {
     return <CreditCard className="w-6 h-6 text-primary" />
   }
 

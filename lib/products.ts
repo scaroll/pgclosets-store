@@ -36,7 +36,25 @@ export type ProductStore = {
 }
 
 import store from "../data/products.json"
-export const PRODUCTS = store as ProductStore
+
+// Transform JSON data to match Product interface
+const transformProducts = (jsonData: any): ProductStore => {
+  return {
+    ...jsonData,
+    items: jsonData.items.map((item: any) => ({
+      ...item,
+      id: item.slug, // Use slug as id if not present
+      name: item.title, // Map title to name
+      specifications: Object.fromEntries(
+        Object.entries(item.specs || {}).filter(([, value]) => value !== undefined)
+      ),
+      category: item.category?.replace('_doors', '') || 'barn',
+      price: item.priceMin,
+    }))
+  }
+}
+
+export const PRODUCTS = transformProducts(store)
 
 export function getAllProducts() {
   return PRODUCTS.items

@@ -15,12 +15,18 @@ export function totalsCAD(subtotal: number) {
   return { subtotal, hst, total: subtotal + hst }
 }
 
-export function formatPrice(price: number, currency = "CAD") {
+export function formatPrice(price: number | null | undefined, currency = "CAD") {
+  if (price == null || isNaN(price)) {
+    return `Price TBD`
+  }
   return `$${price.toLocaleString()} ${currency}`
 }
 
-export function formatPriceRange(priceMin: number, priceMax?: number, currency = "CAD") {
-  if (priceMax) {
+export function formatPriceRange(priceMin: number | null | undefined, priceMax?: number | null, currency = "CAD") {
+  if (priceMin == null || isNaN(priceMin)) {
+    return `Price TBD`
+  }
+  if (priceMax && !isNaN(priceMax)) {
     return `$${priceMin.toLocaleString()}–$${priceMax.toLocaleString()} ${currency}`
   }
   return `From $${priceMin.toLocaleString()} ${currency}`

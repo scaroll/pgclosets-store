@@ -9,6 +9,7 @@ import { Input } from "../../components/ui/input"
 import { Separator } from "../../components/ui/separator"
 import { useCart } from "../../lib/useCart"
 import { Minus, Plus, Trash2 } from "lucide-react"
+import StandardLayout from "@/components/layout/StandardLayout"
 
 export default function CartPage() {
   const { items } = useCart()
@@ -30,23 +31,26 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center py-12">
-          <h1 className="text-3xl font-bold mb-4">Your Cart is Empty</h1>
-          <p className="text-gray-600 mb-8">Add some products to get started!</p>
-          <Button asChild>
-            <Link href="/products">Continue Shopping</Link>
-          </Button>
+      <StandardLayout>
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center py-12">
+            <h1 className="text-4xl font-extralight tracking-tight text-slate-900 mb-4">Your Cart is Empty</h1>
+            <p className="text-slate-600 font-light tracking-wide mb-8">Add some products to get started!</p>
+            <Button asChild className="bg-slate-900 hover:bg-slate-800 font-light tracking-widest">
+              <Link href="/products">Continue Shopping</Link>
+            </Button>
+          </div>
         </div>
-      </div>
+      </StandardLayout>
     )
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Shopping Cart</h1>
+    <StandardLayout>
+        <div className="container mx-auto px-4 py-20">
+          <h1 className="text-4xl md:text-5xl font-extralight tracking-tight text-slate-900 mb-8">Shopping Cart</h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-4">
           {items.map((item) => (
@@ -146,5 +150,6 @@ export default function CartPage() {
         </div>
       </div>
     </div>
+    </StandardLayout>
   )
 }

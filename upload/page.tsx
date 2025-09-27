@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, ImageIcon } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 interface UploadedFile {
   url: string
@@ -54,11 +55,14 @@ export default function UploadPage() {
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                   {allUploadedFiles.map((file, index) => (
                     <div key={index} className="space-y-2">
-                      <img
-                        src={file.url || "/placeholder.svg"}
-                        alt={file.filename}
-                        className="w-full h-24 object-cover rounded-lg border"
-                      />
+                      <div className="w-full h-24 relative rounded-lg border overflow-hidden">
+                        <Image
+                          src={file.url || "/placeholder.svg"}
+                          alt={file.filename}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
                       <p className="text-xs text-gray-600 truncate" title={file.filename}>
                         {file.filename}
                       </p>

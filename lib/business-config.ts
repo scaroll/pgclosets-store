@@ -10,9 +10,7 @@ export const BUSINESS_INFO = {
   fullName: "PG Closets - Official Renin Dealer",
   
   // Contact Information
-  email: "spencer@peoplesgrp.com", // Primary business email
-  phone: "(613) 555-0123", // Standard Ottawa format
-  phoneFormatted: "613-555-0123",
+  email: "spencer@peoplesgrp.com", // Primary business email only - no phone support
   
   // Business Address
   address: {

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RefreshCw, File, ImageIcon, Video, FileText } from "lucide-react"
@@ -102,19 +103,24 @@ export function BlobStorageViewer() {
 
                   return (
                     <div key={index} className="flex items-center gap-4 p-3 border rounded-lg hover:bg-gray-50">
-                      <div className="flex-shrink-0">
-                        {isImage ? (
-                          <img
-                            src={file.url || "/placeholder.svg"}
-                            alt={file.pathname}
-                            className="w-12 h-12 object-cover rounded"
-                          />
-                        ) : (
-                          <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center">
-                            <IconComponent className="h-6 w-6 text-gray-600" />
+                          <div className="flex-shrink-0">
+                            {isImage ? (
+                              <div className="relative w-12 h-12 rounded overflow-hidden">
+                                <Image
+                                  src={file.url || "/placeholder.svg"}
+                                  alt={file.pathname}
+                                  fill
+                                  sizes="48px"
+                                  className="object-cover"
+                                  unoptimized
+                                />
+                              </div>
+                            ) : (
+                              <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center">
+                                <IconComponent className="h-6 w-6 text-gray-600" />
+                              </div>
+                            )}
                           </div>
-                        )}
-                      </div>
 
                       <div className="flex-1 min-w-0">
                         <p className="font-medium truncate">{file.pathname}</p>

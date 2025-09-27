@@ -6,6 +6,7 @@ interface ImagePlaceholderProps {
   height?: number
   text?: string
   className?: string
+  alt?: string
 }
 
 export function ImagePlaceholder({
@@ -13,6 +14,7 @@ export function ImagePlaceholder({
   height = 400,
   text = 'No Image',
   className = '',
+  alt,
 }: ImagePlaceholderProps) {
   return (
     <div
@@ -24,7 +26,7 @@ export function ImagePlaceholder({
           <rect width="100%" height="100%" fill="#f3f4f6"/>
           <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="16" fill="#9ca3af">${text}</text>
         </svg>`)}`}
-        alt={text}
+        alt={alt || text}
         width={width}
         height={height}
         className="object-cover"

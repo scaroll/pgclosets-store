@@ -10,7 +10,7 @@ const blogPosts = {
     excerpt:
       "A comprehensive guide to selecting the perfect closet doors for Ottawa&apos;s diverse housing styles, from heritage homes to modern condos.",
     content: `
-      <p>Ottawa&apos;s diverse housing landscape presents unique challenges and opportunities when selecting closet doors. From century-old heritage homes in the Glebe to modern condos downtown, each property type requires careful consideration of style, functionality, and installation requirements.</p>
+  <p>Ottawa&apos;s diverse housing landscape presents unique challenges and opportunities when selecting closet doors. From century-old heritage homes in the Glebe to modern condos downtown, each property type requires careful consideration of style, functionality, and installation requirements.</p>
 
       <h2>Understanding Ottawa&apos;s Housing Styles</h2>
       <p>Ottawa&apos;s rich architectural history means homeowners encounter everything from Victorian-era homes with high ceilings and ornate details to contemporary builds with clean lines and open concepts. Each style demands a different approach to closet door selection.</p>
@@ -295,8 +295,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const { slug } = params
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   const post = blogPosts[slug as keyof typeof blogPosts]
 
   if (!post) {
@@ -320,8 +320,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const { slug } = params
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   const post = blogPosts[slug as keyof typeof blogPosts]
 
   if (!post) {

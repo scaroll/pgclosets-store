@@ -203,8 +203,7 @@ export default function ShippingPolicyPage() {
                 Questions about shipping? Our customer service team is here to help.
               </p>
               <div className="space-y-2 text-muted-foreground">
-                <p>Email: shipping@pgclosets.com</p>
-                <p>Phone: 1-800-PG-CLOSET</p>
+                <p>Email: spencer@peoplesgrp.com</p>
                 <p>Hours: Monday-Friday 9AM-6PM EST</p>
               </div>
             </CardContent>

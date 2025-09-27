@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "../ui/button"
 import { PGLogo } from "../ui/pg-logo"
-import { ArrowLeft, Menu, Phone, ChevronDown, MoreHorizontal } from "lucide-react"
+import { ArrowLeft, Menu, ChevronDown, MoreHorizontal } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 
 interface PageHeaderProps {
@@ -214,12 +214,11 @@ export function PageHeader({
             {variant === "default" && showActions && (
               <>
                 <div className="hidden xl:flex items-center space-x-2 text-luxury-charcoal">
-                  <Phone className="w-4 h-4 text-luxury-warm-wood flex-shrink-0" />
                   <a
-                    href="tel:+18007425673"
+                    href="mailto:spencer@peoplesgrp.com"
                     className="font-semibold hover:text-luxury-accent-gold transition-colors duration-300 whitespace-nowrap"
                   >
-                    1-800-PG-CLOSET
+                    spencer@peoplesgrp.com
                   </a>
                 </div>
 

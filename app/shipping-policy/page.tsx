@@ -1,35 +1,14 @@
 import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
 import { Badge } from "../../components/ui/badge"
-import { ArrowLeft, Truck, Clock, MapPin, Package } from "lucide-react"
+import { Truck, Clock, MapPin, Package } from "lucide-react"
 import Link from "next/link"
+import StandardLayout from "@/components/layout/StandardLayout"
 
 export default function ShippingPolicyPage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center relative">
-                <span className="text-primary-foreground font-bold text-sm">PG</span>
-              </div>
-              <div>
-                <span className="text-xl font-bold text-foreground font-serif">PG Closets</span>
-                <p className="text-xs text-muted-foreground">Premium Home Organization</p>
-              </div>
-            </Link>
-
-            <Link href="/">
-              <Button variant="ghost" className="flex items-center">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Home
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
+    <StandardLayout>
+      <div className="bg-gray-50 py-20">
 
       {/* Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -180,7 +159,7 @@ export default function ShippingPolicyPage() {
               <div>
                 <h4 className="font-semibold mb-2">Large Items</h4>
                 <p className="text-muted-foreground">
-                  Large closet systems may require special handling and delivery arrangements. We'll contact you to
+                  Large closet systems may require special handling and delivery arrangements. We&apos;ll contact you to
                   schedule delivery and discuss any access requirements.
                 </p>
               </div>
@@ -204,13 +183,13 @@ export default function ShippingPolicyPage() {
               </p>
               <div className="space-y-2 text-muted-foreground">
                 <p>Email: shipping@pgclosets.com</p>
-                <p>Phone: 1-800-PG-CLOSET</p>
                 <p>Hours: Monday-Friday 9AM-6PM EST</p>
               </div>
             </CardContent>
           </Card>
         </div>
       </div>
-    </div>
+      </div>
+    </StandardLayout>
   )
 }

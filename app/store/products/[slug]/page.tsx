@@ -4,13 +4,13 @@ import { ProductDetailClient } from "@/components/store/product-detail-client"
 import { RelatedProducts } from "@/components/store/related-products"
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: ProductPageProps) {
-  const { slug } = params
+  const { slug } = await params
   const product = getProductBySlug(slug)
 
   if (!product) {
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug } = params
+  const { slug } = await params
   const product = getProductBySlug(slug)
 
   if (!product) {

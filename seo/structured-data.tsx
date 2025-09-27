@@ -326,7 +326,7 @@ export function WebsiteSchema() {
     url: "https://pgclosets.com",
     name: "PG Closets - Premium Custom Closets & Home Organization | Ottawa & Eastern Ontario",
     description:
-      "Ottawa's leading luxury closet specialists offering premium custom closets, wardrobe solutions, and professional organization systems. Serving Ottawa and Eastern Ontario with expert design and installation.",
+      "Ottawa&apos;s leading luxury closet specialists offering premium custom closets, wardrobe solutions, and professional organization systems. Serving Ottawa and Eastern Ontario with expert design and installation.",
     publisher: {
       "@id": "https://pgclosets.com/#organization",
     },

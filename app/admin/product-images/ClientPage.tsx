@@ -31,7 +31,7 @@ export default function ClientPage() {
   const [products, setProducts] = useState<Product[]>(productsData.items)
   const [blobFiles, setBlobFiles] = useState<BlobFile[]>([])
   const [searchTerm, setSearchTerm] = useState("")
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [_selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

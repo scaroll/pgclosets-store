@@ -72,8 +72,8 @@ export function OrganizationSchema({
   url,
   logo,
   description,
-  address,
-  contactPoint,
+  address: _address,
+  contactPoint: _contactPoint,
   sameAs,
 }: OrganizationSchemaProps) {
   const schema = {
@@ -85,18 +85,18 @@ export function OrganizationSchema({
     description,
     address: {
       "@type": "PostalAddress",
-      streetAddress: address.streetAddress,
-      addressLocality: address.addressLocality,
-      addressRegion: address.addressRegion,
-      postalCode: address.postalCode,
-      addressCountry: address.addressCountry,
+      streetAddress: _address.streetAddress,
+      addressLocality: _address.addressLocality,
+      addressRegion: _address.addressRegion,
+      postalCode: _address.postalCode,
+      addressCountry: _address.addressCountry,
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: contactPoint.telephone,
-      email: contactPoint.email,
-      contactType: contactPoint.contactType,
-      availableLanguage: contactPoint.availableLanguage,
+      telephone: _contactPoint.telephone,
+      email: _contactPoint.email,
+      contactType: _contactPoint.contactType,
+      availableLanguage: _contactPoint.availableLanguage,
     },
     sameAs,
   }
@@ -109,8 +109,8 @@ export function LocalBusinessSchema({
   url,
   logo,
   description,
-  address,
-  contactPoint,
+  address: _address,
+  contactPoint: _contactPoint,
   sameAs,
 }: OrganizationSchemaProps) {
   const schema = {
@@ -326,7 +326,7 @@ export function WebsiteSchema() {
     url: "https://pgclosets.com",
     name: "PG Closets - Premium Custom Closets & Home Organization | Ottawa & Eastern Ontario",
     description:
-      "Ottawa's leading luxury closet specialists offering premium custom closets, wardrobe solutions, and professional organization systems. Serving Ottawa and Eastern Ontario with expert design and installation.",
+      "Ottawa&apos;s leading luxury closet specialists offering premium custom closets, wardrobe solutions, and professional organization systems. Serving Ottawa and Eastern Ontario with expert design and installation.",
     publisher: {
       "@id": "https://pgclosets.com/#organization",
     },

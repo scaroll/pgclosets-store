@@ -140,7 +140,7 @@ export function PageHeader({
           >
             <div className="relative overflow-hidden transition-transform duration-300 group-hover:scale-105 flex-shrink-0 transform-gpu">
               <div className="relative w-12 h-12 flex-shrink-0 min-w-[3rem]">
-                <PGLogo width={48} height={48} priority className="transition-transform duration-300 transform-gpu" />
+                <PGLogo width={48} height={48} className="transition-transform duration-300 transform-gpu" />
                 <div className="absolute inset-0 bg-luxury-gradient-gold opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg" />
               </div>
             </div>

@@ -25,7 +25,7 @@ export default function FilesPage() {
       const response = await fetch("/api/list")
       const data = await response.json()
       setFiles(data.files || [])
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to load files",
@@ -55,7 +55,7 @@ export default function FilesPage() {
       } else {
         throw new Error("Upload failed")
       }
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to upload file",
@@ -83,7 +83,7 @@ export default function FilesPage() {
       } else {
         throw new Error("Delete failed")
       }
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to delete file",

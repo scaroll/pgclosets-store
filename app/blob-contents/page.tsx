@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
 import { Button } from "../../components/ui/button"
 import { RefreshCw, File, ImageIcon, Video, FileText } from "lucide-react"
@@ -104,9 +105,11 @@ export default function BlobContentsPage() {
                   </div>
                   <div className="flex items-center gap-2">
                     {file.filename.match(/\.(jpg|jpeg|png|gif|webp)$/i) && (
-                      <img
+                      <Image
                         src={file.url || "/placeholder.svg"}
                         alt={file.filename}
+                        width={48}
+                        height={48}
                         className="w-12 h-12 object-cover rounded border"
                       />
                     )}

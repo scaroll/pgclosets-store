@@ -1,5 +1,4 @@
-import { medusaClient } from "./medusa-client"
-import type { Product, ProductCollection } from "@medusajs/medusa"
+import { reninProducts } from "./data/renin-products"
 
 // Product data adapter to convert local products to Medusa format
 export interface MedusaProductData {
@@ -79,7 +78,7 @@ export function convertToMedusaProduct(localProduct: any): MedusaProductData {
 function createVariantsFromProduct(localProduct: any) {
   const sizes = localProduct.specifications?.["Standard Sizes"]?.split(", ") || ["Standard"]
 
-  return sizes.map((size: string, index: number) => ({
+  return sizes.map((size: string, _index: number) => ({
     title: `${localProduct.name} - ${size}`,
     sku: `${localProduct.id}-${size.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()}`,
     inventory_quantity: localProduct.inStock ? 100 : 0,
@@ -100,7 +99,7 @@ function createVariantsFromProduct(localProduct: any) {
   }))
 }
 
-// Medusa product service for frontend
+// Stub for Medusa product service - now uses local data
 export const medusaProducts = {
   // Get all products with optional filtering
   async getProducts(params?: {
@@ -109,91 +108,64 @@ export const medusaProducts = {
     tags?: string[]
     limit?: number
     offset?: number
+    q?: string
   }) {
-    try {
-      const response = await medusaClient.getProducts(params)
-      return response.products
-    } catch (error) {
-      console.error("Error fetching products:", error)
-      return []
+    // Filter local products based on params
+    let products = reninProducts
+    if (params?.tags?.includes("featured")) {
+      // Assume no featured for now
+      products = []
     }
+    if (params?.tags?.length) {
+      products = products.filter(p => params.tags!.includes(p.category.toLowerCase()))
+    }
+    if (params?.q) {
+      products = products.filter(p => p.name.toLowerCase().includes(params.q!.toLowerCase()))
+    }
+    return products.slice(params?.offset || 0, (params?.offset || 0) + (params?.limit || products.length))
   },
 
   // Get single product by ID
-  async getProduct(id: string): Promise<Product | null> {
-    try {
-      const response = await medusaClient.getProduct(id)
-      return response.product
-    } catch (error) {
-      console.error("Error fetching product:", error)
-      return null
-    }
+  async getProduct(id: string): Promise<any | null> {
+    return reninProducts.find(p => p.id === id) || null
   },
 
   // Get product by handle/slug
-  async getProductByHandle(handle: string): Promise<Product | null> {
-    try {
-      return await medusaClient.getProductByHandle(handle)
-    } catch (error) {
-      console.error("Error fetching product by handle:", error)
-      return null
-    }
+  async getProductByHandle(handle: string): Promise<any | null> {
+    return reninProducts.find(p => p.id === handle) || null
   },
 
   // Get products by category (using tags)
   async getProductsByCategory(category: string) {
-    try {
-      const response = await medusaClient.getProducts({
-        tags: [category],
-      })
-      return response.products
-    } catch (error) {
-      console.error("Error fetching products by category:", error)
-      return []
-    }
+    return reninProducts.filter(p => p.category.toLowerCase() === category.toLowerCase())
   },
 
   // Get featured products
   async getFeaturedProducts() {
-    try {
-      const response = await medusaClient.getProducts({
-        tags: ["featured"],
-      })
-      return response.products
-    } catch (error) {
-      console.error("Error fetching featured products:", error)
-      return []
-    }
+    // Return all for now
+    return reninProducts.slice(0, 3)
   },
 
   // Search products
   async searchProducts(query: string) {
-    try {
-      const response = await medusaClient.getProducts({
-        q: query,
-      })
-      return response.products
-    } catch (error) {
-      console.error("Error searching products:", error)
-      return []
-    }
+    return reninProducts.filter(p => p.name.toLowerCase().includes(query.toLowerCase()))
   },
 
   // Get product collections
-  async getCollections(): Promise<ProductCollection[]> {
-    try {
-      const response = await medusaClient.getCollections()
-      return response.collections
-    } catch (error) {
-      console.error("Error fetching collections:", error)
-      return []
-    }
+  async getCollections(): Promise<any[]> {
+    // Return unique categories as collections
+    const categories = [...new Set(reninProducts.map(p => p.category))]
+    return categories.map(cat => ({
+      id: cat.toLowerCase(),
+      title: cat,
+      handle: cat.toLowerCase(),
+    }))
   },
 }
 
 // Migration utility (for development/admin use)
 export async function migrateLocalProductsToMedusa(localProducts: any[]) {
-  const results = {
+  const results: { success: string[], errors: { id: string, error: unknown }[] } = {
     success: [],
     errors: [],
   }

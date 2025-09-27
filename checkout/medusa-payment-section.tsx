@@ -44,7 +44,7 @@ export function MedusaPaymentSection({
       setProcessing(true)
 
       // In a real implementation, this would integrate with the selected payment provider
-      // For now, we'll simulate a successful payment
+      // For now, we&apos;ll simulate a successful payment
       await new Promise((resolve) => setTimeout(resolve, 2000))
 
       onSuccess({

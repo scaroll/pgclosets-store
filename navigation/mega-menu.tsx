@@ -114,7 +114,7 @@ const menuItems = {
     ],
     featured: {
       title: "Featured Solution",
-      name: "Ottawa's Premier Custom Closets",
+      name: "Ottawa&apos;s Premier Custom Closets",
       description: "Transform your space with locally designed, fabricated & installed closet solutions",
       image:
         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/georgian-6-panel-sliding-high-res-zyb8lchgerfPz67hNnZq3MMCgPTbJv.webp",
@@ -352,7 +352,7 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
                 <span className="truncate">Ready to Transform Your Space?</span>
               </h4>
               <p className="text-sm lg:text-luxury-body text-luxury-warm-wood line-clamp-2">
-                Ottawa's premier custom closet solutions - designed, fabricated & installed locally
+                Ottawa&apos;s premier custom closet solutions - designed, fabricated & installed locally
               </p>
             </div>
 

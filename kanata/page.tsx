@@ -217,7 +217,7 @@ export default function KanataPage() {
 
             <p className="text-lg leading-relaxed">
               Our team understands Kanata's building standards and works efficiently to minimize disruption to your
-              family's routine. We're proud to serve this vibrant community with professional installation and ongoing
+              family's routine. We&apos;re proud to serve this vibrant community with professional installation and ongoing
               support.
             </p>
           </div>

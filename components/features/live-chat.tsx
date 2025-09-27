@@ -33,7 +33,7 @@ export function LiveChat() {
         <div className="fixed bottom-24 right-6 w-80 h-96 bg-white border rounded-lg shadow-xl z-50 flex flex-col">
           <div className="bg-gradient-to-r from-navy-900 to-navy-800 text-white p-4 rounded-t-lg">
             <h3 className="font-semibold">Chat with PG Closets</h3>
-            <p className="text-sm opacity-90">We're here to help with your closet needs</p>
+            <p className="text-sm opacity-90">We&apos;re here to help with your closet needs</p>
           </div>
 
           <div className="flex-1 p-4 overflow-y-auto">

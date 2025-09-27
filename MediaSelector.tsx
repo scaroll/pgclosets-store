@@ -90,7 +90,7 @@ export function MediaSelector({
       } else {
         throw new Error("Upload failed")
       }
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to upload file",

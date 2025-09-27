@@ -42,11 +42,11 @@ export default function ForgotPasswordPage() {
                   </div>
                   <div>
                     <h1 className="text-h2 text-foreground">Check Your Email</h1>
-                    <p className="text-body text-muted-foreground mt-2">We've sent a password reset link to</p>
+                    <p className="text-body text-muted-foreground mt-2">We&apos;ve sent a password reset link to</p>
                     <p className="font-medium text-foreground">{email}</p>
                   </div>
                   <div className="bg-accent/10 p-4 rounded-lg text-sm text-muted-foreground">
-                    <p className="font-medium mb-2">Didn't receive the email?</p>
+                    <p className="font-medium mb-2">Didn&apos;t receive the email?</p>
                     <ul className="space-y-1 text-left">
                       <li>• Check your spam or junk folder</li>
                       <li>• Make sure you entered the correct email</li>
@@ -87,7 +87,7 @@ export default function ForgotPasswordPage() {
                 <Mail className="w-5 h-5" />
                 Forgot Password
               </CardTitle>
-              <CardDescription className="text-center">We'll send you a link to reset your password</CardDescription>
+              <CardDescription className="text-center">We&apos;ll send you a link to reset your password</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -116,8 +116,8 @@ export default function ForgotPasswordPage() {
                 <ArrowLeft className="w-4 h-4" />
                 Back to Sign In
               </Link>
-              <div className="text-center text-sm text-muted-foreground">
-                Don't have an account?{" "}
+                <div className="text-center text-sm text-muted-foreground">
+                Don&apos;t have an account?{" "}
                 <Link href="/register" className="text-accent hover:text-accent/80 font-medium transition-colors">
                   Sign up
                 </Link>

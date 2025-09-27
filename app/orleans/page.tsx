@@ -1,4 +1,5 @@
 import { Button } from "../../components/ui/button"
+import StandardLayout from "@/components/layout/StandardLayout"
 
 export const metadata = {
   title: "Closet Doors Orleans | Professional Installation | PG Closets",
@@ -17,7 +18,7 @@ export const metadata = {
 
 export default function OrleansPage() {
   return (
-    <main>
+    <StandardLayout>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -27,7 +28,6 @@ export default function OrleansPage() {
             name: "PG Closets Orleans",
             description: "Professional closet door installation in Orleans, Ontario",
             url: "https://pgclosets.com/orleans",
-            telephone: "+1-613-422-5800",
             email: "spencer@peoplesgrp.com",
             address: {
               "@type": "PostalAddress",
@@ -203,6 +203,6 @@ export default function OrleansPage() {
           </div>
         </div>
       </section>
-    </main>
+    </StandardLayout>
   )
 }

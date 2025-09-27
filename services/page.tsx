@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Professional Closet Door Services Ottawa | PG Closets",
     description:
       "Expert closet door installation and consultation services in Ottawa. Free consultation, professional installation, lifetime warranty.",
-    images: [{ url: "/images/arcat/renin_205738_Bypass_Closet_Doors_Euro_1_Lite.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg", width: 1200, height: 630 }],
   },
   alternates: { canonical: "/services" },
 }
@@ -68,10 +68,10 @@ export default function ServicesPage() {
 
             <div className="flex items-center gap-4">
               <a
-                href="tel:6134225800"
+                href="mailto:spencer@peoplesgrp.com"
                 className="hidden md:block text-lg font-semibold hover:text-[#9BC4E2] transition-colors"
               >
-                (613) 422-5800
+                Email Us
               </a>
               <Link
                 href="/contact"
@@ -88,7 +88,7 @@ export default function ServicesPage() {
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/arcat/renin_205741_Bypass_Closet_Doors_Harmony_1_Lite.jpg"
+            src="/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg"
             alt="Professional closet door installation showcase"
             fill
             className="object-cover"
@@ -142,7 +142,7 @@ export default function ServicesPage() {
             <div className="bg-white shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
               <div className="aspect-video relative">
                 <Image
-                  src="/images/arcat/renin_205750_Bifold_Closet_Door_Georgian_6_Panel_Insert_Design.jpg"
+                  src="/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg"
                   alt="Professional closet door installation"
                   fill
                   className="object-cover"
@@ -199,7 +199,7 @@ export default function ServicesPage() {
             <div className="bg-white shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
               <div className="aspect-video relative">
                 <Image
-                  src="/images/arcat/renin_205739_Bypass_Closet_Doors_Euro_3_Lite.jpg"
+                  src="/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg"
                   alt="Free home consultation service"
                   fill
                   className="object-cover"
@@ -256,7 +256,7 @@ export default function ServicesPage() {
             <div className="bg-white shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
               <div className="aspect-video relative">
                 <Image
-                  src="/images/arcat/renin_205731_Mix_Match_Hardware_Driftwood_K_Design.jpg"
+                  src="/images/arcat/renin_176732_hd.jpg"
                   alt="Custom closet door solutions"
                   fill
                   className="object-cover"
@@ -328,25 +328,25 @@ export default function ServicesPage() {
                 step: "1",
                 title: "Consultation",
                 description: "Free in-home consultation and measurement",
-                image: "/images/arcat/renin_205774_Mirror_Capri_24_x_32_.jpg",
+                image: "/images/arcat/renin_176733_hd.jpg",
               },
               {
                 step: "2",
                 title: "Design",
                 description: "Product selection and instant CAD pricing",
-                image: "/images/arcat/renin_205773_Mirror_Vienna_30_x_42_.jpg",
+                image: "/images/arcat/renin_176737_hd.jpg",
               },
               {
                 step: "3",
                 title: "Manufacturing",
                 description: "Custom manufacturing and quality control",
-                image: "/images/arcat/renin_205752_Barn_Door_Hardware_Kits_Cadium_Bent_Strap.jpg",
+                image: "/images/arcat/renin_192861_hd.jpg",
               },
               {
                 step: "4",
                 title: "Installation",
                 description: "Professional installation and final inspection",
-                image: "/images/arcat/renin_205758_Handles_Pulls_Alperton.jpg",
+                image: "/images/arcat/renin_205723_hd.jpg",
               },
             ].map((item) => (
               <div key={item.step} className="text-center">
@@ -432,7 +432,7 @@ export default function ServicesPage() {
                 </div>
               </div>
               <p className="text-gray-300 mb-4">
-                Ottawa's premier closet door specialists, transforming homes with premium solutions.
+                Ottawa&apos;s premier closet door specialists, transforming homes with premium solutions.
               </p>
             </div>
 
@@ -460,8 +460,7 @@ export default function ServicesPage() {
             <div>
               <h3 className="font-bold text-lg mb-4">Contact</h3>
               <div className="space-y-2 text-gray-300">
-                <p>(613) 422-5800</p>
-                <p>info@pgclosets.com</p>
+                <p>spencer@peoplesgrp.com</p>
                 <p>Ottawa & Surrounding Areas</p>
                 <div className="mt-4">
                   <p className="font-semibold">Business Hours:</p>

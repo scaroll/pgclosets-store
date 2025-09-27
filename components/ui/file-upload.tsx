@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useRef, useCallback } from "react"
+import Image from "next/image"
 import { Button } from "./button"
 import { Progress } from "./progress"
 import { Upload, X, FileImage, AlertCircle, CheckCircle } from "lucide-react"
@@ -225,7 +226,9 @@ export function FileUpload({
           <div className="border rounded-lg p-4 bg-muted/30">
             <div className="flex items-start space-x-4">
               {preview ? (
-                <img src={preview || "/placeholder.svg"} alt="Preview" className="w-16 h-16 object-cover rounded-lg" />
+                <div className="relative w-16 h-16 rounded-lg overflow-hidden">
+                  <Image src={preview || "/placeholder.svg"} alt="Preview" fill unoptimized className="object-cover" />
+                </div>
               ) : (
                 <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center">
                   <FileImage className="w-8 h-8 text-muted-foreground" />

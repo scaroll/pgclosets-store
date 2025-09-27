@@ -6,9 +6,19 @@ import { toCartProduct } from "@/lib/renin-products"
 import { Button } from "./button"
 import { ShoppingCart, Check } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Product } from "@/types/commerce"
+
+interface ProductLike {
+  id: string;
+  name?: string;
+  title?: string;
+  price: number;
+  inStock?: boolean;
+  [key: string]: unknown;
+}
 
 interface AddToCartButtonProps {
-  product: any // Accept any product type and convert to cart format
+  product: Product | ProductLike // Accept standard Product type or similar structure
   variant?: "default" | "secondary" | "outline" | "destructive" | "ghost" | "link"
   size?: "default" | "sm" | "lg" | "icon"
   className?: string

@@ -1,8 +1,7 @@
-import type { ArcatProduct } from "@/lib/enhanced-renin-products"
-import { ProductCard } from "./product-card"
+import { ProductCard } from "./product-card";
 
 interface ProductGridProps {
-  products: ArcatProduct[]
+  products: any[];
 }
 
 export function ProductGrid({ products }: ProductGridProps) {
@@ -10,9 +9,11 @@ export function ProductGrid({ products }: ProductGridProps) {
     return (
       <div className="text-center py-12">
         <p className="text-lg text-pg-gray mb-4">No products found</p>
-        <p className="text-body-s text-pg-gray">Try adjusting your filters or search terms</p>
+        <p className="text-body-s text-pg-gray">
+          Try adjusting your filters or search terms
+        </p>
       </div>
-    )
+    );
   }
 
   return (
@@ -21,5 +22,5 @@ export function ProductGrid({ products }: ProductGridProps) {
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
-  )
+  );
 }

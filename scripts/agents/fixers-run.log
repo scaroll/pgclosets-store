@@ -1,0 +1,494 @@
+Run fixers: Thu Sep 25 15:55:28 EDT 2025
+Running mixed mismatch fixer...
+Fixed mixed mismatched closing tags in 0 files
+Running unused caught errors fixer...
+Fixed unused caught errors in 0 files
+Running remove unused Link imports...
+Removed unused Link imports in 0 files
+Running eslint...
+
+/Users/spencercarroll/pgclosets-store-main/AuthContext.tsx
+   82:7   error  'mockUsers' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  112:24  error  'email' is defined but never used. Allowed unused args must match /^_/u               @typescript-eslint/no-unused-vars
+  112:39  error  'password' is defined but never used. Allowed unused args must match /^_/u            @typescript-eslint/no-unused-vars
+  122:27  error  'email' is defined but never used. Allowed unused args must match /^_/u               @typescript-eslint/no-unused-vars
+  122:42  error  'password' is defined but never used. Allowed unused args must match /^_/u            @typescript-eslint/no-unused-vars
+  122:60  error  'name' is defined but never used. Allowed unused args must match /^_/u                @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/ClientPage.tsx
+  137:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/MediaGallery.tsx
+   30:3   error    'maxSelections' is assigned a value but never used. Allowed unused args must match /^_/u                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+  123:6   warning  React Hook useEffect has a missing dependency: 'fetchFiles'. Either include it or remove the dependency array                                                                                                                                                                            react-hooks/exhaustive-deps
+  179:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  255:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/MediaSelector.tsx
+  31:3  error  'selectedFiles' is assigned a value but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/SecureImageUploader.tsx
+  247:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/account/page.tsx
+  228:27  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/account/payment-methods/page.tsx
+  27:24  error  'type' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/account/profile/page.tsx
+  14:10  error  'profilePicture' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/admin/blob-audit/page.tsx
+  132:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/admin/product-images/ClientPage.tsx
+  34:10  error  'selectedProduct' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/admin/product-mapping/page.tsx
+  256:31  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  287:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  314:27  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/admin/products/page.tsx
+   44:6   warning  React Hook useEffect has a missing dependency: 'loadProducts'. Either include it or remove the dependency array                                                                                                                                                                          react-hooks/exhaustive-deps
+  147:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  237:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  256:31  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/agents/orchestrator.js
+  268:44  error  'index' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/analytics/performance-analytics.tsx
+   89:7   error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  161:7   error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  251:9   error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  253:11  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+
+/Users/spencercarroll/pgclosets-store-main/app/account/payment-methods/page.tsx
+  27:24  error  'type' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/app/account/profile/page.tsx
+  14:10  error  'profilePicture' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/app/admin/product-images/ClientPage.tsx
+  34:10  error  'selectedProduct' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/app/admin/products/page.tsx
+   44:6   warning  React Hook useEffect has a missing dependency: 'loadProducts'. Either include it or remove the dependency array                                                                                                                                                                          react-hooks/exhaustive-deps
+  147:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  237:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  256:31  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/app/api/health/route.ts
+  3:27  error  'request' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/app/api/status/route.ts
+   4:27  error  'request' is defined but never used. Allowed unused args must match /^_/u          @typescript-eslint/no-unused-vars
+  11:19  error  'dbTest' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/app/blob-contents/page.tsx
+  107:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/app/cart/CartClientPage.tsx
+    5:10  error    'Badge' is defined but never used. Allowed unused vars must match /^_/u                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+   14:72  error    'total' is assigned a value but never used. Allowed unused vars must match /^_/u                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+  138:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/app/contact/ContactClientPage.tsx
+  11:10  error  'mobileMenuOpen' is assigned a value but never used. Allowed unused vars must match /^_/u     @typescript-eslint/no-unused-vars
+  11:26  error  'setMobileMenuOpen' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  13:9   error  'siteStats' is assigned a value but never used. Allowed unused vars must match /^_/u          @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/app/files/page.tsx
+  106:6   warning  React Hook useEffect has a missing dependency: 'fetchFiles'. Either include it or remove the dependency array                                                                                                                                                                            react-hooks/exhaustive-deps
+  148:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/app/products/[slug]/page.tsx
+  4:10  error  'Product' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/blob-contents/page.tsx
+  107:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/blog/[slug]/page.tsx
+  388:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/blog/page.tsx
+  154:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  205:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/cart/CartClientPage.tsx
+  15:72  error  'total' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/cart/CartIcon.tsx
+  7:26  error  'cart' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/cart/cart-page-client.tsx
+  45:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/checkout/confirmation/page.tsx
+  56:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  72:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/checkout/medusa-payment-section.tsx
+  26:3  error  'shippingInfo' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/components/MediaGallery.tsx
+  31:3  error  'maxSelections' is assigned a value but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/components/MediaSelector.tsx
+  31:3  error  'selectedFiles' is assigned a value but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/components/SecureImageUploader.tsx
+  247:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/components/cart/CartIcon.tsx
+  7:26  error  'cart' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/components/checkout/medusa-payment-section.tsx
+  26:3  error  'shippingInfo' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/components/layout/page-header.tsx
+  83:6  warning  React Hook useEffect has a missing dependency: 'navigationItems'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/spencercarroll/pgclosets-store-main/components/navigation/mega-menu.tsx
+  277:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/components/seo/ai-optimized-content.tsx
+  1:25  error  'formatServiceAreas' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/components/seo/structured-data.tsx
+  112:3  error  'address' is defined but never used. Allowed unused args must match /^_/u       @typescript-eslint/no-unused-vars
+  113:3  error  'contactPoint' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/components/store/cart-drawer.tsx
+  8:11  error  An empty interface declaration allows any non-nullish value, including literals like `0` and `""`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowInterfaces' rule option.
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead  @typescript-eslint/no-empty-object-type
+
+/Users/spencercarroll/pgclosets-store-main/components/store/product-card.tsx
+  17:10  error  'currentImageIndex' is assigned a value but never used. Allowed unused vars must match /^_/u     @typescript-eslint/no-unused-vars
+  17:29  error  'setCurrentImageIndex' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  18:21  error  'setIsLoading' is assigned a value but never used. Allowed unused vars must match /^_/u          @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/components/ui/button.tsx
+  53:32  error  'asChild' is assigned a value but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/components/ui/dropdown-menu.tsx
+  28:11  error  An empty interface declaration allows any non-nullish value, including literals like `0` and `""`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowInterfaces' rule option.
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead  @typescript-eslint/no-empty-object-type
+  35:49  error  'asChild' is defined but never used. Allowed unused args must match /^_/u                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+  39:49  error  'align' is defined but never used. Allowed unused args must match /^_/u                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+  39:56  error  'sideOffset' is defined but never used. Allowed unused args must match /^_/u                                                                                                                                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/components/ui/file-upload.tsx
+   75:5   warning  React Hook useCallback has missing dependencies: 'handleUpload' and 'validateFile'. Either include them or remove the dependency array                                                                                                                                                   react-hooks/exhaustive-deps
+  228:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/components/ui/input.tsx
+  48:6  error  'InputVariantProps' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/components/ui/textarea.tsx
+  5:18  error  An interface declaring no members is equivalent to its supertype  @typescript-eslint/no-empty-object-type
+
+/Users/spencercarroll/pgclosets-store-main/contexts/AuthContext.tsx
+   82:7   error  'mockUsers' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  112:24  error  'email' is defined but never used. Allowed unused args must match /^_/u               @typescript-eslint/no-unused-vars
+  112:39  error  'password' is defined but never used. Allowed unused args must match /^_/u            @typescript-eslint/no-unused-vars
+  122:27  error  'email' is defined but never used. Allowed unused args must match /^_/u               @typescript-eslint/no-unused-vars
+  122:42  error  'password' is defined but never used. Allowed unused args must match /^_/u            @typescript-eslint/no-unused-vars
+  122:60  error  'name' is defined but never used. Allowed unused args must match /^_/u                @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/files/page.tsx
+  109:6   warning  React Hook useEffect has a missing dependency: 'fetchFiles'. Either include it or remove the dependency array                                                                                                                                                                            react-hooks/exhaustive-deps
+  151:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/hooks/use-toast.ts
+  21:7  error  'actionTypes' is assigned a value but only used as a type. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/image-audit-script.js
+  278:36  error  'imageRequests' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/layout/page-header.tsx
+  83:6  warning  React Hook useEffect has a missing dependency: 'navigationItems'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/spencercarroll/pgclosets-store-main/medusa-client.ts
+   8:20  error  'id' is defined but never used. Allowed unused args must match /^_/u      @typescript-eslint/no-unused-vars
+  12:28  error  'handle' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/medusa-products.ts
+  82:35  error  'index' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/next-env.d.ts
+  3:1  error  Do not use a triple slash reference for ./.next/types/routes.d.ts, use `import` style instead  @typescript-eslint/triple-slash-reference
+
+/Users/spencercarroll/pgclosets-store-main/products/[slug]/page.tsx
+   39:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  120:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/renin-scraper.js
+  265:21  error  'totalImages' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/scripts/automation/shopify-harvest.js
+  149:59  error  Parsing error: Unterminated regular expression literal
+
+/Users/spencercarroll/pgclosets-store-main/scripts/bulk-image-converter.js
+  82:9  error  'replacement' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/scripts/renin-scraper.js
+  365:10  error  'error' is defined but never used. Allowed unused caught errors must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/search/page.tsx
+  402:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/seo/structured-data.tsx
+  112:3  error  'address' is defined but never used. Allowed unused args must match /^_/u       @typescript-eslint/no-unused-vars
+  113:3  error  'contactPoint' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/ui/button.tsx
+  53:32  error  'asChild' is assigned a value but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/spencercarroll/pgclosets-store-main/ui/file-upload.tsx
+   75:5   warning  React Hook useCallback has missing dependencies: 'handleUpload' and 'validateFile'. Either include them or remove the dependency array                                                                                                                                                   react-hooks/exhaustive-deps
+  228:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/spencercarroll/pgclosets-store-main/ui/textarea.tsx
+  5:18  error  An interface declaring no members is equivalent to its supertype  @typescript-eslint/no-empty-object-type
+
+/Users/spencercarroll/pgclosets-store-main/use-toast.ts
+  21:7  error  'actionTypes' is assigned a value but only used as a type. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+✖ 112 problems (70 errors, 42 warnings)
+
+Running tsc --noEmit...
+.next/types/app/blog/[slug]/page.ts(34,29): error TS2344: Type '{ params: { slug: string; }; }' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ slug: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+.next/types/app/blog/[slug]/page.ts(38,31): error TS2344: Type '{ params: { slug: string; }; }' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ slug: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+.next/types/app/products/[slug]/page.ts(34,29): error TS2344: Type '{ params: { slug: string; }; }' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ slug: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+.next/types/app/products/[slug]/page.ts(38,31): error TS2344: Type '{ params: { slug: string; }; }' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ slug: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+.next/types/app/products/page.ts(34,29): error TS2344: Type '{ searchParams?: { [key: string]: string | string[] | undefined; } | undefined; }' does not satisfy the constraint 'PageProps'.
+  Types of property 'searchParams' are incompatible.
+    Type '{ [key: string]: string | string[] | undefined; } | undefined' is not assignable to type 'Promise<any> | undefined'.
+      Type '{ [key: string]: string | string[] | undefined; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+.next/types/app/simple-products/[slug]/page.ts(34,29): error TS2344: Type 'Props' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ slug: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+.next/types/app/store/products/[slug]/page.ts(34,29): error TS2344: Type 'ProductPageProps' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ slug: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+.next/types/app/store/products/[slug]/page.ts(38,31): error TS2344: Type 'ProductPageProps' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ slug: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+.next/types/app/store/products/page.ts(34,29): error TS2344: Type 'ProductsPageProps' does not satisfy the constraint 'PageProps'.
+  Types of property 'searchParams' are incompatible.
+    Type '{ category?: string | undefined; search?: string | undefined; sort?: string | undefined; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+app/api/products/route.ts(56,9): error TS2322: Type 'string | null' is not assignable to type 'string | undefined'.
+  Type 'null' is not assignable to type 'string | undefined'.
+components/analytics/performance-analytics.tsx(9,5): error TS2717: Subsequent property declarations must have the same type.  Property 'gtag' must be of type '(...args: any[]) => void', but here has type '(command: string, action: string, parameters?: any) => void'.
+components/monitoring/error-boundary.tsx(4,24): error TS2307: Cannot find module './ui/button' or its corresponding type declarations.
+components/monitoring/error-boundary.tsx(5,75): error TS2307: Cannot find module './ui/card' or its corresponding type declarations.
+components/performance/web-vitals.tsx(16,18): error TS2304: Cannot find name 'gtag'.
+components/performance/web-vitals.tsx(17,9): error TS2304: Cannot find name 'gtag'.
+components/performance/web-vitals.tsx(25,44): error TS2774: This condition will always return true since this function is always defined. Did you mean to call it instead?
+components/performance/web-vitals.tsx(54,53): error TS2551: Property 'navigationStart' does not exist on type 'PerformanceNavigationTiming'. Did you mean 'activationStart'?
+components/performance/web-vitals.tsx(60,22): error TS2304: Cannot find name 'gtag'.
+components/performance/web-vitals.tsx(61,13): error TS2304: Cannot find name 'gtag'.
+components/performance/web-vitals.tsx(119,34): error TS2551: Property 'navigationStart' does not exist on type 'PerformanceNavigationTiming'. Did you mean 'activationStart'?
+components/performance/web-vitals.tsx(120,87): error TS2551: Property 'navigationStart' does not exist on type 'PerformanceNavigationTiming'. Did you mean 'activationStart'?
+components/SecureImageUploader.tsx(128,44): error TS2552: Cannot find name 'error'. Did you mean '_error'?
+components/SecureImageUploader.tsx(128,69): error TS2552: Cannot find name 'error'. Did you mean '_error'?
+components/seo/ai-optimized-content.tsx(137,8): error TS2322: Type '{ businessName: "PG Closets - Official Renin Dealer"; address: "Ottawa, ON K1P 5E9"; phone: "(613) 555-0123"; email: "spencer@peoplesgrp.com"; serviceAreas: readonly ["Ottawa", "Kanata", ... 4 more ..., "Stittsville"]; businessHours: { ...; }; }' is not assignable to type 'LocalBusinessInfoProps'.
+  Types of property 'serviceAreas' are incompatible.
+    The type 'readonly ["Ottawa", "Kanata", "Barrhaven", "Orleans", "Nepean", "Gloucester", "Stittsville"]' is 'readonly' and cannot be assigned to the mutable type 'string[]'.
+components/store/medusa-product-card.tsx(6,30): error TS2307: Cannot find module '@medusajs/medusa' or its corresponding type declarations.
+components/store/product-detail-client.tsx(28,25): error TS7053: Element implicitly has an 'any' type because expression of type '"Standard Sizes"' can't be used to index type '{ width?: string | undefined; height?: string | undefined; thickness?: string | undefined; material?: string | undefined; trackLength?: string | undefined; weightCapacity?: string | undefined; finish?: string | undefined; }'.
+  Property 'Standard Sizes' does not exist on type '{ width?: string | undefined; height?: string | undefined; thickness?: string | undefined; material?: string | undefined; trackLength?: string | undefined; weightCapacity?: string | undefined; finish?: string | undefined; }'.
+components/store/product-detail-client.tsx(31,53): error TS2551: Property 'Finish' does not exist on type '{ width?: string | undefined; height?: string | undefined; thickness?: string | undefined; material?: string | undefined; trackLength?: string | undefined; weightCapacity?: string | undefined; finish?: string | undefined; }'. Did you mean 'finish'?
+components/store/product-detail-client.tsx(117,43): error TS7006: Parameter 'finish' implicitly has an 'any' type.
+components/ui/add-to-cart-button.tsx(156,6): error TS2322: Type '{ children: Element; variant?: "link" | "secondary" | "destructive" | "default" | "outline" | "ghost" | undefined; disabled?: boolean | undefined; onSuccess?: (() => void) | undefined; ... 5 more ...; className: string; }' is not assignable to type 'IntrinsicAttributes & AddToCartButtonProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & AddToCartButtonProps'.
+components/ui/input.tsx(2,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+components/ui/label.tsx(5,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+deploy/app/account/page.tsx(36,19): error TS2322: Type '"navigation"' is not assignable to type '"default" | "simple" | "minimal" | undefined'.
+deploy/app/account/profile/page.tsx(63,56): error TS2322: Type '{ accept: string; maxSize: number; onFileSelect: (file: File | null) => void; className: string; }' is not assignable to type 'IntrinsicAttributes & FileUploadProps'.
+  Property 'onFileSelect' does not exist on type 'IntrinsicAttributes & FileUploadProps'.
+deploy/app/api/list/route.ts(11,21): error TS2339: Property 'contentType' does not exist on type 'ListBlobResultBlob'.
+deploy/app/cart/CartClientPage.tsx(148,80): error TS2339: Property 'category' does not exist on type 'CartItem'.
+deploy/app/cart/CartClientPage.tsx(154,37): error TS2339: Property 'originalPrice' does not exist on type 'CartItem'.
+deploy/app/cart/CartClientPage.tsx(157,44): error TS2339: Property 'originalPrice' does not exist on type 'CartItem'.
+deploy/app/cart/CartClientPage.tsx(160,51): error TS2339: Property 'originalPrice' does not exist on type 'CartItem'.
+deploy/app/cart/CartClientPage.tsx(190,33): error TS2339: Property 'features' does not exist on type 'CartItem'.
+deploy/app/cart/CartClientPage.tsx(190,59): error TS7006: Parameter 'feature' implicitly has an 'any' type.
+deploy/app/cart/CartClientPage.tsx(190,68): error TS7006: Parameter 'index' implicitly has an 'any' type.
+deploy/app/cart/CartClientPage.tsx(224,35): error TS2339: Property 'originalPrice' does not exist on type 'CartItem'.
+deploy/app/cart/CartClientPage.tsx(226,51): error TS2339: Property 'originalPrice' does not exist on type 'CartItem'.
+deploy/app/cart/page.tsx(14,18): error TS2339: Property 'updateQuantity' does not exist on type 'CartState'.
+deploy/app/cart/page.tsx(14,34): error TS2339: Property 'removeItem' does not exist on type 'CartState'.
+deploy/app/cart/page.tsx(14,46): error TS2339: Property 'getTotal' does not exist on type 'CartState'.
+deploy/app/cart/page.tsx(14,56): error TS2339: Property 'clearCart' does not exist on type 'CartState'.
+deploy/app/cart/page.tsx(73,33): error TS2339: Property 'name' does not exist on type 'CartItem'.
+deploy/app/cart/page.tsx(81,57): error TS2339: Property 'name' does not exist on type 'CartItem'.
+deploy/app/cart/page.tsx(82,64): error TS2339: Property 'category' does not exist on type 'CartItem'.
+deploy/app/cart/page.tsx(90,79): error TS2339: Property 'quantity' does not exist on type 'CartItem'.
+deploy/app/cart/page.tsx(97,35): error TS2339: Property 'quantity' does not exist on type 'CartItem'.
+deploy/app/cart/page.tsx(103,101): error TS2339: Property 'quantity' does not exist on type 'CartItem'.
+deploy/app/products/[slug]/page.tsx(34,35): error TS2353: Object literal may only specify known properties, and 'title' does not exist in type '{ name: string; description: string; sku?: string | undefined; brand?: string | undefined; priceMin?: number | undefined; priceMax?: number | undefined; images?: string[] | undefined; category?: string | undefined; availability?: string | undefined; }'.
+deploy/app/products/[slug]/ProductDetailClient.tsx(9,31): error TS2307: Cannot find module '@/components/ui/image-carousel' or its corresponding type declarations.
+deploy/app/products/[slug]/ProductDetailClient.tsx(10,30): error TS2307: Cannot find module '@/components/ui/video-gallery' or its corresponding type declarations.
+deploy/app/products/page.tsx(323,32): error TS2339: Property 'mechanism' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; } | { mechanism: string; sizes: string; thickness: string; weight: string; material: string; finish: string; hardware: string; warranty: string; installation: string; capacity?: undefined; } | { ...; }'.
+  Property 'mechanism' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; }'.
+deploy/app/products/page.tsx(325,86): error TS2339: Property 'mechanism' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; } | { mechanism: string; sizes: string; thickness: string; weight: string; material: string; finish: string; hardware: string; warranty: string; installation: string; capacity?: undefined; } | { ...; }'.
+  Property 'mechanism' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; }'.
+deploy/app/products/page.tsx(328,32): error TS2339: Property 'sizes' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; } | { mechanism: string; sizes: string; thickness: string; weight: string; material: string; finish: string; hardware: string; warranty: string; installation: string; capacity?: undefined; } | { ...; }'.
+  Property 'sizes' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; }'.
+deploy/app/products/page.tsx(330,82): error TS2339: Property 'sizes' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; } | { mechanism: string; sizes: string; thickness: string; weight: string; material: string; finish: string; hardware: string; warranty: string; installation: string; capacity?: undefined; } | { ...; }'.
+  Property 'sizes' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; }'.
+deploy/app/products/ProductsPageClient.tsx(7,29): error TS2307: Cannot find module '@/components/ui/product-card' or its corresponding type declarations.
+deploy/app/products/ProductsPageClient.tsx(8,32): error TS2307: Cannot find module '@/components/ui/product-filters' or its corresponding type declarations.
+deploy/app/store/products/[slug]/page.tsx(45,28): error TS2739: Type 'Product' is missing the following properties from type 'ArcatProduct': homeDepotImage, arcatImages, installationTime
+deploy/app/store/products/[slug]/page.tsx(47,55): error TS2322: Type 'Product[]' is not assignable to type 'ArcatProduct[]'.
+  Type 'Product' is missing the following properties from type 'ArcatProduct': homeDepotImage, arcatImages, installationTime
+deploy/components/analytics/performance-analytics.tsx(36,39): error TS2339: Property 'processingStart' does not exist on type 'PerformanceEntry'.
+deploy/components/analytics/performance-analytics.tsx(37,49): error TS2339: Property 'processingStart' does not exist on type 'PerformanceEntry'.
+deploy/components/analytics/performance-analytics.tsx(46,24): error TS2339: Property 'hadRecentInput' does not exist on type 'PerformanceEntry'.
+deploy/components/analytics/performance-analytics.tsx(47,33): error TS2339: Property 'value' does not exist on type 'PerformanceEntry'.
+deploy/components/analytics/performance-monitor.tsx(31,22): error TS2339: Property 'hadRecentInput' does not exist on type 'PerformanceEntry'.
+deploy/components/analytics/performance-monitor.tsx(32,31): error TS2339: Property 'value' does not exist on type 'PerformanceEntry'.
+deploy/components/analytics/performance-monitor.tsx(50,42): error TS2339: Property 'processingStart' does not exist on type 'PerformanceEntry'.
+deploy/components/analytics/performance-monitor.tsx(54,39): error TS2339: Property 'processingStart' does not exist on type 'PerformanceEntry'.
+deploy/components/analytics/performance-monitor.tsx(76,5): error TS2687: All declarations of 'gtag' must have identical modifiers.
+deploy/components/analytics/performance-monitor.tsx(76,5): error TS2717: Subsequent property declarations must have the same type.  Property 'gtag' must be of type '(...args: any[]) => void', but here has type '((...args: any[]) => void) | undefined'.
+deploy/components/checkout/medusa-payment-section.tsx(5,30): error TS2307: Cannot find module '@/lib/medusa-client' or its corresponding type declarations.
+deploy/components/checkout/medusa-payment-section.tsx(6,27): error TS2307: Cannot find module '@medusajs/medusa' or its corresponding type declarations.
+deploy/components/checkout/payment-section.tsx(4,36): error TS2307: Cannot find module '@/components/ui/cart-checkout-button' or its corresponding type declarations.
+deploy/components/layout/page-header.tsx(143,48): error TS2322: Type '{ width: number; height: number; priority: true; className: string; }' is not assignable to type 'IntrinsicAttributes & PGLogoProps'.
+  Property 'priority' does not exist on type 'IntrinsicAttributes & PGLogoProps'.
+deploy/components/SecureImageUploader.tsx(128,44): error TS2552: Cannot find name 'error'. Did you mean '_error'?
+deploy/components/SecureImageUploader.tsx(128,69): error TS2552: Cannot find name 'error'. Did you mean '_error'?
+deploy/components/store/cart-drawer.tsx(7,31): error TS2307: Cannot find module '@medusajs/medusa' or its corresponding type declarations.
+deploy/components/store/medusa-product-card.tsx(6,30): error TS2307: Cannot find module '@medusajs/medusa' or its corresponding type declarations.
+deploy/components/store/product-card.tsx(95,13): error TS2739: Type 'ArcatProduct' is missing the following properties from type 'Product': subcategory, images, featured
+deploy/components/store/product-grid.tsx(21,39): error TS2739: Type 'Product' is missing the following properties from type 'ArcatProduct': homeDepotImage, arcatImages, installationTime
+deploy/components/store/related-products.tsx(17,43): error TS2739: Type 'Product' is missing the following properties from type 'ArcatProduct': homeDepotImage, arcatImages, installationTime
+deploy/components/ui/alert.tsx(2,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+deploy/components/ui/card.tsx(2,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+deploy/components/ui/input.tsx(2,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+deploy/components/ui/label.tsx(5,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+deploy/components/ui/request-quote-button.tsx(41,7): error TS2322: Type '"lg" | "md" | "sm"' is not assignable to type '"lg" | "sm" | "default" | "xl" | "icon" | "icon-sm" | "icon-lg" | "icon-xl" | null | undefined'.
+  Type '"md"' is not assignable to type '"lg" | "sm" | "default" | "xl" | "icon" | "icon-sm" | "icon-lg" | "icon-xl" | null | undefined'.
+deploy/components/ui/toast.tsx(5,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+deploy/hooks/use-medusa-cart.tsx(4,30): error TS2307: Cannot find module '@/lib/medusa-client' or its corresponding type declarations.
+deploy/hooks/use-medusa-cart.tsx(5,37): error TS2307: Cannot find module '@medusajs/medusa' or its corresponding type declarations.
+deploy/hooks/use-medusa-products.tsx(4,32): error TS2307: Cannot find module '@/lib/medusa-products' or its corresponding type declarations.
+deploy/hooks/use-medusa-products.tsx(5,49): error TS2307: Cannot find module '@medusajs/medusa' or its corresponding type declarations.
+deploy/lib/medusa-products.ts(2,49): error TS2307: Cannot find module '@medusajs/medusa' or its corresponding type declarations.
+deploy/lib/medusa-products.ts(114,55): error TS2554: Expected 0 arguments, but got 1.
+deploy/lib/medusa-products.ts(126,14): error TS18047: 'response' is possibly 'null'.
+deploy/lib/medusa-products.ts(146,55): error TS2554: Expected 0 arguments, but got 1.
+deploy/lib/medusa-products.ts(159,55): error TS2554: Expected 0 arguments, but got 1.
+deploy/lib/medusa-products.ts(172,55): error TS2554: Expected 0 arguments, but got 1.
+deploy/lib/medusa-products.ts(208,28): error TS2345: Argument of type 'any' is not assignable to parameter of type 'never'.
+deploy/lib/medusa-products.ts(211,27): error TS2345: Argument of type '{ id: any; error: unknown; }' is not assignable to parameter of type 'never'.
+deploy/lib/products.ts(39,25): error TS2352: Conversion of type '{ currency: string; taxRate: number; items: ({ slug: string; title: string; type: string; category: string; priceMin: number; priceMax: number; priceMSRP: number; image: string; images: string[]; badges: string[]; ... 11 more ...; mpn: string; } | ... 11 more ... | { ...; })[]; }' to type 'ProductStore' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'items' are incompatible.
+    Type '({ slug: string; title: string; type: string; category: string; priceMin: number; priceMax: number; priceMSRP: number; image: string; images: string[]; badges: string[]; description: string; shortDescription: string; ... 9 more ...; mpn: string; } | ... 11 more ... | { ...; })[]' is not comparable to type 'Product[]'.
+      Type '{ slug: string; title: string; type: string; category: string; priceMin: number; priceMax: number; priceMSRP: number; image: string; images: string[]; badges: string[]; description: string; shortDescription: string; ... 9 more ...; mpn: string; } | ... 11 more ... | { ...; }' is not comparable to type 'Product'.
+        Type '{ slug: string; title: string; type: string; category: string; priceMin: number; priceMax: number; priceMSRP: number; image: string; images: string[]; badges: string[]; description: string; shortDescription: string; ... 9 more ...; mpn: string; }' is not comparable to type 'Product'.
+          Types of property 'specs' are incompatible.
+            Type '{ Type: string; Backing: string; Thickness: string; Warranty: string; Installation: string; Material?: undefined; Finish?: undefined; Hardware?: undefined; Style?: undefined; Glass?: undefined; Craftsmanship?: undefined; ... 6 more ...; "Track Length"?: undefined; }' is not comparable to type 'Record<string, string | number>'.
+              Property '"Material"' is incompatible with index signature.
+                Type 'undefined' is not comparable to type 'string | number'.
+deploy/lib/renin-products.ts(25,14): error TS2322: Type '({ id: string; name: string; slug: string; price: number; category: string; subcategory: string; images: string[]; description: string; features: string[]; specifications: { Material: string; Thickness: string; ... 7 more ...; Installation?: undefined; }; inStock: boolean; featured: boolean; } | { ...; } | { ...; })[]' is not assignable to type 'Product[]'.
+  Type '{ id: string; name: string; slug: string; price: number; category: string; subcategory: string; images: string[]; description: string; features: string[]; specifications: { Material: string; Thickness: string; ... 7 more ...; Installation?: undefined; }; inStock: boolean; featured: boolean; } | { ...; } | { ...; }' is not assignable to type 'Product'.
+    Type '{ id: string; name: string; slug: string; price: number; category: string; subcategory: string; images: string[]; description: string; features: string[]; specifications: { Material: string; Thickness: string; ... 7 more ...; Installation?: undefined; }; inStock: boolean; featured: boolean; }' is not assignable to type 'Product'.
+      Types of property 'category' are incompatible.
+        Type 'string' is not assignable to type '"barn" | "bifold" | "hardware" | "pivot" | "bypass"'.
+hooks/use-medusa-cart.tsx(4,30): error TS2307: Cannot find module '@/lib/medusa-client' or its corresponding type declarations.
+hooks/use-medusa-cart.tsx(5,37): error TS2307: Cannot find module '@/types/medusa' or its corresponding type declarations.
+hooks/use-medusa-products.tsx(4,32): error TS2307: Cannot find module '@/lib/medusa-products' or its corresponding type declarations.
+hooks/use-medusa-products.tsx(5,49): error TS2307: Cannot find module '@medusajs/medusa' or its corresponding type declarations.
+hooks/use-products.ts(59,23): error TS2339: Property 'featured' does not exist on type '{ id: string; slug: string; title: string; description: string; price: number; image: string; category: string; }'.
+hooks/use-products.ts(60,22): error TS2339: Property 'inStock' does not exist on type '{ id: string; slug: string; title: string; description: string; price: number; image: string; category: string; }'.
+hooks/use-products.ts(61,29): error TS2339: Property 'specifications' does not exist on type '{ id: string; slug: string; title: string; description: string; price: number; image: string; category: string; }'.
+layout/page-header.tsx(143,48): error TS2322: Type '{ width: number; height: number; priority: true; className: string; }' is not assignable to type 'IntrinsicAttributes & PGLogoProps'.
+  Property 'priority' does not exist on type 'IntrinsicAttributes & PGLogoProps'.
+lib/monitoring.ts(28,59): error TS2551: Property 'navigationStart' does not exist on type 'PerformanceNavigationTiming'. Did you mean 'activationStart'?
+lib/products.ts(39,25): error TS2352: Conversion of type '{ currency: string; taxRate: number; items: ({ slug: string; title: string; type: string; category: string; priceMin: number; priceMax: number; priceMSRP: number; image: string; images: string[]; badges: string[]; ... 11 more ...; mpn: string; } | ... 11 more ... | { ...; })[]; }' to type 'ProductStore' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'items' are incompatible.
+    Type '({ slug: string; title: string; type: string; category: string; priceMin: number; priceMax: number; priceMSRP: number; image: string; images: string[]; badges: string[]; description: string; shortDescription: string; ... 9 more ...; mpn: string; } | ... 11 more ... | { ...; })[]' is not comparable to type 'Product[]'.
+      Type '{ slug: string; title: string; type: string; category: string; priceMin: number; priceMax: number; priceMSRP: number; image: string; images: string[]; badges: string[]; description: string; shortDescription: string; ... 9 more ...; mpn: string; } | ... 11 more ... | { ...; }' is not comparable to type 'Product'.
+        Type '{ slug: string; title: string; type: string; category: string; priceMin: number; priceMax: number; priceMSRP: number; image: string; images: string[]; badges: string[]; description: string; shortDescription: string; ... 9 more ...; mpn: string; }' is not comparable to type 'Product'.
+          Types of property 'specs' are incompatible.
+            Type '{ Type: string; Backing: string; Thickness: string; Warranty: string; Installation: string; Material?: undefined; Finish?: undefined; Hardware?: undefined; Style?: undefined; Glass?: undefined; Craftsmanship?: undefined; ... 6 more ...; "Track Length"?: undefined; }' is not comparable to type 'Record<string, string | number>'.
+              Property '"Material"' is incompatible with index signature.
+                Type 'undefined' is not comparable to type 'string | number'.
+lib/renin-products.ts(39,14): error TS2322: Type '({ id: string; name: string; slug: string; price: number; category: string; subcategory: string; images: string[]; description: string; features: string[]; specifications: { Material: string; Thickness: string; ... 7 more ...; Installation?: undefined; }; inStock: boolean; featured: boolean; } | { ...; } | { ...; })[]' is not assignable to type 'Product[]'.
+  Type '{ id: string; name: string; slug: string; price: number; category: string; subcategory: string; images: string[]; description: string; features: string[]; specifications: { Material: string; Thickness: string; ... 7 more ...; Installation?: undefined; }; inStock: boolean; featured: boolean; } | { ...; } | { ...; }' is not assignable to type 'Product'.
+    Type '{ id: string; name: string; slug: string; price: number; category: string; subcategory: string; images: string[]; description: string; features: string[]; specifications: { Material: string; Thickness: string; ... 7 more ...; Installation?: undefined; }; inStock: boolean; featured: boolean; }' is not assignable to type 'Product'.
+      Types of property 'category' are incompatible.
+        Type 'string' is not assignable to type '"barn" | "bifold" | "hardware" | "pivot" | "bypass"'.
+lib/supabase/server.ts(37,30): error TS2339: Property 'get' does not exist on type 'Promise<ReadonlyRequestCookies>'.
+lib/supabase/server.ts(41,25): error TS2339: Property 'set' does not exist on type 'Promise<ReadonlyRequestCookies>'.
+lib/supabase/server.ts(50,25): error TS2339: Property 'set' does not exist on type 'Promise<ReadonlyRequestCookies>'.
+medusa-products.ts(2,49): error TS2307: Cannot find module '@medusajs/medusa' or its corresponding type declarations.
+medusa-products.ts(114,55): error TS2554: Expected 0 arguments, but got 1.
+medusa-products.ts(126,14): error TS18047: 'response' is possibly 'null'.
+medusa-products.ts(146,55): error TS2554: Expected 0 arguments, but got 1.
+medusa-products.ts(159,55): error TS2554: Expected 0 arguments, but got 1.
+medusa-products.ts(172,55): error TS2554: Expected 0 arguments, but got 1.
+medusa-products.ts(208,28): error TS2345: Argument of type 'any' is not assignable to parameter of type 'never'.
+medusa-products.ts(211,27): error TS2345: Argument of type '{ id: any; error: unknown; }' is not assignable to parameter of type 'never'.
+products.ts(38,19): error TS2307: Cannot find module '../data/products.json' or its corresponding type declarations.
+products/[slug]/page.tsx(3,31): error TS2307: Cannot find module '../../../data/renin-products' or its corresponding type declarations.
+products/[slug]/page.tsx(4,31): error TS2307: Cannot find module '../../../lib/seo' or its corresponding type declarations.
+products/[slug]/page.tsx(9,29): error TS7006: Parameter 'p' implicitly has an 'any' type.
+products/[slug]/page.tsx(13,33): error TS7006: Parameter 'product' implicitly has an 'any' type.
+products/[slug]/page.tsx(25,33): error TS7006: Parameter 'product' implicitly has an 'any' type.
+products/[slug]/page.tsx(29,41): error TS7006: Parameter 'product' implicitly has an 'any' type.
+products/[slug]/page.tsx(98,34): error TS7006: Parameter 'feature' implicitly has an 'any' type.
+products/[slug]/page.tsx(98,43): error TS7006: Parameter 'index' implicitly has an 'any' type.
+products/[slug]/page.tsx(116,29): error TS7006: Parameter 'r' implicitly has an 'any' type.
+products/[slug]/ProductDetailClient.tsx(9,31): error TS2307: Cannot find module '@/components/ui/image-carousel' or its corresponding type declarations.
+products/[slug]/ProductDetailClient.tsx(10,30): error TS2307: Cannot find module '@/components/ui/video-gallery' or its corresponding type declarations.
+products/page.tsx(323,32): error TS2339: Property 'mechanism' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; } | { mechanism: string; sizes: string; thickness: string; weight: string; material: string; finish: string; hardware: string; warranty: string; installation: string; capacity?: undefined; } | { ...; }'.
+  Property 'mechanism' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; }'.
+products/page.tsx(325,86): error TS2339: Property 'mechanism' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; } | { mechanism: string; sizes: string; thickness: string; weight: string; material: string; finish: string; hardware: string; warranty: string; installation: string; capacity?: undefined; } | { ...; }'.
+  Property 'mechanism' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; }'.
+products/page.tsx(328,32): error TS2339: Property 'sizes' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; } | { mechanism: string; sizes: string; thickness: string; weight: string; material: string; finish: string; hardware: string; warranty: string; installation: string; capacity?: undefined; } | { ...; }'.
+  Property 'sizes' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; }'.
+products/page.tsx(330,82): error TS2339: Property 'sizes' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; } | { mechanism: string; sizes: string; thickness: string; weight: string; material: string; finish: string; hardware: string; warranty: string; installation: string; capacity?: undefined; } | { ...; }'.
+  Property 'sizes' does not exist on type '{ material: string; finish: string; hardware: string; warranty: string; installation: string; }'.
+products/ProductsPageClient.tsx(7,29): error TS2307: Cannot find module '@/components/ui/product-card' or its corresponding type declarations.
+products/ProductsPageClient.tsx(8,32): error TS2307: Cannot find module '@/components/ui/product-filters' or its corresponding type declarations.
+SecureImageUploader.tsx(128,44): error TS2552: Cannot find name 'error'. Did you mean '_error'?
+SecureImageUploader.tsx(128,69): error TS2552: Cannot find name 'error'. Did you mean '_error'?
+tests/unit/image-placeholder.test.tsx(2,18): error TS2305: Module '"@testing-library/react"' has no exported member 'screen'.
+tests/unit/image-placeholder.test.tsx(8,30): error TS2322: Type '{ alt: string; }' is not assignable to type 'IntrinsicAttributes & ImagePlaceholderProps'.
+  Property 'alt' does not exist on type 'IntrinsicAttributes & ImagePlaceholderProps'.
+tests/unit/image-placeholder.test.tsx(18,9): error TS2322: Type '{ alt: string; width: number; height: number; }' is not assignable to type 'IntrinsicAttributes & ImagePlaceholderProps'.
+  Property 'alt' does not exist on type 'IntrinsicAttributes & ImagePlaceholderProps'.
+tests/unit/image-placeholder.test.tsx(31,9): error TS2322: Type '{ alt: string; className: string; }' is not assignable to type 'IntrinsicAttributes & ImagePlaceholderProps'.
+  Property 'alt' does not exist on type 'IntrinsicAttributes & ImagePlaceholderProps'.
+types/analytics.ts(513,5): error TS2687: All declarations of 'gtag' must have identical modifiers.
+ui/alert.tsx(2,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+ui/card.tsx(2,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+ui/input.tsx(2,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+ui/label.tsx(5,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+ui/request-quote-button.tsx(41,7): error TS2322: Type '"lg" | "md" | "sm"' is not assignable to type '"lg" | "sm" | "default" | "xl" | "icon" | "icon-sm" | "icon-lg" | "icon-xl" | null | undefined'.
+  Type '"md"' is not assignable to type '"lg" | "sm" | "default" | "xl" | "icon" | "icon-sm" | "icon-lg" | "icon-xl" | null | undefined'.
+ui/toast.tsx(5,20): error TS2305: Module '"@/lib/utils"' has no exported member 'VariantProps'.
+use-medusa-cart.tsx(4,30): error TS2307: Cannot find module '@/lib/medusa-client' or its corresponding type declarations.
+use-medusa-cart.tsx(5,37): error TS2307: Cannot find module '@medusajs/medusa' or its corresponding type declarations.
+use-medusa-products.tsx(4,32): error TS2307: Cannot find module '@/lib/medusa-products' or its corresponding type declarations.
+use-medusa-products.tsx(5,49): error TS2307: Cannot find module '@medusajs/medusa' or its corresponding type declarations.
+Done: Thu Sep 25 15:55:34 EDT 2025

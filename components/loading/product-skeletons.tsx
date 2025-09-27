@@ -204,7 +204,7 @@ export function LazyProductSkeleton() {
 export function ProductPageSkeleton() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header is shown normally since it's in layout */}
+      {/* Header is shown normally since it&apos;s in layout */}
 
       <div className="pt-24 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4 py-8 space-y-8">

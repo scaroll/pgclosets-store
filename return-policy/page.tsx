@@ -212,11 +212,11 @@ export default function ReturnPolicyPage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-4">
-                We're happy to exchange items for a different size, color, or style. Exchanges follow the same process
-                as returns, and we'll ship your replacement item once we receive the original.
+                We&apos;re happy to exchange items for a different size, color, or style. Exchanges follow the same process
+                as returns, and we&apos;ll ship your replacement item once we receive the original.
               </p>
               <p className="text-muted-foreground">
-                If there's a price difference, we'll either refund the difference or charge your original payment method
+                If there's a price difference, we&apos;ll either refund the difference or charge your original payment method
                 for any additional amount.
               </p>
             </CardContent>
@@ -231,8 +231,7 @@ export default function ReturnPolicyPage() {
                 Need help with a return? Our customer service team is here to assist you.
               </p>
               <div className="space-y-2 text-muted-foreground">
-                <p>Email: returns@pgclosets.com</p>
-                <p>Phone: 1-800-PG-CLOSET</p>
+                <p>Email: spencer@peoplesgrp.com</p>
                 <p>Hours: Monday-Friday 9AM-6PM EST</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 mt-6">

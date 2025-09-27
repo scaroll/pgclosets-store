@@ -28,7 +28,7 @@ interface MediaSelectorProps {
 
 export function MediaSelector({
   onSelect,
-  selectedFiles = [],
+  selectedFiles: _selectedFiles = [],
   maxSelections = 1,
   fileTypes = [".jpg", ".jpeg", ".png", ".gif", ".webp"],
   trigger,
@@ -90,7 +90,7 @@ export function MediaSelector({
       } else {
         throw new Error("Upload failed")
       }
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to upload file",

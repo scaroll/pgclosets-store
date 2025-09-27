@@ -74,8 +74,8 @@ export default function Home() {
               </Link>
 
               <div className="flex items-center space-x-4 ml-6">
-                <a href="tel:6134225800" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C]">
-                  (613) 422-5800
+                <a href="mailto:spencer@peoplesgrp.com" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C]">
+                  Email Us
                 </a>
                 <button
                   onClick={() => setQuoteStep(1)}
@@ -121,7 +121,7 @@ export default function Home() {
               </Link>
 
               <div className="px-4 pt-4 grid grid-cols-2 gap-2">
-                <a href="tel:6134225800" className="bg-[#1B4A9C] text-white py-3 text-center font-semibold">
+                <a href="mailto:spencer@peoplesgrp.com" className="bg-[#1B4A9C] text-white py-3 text-center font-semibold">
                   Call Now
                 </a>
                 <button
@@ -296,12 +296,12 @@ export default function Home() {
                       <br />✓ 2-week delivery guarantee
                     </div>
                   </div>
-                  <a
+                  <Link
                     href="/contact"
                     className="bg-[#1B4A9C] text-white px-8 py-3 font-semibold hover:bg-[#153A7E] transition-all uppercase tracking-wide inline-block"
                   >
                     Book Consultation
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
@@ -351,7 +351,7 @@ export default function Home() {
             <div>
               <h4 className="text-lg font-semibold mb-4 text-[#9BC4E2]">Contact</h4>
               <div className="space-y-2 text-gray-300">
-                <div>(613) 422-5800</div>
+                <div>spencer@peoplesgrp.com</div>
                 <div>info@pgclosets.com</div>
                 <div>Ottawa & Surrounding Areas</div>
                 <div className="mt-4 pt-4 border-t border-gray-600">

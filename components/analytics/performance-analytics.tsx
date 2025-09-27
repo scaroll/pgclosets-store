@@ -3,13 +3,6 @@
 import { useEffect } from "react"
 import Script from "next/script"
 
-// Global gtag type declaration
-declare global {
-  interface Window {
-    gtag: (command: string, action: string, parameters?: any) => void
-  }
-}
-
 interface PerformanceAnalyticsProps {
   gaId: string
 }
@@ -38,8 +31,8 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
         // Track First Input Delay (FID)
         new PerformanceObserver((entryList) => {
           for (const entry of entryList.getEntries()) {
-            const fidEntry = entry as any // Type assertion for first-input entries
-            if (fidEntry.processingStart && gtag) {
+            const fidEntry = entry as PerformanceEventTiming
+            if ('processingStart' in fidEntry && fidEntry.processingStart && gtag) {
               gtag("event", "web_vitals", {
                 event_category: "Web Vitals",
                 event_label: "FID",
@@ -54,8 +47,8 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
         let clsValue = 0
         new PerformanceObserver((entryList) => {
           for (const entry of entryList.getEntries()) {
-            const clsEntry = entry as any // Type assertion for layout-shift entries
-            if (!clsEntry.hadRecentInput) {
+            const clsEntry = entry as LayoutShift
+            if ('hadRecentInput' in clsEntry && !clsEntry.hadRecentInput) {
               clsValue += clsEntry.value || 0
             }
           }

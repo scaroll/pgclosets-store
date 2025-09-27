@@ -1,73 +1,46 @@
 "use client"
-import Script from "next/script"
-import { useEffect, useState } from "react"
+
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
-import PgHeader from "../../PgHeader"
+import StandardLayout from "@/components/layout/StandardLayout"
+
+// Dynamically import the contact form to reduce initial bundle size
+const ContactForm = dynamic(
+  () => import("@/components/contact/ContactForm").then(mod => ({ default: mod.ContactForm })),
+  {
+    loading: () => (
+      <div className="py-8">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-32 mb-6"></div>
+          <div className="space-y-4">
+            <div className="h-12 bg-gray-200 rounded"></div>
+            <div className="h-12 bg-gray-200 rounded"></div>
+            <div className="h-24 bg-gray-200 rounded"></div>
+            <div className="h-12 bg-gray-200 rounded w-32"></div>
+          </div>
+        </div>
+      </div>
+    ),
+    ssr: false
+  }
+)
 
 export default function ContactClientPage() {
-  const [scriptLoaded, setScriptLoaded] = useState(false)
-  const [scriptError, setScriptError] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-  const siteStats = {
-    installations: "500+",
-    rating: "5.0",
-    experience: "15+",
-    satisfaction: "98%",
-  }
-
-  useEffect(() => {
-    const link = document.createElement("link")
-    link.rel = "stylesheet"
-    link.href = "https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css"
-    link.media = "screen"
-    document.head.appendChild(link)
-
-    const checkJobberForm = setTimeout(() => {
-      const jobberContainer = document.getElementById("83a3d24e-c18d-441c-80d1-d85419ea28ae")
-      if (jobberContainer && jobberContainer.children.length === 0) {
-        setScriptError(true)
-      }
-    }, 5000)
-
-    return () => {
-      clearTimeout(checkJobberForm)
-      const existingLink = document.querySelector(
-        'link[href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css"]',
-      )
-      if (existingLink) {
-        document.head.removeChild(existingLink)
-      }
-    }
-  }, [])
-
-  const handleScriptLoad = () => {
-    setScriptLoaded(true)
-    setScriptError(false)
-  }
-
-  const handleScriptError = () => {
-    setScriptError(true)
-    setScriptLoaded(false)
-  }
-
   return (
-    <div className="min-h-screen bg-white font-sans">
-      <PgHeader />
-
-      <div className="pt-32 pb-8 bg-gray-50">
+    <StandardLayout className="bg-white font-sans">
+      <div className="pt-20 pb-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <nav className="text-sm text-gray-600 mb-4">
-            <Link href="/" className="hover:text-[#1B4A9C]">
+            <Link href="/" className="hover:text-slate-900">
               Home
             </Link>{" "}
-            / <span className="text-[#1B4A9C] font-medium">Contact</span>
+            / <span className="text-slate-900 font-medium">Contact</span>
           </nav>
         </div>
       </div>
 
-      <main className="max-w-[1200px] mx-auto px-6 py-12">
+      <section className="max-w-[1200px] mx-auto px-6 py-12">
         <h1 className="text-3xl md:text-4xl font-extrabold text-[#1B4A9C] mb-4">Request Work</h1>
         <p className="mt-2 text-slate-600 mb-8">
           Use the form below to tell us about your project. Prefer email?{" "}
@@ -77,82 +50,12 @@ export default function ContactClientPage() {
         </p>
 
         <div className="mt-8 border border-slate-200 bg-white p-6 shadow-sm">
-          <div id="83a3d24e-c18d-441c-80d1-d85419ea28ae">
-            {!scriptLoaded && !scriptError && (
-              <div className="flex items-center justify-center py-12">
-                <div className="text-slate-500">Loading contact form...</div>
-              </div>
-            )}
-            {scriptError && (
-              <div className="py-8">
-                <h3 className="text-xl font-semibold text-[#1B4A9C] mb-6">Contact Form</h3>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
-                      <input
-                        type="text"
-                        required
-                        className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[#1B4A9C]"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
-                      <input
-                        type="text"
-                        required
-                        className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[#1B4A9C]"
-                      />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                      <input
-                        type="email"
-                        required
-                        className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[#1B4A9C]"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                      <input
-                        type="tel"
-                        className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[#1B4A9C]"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Project Details *</label>
-                    <textarea
-                      rows={4}
-                      required
-                      className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[#1B4A9C]"
-                      placeholder="Tell us about your closet door project..."
-                    ></textarea>
-                  </div>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <button
-                      type="submit"
-                      className="bg-[#1B4A9C] text-white px-8 py-3 font-semibold hover:bg-[#153A7E] transition-all"
-                    >
-                      Send Message
-                    </button>
-                    <a
-                      href="mailto:info@pgclosets.com?subject=Closet Door Project"
-                      className="border-2 border-[#1B4A9C] text-[#1B4A9C] px-8 py-3 font-semibold hover:bg-[#1B4A9C] hover:text-white transition-all text-center"
-                    >
-                      Email Directly
-                    </a>
-                  </div>
-                </form>
-              </div>
-            )}
-          </div>
+          <ContactForm />
         </div>
-      </main>
+      </section>
 
-      <footer className="bg-[#1B4A9C] text-white py-16">
+      {/* Call-to-Action Section */}
+      <section className="mt-16 bg-gray-50 py-12">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
@@ -170,42 +73,42 @@ export default function ContactClientPage() {
                   <p className="text-[#9BC4E2]">Premium Solutions</p>
                 </div>
               </Link>
-              <p className="text-gray-300 mb-6">
+              <p className="text-gray-600 mb-6">
                 Ottawa&apos;s premier closet door specialists, transforming homes with premium solutions.
               </p>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-[#9BC4E2]">Sitemap</h4>
+              <h4 className="text-lg font-semibold mb-4 text-[#1B4A9C]">Sitemap</h4>
               <div className="space-y-2">
-                <Link href="/" className="block text-gray-300 hover:text-white">
+                <Link href="/" className="block text-gray-600 hover:text-[#1B4A9C]">
                   Home
                 </Link>
-                <Link href="/products" className="block text-gray-300 hover:text-white">
+                <Link href="/products" className="block text-gray-600 hover:text-[#1B4A9C]">
                   Products
                 </Link>
-                <Link href="/about" className="block text-gray-300 hover:text-white">
+                <Link href="/about" className="block text-gray-600 hover:text-[#1B4A9C]">
                   About
                 </Link>
-                <Link href="/services" className="block text-gray-300 hover:text-white">
+                <Link href="/services" className="block text-gray-600 hover:text-[#1B4A9C]">
                   Services
                 </Link>
-                <Link href="/contact" className="block text-gray-300 hover:text-white">
+                <Link href="/contact" className="block text-gray-600 hover:text-[#1B4A9C]">
                   Contact
                 </Link>
               </div>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-[#9BC4E2]">Contact</h4>
-              <div className="space-y-2 text-gray-300">
+              <h4 className="text-lg font-semibold mb-4 text-[#1B4A9C]">Contact</h4>
+              <div className="space-y-2 text-gray-600">
                 <div>(613) 422-5800</div>
                 <div>info@pgclosets.com</div>
                 <div>Ottawa & Surrounding Areas</div>
                 {/* Added business hours section */}
-                <div className="mt-4 pt-4 border-t border-gray-600">
+                <div className="mt-4 pt-4 border-t border-gray-200">
                   <div className="text-sm">
-                    <div className="font-semibold text-[#9BC4E2] mb-2">Business Hours:</div>
+                    <div className="font-semibold text-[#1B4A9C] mb-2">Business Hours:</div>
                     <div>Mon-Fri: 8:00 AM - 6:00 PM</div>
                     <div>Sat: 9:00 AM - 4:00 PM</div>
                     <div>Sun: By Appointment</div>
@@ -216,20 +119,27 @@ export default function ContactClientPage() {
             </div>
           </div>
 
-          <div className="border-t border-gray-600 mt-12 pt-8 text-center text-gray-400">
-            {/* Updated copyright to 2025 */}
-            <p>&copy; 2025 PG Closets. All rights reserved.</p>
+          <div className="mt-8 pt-8 border-t border-gray-200 text-sm text-gray-600 text-center">
+            <div className="flex flex-wrap justify-center gap-4 mb-4">
+              <Link href="/privacy-policy" className="hover:text-[#1B4A9C]">
+                Privacy Policy
+              </Link>
+              <span>|</span>
+              <Link href="/terms-of-service" className="hover:text-[#1B4A9C]">
+                Terms of Service
+              </Link>
+              <span>|</span>
+              <Link href="/return-policy" className="hover:text-[#1B4A9C]">
+                Return Policy
+              </Link>
+            </div>
+            <p className="mb-2">&copy; 2024 PG Closets. All rights reserved.</p>
+            <p className="text-xs text-gray-500">
+              Premium closet door solutions for Ottawa homes and businesses.
+            </p>
           </div>
         </div>
-      </footer>
-
-      <Script
-        src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js"
-        strategy="afterInteractive"
-        onLoad={handleScriptLoad}
-        onError={handleScriptError}
-        data-clienthub-id="83a3d24e-c18d-441c-80d1-d85419ea28ae"
-      />
-    </div>
+      </section>
+    </StandardLayout>
   )
 }

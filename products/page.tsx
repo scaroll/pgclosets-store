@@ -1,3 +1,4 @@
+import Link from 'next/link'
 "use client"
 
 import { useState } from "react"
@@ -146,23 +147,23 @@ export default function ProductsPage() {
               />
               <div>
                 <h1 className="text-2xl font-bold text-[#1e3a8a]">PG Closets</h1>
-                <p className="text-sm text-[#9BC4E2]">Ottawa's Premier Door Experts</p>
+                <p className="text-sm text-[#9BC4E2]">Ottawa&apos;s Premier Door Experts</p>
               </div>
             </div>
 
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="/" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
+              <Link href="/" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
                 Home
-              </a>
-              <a href="/products" className="text-[#1e3a8a] font-bold border-b-2 border-[#9BC4E2]">
+              </Link>
+              <Link href="/products" className="text-[#1e3a8a] font-bold border-b-2 border-[#9BC4E2]">
                 Products
-              </a>
-              <a href="/about" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
+              </Link>
+              <Link href="/about" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
                 About
-              </a>
-              <a href="/contact" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
+              </Link>
+              <Link href="/contact" className="text-gray-700 hover:text-[#1e3a8a] font-medium transition-colors">
                 Contact
-              </a>
+              </Link>
               <a
                 href="tel:613-422-5800"
                 className="bg-[#1e3a8a] text-[#9BC4E2] px-6 py-3 font-bold hover:bg-[#9BC4E2] hover:text-[#1e3a8a] transition-all duration-300 border-2 border-[#1e3a8a]"
@@ -187,18 +188,18 @@ export default function ProductsPage() {
           {isMobileMenuOpen && (
             <div className="md:hidden py-4 border-t border-gray-200">
               <div className="flex flex-col space-y-4">
-                <a href="/" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
+                <Link href="/" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
                   Home
-                </a>
-                <a href="/products" className="text-[#1e3a8a] font-bold">
+                </Link>
+                <Link href="/products" className="text-[#1e3a8a] font-bold">
                   Products
-                </a>
-                <a href="/about" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
+                </Link>
+                <Link href="/about" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
                   About
-                </a>
-                <a href="/contact" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
+                </Link>
+                <Link href="/contact" className="text-gray-700 hover:text-[#1e3a8a] font-medium">
                   Contact
-                </a>
+                </Link>
                 <a
                   href="tel:613-422-5800"
                   className="bg-[#1e3a8a] text-[#9BC4E2] px-6 py-3 font-bold text-center border-2 border-[#1e3a8a]"
@@ -319,14 +320,14 @@ export default function ProductsPage() {
                         <div>
                           <span className="font-semibold">Finish:</span> {specs.finish}
                         </div>
-                        {specs.mechanism && (
+                        {(specs as any).mechanism && (
                           <div>
-                            <span className="font-semibold">Mechanism:</span> {specs.mechanism}
+                            <span className="font-semibold">Mechanism:</span> {(specs as any).mechanism}
                           </div>
                         )}
-                        {specs.sizes && (
+                        {(specs as any).sizes && (
                           <div>
-                            <span className="font-semibold">Sizes:</span> {specs.sizes}
+                            <span className="font-semibold">Sizes:</span> {(specs as any).sizes}
                           </div>
                         )}
                         <div>
@@ -476,7 +477,7 @@ export default function ProductsPage() {
                 />
                 <div>
                   <h3 className="text-xl font-bold text-[#9BC4E2]">PG Closets</h3>
-                  <p className="text-sm text-gray-300">Ottawa's Premier Door Experts</p>
+                  <p className="text-sm text-gray-300">Ottawa&apos;s Premier Door Experts</p>
                 </div>
               </div>
               <p className="text-gray-300 leading-relaxed">
@@ -488,24 +489,24 @@ export default function ProductsPage() {
               <h4 className="text-lg font-bold text-[#9BC4E2] mb-4">Products</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <a href="/products" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/products" className="hover:text-[#9BC4E2] transition-colors">
                     Bifold Doors
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/products" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/products" className="hover:text-[#9BC4E2] transition-colors">
                     Bypass Doors
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/products" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/products" className="hover:text-[#9BC4E2] transition-colors">
                     Barn Doors
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/products" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/products" className="hover:text-[#9BC4E2] transition-colors">
                     Hardware
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -514,24 +515,24 @@ export default function ProductsPage() {
               <h4 className="text-lg font-bold text-[#9BC4E2] mb-4">Services</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <a href="/contact" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/contact" className="hover:text-[#9BC4E2] transition-colors">
                     Free Consultation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/contact" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/contact" className="hover:text-[#9BC4E2] transition-colors">
                     Professional Installation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/contact" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/contact" className="hover:text-[#9BC4E2] transition-colors">
                     Custom Solutions
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/contact" className="hover:text-[#9BC4E2] transition-colors">
+                  <Link href="/contact" className="hover:text-[#9BC4E2] transition-colors">
                     Warranty Service
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { cva, type VariantProps } from "@/lib/utils"
+import { cva } from "@/lib/utils"
 import { cn } from "@/lib/utils"
 
 /**
@@ -45,7 +45,6 @@ const inputVariants = cva(
   }
 )
 
-type InputVariantProps = VariantProps<typeof inputVariants>
 
 export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {

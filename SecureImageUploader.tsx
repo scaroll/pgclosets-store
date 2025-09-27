@@ -93,7 +93,7 @@ export function SecureImageUploader({
           try {
             const response = JSON.parse(xhr.responseText)
             resolve(response)
-          } catch (error) {
+          } catch (_error) {
             reject(new Error("Invalid response format"))
           }
         } else {
@@ -124,8 +124,8 @@ export function SecureImageUploader({
         const uploadedFile = await uploadFile(file)
         newUploadedFiles.push(uploadedFile)
         setUploadProgress((prev) => ({ ...prev, [file.name]: 100 }))
-      } catch (error) {
-        uploadErrors.push(`${file.name}: ${error instanceof Error ? error.message : "Upload failed"}`)
+      } catch (_error) {
+        uploadErrors.push(`${file.name}: ${_error instanceof Error ? _error.message : "Upload failed"}`)
         setUploadProgress((prev) => ({ ...prev, [file.name]: -1 })) // -1 indicates error
       }
     }

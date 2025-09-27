@@ -1,39 +1,112 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import PgHeader from "../../components/PgHeader"
-import PgFooter from "../../components/PgFooter"
-import { Button } from "../../../components/ui/button"
-import { getProductImages, handleImageError } from "../../lib/product-utils"
+import { useState, useMemo } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import StandardLayout from "@/components/layout/StandardLayout";
+import { Button } from "../../../components/ui/button";
+import { getProductImages, handleImageError } from "../../../lib/product-utils";
+import LazyGallery from "@/components/performance/lazy-gallery";
+import { getRelatedProducts } from "@/lib/renin-products";
+import type { GalleryImage, TechnicalSpec, RelatedProduct } from "@/types/gallery";
 
 interface Product {
-  slug: string
-  title: string
-  type: string
-  priceRange: string
-  currency: string
-  description?: string
-  features?: string[]
-  specifications?: Record<string, string>
-  included?: string[]
-  warranty?: string
-  images?: string[]
+  id?: string | number;
+  slug: string;
+  title: string;
+  type: string;
+  priceRange: string;
+  currency: string;
+  price?: number;
+  category?: string;
+  description?: string;
+  features?: string[];
+  specifications?: Record<string, string>;
+  included?: string[];
+  warranty?: string;
+  images?: string[];
 }
 
 interface ProductDetailClientProps {
-  product: Product
+  product: Product;
 }
 
-export default function ProductDetailClient({ product }: ProductDetailClientProps) {
-  const [selectedImage, setSelectedImage] = useState(0)
-  const [activeTab, setActiveTab] = useState("overview")
-  const [mediaTab, setMediaTab] = useState("photos")
+export default function ProductDetailClient({
+  product,
+}: ProductDetailClientProps) {
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [activeTab, setActiveTab] = useState("overview");
+  const [mediaTab, setMediaTab] = useState("photos");
 
-  const productImages = getProductImages(product)
+  const productImages: string[] = getProductImages(product);
 
-  const installationVideos = [
+  // Transform product images for gallery component
+  const galleryImages: GalleryImage[] = useMemo(() => {
+    return productImages.map((image, index) => ({
+      id: `${product.slug}-${index}`,
+      src: image,
+      alt: `${product.title} - View ${index + 1}`,
+      caption: index === 0 ? `${product.title} - Main View` : `${product.title} - Additional View`,
+      thumbnail: image,
+      highRes: image,
+      width: 800,
+      height: 600,
+      category: product.category || product.type
+    }));
+  }, [productImages, product.slug, product.title, product.category, product.type]);
+
+  // Technical specifications for gallery
+  const technicalSpecs: TechnicalSpec[] = useMemo(() => {
+    const defaultSpecs = product.specifications || {
+      "Product Type": product.type,
+      "Price Range": product.priceRange,
+      Currency: product.currency,
+      Material: "Premium engineered wood",
+      Hardware: "Soft-close mechanism included",
+      Installation: "Professional installation",
+      Warranty: "Lifetime on door, 2-year on hardware",
+    };
+
+    return [
+      {
+        category: "General",
+        specs: Object.entries(defaultSpecs).map(([label, value]) => ({
+          label,
+          value: String(value)
+        }))
+      },
+      {
+        category: "Features",
+        specs: (product.features || []).map((feature, index) => ({
+          label: `Feature ${index + 1}`,
+          value: feature
+        }))
+      }
+    ];
+  }, [product.specifications, product.type, product.priceRange, product.currency, product.features]);
+
+  // Related products
+  const relatedProducts: RelatedProduct[] = useMemo(() => {
+    if (!product.id || !product.category) return [];
+
+    try {
+      const related = getRelatedProducts(product.id, 4);
+      return related.map(p => ({
+        id: p.id.toString(),
+        name: p.name,
+        slug: p.slug,
+        image: p.image || p.images[0] || '/placeholder.svg',
+        price: p.price,
+        category: p.category,
+        rating: 4.5 + Math.random() * 0.5, // Mock rating
+        inStock: p.inStock
+      }));
+    } catch {
+      return [];
+    }
+  }, [product.id, product.category]);
+
+  const _installationVideos = [
     {
       id: "1",
       title: `How to Install ${product.title} - Step by Step Guide`,
@@ -52,7 +125,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
       thumbnail: `/placeholder.svg?height=360&width=640&text=Maintenance+Guide`,
       embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1",
     },
-  ]
+  ];
 
   const defaultFeatures = product.features || [
     "Premium construction materials",
@@ -60,7 +133,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
     "Soft-close mechanism",
     "2-year workmanship warranty",
     "Canadian-made quality",
-  ]
+  ];
 
   const defaultSpecs = product.specifications || {
     "Product Type": product.type,
@@ -70,7 +143,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
     Hardware: "Soft-close mechanism included",
     Installation: "Professional installation",
     Warranty: "Lifetime on door, 2-year on hardware",
-  }
+  };
 
   const defaultIncluded = product.included || [
     "Door panel and frame",
@@ -79,20 +152,18 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
     "Professional installation",
     "Hardware disposal",
     "2-year workmanship warranty",
-  ]
+  ];
 
   const tabs = [
     { id: "overview", label: "Overview" },
     { id: "specs", label: "Specifications" },
     { id: "included", label: "What's Included" },
     { id: "warranty", label: "Warranty & Care" },
-  ]
+  ];
 
   return (
-    <div className="min-h-screen bg-pg-offwhite">
-      <PgHeader />
-
-      <div className="pt-20">
+    <StandardLayout>
+      <div className="bg-gray-50 pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Product Images */}
@@ -113,7 +184,9 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   <button
                     key={index}
                     className={`aspect-square w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 transition-all hover:shadow-md ${
-                      selectedImage === index ? "border-pg-navy" : "border-pg-border"
+                      selectedImage === index
+                        ? "border-pg-navy"
+                        : "border-pg-border"
                     }`}
                     onClick={() => setSelectedImage(index)}
                   >
@@ -135,7 +208,9 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <div className="space-y-6">
               <div>
                 <p className="text-pg-gray mb-2">{product.type}</p>
-                <h1 className="headline-large text-3xl md:text-4xl text-pg-dark mb-4">{product.title}</h1>
+                <h1 className="headline-large text-3xl md:text-4xl text-pg-dark mb-4">
+                  {product.title}
+                </h1>
                 <p className="text-2xl font-semibold text-pg-navy mb-6">
                   {product.priceRange} {product.currency}
                 </p>
@@ -147,15 +222,21 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
               <div className="flex gap-4">
                 <Link href="/contact" className="flex-1">
-                  <Button className="btn-primary w-full py-4 text-lg">Request Work</Button>
+                  <Button className="btn-primary w-full py-4 text-lg">
+                    Request Work
+                  </Button>
                 </Link>
                 <Link href="/contact">
-                  <Button className="btn-secondary px-8 py-4 text-lg">Get a Quote</Button>
+                  <Button className="btn-secondary px-8 py-4 text-lg">
+                    Get a Quote
+                  </Button>
                 </Link>
               </div>
 
               <div className="border-t border-pg-border pt-6">
-                <h3 className="font-semibold text-pg-dark mb-3">Key Features</h3>
+                <h3 className="font-semibold text-pg-dark mb-3">
+                  Key Features
+                </h3>
                 <ul className="space-y-2">
                   {defaultFeatures.map((feature, index) => (
                     <li key={index} className="flex items-center text-pg-gray">
@@ -201,7 +282,10 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               {activeTab === "specs" && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {Object.entries(defaultSpecs).map(([key, value]) => (
-                    <div key={key} className="flex justify-between py-3 border-b border-pg-border">
+                    <div
+                      key={key}
+                      className="flex justify-between py-3 border-b border-pg-border"
+                    >
                       <span className="font-medium text-pg-dark">{key}</span>
                       <span className="text-pg-gray">{value}</span>
                     </div>
@@ -212,11 +296,15 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               {activeTab === "included" && (
                 <div className="space-y-4">
                   <p className="text-lg text-pg-gray mb-6">
-                    Every purchase includes professional installation and comprehensive support:
+                    Every purchase includes professional installation and
+                    comprehensive support:
                   </p>
                   <ul className="space-y-3">
                     {defaultIncluded.map((item, index) => (
-                      <li key={index} className="flex items-center text-pg-gray">
+                      <li
+                        key={index}
+                        className="flex items-center text-pg-gray"
+                      >
                         <span className="w-5 h-5 text-green-500 mr-3">✓</span>
                         {item}
                       </li>
@@ -228,14 +316,18 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               {activeTab === "warranty" && (
                 <div className="space-y-6">
                   <div className="bg-pg-sky/10 rounded-2xl p-6">
-                    <h3 className="font-semibold text-pg-dark mb-3">Warranty Coverage</h3>
+                    <h3 className="font-semibold text-pg-dark mb-3">
+                      Warranty Coverage
+                    </h3>
                     <p className="text-pg-gray">
                       {product.warranty ||
                         "Lifetime warranty on door construction, 2-year warranty on hardware and professional installation workmanship."}
                     </p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-pg-dark mb-3">Care Instructions</h3>
+                    <h3 className="font-semibold text-pg-dark mb-3">
+                      Care Instructions
+                    </h3>
                     <ul className="space-y-2 text-pg-gray">
                       <li>• Clean with mild soap and water</li>
                       <li>• Avoid harsh chemicals or abrasives</li>
@@ -248,57 +340,28 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             </div>
           </div>
 
+          {/* Enhanced Product Gallery */}
           <section className="mt-16">
-            <h2 className="text-2xl font-semibold text-pg-navy mb-6">Media</h2>
-            <div className="border-b border-pg-border mb-8">
-              <nav className="flex space-x-8">
-                <button
-                  className={`py-4 px-1 border-b-2 font-medium text-sm transition-all duration-200 ${
-                    mediaTab === "photos"
-                      ? "border-pg-navy text-pg-navy"
-                      : "border-transparent text-pg-gray hover:text-pg-dark"
-                  }`}
-                  onClick={() => setMediaTab("photos")}
-                >
-                  Photos
-                </button>
-                <button
-                  className={`py-4 px-1 border-b-2 font-medium text-sm transition-all duration-200 ${
-                    mediaTab === "videos"
-                      ? "border-pg-navy text-pg-navy"
-                      : "border-transparent text-pg-gray hover:text-pg-dark"
-                  }`}
-                  onClick={() => setMediaTab("videos")}
-                >
-                  Videos
-                </button>
-              </nav>
-            </div>
-
-            <div className="transition-all duration-200 ease-out">
-              {mediaTab === "photos" ? (
-                <div className="space-y-2">
-                  {productImages.map((img, index) => (
-                    <img
-                      key={index}
-                      src={img}
-                      alt={`${product.title} - Image ${index + 1}`}
-                      className="w-full rounded-lg"
-                      onError={handleImageError}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="p-4 text-center text-gray-500">
-                  Video gallery coming soon
-                </div>
-              )}
-            </div>
+            <h2 className="text-2xl font-semibold text-pg-navy mb-6">Product Gallery</h2>
+            <LazyGallery
+              productId={product.id?.toString() || product.slug}
+              productName={product.title}
+              images={galleryImages}
+              technicalSpecs={technicalSpecs}
+              relatedProducts={relatedProducts}
+              config={{
+                showThumbnails: true,
+                enableZoom: true,
+                maxZoom: 3,
+                showSpecs: true,
+                enableDownload: true,
+                enableShare: true,
+                relatedProductsCount: 4
+              }}
+            />
           </section>
         </div>
       </div>
-
-      <PgFooter />
-    </div>
-  )
+    </StandardLayout>
+  );
 }

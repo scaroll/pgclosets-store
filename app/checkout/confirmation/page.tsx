@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../..
 import { Badge } from "../../../components/ui/badge"
 import { CheckCircle, Home, Download, Phone, Mail, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function ConfirmationPage() {
   const orderNumber = "PG-2025-001234"
@@ -53,11 +54,13 @@ export default function ConfirmationPage() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
                   <div className="flex items-center space-x-4">
-                    <img
+                    <Image
                       src="/elegant-barn-door-closet.png"
                       alt="Premium Barn Door System - Elegant sliding closet door with black hardware"
-                      className="w-16 h-16 object-cover rounded-lg"
-                      loading="lazy"
+                      width={64}
+                      height={64}
+                      className="object-cover rounded-lg"
+                      priority={false}
                     />
                     <div>
                       <p className="font-medium">Premium Barn Door System</p>
@@ -69,11 +72,13 @@ export default function ConfirmationPage() {
 
                 <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
                   <div className="flex items-center space-x-4">
-                    <img
+                    <Image
                       src="/luxury-walk-in-closet.png"
                       alt="Luxury Walk-In System - Premium closet organization system with custom shelving"
-                      className="w-16 h-16 object-cover rounded-lg"
-                      loading="lazy"
+                      width={64}
+                      height={64}
+                      className="object-cover rounded-lg"
+                      priority={false}
                     />
                     <div>
                       <p className="font-medium">Luxury Walk-In System</p>
@@ -119,7 +124,7 @@ export default function ConfirmationPage() {
                   <div>
                     <p className="font-medium">Order Processing</p>
                     <p className="text-sm text-muted-foreground">
-                      We'll prepare your custom closet systems (1-2 business days)
+                      We&apos;ll prepare your custom closet systems (1-2 business days)
                     </p>
                   </div>
                 </div>

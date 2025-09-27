@@ -323,8 +323,8 @@ function checkDependencies() {
     required.forEach(dep => {
         try {
             require.resolve(dep);
-        } catch (e) {
-            missing.push(dep);
+        } catch (_e) {
+            missing.push(d_ep);
         }
     });
     

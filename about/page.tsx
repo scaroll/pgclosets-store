@@ -5,13 +5,13 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "About PG Closets | Official Renin Dealer Ottawa",
   description:
-    "Learn about PG Closets, Ottawa's trusted Renin dealer specializing in premium door systems and professional installation. Family-owned business serving Ottawa since 2010.",
+    "Learn about PG Closets, Ottawa&apos;s trusted Renin dealer specializing in premium door systems and professional installation. Family-owned business serving Ottawa since 2010.",
   keywords:
     "about PG Closets, Renin dealer Ottawa, family business Ottawa, door installation company, Ottawa closet company history",
   openGraph: {
     title: "About PG Closets | Official Renin Dealer Ottawa",
     description:
-      "Learn about PG Closets, Ottawa's trusted Renin dealer specializing in premium door systems and professional installation.",
+      "Learn about PG Closets, Ottawa&apos;s trusted Renin dealer specializing in premium door systems and professional installation.",
     images: [{ url: "/og-about.jpg", width: 1200, height: 630 }],
   },
   alternates: { canonical: "/about" },
@@ -135,7 +135,7 @@ export default function AboutPage() {
               <h2 className="text-4xl font-black text-[#1e3a8a] mb-8 tracking-tight">The PG Closets Journey</h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  What started as a small family business has grown into Ottawa's most trusted name in premium door
+                  What started as a small family business has grown into Ottawa&apos;s most trusted name in premium door
                   systems. As an official Renin dealer, we combine the quality and innovation of Canada's leading door
                   manufacturer with the personal touch and local expertise that only a family business can provide.
                 </p>
@@ -237,7 +237,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-2xl font-black text-[#1e3a8a] mb-6 uppercase tracking-wide">Local Focus</h3>
               <p className="text-gray-600 leading-relaxed">
-                We're proud to call Ottawa home and are committed to serving our community with integrity, excellence,
+                We&apos;re proud to call Ottawa home and are committed to serving our community with integrity, excellence,
                 and unwavering dedication.
               </p>
             </div>
@@ -286,7 +286,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <p className="text-gray-300 mb-8 leading-relaxed max-w-lg text-lg">
-                Ottawa's premier closet door specialists, transforming homes with premium Renin solutions and
+                Ottawa&apos;s premier closet door specialists, transforming homes with premium Renin solutions and
                 award-winning professional installation services since 2010.
               </p>
             </div>

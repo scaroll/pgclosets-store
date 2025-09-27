@@ -1,8 +1,7 @@
-import type { ArcatProduct } from "@/lib/enhanced-renin-products"
 import { ProductCard } from "./product-card"
 
 interface RelatedProductsProps {
-  products: ArcatProduct[]
+  products: any[]
 }
 
 export function RelatedProducts({ products }: RelatedProductsProps) {

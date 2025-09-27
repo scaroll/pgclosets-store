@@ -1,11 +1,22 @@
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
+import { Product } from "@/types/commerce"
 
 export type CartItem = { id: string; title: string; price: number; image: string; slug?: string; qty: number }
+
+type ProductLike = Product | {
+  id: string;
+  title?: string;
+  name?: string;
+  price: number;
+  image: string;
+  slug?: string;
+}
+
 type CartState = {
   items: CartItem[]
   add: (item: Omit<CartItem, "qty">, qty?: number) => void
-  addItem: (product: any, qty?: number) => void
+  addItem: (product: ProductLike, qty?: number) => void
   remove: (id: string) => void
   clear: () => void
   setQty: (id: string, qty: number) => void

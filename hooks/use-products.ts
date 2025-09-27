@@ -56,9 +56,9 @@ const productFetcher = async (url: string): Promise<Product[]> => {
     price: product.price || 0,
     category: product.category || 'Uncategorized',
     image: product.image || '/placeholder.svg',
-    featured: product.featured || false,
-    inStock: product.inStock !== false, // Default to true if not specified
-    specifications: product.specifications || {}
+    featured: (product as any).featured || false,
+    inStock: (product as any).inStock !== false, // Default to true if not specified
+    specifications: (product as any).specifications || {}
   }))
 
   // Cache the result

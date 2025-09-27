@@ -2,16 +2,16 @@
 
 import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
-import { Badge } from "../../components/ui/badge"
 import { Input } from "../../components/ui/input"
 import { Separator } from "../../components/ui/separator"
 import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Home, Truck, Shield, Gift, Tag } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { useCart } from "../../contexts/CartContext"
+import Image from "next/image"
 
 export default function CartClientPage() {
-  const { items: cartItems, updateQuantity, removeItem, subtotal, tax, total } = useCart()
+  const { items: cartItems, updateQuantity, removeItem, subtotal, tax } = useCart()
   const [promoCode, setPromoCode] = useState("")
   const [appliedPromo, setAppliedPromo] = useState<string | null>(null)
 
@@ -135,10 +135,13 @@ export default function CartClientPage() {
                   <CardContent className="p-6">
                     <div className="flex gap-6">
                       <div className="w-24 h-24 bg-muted rounded-lg overflow-hidden flex-shrink-0">
-                        <img
+                        <Image
                           src={item.image || "/placeholder.svg"}
                           alt={item.name}
+                          width={96}
+                          height={96}
                           className="w-full h-full object-cover"
+                          unoptimized
                         />
                       </div>
 

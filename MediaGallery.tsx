@@ -52,7 +52,7 @@ export function MediaGallery({
 
       setFiles(fileList)
       setFilteredFiles(fileList)
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to load files",
@@ -80,7 +80,7 @@ export function MediaGallery({
       } else {
         throw new Error("Delete failed")
       }
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to delete file",

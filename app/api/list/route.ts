@@ -3,6 +3,16 @@ import { NextResponse } from "next/server"
 
 export async function GET() {
   try {
+    // Check if Vercel Blob is configured
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      return NextResponse.json({ 
+        error: "Vercel Blob not configured", 
+        files: [], 
+        totalFiles: 0, 
+        totalSize: 0 
+      }, { status: 200 })
+    }
+
     const { blobs } = await list()
 
     const files = blobs.map((blob) => ({

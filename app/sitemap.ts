@@ -1,88 +1,259 @@
-import type { MetadataRoute } from "next"
+import { MetadataRoute } from 'next'
+import { products } from './products/products-data'
+import { BUSINESS_INFO } from '../lib/business-config'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.pgclosets.com"
-  const currentDate = new Date().toISOString()
+  const baseUrl = BUSINESS_INFO.urls.main
+  const lastModified = new Date()
 
-  // Define product categories and main products
-  const productSlugs = [
-    'euro-1-lite-bypass', 'euro-3-lite-bypass', 'euro-5-lite-bypass',
-    'georgian-6-panel-bypass', 'parsons-flush-panel-bypass',
-    'heritage-rustic-plank', 'heritage-shaker', 'heritage-gladstone',
-    'euro-1-lite-bifold', 'euro-3-lite-bifold', 'georgian-6-panel-bifold',
-    'ashbury-2-panel-bifold', 'parsons-flush-panel-bifold',
-    'euro-1-lite-pivot', 'euro-3-lite-pivot', 'provincial-8-lite-pivot',
-    'crochet-multi-x-pivot'
-  ]
-
-  // Core business pages with appropriate priorities
-  const staticPages = [
+  // Core pages with high priority for Ottawa market dominance
+  const corePages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
+      lastModified,
+      changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/store`,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/store/products`,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
+      url: `${baseUrl}/services`,
+      lastModified,
+      changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/products`,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
+      lastModified,
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/quote-submitted`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
+      url: `${baseUrl}/request-work`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
+      url: `${baseUrl}/about`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/gallery`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/why-pg`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+  ]
+
+  // Location pages for local SEO - High priority for Ottawa market dominance
+  const locationPages: MetadataRoute.Sitemap = BUSINESS_INFO.serviceAreas.map((area, index) => {
+    const areaSlug = area.toLowerCase().replace(/\s+/g, '-')
+    return {
+      url: `${baseUrl}/${areaSlug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: index === 0 ? 0.9 : 0.8, // Ottawa gets highest priority
+    }
+  })
+
+  // Renin location pages for brand authority
+  const reninLocationPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/renin`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    ...BUSINESS_INFO.serviceAreas.slice(0, 4).map((area, index) => {
+      const areaSlug = area.toLowerCase().replace(/\s+/g, '-')
+      return {
+        url: `${baseUrl}/renin/${areaSlug}`,
+        lastModified,
+        changeFrequency: 'monthly' as const,
+        priority: index === 0 ? 0.8 : 0.7, // Ottawa gets highest priority
+      }
+    })
+  ]
+
+  // Product category pages
+  const categoryPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/products/barn-doors`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/products/bifold-doors`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/products/bypass-doors`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/products/pivot-doors`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/products/hardware`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/products/mirrors`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+  ]
+
+  // Individual product pages from Renin database
+  const productPages: MetadataRoute.Sitemap = products.map((product) => ({
+    url: `${baseUrl}/products/${product.id}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
+  // Store pages
+  const storePages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/store`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/store/products`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+  ]
+
+  // Store product pages (alternative URLs)
+  const storeProductPages: MetadataRoute.Sitemap = products.map((product) => ({
+    url: `${baseUrl}/store/products/${product.id}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.5,
+  }))
+
+  // Blog and information pages
+  const infoPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/blog`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+  ]
+
+  // Legal pages (lower priority)
+  const legalPages: MetadataRoute.Sitemap = [
+    {
       url: `${baseUrl}/legal/privacy`,
-      lastModified: currentDate,
-      changeFrequency: "yearly" as const,
+      lastModified,
+      changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${baseUrl}/legal/terms`,
-      lastModified: currentDate,
-      changeFrequency: "yearly" as const,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/shipping-policy`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/return-policy`,
+      lastModified,
+      changeFrequency: 'yearly',
       priority: 0.3,
     },
   ]
 
-  // Add dynamic product pages
-  const productPages = productSlugs.map(slug => ({
-    url: `${baseUrl}/products/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }))
+  // Combine all pages with location pages prioritized for local SEO
+  return [
+    ...corePages,
+    ...locationPages, // High priority for Ottawa market
+    ...reninLocationPages,
+    ...categoryPages,
+    ...productPages,
+    ...storePages,
+    ...storeProductPages,
+    ...infoPages,
+    ...legalPages,
+  ]
+}
 
-  // Add service area pages
-  const serviceAreas = ['ottawa', 'kanata', 'nepean', 'orleans', 'barrhaven']
-  const servicePages = serviceAreas.map(area => ({
-    url: `${baseUrl}/${area}`,
-    lastModified: currentDate,
-    changeFrequency: "monthly" as const,
+// Export individual sitemaps for robots.txt reference
+export async function generateProductSitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = BUSINESS_INFO.urls.main
+  const lastModified = new Date()
+
+  return products.map((product) => ({
+    url: `${baseUrl}/products/${product.id}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))
+}
 
-  return [...staticPages, ...productPages, ...servicePages]
+export async function generateLocationSitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = BUSINESS_INFO.urls.main
+  const lastModified = new Date()
+
+  const locationPages = BUSINESS_INFO.serviceAreas.map((area, index) => {
+    const areaSlug = area.toLowerCase().replace(/\s+/g, '-')
+    return {
+      url: `${baseUrl}/${areaSlug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: index === 0 ? 0.9 : 0.8, // Ottawa gets highest priority
+    }
+  })
+
+  const reninLocationPages = BUSINESS_INFO.serviceAreas.slice(0, 4).map((area, index) => {
+    const areaSlug = area.toLowerCase().replace(/\s+/g, '-')
+    return {
+      url: `${baseUrl}/renin/${areaSlug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: index === 0 ? 0.8 : 0.7, // Ottawa gets highest priority
+    }
+  })
+
+  return [...locationPages, ...reninLocationPages]
 }

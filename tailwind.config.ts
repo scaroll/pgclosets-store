@@ -60,6 +60,34 @@ const config: Config = {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
+  			// PG brand colors
+  			'pg-navy': 'var(--pg-navy)',
+  			'pg-sky': 'var(--pg-sky)',
+  			'pg-dark': 'var(--pg-dark)',
+  			'pg-offwhite': 'var(--pg-offwhite)',
+  			'pg-gray': 'var(--pg-gray)',
+  			'pg-border': 'var(--pg-border)',
+  			// Accessible colors for WCAG AA compliance
+  			'pg-text': {
+  				primary: 'var(--pg-text-primary)',
+  				secondary: 'var(--pg-text-secondary)',
+  				muted: 'var(--pg-text-muted)'
+  			},
+  			'pg-link': {
+  				DEFAULT: 'var(--pg-link)',
+  				hover: 'var(--pg-link-hover)'
+  			},
+  			'pg-button': {
+  				primary: 'var(--pg-button-primary)',
+  				'primary-hover': 'var(--pg-button-primary-hover)',
+  				secondary: 'var(--pg-button-secondary)',
+  				'secondary-hover': 'var(--pg-button-secondary-hover)'
+  			},
+  			'pg-status': {
+  				error: 'var(--pg-error)',
+  				success: 'var(--pg-success)',
+  				warning: 'var(--pg-warning)'
+  			},
   			chart: {
   				'1': 'hsl(var(--chart-1))',
   				'2': 'hsl(var(--chart-2))',

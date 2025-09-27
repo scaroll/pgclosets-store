@@ -96,7 +96,7 @@ export default function OttawaPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Ottawa Neighborhoods We Serve</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Professional closet door installation throughout Ottawa's diverse neighborhoods
+              Professional closet door installation throughout Ottawa&apos;s diverse neighborhoods
             </p>
           </div>
 
@@ -187,7 +187,7 @@ export default function OttawaPage() {
 
           <div className="prose prose-lg mx-auto text-gray-600">
             <p className="text-lg leading-relaxed mb-6">
-              Ottawa's diverse housing stock, from heritage homes in the Glebe to modern condos downtown, requires
+              Ottawa&apos;s diverse housing stock, from heritage homes in the Glebe to modern condos downtown, requires
               specialized closet door solutions. Our team understands the unique challenges of Ottawa homes, including
               older construction, varying ceiling heights, and the need for energy-efficient solutions during our cold
               winters.
@@ -197,7 +197,7 @@ export default function OttawaPage() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Heritage Home Solutions</h3>
                 <p>
-                  Specialized installation techniques for Ottawa's historic homes in neighborhoods like New Edinburgh
+                  Specialized installation techniques for Ottawa&apos;s historic homes in neighborhoods like New Edinburgh
                   and Sandy Hill, respecting original architecture while adding modern functionality.
                 </p>
               </div>

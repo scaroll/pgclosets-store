@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "../../../components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card"
 import { Input } from "../../../components/ui/input"
@@ -48,7 +49,7 @@ export default function ProductManagement() {
       const response = await fetch("/data/products.json")
       const data = await response.json()
       setProducts(data.items || [])
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to load products",
@@ -99,12 +100,12 @@ export default function ProductManagement() {
     setSaving(true)
     try {
       // In a real app, this would save to a database
-      // For now, we'll just show success
+      // For now, we&apos;ll just show success
       toast({
         title: "Success",
         description: "Products updated successfully",
       })
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to save products",
@@ -144,11 +145,16 @@ export default function ProductManagement() {
                   onClick={() => setSelectedProduct(product)}
                 >
                   <div className="flex items-center space-x-3">
-                    <img
-                      src={product.image || "/placeholder.svg"}
-                      alt={product.title}
-                      className="w-12 h-12 object-cover rounded"
-                    />
+                    <div className="w-12 h-12 rounded overflow-hidden flex-shrink-0">
+                      <Image
+                        src={product.image || "/placeholder.svg"}
+                        alt={product.title}
+                        width={48}
+                        height={48}
+                        className="w-12 h-12 object-cover rounded"
+                        unoptimized
+                      />
+                    </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-medium truncate">{product.title}</p>
                       <p className="text-sm text-muted-foreground">{product.type}</p>
@@ -234,11 +240,16 @@ export default function ProductManagement() {
                     <div>
                       <Label>Primary Image</Label>
                       <div className="mt-2 space-y-4">
-                        <img
-                          src={selectedProduct.image || "/placeholder.svg"}
-                          alt={selectedProduct.title}
-                          className="w-48 h-48 object-cover rounded-lg border"
-                        />
+                        <div className="w-48 h-48 rounded-lg border overflow-hidden">
+                          <Image
+                            src={selectedProduct.image || "/placeholder.svg"}
+                            alt={selectedProduct.title}
+                            width={192}
+                            height={192}
+                            className="w-48 h-48 object-cover"
+                            unoptimized
+                          />
+                        </div>
                         <MediaSelector
                           onSelect={handleImageSelect}
                           maxSelections={1}
@@ -253,12 +264,16 @@ export default function ProductManagement() {
                         {selectedProduct.gallery && selectedProduct.gallery.length > 0 && (
                           <div className="grid grid-cols-4 gap-2">
                             {selectedProduct.gallery.map((img, index) => (
-                              <img
-                                key={index}
-                                src={img || "/placeholder.svg"}
-                                alt={`Gallery ${index + 1}`}
-                                className="w-24 h-24 object-cover rounded border"
-                              />
+                              <div key={index} className="w-24 h-24 rounded border overflow-hidden">
+                                <Image
+                                  src={img || "/placeholder.svg"}
+                                  alt={`Gallery ${index + 1}`}
+                                  width={96}
+                                  height={96}
+                                  className="w-24 h-24 object-cover"
+                                  unoptimized
+                                />
+                              </div>
                             ))}
                           </div>
                         )}

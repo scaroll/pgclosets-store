@@ -1,22 +1,68 @@
 export interface Product {
   id: string
   name: string
+  title?: string // Medusa compatibility 
   slug: string
   type: string
   material: string
   finish: string
   glassType?: string
-  priceRange: {
+  priceRange?: {
     min: number
     max: number
   }
   image: string
   images?: string[]
+  thumbnail?: string // Medusa compatibility
   description: string
   features: string[]
-  specifications: Record<string, string>
+  specifications: Record<string, string | number>
   inStock: boolean
-  category: string
+  category: "barn" | "bifold" | "hardware" | "pivot" | "bypass"
+  subcategory?: string
+  featured?: boolean
+  price?: number
+  variants?: Array<{
+    id: string
+    title: string
+    prices?: Array<{
+      amount: number
+      currency_code: string
+    }>
+  }>
+}
+
+// Medusa.js compatibility types
+export interface Cart {
+  id: string
+  items: LineItem[]
+  subtotal: number
+  total: number
+  currency_code: string
+  tax_total?: number
+  shipping_total?: number
+}
+
+export interface LineItem {
+  id: string
+  product_id: string
+  title: string
+  description?: string
+  quantity: number
+  unit_price: number
+  total: number
+  thumbnail?: string
+  variant?: {
+    id: string
+    title: string
+  }
+}
+
+export interface ProductCollection {
+  id: string
+  title: string
+  handle: string
+  products?: Product[]
 }
 
 export interface CartItem {
@@ -59,4 +105,23 @@ export interface Order {
   createdAt: Date
   shippingAddress: User["address"]
   paymentMethod: string
+}
+
+// ARCAT product interface for compatibility
+export interface ArcatProduct {
+  id: number | string
+  name: string
+  slug: string
+  category: string
+  subcategory?: string
+  price: number
+  homeDepotImage?: string
+  arcatImages?: string[]
+  images?: string[]
+  description: string
+  features: string[]
+  specifications: Record<string, string | number>
+  installationTime?: string
+  inStock: boolean
+  featured?: boolean
 }

@@ -1,62 +1,63 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "../ui/button"
+import { useState } from "react";
+import { Button } from "../ui/button";
 // Using custom cart type since @medusajs/medusa doesn't export Cart type
 interface Cart {
-  id: string
-  subtotal: number
-  tax_total: number
-  shipping_total: number
-  total: number
+  id: string;
+  subtotal: number;
+  tax_total: number;
+  shipping_total: number;
+  total: number;
 }
 
 interface MedusaPaymentSectionProps {
-  cart: Cart | null
-  shippingInfo: any
-  paymentSessions: any[]
-  total: number
-  loading: boolean
-  onSuccess: (data: any) => void
-  onBack: () => void
+  cart: Cart | null;
+  shippingInfo: any;
+  paymentSessions: any[];
+  total: number;
+  loading: boolean;
+  onSuccess: (data: any) => void;
+  onBack: () => void;
 }
 
 export function MedusaPaymentSection({
   cart,
-  shippingInfo,
+  shippingInfo: _shippingInfo,
   paymentSessions,
   total,
   loading,
   onSuccess,
   onBack,
 }: MedusaPaymentSectionProps) {
-  const [selectedPaymentProvider, setSelectedPaymentProvider] = useState<string>("")
-  const [processing, setProcessing] = useState(false)
+  const [selectedPaymentProvider, setSelectedPaymentProvider] =
+    useState<string>("");
+  const [processing, setProcessing] = useState(false);
 
   const handlePaymentProviderSelect = (providerId: string) => {
-    setSelectedPaymentProvider(providerId)
-  }
+    setSelectedPaymentProvider(providerId);
+  };
 
   const handlePayment = async () => {
-    if (!cart?.id || !selectedPaymentProvider) return
+    if (!cart?.id || !selectedPaymentProvider) return;
 
     try {
-      setProcessing(true)
+      setProcessing(true);
 
       // In a real implementation, this would integrate with the selected payment provider
-      // For now, we'll simulate a successful payment
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      // For now, we&apos;ll simulate a successful payment
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       onSuccess({
         payment_provider: selectedPaymentProvider,
         cart_id: cart.id,
-      })
+      });
     } catch (error) {
-      console.error("Payment error:", error)
+      console.error("Payment error:", error);
     } finally {
-      setProcessing(false)
+      setProcessing(false);
     }
-  }
+  };
 
   return (
     <div className="space-y-6">
@@ -79,10 +80,14 @@ export function MedusaPaymentSection({
                 <input
                   type="radio"
                   checked={selectedPaymentProvider === session.provider_id}
-                  onChange={() => handlePaymentProviderSelect(session.provider_id)}
+                  onChange={() =>
+                    handlePaymentProviderSelect(session.provider_id)
+                  }
                   className="text-pg-blue"
                 />
-                <span className="font-medium capitalize">{session.provider_id}</span>
+                <span className="font-medium capitalize">
+                  {session.provider_id}
+                </span>
               </div>
             </div>
           ))}
@@ -96,7 +101,9 @@ export function MedusaPaymentSection({
             {/* Simulated payment form */}
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Card Number</label>
+                <label className="block text-sm font-medium mb-2">
+                  Card Number
+                </label>
                 <input
                   type="text"
                   placeholder="1234 5678 9012 3456"
@@ -106,7 +113,9 @@ export function MedusaPaymentSection({
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Expiry</label>
+                  <label className="block text-sm font-medium mb-2">
+                    Expiry
+                  </label>
                   <input
                     type="text"
                     placeholder="MM/YY"
@@ -115,7 +124,11 @@ export function MedusaPaymentSection({
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">CVC</label>
-                  <input type="text" placeholder="123" className="w-full px-3 py-2 border border-pg-light rounded-md" />
+                  <input
+                    type="text"
+                    placeholder="123"
+                    className="w-full px-3 py-2 border border-pg-light rounded-md"
+                  />
                 </div>
               </div>
             </div>
@@ -151,10 +164,14 @@ export function MedusaPaymentSection({
         <Button variant="secondary" onClick={onBack} disabled={processing}>
           Back to Shipping
         </Button>
-        <Button onClick={handlePayment} disabled={!selectedPaymentProvider || processing || loading} className="flex-1">
+        <Button
+          onClick={handlePayment}
+          disabled={!selectedPaymentProvider || processing || loading}
+          className="flex-1"
+        >
           {processing ? "Processing..." : `Pay ${(total / 100).toFixed(2)} CAD`}
         </Button>
       </div>
     </div>
-  )
+  );
 }

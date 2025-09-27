@@ -8,12 +8,15 @@ export const metadata = {
   },
 }
 
+import StandardLayout from "@/components/layout/StandardLayout"
+
 export default function CheckoutPage() {
   return (
-    <main className="section-apple">
-      <div className="container-apple">
-        <div className="mb-8 text-center">
-          <h1 className="text-h1 mb-4">Request Your Quote</h1>
+    <StandardLayout>
+      <main className="bg-gray-50 py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="mb-8 text-center">
+            <h1 className="text-4xl lg:text-5xl font-extralight tracking-tight text-slate-900 mb-4">Request Your Quote</h1>
           <p className="text-body-l text-pg-gray max-w-2xl mx-auto">
             Get a personalized quote for your premium closet door project. Our team will provide detailed pricing and
             installation options.
@@ -73,9 +76,7 @@ export default function CheckoutPage() {
 
           <div className="text-center">
             <a
-              href="https://clienthub.getjobber.com/client_hubs/0193e7c8-2c4b-7a8b-b0c1-4c5e6f7a8b9c/public/request_forms/0193e7c8-2c4b-7a8b-b0c1-4c5e6f7a8b9d"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:spencer@peoplesgrp.com?subject=Closet Door Quote Request"
               className="inline-flex items-center px-8 py-4 bg-pg-blue text-white rounded-xl hover:bg-pg-blue/90 transition-all duration-200 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,6 +93,7 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
-    </main>
+      </main>
+    </StandardLayout>
   )
 }

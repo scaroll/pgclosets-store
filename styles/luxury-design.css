@@ -1,0 +1,85 @@
+/* Luxury Design System - Elevated Aesthetic */
+
+/* Premium Button Styles with Polish */
+.btn-luxury-primary {
+  @apply bg-gradient-to-r from-slate-900 to-slate-800 text-white font-light px-12 py-4 text-lg tracking-wide
+         transition-all duration-500 hover:from-slate-800 hover:to-slate-700 hover:shadow-2xl
+         hover:scale-105 uppercase text-center inline-block relative overflow-hidden
+         before:absolute before:inset-0 before:bg-white before:opacity-0 hover:before:opacity-5
+         before:transition-opacity before:duration-500;
+  background-image: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+
+.btn-luxury-secondary {
+  @apply border border-slate-300 text-slate-700 font-light px-12 py-4 text-lg
+         tracking-wide transition-all duration-300 text-center inline-block relative
+         hover:border-slate-900 hover:bg-slate-900 hover:text-white
+         before:absolute before:inset-0 before:bg-slate-900 before:scale-x-0
+         before:transition-transform before:duration-300 before:origin-left
+         hover:before:scale-x-100;
+}
+
+.btn-luxury-outline {
+  @apply border border-slate-300/50 text-slate-100 font-light px-12 py-4 text-lg
+         tracking-wide transition-all duration-300 text-center inline-block
+         hover:border-white hover:text-white backdrop-blur-sm
+         hover:bg-white/10;
+}
+
+/* Elevated Typography with Refinement */
+.heading-luxury {
+  @apply font-extralight tracking-tight bg-gradient-to-r from-slate-900 to-slate-700
+         bg-clip-text text-transparent;
+}
+
+.heading-luxury-xl {
+  @apply text-5xl lg:text-7xl font-extralight leading-[1.1] tracking-tight
+         drop-shadow-sm;
+}
+
+.text-luxury {
+  @apply font-light tracking-wide leading-relaxed;
+}
+
+.text-luxury-caps {
+  @apply uppercase tracking-[0.3em] font-light text-xs opacity-80;
+}
+
+/* Premium Card Styles with Polish */
+.card-luxury {
+  @apply bg-white shadow-lg overflow-hidden transition-all duration-500
+         hover:shadow-2xl hover:-translate-y-2 border border-gray-100/50
+         backdrop-blur-sm relative
+         before:absolute before:inset-0 before:bg-gradient-to-br
+         before:from-slate-50 before:to-transparent before:opacity-0
+         hover:before:opacity-100 before:transition-opacity before:duration-500;
+}
+
+/* Navigation with Elevated Taste */
+.nav-luxury-link {
+  @apply text-slate-700 font-light tracking-wide transition-all duration-300
+         hover:text-slate-900 px-3 py-2 relative
+         after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px]
+         after:bg-slate-900 hover:after:w-full after:transition-all after:duration-300;
+}
+
+/* Additional Polish Elements */
+.luxury-gradient-bg {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+}
+
+.luxury-text-gradient {
+  @apply bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent;
+}
+
+.luxury-shadow {
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
+}
+
+.luxury-hover-glow {
+  @apply transition-all duration-500;
+}
+
+.luxury-hover-glow:hover {
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.3);
+}

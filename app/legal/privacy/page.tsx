@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import StandardLayout from "@/components/layout/StandardLayout"
 
 export const metadata: Metadata = {
   title: "Privacy Policy | PG Closets Ottawa",
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicy() {
   return (
-    <main className="section-apple">
-      <div className="container-apple max-w-[800px]">
+    <StandardLayout>
+      <main className="max-w-4xl mx-auto px-4 py-20">
         <h1 className="text-h1 mb-8" style={{ fontSize: "40px" }}>
           Privacy Policy
         </h1>
@@ -79,7 +80,7 @@ export default function PrivacyPolicy() {
             </p>
           </section>
         </div>
-      </div>
-    </main>
+      </main>
+    </StandardLayout>
   )
 }

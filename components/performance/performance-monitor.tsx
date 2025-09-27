@@ -191,8 +191,8 @@ function monitorLongTasks() {
 
   try {
     observer.observe({ entryTypes: ['longtask'] })
-  } catch (e) {
-    // Long tasks not supported in this browser
+  } catch (_e) {
+    // Long tasks not support_ed in this brows_er
   }
 }
 

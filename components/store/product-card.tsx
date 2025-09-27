@@ -1,44 +1,45 @@
-"use client"
+"use client";
 
-import type { ArcatProduct } from "@/lib/enhanced-renin-products"
-import { formatPrice } from "@/lib/enhanced-renin-products"
-import { Button } from "../ui/button"
-import { AddToCartButton } from "../ui/add-to-cart-button"
-import { RequestQuoteButton } from "../ui/request-quote-button"
-import { OptimizedImage } from "../ui/optimized-image"
-import { useState } from "react"
+import { formatPrice } from "@/lib/enhanced-renin-products";
+import { Button } from "../ui/button";
+import { AddToCartButton } from "../ui/add-to-cart-button";
+import { RequestQuoteButton } from "../ui/request-quote-button";
+import { OptimizedImage } from "../ui/optimized-image";
+import { useState } from "react";
 
 interface ProductCardProps {
-  product: ArcatProduct
-  priority?: boolean // For above-the-fold images
+  product: any;
+  priority?: boolean; // For above-the-fold images
 }
 
 export function ProductCard({ product, priority = false }: ProductCardProps) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [isLoading, setIsLoading] = useState(true)
+  const [_currentImageIndex, _setCurrentImageIndex] = useState(0);
+  const [_isLoading, _setIsLoading] = useState(true);
 
   const getImageSources = () => {
-    const sources = []
+    const sources = [];
 
     // Priority 1: Local ARCAT images
     if (product.arcatImages && product.arcatImages.length > 0) {
-      sources.push(...product.arcatImages)
+      sources.push(...product.arcatImages);
     }
 
     // Priority 3: Final fallback placeholder
-    sources.push(`/placeholder.svg?height=300&width=300&text=${encodeURIComponent(product.name)}`)
+    sources.push(
+      `/placeholder.svg?height=300&width=300&text=${encodeURIComponent(product.name)}`
+    );
 
-    return sources
-  }
+    return sources;
+  };
 
-  const imageSources = getImageSources()
-  const primaryImage = imageSources[0]
-  const fallbackImage = imageSources[1]
+  const imageSources = getImageSources();
+  const primaryImage = imageSources[0];
+  const fallbackImage = imageSources[1];
 
   return (
     <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group border border-gray-100">
       <div className="aspect-[4/3] overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 relative">
-        {isLoading && (
+        {_isLoading && (
           <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
           </div>
@@ -61,19 +62,30 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       <div className="p-6">
         <div className="mb-4">
           <h3 className="text-lg font-semibold mb-2 group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">
-            <a href={`/store/products/${product.slug}`} className="hover:underline">
+            <a
+              href={`/store/products/${product.slug}`}
+              className="hover:underline"
+            >
               {product.name}
             </a>
           </h3>
-          <p className="text-sm text-gray-600 line-clamp-2">{product.description}</p>
+          <p className="text-sm text-gray-600 line-clamp-2">
+            {product.description}
+          </p>
         </div>
 
         <div className="flex items-center justify-between mb-4">
-          <span className="text-2xl font-bold text-gray-900">{formatPrice(product.price)}</span>
+          <span className="text-2xl font-bold text-gray-900">
+            {formatPrice(product.price)}
+          </span>
           {product.inStock ? (
-            <span className="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full font-medium">In Stock</span>
+            <span className="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full font-medium">
+              In Stock
+            </span>
           ) : (
-            <span className="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full font-medium">Out of Stock</span>
+            <span className="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full font-medium">
+              Out of Stock
+            </span>
           )}
         </div>
 
@@ -116,5 +128,5 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,4 +1,5 @@
 import { Button } from "../../components/ui/button"
+import StandardLayout from "@/components/layout/StandardLayout"
 
 export const metadata = {
   title: "Closet Doors Ottawa | Professional Installation | PG Closets",
@@ -17,7 +18,7 @@ export const metadata = {
 
 export default function OttawaPage() {
   return (
-    <main>
+    <StandardLayout>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -27,7 +28,6 @@ export default function OttawaPage() {
             name: "PG Closets Ottawa",
             description: "Professional closet door installation in Ottawa, Ontario",
             url: "https://pgclosets.com/ottawa",
-            telephone: "+1-613-422-5800",
             email: "spencer@peoplesgrp.com",
             address: {
               "@type": "PostalAddress",
@@ -60,11 +60,11 @@ export default function OttawaPage() {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Premium Closet Doors in Ottawa</h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-extralight tracking-tight mb-8">Premium Closet Doors in Ottawa</h1>
+            <p className="text-xl md:text-2xl font-light tracking-wide text-slate-200 mb-12 max-w-3xl mx-auto">
               Serving downtown Ottawa, Centretown, Byward Market, and surrounding neighborhoods with professional Renin
               closet door installation
             </p>
@@ -73,7 +73,7 @@ export default function OttawaPage() {
                 variant="primary"
                 size="lg"
                 href="/request-work"
-                className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
+                className="bg-white text-slate-900 hover:bg-slate-100 shadow-xl font-light tracking-widest uppercase"
               >
                 Get Free Ottawa Quote →
               </Button>
@@ -96,7 +96,7 @@ export default function OttawaPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Ottawa Neighborhoods We Serve</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Professional closet door installation throughout Ottawa's diverse neighborhoods
+              Professional closet door installation throughout Ottawa&apos;s diverse neighborhoods
             </p>
           </div>
 
@@ -187,7 +187,7 @@ export default function OttawaPage() {
 
           <div className="prose prose-lg mx-auto text-gray-600">
             <p className="text-lg leading-relaxed mb-6">
-              Ottawa's diverse housing stock, from heritage homes in the Glebe to modern condos downtown, requires
+              Ottawa&apos;s diverse housing stock, from heritage homes in the Glebe to modern condos downtown, requires
               specialized closet door solutions. Our team understands the unique challenges of Ottawa homes, including
               older construction, varying ceiling heights, and the need for energy-efficient solutions during our cold
               winters.
@@ -197,7 +197,7 @@ export default function OttawaPage() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Heritage Home Solutions</h3>
                 <p>
-                  Specialized installation techniques for Ottawa's historic homes in neighborhoods like New Edinburgh
+                  Specialized installation techniques for Ottawa&apos;s historic homes in neighborhoods like New Edinburgh
                   and Sandy Hill, respecting original architecture while adding modern functionality.
                 </p>
               </div>
@@ -246,6 +246,6 @@ export default function OttawaPage() {
           </div>
         </div>
       </section>
-    </main>
+    </StandardLayout>
   )
 }

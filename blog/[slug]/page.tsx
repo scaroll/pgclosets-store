@@ -7,12 +7,12 @@ const blogPosts = {
   "choosing-right-closet-doors-ottawa-homes": {
     title: "Choosing the Right Closet Doors for Your Ottawa Home",
     excerpt:
-      "A comprehensive guide to selecting the perfect closet doors for Ottawa's diverse housing styles, from heritage homes to modern condos.",
+      "A comprehensive guide to selecting the perfect closet doors for Ottawa&apos;s diverse housing styles, from heritage homes to modern condos.",
     content: `
-      <p>Ottawa's diverse housing landscape presents unique challenges and opportunities when selecting closet doors. From century-old heritage homes in the Glebe to modern condos downtown, each property type requires careful consideration of style, functionality, and installation requirements.</p>
+      <p>Ottawa&apos;s diverse housing landscape presents unique challenges and opportunities when selecting closet doors. From century-old heritage homes in the Glebe to modern condos downtown, each property type requires careful consideration of style, functionality, and installation requirements.</p>
 
-      <h2>Understanding Ottawa's Housing Styles</h2>
-      <p>Ottawa's rich architectural history means homeowners encounter everything from Victorian-era homes with high ceilings and ornate details to contemporary builds with clean lines and open concepts. Each style demands a different approach to closet door selection.</p>
+      <h2>Understanding Ottawa&apos;s Housing Styles</h2>
+      <p>Ottawa&apos;s rich architectural history means homeowners encounter everything from Victorian-era homes with high ceilings and ornate details to contemporary builds with clean lines and open concepts. Each style demands a different approach to closet door selection.</p>
 
       <h3>Heritage Homes (Pre-1940)</h3>
       <p>Heritage homes in neighborhoods like New Edinburgh, Sandy Hill, and the Glebe often feature:</p>
@@ -44,7 +44,7 @@ const blogPosts = {
       <p>Modern barn doors and sleek bypass systems complement these homes perfectly.</p>
 
       <h2>Climate Considerations for Ottawa</h2>
-      <p>Ottawa's climate presents unique challenges:</p>
+      <p>Ottawa&apos;s climate presents unique challenges:</p>
       <ul>
         <li><strong>Temperature fluctuations:</strong> Choose materials that handle expansion and contraction</li>
         <li><strong>Humidity changes:</strong> Proper sealing prevents warping</li>
@@ -62,7 +62,7 @@ const blogPosts = {
       <p>Mix of traditional and contemporary styles allows for versatile door choices based on home age and personal preference.</p>
 
       <h2>Working with a Professional</h2>
-      <p>As Ottawa's authorized Renin dealer, PG Closets understands local building codes, climate considerations, and architectural styles. Our team provides:</p>
+      <p>As Ottawa&apos;s authorized Renin dealer, PG Closets understands local building codes, climate considerations, and architectural styles. Our team provides:</p>
       <ul>
         <li>Free in-home consultations</li>
         <li>Custom sizing for unique openings</li>
@@ -92,7 +92,7 @@ const blogPosts = {
       <h3>Space-Saving Benefits</h3>
       <ul>
         <li><strong>No swing space required:</strong> Perfect for tight hallways and small bedrooms</li>
-        <li><strong>Maximize floor space:</strong> Ideal for Ottawa's compact condo living</li>
+        <li><strong>Maximize floor space:</strong> Ideal for Ottawa&apos;s compact condo living</li>
         <li><strong>Flexible opening:</strong> Can be positioned anywhere along the track</li>
       </ul>
 
@@ -139,7 +139,7 @@ const blogPosts = {
       <h2>Ottawa-Specific Considerations</h2>
 
       <h3>Climate Factors</h3>
-      <p>Ottawa's temperature swings affect door performance:</p>
+      <p>Ottawa&apos;s temperature swings affect door performance:</p>
       <ul>
         <li><strong>Barn doors:</strong> Track systems handle expansion/contraction well</li>
         <li><strong>Traditional doors:</strong> May require seasonal adjustments</li>
@@ -168,7 +168,7 @@ const blogPosts = {
         <li>Code compliance</li>
       </ul>
 
-      <p>As Ottawa's authorized Renin dealer, PG Closets helps you make the right choice for your home. We offer free consultations to assess your space and recommend the best solution for your needs and budget.</p>
+      <p>As Ottawa&apos;s authorized Renin dealer, PG Closets helps you make the right choice for your home. We offer free consultations to assess your space and recommend the best solution for your needs and budget.</p>
     `,
     date: "2024-01-10",
     readTime: "6 min read",
@@ -182,7 +182,7 @@ const blogPosts = {
     excerpt:
       "Discover the benefits of working with an authorized Renin dealer for your Ottawa closet door project. Quality, warranty, and professional installation guaranteed.",
     content: `
-      <p>When investing in closet doors for your Ottawa home, choosing an official Renin dealer makes all the difference. As Ottawa's authorized Renin dealer, PG Closets provides advantages you simply can't get elsewhere.</p>
+      <p>When investing in closet doors for your Ottawa home, choosing an official Renin dealer makes all the difference. As Ottawa&apos;s authorized Renin dealer, PG Closets provides advantages you simply can&apos;t get elsewhere.</p>
 
       <h2>What Makes Renin Special?</h2>
       <p>Renin has been a leader in closet door manufacturing for over 30 years, known for:</p>
@@ -225,10 +225,10 @@ const blogPosts = {
       <h2>Ottawa-Specific Advantages</h2>
 
       <h3>Local Expertise</h3>
-      <p>As Ottawa's official Renin dealer, we understand:</p>
+      <p>As Ottawa&apos;s official Renin dealer, we understand:</p>
       <ul>
         <li>Local building codes and requirements</li>
-        <li>Ottawa's diverse housing styles</li>
+        <li>Ottawa&apos;s diverse housing styles</li>
         <li>Climate considerations for door performance</li>
         <li>Neighborhood preferences and trends</li>
       </ul>
@@ -259,7 +259,7 @@ const blogPosts = {
       </ul>
 
       <h2>The PG Closets Difference</h2>
-      <p>As Ottawa's trusted Renin dealer, we offer:</p>
+      <p>As Ottawa&apos;s trusted Renin dealer, we offer:</p>
       <ul>
         <li>Free in-home consultations</li>
         <li>Transparent Canadian pricing</li>
@@ -277,7 +277,7 @@ const blogPosts = {
         <li>Limited product selection</li>
       </ul>
 
-      <p>Don't risk your investment. Choose PG Closets, Ottawa's official Renin dealer, for guaranteed quality, professional service, and complete peace of mind.</p>
+      <p>Don&apos;t risk your investment. Choose PG Closets, Ottawa&apos;s official Renin dealer, for guaranteed quality, professional service, and complete peace of mind.</p>
     `,
     date: "2024-01-05",
     readTime: "5 min read",
@@ -412,7 +412,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Closets?</h2>
           <p className="text-xl text-blue-100 mb-8">
-            Get expert advice and professional installation from Ottawa's trusted Renin dealer
+            Get expert advice and professional installation from Ottawa&apos;s trusted Renin dealer
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

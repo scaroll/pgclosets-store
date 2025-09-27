@@ -166,8 +166,7 @@ export default function TermsOfServicePage() {
                 If you have any questions about these Terms of Service, please contact us:
               </p>
               <div className="space-y-2 text-muted-foreground">
-                <p>Email: legal@pgclosets.com</p>
-                <p>Phone: 1-800-PG-CLOSET</p>
+                <p>Email: spencer@peoplesgrp.com</p>
                 <p>Address: 123 Organization Way, Toronto, ON M5V 3A8</p>
               </div>
             </CardContent>

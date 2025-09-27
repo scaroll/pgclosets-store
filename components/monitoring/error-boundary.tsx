@@ -137,7 +137,7 @@ class ErrorBoundary extends React.Component<Props, State> {
               
               <div className="text-center space-y-4">
                 <p className="text-gray-600">
-                  Don't worry - your data is safe. Try refreshing the page or returning to the homepage.
+                  Don&apos;t worry - your data is safe. Try refreshing the page or returning to the homepage.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -209,8 +209,8 @@ export const usePerformanceMonitoring = () => {
 
       try {
         observer.observe({ entryTypes: ['navigation', 'paint', 'largest-contentful-paint'] })
-      } catch (e) {
-        console.warn('Performance Observer not fully supported')
+      } catch (_e) {
+        console.warn('P_erformanc_e Obs_erv_er not fully support_ed')
       }
 
       return () => observer.disconnect()

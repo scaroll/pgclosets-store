@@ -1,14 +1,23 @@
 import type React from "react"
+import { Product } from "@/types/commerce"
+
 export interface ProductImageMapping {
   slug: string
   blobImages: string[]
   primaryBlobImage?: string
 }
 
+type ProductLike = Product | {
+  slug: string;
+  title: string;
+  image?: string;
+  images?: string[];
+}
+
 // Mock storage for product mappings - in real app this would come from database
 const productMappings: Record<string, ProductImageMapping> = {}
 
-export function getProductImages(product: any): string[] {
+export function getProductImages(product: ProductLike): string[] {
   const mapping = productMappings[product.slug]
 
   // If we have blob images mapped, use those
@@ -31,7 +40,7 @@ export function getProductImages(product: any): string[] {
   ]
 }
 
-export function getPrimaryProductImage(product: any): string {
+export function getPrimaryProductImage(product: ProductLike): string {
   const mapping = productMappings[product.slug]
 
   // Use primary blob image if set

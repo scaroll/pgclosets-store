@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   const timestamp = new Date().toISOString()
   
   try {
-    const supabase = createClient()
+    const supabase = await createClient()
     
     // Test database connection
-    const { data: dbTest, error: dbError } = await supabase
+    const { data: _dbTest, error: dbError } = await supabase
       .from('products')
       .select('count')
       .limit(1)

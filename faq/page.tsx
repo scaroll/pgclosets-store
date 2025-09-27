@@ -52,7 +52,7 @@ export default function FAQ() {
     ],
     [
       "How do I get started?",
-      "Use our online Configurator to design your door and request a quote—we'll follow up within one business day with next steps.",
+      "Use our online Configurator to design your door and request a quote—we&apos;ll follow up within one business day with next steps.",
     ],
     [
       "Are you an official Renin dealer?",

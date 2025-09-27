@@ -74,8 +74,8 @@ export default function ClientHomePage() {
               </Link>
 
               <div className="flex items-center space-x-4 ml-6">
-                <a href="tel:6134225800" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C]">
-                  (613) 422-5800
+                <a href="mailto:spencer@peoplesgrp.com" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C]">
+                  Email Us
                 </a>
                 <button
                   onClick={() => setQuoteStep(1)}
@@ -121,8 +121,8 @@ export default function ClientHomePage() {
               </Link>
 
               <div className="px-4 pt-4 grid grid-cols-2 gap-2">
-                <a href="tel:6134225800" className="bg-[#1B4A9C] text-white py-3 text-center font-semibold">
-                  Call Now
+                <a href="mailto:spencer@peoplesgrp.com" className="bg-[#1B4A9C] text-white py-3 text-center font-semibold">
+                  Email Us
                 </a>
                 <button
                   onClick={() => {
@@ -291,7 +291,7 @@ export default function ClientHomePage() {
             </div>
           </div>
 
-          <div className="text-center mt-8">
+            <div className="text-center mt-8">
             <a
               href="https://www.google.com/search?q=PG+Closets+Ottawa+reviews"
               target="_blank"
@@ -510,7 +510,7 @@ export default function ClientHomePage() {
                 </div>
               </Link>
               <p className="text-gray-300 mb-6">
-                {"Ottawa's premier closet door specialists, transforming homes with premium solutions."}
+                {"Ottawa&apos;s premier closet door specialists, transforming homes with premium solutions."}
               </p>
             </div>
 

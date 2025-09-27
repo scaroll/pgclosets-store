@@ -4,10 +4,7 @@ import { Badge } from "../../components/ui/badge"
 import { User, Package, MapPin, CreditCard, Settings, Heart, ArrowRight, ShoppingBag, Clock, Star } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { PageWrapper } from "../../components/layout/page-wrapper"
-import { PageHeader } from "../../components/layout/page-header"
-import { PageContainer } from "../../components/layout/page-container"
-import { H1, Body } from "../../components/typography/typography"
+import StandardLayout from "@/components/layout/StandardLayout"
 
 export default function AccountPage() {
   const recentOrders = [
@@ -28,16 +25,14 @@ export default function AccountPage() {
   ]
 
   const wishlistItems = [
-    { id: 1, name: "Euro 3-Lite Bypass Door", price: "$459.00", image: "/modern-white-bypass-closet-door.png" },
-    { id: 2, name: "Luxury Walk-In System", price: "$2,499.00", image: "/luxury-walk-in-closet.png" },
+    { id: 1, name: "Euro 3-Lite Bypass Door", price: "$459.00", image: "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg" },
+    { id: 2, name: "Luxury Walk-In System", price: "$2,499.00", image: "/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg" },
   ]
 
   return (
-    <PageWrapper>
-      <PageHeader variant="simple" showMegaMenu={false} showActions={true} />
-
-      <section className="section-spacing-lg">
-        <PageContainer>
+    <StandardLayout>
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-4 grid-spacing-lg">
             {/* Sidebar Navigation */}
             <div className="lg:col-span-1">
@@ -113,8 +108,8 @@ export default function AccountPage() {
             <div className="lg:col-span-3 grid-spacing-lg">
               {/* Welcome Section */}
               <div className="content-spacing-sm">
-                <H1 className="heading-with-spacing">Welcome back, John!</H1>
-                <Body className="text-muted-foreground">Manage your account and track your orders</Body>
+                <h1 className="text-4xl font-extralight tracking-tight text-slate-900 mb-4">Welcome back, John!</h1>
+                <p className="text-slate-600 font-light tracking-wide">Manage your account and track your orders</p>
               </div>
 
               {/* Quick Stats */}
@@ -281,8 +276,8 @@ export default function AccountPage() {
               </Card>
             </div>
           </div>
-        </PageContainer>
+        </div>
       </section>
-    </PageWrapper>
+    </StandardLayout>
   )
 }

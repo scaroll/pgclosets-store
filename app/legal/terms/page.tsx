@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import StandardLayout from "@/components/layout/StandardLayout"
 
 export const metadata: Metadata = {
   title: "Terms of Service | PG Closets Ottawa",
@@ -8,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function TermsOfService() {
   return (
-    <main className="section-apple">
-      <div className="container-apple max-w-[800px]">
-        <h1 className="text-h1 mb-8" style={{ fontSize: "40px" }}>
+    <StandardLayout>
+      <main className="max-w-4xl mx-auto px-4 py-20">
+        <h1 className="text-4xl md:text-5xl font-extralight tracking-tight text-slate-900 mb-8">
           Terms of Service
         </h1>
 
@@ -87,7 +88,7 @@ export default function TermsOfService() {
             </p>
           </section>
         </div>
-      </div>
-    </main>
+      </main>
+    </StandardLayout>
   )
 }

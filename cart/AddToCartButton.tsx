@@ -30,9 +30,9 @@ export default function AddToCartButton({
       `Product: ${product.name}\nPrice: ${price ? `$${price}` : "Contact for pricing"}\nCustomizations: ${JSON.stringify(customizations || {})}`,
     )
 
-    const jobberUrl = `https://clienthub.getjobber.com/client_hubs/7c4b5e8a-3d2f-4a1b-9e6c-8f7a2b3c4d5e/public/request_work_request/new?description=${productDetails}`
+    const emailUrl = `mailto:spencer@peoplesgrp.com?subject=Quote Request&body=${productDetails}`
 
-    window.open(jobberUrl, "_blank")
+    window.open(emailUrl, "_blank")
   }
 
   return (

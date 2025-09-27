@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
 import { FileUpload } from "../../components/ui/file-upload"
@@ -25,7 +26,7 @@ export default function FilesPage() {
       const response = await fetch("/api/list")
       const data = await response.json()
       setFiles(data.files || [])
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to load files",
@@ -54,7 +55,7 @@ export default function FilesPage() {
       } else {
         throw new Error("Upload failed")
       }
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to upload file",
@@ -81,7 +82,7 @@ export default function FilesPage() {
       } else {
         throw new Error("Delete failed")
       }
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to delete file",
@@ -145,9 +146,11 @@ export default function FilesPage() {
                   <div key={file.url} className="flex items-center justify-between p-4 border rounded-lg">
                     <div className="flex items-center space-x-4">
                       {isImage(file.filename) && (
-                        <img
+                        <Image
                           src={file.url || "/placeholder.svg"}
                           alt={file.filename}
+                          width={48}
+                          height={48}
                           className="w-12 h-12 object-cover rounded"
                         />
                       )}

@@ -3,7 +3,7 @@
 import { Button } from "../ui/button"
 import { OptimizedImage } from "../ui/optimized-image"
 import { useMedusaCart } from "@/hooks/use-medusa-cart"
-import type { Product } from "@medusajs/medusa"
+import type { Product } from "@/types"
 
 interface MedusaProductCardProps {
   product: Product

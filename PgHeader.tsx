@@ -19,7 +19,7 @@ export default function PgHeader() {
     <>
       <header className="nav-apple sticky top-0 z-40" role="banner">
         {/* Announcement bar */}
-        <div className="w-full bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white text-center py-2 text-xs tracking-wide">
+        <div className="w-full bg-gradient-to-r from-pg-button-primary via-pg-button-secondary to-pg-button-primary text-white text-center py-2 text-xs tracking-wide">
           <div className="container-apple flex items-center justify-center gap-6">
             <span className="inline-flex items-center gap-1"><span className="w-1 h-1 bg-amber-400 rounded-full" />Ottawa Team</span>
             <span className="inline-flex items-center gap-1"><span className="w-1 h-1 bg-amber-400 rounded-full" />500+ Installations</span>
@@ -33,7 +33,7 @@ export default function PgHeader() {
             aria-label="PG Closets - Go to homepage"
           >
             <PGLogo width={24} height={24} aria-hidden="true" />
-            <span className="font-extrabold text-pg-navy" style={{ fontSize: "24px", fontWeight: 800 }}>
+            <span className="font-extrabold text-pg-text-primary" style={{ fontSize: "24px", fontWeight: 800 }}>
               PG Closets
             </span>
           </Link>
@@ -41,35 +41,35 @@ export default function PgHeader() {
           <nav className="hidden md:flex items-center gap-6" role="navigation" aria-label="Main navigation">
             <Link
               href="/"
-              className="text-body-s text-pg-navy opacity-90 hover:opacity-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
+              className="text-body-s text-pg-text-secondary hover:text-pg-text-primary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
               style={{ fontWeight: 500 }}
             >
               Home
             </Link>
             <Link
               href="/products"
-              className="text-body-s text-pg-navy opacity-90 hover:opacity-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
+              className="text-body-s text-pg-text-secondary hover:text-pg-text-primary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
               style={{ fontWeight: 500 }}
             >
               Collection
             </Link>
             <Link
               href="/about"
-              className="text-body-s text-pg-navy opacity-90 hover:opacity-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
+              className="text-body-s text-pg-text-secondary hover:text-pg-text-primary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
               style={{ fontWeight: 500 }}
             >
               About
             </Link>
             <Link
               href="/services"
-              className="text-body-s text-pg-navy opacity-90 hover:opacity-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
+              className="text-body-s text-pg-text-secondary hover:text-pg-text-primary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
               style={{ fontWeight: 500 }}
             >
               Services
             </Link>
             <Link
               href="/contact"
-              className="text-body-s text-pg-navy opacity-90 hover:opacity-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
+              className="text-body-s text-pg-text-secondary hover:text-pg-text-primary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-1"
               style={{ fontWeight: 500 }}
             >
               Contact
@@ -77,7 +77,7 @@ export default function PgHeader() {
 
             <Link
               href="/request-work"
-              className="ml-6 bg-slate-900 text-white px-5 py-2 rounded-md hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
+              className="ml-6 bg-pg-button-primary text-white px-5 py-2 rounded-md hover:bg-pg-button-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
             >
               Schedule Consultation
             </Link>
@@ -86,7 +86,7 @@ export default function PgHeader() {
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={toggleMobileMenu}
-              className="p-2 text-pg-navy focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded-lg hover:bg-pg-offwhite transition-colors duration-200"
+              className="p-2 text-pg-text-primary focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded-lg hover:bg-pg-offwhite transition-colors duration-200"
               aria-label="Open main menu"
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
@@ -123,7 +123,7 @@ export default function PgHeader() {
             <div className="flex justify-end p-4">
               <button
                 onClick={closeMobileMenu}
-                className="p-2 text-pg-navy hover:bg-gray-100 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
+                className="p-2 text-pg-text-primary hover:bg-gray-100 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
                 aria-label="Close menu"
               >
                 <svg
@@ -147,35 +147,35 @@ export default function PgHeader() {
                 <Link
                   href="/"
                   onClick={closeMobileMenu}
-                  className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
+                  className="block text-lg font-medium text-pg-text-secondary hover:text-pg-text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
                 >
                   Home
                 </Link>
                 <Link
                   href="/products"
                   onClick={closeMobileMenu}
-                  className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
+                  className="block text-lg font-medium text-pg-text-secondary hover:text-pg-text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
                 >
                   Collection
                 </Link>
                 <Link
                   href="/about"
                   onClick={closeMobileMenu}
-                  className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
+                  className="block text-lg font-medium text-pg-text-secondary hover:text-pg-text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
                 >
                   About
                 </Link>
                 <Link
                   href="/services"
                   onClick={closeMobileMenu}
-                  className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
+                  className="block text-lg font-medium text-pg-text-secondary hover:text-pg-text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
                 >
                   Services
                 </Link>
                 <Link
                   href="/contact"
                   onClick={closeMobileMenu}
-                  className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
+                  className="block text-lg font-medium text-pg-text-secondary hover:text-pg-text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
                 >
                   Contact
                 </Link>
@@ -185,7 +185,7 @@ export default function PgHeader() {
                   <Link
                     href="/request-work"
                     onClick={closeMobileMenu}
-                    className="block w-full text-center bg-slate-900 text-white py-3 px-6 rounded-lg font-medium hover:bg-slate-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
+                    className="block w-full text-center bg-pg-button-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-pg-button-primary-hover transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
                   >
                     Schedule Consultation
                   </Link>

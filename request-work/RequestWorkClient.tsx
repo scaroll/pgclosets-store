@@ -92,7 +92,7 @@ export default function RequestWorkClient() {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Tell Us About Your Project</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Fill out the form below and we'll provide you with a detailed quote within 24 hours. Our Ottawa team
+                Fill out the form below and we&apos;ll provide you with a detailed quote within 24 hours. Our Ottawa team
                 will handle everything from design to installation.
               </p>
             </div>

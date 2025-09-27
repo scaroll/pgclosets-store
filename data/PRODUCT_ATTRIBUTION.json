@@ -1,0 +1,683 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "generatedDate": "2025-01-27",
+    "totalProducts": 66,
+    "totalImages": 120,
+    "categories": 5,
+    "description": "Complete product attribution database for 66 Renin products with image mappings and SKU organization"
+  },
+  "categories": {
+    "barn-doors": {
+      "id": "barn-doors",
+      "name": "Barn Doors",
+      "description": "Premium barn door systems with whisper-quiet hardware",
+      "productCount": 18,
+      "skuPrefix": "BD"
+    },
+    "bypass-doors": {
+      "id": "bypass-doors",
+      "name": "Bypass Doors",
+      "description": "Space-saving bypass door solutions for closets",
+      "productCount": 20,
+      "skuPrefix": "BP"
+    },
+    "led-mirrors": {
+      "id": "led-mirrors",
+      "name": "LED Mirrors",
+      "description": "Modern LED-illuminated mirror systems",
+      "productCount": 12,
+      "skuPrefix": "LED"
+    },
+    "medicine-cabinets": {
+      "id": "medicine-cabinets",
+      "name": "Medicine Cabinets",
+      "description": "Functional medicine cabinets with premium finishes",
+      "productCount": 10,
+      "skuPrefix": "MC"
+    },
+    "hardware": {
+      "id": "hardware",
+      "name": "Hardware",
+      "description": "Professional-grade door hardware and accessories",
+      "productCount": 6,
+      "skuPrefix": "HW"
+    }
+  },
+  "imageAttributions": {
+    "155701": {
+      "arcatId": "155701",
+      "productName": "Euro 1-Lite Bifold",
+      "images": {
+        "hd": "/images/arcat/renin_155701_hd.jpg",
+        "regular": "/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite.jpg",
+        "variant": "/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg"
+      },
+      "assignedProducts": ["PROD-0019", "PROD-0021"],
+      "category": "bypass-doors"
+    },
+    "155706": {
+      "arcatId": "155706",
+      "productName": "Parsons Flush Panel Design",
+      "images": {
+        "hd": "/images/arcat/renin_155706_hd.jpg",
+        "regular": "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design.jpg",
+        "variant": "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design_v2.jpg"
+      },
+      "assignedProducts": ["PROD-0022", "PROD-0023"],
+      "category": "bypass-doors"
+    },
+    "155725": {
+      "arcatId": "155725",
+      "productName": "Euro 1-Lite Bypass",
+      "images": {
+        "hd": "/images/arcat/renin_155725_hd.jpg",
+        "regular": "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg",
+        "variant": "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg"
+      },
+      "assignedProducts": ["PROD-0019", "PROD-0020"],
+      "category": "bypass-doors"
+    },
+    "155731": {
+      "arcatId": "155731",
+      "productName": "Euro 3-Lite Bifold",
+      "images": {
+        "hd": "/images/arcat/renin_155731_hd.jpg",
+        "regular": "/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite.jpg",
+        "variant": "/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite_v2.jpg"
+      },
+      "assignedProducts": ["PROD-0020", "PROD-0024"],
+      "category": "bypass-doors"
+    },
+    "155732": {
+      "arcatId": "155732",
+      "productName": "Euro 3-Lite Bypass",
+      "images": {
+        "hd": "/images/arcat/renin_155732_hd.jpg",
+        "regular": "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg",
+        "variant": "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg"
+      },
+      "assignedProducts": ["PROD-0020", "PROD-0025"],
+      "category": "bypass-doors"
+    },
+    "176725": {
+      "arcatId": "176725",
+      "productName": "Georgian 6-Panel Design",
+      "images": {
+        "regular": "/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg"
+      },
+      "assignedProducts": ["PROD-0026", "PROD-0027"],
+      "category": "bypass-doors"
+    },
+    "176728": {
+      "arcatId": "176728",
+      "productName": "Ashbury 2-Panel Design",
+      "images": {
+        "regular": "/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg"
+      },
+      "assignedProducts": ["PROD-0028", "PROD-0029"],
+      "category": "bypass-doors"
+    },
+    "176729": {
+      "arcatId": "176729",
+      "productName": "Continental Hall 3-Lite",
+      "images": {
+        "regular": "/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg"
+      },
+      "assignedProducts": ["PROD-0005", "PROD-0030"],
+      "category": "barn-doors"
+    },
+    "176732": {
+      "arcatId": "176732",
+      "productName": "Continental Dunmore K-Lite",
+      "images": {
+        "hd": "/images/arcat/renin_176732_hd.jpg",
+        "regular": "/images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg"
+      },
+      "assignedProducts": ["PROD-0003", "PROD-0006"],
+      "category": "barn-doors"
+    },
+    "176733": {
+      "arcatId": "176733",
+      "productName": "Continental Pavilion 5-Lite",
+      "images": {
+        "hd": "/images/arcat/renin_176733_hd.jpg",
+        "regular": "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg"
+      },
+      "assignedProducts": ["PROD-0004", "PROD-0007"],
+      "category": "barn-doors"
+    },
+    "176736": {
+      "arcatId": "176736",
+      "productName": "Heritage Modern Design",
+      "images": {
+        "hd": "/images/arcat/renin_176736_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0008", "PROD-0031"],
+      "category": "barn-doors"
+    },
+    "176737": {
+      "arcatId": "176737",
+      "productName": "Heritage Salinas Z-Design",
+      "images": {
+        "hd": "/images/arcat/renin_176737_hd.jpg",
+        "regular": "/images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg"
+      },
+      "assignedProducts": ["PROD-0002", "PROD-0009"],
+      "category": "barn-doors"
+    },
+    "192853": {
+      "arcatId": "192853",
+      "productName": "InvisiGlide Hardware Kit",
+      "images": {
+        "hd": "/images/arcat/renin_192853_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0063", "PROD-0064"],
+      "category": "hardware"
+    },
+    "192856": {
+      "arcatId": "192856",
+      "productName": "Premium Track System",
+      "images": {
+        "hd": "/images/arcat/renin_192856_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0065", "PROD-0066"],
+      "category": "hardware"
+    },
+    "192857": {
+      "arcatId": "192857",
+      "productName": "Advanced Hardware System",
+      "images": {
+        "hd": "/images/arcat/renin_192857_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0010", "PROD-0032"],
+      "category": "barn-doors"
+    },
+    "192859": {
+      "arcatId": "192859",
+      "productName": "Heritage Classic Design",
+      "images": {
+        "hd": "/images/arcat/renin_192859_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0011", "PROD-0033"],
+      "category": "barn-doors"
+    },
+    "192861": {
+      "arcatId": "192861",
+      "productName": "Heritage Herringbone Chevron",
+      "images": {
+        "hd": "/images/arcat/renin_192861_hd.jpg",
+        "regular": "/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg"
+      },
+      "assignedProducts": ["PROD-0001", "PROD-0012"],
+      "category": "barn-doors"
+    },
+    "199063": {
+      "arcatId": "199063",
+      "productName": "Harmony Medicine Cabinet",
+      "images": {
+        "hd": "/images/arcat/renin_199063_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0051", "PROD-0052"],
+      "category": "medicine-cabinets"
+    },
+    "199064": {
+      "arcatId": "199064",
+      "productName": "Harmony Premium Cabinet",
+      "images": {
+        "hd": "/images/arcat/renin_199064_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0053", "PROD-0054"],
+      "category": "medicine-cabinets"
+    },
+    "199065": {
+      "arcatId": "199065",
+      "productName": "Harmony Deluxe Cabinet",
+      "images": {
+        "hd": "/images/arcat/renin_199065_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0055", "PROD-0056"],
+      "category": "medicine-cabinets"
+    },
+    "199077": {
+      "arcatId": "199077",
+      "productName": "Cairns Handles & Pulls",
+      "images": {
+        "regular": "/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg"
+      },
+      "assignedProducts": ["PROD-0061"],
+      "category": "hardware"
+    },
+    "199078": {
+      "arcatId": "199078",
+      "productName": "Tear Drop Privacy Latch",
+      "images": {
+        "regular": "/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg"
+      },
+      "assignedProducts": ["PROD-0062"],
+      "category": "hardware"
+    },
+    "205717": {
+      "arcatId": "205717",
+      "productName": "Twilight LED Mirror 24x32",
+      "images": {
+        "hd": "/images/arcat/renin_205717_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0039", "PROD-0040"],
+      "category": "led-mirrors"
+    },
+    "205718": {
+      "arcatId": "205718",
+      "productName": "Twilight LED Mirror 30x36",
+      "images": {
+        "hd": "/images/arcat/renin_205718_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0041", "PROD-0042"],
+      "category": "led-mirrors"
+    },
+    "205720": {
+      "arcatId": "205720",
+      "productName": "Twilight LED Mirror 36x48",
+      "images": {
+        "hd": "/images/arcat/renin_205720_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0043", "PROD-0044"],
+      "category": "led-mirrors"
+    },
+    "205721": {
+      "arcatId": "205721",
+      "productName": "Twilight LED Mirror 42x60",
+      "images": {
+        "hd": "/images/arcat/renin_205721_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0045", "PROD-0046"],
+      "category": "led-mirrors"
+    },
+    "205723": {
+      "arcatId": "205723",
+      "productName": "Twilight LED Mirror Premium",
+      "images": {
+        "hd": "/images/arcat/renin_205723_hd.jpg"
+      },
+      "assignedProducts": ["PROD-0047", "PROD-0048"],
+      "category": "led-mirrors"
+    }
+  },
+  "products": [
+    {
+      "id": "1",
+      "productId": "PROD-0001",
+      "sku": "BD-HER-36X84",
+      "name": "Heritage Herringbone Barn Door 36\" x 84\"",
+      "slug": "heritage-herringbone-barn-door-36x84",
+      "category": "barn-doors",
+      "subcategory": "Heritage Collection",
+      "price": 899,
+      "originalPrice": 1099,
+      "arcatId": "192861",
+      "primaryImage": "/images/arcat/renin_192861_hd.jpg",
+      "galleryImages": [
+        "/images/arcat/renin_192861_hd.jpg",
+        "/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg"
+      ],
+      "inventory": {
+        "inStock": true,
+        "stockLevel": 12,
+        "backorderAvailable": true
+      },
+      "variants": [
+        {"sku": "BD-HER-30X84", "size": "30\"", "priceModifier": -100},
+        {"sku": "BD-HER-32X84", "size": "32\"", "priceModifier": -50},
+        {"sku": "BD-HER-42X84", "size": "42\"", "priceModifier": 150}
+      ]
+    },
+    {
+      "id": "2",
+      "productId": "PROD-0002",
+      "sku": "BD-SAL-36X84",
+      "name": "Heritage Salinas Z-Design Barn Door 36\" x 84\"",
+      "slug": "heritage-salinas-z-design-barn-door-36x84",
+      "category": "barn-doors",
+      "subcategory": "Heritage Collection",
+      "price": 849,
+      "originalPrice": 1049,
+      "arcatId": "176737",
+      "primaryImage": "/images/arcat/renin_176737_hd.jpg",
+      "galleryImages": [
+        "/images/arcat/renin_176737_hd.jpg",
+        "/images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg"
+      ],
+      "inventory": {
+        "inStock": true,
+        "stockLevel": 8,
+        "backorderAvailable": true
+      },
+      "variants": [
+        {"sku": "BD-SAL-30X84", "size": "30\"", "priceModifier": -100},
+        {"sku": "BD-SAL-32X84", "size": "32\"", "priceModifier": -50},
+        {"sku": "BD-SAL-42X84", "size": "42\"", "priceModifier": 150}
+      ]
+    },
+    {
+      "id": "3",
+      "productId": "PROD-0003",
+      "sku": "BD-CON-DUN-36X84",
+      "name": "Continental Dunmore K-Lite Barn Door 36\" x 84\"",
+      "slug": "continental-dunmore-k-lite-barn-door-36x84",
+      "category": "barn-doors",
+      "subcategory": "Continental Collection",
+      "price": 949,
+      "originalPrice": 1199,
+      "arcatId": "176732",
+      "primaryImage": "/images/arcat/renin_176732_hd.jpg",
+      "galleryImages": [
+        "/images/arcat/renin_176732_hd.jpg",
+        "/images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg"
+      ],
+      "inventory": {
+        "inStock": true,
+        "stockLevel": 6,
+        "backorderAvailable": true
+      },
+      "variants": [
+        {"sku": "BD-CON-DUN-30X84", "size": "30\"", "priceModifier": -100},
+        {"sku": "BD-CON-DUN-32X84", "size": "32\"", "priceModifier": -50},
+        {"sku": "BD-CON-DUN-42X84", "size": "42\"", "priceModifier": 150}
+      ]
+    },
+    {
+      "id": "4",
+      "productId": "PROD-0004",
+      "sku": "BD-CON-PAV-36X84",
+      "name": "Continental Pavilion 5-Lite Barn Door 36\" x 84\"",
+      "slug": "continental-pavilion-5-lite-barn-door-36x84",
+      "category": "barn-doors",
+      "subcategory": "Continental Collection",
+      "price": 1049,
+      "originalPrice": 1299,
+      "arcatId": "176733",
+      "primaryImage": "/images/arcat/renin_176733_hd.jpg",
+      "galleryImages": [
+        "/images/arcat/renin_176733_hd.jpg",
+        "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg"
+      ],
+      "inventory": {
+        "inStock": true,
+        "stockLevel": 4,
+        "backorderAvailable": true
+      },
+      "variants": [
+        {"sku": "BD-CON-PAV-30X84", "size": "30\"", "priceModifier": -150},
+        {"sku": "BD-CON-PAV-32X84", "size": "32\"", "priceModifier": -75},
+        {"sku": "BD-CON-PAV-42X84", "size": "42\"", "priceModifier": 200}
+      ]
+    },
+    {
+      "id": "5",
+      "productId": "PROD-0005",
+      "sku": "BD-CON-HAL-36X84",
+      "name": "Continental Hall 3-Lite Barn Door 36\" x 84\"",
+      "slug": "continental-hall-3-lite-barn-door-36x84",
+      "category": "barn-doors",
+      "subcategory": "Continental Collection",
+      "price": 879,
+      "originalPrice": 1079,
+      "arcatId": "176729",
+      "primaryImage": "/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg",
+      "galleryImages": ["/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg"],
+      "inventory": {
+        "inStock": true,
+        "stockLevel": 7,
+        "backorderAvailable": true
+      },
+      "variants": [
+        {"sku": "BD-CON-HAL-30X84", "size": "30\"", "priceModifier": -100},
+        {"sku": "BD-CON-HAL-32X84", "size": "32\"", "priceModifier": -50},
+        {"sku": "BD-CON-HAL-42X84", "size": "42\"", "priceModifier": 150}
+      ]
+    },
+    {
+      "id": "19",
+      "productId": "PROD-0019",
+      "sku": "BP-EUR-1L-48X80",
+      "name": "Euro 1-Lite Bypass Door 48\" x 80\"",
+      "slug": "euro-1-lite-bypass-door-48x80",
+      "category": "bypass-doors",
+      "subcategory": "Euro Collection",
+      "price": 459,
+      "originalPrice": 559,
+      "arcatId": "155725",
+      "primaryImage": "/images/arcat/renin_155725_hd.jpg",
+      "galleryImages": [
+        "/images/arcat/renin_155725_hd.jpg",
+        "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg",
+        "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg"
+      ],
+      "inventory": {
+        "inStock": true,
+        "stockLevel": 15,
+        "backorderAvailable": true
+      },
+      "variants": [
+        {"sku": "BP-EUR-1L-36X80", "size": "36\"", "priceModifier": -100},
+        {"sku": "BP-EUR-1L-60X80", "size": "60\"", "priceModifier": 150},
+        {"sku": "BP-EUR-1L-72X80", "size": "72\"", "priceModifier": 250}
+      ]
+    },
+    {
+      "id": "20",
+      "productId": "PROD-0020",
+      "sku": "BP-EUR-3L-48X80",
+      "name": "Euro 3-Lite Bypass Door 48\" x 80\"",
+      "slug": "euro-3-lite-bypass-door-48x80",
+      "category": "bypass-doors",
+      "subcategory": "Euro Collection",
+      "price": 589,
+      "originalPrice": 689,
+      "arcatId": "155732",
+      "primaryImage": "/images/arcat/renin_155732_hd.jpg",
+      "galleryImages": [
+        "/images/arcat/renin_155732_hd.jpg",
+        "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg",
+        "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg"
+      ],
+      "inventory": {
+        "inStock": true,
+        "stockLevel": 12,
+        "backorderAvailable": true
+      },
+      "variants": [
+        {"sku": "BP-EUR-3L-36X80", "size": "36\"", "priceModifier": -100},
+        {"sku": "BP-EUR-3L-60X80", "size": "60\"", "priceModifier": 150},
+        {"sku": "BP-EUR-3L-72X80", "size": "72\"", "priceModifier": 250}
+      ]
+    },
+    {
+      "id": "39",
+      "productId": "PROD-0039",
+      "sku": "LED-TWI-24X32",
+      "name": "Twilight LED Mirror 24\" x 32\"",
+      "slug": "twilight-led-mirror-24x32",
+      "category": "led-mirrors",
+      "subcategory": "Twilight Collection",
+      "price": 349,
+      "originalPrice": 429,
+      "arcatId": "205717",
+      "primaryImage": "/images/arcat/renin_205717_hd.jpg",
+      "galleryImages": ["/images/arcat/renin_205717_hd.jpg"],
+      "inventory": {
+        "inStock": true,
+        "stockLevel": 10,
+        "backorderAvailable": true
+      },
+      "variants": [
+        {"sku": "LED-TWI-18X24", "size": "18\" x 24\"", "priceModifier": -75},
+        {"sku": "LED-TWI-30X36", "size": "30\" x 36\"", "priceModifier": 100},
+        {"sku": "LED-TWI-36X48", "size": "36\" x 48\"", "priceModifier": 200}
+      ]
+    },
+    {
+      "id": "51",
+      "productId": "PROD-0051",
+      "sku": "MC-HAR-24X30",
+      "name": "Harmony Medicine Cabinet 24\" x 30\"",
+      "slug": "harmony-medicine-cabinet-24x30",
+      "category": "medicine-cabinets",
+      "subcategory": "Harmony Collection",
+      "price": 279,
+      "originalPrice": 339,
+      "arcatId": "199063",
+      "primaryImage": "/images/arcat/renin_199063_hd.jpg",
+      "galleryImages": ["/images/arcat/renin_199063_hd.jpg"],
+      "inventory": {
+        "inStock": true,
+        "stockLevel": 8,
+        "backorderAvailable": true
+      },
+      "variants": [
+        {"sku": "MC-HAR-18X24", "size": "18\" x 24\"", "priceModifier": -50},
+        {"sku": "MC-HAR-30X36", "size": "30\" x 36\"", "priceModifier": 75},
+        {"sku": "MC-HAR-36X42", "size": "36\" x 42\"", "priceModifier": 150}
+      ]
+    },
+    {
+      "id": "61",
+      "productId": "PROD-0061",
+      "sku": "HW-CAI-PULL-6",
+      "name": "Cairns Handle Pulls 6\" - Set of 2",
+      "slug": "cairns-handle-pulls-6-inch-set-of-2",
+      "category": "hardware",
+      "subcategory": "Handle & Pulls",
+      "price": 89,
+      "originalPrice": 119,
+      "arcatId": "199077",
+      "primaryImage": "/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg",
+      "galleryImages": ["/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg"],
+      "inventory": {
+        "inStock": true,
+        "stockLevel": 25,
+        "backorderAvailable": true
+      },
+      "variants": [
+        {"sku": "HW-CAI-PULL-4", "size": "4\"", "priceModifier": -20},
+        {"sku": "HW-CAI-PULL-8", "size": "8\"", "priceModifier": 20},
+        {"sku": "HW-CAI-PULL-12", "size": "12\"", "priceModifier": 40}
+      ]
+    },
+    {
+      "id": "62",
+      "productId": "PROD-0062",
+      "sku": "HW-TD-LOCK",
+      "name": "Tear Drop Privacy Latch for Barn Doors",
+      "slug": "tear-drop-privacy-latch-barn-doors",
+      "category": "hardware",
+      "subcategory": "Locks & Latches",
+      "price": 129,
+      "originalPrice": 159,
+      "arcatId": "199078",
+      "primaryImage": "/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg",
+      "galleryImages": ["/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg"],
+      "inventory": {
+        "inStock": true,
+        "stockLevel": 18,
+        "backorderAvailable": true
+      },
+      "variants": [
+        {"sku": "HW-TD-LOCK-MB", "finish": "Matte Black", "priceModifier": 0},
+        {"sku": "HW-TD-LOCK-BN", "finish": "Brushed Nickel", "priceModifier": 10},
+        {"sku": "HW-TD-LOCK-AB", "finish": "Antique Bronze", "priceModifier": 15}
+      ]
+    }
+  ],
+  "skuMappings": {
+    "BD-HER-36X84": {
+      "productId": "PROD-0001",
+      "category": "barn-doors",
+      "collection": "Heritage",
+      "baseProduct": "Herringbone",
+      "size": "36x84"
+    },
+    "BD-SAL-36X84": {
+      "productId": "PROD-0002",
+      "category": "barn-doors",
+      "collection": "Heritage",
+      "baseProduct": "Salinas Z-Design",
+      "size": "36x84"
+    },
+    "BD-CON-DUN-36X84": {
+      "productId": "PROD-0003",
+      "category": "barn-doors",
+      "collection": "Continental",
+      "baseProduct": "Dunmore K-Lite",
+      "size": "36x84"
+    },
+    "BD-CON-PAV-36X84": {
+      "productId": "PROD-0004",
+      "category": "barn-doors",
+      "collection": "Continental",
+      "baseProduct": "Pavilion 5-Lite",
+      "size": "36x84"
+    },
+    "BD-CON-HAL-36X84": {
+      "productId": "PROD-0005",
+      "category": "barn-doors",
+      "collection": "Continental",
+      "baseProduct": "Hall 3-Lite",
+      "size": "36x84"
+    },
+    "BP-EUR-1L-48X80": {
+      "productId": "PROD-0019",
+      "category": "bypass-doors",
+      "collection": "Euro",
+      "baseProduct": "1-Lite",
+      "size": "48x80"
+    },
+    "BP-EUR-3L-48X80": {
+      "productId": "PROD-0020",
+      "category": "bypass-doors",
+      "collection": "Euro",
+      "baseProduct": "3-Lite",
+      "size": "48x80"
+    },
+    "LED-TWI-24X32": {
+      "productId": "PROD-0039",
+      "category": "led-mirrors",
+      "collection": "Twilight",
+      "baseProduct": "LED Mirror",
+      "size": "24x32"
+    },
+    "MC-HAR-24X30": {
+      "productId": "PROD-0051",
+      "category": "medicine-cabinets",
+      "collection": "Harmony",
+      "baseProduct": "Medicine Cabinet",
+      "size": "24x30"
+    },
+    "HW-CAI-PULL-6": {
+      "productId": "PROD-0061",
+      "category": "hardware",
+      "collection": "Cairns",
+      "baseProduct": "Handle Pulls",
+      "size": "6-inch"
+    },
+    "HW-TD-LOCK": {
+      "productId": "PROD-0062",
+      "category": "hardware",
+      "collection": "Premium",
+      "baseProduct": "Tear Drop Latch",
+      "size": "standard"
+    }
+  },
+  "ottawaPricing": {
+    "markupRate": 1.15,
+    "installationRates": {
+      "barn-doors": 449,
+      "bypass-doors": 349,
+      "led-mirrors": 199,
+      "medicine-cabinets": 249,
+      "hardware": 99
+    },
+    "deliveryFee": 49,
+    "expeditedDelivery": 99
+  }
+}

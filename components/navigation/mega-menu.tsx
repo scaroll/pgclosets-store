@@ -1,8 +1,15 @@
-"use client"
+"use client";
 
-import { Button } from "../ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
-import { Badge } from "../ui/badge"
+import Image from "next/image";
+import { Button } from "../ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
+import { Badge } from "../ui/badge";
 import {
   ChevronRight,
   ArrowRight,
@@ -16,9 +23,9 @@ import {
   Award,
   Clock,
   Users,
-} from "lucide-react"
-import Link from "next/link"
-import { useState, useEffect } from "react"
+} from "lucide-react";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const menuItems = {
   solutions: {
@@ -81,6 +88,65 @@ const menuItems = {
             href: "/products?category=mirror-doors",
             description: "Full-length mirrored doors",
           },
+          {
+            name: "Renin Barn Doors",
+            href: "/products?brand=renin&style=barn-doors",
+            description: "Premium barn door hardware systems",
+            badge: "New",
+          },
+          {
+            name: "Renin Euro Collection",
+            href: "/products?brand=renin&style=euro-collection",
+            description: "Contemporary European styling",
+          },
+          {
+            name: "Renin Heritage Series",
+            href: "/products?brand=renin&style=heritage-series",
+            description: "Traditional craftsmanship meets modern function",
+          },
+          {
+            name: "Renin Continental Line",
+            href: "/products?brand=renin&style=continental-line",
+            description: "Sophisticated continental designs",
+          },
+        ],
+      },
+      {
+        title: "Renin Collection",
+        icon: Star,
+        items: [
+          {
+            name: "Barn Door Systems",
+            href: "/products?brand=renin&category=barn-door-systems",
+            description: "Complete sliding barn door solutions",
+            badge: "Premium",
+          },
+          {
+            name: "Interior Doors",
+            href: "/products?brand=renin&category=interior-doors",
+            description: "High-quality interior door collection",
+          },
+          {
+            name: "Closet Systems",
+            href: "/products?brand=renin&category=closet-systems",
+            description: "Integrated closet organization solutions",
+          },
+          {
+            name: "Room Dividers",
+            href: "/products?brand=renin&category=room-dividers",
+            description: "Flexible space division solutions",
+          },
+          {
+            name: "Glass & Mirror Doors",
+            href: "/products?brand=renin&category=glass-mirror-doors",
+            description: "Elegant glass and mirrored options",
+          },
+          {
+            name: "Premium Hardware",
+            href: "/products?brand=renin&category=premium-hardware",
+            description: "Professional-grade door hardware",
+            badge: "Professional",
+          },
         ],
       },
       {
@@ -113,8 +179,9 @@ const menuItems = {
     ],
     featured: {
       title: "Featured Solution",
-      name: "Ottawa's Premier Custom Closets",
-      description: "Transform your space with locally designed, fabricated & installed closet solutions",
+      name: "Ottawa&apos;s Premier Custom Closets",
+      description:
+        "Transform your space with locally designed, fabricated & installed closet solutions",
       image:
         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/georgian-6-panel-sliding-high-res-zyb8lchgerfPz67hNnZq3MMCgPTbJv.webp",
       href: "/products",
@@ -126,46 +193,47 @@ const menuItems = {
       ],
     },
   },
-}
+};
 
 interface MegaMenuProps {
-  activeMenu: string | null
-  onClose: () => void
+  activeMenu: string | null;
+  onClose: () => void;
 }
 
 export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
-  const [isVisible, setIsVisible] = useState(false)
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
-  const [gridCols, setGridCols] = useState(3)
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [gridCols, setGridCols] = useState(3);
 
   useEffect(() => {
     if (activeMenu) {
-      setIsVisible(true)
+      setIsVisible(true);
     } else {
-      setIsVisible(false)
+      setIsVisible(false);
     }
-  }, [activeMenu])
+  }, [activeMenu]);
 
   useEffect(() => {
     const handleResize = () => {
-      const width = window.innerWidth
+      const width = window.innerWidth;
       if (width < 768) {
-        setGridCols(1) // Mobile: single column
+        setGridCols(1); // Mobile: single column
       } else if (width < 1024) {
-        setGridCols(2) // Tablet: two columns
+        setGridCols(2); // Tablet: two columns
       } else {
-        setGridCols(3) // Desktop: three columns
+        setGridCols(3); // Desktop: three columns
       }
-    }
+    };
 
-    handleResize()
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  if (!activeMenu || !menuItems[activeMenu as keyof typeof menuItems]) return null
+  if (!activeMenu || !menuItems[activeMenu as keyof typeof menuItems])
+    return null;
 
-  const menu = menuItems[activeMenu as keyof typeof menuItems]
+  const menu = menuItems[activeMenu as keyof typeof menuItems];
 
   return (
     <div
@@ -187,7 +255,9 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
               <div
                 key={index}
                 className={`space-y-4 lg:space-y-6 transition-all duration-800 ease-out ${
-                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-8 opacity-0"
                 }`}
                 style={{ transitionDelay: `${index * 150 + 200}ms` }}
               >
@@ -208,14 +278,20 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
                     <li
                       key={itemIndex}
                       className={`transition-all duration-600 ease-out ${
-                        isVisible ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0"
+                        isVisible
+                          ? "translate-x-0 opacity-100"
+                          : "translate-x-6 opacity-0"
                       }`}
-                      style={{ transitionDelay: `${index * 150 + itemIndex * 75 + 400}ms` }}
+                      style={{
+                        transitionDelay: `${index * 150 + itemIndex * 75 + 400}ms`,
+                      }}
                     >
                       <Link
                         href={item.href}
                         onClick={onClose}
-                        onMouseEnter={() => setHoveredItem(`${index}-${itemIndex}`)}
+                        onMouseEnter={() =>
+                          setHoveredItem(`${index}-${itemIndex}`)
+                        }
                         onMouseLeave={() => setHoveredItem(null)}
                         className="group flex items-start space-x-3 lg:space-x-4 p-3 lg:p-4 rounded-xl hover:bg-luxury-soft-gray/50 transition-all duration-300 hover:shadow-luxury-soft hover:scale-[1.02] transform-gpu min-w-0"
                       >
@@ -227,7 +303,8 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
                             {item.badge && (
                               <Badge
                                 className={`text-xs font-medium transition-all duration-300 hover:scale-110 flex-shrink-0 ${
-                                  item.badge === "Popular" || item.badge === "Bestseller"
+                                  item.badge === "Popular" ||
+                                  item.badge === "Bestseller"
                                     ? "bg-luxury-accent-gold/20 text-luxury-accent-gold border-luxury-accent-gold/30"
                                     : item.badge === "Free"
                                       ? "bg-green-100 text-green-700 border-green-200"
@@ -236,9 +313,15 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
                                         : "bg-luxury-soft-gray text-luxury-charcoal"
                                 }`}
                               >
-                                {item.badge === "Popular" && <TrendingUp className="w-3 h-3 mr-1" />}
-                                {item.badge === "Bestseller" && <Star className="w-3 h-3 mr-1" />}
-                                {item.badge === "Free" && <Sparkles className="w-3 h-3 mr-1" />}
+                                {item.badge === "Popular" && (
+                                  <TrendingUp className="w-3 h-3 mr-1" />
+                                )}
+                                {item.badge === "Bestseller" && (
+                                  <Star className="w-3 h-3 mr-1" />
+                                )}
+                                {item.badge === "Free" && (
+                                  <Sparkles className="w-3 h-3 mr-1" />
+                                )}
                                 {item.badge}
                               </Badge>
                             )}
@@ -251,7 +334,9 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
                         <div className="relative flex-shrink-0">
                           <ChevronRight
                             className={`w-4 h-4 lg:w-5 lg:h-5 text-luxury-warm-wood group-hover:text-luxury-accent-gold transition-all duration-300 group-hover:translate-x-1 ${
-                              hoveredItem === `${index}-${itemIndex}` ? "scale-110" : ""
+                              hoveredItem === `${index}-${itemIndex}`
+                                ? "scale-110"
+                                : ""
                             }`}
                           />
                           {hoveredItem === `${index}-${itemIndex}` && (
@@ -268,18 +353,21 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
 
           <div
             className={`${gridCols === 1 ? "col-span-1 mt-6" : "lg:col-span-1"} transition-all duration-800 ease-out ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
             }`}
             style={{ transitionDelay: "700ms" }}
           >
             <Card className="card-luxury-premium overflow-hidden group hover:shadow-luxury-strong transition-all duration-500 hover:scale-[1.02] transform-gpu">
               <div className="aspect-[4/3] overflow-hidden relative">
-                <img
+                <Image
                   src={menu.featured.image || "/placeholder.svg"}
                   alt={`${menu.featured.name} - Premium custom closet solutions showcase featuring professional installation and design`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  loading="eager"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  loading="eager"
                 />
 
                 <div className="absolute inset-0 bg-luxury-gradient-charcoal opacity-40 group-hover:opacity-60 transition-all duration-500" />
@@ -313,10 +401,17 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
               <CardContent className="space-y-3 lg:space-y-4 p-4 lg:p-6 pt-0">
                 <div className="grid grid-cols-3 gap-1 lg:gap-2">
                   {menu.featured.stats.map((stat, index) => (
-                    <div key={index} className="text-center p-2 bg-luxury-soft-gray/50 rounded-lg">
+                    <div
+                      key={index}
+                      className="text-center p-2 bg-luxury-soft-gray/50 rounded-lg"
+                    >
                       <stat.icon className="w-3 h-3 lg:w-4 lg:h-4 mx-auto mb-1 text-luxury-accent-gold" />
-                      <div className="text-xs font-bold text-luxury-charcoal truncate">{stat.value}</div>
-                      <div className="text-xs text-luxury-warm-wood truncate">{stat.label}</div>
+                      <div className="text-xs font-bold text-luxury-charcoal truncate">
+                        {stat.value}
+                      </div>
+                      <div className="text-xs text-luxury-warm-wood truncate">
+                        {stat.label}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -350,7 +445,8 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
                 <span className="truncate">Ready to Transform Your Space?</span>
               </h4>
               <p className="text-sm lg:text-luxury-body text-luxury-warm-wood line-clamp-2">
-                Ottawa's premier custom closet solutions - designed, fabricated & installed locally
+                Ottawa&apos;s premier custom closet solutions - designed,
+                fabricated & installed locally
               </p>
             </div>
 
@@ -380,5 +476,5 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

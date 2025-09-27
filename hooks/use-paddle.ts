@@ -3,9 +3,16 @@
 import { useEffect, useState } from "react"
 import { calculateTax } from "@/lib/renin-products"
 
+interface PaddleInstance {
+  Setup: (config: { vendor: number; eventCallback?: (data: unknown) => void }) => void;
+  Checkout: {
+    open: (options: PaddleCheckoutOptions) => void;
+  };
+}
+
 declare global {
   interface Window {
-    Paddle: any
+    Paddle: PaddleInstance;
   }
 }
 
@@ -28,7 +35,7 @@ interface PaddleCheckoutOptions {
   frameTarget?: string
   frameInitialHeight?: number
   frameStyle?: string
-  successCallback?: (data: any) => void
+  successCallback?: (data: unknown) => void
   closeCallback?: () => void
 }
 
@@ -50,7 +57,7 @@ export function usePaddle() {
       if (window.Paddle) {
         window.Paddle.Setup({
           vendor: Number.parseInt(config.vendorId),
-          eventCallback: (data: any) => {
+          eventCallback: (data: unknown) => {
             console.log("[v0] Paddle event:", data)
           },
         })

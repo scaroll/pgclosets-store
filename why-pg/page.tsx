@@ -7,13 +7,13 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Why Choose PG Closets | Official Renin Dealer Ottawa",
   description:
-    "Discover why PG Closets is Ottawa's preferred Renin dealer. Local expertise, transparent pricing, professional installation, and comprehensive warranty coverage.",
+    "Discover why PG Closets is Ottawa&apos;s preferred Renin dealer. Local expertise, transparent pricing, professional installation, and comprehensive warranty coverage.",
   keywords:
     "why choose PG Closets, Renin dealer Ottawa, local door company, professional installation Ottawa, transparent pricing, Ottawa closet company",
   openGraph: {
     title: "Why Choose PG Closets | Official Renin Dealer Ottawa",
     description:
-      "Discover why PG Closets is Ottawa's preferred Renin dealer. Local expertise, transparent pricing, and professional service.",
+      "Discover why PG Closets is Ottawa&apos;s preferred Renin dealer. Local expertise, transparent pricing, and professional service.",
     images: [{ url: "/og-why-pg.jpg", width: 1200, height: 630 }],
   },
   alternates: { canonical: "/why-pg" },
@@ -59,7 +59,7 @@ export default function WhyPGPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="headline-large text-4xl md:text-6xl text-pg-dark mb-6">Why Choose PG Closets?</h1>
           <p className="text-xl text-pg-gray mb-8 max-w-3xl mx-auto">
-            As Ottawa's official Renin dealer, we combine premium products with local expertise and transparent service
+            As Ottawa&apos;s official Renin dealer, we combine premium products with local expertise and transparent service
             to deliver exceptional results.
           </p>
         </div>

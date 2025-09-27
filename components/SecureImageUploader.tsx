@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useCallback } from "react"
+import Image from "next/image"
 import { Button } from "../ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import { Progress } from "../ui/progress"
@@ -93,7 +94,7 @@ export function SecureImageUploader({
           try {
             const response = JSON.parse(xhr.responseText)
             resolve(response)
-          } catch (error) {
+          } catch (_error) {
             reject(new Error("Invalid response format"))
           }
         } else {
@@ -124,8 +125,8 @@ export function SecureImageUploader({
         const uploadedFile = await uploadFile(file)
         newUploadedFiles.push(uploadedFile)
         setUploadProgress((prev) => ({ ...prev, [file.name]: 100 }))
-      } catch (error) {
-        uploadErrors.push(`${file.name}: ${error instanceof Error ? error.message : "Upload failed"}`)
+      } catch (_error) {
+        uploadErrors.push(`${file.name}: ${_error instanceof Error ? _error.message : "Upload failed"}`)
         setUploadProgress((prev) => ({ ...prev, [file.name]: -1 })) // -1 indicates error
       }
     }
@@ -244,9 +245,11 @@ export function SecureImageUploader({
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {uploadedFiles.map((file, index) => (
                 <div key={index} className="relative group">
-                  <img
+                  <Image
                     src={file.url || "/placeholder.svg"}
                     alt={file.filename}
+                    width={96}
+                    height={96}
                     className="w-full h-24 object-cover rounded-lg border"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">

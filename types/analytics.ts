@@ -329,7 +329,7 @@ export interface ComponentInteraction {
   action: string
   element?: string
   timestamp: number
-  value?: any
+  value?: number | string
   metadata?: Record<string, any>
 }
 
@@ -487,7 +487,7 @@ export interface UseAnalyticsReturn {
   preferences: CookieConsentPreferences
 
   // E-commerce tracking
-  trackPurchase: (transactionId: string, value: number, items: AnalyticsProductItem[], additionalData?: any) => void
+  trackPurchase: (transactionId: string, value: number, items: AnalyticsProductItem[], additionalData?: Record<string, unknown>) => void
   trackAddToCart: (items: AnalyticsProductItem[], value: number) => void
   trackRemoveFromCart: (items: AnalyticsProductItem[], value: number) => void
   trackViewItem: (itemId: string, itemName: string, itemCategory: string, price: number) => void
@@ -504,13 +504,17 @@ export interface UseAnalyticsReturn {
   trackException: (error: Error | string, fatal?: boolean) => void
 
   // Direct access to GA4 instance
-  ga4: any
+  ga4: {
+    track: (eventName: string, parameters?: Record<string, unknown>) => void;
+    ecommerce: (command: string, data?: Record<string, unknown>) => void;
+    config: (trackingId: string, config?: Record<string, unknown>) => void;
+  }
 }
 
 // Global Analytics Interface
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void
-    dataLayer: any[]
+    gtag: (...args: unknown[]) => void
+    dataLayer: unknown[]
   }
 }

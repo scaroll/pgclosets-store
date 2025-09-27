@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import StandardLayout from "@/components/layout/StandardLayout"
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions | PG Closets Ottawa",
@@ -32,7 +33,7 @@ export default function FAQ() {
     ],
     [
       "Do you do custom sizes?",
-      "Absolutely—we measure and size doors to your exact opening. We'll confirm all dimensions during our complimentary measure visit.",
+  "Absolutely—we measure and size doors to your exact opening. We&apos;ll confirm all dimensions during our complimentary measure visit.",
     ],
     [
       "What's included with installation?",
@@ -52,46 +53,42 @@ export default function FAQ() {
     ],
     [
       "How do I get started?",
-      "Use our online Configurator to design your door and request a quote—we'll follow up within one business day with next steps.",
+  "Use our online Configurator to design your door and request a quote—we&apos;ll follow up within one business day with next steps.",
     ],
     [
       "Are you an official Renin dealer?",
-      "Yes—we're an authorized Renin dealer offering authentic products with professional Ottawa installation and dedicated local support.",
+  "Yes—we&apos;re an authorized Renin dealer offering authentic products with professional Ottawa installation and dedicated local support.",
     ],
   ]
 
   return (
-    <main className="section-apple">
-      <div className="container-apple max-w-4xl">
-        {/* Updated to exact H1 specifications (32-40px) */}
-        <h1 className="text-h1 mb-8" style={{ fontSize: "40px" }}>
+    <StandardLayout>
+      <main className="max-w-4xl mx-auto px-4 py-20">
+        <h1 className="text-4xl md:text-5xl font-extralight tracking-tight text-slate-900 mb-12">
           Frequently Asked Questions
         </h1>
 
-        {/* Updated accordion with exact specifications: 1px border dividers, 24px vertical padding */}
-        <div className="divide-y divide-pg-border">
+        <div className="divide-y divide-slate-200">
           {items.map(([q, a], i) => (
-            <details key={i} className="py-6 group">
-              {/* Summary with H3 weight look (16-18px) and proper focus states */}
-              <summary className="cursor-pointer text-lg font-semibold text-pg-navy hover:text-pg-sky transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-pg-sky focus-visible:outline-offset-2 list-none flex items-center justify-between">
+            <details key={i} className="py-8 group">
+              <summary className="cursor-pointer text-xl font-light text-slate-900 hover:text-slate-700 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-slate-900 focus-visible:outline-offset-2 list-none flex items-center justify-between tracking-wide">
                 <span>{q}</span>
                 <svg
-                  className="w-5 h-5 transition-transform duration-200 group-open:rotate-180"
+                  className="w-5 h-5 transition-transform duration-300 group-open:rotate-180 text-slate-600"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
                 </svg>
               </summary>
-              {/* Body M text with proper spacing */}
-              <p className="text-body-m text-pg-dark mt-4 leading-relaxed" style={{ opacity: 0.8 }}>
+              <p className="text-slate-600 font-light tracking-wide mt-6 leading-relaxed">
                 {a}
               </p>
             </details>
           ))}
         </div>
-      </div>
-    </main>
+      </main>
+    </StandardLayout>
   )
 }

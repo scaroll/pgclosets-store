@@ -167,7 +167,7 @@ class ShopifyHarvester {
         await this.downloadImage(imageUrl, category, storeDomain, productData.handle);
       }
       
-    } catch (error) {
+    } catch (_error) {
       console.warn(`⚠️ Failed to harvest product ${productUrl}:`, error.message);
     }
   }
@@ -191,7 +191,7 @@ class ShopifyHarvester {
             } else {
               resolve(null);
             }
-          } catch (error) {
+          } catch (_error) {
             resolve(null);
           }
         });

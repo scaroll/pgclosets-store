@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String    @id @default(cuid())
+  title       String
+  handle      String    @unique
+  description String
+  thumbnail   String?
+  images      Image[]
+  variants    Variant[]
+  options     Option[]
+  tags        String[]
+  collection  Collection? @relation(fields: [collectionId], references: [id])
+  collectionId String?
+  metadata    Json?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@map("products")
+}
+
+model Image {
+  id        String   @id @default(cuid())
+  url       String
+  altText   String?
+  product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+
+  @@map("images")
+}
+
+model Variant {
+  id                String   @id @default(cuid())
+  title             String
+  sku               String   @unique
+  price             Decimal  @db.Decimal(10, 2)
+  inventoryQuantity Int      @map("inventory_quantity")
+  product           Product? @relation(fields: [productId], references: [id])
+  productId         String?
+
+  @@map("variants")
+}
+
+model Option {
+  id        String   @id @default(cuid())
+  title     String
+  values    String[]
+  product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+
+  @@map("options")
+}
+
+model Collection {
+  id          String    @id @default(cuid())
+  title       String
+  handle      String?
+  products    Product[]
+
+  @@map("collections")
+}
