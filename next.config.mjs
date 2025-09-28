@@ -98,47 +98,12 @@ const nextConfig = {
     ];
   },
 
-  // Critical webpack fix for SSR build issues
-  webpack: (config, { isServer, webpack }) => {
-    // Fix "self is not defined" error in SSR
-    if (isServer) {
-      // Add banner at the top of every file to define self
-      config.plugins.push(
-        new webpack.BannerPlugin({
-          banner: 'if (typeof self === "undefined") { global.self = global; }',
-          raw: true,
-          entryOnly: false,
-        })
-      );
-    }
-
-    // Handle Node.js polyfills
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-      path: false,
-      crypto: false,
-      buffer: false,
-      stream: false,
-      util: false,
-      assert: false,
-      http: false,
-      https: false,
-      os: false,
-      url: false,
-      zlib: false,
-      querystring: false,
-      net: false,
-      tls: false,
-      child_process: false,
-      // Leave global unresolved, will be handled by ProvidePlugin
-    };
-
-    // Provide global variables
+  // Minimal webpack configuration to fix global variable issues
+  webpack: (config, { webpack }) => {
+    // Only add DefinePlugin for global variable definition
     config.plugins.push(
-      new webpack.ProvidePlugin({
-        global: 'globalthis',
-        Buffer: ['buffer', 'Buffer'],
+      new webpack.DefinePlugin({
+        global: 'globalThis',
       })
     );
 

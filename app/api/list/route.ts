@@ -1,6 +1,8 @@
 import { list } from "@vercel/blob"
 import { NextResponse } from "next/server"
 
+export const runtime = 'nodejs'
+
 export async function GET() {
   try {
     // Check if Vercel Blob is configured
@@ -17,9 +19,9 @@ export async function GET() {
 
     const files = blobs.map((blob) => ({
       ...blob,
-      filename: blob.pathname.split("/").pop() || "unknown",
+      filename: blob.pathname?.split("/").pop() || "unknown",
       isImage: false, // Remove contentType check as it may not be available
-      sizeFormatted: formatFileSize(blob.size),
+      sizeFormatted: formatFileSize(blob.size || 0),
       uploadedAt: blob.uploadedAt,
     }))
 

@@ -3,6 +3,8 @@ import { type NextRequest, NextResponse } from "next/server"
 import { SessionManager, InputValidator, SecurityUtils, RateLimiter } from "@/lib/auth"
 import { z } from "zod"
 
+export const runtime = 'nodejs'
+
 // Input validation schema
 const deleteSchema = z.object({
   url: z.string().url("Invalid URL format").refine(

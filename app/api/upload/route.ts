@@ -2,6 +2,8 @@ import { put } from "@vercel/blob"
 import { type NextRequest, NextResponse } from "next/server"
 import { SessionManager, InputValidator, SecurityUtils, RateLimiter } from "@/lib/auth"
 
+export const runtime = 'nodejs'
+
 export async function POST(request: NextRequest) {
   try {
     // Check authentication
