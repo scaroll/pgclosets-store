@@ -137,7 +137,7 @@ const nextConfig = {
   },
 
   // Webpack optimizations
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config, { dev, isServer, webpack }) => {
     // Handle server-side compilation issues
     if (isServer) {
       // Add polyfills for browser globals in SSR
@@ -147,6 +147,13 @@ const nextConfig = {
         path: false,
         crypto: false,
       };
+
+      // Define self for SSR environments
+      config.plugins.push(
+        new webpack.DefinePlugin({
+          self: 'global',
+        })
+      );
     }
 
     // Production optimizations
