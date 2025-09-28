@@ -139,18 +139,18 @@ const nextConfig = {
   // Webpack optimizations
   webpack: (config, { dev, isServer, webpack }) => {
     // Handle server-side compilation issues
-    if (isServer) {
-      // Add polyfills for browser globals in SSR
+    if (!isServer) {
+      // Only apply polyfills for client-side builds
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
         path: false,
         crypto: false,
       };
-
-      // Define self for SSR environments
+    } else {
+      // For server-side, provide self globally
       config.plugins.push(
-        new webpack.DefinePlugin({
+        new webpack.ProvidePlugin({
           self: 'global',
         })
       );
