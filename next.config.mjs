@@ -1,5 +1,3 @@
-import webpack from 'webpack';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -139,9 +137,9 @@ const nextConfig = {
   },
 
   // Webpack optimizations
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config, { dev, isServer, webpack }) => {
     // Fix for SSR builds - polyfill self
-    if (isServer) {
+    if (isServer && webpack) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
       };
