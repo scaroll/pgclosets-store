@@ -1,3 +1,5 @@
+'use client'
+
 "use client"
 
 import { Shield, Award, Users, Clock, CheckCircle, Star } from "lucide-react"

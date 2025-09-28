@@ -1,3 +1,5 @@
+'use client'
+
 "use client"
 
 import { ArrowRight, Calendar, Phone, MessageCircle, Clock } from "lucide-react"

@@ -1,3 +1,5 @@
+'use client'
+
 import { BUSINESS_INFO } from '@/lib/business-config'
 
 interface LocalBusinessInfoProps {

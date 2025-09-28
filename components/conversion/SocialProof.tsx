@@ -1,3 +1,5 @@
+'use client'
+
 "use client"
 
 import { Star, Quote, CheckCircle, MapPin, Calendar } from "lucide-react"

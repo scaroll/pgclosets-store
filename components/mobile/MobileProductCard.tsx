@@ -1,3 +1,5 @@
+'use client'
+
 "use client";
 
 import { formatPrice } from "@/lib/enhanced-renin-products";
