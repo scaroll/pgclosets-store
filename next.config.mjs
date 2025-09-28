@@ -7,9 +7,6 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 
-  // Fix for SSR build issues
-  swcMinify: false,
-
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
@@ -140,7 +137,20 @@ const nextConfig = {
   },
 
   // Webpack optimizations
-  webpack: (config, { dev }) => {
+  webpack: (config, { dev, isServer }) => {
+    // Fix for SSR builds - polyfill self
+    if (isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+      };
+      // Polyfill self for server-side
+      config.plugins.push(
+        new config.webpack.DefinePlugin({
+          self: 'global',
+        })
+      );
+    }
+
     // Production optimizations
     if (!dev) {
       config.optimization = {
