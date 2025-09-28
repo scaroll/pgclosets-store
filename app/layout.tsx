@@ -120,6 +120,10 @@ export default function RootLayout({
         />
 
         {/* SEO Meta Tags for Ottawa Local Search */}
+        {/* Essential Mobile Viewport */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+
+        {/* Geographic and Local Business Meta */}
         <meta name="geo.region" content={`CA-${BUSINESS_INFO.address.province}`} />
         <meta name="geo.placename" content={BUSINESS_INFO.address.city} />
         <meta name="geo.position" content={`${BUSINESS_INFO.coordinates.latitude};${BUSINESS_INFO.coordinates.longitude}`} />
@@ -206,9 +210,10 @@ export default function RootLayout({
 
         {/* Performance Monitoring */}
         <PerformanceMonitor />
-
-        {/* <Analytics /> */}
-        {/* <SpeedInsights /> */}
+        <Suspense fallback={null}>
+          {/* <Analytics /> */}
+          {/* <SpeedInsights /> */}
+        </Suspense>
       </body>
     </html>
   );

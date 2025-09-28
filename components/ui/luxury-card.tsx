@@ -16,7 +16,10 @@ interface LuxuryCardProps {
   onClick?: () => void
   children?: ReactNode
   className?: string
-  variant?: "default" | "featured" | "minimal"
+  variant?: "default" | "featured" | "minimal" | "premium" | "testimonial" | "hero"
+  shimmer?: boolean
+  glow?: boolean
+  overlay?: boolean
 }
 
 export function LuxuryCard({
@@ -30,7 +33,10 @@ export function LuxuryCard({
   onClick,
   children,
   className,
-  variant = "default"
+  variant = "default",
+  shimmer = false,
+  glow = false,
+  overlay = false
 }: LuxuryCardProps) {
   const baseStyles = cn(
     "bg-white overflow-hidden transition-all duration-500",
@@ -42,13 +48,37 @@ export function LuxuryCard({
   const variantStyles = {
     default: "",
     featured: "ring-2 ring-amber-400 ring-offset-2",
-    minimal: "border-0 shadow-md hover:shadow-lg"
+    minimal: "border-0 shadow-md hover:shadow-lg",
+    premium: cn(
+      "border-2 border-amber-200 bg-gradient-to-br from-white via-amber-50/20 to-white",
+      "shadow-lg shadow-amber-500/10",
+      glow && "luxury-glow-effect"
+    ),
+    testimonial: "bg-gradient-to-br from-white via-slate-50/30 to-white border-slate-200/40 shadow-xl",
+    hero: "bg-gradient-to-br from-white/95 to-slate-50/95 border-white/60 backdrop-blur-md shadow-2xl"
   }
 
   const cardContent = (
     <>
-      {/* Subtle gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
+      {/* Enhanced overlay effects */}
+      {overlay && (
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50/50 via-transparent to-amber-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
+      )}
+
+      {/* Premium gradient overlay */}
+      {variant === "premium" && (
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-amber-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
+      )}
+
+      {/* Hero card special effects */}
+      {variant === "hero" && (
+        <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-slate-50/40 to-amber-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10" />
+      )}
+
+      {/* Shimmer effect */}
+      {shimmer && (
+        <div className="absolute inset-0 -top-px bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1500 ease-in-out z-20" />
+      )}
 
       {/* Image Section */}
       {image && (
