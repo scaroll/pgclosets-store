@@ -4,7 +4,11 @@ import "./globals.css";
 import ClientLayout from "./clientLayout";
 import PerformanceMonitor from "../components/performance/performance-monitor";
 import { BUSINESS_INFO } from "../lib/business-config";
-import { generateLocalBusinessSchema, generateWebSiteSchema, generateOrganizationSchema } from "../lib/seo/local-business-schema";
+import {
+  generateLocalBusinessSchema,
+  generateWebSiteSchema,
+  generateOrganizationSchema,
+} from "../lib/seo/local-business-schema";
 import type React from "react";
 import { Suspense } from "react";
 import Script from "next/script";
@@ -121,13 +125,25 @@ export default function RootLayout({
 
         {/* SEO Meta Tags for Ottawa Local Search */}
         {/* Essential Mobile Viewport */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=5"
+        />
 
         {/* Geographic and Local Business Meta */}
-        <meta name="geo.region" content={`CA-${BUSINESS_INFO.address.province}`} />
+        <meta
+          name="geo.region"
+          content={`CA-${BUSINESS_INFO.address.province}`}
+        />
         <meta name="geo.placename" content={BUSINESS_INFO.address.city} />
-        <meta name="geo.position" content={`${BUSINESS_INFO.coordinates.latitude};${BUSINESS_INFO.coordinates.longitude}`} />
-        <meta name="ICBM" content={`${BUSINESS_INFO.coordinates.latitude}, ${BUSINESS_INFO.coordinates.longitude}`} />
+        <meta
+          name="geo.position"
+          content={`${BUSINESS_INFO.coordinates.latitude};${BUSINESS_INFO.coordinates.longitude}`}
+        />
+        <meta
+          name="ICBM"
+          content={`${BUSINESS_INFO.coordinates.latitude}, ${BUSINESS_INFO.coordinates.longitude}`}
+        />
         <meta name="distribution" content="local" />
         <meta name="coverage" content="Ottawa, Ontario, Canada" />
         <meta name="target" content="all" />
@@ -135,12 +151,22 @@ export default function RootLayout({
         <meta name="MobileOptimized" content="320" />
 
         {/* Local Business Verification */}
-        <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION} />
-        <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_VERIFICATION} />
+        <meta
+          name="google-site-verification"
+          content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION}
+        />
+        <meta
+          name="msvalidate.01"
+          content={process.env.NEXT_PUBLIC_BING_VERIFICATION}
+        />
 
         {/* Preconnect to important domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
 

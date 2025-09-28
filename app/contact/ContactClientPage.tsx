@@ -1,13 +1,16 @@
-"use client"
+"use client";
 
-import dynamic from "next/dynamic"
-import Image from "next/image"
-import Link from "next/link"
-import StandardLayout from "@/components/layout/StandardLayout"
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import Link from "next/link";
+import StandardLayout from "@/components/layout/StandardLayout";
 
 // Dynamically import the contact form to reduce initial bundle size
 const ContactForm = dynamic(
-  () => import("@/components/contact/ContactForm").then(mod => ({ default: mod.ContactForm })),
+  () =>
+    import("@/components/contact/ContactForm").then((mod) => ({
+      default: mod.ContactForm,
+    })),
   {
     loading: () => (
       <div className="py-8">
@@ -22,9 +25,9 @@ const ContactForm = dynamic(
         </div>
       </div>
     ),
-    ssr: false
+    ssr: false,
   }
-)
+);
 
 export default function ContactClientPage() {
   return (
@@ -41,10 +44,15 @@ export default function ContactClientPage() {
       </div>
 
       <section className="max-w-[1200px] mx-auto px-6 py-12">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-[#1B4A9C] mb-4">Request Work</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-[#1B4A9C] mb-4">
+          Request Work
+        </h1>
         <p className="mt-2 text-slate-600 mb-8">
           Use the form below to tell us about your project. Prefer email?{" "}
-          <a className="underline text-[#1B4A9C] hover:text-[#9BC4E2]" href="mailto:info@pgclosets.com">
+          <a
+            className="underline text-[#1B4A9C] hover:text-[#9BC4E2]"
+            href="mailto:info@pgclosets.com"
+          >
             info@pgclosets.com
           </a>
         </p>
@@ -74,33 +82,53 @@ export default function ContactClientPage() {
                 </div>
               </Link>
               <p className="text-gray-600 mb-6">
-                Ottawa&apos;s premier closet door specialists, transforming homes with premium solutions.
+                Ottawa&apos;s premier closet door specialists, transforming
+                homes with premium solutions.
               </p>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-[#1B4A9C]">Sitemap</h4>
+              <h4 className="text-lg font-semibold mb-4 text-[#1B4A9C]">
+                Sitemap
+              </h4>
               <div className="space-y-2">
-                <Link href="/" className="block text-gray-600 hover:text-[#1B4A9C]">
+                <Link
+                  href="/"
+                  className="block text-gray-600 hover:text-[#1B4A9C]"
+                >
                   Home
                 </Link>
-                <Link href="/products" className="block text-gray-600 hover:text-[#1B4A9C]">
+                <Link
+                  href="/products"
+                  className="block text-gray-600 hover:text-[#1B4A9C]"
+                >
                   Products
                 </Link>
-                <Link href="/about" className="block text-gray-600 hover:text-[#1B4A9C]">
+                <Link
+                  href="/about"
+                  className="block text-gray-600 hover:text-[#1B4A9C]"
+                >
                   About
                 </Link>
-                <Link href="/services" className="block text-gray-600 hover:text-[#1B4A9C]">
+                <Link
+                  href="/services"
+                  className="block text-gray-600 hover:text-[#1B4A9C]"
+                >
                   Services
                 </Link>
-                <Link href="/contact" className="block text-gray-600 hover:text-[#1B4A9C]">
+                <Link
+                  href="/contact"
+                  className="block text-gray-600 hover:text-[#1B4A9C]"
+                >
                   Contact
                 </Link>
               </div>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-[#1B4A9C]">Contact</h4>
+              <h4 className="text-lg font-semibold mb-4 text-[#1B4A9C]">
+                Contact
+              </h4>
               <div className="space-y-2 text-gray-600">
                 <div>(613) 422-5800</div>
                 <div>info@pgclosets.com</div>
@@ -108,7 +136,9 @@ export default function ContactClientPage() {
                 {/* Added business hours section */}
                 <div className="mt-4 pt-4 border-t border-gray-200">
                   <div className="text-sm">
-                    <div className="font-semibold text-[#1B4A9C] mb-2">Business Hours:</div>
+                    <div className="font-semibold text-[#1B4A9C] mb-2">
+                      Business Hours:
+                    </div>
                     <div>Mon-Fri: 8:00 AM - 6:00 PM</div>
                     <div>Sat: 9:00 AM - 4:00 PM</div>
                     <div>Sun: By Appointment</div>
@@ -141,5 +171,5 @@ export default function ContactClientPage() {
         </div>
       </section>
     </StandardLayout>
-  )
+  );
 }

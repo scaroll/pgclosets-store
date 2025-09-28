@@ -3,21 +3,21 @@ import { cva, type VariantProps } from "@/lib/utils"
 import { cn } from "@/lib/utils"
 
 const inputVariants = cva(
-  "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "file:text-pg-text-primary placeholder:text-pg-text-muted selection:bg-pg-button-primary selection:text-white border-pg-button-secondary flex w-full min-w-0 rounded-lg border-2 bg-white px-3 py-2 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-pg-button-primary focus-visible:ring-pg-sky focus-visible:ring-2 focus-visible:ring-offset-2 aria-invalid:ring-pg-status-error/20 aria-invalid:border-pg-status-error min-h-[44px]",
   {
     variants: {
       variant: {
         default: "",
-        brand: "border-primary/30 focus-visible:border-primary focus-visible:ring-primary/20 hover:border-primary/50",
-        ghost: "border-transparent bg-muted/30 focus-visible:bg-background focus-visible:border-primary",
+        brand: "border-pg-button-primary/30 focus-visible:border-pg-button-primary focus-visible:ring-pg-sky hover:border-pg-button-primary/50",
+        ghost: "border-transparent bg-slate-100 focus-visible:bg-white focus-visible:border-pg-button-primary",
         underline:
-          "border-0 border-b-2 border-muted-foreground/30 rounded-none focus-visible:border-primary focus-visible:ring-0 px-0",
+          "border-0 border-b-2 border-pg-text-muted rounded-none focus-visible:border-pg-button-primary focus-visible:ring-0 px-0",
       },
       size: {
-        sm: "h-8 text-sm px-2",
-        default: "h-9",
-        lg: "h-11 px-4 text-base",
-        xl: "h-12 px-4 text-lg",
+        sm: "h-10 text-sm px-2 min-h-[44px]",
+        default: "h-11 min-h-[44px]",
+        lg: "h-12 px-4 text-base min-h-[44px]",
+        xl: "h-14 px-4 text-lg min-h-[44px]",
       },
     },
     defaultVariants: {
