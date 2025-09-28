@@ -8,7 +8,6 @@ const nextConfig = {
   },
 
   // Performance optimizations
-  swcMinify: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
@@ -40,15 +39,6 @@ const nextConfig = {
       '@radix-ui/react-accordion',
       'framer-motion',
     ],
-    // Enable turbo mode for faster development
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
   },
 
   // Image optimization
