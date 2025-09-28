@@ -7,6 +7,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 
+  // Fix for SSR build issues
+  swcMinify: false,
+
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
