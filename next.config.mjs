@@ -137,23 +137,15 @@ const nextConfig = {
   },
 
   // Webpack optimizations
-  webpack: (config, { dev, isServer, webpack }) => {
-    // Handle server-side compilation issues
+  webpack: (config, { dev, isServer }) => {
+    // Polyfill Node.js globals for client-side
     if (!isServer) {
-      // Only apply polyfills for client-side builds
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
         path: false,
         crypto: false,
       };
-    } else {
-      // For server-side, provide self globally
-      config.plugins.push(
-        new webpack.ProvidePlugin({
-          self: 'global',
-        })
-      );
     }
 
     // Production optimizations
