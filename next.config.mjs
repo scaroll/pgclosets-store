@@ -1,3 +1,5 @@
+import webpack from 'webpack';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -145,7 +147,7 @@ const nextConfig = {
       };
       // Polyfill self for server-side
       config.plugins.push(
-        new config.webpack.DefinePlugin({
+        new webpack.DefinePlugin({
           self: 'global',
         })
       );
