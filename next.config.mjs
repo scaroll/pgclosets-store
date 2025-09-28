@@ -12,13 +12,6 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === "production",
   },
 
-  // Bundle analyzer
-  ...(process.env.ANALYZE === "true" && {
-    bundleAnalyzer: {
-      enabled: true,
-    },
-  }),
-
   experimental: {
     serverActions: {
       allowedOrigins:
@@ -75,11 +68,7 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
-    // Image optimization settings
     formats: ["image/webp", "image/avif"],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
   },
 
   // Headers for performance
@@ -106,99 +95,52 @@ const nextConfig = {
           },
         ],
       },
-      {
-        source: "/api/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=60, s-maxage=60, stale-while-revalidate=59",
-          },
-        ],
-      },
-      {
-        source: "/_next/static/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        source: "/images/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
     ];
   },
 
-  // Webpack optimizations
-  webpack: (config, { dev, isServer }) => {
-    // Polyfill Node.js globals for client-side
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        path: false,
-        crypto: false,
-      };
-    }
-
-    // Production optimizations
-    if (!dev) {
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: {
-          chunks: "all",
-          cacheGroups: {
-            default: false,
-            vendors: false,
-            vendor: {
-              name: "vendor",
-              chunks: "all",
-              test: /node_modules/,
-              priority: 20,
-            },
-            common: {
-              name: "common",
-              minChunks: 2,
-              chunks: "all",
-              priority: 10,
-              reuseExistingChunk: true,
-              enforce: true,
-            },
-            // Separate chunk for large libraries
-            radixui: {
-              name: "radix-ui",
-              test: /@radix-ui/,
-              chunks: "all",
-              priority: 30,
-            },
-            framermotion: {
-              name: "framer-motion",
-              test: /framer-motion/,
-              chunks: "all",
-              priority: 30,
-            },
-          },
-        },
-      };
-    }
-
-    // Bundle analyzer
-    if (process.env.ANALYZE === "true") {
-      const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+  // Critical webpack fix for SSR build issues
+  webpack: (config, { isServer, webpack }) => {
+    // Fix "self is not defined" error in SSR
+    if (isServer) {
+      // Add banner at the top of every file to define self
       config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: "static",
-          openAnalyzer: false,
+        new webpack.BannerPlugin({
+          banner: 'if (typeof self === "undefined") { global.self = global; }',
+          raw: true,
+          entryOnly: false,
         })
       );
     }
+
+    // Handle Node.js polyfills
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      path: false,
+      crypto: false,
+      buffer: false,
+      stream: false,
+      util: false,
+      assert: false,
+      http: false,
+      https: false,
+      os: false,
+      url: false,
+      zlib: false,
+      querystring: false,
+      net: false,
+      tls: false,
+      child_process: false,
+      // Leave global unresolved, will be handled by ProvidePlugin
+    };
+
+    // Provide global variables
+    config.plugins.push(
+      new webpack.ProvidePlugin({
+        global: 'globalthis',
+        Buffer: ['buffer', 'Buffer'],
+      })
+    );
 
     return config;
   },
