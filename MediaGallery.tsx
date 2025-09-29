@@ -27,7 +27,7 @@ export function MediaGallery({
   selectable = false,
   onSelect,
   selectedFiles = [],
-  maxSelections = 1,
+  maxSelections: _maxSelections = 1,
   fileTypes = [],
 }: MediaGalleryProps) {
   const [files, setFiles] = useState<BlobFile[]>([])
