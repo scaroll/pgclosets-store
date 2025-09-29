@@ -28,7 +28,7 @@ interface MediaSelectorProps {
 
 export function MediaSelector({
   onSelect,
-  selectedFiles = [],
+  selectedFiles: _selectedFiles = [],
   maxSelections = 1,
   fileTypes = [".jpg", ".jpeg", ".png", ".gif", ".webp"],
   trigger,
