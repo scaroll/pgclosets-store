@@ -7,23 +7,23 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-slate-900 text-white shadow-sm hover:bg-slate-800",
-        destructive: "bg-red-600 text-white shadow-sm hover:bg-red-700",
+        default: "bg-slate-900 text-white shadow hover:bg-slate-800",
+        destructive: "bg-red-600 text-white shadow hover:bg-red-700",
         outline:
           "border border-slate-300 bg-white shadow-sm hover:bg-slate-50 hover:text-slate-900",
         secondary: "bg-slate-100 text-slate-900 shadow-sm hover:bg-slate-200",
         ghost: "hover:bg-slate-100 hover:text-slate-900",
         link: "text-blue-600 underline-offset-4 hover:underline",
         primary:
-          "bg-pg-navy text-white hover:bg-[#1e3461] hover:-translate-y-0.5 active:translate-y-0 shadow-sm hover:shadow-lg",
+          "bg-blue-600 text-white hover:bg-blue-700 shadow hover:shadow-md",
         "brand-primary":
-          "bg-navy-900 text-white hover:bg-navy-800 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-semibold",
+          "bg-navy-900 text-white hover:bg-navy-800 shadow-md hover:shadow-lg transition-all duration-300",
         "brand-secondary":
-          "bg-sky-500 text-white hover:bg-sky-600 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-semibold",
+          "bg-sky-500 text-white hover:bg-sky-600 shadow-md hover:shadow-lg transition-all duration-300",
         "brand-outline":
-          "border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white bg-transparent shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 font-semibold",
+          "border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white bg-transparent shadow-sm hover:shadow-md transition-all duration-300",
         "brand-ghost":
-          "text-navy-900 hover:bg-navy-100 hover:text-navy-900 transition-all duration-200 hover:scale-105 font-medium",
+          "text-navy-900 hover:bg-navy-100 hover:text-navy-900 transition-all duration-200",
       },
       size: {
         sm: "h-8 px-3 py-1.5 text-xs",

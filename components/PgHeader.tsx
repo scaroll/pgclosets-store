@@ -24,10 +24,10 @@ export default function PgHeader() {
             className="flex items-center gap-2 hover:opacity-90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 rounded-lg py-1 px-2 group"
             aria-label="PG Closets - Go to homepage"
           >
-            <div className="relative w-8 h-8">
+            <div className="relative w-10 h-10">
               <PGLogo
-                width={32}
-                height={32}
+                width={40}
+                height={40}
                 withWordmark={false}
                 aria-hidden="true"
                 className="text-slate-900 group-hover:scale-105 transition-transform duration-300"

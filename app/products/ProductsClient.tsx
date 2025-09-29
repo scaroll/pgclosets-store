@@ -148,7 +148,7 @@ const filterProducts = (products: Product[], filters: ActiveFilters): Product[] 
 };
 
 const ProductCard = ({ product }: { product: Product }) => (
-  <div className="bg-white shadow-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 border border-gray-100">
+  <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg border border-gray-200">
     <Link href={`/products/${product.handle}`} className="block">
       <div className="relative aspect-square bg-gray-50 overflow-hidden">
         <Image
@@ -158,25 +158,27 @@ const ProductCard = ({ product }: { product: Product }) => (
           className="object-cover hover:scale-105 transition-transform duration-300"
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
-        <div className="absolute top-2 left-2 bg-slate-900 text-white px-3 py-1 text-xs font-light tracking-widest uppercase">
-          Premium
-        </div>
+        {product.variants[0]?.price && product.variants[0]?.price > 500 && (
+          <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 text-xs font-medium uppercase">
+            Premium
+          </div>
+        )}
       </div>
     </Link>
-    <div className="p-6">
-      <h3 className="text-xl font-light text-slate-900 mb-2 tracking-wide">{product.title}</h3>
-      <p className="text-slate-600 text-sm mb-4 line-clamp-2 font-light">{product.description}</p>
-      <div className="text-3xl font-extralight text-slate-900 mb-6 tracking-tight">
+    <div className="p-4">
+      <h3 className="text-lg font-semibold text-gray-900 mb-2">{product.title}</h3>
+      <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
+      <div className="text-xl font-bold text-gray-900 mb-4">
         {formatPrice(product.variants[0]?.price || 0)}
       </div>
       <div className="flex gap-2">
         <Link
           href={`/products/${product.handle}`}
-          className="flex-1 bg-slate-900 text-white py-3 font-light hover:bg-slate-800 transition-all duration-500 hover:shadow-xl text-sm uppercase tracking-widest text-center"
+          className="flex-1 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors text-center text-sm font-medium"
         >
           View Details
         </Link>
-        <button className="px-4 py-3 border border-slate-300 text-slate-700 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 text-sm uppercase tracking-widest font-light">
+        <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors text-sm font-medium">
           Quote
         </button>
       </div>

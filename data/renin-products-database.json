@@ -1,0 +1,211 @@
+{
+  "products": [
+    {
+      "id": "barn-gatsby-chevron",
+      "name": "Gatsby Chevron Barn Door",
+      "slug": "gatsby-chevron-barn-door",
+      "price": 799,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "/renin_images/barn_doors/gatsby_chevron_main.jpg",
+        "/renin_images/barn_doors/gatsby_chevron_detail.jpg",
+        "/renin_images/barn_doors/gatsby_chevron_installed.jpg"
+      ],
+      "description": "Premium sliding barn door featuring distinctive chevron pattern design. Crafted from high-quality materials with smooth-gliding hardware system.",
+      "features": [
+        "Chevron pattern design",
+        "Smooth-gliding track system",
+        "Premium hardware included",
+        "Professional installation available",
+        "Lifetime warranty"
+      ],
+      "specifications": {
+        "Material": "Engineered wood with laminate finish",
+        "Thickness": "1.375 inches",
+        "Standard Sizes": "24\", 28\", 30\", 32\", 36\"",
+        "Hardware": "Soft-close track system included",
+        "Finish": "Multiple finish options available"
+      },
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "barn-sherwood-invisiglide",
+      "name": "Sherwood InvisiGlide Barn Door",
+      "slug": "sherwood-invisiglide-barn-door",
+      "price": 899,
+      "category": "barn",
+      "subcategory": "sliding",
+      "images": [
+        "/renin_images/barn_doors/sherwood_invisiglide_main.jpg",
+        "/renin_images/barn_doors/sherwood_invisiglide_detail.jpg"
+      ],
+      "description": "Elegant barn door with InvisiGlide technology for ultra-quiet operation. Features rich wood grain texture and premium finish.",
+      "features": [
+        "InvisiGlide quiet operation",
+        "Rich wood grain texture",
+        "Premium finish options",
+        "Easy installation system",
+        "Canadian craftsmanship"
+      ],
+      "specifications": {
+        "Material": "Solid wood construction",
+        "Thickness": "1.5 inches",
+        "Standard Sizes": "28\", 30\", 32\", 36\"",
+        "Hardware": "InvisiGlide track system",
+        "Finish": "Natural wood stains available"
+      },
+      "inStock": true,
+      "featured": true
+    },
+    {
+      "id": "bypass-harmony-1-lite",
+      "name": "Harmony 1-Lite Bypass Door",
+      "slug": "harmony-1-lite-bypass-door",
+      "price": 549,
+      "category": "bypass",
+      "subcategory": "sliding",
+      "images": [
+        "/renin_images/bypass_doors/harmony_1_lite_main.jpg",
+        "/renin_images/bypass_doors/harmony_1_lite_detail.jpg"
+      ],
+      "description": "Space-saving bypass door system with single frosted glass panel. Perfect for modern closet applications.",
+      "features": [
+        "Space-saving design",
+        "Frosted glass panel",
+        "Smooth bypass operation",
+        "Modern aesthetic",
+        "Easy maintenance"
+      ],
+      "specifications": {
+        "Material": "Aluminum frame with glass",
+        "Glass Type": "Frosted safety glass",
+        "Standard Sizes": "48\", 60\", 72\", 96\"",
+        "Hardware": "Bypass track system included",
+        "Frame": "Anodized aluminum"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "bifold-euro-3-lite",
+      "name": "Euro 3-Lite Bifold Door",
+      "slug": "euro-3-lite-bifold-door",
+      "price": 449,
+      "category": "bifold",
+      "subcategory": "folding",
+      "images": [
+        "/renin_images/bifold_doors/euro_3_lite_main.jpg",
+        "/renin_images/bifold_doors/euro_3_lite_detail.jpg"
+      ],
+      "description": "Contemporary bifold door with three glass panels. Maximizes opening space while maintaining style.",
+      "features": [
+        "Three glass panel design",
+        "Space-maximizing fold",
+        "Contemporary styling",
+        "Smooth operation",
+        "Durable construction"
+      ],
+      "specifications": {
+        "Material": "Wood frame with glass panels",
+        "Glass Type": "Clear tempered glass",
+        "Standard Sizes": "24\", 30\", 32\", 36\"",
+        "Hardware": "Pivot hinge system",
+        "Frame": "Solid wood construction"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "pivot-provincial-8-lite",
+      "name": "Provincial 8-Lite Pivot Door",
+      "slug": "provincial-8-lite-pivot-door",
+      "price": 499,
+      "category": "pivot",
+      "subcategory": "hinged",
+      "images": [
+        "/renin_images/pivot_doors/provincial_8_lite_main.jpg",
+        "/renin_images/pivot_doors/provincial_8_lite_detail.jpg"
+      ],
+      "description": "Classic pivot door with eight glass panels in traditional provincial style. Timeless elegance for any home.",
+      "features": [
+        "Eight glass panel design",
+        "Provincial styling",
+        "Pivot hinge system",
+        "Traditional elegance",
+        "Quality craftsmanship"
+      ],
+      "specifications": {
+        "Material": "Solid wood with glass",
+        "Glass Type": "Clear glass panels",
+        "Standard Sizes": "28\", 30\", 32\", 36\"",
+        "Hardware": "Heavy-duty pivot hinges",
+        "Frame": "Solid wood construction"
+      },
+      "inStock": true,
+      "featured": false
+    },
+    {
+      "id": "hardware-soft-close-track",
+      "name": "Soft-Close Track System",
+      "slug": "soft-close-track-system",
+      "price": 159,
+      "category": "hardware",
+      "subcategory": "tracks",
+      "images": [
+        "/renin_images/hardware/soft_close_track_main.jpg",
+        "/renin_images/hardware/soft_close_track_detail.jpg"
+      ],
+      "description": "Premium soft-close track system for barn doors. Ensures quiet, controlled closing every time.",
+      "features": [
+        "Soft-close mechanism",
+        "Quiet operation",
+        "Easy installation",
+        "Adjustable settings",
+        "Premium materials"
+      ],
+      "specifications": {
+        "Material": "Stainless steel",
+        "Length": "6ft, 8ft, 10ft options",
+        "Weight Capacity": "Up to 200 lbs",
+        "Finish": "Brushed stainless steel",
+        "Installation": "Wall-mounted"
+      },
+      "inStock": true,
+      "featured": false
+    }
+  ],
+  "categories": [
+    {
+      "id": "barn",
+      "name": "Barn Doors",
+      "description": "Sliding barn doors for modern and rustic applications",
+      "image": "/categories/barn-doors.jpg"
+    },
+    {
+      "id": "bypass",
+      "name": "Bypass Doors",
+      "description": "Space-saving bypass door systems",
+      "image": "/categories/bypass-doors.jpg"
+    },
+    {
+      "id": "bifold",
+      "name": "Bifold Doors",
+      "description": "Folding doors that maximize opening space",
+      "image": "/categories/bifold-doors.jpg"
+    },
+    {
+      "id": "pivot",
+      "name": "Pivot Doors",
+      "description": "Traditional hinged doors with pivot systems",
+      "image": "/categories/pivot-doors.jpg"
+    },
+    {
+      "id": "hardware",
+      "name": "Hardware",
+      "description": "Premium hardware and accessories",
+      "image": "/categories/hardware.jpg"
+    }
+  ]
+}

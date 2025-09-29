@@ -39,6 +39,8 @@ const nextConfig = {
     domains: [
       "www.pgclosets.com",
       "pgclosets.com",
+      "www.renin.com",
+      "renin.com",
       "cdn.renin.com",
       "images.unsplash.com",
       "hebbkx1anhila5yf.public.blob.vercel-storage.com",
@@ -51,6 +53,16 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "pgclosets.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.renin.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "renin.com",
+        pathname: "/**",
       },
       {
         protocol: "https",

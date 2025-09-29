@@ -48,13 +48,13 @@ export interface Category {
   productCount?: number
 }
 
-// Premium categories with luxury descriptions
+// Product categories with simple descriptions
 export const categories: Category[] = [
   {
     id: "barn-doors",
     name: "Barn Door Systems",
     slug: "barn-doors",
-    description: "Premium barn door solutions with whisper-quiet hardware and artisan craftsmanship",
+    description: "Sliding barn doors with smooth hardware for easy installation",
     image: "/images/arcat/barn-door-hero.jpg",
     productCount: 20
   },
@@ -62,7 +62,7 @@ export const categories: Category[] = [
     id: "interior-doors",
     name: "Interior Doors",
     slug: "interior-doors",
-    description: "Sophisticated interior doors including sliding, French, bifold, and pocket styles",
+    description: "Interior doors including sliding, French, bifold, and pocket styles",
     image: "/images/arcat/interior-doors-hero.jpg",
     productCount: 30
   },
@@ -70,7 +70,7 @@ export const categories: Category[] = [
     id: "closet-systems",
     name: "Closet Systems",
     slug: "closet-systems",
-    description: "Complete closet solutions with premium finishes and European-inspired hardware",
+    description: "Complete closet door systems with quality hardware included",
     image: "/images/arcat/closet-systems-hero.jpg",
     productCount: 25
   },
@@ -78,7 +78,7 @@ export const categories: Category[] = [
     id: "room-dividers",
     name: "Room Dividers",
     slug: "room-dividers",
-    description: "Elegant room dividers for flexible living spaces and modern open concepts",
+    description: "Room dividers for creating separate spaces in open floor plans",
     image: "/images/arcat/room-dividers-hero.jpg",
     productCount: 15
   },
@@ -86,15 +86,15 @@ export const categories: Category[] = [
     id: "glass-mirrors",
     name: "Glass & Mirror Doors",
     slug: "glass-mirrors",
-    description: "Designer glass doors and mirror systems for light-filled, spacious interiors",
+    description: "Glass and mirror doors to brighten rooms and create space",
     image: "/images/arcat/glass-mirrors-hero.jpg",
     productCount: 20
   },
   {
     id: "hardware",
-    name: "Premium Hardware",
+    name: "Door Hardware",
     slug: "hardware",
-    description: "Professional-grade hardware and accessories for flawless installations",
+    description: "Quality door hardware and accessories for reliable installation",
     image: "/images/arcat/hardware-hero.jpg",
     productCount: 10
   }
@@ -118,7 +118,7 @@ function transformReninProduct(reninProduct: any): Product {
     specifications: reninProduct.specifications || {},
     inStock: reninProduct.inStock ?? true,
     featured: reninProduct.price > 500 || hasHDImages(reninProduct.id),
-    sku: `PG-${reninProduct.id}`,
+    sku: reninProduct.sku || `REN-${reninProduct.id.toString().padStart(4, '0')}`,  // Proper Renin SKU format
     image: primaryImage,
     installationTime: reninProduct.installationTime,
     variants: generateVariants(reninProduct),
@@ -158,18 +158,18 @@ function getProductImages(product: any): string[] {
   return getEnhancedProductImages(product);
 }
 
-// Generate premium description if missing
+// Generate simple description if missing with local SEO
 function generateDescription(product: any): string {
   const categoryDescriptions: Record<string, string> = {
-    'barn': 'Premium barn door system with smooth-gliding hardware and artisan craftsmanship',
-    'sliding': 'Elegant sliding door solution for seamless room transitions',
-    'bifold': 'Space-saving bifold design with premium hardware and finishes',
-    'closet': 'Complete closet door system for organized, beautiful storage',
-    'glass': 'Designer glass door for light-filled, modern interiors',
-    'mirror': 'Mirrored door system to enhance space and natural light'
+    'barn': 'Renin barn door with smooth hardware. Installation services available in Ottawa, Kanata, and Orleans. Comes with manufacturer warranty.',
+    'sliding': 'Renin sliding door for saving space. Good for Ottawa homes and condos. Installation services available separately.',
+    'bifold': 'Renin bifold door with quality hardware. Works well for closets and laundry rooms. Installation available in Ottawa area.',
+    'closet': 'Renin closet door system for better organization. Popular with Ottawa homeowners. Measurement and installation services available.',
+    'glass': 'Renin glass door to let in more light. Energy-efficient option. Available in Ottawa, Kanata, and Orleans.',
+    'mirror': 'Renin mirror door to make rooms look bigger. Good for small spaces. Installation services available with warranty.'
   }
   return categoryDescriptions[product.category?.toLowerCase()] ||
-    `Premium ${product.name} - Professional installation available in Ottawa`
+    `Renin ${product.name} - Installation services available in Ottawa, Kanata, and Orleans. Authorized dealer with warranty support.`
 }
 
 // Generate product variants based on common sizes
@@ -242,6 +242,21 @@ export function formatProductPrice(price: number): string {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
   }).format(price)
+}
+
+// Get contractor pricing (15% discount)
+export function getContractorPrice(price: number): string {
+  const contractorPrice = price * 0.85
+  return formatProductPrice(contractorPrice)
+}
+
+// Check if product qualifies for bundle discount
+export function getBundlePrice(product: Product, includeHardware: boolean = false): number {
+  if (includeHardware && product.category !== 'hardware') {
+    // 10% discount when buying door with hardware
+    return Math.round(product.price * 0.9)
+  }
+  return product.price
 }
 
 // Get installation information

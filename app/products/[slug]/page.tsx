@@ -1,11 +1,8 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import { getProductByHandle, getProducts } from "@/lib/actions/commerce";
 import { formatPrice } from "@/lib/utils";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import StandardLayout from "@/components/layout/StandardLayout";
+import { EnhancedProductDetailPage } from "@/components/product/EnhancedProductDetailPage";
 
 export const dynamic = "force-static";
 
@@ -47,7 +44,6 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const product = await getProductByHandle(slug);
   if (!product) return notFound();
 
-  const priceText = `From ${formatPrice(product.variants[0]?.price)} CAD`;
   const relatedProducts = (await getProducts({ collection: product.collection?.handle })).filter(p => p.id !== product.id).slice(0, 3);
 
   return (
@@ -97,93 +93,26 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           })
         }}
       />
-      <main className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <section className="grid lg:grid-cols-2 gap-10 mb-12">
-            <div className="bg-white shadow-xl overflow-hidden min-h-[320px] lg:min-h-[480px] relative">
-              <Image
-                src={product.thumbnail || '/placeholder.svg'}
-                alt={product.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority={true}
-              />
-            </div>
-
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <h1 className="text-4xl lg:text-5xl font-extralight tracking-tight text-slate-900">
-                  {product.title}
-                </h1>
-                <div className="text-sm text-slate-600 font-light uppercase tracking-widest">
-                  {product.collection?.title || 'General'}
-                </div>
-                <div className="text-3xl font-extralight text-slate-900 tracking-tight">
-                  {priceText}
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild size="lg">
-                  <Link href="/contact">Request Installation Quote</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <Link href="/contact">Schedule Consultation</Link>
-                </Button>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-6 pt-2">
-                <div className="bg-white shadow-lg p-6">
-                  <h2 className="text-xl font-extralight text-slate-900 mb-3 tracking-wide">Overview</h2>
-                  <p className="text-slate-600 font-light">
-                    {product.description}
-                  </p>
-                </div>
-                <div className="bg-white shadow-lg p-6">
-                  <h2 className="text-xl font-extralight text-slate-900 mb-3 tracking-wide">What&apos;s Included</h2>
-                  <ul className="text-slate-600 font-light space-y-1">
-                    <li>• Track & soft-close hardware</li>
-                    <li>• Professional installation (Ottawa)</li>
-                    <li>• Removal/disposal of old doors</li>
-                    <li>• 2-year workmanship warranty</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {relatedProducts.length > 0 && (
-            <section>
-              <h2 className="text-3xl font-extralight text-slate-900 mb-6 tracking-tight">Related Products</h2>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {relatedProducts.map(related => (
-                  <Link href={`/products/${related.handle}`} key={related.id} passHref>
-                    <Card className="overflow-hidden transition-shadow duration-300 ease-in-out hover:shadow-lg">
-                      <CardHeader className="p-0">
-                        <div className="relative h-64 w-full">
-                          <Image
-                            src={related.thumbnail || '/placeholder.svg'}
-                            alt={related.title}
-                            fill
-                            style={{ objectFit: 'cover' }}
-                          />
-                        </div>
-                      </CardHeader>
-                      <CardContent className="p-4">
-                        <CardTitle className="text-lg font-light">{related.title}</CardTitle>
-                        <p className="mt-4 text-lg font-extralight text-slate-800">
-                          {formatPrice(related.variants[0]?.price)}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          )}
-        </div>
-      </main>
+      <EnhancedProductDetailPage
+        product={{
+          id: product.id,
+          title: product.title,
+          description: product.description,
+          thumbnail: product.thumbnail,
+          images: product.images || [],
+          variants: product.variants,
+          collection: product.collection
+        }}
+        relatedProducts={relatedProducts.map(p => ({
+          id: p.handle,
+          title: p.title,
+          description: p.description,
+          thumbnail: p.thumbnail,
+          images: p.images || [],
+          variants: p.variants,
+          collection: p.collection
+        }))}
+      />
     </StandardLayout>
   );
 }
