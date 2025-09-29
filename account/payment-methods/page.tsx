@@ -24,7 +24,7 @@ export default function PaymentMethodsPage() {
     },
   ]
 
-  const getCardIcon = (type: string) => {
+  const getCardIcon = (_type: string) => {
     return <CreditCard className="w-6 h-6 text-primary" />
   }
 
@@ -40,7 +40,7 @@ export default function PaymentMethodsPage() {
               </div>
               <div>
                 <span className="text-xl font-bold text-foreground font-serif">PG Closets</span>
-                <p className="text-xs text-muted-foreground">Premium Home Organization</p>
+                <p className="text-xs text-muted-foreground">Closets and Doors</p>
               </div>
             </Link>
 

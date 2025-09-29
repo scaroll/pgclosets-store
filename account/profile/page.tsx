@@ -11,7 +11,7 @@ import { FileUpload } from "@/components/ui/file-upload"
 import { useState } from "react"
 
 export default function ProfilePage() {
-  const [profilePicture, setProfilePicture] = useState<File | null>(null)
+  const [_profilePicture, setProfilePicture] = useState<File | null>(null)
 
   const handleProfilePictureUpload = async (file: File) => {
     setProfilePicture(file)
