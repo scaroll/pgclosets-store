@@ -1,12 +1,12 @@
 "use client"
 import type React from "react"
 import Script from "next/script"
-import { CartDrawer } from "@/components/store/cart-drawer"
+// import { CartDrawer } from "@/components/store/cart-drawer" // Removed - quote-based business
 import SkipNavigation from "@/components/navigation/SkipNavigation"
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-pg-offwhite text-pg-text-primary">
+    <div className="bg-white text-black">
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-8THLNNP89K" strategy="afterInteractive" />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
@@ -24,8 +24,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         {children}
       </main>
 
-      {/* Global Cart Drawer */}
-      <CartDrawer />
+      {/* Cart removed - quote-based business model */}
     </div>
   )
 }

@@ -32,6 +32,12 @@ export default function PgHeader() {
   return (
     <>
       <header className="nav-modern sticky top-0 z-40 bg-white/98 backdrop-blur-2xl border-b border-gray-100 transition-all duration-300" role="banner">
+        {/* Top bar with phone number */}
+        <div className="bg-black text-white py-2 px-4 text-center text-sm font-medium tracking-wider">
+          <a href="tel:613-555-0123" className="hover:text-gray-200 transition-colors">
+            📞 Call for Free Quote: (613) 555-0123
+          </a>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           <Link
             href="/"
@@ -136,7 +142,7 @@ export default function PgHeader() {
               className="relative ml-6 bg-black text-white font-medium px-6 py-2.5 text-xs tracking-[0.1em] uppercase overflow-hidden group border-2 border-black transition-all duration-300 hover:bg-white hover:text-black"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Request Quote
+                Free Quote
                 <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
