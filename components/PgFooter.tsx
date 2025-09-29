@@ -1,31 +1,9 @@
 import Link from "next/link";
-import { ResponsiveLogoVariants } from "./brand/ResponsiveLogoVariants";
-import { LogoBackgroundPatterns } from "./brand/LogoBackgroundPatterns";
-import { InteractiveLogo } from "./brand/InteractiveLogo";
-import { trackLogoInteraction, getUserJourneyStage } from "@/lib/analytics/logo-tracking";
+import { PGLogo } from "@/ui/pg-logo";
 
 export default function PgFooter() {
-  const handleFooterLogoClick = () => {
-    trackLogoInteraction({
-      event: 'footer_logo_click',
-      logo_type: 'footer',
-      interaction_type: 'click',
-      page_location: typeof window !== 'undefined' ? window.location.pathname : '/',
-      user_journey_stage: getUserJourneyStage(typeof window !== 'undefined' ? window.location.pathname : '/'),
-      conversion_context: 'footer_navigation'
-    });
-  };
-
   return (
     <footer className="bg-gradient-to-b from-slate-900 to-black text-white relative overflow-hidden">
-      {/* Enhanced logo background pattern */}
-      <LogoBackgroundPatterns
-        pattern="constellation"
-        opacity={0.03}
-        animated={true}
-        density="sparse"
-        className="absolute inset-0 text-slate-400"
-      />
 
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -36,29 +14,24 @@ export default function PgFooter() {
       <div className="relative max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="space-y-4">
-            {/* Enhanced Footer Logo */}
-            <div className="flex items-center gap-3 mb-6">
-              <InteractiveLogo
-                interaction="glow"
+            {/* Footer Logo */}
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <PGLogo
                 width={48}
                 height={48}
-                onClick={handleFooterLogoClick}
-                className="cursor-pointer"
-                tooltip={{
-                  text: "Return to PG Closets home",
-                  position: "top"
-                }}
+                withWordmark={false}
+                className="text-white"
               />
               <div className="flex flex-col">
                 <h3 className="text-2xl font-extralight tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
                   PG CLOSETS
                 </h3>
-                <span className="text-xs text-amber-400/60 font-medium uppercase tracking-widest">Elevated Taste Without Pretense</span>
+                <span className="text-xs text-amber-400/60 font-medium uppercase tracking-widest">Quality Closets for Ottawa</span>
               </div>
-            </div>
+            </Link>
             <p className="text-slate-400 font-light text-sm tracking-wide leading-relaxed">
-              Ottawa's premier closet door specialists, transforming homes with
-              luxury solutions since 2010.
+              Ottawa's closet door specialists, transforming homes with
+              quality solutions since 2010.
             </p>
             <div className="flex gap-4 pt-4">
               {/* Social Media Icons with hover effects */}
