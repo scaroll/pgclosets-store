@@ -1,8 +1,32 @@
 import Link from "next/link";
+import { ResponsiveLogoVariants } from "./brand/ResponsiveLogoVariants";
+import { LogoBackgroundPatterns } from "./brand/LogoBackgroundPatterns";
+import { InteractiveLogo } from "./brand/InteractiveLogo";
+import { trackLogoInteraction, getUserJourneyStage } from "@/lib/analytics/logo-tracking";
 
 export default function PgFooter() {
+  const handleFooterLogoClick = () => {
+    trackLogoInteraction({
+      event: 'footer_logo_click',
+      logo_type: 'footer',
+      interaction_type: 'click',
+      page_location: typeof window !== 'undefined' ? window.location.pathname : '/',
+      user_journey_stage: getUserJourneyStage(typeof window !== 'undefined' ? window.location.pathname : '/'),
+      conversion_context: 'footer_navigation'
+    });
+  };
+
   return (
     <footer className="bg-gradient-to-b from-slate-900 to-black text-white relative overflow-hidden">
+      {/* Enhanced logo background pattern */}
+      <LogoBackgroundPatterns
+        pattern="constellation"
+        opacity={0.03}
+        animated={true}
+        density="sparse"
+        className="absolute inset-0 text-slate-400"
+      />
+
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-96 h-96 bg-amber-400 rounded-full blur-3xl" />
@@ -12,9 +36,26 @@ export default function PgFooter() {
       <div className="relative max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="space-y-4">
-            <h3 className="text-3xl font-extralight tracking-tight mb-4 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
-              PG CLOSETS
-            </h3>
+            {/* Enhanced Footer Logo */}
+            <div className="flex items-center gap-3 mb-6">
+              <InteractiveLogo
+                interaction="glow"
+                width={48}
+                height={48}
+                onClick={handleFooterLogoClick}
+                className="cursor-pointer"
+                tooltip={{
+                  text: "Return to PG Closets home",
+                  position: "top"
+                }}
+              />
+              <div className="flex flex-col">
+                <h3 className="text-2xl font-extralight tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                  PG CLOSETS
+                </h3>
+                <span className="text-xs text-amber-400/60 font-medium uppercase tracking-widest">Elevated Taste Without Pretense</span>
+              </div>
+            </div>
             <p className="text-slate-400 font-light text-sm tracking-wide leading-relaxed">
               Ottawa's premier closet door specialists, transforming homes with
               luxury solutions since 2010.
@@ -200,9 +241,19 @@ export default function PgFooter() {
         </div>
 
         <div className="border-t border-slate-800/50 pt-8 flex flex-col md:flex-row items-center justify-between">
-          <div className="text-slate-500 font-light text-sm tracking-wide">
-            © {new Date().getFullYear()} PG Closets. Luxury solutions for
-            discerning homeowners.
+          <div className="flex items-center gap-4">
+            {/* Footer signature logo */}
+            <ResponsiveLogoVariants
+              variant="compact"
+              theme="dark"
+              width={32}
+              height={6}
+              className="opacity-60"
+            />
+            <div className="text-slate-500 font-light text-sm tracking-wide">
+              © {new Date().getFullYear()} PG Closets. Luxury solutions for
+              discerning homeowners.
+            </div>
           </div>
           <nav className="flex gap-8 mt-4 md:mt-0">
             <Link
