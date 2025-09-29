@@ -10,7 +10,7 @@ import StandardLayout from "@/components/layout/StandardLayout"
 import { LocalBusinessJSONLD } from "@/lib/seo"
 import { LogoBackgroundPatterns } from "@/components/brand/LogoBackgroundPatterns"
 import { AnimatedLogo } from "@/components/brand/AnimatedLogo"
-import { ResponsiveLogoVariants } from "@/components/brand/ResponsiveLogoVariants"
+// import { ResponsiveLogoVariants } from "@/components/brand/ResponsiveLogoVariants" // Temporarily disabled
 import { trackLogoInteraction, getUserJourneyStage } from "@/lib/analytics/logo-tracking"
 import { LogoConversionOptimizer, CTALogoButton } from "@/components/conversion/LogoConversionOptimizer"
 
@@ -55,8 +55,8 @@ export default function ClientPage({ products }: { products: Product[] }) {
           />
         </div>
 
-        {/* Logo watermark overlay */}
-        <div className="absolute top-8 right-8 z-15 opacity-20">
+        {/* Logo watermark overlay - temporarily disabled */}
+        {/* <div className="absolute top-8 right-8 z-15 opacity-20">
           <ResponsiveLogoVariants
             variant="signature"
             theme="dark"
@@ -65,7 +65,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
             animated={true}
             className="filter drop-shadow-lg"
           />
-        </div>
+        </div> */}
 
         <div className="absolute inset-0 opacity-10 z-10">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400 rounded-full blur-3xl animate-pulse" />
@@ -197,8 +197,8 @@ export default function ClientPage({ products }: { products: Product[] }) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  {/* Logo watermark on product images */}
-                  <div className="absolute bottom-2 right-2 opacity-30 group-hover:opacity-50 transition-opacity duration-300">
+                  {/* Logo watermark on product images - temporarily disabled */}
+                  {/* <div className="absolute bottom-2 right-2 opacity-30 group-hover:opacity-50 transition-opacity duration-300">
                     <ResponsiveLogoVariants
                       variant="compact"
                       theme="dark"
@@ -206,10 +206,10 @@ export default function ClientPage({ products }: { products: Product[] }) {
                       height={8}
                       className="filter drop-shadow-sm"
                     />
-                  </div>
+                  </div> */}
 
                   <div className="absolute top-2 left-2 bg-gradient-to-r from-slate-900 to-slate-800 text-white px-3 py-1 text-xs font-light tracking-[0.2em] uppercase backdrop-blur-sm">
-                    Premium
+                    Quality
                   </div>
                 </div>
                 <div className="p-6">

@@ -215,17 +215,17 @@ export default function PgFooter() {
 
         <div className="border-t border-slate-800/50 pt-8 flex flex-col md:flex-row items-center justify-between">
           <div className="flex items-center gap-4">
-            {/* Footer signature logo */}
-            <ResponsiveLogoVariants
+            {/* Footer signature logo - temporarily disabled */}
+            {/* <ResponsiveLogoVariants
               variant="compact"
               theme="dark"
               width={32}
               height={6}
               className="opacity-60"
-            />
+            /> */}
             <div className="text-slate-500 font-light text-sm tracking-wide">
-              © {new Date().getFullYear()} PG Closets. Luxury solutions for
-              discerning homeowners.
+              © {new Date().getFullYear()} PG Closets. Quality closet solutions for
+              Ottawa homeowners.
             </div>
           </div>
           <nav className="flex gap-8 mt-4 md:mt-0">
