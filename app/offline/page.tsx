@@ -1,13 +1,8 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 import { Button } from '@/ui/button'
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'You\'re Offline - PG Closets',
-  description: 'You\'re currently offline. Browse cached content or check your connection.',
-  robots: 'noindex, nofollow',
-}
 
 export default function OfflinePage() {
   return (
