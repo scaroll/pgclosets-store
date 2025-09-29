@@ -107,7 +107,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [state.user])
 
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (_email: string, _password: string): Promise<boolean> => {
     dispatch({ type: "LOGIN_START" })
 
     // Simulate API call delay
@@ -117,7 +117,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return false
   }
 
-  const register = async (email: string, password: string, name: string): Promise<boolean> => {
+  const register = async (_email: string, _password: string, _name: string): Promise<boolean> => {
     dispatch({ type: "LOGIN_START" })
 
     // Simulate API call delay
