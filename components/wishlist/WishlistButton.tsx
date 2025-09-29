@@ -6,6 +6,7 @@ import { useWishlistStore } from '@/lib/wishlist-store';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface WishlistButtonProps {
   product: {
@@ -35,15 +36,25 @@ export function WishlistButton({ product, variant = 'default', className }: Wish
     }
   }, [mounted, isInWishlist, product.id]);
 
+  const [isAnimating, setIsAnimating] = useState(false);
+
   const handleToggle = () => {
+    setIsAnimating(true);
+
     if (isWishlisted) {
       removeItem(product.id);
-      toast.success('Removed from wishlist');
+      toast.success('Removed from wishlist', {
+        description: `${product.name} has been removed from your wishlist.`
+      });
     } else {
       addItem(product);
-      toast.success('Added to wishlist');
+      toast.success('Added to wishlist', {
+        description: `${product.name} has been added to your wishlist.`
+      });
     }
     setIsWishlisted(!isWishlisted);
+
+    setTimeout(() => setIsAnimating(false), 300);
   };
 
   if (!mounted) {
@@ -56,18 +67,45 @@ export function WishlistButton({ product, variant = 'default', className }: Wish
         variant="ghost"
         size="icon"
         onClick={handleToggle}
+        disabled={isAnimating}
         className={cn(
-          'rounded-full',
-          isWishlisted && 'text-red-500',
+          'rounded-full relative overflow-hidden group transition-all duration-200',
+          isWishlisted && 'text-red-500 hover:text-red-600',
+          !isWishlisted && 'text-gray-500 hover:text-red-500',
           className
         )}
         aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
       >
-        <Heart
-          className={cn(
-            'h-5 w-5',
-            isWishlisted && 'fill-current'
+        <motion.div
+          animate={isAnimating ? { scale: [1, 1.3, 1] } : {}}
+          transition={{ duration: 0.3 }}
+          className="relative"
+        >
+          <Heart
+            className={cn(
+              'h-5 w-5 transition-all duration-200',
+              isWishlisted && 'fill-current text-red-500'
+            )}
+          />
+        </motion.div>
+
+        {/* Ripple effect */}
+        <AnimatePresence>
+          {isAnimating && (
+            <motion.div
+              initial={{ scale: 0, opacity: 0.6 }}
+              animate={{ scale: 4, opacity: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="absolute inset-0 bg-red-500 rounded-full"
+            />
           )}
+        </AnimatePresence>
+
+        {/* Hover effect */}
+        <motion.div
+          className="absolute inset-0 bg-red-50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+          whileHover={{ scale: 0.9 }}
         />
       </Button>
     );
@@ -77,15 +115,39 @@ export function WishlistButton({ product, variant = 'default', className }: Wish
     <Button
       variant={isWishlisted ? 'secondary' : 'outline'}
       onClick={handleToggle}
-      className={className}
+      disabled={isAnimating}
+      className={cn(
+        'relative overflow-hidden group transition-all duration-200',
+        className
+      )}
     >
-      <Heart
-        className={cn(
-          'h-4 w-4 mr-2',
-          isWishlisted && 'fill-current text-red-500'
-        )}
-      />
-      {isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
+      <div className="flex items-center gap-2">
+        <motion.div
+          animate={isAnimating ? { scale: [1, 1.3, 1] } : {}}
+          transition={{ duration: 0.3 }}
+        >
+          <Heart
+            className={cn(
+              'h-4 w-4 transition-all duration-200',
+              isWishlisted && 'fill-current text-red-500'
+            )}
+          />
+        </motion.div>
+        <span>{isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}</span>
+
+        {/* Ripple effect */}
+        <AnimatePresence>
+          {isAnimating && (
+            <motion.div
+              initial={{ scale: 0, opacity: 0.3 }}
+              animate={{ scale: 4, opacity: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="absolute inset-0 bg-red-500 rounded-md"
+            />
+          )}
+        </AnimatePresence>
+      </div>
     </Button>
   );
 }
@@ -104,8 +166,21 @@ export function WishlistIndicator() {
   }
 
   return (
-    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-      {itemCount}
-    </span>
+    <motion.span
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      exit={{ scale: 0 }}
+      transition={{ type: "spring", duration: 0.3 }}
+      className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium shadow-lg"
+    >
+      <motion.span
+        key={itemCount}
+        initial={{ scale: 1.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.2 }}
+      >
+        {itemCount > 99 ? '99+' : itemCount}
+      </motion.span>
+    </motion.span>
   );
 }

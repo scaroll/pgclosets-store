@@ -8,10 +8,27 @@ import { Product } from "@/types/commerce"
 import { formatPrice } from "@/lib/utils"
 import StandardLayout from "@/components/layout/StandardLayout"
 import { LocalBusinessJSONLD } from "@/lib/seo"
+import { LogoBackgroundPatterns } from "@/components/brand/LogoBackgroundPatterns"
+import { AnimatedLogo } from "@/components/brand/AnimatedLogo"
+import { ResponsiveLogoVariants } from "@/components/brand/ResponsiveLogoVariants"
+import { trackLogoInteraction, getUserJourneyStage } from "@/lib/analytics/logo-tracking"
+import { LogoConversionOptimizer, CTALogoButton } from "@/components/conversion/LogoConversionOptimizer"
 
 export default function ClientPage({ products }: { products: Product[] }) {
   const [quoteStep, setQuoteStep] = useState(0)
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [heroLogoVisible, setHeroLogoVisible] = useState(false)
+
+  const handleHeroLogoClick = () => {
+    trackLogoInteraction({
+      event: 'hero_logo_click',
+      logo_type: 'hero',
+      interaction_type: 'click',
+      page_location: '/',
+      user_journey_stage: 'awareness',
+      conversion_context: 'hero_branding'
+    });
+  }
 
   const handleSelectProduct = (product: Product) => {
     setSelectedProduct(product)
@@ -26,11 +43,58 @@ export default function ClientPage({ products }: { products: Product[] }) {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <HeroVideo />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-10" />
+
+        {/* Enhanced logo background pattern overlay */}
+        <div className="absolute inset-0 z-10">
+          <LogoBackgroundPatterns
+            pattern="luxury"
+            opacity={0.03}
+            animated={true}
+            density="sparse"
+            className="text-white"
+          />
+        </div>
+
+        {/* Logo watermark overlay */}
+        <div className="absolute top-8 right-8 z-15 opacity-20">
+          <ResponsiveLogoVariants
+            variant="signature"
+            theme="dark"
+            width={120}
+            height={24}
+            animated={true}
+            className="filter drop-shadow-lg"
+          />
+        </div>
+
         <div className="absolute inset-0 opacity-10 z-10">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-slate-400 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
         <div className="relative z-20 text-center px-4 max-w-7xl mx-auto">
+          {/* Premium hero logo */}
+          <div className="mb-12 flex justify-center">
+            <AnimatedLogo
+              animation="luxury"
+              width={200}
+              height={40}
+              delay={0.8}
+              onAnimationComplete={() => {
+                setHeroLogoVisible(true);
+                trackLogoInteraction({
+                  event: 'hero_logo_animation_complete',
+                  logo_type: 'hero',
+                  interaction_type: 'animation_complete',
+                  page_location: '/',
+                  user_journey_stage: 'awareness',
+                  animation_type: 'luxury'
+                });
+              }}
+              className="filter drop-shadow-2xl cursor-pointer"
+              onClick={handleHeroLogoClick}
+            />
+          </div>
+
           <div className="mb-8">
             <div className="inline-flex items-center space-x-2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-light tracking-wide">
               <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
@@ -64,29 +128,50 @@ export default function ClientPage({ products }: { products: Product[] }) {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link
+            <CTALogoButton
               href="/request-work"
-              className="group bg-slate-900 text-white hover:bg-slate-800 font-light px-12 py-4 text-lg tracking-wide transition-all duration-500 hover:shadow-2xl hover:scale-105"
+              variant="premium"
+              size="lg"
+              trackingContext="hero_primary_cta"
+              className="hover:scale-105 transform transition-transform duration-300"
             >
-              <span className="group-hover:hidden">Request Private Consultation</span>
-              <span className="hidden group-hover:inline-flex items-center space-x-2">
-                <span>Schedule Your Visit</span>
-                <span>→</span>
-              </span>
-            </Link>
-            <Link
+              Request Private Consultation
+            </CTALogoButton>
+
+            <CTALogoButton
               href="/products"
-              className="group border border-slate-300 text-slate-100 hover:border-white hover:text-white font-light px-12 py-4 text-lg tracking-wide transition-all duration-300 text-center"
+              variant="secondary"
+              size="lg"
+              trackingContext="hero_secondary_cta"
+              showLogo={false}
+              className="text-slate-100 hover:border-white hover:text-white"
             >
-              <span className="group-hover:hidden">Explore Collection</span>
-              <span className="hidden group-hover:inline">View Curated Designs</span>
-            </Link>
+              Explore Collection
+            </CTALogoButton>
+          </div>
+
+          {/* Trust signal below CTAs */}
+          <div className="mt-8 flex justify-center">
+            <LogoConversionOptimizer
+              placement="hero"
+              variant="trust_signal"
+              size="md"
+              className="text-white/70"
+            />
           </div>
         </div>
       </section>
 
-      <section id="products" className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
+      <section id="products" className="py-20 bg-gray-50 relative">
+        {/* Subtle logo background pattern for products section */}
+        <LogoBackgroundPatterns
+          pattern="watermark"
+          opacity={0.02}
+          density="sparse"
+          className="absolute inset-0 text-slate-300"
+        />
+
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-extralight mb-4 text-slate-900 tracking-tight">Premium Door Collection</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto font-light tracking-wide">
@@ -111,6 +196,18 @@ export default function ClientPage({ products }: { products: Product[] }) {
                     quality={85}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  {/* Logo watermark on product images */}
+                  <div className="absolute bottom-2 right-2 opacity-30 group-hover:opacity-50 transition-opacity duration-300">
+                    <ResponsiveLogoVariants
+                      variant="compact"
+                      theme="dark"
+                      width={40}
+                      height={8}
+                      className="filter drop-shadow-sm"
+                    />
+                  </div>
+
                   <div className="absolute top-2 left-2 bg-gradient-to-r from-slate-900 to-slate-800 text-white px-3 py-1 text-xs font-light tracking-[0.2em] uppercase backdrop-blur-sm">
                     Premium
                   </div>
@@ -120,18 +217,34 @@ export default function ClientPage({ products }: { products: Product[] }) {
                   <p className="text-slate-600 text-sm mb-4 truncate font-light">{product.description}</p>
                   <div className="text-3xl font-extralight text-slate-900 mb-6 tracking-tight">{formatPrice(product.variants[0]?.price)}</div>
                   <div className="flex gap-2">
-                    <button
+                    <CTALogoButton
                       onClick={() => handleSelectProduct(product)}
-                      className="flex-1 bg-slate-900 text-white py-3 font-light hover:bg-slate-800 transition-all duration-500 hover:shadow-xl text-sm uppercase tracking-widest"
+                      variant="primary"
+                      size="sm"
+                      trackingContext="product_card_quote"
+                      className="flex-1 text-sm uppercase tracking-widest"
                     >
                       Get Quote
-                    </button>
-                    <Link
+                    </CTALogoButton>
+                    <CTALogoButton
                       href={`/products/${product.handle}`}
-                      className="px-4 py-3 border border-slate-300 text-slate-700 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 text-sm uppercase tracking-widest text-center font-light"
+                      variant="secondary"
+                      size="sm"
+                      showLogo={false}
+                      trackingContext="product_card_details"
+                      className="px-4 text-sm uppercase tracking-widest"
                     >
                       Details
-                    </Link>
+                    </CTALogoButton>
+                  </div>
+
+                  {/* Trust signal on product cards */}
+                  <div className="mt-3 pt-3 border-t border-gray-100">
+                    <LogoConversionOptimizer
+                      placement="pricing"
+                      variant="trust_signal"
+                      size="sm"
+                    />
                   </div>
                 </div>
               </div>

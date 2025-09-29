@@ -28,11 +28,11 @@ export default function ClientPage({ products }: { products: Product[] }) {
     trackConversions.productView(product.title)
   }
 
-  const handlePrimaryCTA = () => {
+  const _handlePrimaryCTA = () => {
     trackConversions.quoteRequest(750)
   }
 
-  const handleSecondaryCTA = () => {
+  const _handleSecondaryCTA = () => {
     trackConversions.productView("Collection Browse")
   }
 

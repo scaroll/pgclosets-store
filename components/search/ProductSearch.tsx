@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Search, X, ArrowRight, Filter } from 'lucide-react';
+import { Search, X, ArrowRight, Filter, SlidersHorizontal, Grid, List, Star, Heart } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
