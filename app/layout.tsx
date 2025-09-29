@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "../styles/mobile-performance.css";
+import "../styles/mobile-touch.css";
 import ClientLayout from "./clientLayout";
 import PerformanceMonitor from "../components/performance/performance-monitor";
 import { BUSINESS_INFO } from "../lib/business-config";
@@ -124,11 +126,20 @@ export default function RootLayout({
         />
 
         {/* SEO Meta Tags for Ottawa Local Search */}
-        {/* Essential Mobile Viewport */}
+        {/* Essential Mobile Viewport - Optimized for mobile performance */}
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5"
+          content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover, user-scalable=yes"
         />
+
+        {/* Mobile web app meta tags */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="PG Closets Ottawa" />
+
+        {/* Prevent automatic telephone number detection */}
+        <meta name="format-detection" content="telephone=no" />
 
         {/* Geographic and Local Business Meta */}
         <meta

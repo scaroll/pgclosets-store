@@ -67,6 +67,37 @@ const CardSkeleton: React.FC<{ className?: string }> = ({ className }) => (
   </div>
 );
 
+// Enhanced product card skeleton for products page
+const ProductCardSkeleton: React.FC<{ className?: string }> = ({ className }) => (
+  <div className={cn("bg-white rounded-lg shadow-md overflow-hidden border border-gray-200", className)} role="status" aria-label="Loading product">
+    <Skeleton className="aspect-square w-full" />
+    <div className="p-4 space-y-3">
+      <Skeleton className="h-6 w-3/4" />
+      <Skeleton className="h-4 w-full" />
+      <Skeleton className="h-4 w-2/3" />
+      <Skeleton className="h-6 w-1/3" />
+      <div className="flex gap-2">
+        <Skeleton className="h-10 flex-1" />
+        <Skeleton className="h-10 w-20" />
+      </div>
+    </div>
+    <span className="sr-only">Loading product details...</span>
+  </div>
+);
+
+// Product grid skeleton
+const ProductGridSkeleton: React.FC<{ count?: number; className?: string }> = ({
+  count = 12,
+  className
+}) => (
+  <div className={cn("grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4", className)} role="status" aria-label="Loading products">
+    {Array.from({ length: count }).map((_, index) => (
+      <ProductCardSkeleton key={index} />
+    ))}
+    <span className="sr-only">Loading product grid...</span>
+  </div>
+);
+
 // Button loading state
 interface LoadingButtonProps {
   isLoading?: boolean;
@@ -159,6 +190,8 @@ export {
   Skeleton,
   LoadingSpinner,
   CardSkeleton,
+  ProductCardSkeleton,
+  ProductGridSkeleton,
   LoadingButton,
   PageLoading,
   TableRowSkeleton,

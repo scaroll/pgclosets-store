@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { PGLogo } from "../ui/pg-logo"
-import { ChevronDown, Search, Heart, ShoppingCart } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 import MegaMenu from "./navigation/MegaMenu"
 
 export default function PgHeader() {
@@ -25,8 +25,11 @@ export default function PgHeader() {
   }
 
   const handleMenuLeave = () => {
-    setMegaMenuOpen(false)
-    setActiveMenu(null)
+    // Add a small delay to prevent flickering when moving between menu items
+    setTimeout(() => {
+      setMegaMenuOpen(false)
+      setActiveMenu(null)
+    }, 100)
   }
 
   return (
@@ -64,7 +67,7 @@ export default function PgHeader() {
           <nav className="hidden md:flex items-center gap-6" role="navigation" aria-label="Main navigation">
             <Link
               href="/"
-              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-2 group"
+              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target"
             >
               <span className="relative">Home</span>
               <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -75,7 +78,7 @@ export default function PgHeader() {
               onMouseEnter={() => handleMenuHover('products')}
               onMouseLeave={handleMenuLeave}
             >
-              <button className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-2 group">
+              <button className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target">
                 <span className="relative">Products</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'products' ? 'rotate-180' : ''}`} />
                 <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -84,7 +87,7 @@ export default function PgHeader() {
 
             <Link
               href="/about"
-              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-2 group"
+              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target"
             >
               <span className="relative">About</span>
               <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -95,7 +98,7 @@ export default function PgHeader() {
               onMouseEnter={() => handleMenuHover('services')}
               onMouseLeave={handleMenuLeave}
             >
-              <button className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-2 group">
+              <button className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target">
                 <span className="relative">Services</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'services' ? 'rotate-180' : ''}`} />
                 <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -104,42 +107,16 @@ export default function PgHeader() {
 
             <Link
               href="/contact"
-              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-2 group"
+              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target"
             >
               <span className="relative">Contact</span>
               <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
 
-            {/* Action Icons */}
-            <div className="flex items-center space-x-2 ml-6 border-l border-gray-200 pl-6">
-              <button
-                className="p-2 text-black/60 hover:text-black transition-colors duration-200"
-                aria-label="Search products"
-              >
-                <Search className="w-4 h-4" strokeWidth={2} />
-              </button>
-
-              <button
-                className="p-2 text-black/60 hover:text-black transition-colors duration-200"
-                aria-label="View wishlist"
-              >
-                <Heart className="w-4 h-4" strokeWidth={2} />
-              </button>
-
-              <button
-                className="p-2 text-black/60 hover:text-black transition-colors duration-200 relative"
-                aria-label="View cart"
-              >
-                <ShoppingCart className="w-4 h-4" strokeWidth={2} />
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-black text-white text-[10px] rounded-full flex items-center justify-center font-medium">
-                  0
-                </span>
-              </button>
-            </div>
 
             <Link
               href="/request-work"
-              className="relative ml-6 bg-black text-white font-medium px-6 py-2.5 text-xs tracking-[0.1em] uppercase overflow-hidden group border-2 border-black transition-all duration-300 hover:bg-white hover:text-black"
+              className="relative ml-6 bg-black text-white font-medium px-6 py-3 text-xs tracking-[0.1em] uppercase overflow-hidden group border-2 border-black transition-all duration-300 hover:bg-white hover:text-black touch-target"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Free Quote
@@ -154,7 +131,7 @@ export default function PgHeader() {
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={toggleMobileMenu}
-              className="p-2 text-pg-navy focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded-lg hover:bg-pg-offwhite transition-colors duration-200"
+              className="mobile-menu-toggle touch-target p-3 text-black focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
               aria-label="Open main menu"
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
@@ -182,11 +159,15 @@ export default function PgHeader() {
             if (activeMenu) setMegaMenuOpen(true)
           }}
           onMouseLeave={handleMenuLeave}
+          className="relative"
         >
           <MegaMenu
             isOpen={megaMenuOpen}
             activeMenu={activeMenu}
-            onClose={() => setMegaMenuOpen(false)}
+            onClose={() => {
+              setMegaMenuOpen(false)
+              setActiveMenu(null)
+            }}
           />
         </div>
       </header>
@@ -205,7 +186,7 @@ export default function PgHeader() {
             <div className="flex justify-end p-4">
               <button
                 onClick={closeMobileMenu}
-                className="p-2 text-pg-navy hover:bg-gray-100 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
+                className="touch-target p-3 text-black hover:bg-gray-100 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
                 aria-label="Close menu"
               >
                 <svg
@@ -230,11 +211,11 @@ export default function PgHeader() {
                   width={48}
                   height={48}
                   withWordmark={false}
-                  className="text-slate-900"
+                  className="text-black"
                 />
                 <div className="text-center">
-                  <h2 className="text-xl font-semibold text-slate-900">PG CLOSETS</h2>
-                  <p className="text-xs text-amber-600/60 font-medium uppercase tracking-widest">Quality Closets</p>
+                  <h2 className="text-xl font-semibold text-black">PG CLOSETS</h2>
+                  <p className="text-xs text-gray-600 font-medium uppercase tracking-widest">Quality Closets</p>
                 </div>
               </Link>
             </div>
@@ -245,28 +226,35 @@ export default function PgHeader() {
                 <Link
                   href="/"
                   onClick={closeMobileMenu}
-                  className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
+                  className="nav-item block text-lg font-medium text-black hover:text-gray-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 rounded px-4 py-3"
                 >
                   Home
                 </Link>
                 <Link
                   href="/products"
                   onClick={closeMobileMenu}
-                  className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
+                  className="nav-item block text-lg font-medium text-black hover:text-gray-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 rounded px-4 py-3"
                 >
                   Products
                 </Link>
                 <Link
-                  href="/blog"
+                  href="/about"
                   onClick={closeMobileMenu}
-                  className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
+                  className="nav-item block text-lg font-medium text-black hover:text-gray-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 rounded px-4 py-3"
                 >
-                  Blog
+                  About
+                </Link>
+                <Link
+                  href="/services"
+                  onClick={closeMobileMenu}
+                  className="nav-item block text-lg font-medium text-black hover:text-gray-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 rounded px-4 py-3"
+                >
+                  Services
                 </Link>
                 <Link
                   href="/contact"
                   onClick={closeMobileMenu}
-                  className="block text-lg font-medium text-pg-navy hover:text-pg-sky transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 rounded px-2 py-2"
+                  className="nav-item block text-lg font-medium text-black hover:text-gray-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 rounded px-4 py-3"
                 >
                   Contact
                 </Link>
@@ -276,7 +264,7 @@ export default function PgHeader() {
                   <Link
                     href="/request-work"
                     onClick={closeMobileMenu}
-                    className="block w-full text-center bg-pg-navy text-white py-3 px-6 rounded-lg font-medium hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
+                    className="add-to-cart block w-full text-center bg-black text-white py-4 px-6 rounded-lg font-medium hover:bg-gray-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
                   >
                     Request a Quote
                   </Link>

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations for products page */
+@import '../styles/products-optimization.css';
+
 /* Refined Animations - Subtle and Professional */
 @keyframes fade-in {
   from {
@@ -104,6 +107,11 @@
   --pg-silver: #cbd5e0;
   --pg-pearl: #f7fafc;
   --pg-white: #ffffff;
+
+  /* Missing variables for compatibility */
+  --pg-navy: #000000;  /* Using black for navy */
+  --pg-sky: #4a5568;   /* Using graphite for sky */
+  --pg-offwhite: #f7fafc; /* Using pearl for offwhite */
 
   /* Accent colors - minimal and sophisticated */
   --pg-accent: #0f172a; /* Deep navy-black */

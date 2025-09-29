@@ -1,10 +1,12 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback, memo, useRef } from 'react';
 import { Product } from '@/types/commerce';
 import Link from 'next/link';
 import Image from 'next/image';
 import { formatPrice } from '@/lib/utils';
+import { useIntersectionObserver } from '@/lib/hooks/use-intersection-observer';
+import { usePerformanceMonitoring } from '@/lib/performance-metrics';
 
 // Enhanced filter types for Renin products
 interface FilterOptions {
@@ -147,47 +149,76 @@ const filterProducts = (products: Product[], filters: ActiveFilters): Product[] 
   });
 };
 
-const ProductCard = ({ product }: { product: Product }) => (
-  <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg border border-gray-200">
-    <Link href={`/products/${product.handle}`} className="block">
-      <div className="relative aspect-square bg-gray-50 overflow-hidden">
-        <Image
-          src={product.thumbnail || '/placeholder.svg'}
-          alt={product.title}
-          fill
-          className="object-cover hover:scale-105 transition-transform duration-300"
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-        />
-        {product.variants[0]?.price && product.variants[0]?.price > 500 && (
-          <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 text-xs font-medium uppercase">
-            Premium
-          </div>
-        )}
-      </div>
-    </Link>
-    <div className="p-4">
-      <h3 className="text-lg font-semibold text-gray-900 mb-2">{product.title}</h3>
-      <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
-      <div className="text-xl font-bold text-gray-900 mb-4">
-        {formatPrice(product.variants[0]?.price || 0)}
-      </div>
-      <div className="flex gap-2">
-        <Link
-          href={`/products/${product.handle}`}
-          className="flex-1 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors text-center text-sm font-medium"
-        >
-          View Details
-        </Link>
-        <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors text-sm font-medium">
-          Quote
-        </button>
+const ProductCard = memo(({ product }: { product: Product }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const { targetRef, isIntersecting } = useIntersectionObserver({
+    threshold: 0.1,
+    rootMargin: '100px',
+    triggerOnce: true
+  });
+
+  return (
+    <div ref={targetRef} className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg border border-gray-200">
+      <Link href={`/products/${product.handle}`} className="block">
+        <div className="relative aspect-square bg-gray-50 overflow-hidden">
+          {isIntersecting && !imageError ? (
+            <Image
+              src={product.thumbnail || '/placeholder.svg'}
+              alt={product.title}
+              fill
+              className={`object-cover hover:scale-105 transition-all duration-300 ${
+                imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageError(true)}
+              priority={false}
+              quality={75}
+            />
+          ) : imageError ? (
+            <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+              <span className="text-gray-400 text-sm">Image not available</span>
+            </div>
+          ) : (
+            <div className="w-full h-full bg-gray-200 animate-pulse" />
+          )}
+          {isIntersecting && !imageLoaded && !imageError && (
+            <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+          )}
+          {product.variants[0]?.price && product.variants[0]?.price > 500 && (
+            <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 text-xs font-medium uppercase">
+              Premium
+            </div>
+          )}
+        </div>
+      </Link>
+      <div className="p-4">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">{product.title}</h3>
+        <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
+        <div className="text-xl font-bold text-gray-900 mb-4">
+          {formatPrice(product.variants[0]?.price || 0)}
+        </div>
+        <div className="flex gap-2">
+          <Link
+            href={`/products/${product.handle}`}
+            className="flex-1 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors text-center text-sm font-medium"
+          >
+            View Details
+          </Link>
+          <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors text-sm font-medium">
+            Quote
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+});
+
+ProductCard.displayName = 'ProductCard';
 
 // Filter Sidebar Component
-const FilterSidebar = ({
+const FilterSidebar = memo(({
   filterOptions,
   activeFilters,
   onFilterChange,
@@ -364,12 +395,93 @@ const FilterSidebar = ({
       </div>
     </div>
   );
-};
+});
+
+FilterSidebar.displayName = 'FilterSidebar';
+
+// Pagination component
+const Pagination = memo(({
+  currentPage,
+  totalPages,
+  onPageChange
+}: {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}) => {
+  if (totalPages <= 1) return null;
+
+  const getPageNumbers = () => {
+    const pages = [];
+    const showPages = 5;
+    let start = Math.max(1, currentPage - Math.floor(showPages / 2));
+    let end = Math.min(totalPages, start + showPages - 1);
+
+    if (end - start + 1 < showPages) {
+      start = Math.max(1, end - showPages + 1);
+    }
+
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+    return pages;
+  };
+
+  return (
+    <div className="flex justify-center items-center space-x-2 mt-8 mb-4">
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Previous
+      </button>
+
+      {getPageNumbers().map(page => (
+        <button
+          key={page}
+          onClick={() => onPageChange(page)}
+          className={`px-3 py-2 text-sm font-medium rounded-md ${
+            currentPage === page
+              ? 'bg-blue-600 text-white'
+              : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50'
+          }`}
+        >
+          {page}
+        </button>
+      ))}
+
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Next
+      </button>
+    </div>
+  );
+});
+
+Pagination.displayName = 'Pagination';
 
 // Main client component
 const ProductsClient = ({ initialProducts }: { initialProducts: Product[] }) => {
   const [activeFilters, setActiveFilters] = useState<ActiveFilters>({});
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12; // Optimized for performance
+  const { measureAndReport, measureDOMNodes } = usePerformanceMonitoring();
+
+  // Performance monitoring
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      if (process.env.NODE_ENV === 'development') {
+        measureAndReport();
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [measureAndReport, paginatedProducts.length]);
 
   const filterOptions = useMemo(() => extractProductAttributes(initialProducts), [initialProducts]);
 
@@ -378,13 +490,27 @@ const ProductsClient = ({ initialProducts }: { initialProducts: Product[] }) => 
     [initialProducts, activeFilters]
   );
 
-  const handleFilterChange = (newFilters: ActiveFilters) => {
-    setActiveFilters(newFilters);
-  };
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
 
-  const handleClearFilters = () => {
+  const handleFilterChange = useCallback((newFilters: ActiveFilters) => {
+    setActiveFilters(newFilters);
+    setCurrentPage(1); // Reset to first page when filters change
+  }, []);
+
+  const handleClearFilters = useCallback(() => {
     setActiveFilters({});
-  };
+    setCurrentPage(1);
+  }, []);
+
+  const handlePageChange = useCallback((page: number) => {
+    setCurrentPage(page);
+    // Scroll to top of products grid
+    document.getElementById('products-grid')?.scrollIntoView({ behavior: 'smooth' });
+  }, []);
 
   return (
     <div className="flex min-h-screen">
@@ -426,9 +552,17 @@ const ProductsClient = ({ initialProducts }: { initialProducts: Product[] }) => 
         </div>
 
         <div className="p-6">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map(product => (
+          {/* Results info */}
+          <div className="mb-6">
+            <p className="text-sm text-gray-600">
+              Showing {startIndex + 1}-{Math.min(endIndex, filteredProducts.length)} of {filteredProducts.length} products
+              {totalPages > 1 && ` (Page ${currentPage} of ${totalPages})`}
+            </p>
+          </div>
+
+          <div id="products-grid" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {paginatedProducts.length > 0 ? (
+              paginatedProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))
             ) : (
@@ -438,6 +572,13 @@ const ProductsClient = ({ initialProducts }: { initialProducts: Product[] }) => 
               </div>
             )}
           </div>
+
+          {/* Pagination */}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </div>
