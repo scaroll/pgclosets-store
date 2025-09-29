@@ -40,9 +40,9 @@ export default function ClientPage({ products }: { products: Product[] }) {
       <LocalBusinessJSONLD />
       <div className="bg-white">
 
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
         <HeroVideo />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
 
         {/* Enhanced logo background pattern overlay */}
         <div className="absolute inset-0 z-10">
@@ -67,10 +67,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
           />
         </div> */}
 
-        <div className="absolute inset-0 opacity-10 z-10">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-slate-400 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        </div>
+        {/* Removed ambient glow effects for cleaner aesthetic */}
         <div className="relative z-20 text-center px-4 max-w-7xl mx-auto">
           {/* Premium hero logo */}
           <div className="mb-12 flex justify-center">
@@ -96,58 +93,53 @@ export default function ClientPage({ products }: { products: Product[] }) {
           </div>
 
           <div className="mb-8">
-            <div className="inline-flex items-center space-x-2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-light tracking-wide">
-              <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-              <span>Now scheduling in-home consultations</span>
+            <div className="inline-flex items-center space-x-2 border border-white/20 text-white px-4 py-2 text-xs font-medium tracking-[0.1em] uppercase">
+              <span className="w-1.5 h-1.5 bg-white rounded-full" />
+              <span>Now scheduling consultations</span>
             </div>
           </div>
-          <h1 className="text-5xl lg:text-7xl font-extralight mb-8 leading-[1.1] text-white tracking-tight drop-shadow-2xl">
-            <span className="bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent">Closet Doors</span>
-            <br />
-            <span className="text-slate-300 text-5xl lg:text-6xl">For Your Home</span>
+          <h1 className="text-5xl lg:text-7xl font-light mb-8 leading-[1.05] text-white tracking-tight">
+            <span className="block">Quality Closets</span>
+            <span className="block text-4xl lg:text-5xl mt-2 opacity-90">For Ottawa Homes</span>
           </h1>
-          <p className="text-xl lg:text-2xl mb-12 max-w-4xl mx-auto text-slate-200 font-light leading-relaxed">
-            We design and install closet doors in Ottawa with quality materials and reliable service.
+          <p className="text-lg lg:text-xl mb-12 max-w-3xl mx-auto text-white/80 font-light leading-relaxed tracking-wide">
+            Premium closet solutions designed and installed with precision.
           </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto text-white">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 max-w-3xl mx-auto text-white">
             <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-light mb-2">500+</div>
-              <div className="text-sm text-slate-300 uppercase tracking-widest font-light">Luxury Installations</div>
+              <div className="text-2xl lg:text-3xl font-light mb-1">500+</div>
+              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Installations</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-light mb-2">★★★★★</div>
-              <div className="text-sm text-slate-300 uppercase tracking-widest font-light">Client Satisfaction</div>
+              <div className="text-2xl lg:text-3xl font-light mb-1">5.0</div>
+              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Rating</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-light mb-2">15+</div>
-              <div className="text-sm text-slate-300 uppercase tracking-widest font-light">Years Mastery</div>
+              <div className="text-2xl lg:text-3xl font-light mb-1">15+</div>
+              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Years</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-light mb-2">Award</div>
-              <div className="text-sm text-slate-300 uppercase tracking-widest font-light">Winning Design</div>
+              <div className="text-2xl lg:text-3xl font-light mb-1">1st</div>
+              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">In Ottawa</div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <CTALogoButton
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
               href="/request-work"
-              variant="premium"
-              size="lg"
-              trackingContext="hero_primary_cta"
-              className="hover:scale-105 transform transition-transform duration-300"
+              className="inline-flex items-center justify-center px-8 py-3 bg-white text-black font-medium text-sm tracking-[0.1em] uppercase transition-all duration-300 hover:bg-black hover:text-white border-2 border-white group"
             >
-              Request Private Consultation
-            </CTALogoButton>
+              <span className="relative z-10">Request Quote</span>
+              <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
 
-            <CTALogoButton
+            <Link
               href="/products"
-              variant="secondary"
-              size="lg"
-              trackingContext="hero_secondary_cta"
-              showLogo={false}
-              className="text-slate-100 hover:border-white hover:text-white"
+              className="inline-flex items-center justify-center px-8 py-3 bg-transparent text-white font-medium text-sm tracking-[0.1em] uppercase transition-all duration-300 hover:bg-white hover:text-black border-2 border-white/50 hover:border-white group"
             >
-              Explore Collection
-            </CTALogoButton>
+              <span className="relative z-10">View Products</span>
+            </Link>
           </div>
 
           {/* Trust signal below CTAs */}

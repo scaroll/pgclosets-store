@@ -31,37 +31,37 @@ export default function PgHeader() {
 
   return (
     <>
-      <header className="nav-apple sticky top-0 z-40 backdrop-blur-xl bg-white/90 shadow-lg border-b border-slate-200/30 transition-all duration-500 hover:shadow-xl" role="banner">
-        <div className="container-apple h-full flex items-center justify-between">
+      <header className="nav-modern sticky top-0 z-40 bg-white/98 backdrop-blur-2xl border-b border-gray-100 transition-all duration-300" role="banner">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 hover:opacity-90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 rounded-lg py-1 px-2 group"
+            className="flex items-center gap-3 group"
             aria-label="PG Closets - Go to homepage"
           >
-            <div className="relative w-10 h-10">
+            <div className="relative w-8 h-8">
               <PGLogo
-                width={40}
-                height={40}
+                width={32}
+                height={32}
                 withWordmark={false}
                 aria-hidden="true"
-                className="text-slate-900 group-hover:scale-105 transition-transform duration-300"
+                className="text-black"
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-base md:text-lg font-semibold tracking-tight text-slate-900 leading-none">
+              <span className="text-sm font-bold tracking-[0.2em] text-black leading-none">
                 PG CLOSETS
               </span>
-              <span className="text-[8px] text-amber-600/60 font-medium uppercase tracking-widest">Quality Closets for Ottawa Homes</span>
+              <span className="text-[10px] text-gray-500 font-medium tracking-[0.15em] mt-0.5">OTTAWA</span>
             </div>
           </Link>
 
           <nav className="hidden md:flex items-center gap-6" role="navigation" aria-label="Main navigation">
             <Link
               href="/"
-              className="relative text-slate-600 font-medium tracking-wider transition-all duration-300 hover:text-slate-900 px-4 py-2.5 text-sm group"
+              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-2 group"
             >
-              <span className="relative z-10">Home</span>
-              <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-gradient-to-r from-amber-400 to-amber-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
+              <span className="relative">Home</span>
+              <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
 
             <div
@@ -69,19 +69,19 @@ export default function PgHeader() {
               onMouseEnter={() => handleMenuHover('products')}
               onMouseLeave={handleMenuLeave}
             >
-              <button className="flex items-center space-x-1 relative text-slate-600 font-medium tracking-wider transition-all duration-300 hover:text-slate-900 px-4 py-2.5 text-sm group">
-                <span className="relative z-10">Products</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'products' ? 'rotate-180' : ''}`} />
-                <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-gradient-to-r from-amber-400 to-amber-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
+              <button className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-2 group">
+                <span className="relative">Products</span>
+                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'products' ? 'rotate-180' : ''}`} />
+                <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
             </div>
 
             <Link
               href="/about"
-              className="relative text-slate-600 font-medium tracking-wider transition-all duration-300 hover:text-slate-900 px-4 py-2.5 text-sm group"
+              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-2 group"
             >
-              <span className="relative z-10">About</span>
-              <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-gradient-to-r from-amber-400 to-amber-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
+              <span className="relative">About</span>
+              <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
 
             <div
@@ -89,45 +89,43 @@ export default function PgHeader() {
               onMouseEnter={() => handleMenuHover('services')}
               onMouseLeave={handleMenuLeave}
             >
-              <button className="flex items-center space-x-1 relative text-slate-600 font-medium tracking-wider transition-all duration-300 hover:text-slate-900 px-4 py-2.5 text-sm group">
-                <span className="relative z-10">Services</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'services' ? 'rotate-180' : ''}`} />
-                <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-gradient-to-r from-amber-400 to-amber-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
+              <button className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-2 group">
+                <span className="relative">Services</span>
+                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'services' ? 'rotate-180' : ''}`} />
+                <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
             </div>
 
             <Link
               href="/contact"
-              className="relative text-slate-600 font-medium tracking-wider transition-all duration-300 hover:text-slate-900 px-4 py-2.5 text-sm group"
+              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-2 group"
             >
-              <span className="relative z-10">Contact</span>
-              <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-gradient-to-r from-amber-400 to-amber-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
+              <span className="relative">Contact</span>
+              <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
 
             {/* Action Icons */}
-            <div className="flex items-center space-x-3 ml-4 border-l border-gray-200 pl-4">
+            <div className="flex items-center space-x-2 ml-6 border-l border-gray-200 pl-6">
               <button
-                className="p-2 text-slate-600 hover:text-slate-900 hover:bg-gray-100 rounded-lg transition-all duration-200 relative group"
+                className="p-2 text-black/60 hover:text-black transition-colors duration-200"
                 aria-label="Search products"
               >
-                <Search className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-amber-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                <Search className="w-4 h-4" strokeWidth={2} />
               </button>
 
               <button
-                className="p-2 text-slate-600 hover:text-slate-900 hover:bg-gray-100 rounded-lg transition-all duration-200 relative group"
+                className="p-2 text-black/60 hover:text-black transition-colors duration-200"
                 aria-label="View wishlist"
               >
-                <Heart className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                <Heart className="w-4 h-4" strokeWidth={2} />
               </button>
 
               <button
-                className="p-2 text-slate-600 hover:text-slate-900 hover:bg-gray-100 rounded-lg transition-all duration-200 relative group"
+                className="p-2 text-black/60 hover:text-black transition-colors duration-200 relative"
                 aria-label="View cart"
               >
-                <ShoppingCart className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-amber-600 text-white text-xs rounded-full flex items-center justify-center font-medium">
+                <ShoppingCart className="w-4 h-4" strokeWidth={2} />
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-black text-white text-[10px] rounded-full flex items-center justify-center font-medium">
                   0
                 </span>
               </button>
@@ -135,18 +133,15 @@ export default function PgHeader() {
 
             <Link
               href="/request-work"
-              className="relative ml-6 bg-gradient-to-r from-slate-900 to-slate-800 text-white font-light px-8 py-2.5 text-sm tracking-wide transition-all duration-500 uppercase overflow-hidden group shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="relative ml-6 bg-black text-white font-medium px-6 py-2.5 text-xs tracking-[0.1em] uppercase overflow-hidden group border-2 border-black transition-all duration-300 hover:bg-white hover:text-black"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Request Work
-                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                Request Quote
+                <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-800 to-slate-700 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-transparent" />
-              </div>
+              <div className="absolute inset-0 bg-white transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
           </nav>
 

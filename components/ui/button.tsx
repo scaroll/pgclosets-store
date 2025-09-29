@@ -3,35 +3,35 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-medium transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer select-none",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:ring-2 focus-visible:ring-offset-3 cursor-pointer select-none uppercase tracking-wider relative overflow-hidden group",
   {
     variants: {
       variant: {
-        default: "bg-slate-900 text-white shadow hover:bg-slate-800",
-        destructive: "bg-red-600 text-white shadow hover:bg-red-700",
+        default: "bg-black text-white border-2 border-black hover:bg-white hover:text-black before:absolute before:inset-0 before:bg-white before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100",
+        destructive: "bg-red-600 text-white border-2 border-red-600 hover:bg-white hover:text-red-600",
         outline:
-          "border border-slate-300 bg-white shadow-sm hover:bg-slate-50 hover:text-slate-900",
-        secondary: "bg-slate-100 text-slate-900 shadow-sm hover:bg-slate-200",
-        ghost: "hover:bg-slate-100 hover:text-slate-900",
-        link: "text-blue-600 underline-offset-4 hover:underline",
+          "border-2 border-black bg-transparent text-black hover:bg-black hover:text-white before:absolute before:inset-0 before:bg-black before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100",
+        secondary: "bg-gray-100 text-black border-2 border-gray-100 hover:bg-black hover:text-white hover:border-black",
+        ghost: "text-black hover:bg-gray-50 border-2 border-transparent",
+        link: "text-black underline-offset-4 hover:underline border-none",
         primary:
-          "bg-blue-600 text-white hover:bg-blue-700 shadow hover:shadow-md",
+          "bg-black text-white border-2 border-black hover:bg-white hover:text-black shadow-sm hover:shadow-lg",
         "brand-primary":
-          "bg-navy-900 text-white hover:bg-navy-800 shadow-md hover:shadow-lg transition-all duration-300",
+          "bg-black text-white border-2 border-black hover:bg-transparent hover:text-black transition-all duration-300",
         "brand-secondary":
-          "bg-sky-500 text-white hover:bg-sky-600 shadow-md hover:shadow-lg transition-all duration-300",
+          "bg-white text-black border-2 border-black hover:bg-black hover:text-white transition-all duration-300",
         "brand-outline":
-          "border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white bg-transparent shadow-sm hover:shadow-md transition-all duration-300",
+          "border-2 border-black text-black bg-transparent hover:bg-black hover:text-white transition-all duration-300",
         "brand-ghost":
-          "text-navy-900 hover:bg-navy-100 hover:text-navy-900 transition-all duration-200",
+          "text-black hover:bg-gray-50 transition-all duration-200 border-2 border-transparent",
       },
       size: {
-        sm: "h-8 px-3 py-1.5 text-xs",
-        default: "h-10 px-4 py-2 text-sm",
-        lg: "h-12 px-6 py-3 text-base",
-        xl: "h-14 px-8 py-4 text-lg",
-        icon: "h-10 w-10 p-0",
-        "icon-sm": "h-8 w-8 p-0",
+        sm: "h-9 px-4 py-1.5 text-xs",
+        default: "h-11 px-6 py-2 text-sm",
+        lg: "h-12 px-8 py-3 text-sm",
+        xl: "h-14 px-10 py-4 text-base",
+        icon: "h-11 w-11 p-0",
+        "icon-sm": "h-9 w-9 p-0",
         "icon-lg": "h-12 w-12 p-0",
         "icon-xl": "h-14 w-14 p-0",
       },
