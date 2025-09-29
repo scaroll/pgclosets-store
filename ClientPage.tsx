@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from "react"
-import { LocalBusinessJSONLD } from "@/lib/seo"
+// import { LocalBusinessJSONLD } from "@/lib/seo" // Temporarily disabled due to build error
 import { Button } from "@/components/ui/button"
 
 export default function ClientPage() {
@@ -11,7 +11,7 @@ export default function ClientPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans">
-      <LocalBusinessJSONLD />
+      {/* <LocalBusinessJSONLD /> */}
 
       {/* <CHANGE> Added header with logo, navigation, and mobile menu as specified */}
       <header className="bg-white shadow-sm sticky top-0 z-50">
