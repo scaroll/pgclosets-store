@@ -29,7 +29,7 @@ export default function PgHeader() {
     setTimeout(() => {
       setMegaMenuOpen(false)
       setActiveMenu(null)
-    }, 100)
+    }, 200)
   }
 
   return (
@@ -74,7 +74,7 @@ export default function PgHeader() {
             </Link>
 
             <div
-              className="relative"
+              className="relative group/menu"
               onMouseEnter={() => handleMenuHover('products')}
               onMouseLeave={handleMenuLeave}
             >
@@ -83,6 +83,20 @@ export default function PgHeader() {
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'products' ? 'rotate-180' : ''}`} />
                 <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
+              {megaMenuOpen && activeMenu === 'products' && (
+                <div className="absolute left-0 top-full pt-2" onMouseEnter={() => setMegaMenuOpen(true)}>
+                  <div className="pointer-events-auto">
+                    <MegaMenu
+                      isOpen={megaMenuOpen}
+                      activeMenu={activeMenu}
+                      onClose={() => {
+                        setMegaMenuOpen(false)
+                        setActiveMenu(null)
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
 
             <Link
@@ -94,7 +108,7 @@ export default function PgHeader() {
             </Link>
 
             <div
-              className="relative"
+              className="relative group/menu"
               onMouseEnter={() => handleMenuHover('services')}
               onMouseLeave={handleMenuLeave}
             >
@@ -103,6 +117,20 @@ export default function PgHeader() {
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'services' ? 'rotate-180' : ''}`} />
                 <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
+              {megaMenuOpen && activeMenu === 'services' && (
+                <div className="absolute left-0 top-full pt-2" onMouseEnter={() => setMegaMenuOpen(true)}>
+                  <div className="pointer-events-auto">
+                    <MegaMenu
+                      isOpen={megaMenuOpen}
+                      activeMenu={activeMenu}
+                      onClose={() => {
+                        setMegaMenuOpen(false)
+                        setActiveMenu(null)
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
 
             <Link
@@ -151,24 +179,6 @@ export default function PgHeader() {
               </svg>
             </button>
           </div>
-        </div>
-
-        {/* Mega Menu */}
-        <div
-          onMouseEnter={() => {
-            if (activeMenu) setMegaMenuOpen(true)
-          }}
-          onMouseLeave={handleMenuLeave}
-          className="relative"
-        >
-          <MegaMenu
-            isOpen={megaMenuOpen}
-            activeMenu={activeMenu}
-            onClose={() => {
-              setMegaMenuOpen(false)
-              setActiveMenu(null)
-            }}
-          />
         </div>
       </header>
 
