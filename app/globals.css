@@ -545,6 +545,125 @@ textarea:valid:focus {
   }
 }
 
+/* Mega Menu CSS Fixes */
+/* Fix z-index hierarchy */
+.nav-modern {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Mega menu dropdown positioning */
+.mega-menu-dropdown {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100vw;
+  z-index: 60;
+  pointer-events: auto;
+}
+
+.mega-menu-content {
+  position: relative;
+  z-index: 61;
+}
+
+/* Bridge the gap between nav trigger and mega menu */
+.group\/menu::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: transparent;
+  pointer-events: auto;
+}
+
+/* Ensure dropdown wrapper captures hover */
+.mega-menu-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  padding-top: 8px;
+  pointer-events: none;
+}
+
+.mega-menu-wrapper > * {
+  pointer-events: auto;
+}
+
+/* Mega menu visibility states */
+.mega-menu-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0s linear 0.2s;
+}
+
+.mega-menu-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+/* Fix pointer events for animated mega menu */
+[data-framer-motion-container] {
+  pointer-events: auto !important;
+}
+
+.mega-menu-content a,
+.mega-menu-content button {
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Touch target sizing for mobile accessibility */
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .touch-target {
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
+
+/* Mega menu overflow handling */
+.mega-menu-container {
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+.mega-menu-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mega-menu-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mega-menu-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.mega-menu-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --pg-offwhite: #111827;

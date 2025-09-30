@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useRef, useCallback } from "react"
 import { PGLogo } from "../ui/pg-logo"
 import { ChevronDown } from "lucide-react"
 import MegaMenu from "./navigation/MegaMenu"
@@ -11,6 +11,7 @@ export default function PgHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [megaMenuOpen, setMegaMenuOpen] = useState(false)
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -20,24 +21,37 @@ export default function PgHeader() {
     setIsMobileMenuOpen(false)
   }
 
-  const handleMenuHover = (menuKey: string) => {
+  const clearCloseTimeout = useCallback(() => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+  }, [])
+
+  const handleMenuHover = useCallback((menuKey: string) => {
+    clearCloseTimeout()
     setActiveMenu(menuKey)
     setMegaMenuOpen(true)
-  }
+  }, [clearCloseTimeout])
 
-  const handleMenuLeave = () => {
-    setMegaMenuOpen(false)
-    setActiveMenu(null)
-  }
+  const handleMenuLeave = useCallback(() => {
+    clearCloseTimeout()
+    closeTimeoutRef.current = setTimeout(() => {
+      setMegaMenuOpen(false)
+      setActiveMenu(null)
+    }, 150)
+  }, [clearCloseTimeout])
 
-  const handleMegaMenuMouseEnter = () => {
+  const handleMegaMenuMouseEnter = useCallback(() => {
+    clearCloseTimeout()
     setMegaMenuOpen(true)
-  }
+  }, [clearCloseTimeout])
 
-  const handleMegaMenuMouseLeave = () => {
+  const handleMegaMenuMouseLeave = useCallback(() => {
+    clearCloseTimeout()
     setMegaMenuOpen(false)
     setActiveMenu(null)
-  }
+  }, [clearCloseTimeout])
 
   return (
     <>
@@ -80,14 +94,12 @@ export default function PgHeader() {
               <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
 
-            <div
-              className="relative group/menu"
-              onMouseEnter={() => handleMenuHover('products')}
-              onMouseLeave={handleMenuLeave}
-            >
+            <div className="relative group/menu">
               <Button
                 variant="ghost"
                 size="default"
+                onMouseEnter={() => handleMenuHover('products')}
+                onMouseLeave={handleMenuLeave}
                 className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target h-auto"
               >
                 <span className="relative">Products</span>
@@ -105,6 +117,7 @@ export default function PgHeader() {
                       isOpen={megaMenuOpen}
                       activeMenu={activeMenu}
                       onClose={() => {
+                        clearCloseTimeout()
                         setMegaMenuOpen(false)
                         setActiveMenu(null)
                       }}
@@ -122,14 +135,12 @@ export default function PgHeader() {
               <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
 
-            <div
-              className="relative group/menu"
-              onMouseEnter={() => handleMenuHover('services')}
-              onMouseLeave={handleMenuLeave}
-            >
+            <div className="relative group/menu">
               <Button
                 variant="ghost"
                 size="default"
+                onMouseEnter={() => handleMenuHover('services')}
+                onMouseLeave={handleMenuLeave}
                 className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target h-auto"
               >
                 <span className="relative">Services</span>
@@ -147,6 +158,7 @@ export default function PgHeader() {
                       isOpen={megaMenuOpen}
                       activeMenu={activeMenu}
                       onClose={() => {
+                        clearCloseTimeout()
                         setMegaMenuOpen(false)
                         setActiveMenu(null)
                       }}
