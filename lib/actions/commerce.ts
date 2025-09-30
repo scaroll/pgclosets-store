@@ -1,5 +1,5 @@
 import { Product } from '@/types/commerce';
-import { unstable_noStore as noStore } from 'next/cache';
+import { unstable_cache } from 'next/cache';
 import { products as localProducts } from '@/app/products/products-data';
 
 const { NEXT_PUBLIC_APP_URL } = process.env;
@@ -12,6 +12,76 @@ const API_BASE = NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000';
 const API_URL = `${API_BASE.replace(/\/$/, '')}/api`;
 
 /**
+ * Internal function to fetch products with caching
+ */
+const fetchProductsInternal = async (params: {
+  query?: string;
+  collection?: string;
+  limit?: number;
+}): Promise<Product[]> => {
+  let filteredProducts = [...localProducts];
+
+  // Filter by search query
+  if (params.query) {
+    const searchTerm = params.query.toLowerCase();
+    filteredProducts = filteredProducts.filter((product) =>
+      product.name.toLowerCase().includes(searchTerm) ||
+      product.description.toLowerCase().includes(searchTerm) ||
+      product.category.toLowerCase().includes(searchTerm)
+    );
+  }
+
+  // Filter by collection/category
+  if (params.collection && params.collection !== 'All Categories') {
+    filteredProducts = filteredProducts.filter((product) =>
+      product.category.toLowerCase() === params.collection!.toLowerCase()
+    );
+  }
+
+  // Apply limit if specified
+  if (params.limit) {
+    filteredProducts = filteredProducts.slice(0, params.limit);
+  }
+
+  // Transform to match the expected Product type
+  return filteredProducts.map((product): Product => ({
+    id: product.id,
+    title: product.name,
+    handle: product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+    description: product.description,
+    thumbnail: product.image,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    images: [{ url: product.image, altText: product.name }],
+    variants: [{
+      id: `${product.id}-variant`,
+      title: 'Default',
+      sku: product.id,
+      price: product.price,
+      inventory_quantity: 100 // Assume in stock
+    }],
+    tags: [product.category],
+    collection: {
+      id: product.category,
+      title: product.category,
+      handle: product.category.toLowerCase().replace(/\s+/g, '-')
+    }
+  }));
+};
+
+/**
+ * Cached version of products fetch - revalidate every 5 minutes
+ */
+const getCachedProducts = unstable_cache(
+  fetchProductsInternal,
+  ['products-cache'],
+  {
+    revalidate: 300, // 5 minutes
+    tags: ['products']
+  }
+);
+
+/**
  * Fetches a list of products from the new unified backend.
  * @param params - Optional parameters for filtering, sorting, and pagination.
  * @returns A promise that resolves to an array of products.
@@ -21,60 +91,12 @@ export async function getProducts(params: {
   collection?: string;
   limit?: number;
 }): Promise<Product[]> {
-  // For static generation, use local data directly to avoid API calls during build
+  // For static generation, use cached local data
   if (typeof window === 'undefined') {
-    let filteredProducts = [...localProducts];
-
-    // Filter by search query
-    if (params.query) {
-      const searchTerm = params.query.toLowerCase();
-      filteredProducts = filteredProducts.filter((product) =>
-        product.name.toLowerCase().includes(searchTerm) ||
-        product.description.toLowerCase().includes(searchTerm) ||
-        product.category.toLowerCase().includes(searchTerm)
-      );
-    }
-
-    // Filter by collection/category
-    if (params.collection && params.collection !== 'All Categories') {
-      filteredProducts = filteredProducts.filter((product) =>
-        product.category.toLowerCase() === params.collection!.toLowerCase()
-      );
-    }
-
-    // Apply limit if specified
-    if (params.limit) {
-      filteredProducts = filteredProducts.slice(0, params.limit);
-    }
-
-    // Transform to match the expected Product type
-    return filteredProducts.map((product): Product => ({
-      id: product.id,
-      title: product.name,
-      handle: product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
-      description: product.description,
-      thumbnail: product.image,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      images: [{ url: product.image, altText: product.name }],
-      variants: [{
-        id: `${product.id}-variant`,
-        title: 'Default',
-        sku: product.id,
-        price: product.price,
-        inventory_quantity: 100 // Assume in stock
-      }],
-      tags: [product.category],
-      collection: {
-        id: product.category,
-        title: product.category,
-        handle: product.category.toLowerCase().replace(/\s+/g, '-')
-      }
-    }));
+    return getCachedProducts(params);
   }
 
-  // For client-side calls, use the API
-  noStore();
+  // For client-side calls, use the API with cache
   try {
     const searchParams = new URLSearchParams();
     if (params.query) {
@@ -88,7 +110,7 @@ export async function getProducts(params: {
     }
 
     const res = await fetch(`${API_URL}/products?${searchParams.toString()}`, {
-      cache: 'no-store',
+      next: { revalidate: 300 }, // Cache for 5 minutes
     });
 
     if (!res.ok) {
@@ -99,9 +121,56 @@ export async function getProducts(params: {
     return data.products as Product[];
   } catch (error) {
     console.error('Error fetching products:', error);
-    return [];
+    // Fallback to local data on error
+    return fetchProductsInternal(params);
   }
 }
+
+/**
+ * Internal function to fetch a single product by handle
+ */
+const fetchProductByHandleInternal = async (handle: string): Promise<Product | null> => {
+  const product = localProducts.find((p) =>
+    p.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') === handle
+  );
+  if (!product) return null;
+
+  return {
+    id: product.id,
+    title: product.name,
+    handle: product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+    description: product.description,
+    thumbnail: product.image,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    images: [{ url: product.image, altText: product.name }],
+    variants: [{
+      id: `${product.id}-variant`,
+      title: 'Default',
+      sku: product.id,
+      price: product.price,
+      inventory_quantity: 100 // Assume in stock
+    }],
+    tags: [product.category],
+    collection: {
+      id: product.category,
+      title: product.category,
+      handle: product.category.toLowerCase().replace(/\s+/g, '-')
+    }
+  };
+};
+
+/**
+ * Cached version of product by handle fetch - revalidate every 5 minutes
+ */
+const getCachedProductByHandle = unstable_cache(
+  fetchProductByHandleInternal,
+  ['product-by-handle-cache'],
+  {
+    revalidate: 300, // 5 minutes
+    tags: ['products']
+  }
+);
 
 /**
  * Fetches a single product by its handle.
@@ -109,43 +178,15 @@ export async function getProducts(params: {
  * @returns A promise that resolves to the product, or null if not found.
  */
 export async function getProductByHandle(handle: string): Promise<Product | null> {
-  // For static generation, use local data directly to avoid API calls during build
+  // For static generation, use cached local data
   if (typeof window === 'undefined') {
-    const product = localProducts.find((p) => 
-      p.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') === handle
-    );
-    if (!product) return null;
-
-    return {
-      id: product.id,
-      title: product.name,
-      handle: product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
-      description: product.description,
-      thumbnail: product.image,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      images: [{ url: product.image, altText: product.name }],
-      variants: [{
-        id: `${product.id}-variant`,
-        title: 'Default',
-        sku: product.id,
-        price: product.price,
-        inventory_quantity: 100 // Assume in stock
-      }],
-      tags: [product.category],
-      collection: {
-        id: product.category,
-        title: product.category,
-        handle: product.category.toLowerCase().replace(/\s+/g, '-')
-      }
-    };
+    return getCachedProductByHandle(handle);
   }
 
-  // For client-side calls, use the API
-  noStore();
+  // For client-side calls, use the API with cache
   try {
     const res = await fetch(`${API_URL}/products/${handle}`, {
-      cache: 'no-store',
+      next: { revalidate: 300 }, // Cache for 5 minutes
     });
 
     if (!res.ok) {
@@ -159,7 +200,8 @@ export async function getProductByHandle(handle: string): Promise<Product | null
     return data.product as Product;
   } catch (error) {
     console.error(`Error fetching product by handle ${handle}:`, error);
-    return null;
+    // Fallback to local data on error
+    return fetchProductByHandleInternal(handle);
   }
 }
 

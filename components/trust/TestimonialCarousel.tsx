@@ -1,391 +1,224 @@
-'use client'
-
 "use client"
 
-import { useState, useEffect } from "react"
-import { Star, Quote, ChevronLeft, ChevronRight, MapPin, Calendar, CheckCircle } from "lucide-react"
-import Image from "next/image"
+import * as React from "react"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import { Card } from "@/components/ui/card"
+import { Star } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 interface Testimonial {
   id: string
   name: string
   location: string
   rating: number
-  review: string
+  text: string
   date: string
   image?: string
-  verified: boolean
-  project: string
-  beforeImage?: string
-  afterImage?: string
 }
 
-interface TestimonialCarouselProps {
-  variant?: "standard" | "featured" | "compact" | "video"
-  autoPlay?: boolean
-  showNavigation?: boolean
-  showBeforeAfter?: boolean
-  className?: string
-}
+const testimonials: Testimonial[] = [
+  {
+    id: "1",
+    name: "Sarah Mitchell",
+    location: "Westboro",
+    rating: 5,
+    date: "March 2025",
+    text: "PG Closets transformed our master bedroom closet beyond our expectations. The team was professional, punctual, and the quality of their work is exceptional. Our custom walk-in closet is now the envy of all our friends. Highly recommend their services!",
+    image: "/api/placeholder/80/80"
+  },
+  {
+    id: "2",
+    name: "Michael Chen",
+    location: "Kanata",
+    rating: 5,
+    date: "February 2025",
+    text: "From the initial consultation to the final installation, everything was seamless. They listened to our needs and designed a storage solution that maximized every inch of space. The craftsmanship is outstanding and the price was very competitive. Worth every penny!",
+    image: "/api/placeholder/80/80"
+  },
+  {
+    id: "3",
+    name: "Jennifer Thompson",
+    location: "Barrhaven",
+    rating: 5,
+    date: "January 2025",
+    text: "We had PG Closets install custom closet systems in all three bedrooms. The attention to detail and quality of materials exceeded our expectations. The installers were courteous and left everything spotless. Our home organization has improved dramatically!",
+    image: "/api/placeholder/80/80"
+  },
+  {
+    id: "4",
+    name: "David Robertson",
+    location: "Orleans",
+    rating: 5,
+    date: "December 2024",
+    text: "Outstanding service from start to finish! The design consultation was thorough and they offered creative solutions we hadn't considered. Installation was quick and professional. Our garage storage system has completely changed how we use the space. Couldn't be happier!",
+    image: "/api/placeholder/80/80"
+  },
+  {
+    id: "5",
+    name: "Lisa Anderson",
+    location: "Nepean",
+    rating: 5,
+    date: "November 2024",
+    text: "PG Closets did an amazing job on our pantry organization system. They worked with our budget and created a custom solution that looks beautiful and is incredibly functional. The quality is top-notch and the team was a pleasure to work with. Highly recommended!",
+    image: "/api/placeholder/80/80"
+  },
+  {
+    id: "6",
+    name: "Robert Williams",
+    location: "Stittsville",
+    rating: 5,
+    date: "October 2024",
+    text: "We couldn't be more pleased with our new closet system. The design process was collaborative and they really listened to what we wanted. The installation was flawless and completed on schedule. The end result is a beautiful, functional space that we use every day. Thank you PG Closets!",
+    image: "/api/placeholder/80/80"
+  }
+]
 
-export default function TestimonialCarousel({
-  variant = "standard",
-  autoPlay = true,
-  showNavigation = true,
-  showBeforeAfter = false,
-  className = ""
-}: TestimonialCarouselProps) {
+export default function TestimonialCarousel() {
+  const [api, setApi] = React.useState<any>()
+  const [current, setCurrent] = React.useState(0)
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(autoPlay)
+  React.useEffect(() => {
+    if (!api) return
 
-  // Enhanced testimonials with more detail
-  const testimonials: Testimonial[] = [
-    {
-      id: "1",
-      name: "Sarah Mitchell",
-      location: "Kanata, ON",
-      rating: 5,
-      review: "Absolutely stunning work! The PG Closets team transformed our master bedroom with beautiful sliding doors. The consultation was thorough, the installation was flawless, and the quality exceeded our expectations. Professional, on-time, and exceptional craftsmanship. Highly recommend!",
-      date: "2 weeks ago",
-      image: "/testimonials/sarah.jpg",
-      verified: true,
-      project: "Master Bedroom Closet Doors",
-      beforeImage: "/gallery/before-1.jpg",
-      afterImage: "/gallery/after-1.jpg"
-    },
-    {
-      id: "2",
-      name: "Michael Thompson",
-      location: "Nepean, ON",
-      rating: 5,
-      review: "From consultation to installation, everything was perfect. The doors are gorgeous and the installation was flawless. The team was professional, respectful of our home, and cleaned up perfectly. Worth every penny for the quality and service we received.",
-      date: "1 month ago",
-      verified: true,
-      project: "Living Room Sliding Doors",
-      beforeImage: "/gallery/before-2.jpg",
-      afterImage: "/gallery/after-2.jpg"
-    },
-    {
-      id: "3",
-      name: "Jennifer Lee",
-      location: "Orleans, ON",
-      rating: 5,
-      review: "We couldn't be happier with our new closet doors. The team was professional, clean, and delivered exactly what was promised. The transformation is incredible - our home looks amazing now! The lifetime warranty gives us complete peace of mind.",
-      date: "3 weeks ago",
-      verified: true,
-      project: "Guest Bedroom Makeover",
-      beforeImage: "/gallery/before-3.jpg",
-      afterImage: "/gallery/after-3.jpg"
-    },
-    {
-      id: "4",
-      name: "David Clarke",
-      location: "Barrhaven, ON",
-      rating: 5,
-      review: "Exceptional service from start to finish. The consultation was thorough and the installation was quick and professional. These doors have completely transformed our space. The quality is outstanding and the team's attention to detail is impressive.",
-      date: "1 week ago",
-      verified: true,
-      project: "Home Office Renovation",
-      beforeImage: "/gallery/before-4.jpg",
-      afterImage: "/gallery/after-4.jpg"
-    },
-    {
-      id: "5",
-      name: "Lisa Rodriguez",
-      location: "Stittsville, ON",
-      rating: 5,
-      review: "Amazing experience! The PG Closets team was professional, punctual, and incredibly skilled. Our new closet doors are beautiful and function perfectly. The installation was completed faster than expected with no mess left behind.",
-      date: "2 months ago",
-      verified: true,
-      project: "Master Closet Renovation",
-      beforeImage: "/gallery/before-5.jpg",
-      afterImage: "/gallery/after-5.jpg"
-    },
-    {
-      id: "6",
-      name: "Robert Chen",
-      location: "Gloucester, ON",
-      rating: 5,
-      review: "Outstanding quality and service! The team's expertise shows in every detail. Our new sliding doors are not only beautiful but also incredibly functional. The whole process was smooth and stress-free. Highly recommended for anyone looking for premium closet solutions.",
-      date: "3 months ago",
-      verified: true,
-      project: "Walk-in Closet Upgrade",
-      beforeImage: "/gallery/before-6.jpg",
-      afterImage: "/gallery/after-6.jpg"
+    // Set up autoplay
+    const autoplay = setInterval(() => {
+      if (api.canScrollNext()) {
+        api.scrollNext()
+      } else {
+        api.scrollTo(0)
+      }
+    }, 5000)
+
+    // Update current slide
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap())
+    })
+
+    return () => {
+      clearInterval(autoplay)
     }
-  ]
+  }, [api])
 
-  useEffect(() => {
-    if (!isPlaying) return
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 6000)
-
-    return () => clearInterval(interval)
-  }, [isPlaying, testimonials.length])
-
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    setIsPlaying(false)
-  }
-
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-    setIsPlaying(false)
-  }
-
-  const renderStars = (rating: number) => {
-    return (
-      <div className="flex items-center gap-1">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            className={`w-4 h-4 ${
-              i < rating ? "text-yellow-400 fill-current" : "text-gray-300"
-            }`}
-          />
-        ))}
-      </div>
-    )
-  }
-
-  if (variant === "compact") {
-    return (
-      <div className={`relative bg-gradient-to-r from-slate-50 to-blue-50 rounded-lg p-6 ${className}`}>
-        <div className="text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            {renderStars(5)}
-            <span className="text-lg font-semibold text-slate-900">5.0 Stars</span>
-          </div>
-          <blockquote className="text-lg text-slate-700 mb-4 italic">
-            "{testimonials[currentIndex].review.slice(0, 120)}..."
-          </blockquote>
-          <div className="flex items-center justify-center gap-2">
-            <span className="font-semibold text-slate-900">{testimonials[currentIndex].name}</span>
-            <span className="text-slate-500">•</span>
-            <span className="text-slate-600">{testimonials[currentIndex].location}</span>
-            {testimonials[currentIndex].verified && (
-              <CheckCircle className="w-4 h-4 text-green-600" />
-            )}
-          </div>
-        </div>
-
-        {showNavigation && (
-          <div className="flex items-center justify-center gap-2 mt-4">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentIndex ? "bg-blue-600" : "bg-slate-300"
-                }`}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-    )
-  }
-
-  if (variant === "featured") {
-    const current = testimonials[currentIndex]
-    return (
-      <section className={`py-16 bg-gradient-to-br from-slate-900 to-slate-800 text-white ${className}`}>
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-light mb-4">
-              What Our Customers Say
-            </h2>
-            <div className="flex items-center justify-center gap-2 mb-2">
-              {renderStars(5)}
-              <span className="text-lg font-semibold">5.0 Stars from 500+ Reviews</span>
-            </div>
-          </div>
-
-          <div className="relative max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12">
-              <Quote className="w-12 h-12 text-white/40 mb-6" />
-
-              <blockquote className="text-xl md:text-2xl font-light leading-relaxed mb-8">
-                "{current.review}"
-              </blockquote>
-
-              <div className="flex items-center gap-6">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                  <span className="text-xl font-semibold">
-                    {current.name.split(' ').map(n => n[0]).join('')}
-                  </span>
-                </div>
-                <div>
-                  <div className="font-semibold text-lg">{current.name}</div>
-                  <div className="text-white/80 flex items-center gap-2">
-                    <MapPin className="w-4 h-4" />
-                    {current.location}
-                  </div>
-                  <div className="text-white/60 flex items-center gap-2 mt-1">
-                    <Calendar className="w-4 h-4" />
-                    {current.date}
-                    {current.verified && (
-                      <CheckCircle className="w-4 h-4 text-green-400" />
-                    )}
-                  </div>
-                </div>
-                <div className="ml-auto hidden md:block">
-                  <div className="text-right">
-                    <div className="text-sm text-white/60 mb-1">Project</div>
-                    <div className="font-medium">{current.project}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {showNavigation && (
-              <div className="flex items-center justify-between mt-8">
-                <button
-                  onClick={prevTestimonial}
-                  className="w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full flex items-center justify-center transition-colors"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-
-                <div className="flex items-center gap-2">
-                  {testimonials.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentIndex(index)}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        index === currentIndex ? "bg-white" : "bg-white/30"
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                <button
-                  onClick={nextTestimonial}
-                  className="w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full flex items-center justify-center transition-colors"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  // Standard variant
   return (
-    <section className={`py-12 bg-white ${className}`}>
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-light text-slate-900 mb-2">
-            Customer Success Stories
+    <div className="w-full py-16 px-4 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+            What Our Customers Say
           </h2>
-          <div className="flex items-center justify-center gap-2 mb-4">
-            {renderStars(5)}
-            <span className="text-lg font-semibold text-slate-900">5.0 Stars</span>
-            <span className="text-slate-600">• 500+ Reviews</span>
-          </div>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Don't just take our word for it. Here's what Ottawa homeowners have to say about their PG Closets experience.
+          </p>
         </div>
 
-        <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.slice(currentIndex, currentIndex + 3).map((testimonial) => (
-              <div
-                key={testimonial.id}
-                className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-lg p-6 hover:shadow-lg transition-all duration-300"
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center">
-                    <span className="text-lg font-semibold text-slate-700">
-                      {testimonial.name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-slate-900">{testimonial.name}</div>
-                    <div className="text-sm text-slate-600 flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      {testimonial.location}
+        {/* Carousel */}
+        <Carousel
+          setApi={setApi}
+          className="w-full max-w-5xl mx-auto"
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+        >
+          <CarouselContent>
+            {testimonials.map((testimonial) => (
+              <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/2">
+                <div className="p-4">
+                  <Card className="border-2 border-gray-100 hover:border-black transition-all duration-300 hover:shadow-xl bg-white">
+                    <div className="p-6 md:p-8">
+                      {/* Rating Stars */}
+                      <div className="flex gap-1 mb-4">
+                        {Array.from({ length: testimonial.rating }).map((_, i) => (
+                          <Star
+                            key={i}
+                            className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                            aria-hidden="true"
+                          />
+                        ))}
+                      </div>
+
+                      {/* Testimonial Text */}
+                      <blockquote className="text-gray-700 leading-relaxed mb-6 min-h-[120px]">
+                        "{testimonial.text}"
+                      </blockquote>
+
+                      {/* Customer Info */}
+                      <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
+                        <div className="flex-shrink-0">
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-black to-gray-600 flex items-center justify-center text-white font-bold text-lg">
+                            {testimonial.name.charAt(0)}
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-semibold text-black">
+                            {testimonial.name}
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            {testimonial.location}, Ottawa • {testimonial.date}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  {testimonial.verified && (
-                    <CheckCircle className="w-5 h-5 text-green-600 ml-auto" />
-                  )}
+                  </Card>
                 </div>
-
-                <div className="flex items-center gap-2 mb-3">
-                  {renderStars(testimonial.rating)}
-                  <span className="text-sm text-slate-600">{testimonial.date}</span>
-                </div>
-
-                <Quote className="w-6 h-6 text-slate-300 mb-2" />
-                <p className="text-slate-700 text-sm leading-relaxed mb-3">
-                  {testimonial.review}
-                </p>
-
-                {testimonial.project && (
-                  <div className="text-xs text-blue-600 font-medium bg-blue-50 px-2 py-1 rounded-full inline-block">
-                    {testimonial.project}
-                  </div>
-                )}
-
-                {showBeforeAfter && testimonial.beforeImage && testimonial.afterImage && (
-                  <div className="mt-4 grid grid-cols-2 gap-2">
-                    <div>
-                      <div className="text-xs text-slate-500 mb-1">Before</div>
-                      <div className="aspect-video bg-slate-100 rounded"></div>
-                    </div>
-                    <div>
-                      <div className="text-xs text-slate-500 mb-1">After</div>
-                      <div className="aspect-video bg-slate-100 rounded"></div>
-                    </div>
-                  </div>
-                )}
-              </div>
+              </CarouselItem>
             ))}
-          </div>
+          </CarouselContent>
 
-          {showNavigation && (
-            <div className="flex items-center justify-center gap-4 mt-8">
-              <button
-                onClick={prevTestimonial}
-                className="w-10 h-10 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center transition-colors"
-              >
-                <ChevronLeft className="w-5 h-5 text-slate-600" />
-              </button>
+          {/* Navigation Arrows */}
+          <CarouselPrevious className="hidden md:flex -left-4 lg:-left-12 border-black hover:bg-black hover:text-white" />
+          <CarouselNext className="hidden md:flex -right-4 lg:-right-12 border-black hover:bg-black hover:text-white" />
+        </Carousel>
 
-              <div className="flex items-center gap-2">
-                {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index * 3)}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      Math.floor(currentIndex / 3) === index ? "bg-blue-600" : "bg-slate-300"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={nextTestimonial}
-                className="w-10 h-10 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center transition-colors"
-              >
-                <ChevronRight className="w-5 h-5 text-slate-600" />
-              </button>
-            </div>
-          )}
+        {/* Dots Indicator */}
+        <div className="flex justify-center gap-2 mt-8">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => api?.scrollTo(index)}
+              className={cn(
+                "w-2 h-2 rounded-full transition-all duration-300",
+                current === index
+                  ? "bg-black w-8"
+                  : "bg-gray-300 hover:bg-gray-400"
+              )}
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))}
         </div>
 
-        <div className="text-center mt-8">
-          <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
-            Read All 500+ Reviews →
-          </button>
+        {/* Call to Action */}
+        <div className="text-center mt-12">
+          <p className="text-gray-600 mb-4">Ready to transform your space?</p>
+          <a
+            href="/request-work"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-black text-white font-medium text-sm tracking-wider uppercase hover:bg-white hover:text-black border-2 border-black transition-all duration-300"
+          >
+            Get Your Free Quote
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

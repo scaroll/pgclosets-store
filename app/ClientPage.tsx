@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import HeroVideo from "../HeroVideo"
@@ -15,11 +15,38 @@ import { trackLogoInteraction, getUserJourneyStage } from "@/lib/analytics/logo-
 import { LogoConversionOptimizer, CTALogoButton } from "@/components/conversion/LogoConversionOptimizer"
 import TrustSignals from "@/components/conversion/TrustSignals"
 import TrustBadges from "@/components/trust/TrustBadges"
+import { ProductCard } from "@/components/products"
+import { Badge } from "@/components/ui/badge"
 
 export default function ClientPage({ products }: { products: Product[] }) {
   const [quoteStep, setQuoteStep] = useState(0)
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [heroLogoVisible, setHeroLogoVisible] = useState(false)
+  const [showFloatingCTA, setShowFloatingCTA] = useState(false)
+  const [contentVisible, setContentVisible] = useState(false)
+
+  useEffect(() => {
+    // Trigger content animations after mount
+    const timer = setTimeout(() => {
+      setContentVisible(true)
+    }, 100)
+
+    // Handle floating CTA on scroll
+    const handleScroll = () => {
+      if (window.scrollY > 600) {
+        setShowFloatingCTA(true)
+      } else {
+        setShowFloatingCTA(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   const handleHeroLogoClick = () => {
     trackLogoInteraction({
@@ -72,7 +99,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
         {/* Removed ambient glow effects for cleaner aesthetic */}
         <div className="relative z-20 text-center px-4 max-w-7xl mx-auto">
           {/* Premium hero logo */}
-          <div className="mb-12 flex justify-center">
+          <div className={`mb-8 flex justify-center transition-all duration-1000 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
             <AnimatedLogo
               animation="luxury"
               width={200}
@@ -94,58 +121,81 @@ export default function ClientPage({ products }: { products: Product[] }) {
             />
           </div>
 
-          <div className="mb-8">
-            <div className="inline-flex items-center space-x-2 border border-white/20 text-white px-4 py-2 text-xs font-medium tracking-[0.1em] uppercase">
-              <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-              <span>Free In-Home Consultations</span>
-            </div>
+          {/* Urgency Badge */}
+          <div className={`mb-6 transition-all duration-1000 delay-200 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+            <Badge
+              variant="outline"
+              size="default"
+              className="inline-flex items-center space-x-2 border-emerald-400/40 bg-emerald-500/10 text-emerald-100 px-5 py-2.5 text-xs font-semibold tracking-[0.12em] uppercase hover:bg-emerald-500/20 backdrop-blur-sm shadow-lg shadow-emerald-500/20"
+            >
+              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/50" />
+              <span>Limited Availability - Book Your Free Consultation Today</span>
+            </Badge>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-light mb-6 sm:mb-8 leading-[1.05] text-white tracking-tight">
-            <span className="block">Quality Closets</span>
-            <span className="block text-3xl sm:text-4xl lg:text-5xl mt-2 opacity-90">For Ottawa Homes</span>
+
+          {/* Massive Hero Headline */}
+          <h1 className={`text-5xl sm:text-6xl lg:text-8xl xl:text-9xl font-bold mb-6 sm:mb-8 leading-[0.95] text-white tracking-tighter transition-all duration-1000 delay-300 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <span className="block bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent drop-shadow-2xl">
+              Transform Your
+            </span>
+            <span className="block mt-2 bg-gradient-to-r from-white to-emerald-100 bg-clip-text text-transparent drop-shadow-2xl">
+              Closet Space
+            </span>
           </h1>
-          <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-12 max-w-3xl mx-auto text-white/80 font-light leading-relaxed tracking-wide px-4">
-            Get your free quote today. Professional measurement, design, and installation included.
+
+          {/* Enhanced Subheadline */}
+          <p className={`text-lg sm:text-xl lg:text-2xl xl:text-3xl mb-10 sm:mb-14 max-w-4xl mx-auto text-white/90 font-light leading-relaxed tracking-wide px-4 transition-all duration-1000 delay-500 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            Premium custom closets designed for Ottawa homes.
+            <span className="block mt-2 text-emerald-200 font-medium">
+              Free consultation • Professional installation • Lifetime warranty
+            </span>
           </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 max-w-3xl mx-auto text-white">
-            <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-light mb-1">500+</div>
-              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Installations</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-light mb-1">5.0</div>
-              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Rating</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-light mb-1">15+</div>
-              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Years</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-light mb-1">1st</div>
-              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">In Ottawa</div>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          {/* Dramatic CTA Buttons */}
+          <div className={`flex flex-col sm:flex-row gap-5 justify-center mb-12 transition-all duration-1000 delay-700 ${contentVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             <Link
               href="/request-work"
-              className="add-to-cart inline-flex items-center justify-center px-8 py-4 bg-white text-black font-medium text-base tracking-[0.1em] uppercase transition-all duration-300 hover:bg-black hover:text-white border-2 border-white group touch-target"
+              className="add-to-cart relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-lg tracking-[0.08em] uppercase transition-all duration-300 hover:from-emerald-600 hover:to-emerald-700 hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 border-2 border-emerald-400 group touch-target shadow-xl shadow-emerald-500/30 overflow-hidden"
             >
-              <span className="relative z-10">Get Free Quote</span>
-              <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
+              <span className="relative z-10 flex items-center">
+                Get Free Quote Now
+                <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
             </Link>
 
             <Link
               href="/products"
-              className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-medium text-base tracking-[0.1em] uppercase transition-all duration-300 hover:bg-white hover:text-black border-2 border-white/50 hover:border-white group touch-target"
+              className="inline-flex items-center justify-center px-10 py-5 bg-transparent text-white font-semibold text-lg tracking-[0.08em] uppercase transition-all duration-300 hover:bg-white hover:text-black border-2 border-white/70 hover:border-white group touch-target hover:shadow-xl hover:scale-105"
             >
-              <span className="relative z-10">View Products</span>
+              <span className="relative z-10">View Gallery</span>
             </Link>
           </div>
 
+          {/* Stats Grid with Animation */}
+          <div className={`grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto text-white transition-all duration-1000 delay-900 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="text-center transform hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">500+</div>
+              <div className="text-xs text-white/70 uppercase tracking-[0.2em] font-semibold">Installations</div>
+            </div>
+            <div className="text-center transform hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">5.0</div>
+              <div className="text-xs text-white/70 uppercase tracking-[0.2em] font-semibold">Rating</div>
+            </div>
+            <div className="text-center transform hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">15+</div>
+              <div className="text-xs text-white/70 uppercase tracking-[0.2em] font-semibold">Years</div>
+            </div>
+            <div className="text-center transform hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">#1</div>
+              <div className="text-xs text-white/70 uppercase tracking-[0.2em] font-semibold">In Ottawa</div>
+            </div>
+          </div>
+
           {/* Enhanced trust signals below CTAs */}
-          <div className="mt-8 space-y-6">
+          <div className={`mt-8 space-y-6 transition-all duration-1000 delay-1000 ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
             <div className="flex justify-center">
               <LogoConversionOptimizer
                 placement="hero"
@@ -156,27 +206,66 @@ export default function ClientPage({ products }: { products: Product[] }) {
             </div>
 
             {/* Professional badges */}
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
-                <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                <span>BBB A+ Rated</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
-                <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
-                <span>Google Reviews 5.0</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
-                <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
-                <span>Free Consultation</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
-                <span className="w-2 h-2 bg-purple-400 rounded-full"></span>
-                <span>Lifetime Warranty</span>
-              </div>
+            <div className="flex flex-wrap items-center justify-center gap-4 lg:gap-6 text-sm text-white/80">
+              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
+                <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                <span className="font-semibold">BBB A+ Rated</span>
+              </Badge>
+              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
+                <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+                <span className="font-semibold">Google Reviews 5.0</span>
+              </Badge>
+              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
+                <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                <span className="font-semibold">Free Consultation</span>
+              </Badge>
+              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
+                <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span>
+                <span className="font-semibold">Lifetime Warranty</span>
+              </Badge>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Floating CTA Bar */}
+      <div
+        className={`fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-emerald-600 to-emerald-700 border-t-4 border-emerald-400 shadow-2xl shadow-emerald-900/50 backdrop-blur-sm transition-transform duration-500 ${
+          showFloatingCTA ? 'translate-y-0' : 'translate-y-full'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3 text-white">
+              <div className="hidden sm:block w-3 h-3 bg-emerald-300 rounded-full animate-pulse"></div>
+              <div>
+                <p className="font-bold text-lg">Ready to Transform Your Space?</p>
+                <p className="text-sm text-emerald-100">Limited slots available this month</p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <Link
+                href="/request-work"
+                className="add-to-cart inline-flex items-center justify-center px-6 py-3 bg-white text-emerald-700 font-bold text-sm tracking-wide uppercase transition-all duration-300 hover:bg-emerald-50 hover:scale-105 shadow-lg hover:shadow-xl group"
+              >
+                Get Free Quote
+                <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+              <button
+                onClick={() => setShowFloatingCTA(false)}
+                className="px-3 py-3 text-white hover:bg-emerald-800/50 transition-colors rounded"
+                aria-label="Close floating banner"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <section id="products" className="py-20 bg-gray-50 relative">
         {/* Subtle logo background pattern for products section */}
@@ -197,86 +286,12 @@ export default function ClientPage({ products }: { products: Product[] }) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.slice(0, 4).map((product, index) => (
-              <div
+              <ProductCard
                 key={product.id}
-                className="bg-white shadow-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 border border-gray-100"
-              >
-                <div className="aspect-square relative overflow-hidden group">
-                  <Image
-                    src={product.thumbnail || "/placeholder.svg"}
-                    alt={product.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                    loading={index < 2 ? "eager" : "lazy"}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
-                    quality={85}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  {/* Logo watermark on product images - temporarily disabled */}
-                  {/* <div className="absolute bottom-2 right-2 opacity-30 group-hover:opacity-50 transition-opacity duration-300">
-                    <ResponsiveLogoVariants
-                      variant="compact"
-                      theme="dark"
-                      width={40}
-                      height={8}
-                      className="filter drop-shadow-sm"
-                    />
-                  </div> */}
-
-                  <div className="absolute top-2 left-2 bg-black text-white px-3 py-1 text-xs font-medium tracking-[0.2em] uppercase">
-                    Free Quote
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-light text-slate-900 mb-2 tracking-wide">{product.title}</h3>
-                  <p className="text-slate-600 text-sm mb-4 truncate font-light">{product.description}</p>
-                  <div className="text-3xl font-extralight text-slate-900 mb-6 tracking-tight">{formatPrice(product.variants[0]?.price)}</div>
-                  <div className="flex gap-2">
-                    <CTALogoButton
-                      onClick={() => handleSelectProduct(product)}
-                      variant="primary"
-                      size="sm"
-                      trackingContext="product_card_quote"
-                      className="add-to-cart flex-1 text-sm uppercase tracking-widest py-3"
-                    >
-                      Free Quote
-                    </CTALogoButton>
-                    <CTALogoButton
-                      href={`/products/${product.handle}`}
-                      variant="secondary"
-                      size="sm"
-                      showLogo={false}
-                      trackingContext="product_card_details"
-                      className="touch-target px-4 text-sm uppercase tracking-widest py-3"
-                    >
-                      Details
-                    </CTALogoButton>
-                  </div>
-
-                  {/* Enhanced trust signals on product cards */}
-                  <div className="mt-3 pt-3 border-t border-gray-100 space-y-2">
-                    <LogoConversionOptimizer
-                      placement="pricing"
-                      variant="trust_signal"
-                      size="sm"
-                    />
-                    <div className="flex items-center justify-between text-xs text-gray-600">
-                      <div className="flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                        <span>Licensed & Insured</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                        <span>Lifetime Warranty</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-center text-xs text-gray-500">
-                      <span>⭐⭐⭐⭐⭐ 5.0 (500+ Reviews)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                product={product}
+                onQuoteRequest={handleSelectProduct}
+                imageLoadingPriority={index < 2 ? "eager" : "lazy"}
+              />
             ))}
           </div>
         </div>

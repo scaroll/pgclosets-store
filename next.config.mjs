@@ -81,6 +81,12 @@ const nextConfig = {
       },
     ],
     formats: ["image/webp", "image/avif"],
+    // Fix Next.js 16 warning - explicitly configure quality levels
+    qualities: [50, 75],
+    // Enable loader optimization
+    unoptimized: false,
+    // Minimize requests
+    minimumCacheTTL: 60,
   },
 
   // Comprehensive security and performance headers
