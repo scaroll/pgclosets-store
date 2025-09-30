@@ -36,15 +36,7 @@ const nextConfig = {
 
   // Image optimization
   images: {
-    domains: [
-      "www.pgclosets.com",
-      "pgclosets.com",
-      "www.renin.com",
-      "renin.com",
-      "cdn.renin.com",
-      "images.unsplash.com",
-      "hebbkx1anhila5yf.public.blob.vercel-storage.com",
-    ],
+    qualities: [50, 75, 85, 90, 100],
     remotePatterns: [
       {
         protocol: "https",
@@ -83,6 +75,9 @@ const nextConfig = {
     formats: ["image/webp", "image/avif"],
   },
 
+  // Fix workspace root warning
+  outputFileTracingRoot: process.cwd(),
+
   // Comprehensive security and performance headers
   async headers() {
     return [
@@ -120,7 +115,7 @@ const nextConfig = {
               default-src 'self';
               script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://js.stripe.com https://checkout.stripe.com;
               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-              img-src 'self' data: blob: https://www.pgclosets.com https://cdn.renin.com https://images.unsplash.com https://hebbkx1anhila5yf.public.blob.vercel-storage.com https://www.google-analytics.com https://www.googletagmanager.com;
+              img-src 'self' data: blob: https://www.pgclosets.com https://www.renin.com https://cdn.renin.com https://images.unsplash.com https://hebbkx1anhila5yf.public.blob.vercel-storage.com https://www.google-analytics.com https://www.googletagmanager.com;
               font-src 'self' https://fonts.gstatic.com;
               connect-src 'self' https://api.stripe.com https://checkout.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com;
               frame-src https://js.stripe.com https://checkout.stripe.com;
