@@ -5,6 +5,7 @@ import { useState } from "react"
 import { PGLogo } from "../ui/pg-logo"
 import { ChevronDown } from "lucide-react"
 import MegaMenu from "./navigation/MegaMenu"
+import { Button } from "../ui/button"
 
 export default function PgHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -25,11 +26,17 @@ export default function PgHeader() {
   }
 
   const handleMenuLeave = () => {
-    // Add a small delay to prevent flickering when moving between menu items
-    setTimeout(() => {
-      setMegaMenuOpen(false)
-      setActiveMenu(null)
-    }, 200)
+    setMegaMenuOpen(false)
+    setActiveMenu(null)
+  }
+
+  const handleMegaMenuMouseEnter = () => {
+    setMegaMenuOpen(true)
+  }
+
+  const handleMegaMenuMouseLeave = () => {
+    setMegaMenuOpen(false)
+    setActiveMenu(null)
   }
 
   return (
@@ -37,8 +44,8 @@ export default function PgHeader() {
       <header className="nav-modern sticky top-0 z-40 bg-white/98 backdrop-blur-2xl border-b border-gray-100 transition-all duration-300" role="banner">
         {/* Top bar with phone number */}
         <div className="bg-black text-white py-2 px-4 text-center text-sm font-medium tracking-wider">
-          <a href="tel:613-555-0123" className="hover:text-gray-200 transition-colors">
-            📞 Call for Free Quote: (613) 555-0123
+          <a href="tel:6134225800" className="hover:text-gray-200 transition-colors">
+            📞 Call for Free Quote: (613) 422-5800
           </a>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
@@ -78,13 +85,21 @@ export default function PgHeader() {
               onMouseEnter={() => handleMenuHover('products')}
               onMouseLeave={handleMenuLeave}
             >
-              <button className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target">
+              <Button
+                variant="ghost"
+                size="default"
+                className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target h-auto"
+              >
                 <span className="relative">Products</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'products' ? 'rotate-180' : ''}`} />
                 <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </button>
+              </Button>
               {megaMenuOpen && activeMenu === 'products' && (
-                <div className="absolute left-0 top-full pt-2" onMouseEnter={() => setMegaMenuOpen(true)}>
+                <div
+                  className="absolute left-0 top-full pt-2"
+                  onMouseEnter={handleMegaMenuMouseEnter}
+                  onMouseLeave={handleMegaMenuMouseLeave}
+                >
                   <div className="pointer-events-auto">
                     <MegaMenu
                       isOpen={megaMenuOpen}
@@ -112,13 +127,21 @@ export default function PgHeader() {
               onMouseEnter={() => handleMenuHover('services')}
               onMouseLeave={handleMenuLeave}
             >
-              <button className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target">
+              <Button
+                variant="ghost"
+                size="default"
+                className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target h-auto"
+              >
                 <span className="relative">Services</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'services' ? 'rotate-180' : ''}`} />
                 <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </button>
+              </Button>
               {megaMenuOpen && activeMenu === 'services' && (
-                <div className="absolute left-0 top-full pt-2" onMouseEnter={() => setMegaMenuOpen(true)}>
+                <div
+                  className="absolute left-0 top-full pt-2"
+                  onMouseEnter={handleMegaMenuMouseEnter}
+                  onMouseLeave={handleMegaMenuMouseLeave}
+                >
                   <div className="pointer-events-auto">
                     <MegaMenu
                       isOpen={megaMenuOpen}
@@ -142,24 +165,25 @@ export default function PgHeader() {
             </Link>
 
 
-            <Link
+            <Button
               href="/request-work"
-              className="relative ml-6 bg-black text-white font-medium px-6 py-3 text-xs tracking-[0.1em] uppercase overflow-hidden group border-2 border-black transition-all duration-300 hover:bg-white hover:text-black touch-target"
+              variant="brand-primary"
+              size="default"
+              className="relative ml-6 text-xs tracking-[0.1em] touch-target"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                Free Quote
-                <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-              <div className="absolute inset-0 bg-white transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
-            </Link>
+              Free Quote
+              <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Button>
           </nav>
 
           <div className="md:hidden flex items-center gap-2">
-            <button
+            <Button
               onClick={toggleMobileMenu}
-              className="mobile-menu-toggle touch-target p-3 text-black focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              variant="ghost"
+              size="icon"
+              className="mobile-menu-toggle touch-target rounded-lg"
               aria-label="Open main menu"
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
@@ -177,7 +201,7 @@ export default function PgHeader() {
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
               </svg>
-            </button>
+            </Button>
           </div>
         </div>
       </header>
@@ -190,13 +214,15 @@ export default function PgHeader() {
             onClick={closeMobileMenu}
           />
 
-          {/* Slide-out menu */}
-          <div className="fixed right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
+          {/* Slide-out menu from left for better thumb accessibility */}
+          <div className="fixed left-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
             {/* Close button */}
-            <div className="flex justify-end p-4">
-              <button
+            <div className="flex justify-start p-4">
+              <Button
                 onClick={closeMobileMenu}
-                className="touch-target p-3 text-black hover:bg-gray-100 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+                variant="ghost"
+                size="icon"
+                className="touch-target rounded-lg"
                 aria-label="Close menu"
               >
                 <svg
@@ -211,7 +237,7 @@ export default function PgHeader() {
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
-              </button>
+              </Button>
             </div>
 
             {/* Mobile Logo Section */}
@@ -271,13 +297,15 @@ export default function PgHeader() {
 
                 {/* CTA Button */}
                 <div className="pt-4 border-t border-gray-200">
-                  <Link
+                  <Button
                     href="/request-work"
                     onClick={closeMobileMenu}
-                    className="add-to-cart block w-full text-center bg-black text-white py-4 px-6 rounded-lg font-medium hover:bg-gray-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+                    variant="default"
+                    size="lg"
+                    className="w-full rounded-lg"
                   >
                     Request a Quote
-                  </Link>
+                  </Button>
                 </div>
               </div>
             </nav>
