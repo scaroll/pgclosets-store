@@ -107,30 +107,22 @@ export default function ClientPage({ products }: { products: Product[] }) {
           <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-12 max-w-3xl mx-auto text-white/80 font-light leading-relaxed tracking-wide px-4">
             Get your free quote today. Professional measurement, design, and installation included.
           </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-8 sm:mb-12 max-w-4xl mx-auto text-white px-4">
-            <div className="text-center px-2">
-              <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
-                <span>✓</span> 500+
-              </div>
-              <div className="text-xs sm:text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Happy Customers</div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 max-w-3xl mx-auto text-white">
+            <div className="text-center">
+              <div className="text-2xl lg:text-3xl font-light mb-1">500+</div>
+              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Installations</div>
             </div>
-            <div className="text-center px-2">
-              <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
-                <span>✓</span> 5.0
-              </div>
-              <div className="text-xs sm:text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Star Rating</div>
+            <div className="text-center">
+              <div className="text-2xl lg:text-3xl font-light mb-1">5.0</div>
+              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Rating</div>
             </div>
-            <div className="text-center px-2">
-              <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
-                <span>✓</span> 15+
-              </div>
-              <div className="text-xs sm:text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Years Experience</div>
+            <div className="text-center">
+              <div className="text-2xl lg:text-3xl font-light mb-1">15+</div>
+              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">Years</div>
             </div>
-            <div className="text-center px-2">
-              <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
-                <span>✓</span> Licensed
-              </div>
-              <div className="text-xs sm:text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">& Insured</div>
+            <div className="text-center">
+              <div className="text-2xl lg:text-3xl font-light mb-1">1st</div>
+              <div className="text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">In Ottawa</div>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
