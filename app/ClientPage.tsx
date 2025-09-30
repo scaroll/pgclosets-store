@@ -28,10 +28,8 @@ export default function ClientPage({ products }: { products: Product[] }) {
   const [contentVisible, setContentVisible] = useState(false)
 
   useEffect(() => {
-    // Trigger content animations after mount
-    const timer = setTimeout(() => {
-      setContentVisible(true)
-    }, 100)
+    // No animation delays - instant visibility
+    setContentVisible(true)
 
     // Handle floating CTA on scroll
     const handleScroll = () => {
@@ -45,7 +43,6 @@ export default function ClientPage({ products }: { products: Product[] }) {
     window.addEventListener('scroll', handleScroll)
 
     return () => {
-      clearTimeout(timer)
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
@@ -101,22 +98,14 @@ export default function ClientPage({ products }: { products: Product[] }) {
         {/* Removed ambient glow effects for cleaner aesthetic */}
         <div className="relative z-20 text-center px-4 max-w-7xl mx-auto">
           {/* Premium hero logo */}
-          <div className={`mb-8 flex justify-center transition-all duration-1000 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+          <div className="mb-8 flex justify-center">
             <AnimatedLogo
               animation="luxury"
               width={200}
               height={40}
-              delay={0.8}
+              delay={0}
               onAnimationComplete={() => {
                 setHeroLogoVisible(true);
-                trackLogoInteraction({
-                  event: 'hero_logo_animation_complete',
-                  logo_type: 'hero',
-                  interaction_type: 'animation_complete',
-                  page_location: '/',
-                  user_journey_stage: 'awareness',
-                  animation_type: 'luxury'
-                });
               }}
               className="filter drop-shadow-2xl cursor-pointer"
               onClick={handleHeroLogoClick}
@@ -124,7 +113,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
           </div>
 
           {/* Urgency Badge */}
-          <div className={`mb-6 transition-all duration-1000 delay-200 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+          <div className="mb-6">
             <Badge
               variant="outline"
               size="default"
@@ -136,7 +125,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
           </div>
 
           {/* Massive Hero Headline */}
-          <h1 className={`text-5xl sm:text-6xl lg:text-8xl xl:text-9xl font-bold mb-6 sm:mb-8 leading-[0.95] text-white tracking-tighter transition-all duration-1000 delay-300 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h1 className="text-5xl sm:text-6xl lg:text-8xl xl:text-9xl font-bold mb-6 sm:mb-8 leading-[0.95] text-white tracking-tighter">
             <span className="block bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent drop-shadow-2xl">
               Transform Your
             </span>
@@ -146,7 +135,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
           </h1>
 
           {/* Enhanced Subheadline */}
-          <p className={`text-lg sm:text-xl lg:text-2xl xl:text-3xl mb-10 sm:mb-14 max-w-4xl mx-auto text-white/90 font-light leading-relaxed tracking-wide px-4 transition-all duration-1000 delay-500 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-lg sm:text-xl lg:text-2xl xl:text-3xl mb-10 sm:mb-14 max-w-4xl mx-auto text-white/90 font-light leading-relaxed tracking-wide px-4">
             Premium custom closets designed for Ottawa homes.
             <span className="block mt-2 text-emerald-200 font-medium">
               Free consultation • Professional installation • Lifetime warranty
@@ -154,7 +143,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
           </p>
 
           {/* Dramatic CTA Buttons */}
-          <div className={`flex flex-col sm:flex-row gap-5 justify-center mb-12 transition-all duration-1000 delay-700 ${contentVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          <div className="flex flex-col sm:flex-row gap-5 justify-center mb-12">
             <Link
               href="/request-work"
               className="add-to-cart relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-lg tracking-[0.08em] uppercase transition-all duration-300 hover:from-emerald-600 hover:to-emerald-700 hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 border-2 border-emerald-400 group touch-target shadow-xl shadow-emerald-500/30 overflow-hidden"
@@ -176,28 +165,28 @@ export default function ClientPage({ products }: { products: Product[] }) {
             </Link>
           </div>
 
-          {/* Stats Grid with Animation */}
-          <div className={`grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto text-white transition-all duration-1000 delay-900 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="text-center transform hover:scale-110 transition-transform duration-300">
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto text-white">
+            <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">500+</div>
               <div className="text-xs text-white/70 uppercase tracking-[0.2em] font-semibold">Installations</div>
             </div>
-            <div className="text-center transform hover:scale-110 transition-transform duration-300">
+            <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">5.0</div>
               <div className="text-xs text-white/70 uppercase tracking-[0.2em] font-semibold">Rating</div>
             </div>
-            <div className="text-center transform hover:scale-110 transition-transform duration-300">
+            <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">15+</div>
               <div className="text-xs text-white/70 uppercase tracking-[0.2em] font-semibold">Years</div>
             </div>
-            <div className="text-center transform hover:scale-110 transition-transform duration-300">
+            <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">#1</div>
               <div className="text-xs text-white/70 uppercase tracking-[0.2em] font-semibold">In Ottawa</div>
             </div>
           </div>
 
           {/* Enhanced trust signals below CTAs */}
-          <div className={`mt-8 space-y-6 transition-all duration-1000 delay-1000 ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="mt-8 space-y-6">
             <div className="flex justify-center">
               <LogoConversionOptimizer
                 placement="hero"
@@ -209,20 +198,20 @@ export default function ClientPage({ products }: { products: Product[] }) {
 
             {/* Professional badges */}
             <div className="flex flex-wrap items-center justify-center gap-4 lg:gap-6 text-sm text-white/80">
-              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
-                <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm">
+                <span className="w-2 h-2 bg-emerald-400 rounded-full"></span>
                 <span className="font-semibold">BBB A+ Rated</span>
               </Badge>
-              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
-                <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm">
+                <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
                 <span className="font-semibold">Google Reviews 5.0</span>
               </Badge>
-              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
-                <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm">
+                <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
                 <span className="font-semibold">Free Consultation</span>
               </Badge>
-              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
-                <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span>
+              <Badge variant="outline" className="flex items-center gap-2 bg-white/10 px-4 py-2.5 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm">
+                <span className="w-2 h-2 bg-purple-400 rounded-full"></span>
                 <span className="font-semibold">Lifetime Warranty</span>
               </Badge>
             </div>
