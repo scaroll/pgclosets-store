@@ -17,6 +17,8 @@ import TrustSignals from "@/components/conversion/TrustSignals"
 import TrustBadges from "@/components/trust/TrustBadges"
 import { ProductCard } from "@/components/products"
 import { Badge } from "@/components/ui/badge"
+import TestimonialCarousel from "@/components/home/TestimonialCarousel"
+import FAQSection from "@/components/home/FAQSection"
 
 export default function ClientPage({ products }: { products: Product[] }) {
   const [quoteStep, setQuoteStep] = useState(0)
@@ -296,6 +298,12 @@ export default function ClientPage({ products }: { products: Product[] }) {
           </div>
         </div>
       </section>
+
+      {/* Testimonial Carousel - Social Proof */}
+      <TestimonialCarousel />
+
+      {/* FAQ Section - Address Objections */}
+      <FAQSection />
 
       {quoteStep > 0 && (
         <section className="py-20 bg-white">
