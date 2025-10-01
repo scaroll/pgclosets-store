@@ -115,7 +115,7 @@ const ProductCard = ({ product, index, onProductSelect, onImageExpand }: Product
           <div className="bg-black/70 text-white p-2 text-xs font-bold">🔍 Click to Expand</div>
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
 
       <div className="p-6">

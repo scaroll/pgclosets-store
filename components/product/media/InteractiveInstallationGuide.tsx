@@ -5,8 +5,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import {
   ChevronLeft,
   ChevronRight,
-  Play,
-  Pause,
   RotateCcw,
   CheckCircle,
   AlertTriangle,

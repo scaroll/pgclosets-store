@@ -176,7 +176,7 @@ export function GoogleTagManager({ gtmId, dataLayer = {}, enableDebug = false }:
           button_text: button.textContent?.trim() || '',
           button_id: button.id || 'unknown',
           button_classes: button.className || '',
-          button_type: (button as HTMLButtonElement).type || 'button',
+          button_type: (button).type || 'button',
           page_location: window.location.href,
           click_position: {
             x: event.clientX,

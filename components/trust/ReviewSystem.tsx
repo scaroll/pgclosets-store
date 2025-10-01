@@ -3,8 +3,7 @@
 "use client"
 
 import { useState } from "react"
-import { Star, ThumbsUp, ThumbsDown, Filter, CheckCircle, MapPin, Calendar, Quote } from "lucide-react"
-import Image from "next/image"
+import { Star, ThumbsUp, ThumbsDown, Filter, CheckCircle, MapPin, Calendar } from "lucide-react"
 
 interface Review {
   id: string

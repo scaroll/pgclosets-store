@@ -3,7 +3,7 @@
 "use client"
 
 import { useState } from "react"
-import { CheckCircle, Phone, Calendar, ArrowRight, Clock, Shield } from "lucide-react"
+import { CheckCircle, Phone, ArrowRight, Clock, Shield } from "lucide-react"
 import { OptimizedCTA } from "./OptimizedCTA"
 import { useConversionTracking } from "./ConversionTracking"
 
@@ -555,7 +555,7 @@ export default function OptimizedContactForm({
             >
               {isSubmitting ? (
                 <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
                   Sending Request...
                 </>
               ) : (

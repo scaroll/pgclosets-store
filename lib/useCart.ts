@@ -1,6 +1,6 @@
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
-import { Product } from "@/types/commerce"
+import type { Product } from "@/types/commerce"
 
 export type CartItem = { id: string; title: string; price: number; image: string; slug?: string; qty: number }
 

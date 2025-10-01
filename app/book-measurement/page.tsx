@@ -1,5 +1,5 @@
 import React from 'react'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import {
   Calendar,
   Clock,
@@ -8,12 +8,10 @@ import {
   Phone,
   Mail,
   Ruler,
-  Home,
   Star,
   ArrowRight,
   Shield,
   Users,
-  Award,
   MessageCircle
 } from 'lucide-react'
 import MeasurementScheduler from '@/components/booking/measurement-scheduler'

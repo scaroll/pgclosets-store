@@ -16,9 +16,6 @@ import {
   Download,
   Share2,
   RotateCw,
-  ZoomIn,
-  ZoomOut,
-  Move,
   Eye,
   EyeOff,
   Save,
@@ -26,10 +23,7 @@ import {
   Facebook,
   Twitter,
   MessageCircle,
-  Link,
-  Palette,
-  Maximize2,
-  Settings
+  Link
 } from 'lucide-react';
 import type {
   RoomBackground,

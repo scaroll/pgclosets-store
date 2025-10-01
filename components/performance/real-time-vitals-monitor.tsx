@@ -16,7 +16,6 @@ import {
   BellOff,
   Activity,
   Zap,
-  Clock,
   Eye,
   MousePointer,
   Layers,

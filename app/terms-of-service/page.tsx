@@ -75,19 +75,19 @@ export default function TermsOfServicePage() {
               </p>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                   Modify or copy the materials
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                   Use the materials for any commercial purpose or for any public display
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                   Attempt to reverse engineer any software contained on the website
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                   Remove any copyright or other proprietary notations from the materials
                 </li>
               </ul>

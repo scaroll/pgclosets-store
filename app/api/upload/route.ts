@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       url: blob.url,
       filename: sanitizedOriginalName,
-      uniqueFilename: uniqueFilename,
+      uniqueFilename,
       size: file.size,
       type: file.type,
       uploadedAt: new Date().toISOString(),

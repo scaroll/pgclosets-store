@@ -187,7 +187,7 @@ function getSessionId(): string {
 
   let sessionId = sessionStorage.getItem('pgclosets_session_id')
   if (!sessionId) {
-    sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
+    sessionId = `session_${  Date.now()  }_${  Math.random().toString(36).substr(2, 9)}`
     sessionStorage.setItem('pgclosets_session_id', sessionId)
   }
   return sessionId
@@ -198,7 +198,7 @@ function getUserId(): string {
 
   let userId = localStorage.getItem('pgclosets_user_id')
   if (!userId) {
-    userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
+    userId = `user_${  Date.now()  }_${  Math.random().toString(36).substr(2, 9)}`
     localStorage.setItem('pgclosets_user_id', userId)
   }
   return userId

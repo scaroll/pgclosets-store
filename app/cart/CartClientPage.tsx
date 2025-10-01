@@ -181,7 +181,7 @@ export default function CartClientPage() {
 
                         <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                           <span className="flex items-center">
-                            <div className="w-1 h-1 bg-accent rounded-full mr-2"></div>
+                            <div className="w-1 h-1 bg-accent rounded-full mr-2" />
                             Premium Quality
                           </span>
                         </div>

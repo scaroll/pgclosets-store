@@ -89,7 +89,7 @@ export default function InstallationOttawaPage() {
                     <span className="text-white font-bold text-xl">{step.step}</span>
                   </div>
                   {index < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-pg-border transform -translate-y-1/2"></div>
+                    <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-pg-border transform -translate-y-1/2" />
                   )}
                 </div>
                 <h3 className="text-xl font-semibold text-pg-dark mb-3">{step.title}</h3>

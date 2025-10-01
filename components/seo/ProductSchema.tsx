@@ -1,4 +1,4 @@
-import { Product } from "@/types/commerce"
+import type { Product } from "@/types/commerce"
 
 interface ProductSchemaProps {
   product: Product

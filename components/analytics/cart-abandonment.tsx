@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef } from 'react'
 import { getAnalytics } from '../../lib/analytics'
 import { getFunnelTracker, FunnelStep } from './conversion-funnel'
-import { AnalyticsProductItem } from '../../types/analytics'
+import type { AnalyticsProductItem } from '../../types/analytics'
 
 // Cart Abandonment Tracking Types
 interface CartAbandonmentEvent {

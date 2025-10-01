@@ -312,7 +312,7 @@ export default function PerformanceMonitor() {
       connection,
       url,
       viewport: `${window.innerWidth}x${window.innerHeight}`,
-      userAgent: navigator.userAgent.substring(0, 50) + '...'
+      userAgent: `${navigator.userAgent.substring(0, 50)  }...`
     })
 
   }, [])

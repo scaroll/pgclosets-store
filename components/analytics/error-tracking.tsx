@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useCallback } from 'react'
 import { getAnalytics } from '../../lib/analytics'
-import { AnalyticsError } from '../../types/analytics'
+import type { AnalyticsError } from '../../types/analytics'
 
 // Error Categories
 enum ErrorCategory {

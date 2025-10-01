@@ -1,11 +1,11 @@
 import { getProducts } from '@/lib/actions/commerce';
-import { Product } from '@/types/commerce';
+import type { Product } from '@/types/commerce';
 import { unstable_noStore as noStore } from 'next/cache';
 import Link from 'next/link';
 import Image from 'next/image';
 import { formatPrice } from '@/lib/utils';
 import StandardLayout from '@/components/layout/StandardLayout';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Barn Doors Ottawa | Renin Sliding Barn Doors | PG Closets',

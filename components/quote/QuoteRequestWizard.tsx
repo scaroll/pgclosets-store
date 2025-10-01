@@ -325,13 +325,13 @@ export default function QuoteRequestWizard() {
           <div className="flex items-center gap-2 text-sm text-gray-500">
             {saveStatus === "saving" && (
               <>
-                <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
                 <span>Saving...</span>
               </>
             )}
             {saveStatus === "saved" && (
               <>
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full" />
                 <span>Saved</span>
               </>
             )}
@@ -914,7 +914,7 @@ export default function QuoteRequestWizard() {
             >
               {isSubmitting ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   Submitting...
                 </>
               ) : (

@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { Button } from "../../../components/ui/button";
 import StandardLayout from "@/components/layout/StandardLayout";
 import { BUSINESS_INFO, getSchemaAddress, getSchemaGeo } from "../../../lib/business-config";
@@ -200,7 +200,7 @@ export default function ReninOrleansPage() {
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-violet-900 via-purple-800 to-slate-800 text-white py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="absolute inset-0 bg-black opacity-20" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center">
             <div className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-medium mb-8 border border-white/20">

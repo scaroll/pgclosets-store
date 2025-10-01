@@ -145,15 +145,15 @@ export default function FAQSection() {
           {/* Trust indicators */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-slate-600">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+              <span className="w-2 h-2 bg-green-500 rounded-full" />
               <span>Free Consultation</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+              <span className="w-2 h-2 bg-blue-500 rounded-full" />
               <span>No Obligation Quote</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+              <span className="w-2 h-2 bg-purple-500 rounded-full" />
               <span>Same-Week Service</span>
             </div>
           </div>

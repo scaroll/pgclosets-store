@@ -3,7 +3,6 @@
 "use client"
 
 import { Star, Quote, CheckCircle, MapPin, Calendar } from "lucide-react"
-import Image from "next/image"
 
 interface Review {
   id: string

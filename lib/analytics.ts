@@ -1,8 +1,7 @@
 // Analytics Core Library - GA4 Enhanced E-commerce & GDPR Compliance
 // Comprehensive tracking for PG Closets Store with privacy-first design
 
-import {
-  AnalyticsEvent,
+import type {
   AnalyticsProductItem,
   AnalyticsPurchaseEvent,
   AnalyticsAddToCartEvent,
@@ -12,11 +11,12 @@ import {
   GA4EventParameters,
   CookieConsentPreferences,
   UserJourneyStep,
-  UserSession,
   LeadAnalyticsData,
   AnalyticsError,
   WebVitalsMetrics
-} from '../types/analytics'
+} from '../types/analytics';
+
+
 
 // Global Analytics Configuration
 interface AnalyticsConfig {
@@ -389,7 +389,7 @@ class Analytics {
         event_category: 'E-commerce',
         event_label: 'Cart Abandoned',
         currency: 'CAD',
-        value: value,
+        value,
         items: items.map(this.formatProductItem),
         abandonment_stage: 'cart'
       })
@@ -523,7 +523,7 @@ class Analytics {
 
     this.gtag('event', 'engagement', {
       engagement_type: engagementType,
-      value: value,
+      value,
       event_category: 'User Engagement',
       event_label: engagementType
     })

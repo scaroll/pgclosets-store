@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useState, useEffect } from 'react'
-import { X, Settings, Shield, Cookie, Eye, Megaphone } from 'lucide-react'
+import { Settings, Shield, Cookie, Eye, Megaphone } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Switch } from '../ui/switch'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog'
-import { CookieConsentPreferences } from '../../types/analytics'
+import type { CookieConsentPreferences } from '../../types/analytics'
 
 interface ConsentBannerProps {
   onConsentChange: (preferences: CookieConsentPreferences) => void

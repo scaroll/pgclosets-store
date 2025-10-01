@@ -38,26 +38,26 @@ export default function PgFooter() {
             <div className="space-y-3">
               <div className="flex flex-wrap items-center gap-4 text-xs">
                 <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full border border-slate-700">
-                  <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                  <span className="w-1.5 h-1.5 bg-green-400 rounded-full" />
                   <span className="text-slate-300">BBB A+ Rated</span>
                 </div>
                 <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full border border-slate-700">
-                  <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></span>
+                  <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
                   <span className="text-slate-300">Google 5.0 ★</span>
                 </div>
                 <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full border border-slate-700">
-                  <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                  <span className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
                   <span className="text-slate-300">Licensed & Insured</span>
                 </div>
               </div>
 
               <div className="flex flex-wrap items-center gap-4 text-xs">
                 <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full border border-slate-700">
-                  <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
+                  <span className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
                   <span className="text-slate-300">500+ Happy Customers</span>
                 </div>
                 <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full border border-slate-700">
-                  <span className="w-1.5 h-1.5 bg-amber-400 rounded-full"></span>
+                  <span className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
                   <span className="text-slate-300">15+ Years Experience</span>
                 </div>
               </div>

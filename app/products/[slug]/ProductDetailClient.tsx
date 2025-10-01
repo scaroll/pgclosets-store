@@ -240,7 +240,7 @@ export default function ProductDetailClient({
                 <ul className="space-y-2">
                   {defaultFeatures.map((feature, index) => (
                     <li key={index} className="flex items-center text-pg-gray">
-                      <span className="w-2 h-2 bg-pg-sky rounded-full mr-3"></span>
+                      <span className="w-2 h-2 bg-pg-sky rounded-full mr-3" />
                       {feature}
                     </li>
                   ))}

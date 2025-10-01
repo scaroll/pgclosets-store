@@ -3,10 +3,9 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
-import { LuxuryCard, ProductCard } from "@/components/ui/luxury-card"
+import { LuxuryCard } from "@/components/ui/luxury-card"
 import { LuxuryButton } from "@/components/ui/luxury-button"
-import { Product } from "@/types/commerce"
+import type { Product } from "@/types/commerce"
 import { formatPrice } from "@/lib/utils"
 
 interface LuxuryProductShowcaseProps {

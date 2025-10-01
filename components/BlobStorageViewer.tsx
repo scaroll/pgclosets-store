@@ -55,7 +55,7 @@ export function BlobStorageViewer() {
     const k = 1024
     const sizes = ["Bytes", "KB", "MB", "GB"]
     const i = Math.floor(Math.log(bytes) / Math.log(k))
-    return Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
+    return `${Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2))  } ${  sizes[i]}`
   }
 
   return (
@@ -70,7 +70,7 @@ export function BlobStorageViewer() {
       <CardContent>
         {loading && (
           <div className="text-center py-8">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto" />
             <p className="mt-2 text-sm text-gray-600">Loading files...</p>
           </div>
         )}

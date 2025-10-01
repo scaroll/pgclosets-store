@@ -4,7 +4,8 @@ import { formatPrice } from "@/lib/utils";
 import StandardLayout from "@/components/layout/StandardLayout";
 import { EnhancedProductDetailPage } from "@/components/product/EnhancedProductDetailPage";
 
-export const dynamic = "force-static";
+// Enable ISR: Revalidate every hour instead of force-static
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const products = await getProducts({});

@@ -3,31 +3,11 @@
 import React, { useState, useRef, useEffect, useId, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Volume2,
-  VolumeX,
-  Eye,
-  EyeOff,
-  Type,
-  Contrast,
-  MousePointer,
-  Keyboard,
   AlertTriangle,
   CheckCircle,
-  Info,
-  Pause,
-  Play,
-  SkipBack,
-  SkipForward,
-  Settings,
   X,
   ChevronDown,
-  ChevronUp,
-  Menu,
-  Home,
-  Search,
-  User,
-  Heart,
-  ShoppingCart
+  ChevronUp
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 

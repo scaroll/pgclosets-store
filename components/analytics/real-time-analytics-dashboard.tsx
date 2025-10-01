@@ -11,32 +11,21 @@ import {
   Activity,
   Users,
   Eye,
-  MousePointer,
   TrendingUp,
   TrendingDown,
   DollarSign,
   ShoppingCart,
-  Phone,
-  Mail,
-  Calendar,
-  Globe,
   Smartphone,
   Monitor,
   Tablet,
   Zap,
   AlertTriangle,
-  CheckCircle,
-  Clock,
   Target,
-  BarChart3,
-  PieChart,
   MapPin,
   Wifi,
   WifiOff,
   RefreshCw,
-  Download,
-  Settings,
-  Maximize2
+  Download
 } from 'lucide-react'
 
 // Real-time analytics data types

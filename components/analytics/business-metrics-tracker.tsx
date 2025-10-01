@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card'
 import { Badge } from '@/ui/badge'
-import { Button } from '@/ui/button'
 import { Progress } from '@/ui/progress'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs'
 import {
@@ -13,7 +12,6 @@ import {
   TrendingUp,
   TrendingDown,
   Eye,
-  MousePointer,
   Heart,
   Phone,
   Mail,
@@ -21,7 +19,6 @@ import {
   Calendar,
   Target,
   BarChart3,
-  PieChart,
   Activity
 } from 'lucide-react'
 
@@ -310,7 +307,7 @@ export function BusinessMetricsTracker() {
         sessionData.current.leadCaptured = true
         trackBusinessEvent('lead_captured', {
           form_type: formType,
-          fields: fields,
+          fields,
           source: window.location.pathname,
           session_pageviews: sessionData.current.pageViews,
           session_time: Date.now() - sessionData.current.startTime

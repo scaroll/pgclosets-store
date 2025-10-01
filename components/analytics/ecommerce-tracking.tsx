@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
-import {
+import type {
   AnalyticsProductItem,
   AnalyticsPurchaseEvent,
   AnalyticsAddToCartEvent,
@@ -94,7 +94,7 @@ class EcommerceTracker {
           item_variant: item.item_variant,
           price: item.price,
           quantity: item.quantity,
-          index: index,
+          index,
           item_list_id: data.item_list_id,
           item_list_name: data.item_list_name
         }))
@@ -312,7 +312,7 @@ class EcommerceTracker {
       event: 'cart_abandonment',
       ecommerce: {
         currency: 'CAD',
-        value: value,
+        value,
         abandonment_stage: stage,
         items: items.map(item => ({
           item_id: item.item_id,
@@ -323,7 +323,7 @@ class EcommerceTracker {
         }))
       },
       abandonment_data: {
-        stage: stage,
+        stage,
         time_in_cart: this.getTimeInCart(),
         cart_size: items.length,
         total_value: value
@@ -343,7 +343,7 @@ class EcommerceTracker {
         search_term: searchTerm,
         search_results: resultsCount,
         search_type: 'product',
-        filters: filters,
+        filters,
         no_results: resultsCount === 0
       }
     }

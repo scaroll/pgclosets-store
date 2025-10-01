@@ -7,6 +7,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 
+  // Fix workspace root warning
+  outputFileTracingRoot: process.cwd(),
+
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
@@ -34,8 +37,12 @@ const nextConfig = {
     ],
   },
 
-  // Image optimization
+  // Image optimization - Enhanced for performance
   images: {
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000, // 1 year cache
+    formats: ["image/avif", "image/webp"], // AVIF first for better compression
     domains: [
       "www.pgclosets.com",
       "pgclosets.com",
@@ -80,13 +87,6 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
-    formats: ["image/webp", "image/avif"],
-    // Fix Next.js 16 warning - explicitly configure quality levels
-    qualities: [50, 75],
-    // Enable loader optimization
-    unoptimized: false,
-    // Minimize requests
-    minimumCacheTTL: 60,
   },
 
   // Comprehensive security and performance headers
@@ -114,7 +114,8 @@ const nextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
+            value:
+              "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
           },
           {
             key: "Strict-Transport-Security",
@@ -136,7 +137,9 @@ const nextConfig = {
               form-action 'self';
               frame-ancestors 'none';
               upgrade-insecure-requests;
-            `.replace(/\s{2,}/g, ' ').trim(),
+            `
+              .replace(/\s{2,}/g, " ")
+              .trim(),
           },
           // Performance Headers
           {
@@ -145,7 +148,8 @@ const nextConfig = {
           },
           {
             key: "X-Robots-Tag",
-            value: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            value:
+              "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
           },
         ],
       },
@@ -187,7 +191,7 @@ const nextConfig = {
     // Only add DefinePlugin for global variable definition
     config.plugins.push(
       new webpack.DefinePlugin({
-        global: 'globalThis',
+        global: "globalThis",
       })
     );
 

@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Product } from "@/types/commerce"
+import type { Product } from "@/types/commerce"
 import { formatPrice } from "@/lib/utils"
 import {
   Card,
@@ -108,11 +108,11 @@ export function ProductCard({
         {/* Trust Badges Row */}
         <div className="flex items-center justify-between w-full text-xs">
           <Badge variant="success" size="sm" className="gap-1">
-            <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+            <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
             Licensed & Insured
           </Badge>
           <Badge variant="info" size="sm" className="gap-1">
-            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
             Lifetime Warranty
           </Badge>
         </div>

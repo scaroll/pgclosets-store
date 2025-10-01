@@ -86,11 +86,11 @@ export function ProductFilters({ categories, selectedCategory, currentSearch, cu
       fallback={
         <div className="space-y-6">
           <div className="animate-pulse">
-            <div className="h-6 bg-gray-200 rounded mb-4"></div>
+            <div className="h-6 bg-gray-200 rounded mb-4" />
             <div className="space-y-2">
-              <div className="h-10 bg-gray-200 rounded"></div>
-              <div className="h-10 bg-gray-200 rounded"></div>
-              <div className="h-10 bg-gray-200 rounded"></div>
+              <div className="h-10 bg-gray-200 rounded" />
+              <div className="h-10 bg-gray-200 rounded" />
+              <div className="h-10 bg-gray-200 rounded" />
             </div>
           </div>
         </div>

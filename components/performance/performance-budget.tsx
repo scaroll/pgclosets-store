@@ -104,7 +104,7 @@ export default function PerformanceBudget({ showInDev = false }: PerformanceBudg
       }
 
       // Check resource sizes
-      const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[]
+      const resources = performance.getEntriesByType('resource')
       let totalJSSize = 0
       let totalImageSize = 0
       let thirdPartySize = 0

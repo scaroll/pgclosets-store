@@ -2,7 +2,6 @@
 
 "use client"
 
-import { useState } from "react"
 import { Shield, Check, Clock, Phone, Award, CreditCard, Lock, Users, Star, ChevronRight } from "lucide-react"
 
 interface CheckoutTrustFlowProps {

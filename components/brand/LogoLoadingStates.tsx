@@ -97,7 +97,7 @@ function LogoPulse({ size = 'md', withWordmark = true, speed = 'normal' }: LogoL
     >
       <div
         className="bg-gray-300 rounded"
-        style={{ width: height, height: height }}
+        style={{ width: height, height }}
       />
       {withWordmark && (
         <div

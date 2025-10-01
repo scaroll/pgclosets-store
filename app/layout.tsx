@@ -15,8 +15,10 @@ import type React from "react";
 import { Suspense } from "react";
 import Script from "next/script";
 import { Toaster } from "sonner";
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { ValuePropBanner } from "../components/conversion/ValuePropBanner";
+import { MobileStickyCTA } from "../components/conversion/MobileStickyCTA";
+// import { Analytics } from "@vercel/analytics/react"
+// import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Optimized font loading
 const inter = Inter({
@@ -93,7 +95,7 @@ export default function RootLayout({
   const organizationSchema = generateOrganizationSchema();
 
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={inter.variable}>
       <head>
         {/* Local Business Schema for Ottawa market dominance */}
         <Script
@@ -188,7 +190,9 @@ export default function RootLayout({
         {/* Canonical URL */}
         <link rel="canonical" href={BUSINESS_INFO.urls.main} />
       </head>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={inter.className}>
+        {/* Value Proposition Banner - Trust Signals */}
+        <ValuePropBanner />
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
             <Script
@@ -245,11 +249,14 @@ export default function RootLayout({
 
         <Toaster richColors />
 
+        {/* Mobile Sticky CTA - Conversion Optimization */}
+        <MobileStickyCTA />
+
         {/* Performance Monitoring */}
         <PerformanceMonitor />
         <Suspense fallback={null}>
-          <Analytics />
-          <SpeedInsights />
+          {/* <Analytics /> */}
+          {/* <SpeedInsights /> */}
         </Suspense>
       </body>
     </html>

@@ -3,7 +3,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormState } from "react-dom";
-import { contactFormSchema, ContactFormState } from "@/lib/schema";
+import type { ContactFormState } from "@/lib/schema";
+import { contactFormSchema } from "@/lib/schema";
 import { submitContactForm } from "@/lib/actions";
 import { useEffect } from "react";
 
@@ -59,6 +60,7 @@ export function ContactForm() {
             <input
               id="firstName"
               {...register("firstName")}
+              required
               className="w-full px-3 py-2 border-2 border-pg-button-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 focus:border-pg-button-primary text-pg-text-primary min-h-[44px] transition-colors"
               aria-required="true"
               aria-invalid={errors.firstName ? "true" : "false"}
@@ -66,7 +68,7 @@ export function ContactForm() {
               autoComplete="given-name"
             />
             {errors.firstName && (
-              <p id="firstName-error" className="text-pg-status-error text-xs mt-1" role="alert">
+              <p id="firstName-error" className="text-pg-status-error text-xs mt-1" role="alert" aria-live="assertive">
                 {errors.firstName.message}
               </p>
             )}
@@ -78,6 +80,7 @@ export function ContactForm() {
             <input
               id="lastName"
               {...register("lastName")}
+              required
               className="w-full px-3 py-2 border-2 border-pg-button-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 focus:border-pg-button-primary text-pg-text-primary min-h-[44px] transition-colors"
               aria-required="true"
               aria-invalid={errors.lastName ? "true" : "false"}
@@ -85,7 +88,7 @@ export function ContactForm() {
               autoComplete="family-name"
             />
             {errors.lastName && (
-              <p id="lastName-error" className="text-pg-status-error text-xs mt-1" role="alert">
+              <p id="lastName-error" className="text-pg-status-error text-xs mt-1" role="alert" aria-live="assertive">
                 {errors.lastName.message}
               </p>
             )}
@@ -100,6 +103,8 @@ export function ContactForm() {
               id="email"
               type="email"
               {...register("email")}
+              required
+              inputMode="email"
               className="w-full px-3 py-2 border-2 border-pg-button-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 focus:border-pg-button-primary text-pg-text-primary min-h-[44px] transition-colors"
               aria-required="true"
               aria-invalid={errors.email ? "true" : "false"}
@@ -108,7 +113,7 @@ export function ContactForm() {
               placeholder="your.email@example.com"
             />
             {errors.email && (
-              <p id="email-error" className="text-pg-status-error text-xs mt-1" role="alert">
+              <p id="email-error" className="text-pg-status-error text-xs mt-1" role="alert" aria-live="assertive">
                 {errors.email.message}
               </p>
             )}
@@ -121,6 +126,7 @@ export function ContactForm() {
               id="phone"
               type="tel"
               {...register("phone")}
+              inputMode="tel"
               className="w-full px-3 py-2 border-2 border-pg-button-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 focus:border-pg-button-primary text-pg-text-primary min-h-[44px] transition-colors"
               aria-invalid={errors.phone ? "true" : "false"}
               aria-describedby={errors.phone ? "phone-error" : undefined}
@@ -128,7 +134,7 @@ export function ContactForm() {
               placeholder="(613) 555-0123"
             />
             {errors.phone && (
-              <p id="phone-error" className="text-pg-status-error text-xs mt-1" role="alert">
+              <p id="phone-error" className="text-pg-status-error text-xs mt-1" role="alert" aria-live="assertive">
                 {errors.phone.message}
               </p>
             )}
@@ -142,6 +148,7 @@ export function ContactForm() {
             id="message"
             rows={4}
             {...register("message")}
+            required
             className="w-full px-3 py-2 border-2 border-pg-button-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 focus:border-pg-button-primary text-pg-text-primary min-h-[100px] transition-colors resize-vertical"
             placeholder="Tell us about your closet door project: room type, dimensions, style preferences, timeline, etc."
             aria-required="true"
@@ -149,7 +156,7 @@ export function ContactForm() {
             aria-describedby={errors.message ? "message-error" : undefined}
           />
           {errors.message && (
-            <p id="message-error" className="text-pg-status-error text-xs mt-1" role="alert">
+            <p id="message-error" className="text-pg-status-error text-xs mt-1" role="alert" aria-live="assertive">
               {errors.message.message}
             </p>
           )}
@@ -160,8 +167,9 @@ export function ContactForm() {
             disabled={isSubmitting}
             className="bg-pg-button-primary text-white px-8 py-3 font-semibold rounded-lg hover:bg-pg-button-primary-hover focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 transition-all disabled:bg-slate-400 disabled:cursor-not-allowed min-h-[44px] flex items-center justify-center"
             aria-describedby={isSubmitting ? "submit-status" : undefined}
+            aria-label="Get your free quote - No obligation"
           >
-            {isSubmitting ? "Sending..." : "Send Message"}
+            {isSubmitting ? "Sending..." : "Get Your FREE Quote"}
             {isSubmitting && <span id="submit-status" className="sr-only">Form is being submitted</span>}
           </button>
           <a

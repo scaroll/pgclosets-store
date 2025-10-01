@@ -1,8 +1,8 @@
 "use client"
 
-import React, { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 import { getAnalytics } from '../../lib/analytics'
-import { AnalyticsProductItem } from '../../types/analytics'
+import type { AnalyticsProductItem } from '../../types/analytics'
 
 // Conversion Funnel Steps
 enum FunnelStep {
@@ -215,7 +215,7 @@ class ConversionFunnelTracker {
     // Track as GA4 conversion
     this.analytics.gtag('event', 'conversion', {
       send_to: `${this.analytics.config.measurementId}/${goal}`,
-      value: value,
+      value,
       currency: 'CAD',
       conversion_goal: goal,
       conversion_type: this.getConversionType(goal),
@@ -226,7 +226,7 @@ class ConversionFunnelTracker {
     this.analytics.gtag('event', goal, {
       event_category: 'Conversions',
       event_label: goal,
-      value: value,
+      value,
       conversion_value: value,
       funnel_completion: this.calculateFunnelCompletion(),
       time_to_conversion: Date.now() - this.sessionStartTime,

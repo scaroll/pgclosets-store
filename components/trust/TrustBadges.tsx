@@ -3,7 +3,6 @@
 "use client"
 
 import { Shield, Check, Star, Award, Lock, Clock, Phone, MapPin } from "lucide-react"
-import Image from "next/image"
 
 interface TrustBadgesProps {
   variant?: "security" | "business" | "satisfaction" | "professional" | "complete"

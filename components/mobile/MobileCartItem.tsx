@@ -140,7 +140,7 @@ export function MobileCartItem({
         {/* Mobile-specific premium quality indicator */}
         <div className="mt-3 pt-3 border-t border-gray-100">
           <div className="flex items-center text-xs text-gray-500">
-            <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></div>
+            <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2" />
             Premium Quality • Free Shipping on Orders Over $500
           </div>
         </div>

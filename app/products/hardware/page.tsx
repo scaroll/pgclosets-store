@@ -1,11 +1,11 @@
 import { getProducts } from '@/lib/actions/commerce';
-import { Product } from '@/types/commerce';
+import type { Product } from '@/types/commerce';
 import { unstable_noStore as noStore } from 'next/cache';
 import Link from 'next/link';
 import Image from 'next/image';
 import { formatPrice } from '@/lib/utils';
 import StandardLayout from '@/components/layout/StandardLayout';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Door Hardware Ottawa | Renin Closet & Barn Door Hardware | PG Closets',
@@ -236,19 +236,19 @@ export default async function HardwarePage() {
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center text-slate-300">
-                  <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-white rounded-full mr-3" />
                   Precision mounting and alignment
                 </li>
                 <li className="flex items-center text-slate-300">
-                  <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-white rounded-full mr-3" />
                   Quality assurance testing
                 </li>
                 <li className="flex items-center text-slate-300">
-                  <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-white rounded-full mr-3" />
                   Hardware warranty support
                 </li>
                 <li className="flex items-center text-slate-300">
-                  <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-white rounded-full mr-3" />
                   Post-installation adjustments
                 </li>
               </ul>

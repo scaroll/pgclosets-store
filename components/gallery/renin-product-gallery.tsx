@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
 import {
@@ -21,13 +21,10 @@ import {
   Eye,
   Ruler,
   Star,
-  ExternalLink,
   Facebook,
   Twitter,
   Mail,
   Link,
-  ChevronDown,
-  ChevronUp,
   Play,
   Pause,
   RotateCw
@@ -68,7 +65,7 @@ export default function ReninProductGallery({
   const [lightbox, setLightbox] = useState<LightboxState>({
     isOpen: false,
     currentImageIndex: 0,
-    images: images,
+    images,
     showSpecs: false,
     zoomLevel: 1,
     panPosition: { x: 0, y: 0 }

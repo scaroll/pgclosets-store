@@ -1,6 +1,7 @@
 "use server";
 
-import { contactFormSchema, ContactFormState } from "./schema";
+import type { ContactFormState } from "./schema";
+import { contactFormSchema } from "./schema";
 
 export async function submitContactForm(
   prevState: ContactFormState,

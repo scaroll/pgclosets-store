@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, Star, ArrowRight, Sparkles, Home, Briefcase, Phone, Info } from 'lucide-react'
+import { Star, ArrowRight, Sparkles, Home, Briefcase, Phone, Info } from 'lucide-react'
 
 interface MegaMenuItem {
   title: string

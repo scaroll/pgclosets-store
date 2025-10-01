@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Calendar, Clock, MapPin, User, Phone, Mail, Home, FileText, CheckCircle, AlertCircle, Package } from 'lucide-react'
 import { products } from '@/app/products/products-data'
-import type { MeasurementBookingRequest, AvailabilityResponse, TimeSlot } from '@/types/api'
+import type { AvailabilityResponse, TimeSlot } from '@/types/api'
 
 interface Room {
   roomType: string
@@ -836,7 +836,7 @@ export default function MeasurementScheduler({ onSuccess, className = '' }: Meas
             >
               {isLoading ? (
                 <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
                   Booking...
                 </>
               ) : (

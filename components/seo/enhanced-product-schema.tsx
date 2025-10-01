@@ -283,7 +283,7 @@ export function ServiceSchema({
     "@context": "https://schema.org",
     "@type": "Service",
     "name": serviceName,
-    "description": description,
+    description,
     "provider": {
       "@type": "LocalBusiness",
       "name": "PG Closets",
@@ -300,7 +300,7 @@ export function ServiceSchema({
     ...(price && {
       "offers": {
         "@type": "Offer",
-        "price": price,
+        price,
         "priceCurrency": "CAD"
       }
     }),

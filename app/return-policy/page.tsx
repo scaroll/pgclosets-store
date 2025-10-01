@@ -73,23 +73,23 @@ export default function ReturnPolicyPage() {
               <p className="text-muted-foreground">Items eligible for return must meet the following conditions:</p>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                   Returned within 30 days of delivery
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                   In original, unused condition
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                   In original packaging with all accessories
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                   Include original receipt or order confirmation
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                   Not damaged by normal wear and tear
                 </li>
               </ul>
@@ -107,23 +107,23 @@ export default function ReturnPolicyPage() {
               <p className="text-muted-foreground">The following items cannot be returned:</p>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                   Custom-made or personalized items
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                   Items that have been installed or modified
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                   Items damaged by misuse or normal wear
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                   Items returned after 30 days
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                   Final sale or clearance items
                 </li>
               </ul>

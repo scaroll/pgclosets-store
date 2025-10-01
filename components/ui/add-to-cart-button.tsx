@@ -6,7 +6,7 @@ import { toCartProduct } from "@/lib/renin-products"
 import { Button } from "./button"
 import { ShoppingCart, Check } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { Product } from "@/types/commerce"
+import type { Product } from "@/types/commerce"
 
 interface ProductLike {
   id: string;

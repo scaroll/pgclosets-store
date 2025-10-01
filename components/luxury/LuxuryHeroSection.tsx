@@ -3,8 +3,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
 import { LuxuryButton } from "@/components/ui/luxury-button"
 import { HeroCard } from "@/components/ui/luxury-card"
 

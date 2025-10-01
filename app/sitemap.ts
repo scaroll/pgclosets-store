@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
 import { products } from './products/products-data'
 import { BUSINESS_INFO } from '../lib/business-config'
 

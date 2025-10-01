@@ -61,23 +61,23 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="content-spacing-md">
                   <ul className="space-y-2 text-muted-foreground">
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                       Process and fulfill your orders and provide customer service
                     </li>
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                       Send you important information about your orders and account
                     </li>
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                       Improve our website and services based on your feedback and usage patterns
                     </li>
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                       Send you marketing communications (with your consent)
                     </li>
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                       Comply with legal obligations and protect our rights
                     </li>
                   </ul>
@@ -109,19 +109,19 @@ export default function PrivacyPolicyPage() {
                   <Body className="text-muted-foreground">You have the right to:</Body>
                   <ul className="space-y-2 text-muted-foreground">
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                       Access and update your personal information
                     </li>
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                       Request deletion of your personal information
                     </li>
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                       Opt out of marketing communications
                     </li>
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
                       Request a copy of your personal information
                     </li>
                   </ul>

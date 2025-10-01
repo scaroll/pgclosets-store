@@ -1,5 +1,5 @@
 import type React from "react"
-import { Product } from "@/types/commerce"
+import type { Product } from "@/types/commerce"
 
 export interface ProductImageMapping {
   slug: string

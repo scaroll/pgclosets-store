@@ -3,7 +3,7 @@
 import { useState, Suspense, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import { getProducts } from "@/lib/actions/commerce"
-import { Product } from "@/types/commerce"
+import type { Product } from "@/types/commerce"
 import { SearchFilters } from "@/components/search/SearchFilters"
 import { SearchResults } from "@/components/search/SearchResults"
 import { SearchHeader } from "@/components/search/SearchHeader"

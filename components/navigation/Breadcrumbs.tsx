@@ -28,7 +28,7 @@ export function Breadcrumbs({ customItems, productName, categoryName }: Breadcru
     const items: BreadcrumbItem[] = [];
 
     segments.forEach((segment, index) => {
-      const href = '/' + segments.slice(0, index + 1).join('/');
+      const href = `/${  segments.slice(0, index + 1).join('/')}`;
 
       // Format segment name
       let label = segment

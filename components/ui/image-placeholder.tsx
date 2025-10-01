@@ -19,7 +19,7 @@ export function ImagePlaceholder({
   return (
     <div
       className={`relative flex items-center justify-center bg-gray-100 ${className}`}
-      style={{ width: width, height: height }}
+      style={{ width, height }}
     >
       <Image
         src={`data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">

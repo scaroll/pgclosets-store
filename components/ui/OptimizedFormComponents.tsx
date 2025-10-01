@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Eye, EyeOff, Check, X, AlertCircle, Upload, Phone, MapPin, Calendar } from 'lucide-react'
+import { Eye, EyeOff, Check, X, AlertCircle, Upload, Phone } from 'lucide-react'
 import { Input } from '@/ui/input'
 import { Textarea } from '@/ui/textarea'
 import { Button } from '@/ui/button'

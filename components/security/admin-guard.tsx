@@ -1,6 +1,7 @@
 "use client"
 
-import React, { ReactNode } from "react"
+import type { ReactNode } from "react";
+import React from "react"
 import { useAdminAuth } from "@/hooks/use-auth"
 
 interface AdminGuardProps {
@@ -19,7 +20,7 @@ export function AdminGuard({ children, fallback, redirectTo }: AdminGuardProps) 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center p-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
       </div>
     )
   }
@@ -63,7 +64,7 @@ export function AuthGuard({ children, fallback, redirectTo }: AuthGuardProps) {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center p-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
       </div>
     )
   }

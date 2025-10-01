@@ -3,7 +3,7 @@
 "use client"
 
 import { useState } from "react"
-import { Calculator, Phone, MessageCircle, Calendar, ArrowRight, CheckCircle } from "lucide-react"
+import { Calculator, Phone, MessageCircle, ArrowRight, CheckCircle } from "lucide-react"
 import { OptimizedCTA } from "./OptimizedCTA"
 
 interface QuoteWidgetProps {

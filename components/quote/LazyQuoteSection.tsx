@@ -1,7 +1,7 @@
 "use client"
 
 import { RequestQuoteButton } from "@/components/ui/request-quote-button"
-import { Product } from "@/types/commerce"
+import type { Product } from "@/types/commerce"
 
 interface LazyQuoteSectionProps {
   quoteStep: number

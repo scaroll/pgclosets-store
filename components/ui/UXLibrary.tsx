@@ -1,6 +1,5 @@
 "use client";
 
-import React from 'react';
 
 // Import all UX components
 import MegaMenu, { PRODUCTS_MEGA_MENU } from '../navigation/MegaMenu';

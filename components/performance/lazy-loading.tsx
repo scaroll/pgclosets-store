@@ -2,7 +2,8 @@
 
 "use client"
 
-import { Suspense, lazy, ComponentType } from "react"
+import type { ComponentType } from "react";
+import { Suspense, lazy } from "react"
 import { cn } from "@/lib/utils"
 
 // Generic lazy loading wrapper with error boundary
@@ -61,9 +62,9 @@ class LazyErrorBoundary extends React.Component<
 export function LazyLoadingSkeleton({ className }: { className?: string }) {
   return (
     <div className={cn("animate-pulse bg-gray-200 rounded-lg", className)}>
-      <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
-      <div className="h-4 bg-gray-300 rounded w-1/2 mb-2"></div>
-      <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+      <div className="h-4 bg-gray-300 rounded w-3/4 mb-2" />
+      <div className="h-4 bg-gray-300 rounded w-1/2 mb-2" />
+      <div className="h-4 bg-gray-300 rounded w-5/6" />
     </div>
   )
 }

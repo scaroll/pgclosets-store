@@ -3,6 +3,9 @@ import { getProductBySlug, getProductsByCategory } from "@/lib/enhanced-renin-pr
 import { ProductDetailClient } from "@/components/store/product-detail-client"
 import { RelatedProducts } from "@/components/store/related-products"
 
+// Enable ISR: Revalidate every hour
+export const revalidate = 3600
+
 interface ProductPageProps {
   params: Promise<{
     slug: string

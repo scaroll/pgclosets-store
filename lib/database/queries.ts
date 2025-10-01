@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { sanitizeForSQL, sanitizeText } from "@/lib/validation/sanitization";
+import { sanitizeText } from "@/lib/validation/sanitization";
 
 /**
  * Database query utilities with built-in SQL injection prevention

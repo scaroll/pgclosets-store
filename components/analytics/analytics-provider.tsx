@@ -1,11 +1,11 @@
 "use client"
 
 import React, { createContext, useContext, useEffect, useState, useRef } from 'react'
-import { initializeAnalytics, getAnalytics } from '../../lib/analytics'
+import { initializeAnalytics } from '../../lib/analytics'
 import { ConsentBanner, useConsentPreferences } from './consent-banner'
 import { EcommercePageTracker } from './ecommerce-tracking'
 import { AnalyticsErrorBoundary } from './error-tracking'
-import { CookieConsentPreferences, AnalyticsConfig } from '../../types/analytics'
+import type { CookieConsentPreferences, AnalyticsConfig } from '../../types/analytics'
 
 // Analytics Context
 interface AnalyticsContextValue {

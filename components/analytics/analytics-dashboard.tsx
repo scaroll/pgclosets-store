@@ -6,24 +6,15 @@ import { Button } from '../ui/button'
 import { Badge } from '../ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
 import {
-  Activity,
-  Users,
-  ShoppingCart,
   AlertTriangle,
   TrendingUp,
-  Eye,
   MousePointer,
-  Clock,
   Shield,
   Settings,
   CheckCircle,
-  XCircle,
-  BarChart3,
-  PieChart,
-  LineChart
+  XCircle
 } from 'lucide-react'
 import { useAnalytics, useAnalyticsTracking } from './analytics-provider'
-import { getEcommerceTracker } from './ecommerce-tracking'
 import { getFunnelTracker } from './conversion-funnel'
 import { getCartAbandonmentTracker } from './cart-abandonment'
 import { getErrorTracker } from './error-tracking'

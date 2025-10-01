@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Search, X, ArrowRight, Filter, SlidersHorizontal, Grid, List, Star, Heart } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Search, X, ArrowRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
@@ -14,7 +13,6 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import Image from 'next/image';
 
 interface SearchResult {
   id: string;
@@ -224,7 +222,7 @@ export function ProductSearch({ isOpen = false, onOpenChange, embedded = false }
       {/* Search Results */}
       {isSearching ? (
         <div className="text-center py-8">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
         </div>
       ) : results.length > 0 ? (
         <div className="space-y-4 max-h-96 overflow-y-auto">

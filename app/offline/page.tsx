@@ -119,7 +119,7 @@ export default function OfflinePage() {
         {/* Connection Status */}
         <div className="mt-6 text-center">
           <div id="connection-status" className="text-sm text-white/60">
-            <span className="inline-block w-2 h-2 bg-red-400 rounded-full mr-2"></span>
+            <span className="inline-block w-2 h-2 bg-red-400 rounded-full mr-2" />
             Offline - Checking connection...
           </div>
         </div>
@@ -127,8 +127,8 @@ export default function OfflinePage() {
 
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
       </div>
 
       <script

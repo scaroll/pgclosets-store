@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from "next/server"
+import type { NextRequest} from "next/server";
+import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 import { createProtectedRoute, rateLimitConfigs } from "@/lib/validation/middleware"
 import { measurementBookingSchema, type MeasurementBookingData } from "@/lib/validation/schemas"

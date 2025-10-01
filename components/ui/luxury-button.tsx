@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { cn } from "@/lib/utils"
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 
 interface LuxuryButtonProps {
   children: ReactNode

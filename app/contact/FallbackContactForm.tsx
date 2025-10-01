@@ -3,7 +3,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormState } from "react-dom";
-import { contactFormSchema, ContactFormState } from "@/lib/schema";
+import type { ContactFormState } from "@/lib/schema";
+import { contactFormSchema } from "@/lib/schema";
 import { submitContactForm } from "@/lib/actions";
 import { useEffect } from "react";
 
@@ -109,7 +110,7 @@ export function FallbackContactForm() {
             {...register("message")}
             className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[#1B4A9C]"
             placeholder="Tell us about your closet door project..."
-          ></textarea>
+           />
           {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
         </div>
         <div className="flex flex-col sm:flex-row gap-4">

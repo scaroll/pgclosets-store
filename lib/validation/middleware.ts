@@ -1,6 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
-import { sanitizeObject, sanitizeHeaders, sanitizeIP } from "./sanitization";
+import type { NextRequest} from "next/server";
+import { NextResponse } from "next/server";
+import type { z } from "zod";
+import { sanitizeHeaders, sanitizeIP } from "./sanitization";
 
 // Rate limiting configuration
 interface RateLimitConfig {

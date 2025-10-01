@@ -1,4 +1,4 @@
-import { Product } from '../../app/products/products-data'
+import type { Product } from '../../app/products/products-data'
 import { BUSINESS_INFO } from '../business-config'
 
 /**
@@ -160,12 +160,12 @@ export function generateProductCollectionSchema(
     "@type": "CollectionPage",
     "@id": `${categoryUrl}#collection`,
     "name": `${categoryName} - ${BUSINESS_INFO.name}`,
-    "description": description,
+    description,
     "url": categoryUrl,
     "mainEntity": {
       "@type": "ItemList",
       "name": `${categoryName} Collection`,
-      "description": description,
+      description,
       "numberOfItems": products.length,
       "itemListElement": products.map((product, index) => ({
         "@type": "ListItem",
@@ -230,7 +230,7 @@ export function generateOfferSchema(
     "@context": "https://schema.org",
     "@type": "Offer",
     "name": title,
-    "description": description,
+    description,
     "seller": {
       "@type": "LocalBusiness",
       "@id": `${baseUrl}#business`
@@ -244,7 +244,7 @@ export function generateOfferSchema(
       "price": "0",
       "priceCurrency": "CAD",
       "valueAddedTaxIncluded": true,
-      "discountPercentage": discountPercentage
+      discountPercentage
     } : undefined,
     "validThrough": validThrough ? validThrough.toISOString() : undefined,
     "availabilityStarts": new Date().toISOString(),

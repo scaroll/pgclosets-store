@@ -3,8 +3,7 @@
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { X, Check, ArrowRight } from "lucide-react"
-import Image from "next/image"
-import { Product } from "@/types/commerce"
+import type { Product } from "@/types/commerce"
 
 interface ProductLike {
   name?: string;

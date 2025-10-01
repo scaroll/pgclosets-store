@@ -1,6 +1,6 @@
-import { SignJWT, jwtVerify, type JWTPayload } from "jose"
+import { SignJWT, jwtVerify } from "jose"
 import { cookies } from "next/headers"
-import { NextRequest, NextResponse } from "next/server"
+import type { NextRequest, NextResponse } from "next/server"
 import * as crypto from "crypto"
 
 // Types

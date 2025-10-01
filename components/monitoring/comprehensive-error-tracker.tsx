@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card'
 import { Badge } from '@/ui/badge'
 import { Button } from '@/ui/button'
-import { Alert, AlertDescription } from '@/ui/alert'
 import { Progress } from '@/ui/progress'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs'
 import {
@@ -12,9 +11,6 @@ import {
   Bug,
   Network,
   Code,
-  Server,
-  Eye,
-  Clock,
   TrendingUp,
   RefreshCw,
   Download,
@@ -414,7 +410,7 @@ export function ComprehensiveErrorTracker() {
     const criticalKeywords = ['network', 'security', 'payment', 'auth']
     const highKeywords = ['uncaught', 'unhandled', 'timeout', 'failed']
 
-    const text = (message + ' ' + (stack || '')).toLowerCase()
+    const text = (`${message  } ${  stack || ''}`).toLowerCase()
 
     if (criticalKeywords.some(keyword => text.includes(keyword))) return 'critical'
     if (highKeywords.some(keyword => text.includes(keyword))) return 'high'

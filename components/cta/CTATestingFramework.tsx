@@ -138,10 +138,10 @@ export default function CTATestingFramework({
       const stored = localStorage.getItem(key)
       const metrics = stored ? JSON.parse(stored) : { impressions: {}, clicks: {}, conversions: {} }
 
-      if (!metrics[eventType + "s"][variantId]) {
-        metrics[eventType + "s"][variantId] = 0
+      if (!metrics[`${eventType  }s`][variantId]) {
+        metrics[`${eventType  }s`][variantId] = 0
       }
-      metrics[eventType + "s"][variantId]++
+      metrics[`${eventType  }s`][variantId]++
 
       localStorage.setItem(key, JSON.stringify(metrics))
     }

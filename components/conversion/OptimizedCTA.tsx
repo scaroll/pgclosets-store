@@ -78,7 +78,7 @@ export default function OptimizedCTA({
   const buttonContent = (
     <div className="flex items-center justify-center gap-3">
       {urgency && (
-        <div className="w-2 h-2 bg-red-400 rounded-full animate-ping"></div>
+        <div className="w-2 h-2 bg-red-400 rounded-full animate-ping" />
       )}
       <span className="text-center">
         {text || children}
@@ -106,7 +106,7 @@ export default function OptimizedCTA({
     return (
       <Link href={href} className={buttonClasses}>
         {urgency && (
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
         )}
         {buttonContent}
       </Link>
@@ -120,7 +120,7 @@ export default function OptimizedCTA({
       className={buttonClasses}
     >
       {urgency && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
       )}
       {buttonContent}
     </button>

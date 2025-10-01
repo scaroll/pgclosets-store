@@ -4,8 +4,7 @@ import {
   getEnhancedProductImages,
   getPrimaryImageForProduct,
   getAllImageVariantsForProduct,
-  hasHDImages,
-  getCategoryFallbackImage
+  hasHDImages
 } from './renin-image-mappings'
 
 export interface Product {

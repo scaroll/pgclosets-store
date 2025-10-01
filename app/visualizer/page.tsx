@@ -13,7 +13,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Separator } from '@/components/ui/separator';
 import {
   Play,
   Star,
@@ -22,7 +21,6 @@ import {
   Download,
   Mail,
   ArrowRight,
-  CheckCircle,
   Lightbulb,
   Palette,
   Maximize2,
@@ -32,7 +30,6 @@ import {
   Eye,
   Sparkles,
   TrendingUp,
-  Clock,
   Users
 } from 'lucide-react';
 import type {

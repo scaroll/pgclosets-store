@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { products as reninProducts } from "@/lib/renin-products";
-import { OTTAWA_PRICING_CONFIG, FINANCING_OPTIONS } from "@/types/ottawa-pricing";
+import { OTTAWA_PRICING_CONFIG } from "@/types/ottawa-pricing";
 import type {
   ReninQuoteRequest,
   ReninQuoteResponse,

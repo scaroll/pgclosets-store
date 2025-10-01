@@ -36,10 +36,11 @@ export default function PgHeader() {
 
   const handleMenuLeave = useCallback(() => {
     clearCloseTimeout()
+    // Increased timeout from 150ms to 300ms for better UX and accessibility
     closeTimeoutRef.current = setTimeout(() => {
       setMegaMenuOpen(false)
       setActiveMenu(null)
-    }, 150)
+    }, 300)
   }, [clearCloseTimeout])
 
   const handleMegaMenuMouseEnter = useCallback(() => {
@@ -58,8 +59,12 @@ export default function PgHeader() {
       <header className="nav-modern sticky top-0 z-40 bg-white/98 backdrop-blur-2xl border-b border-gray-100 transition-all duration-300" role="banner">
         {/* Top bar with phone number */}
         <div className="bg-black text-white py-2 px-4 text-center text-sm font-medium tracking-wider">
-          <a href="tel:6134225800" className="hover:text-gray-200 transition-colors">
-            📞 Call for Free Quote: (613) 422-5800
+          <a
+            href="tel:6134225800"
+            className="hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded px-2 py-1"
+            aria-label="Call us now for a free quote at 613-422-5800"
+          >
+            📞 Speak to a Designer Now: (613) 422-5800
           </a>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
@@ -101,16 +106,22 @@ export default function PgHeader() {
                 onMouseEnter={() => handleMenuHover('products')}
                 onMouseLeave={handleMenuLeave}
                 className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target h-auto"
+                aria-expanded={megaMenuOpen && activeMenu === 'products'}
+                aria-haspopup="true"
+                aria-controls="products-mega-menu"
               >
                 <span className="relative">Products</span>
-                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'products' ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'products' ? 'rotate-180' : ''}`} aria-hidden="true" />
                 <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Button>
               {megaMenuOpen && activeMenu === 'products' && (
                 <div
+                  id="products-mega-menu"
                   className="absolute left-0 top-full pt-2"
                   onMouseEnter={handleMegaMenuMouseEnter}
                   onMouseLeave={handleMegaMenuMouseLeave}
+                  role="menu"
+                  aria-label="Products menu"
                 >
                   <div className="pointer-events-auto">
                     <MegaMenu
@@ -142,16 +153,22 @@ export default function PgHeader() {
                 onMouseEnter={() => handleMenuHover('services')}
                 onMouseLeave={handleMenuLeave}
                 className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target h-auto"
+                aria-expanded={megaMenuOpen && activeMenu === 'services'}
+                aria-haspopup="true"
+                aria-controls="services-mega-menu"
               >
                 <span className="relative">Services</span>
-                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'services' ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'services' ? 'rotate-180' : ''}`} aria-hidden="true" />
                 <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Button>
               {megaMenuOpen && activeMenu === 'services' && (
                 <div
+                  id="services-mega-menu"
                   className="absolute left-0 top-full pt-2"
                   onMouseEnter={handleMegaMenuMouseEnter}
                   onMouseLeave={handleMegaMenuMouseLeave}
+                  role="menu"
+                  aria-label="Services menu"
                 >
                   <div className="pointer-events-auto">
                     <MegaMenu
@@ -182,9 +199,10 @@ export default function PgHeader() {
               variant="brand-primary"
               size="default"
               className="relative ml-6 text-xs tracking-[0.1em] touch-target"
+              aria-label="Get your free design consultation - No obligation"
             >
-              Free Quote
-              <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              Get FREE Design Consultation
+              <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </Button>
@@ -209,9 +227,9 @@ export default function PgHeader() {
                 strokeWidth="2"
                 aria-hidden="true"
               >
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
               </svg>
             </Button>
           </div>
@@ -246,8 +264,8 @@ export default function PgHeader() {
                   strokeWidth="2"
                   aria-hidden="true"
                 >
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </Button>
             </div>
@@ -315,8 +333,9 @@ export default function PgHeader() {
                     variant="default"
                     size="lg"
                     className="w-full rounded-lg"
+                    aria-label="Get your free quote - No obligation"
                   >
-                    Request a Quote
+                    Get Your FREE Quote
                   </Button>
                 </div>
               </div>

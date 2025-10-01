@@ -10,13 +10,9 @@ import {
   Loader2,
   Info,
   X,
-  Plus,
-  Minus,
   Upload,
   Image as ImageIcon,
-  FileText,
-  Calendar,
-  Clock
+  FileText
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Button } from '../../ui/button';

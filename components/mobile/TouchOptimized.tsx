@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence, PanInfo, useMotionValue, useTransform } from 'framer-motion';
-import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, MoreHorizontal, X } from 'lucide-react';
+import type { PanInfo} from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
+import { ChevronUp, ChevronDown, ChevronRight, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
 // Touch gesture configurations

@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import type { NextRequest} from "next/server";
+import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { createProtectedRoute, rateLimitConfigs } from "@/lib/validation/middleware";
-import { sanitizeObject } from "@/lib/validation/sanitization";
 import { z } from "zod";
 import {
   OTTAWA_PRICING_CONFIG,
@@ -88,12 +88,12 @@ function calculateOttawaPricing(input: QuoteCalculationInput): QuoteCalculationR
   const breakdown: PriceBreakdown = {
     msrp: basePrice,
     markup: markedUpPrice - basePrice,
-    volumeDiscount: volumeDiscount,
-    customerDiscount: customerDiscount,
+    volumeDiscount,
+    customerDiscount,
     installation: installationCost,
     delivery: deliveryFee,
-    hst: hst,
-    total: total
+    hst,
+    total
   };
 
   const result: QuoteCalculationResult = {
@@ -266,7 +266,7 @@ async function handleReninQuoteRequest(
   const receivedAt = new Date().toISOString();
 
   // Calculate total quote for all products
-  let totalQuote: QuoteCalculationResult = {
+  const totalQuote: QuoteCalculationResult = {
     basePrice: 0,
     markedUpPrice: 0,
     volumeDiscount: 0,

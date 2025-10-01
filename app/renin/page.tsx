@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { Button } from "../../components/ui/button";
 import StandardLayout from "@/components/layout/StandardLayout";
 import { BUSINESS_INFO, getSchemaAddress, getSchemaGeo } from "../../lib/business-config";
@@ -150,7 +150,7 @@ export default function ReninPage() {
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="absolute inset-0 bg-black opacity-20" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center">
             <div className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-medium mb-8 border border-white/20">
@@ -355,19 +355,19 @@ export default function ReninPage() {
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Quick Service Facts</h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full" />
                   <span className="text-gray-700">Free quotes within 24 hours</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-500 rounded-full" />
                   <span className="text-gray-700">Professional installation in 2 weeks</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-purple-500 rounded-full" />
                   <span className="text-gray-700">Lifetime warranty on all installations</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full" />
                   <span className="text-gray-700">Licensed and insured team</span>
                 </div>
               </div>
