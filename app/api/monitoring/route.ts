@@ -28,7 +28,7 @@ export async function GET() {
   try {
     const metrics: MonitoringMetrics = {
       timestamp: new Date().toISOString(),
-      uptime: typeof process !== 'undefined' ? process.uptime() : 0,
+      uptime: 0, // Edge Runtime doesn't support process.uptime()
       environment: {
         nodeEnv: process.env.NODE_ENV || 'development',
         vercelEnv: process.env.VERCEL_ENV || 'local',
@@ -37,16 +37,6 @@ export async function GET() {
       performance: {
         responseTime: Date.now() - startTime,
       },
-    };
-
-    // Add memory stats if available (not in Edge)
-    if (typeof process !== 'undefined' && process.memoryUsage) {
-      const memUsage = process.memoryUsage();
-      metrics.memory = {
-        used: Math.round((memUsage.heapUsed / 1024 / 1024) * 100) / 100,
-        total: Math.round((memUsage.heapTotal / 1024 / 1024) * 100) / 100,
-        rss: Math.round((memUsage.rss / 1024 / 1024) * 100) / 100,
-      };
     }
 
     return NextResponse.json(metrics, {
