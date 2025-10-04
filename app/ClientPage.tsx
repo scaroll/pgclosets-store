@@ -46,7 +46,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
       <div className="bg-white">
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
           <HeroVideo />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-10" />
 
           {/* Enhanced logo background pattern overlay - removed for better visibility */}
 
@@ -93,13 +93,13 @@ export default function ClientPage({ products }: { products: Product[] }) {
                 <span>Free In-Home Consultations</span>
               </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold mb-6 sm:mb-8 leading-[1.05] text-white tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold mb-6 sm:mb-8 leading-[1.05] text-white tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
               <span className="block">Quality Closets</span>
               <span className="block text-3xl sm:text-4xl lg:text-5xl mt-2 font-light">
                 For Ottawa Homes
               </span>
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-12 max-w-3xl mx-auto text-white font-light leading-relaxed tracking-wide px-4">
+            <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-12 max-w-3xl mx-auto text-white font-light leading-relaxed tracking-wide px-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
               Get your free quote today. Professional measurement, design, and
               installation included.
             </p>
