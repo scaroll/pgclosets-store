@@ -93,10 +93,10 @@ export default function PgHeader() {
           <nav className="hidden md:flex items-center gap-6" role="navigation" aria-label="Main navigation">
             <Link
               href="/"
-              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target"
+              className="relative text-gray-900 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-pg-navy px-4 py-3 group touch-target"
             >
               <span className="relative">Home</span>
-              <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-pg-navy scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
 
             <div className="relative group/menu">
@@ -105,14 +105,14 @@ export default function PgHeader() {
                 size="default"
                 onMouseEnter={() => handleMenuHover('products')}
                 onMouseLeave={handleMenuLeave}
-                className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target h-auto"
+                className="flex items-center space-x-1 relative text-gray-900 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-pg-navy px-4 py-3 group touch-target h-auto"
                 aria-expanded={megaMenuOpen && activeMenu === 'products'}
                 aria-haspopup="true"
                 aria-controls="products-mega-menu"
               >
                 <span className="relative">Products</span>
-                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'products' ? 'rotate-180' : ''}`} aria-hidden="true" />
-                <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'products' ? 'rotate-180' : ''}`} aria-hidden="true" />
+                <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-pg-navy scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Button>
               {megaMenuOpen && activeMenu === 'products' && (
                 <div
@@ -140,10 +140,10 @@ export default function PgHeader() {
 
             <Link
               href="/about"
-              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target"
+              className="relative text-gray-900 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-pg-navy px-4 py-3 group touch-target"
             >
               <span className="relative">About</span>
-              <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-pg-navy scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
 
             <div className="relative group/menu">
@@ -152,14 +152,14 @@ export default function PgHeader() {
                 size="default"
                 onMouseEnter={() => handleMenuHover('services')}
                 onMouseLeave={handleMenuLeave}
-                className="flex items-center space-x-1 relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target h-auto"
+                className="flex items-center space-x-1 relative text-gray-900 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-pg-navy px-4 py-3 group touch-target h-auto"
                 aria-expanded={megaMenuOpen && activeMenu === 'services'}
                 aria-haspopup="true"
                 aria-controls="services-mega-menu"
               >
                 <span className="relative">Services</span>
-                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'services' ? 'rotate-180' : ''}`} aria-hidden="true" />
-                <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${megaMenuOpen && activeMenu === 'services' ? 'rotate-180' : ''}`} aria-hidden="true" />
+                <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-pg-navy scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Button>
               {megaMenuOpen && activeMenu === 'services' && (
                 <div
@@ -187,10 +187,10 @@ export default function PgHeader() {
 
             <Link
               href="/contact"
-              className="relative text-black/70 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-black px-4 py-3 group touch-target"
+              className="relative text-gray-900 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-pg-navy px-4 py-3 group touch-target"
             >
               <span className="relative">Contact</span>
-              <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-pg-navy scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
 
 

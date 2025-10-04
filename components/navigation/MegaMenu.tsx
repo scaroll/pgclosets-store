@@ -168,7 +168,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, activeMenu, onClose }) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {sections.map((section, sectionIndex) => (
               <div key={section.title} className="space-y-4">
-                <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-2">
+                <h3 className="text-sm font-bold text-black uppercase tracking-wider border-b border-gray-300 pb-2">
                   {section.title}
                 </h3>
                 <div className="space-y-3">
@@ -185,27 +185,27 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, activeMenu, onClose }) => {
                       <Link
                         href={item.href}
                         onClick={onClose}
-                        className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200"
+                        className="group block p-3 rounded-lg hover:bg-pg-navy/5 transition-all duration-200 border border-transparent hover:border-gray-300"
                       >
                         <div className="flex items-start space-x-3">
                           {item.icon && (
-                            <div className="flex-shrink-0 mt-1 text-black group-hover:text-gray-700 transition-colors">
+                            <div className="flex-shrink-0 mt-1 text-pg-navy group-hover:text-black transition-colors">
                               {item.icon}
                             </div>
                           )}
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center space-x-2">
-                              <h4 className="text-sm font-medium text-gray-900 group-hover:text-black transition-colors">
+                              <h4 className="text-sm font-semibold text-black group-hover:text-pg-navy transition-colors">
                                 {item.title}
                               </h4>
                               {item.badge && (
-                                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-black">
+                                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-pg-navy/10 text-pg-navy">
                                   {item.badge}
                                 </span>
                               )}
-                              <ArrowRight className="w-3 h-3 text-gray-400 group-hover:text-black group-hover:translate-x-1 transition-all duration-200" />
+                              <ArrowRight className="w-3 h-3 text-gray-600 group-hover:text-pg-navy group-hover:translate-x-1 transition-all duration-200" />
                             </div>
-                            <p className="text-xs text-gray-500 mt-1 group-hover:text-gray-700 transition-colors">
+                            <p className="text-xs text-gray-700 mt-1 group-hover:text-gray-900 transition-colors">
                               {item.description}
                             </p>
                           </div>

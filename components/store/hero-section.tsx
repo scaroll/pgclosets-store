@@ -38,7 +38,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl lg:text-2xl mb-10 text-white/90 leading-relaxed max-w-2xl mx-auto"
+            className="text-xl lg:text-2xl mb-10 text-white leading-relaxed max-w-2xl mx-auto"
           >
             Shop our complete collection of Renin closet doors with professional installation and lifetime warranty
           </motion.p>
@@ -61,7 +61,7 @@ export function HeroSection() {
               variant="secondary"
               size="lg"
               href="/contact"
-              className="border-2 border-white text-white hover:bg-white hover:text-pg-navy hover:scale-105 transition-all duration-300 backdrop-blur-sm bg-white/10"
+              className="border-3 border-white text-white hover:bg-white hover:text-pg-navy hover:scale-105 transition-all duration-300 backdrop-blur-sm bg-white/20 font-semibold"
             >
               Free Consultation
             </Button>

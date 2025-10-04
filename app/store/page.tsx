@@ -46,7 +46,7 @@ export default function StorePage() {
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
                 Need Help Choosing?
               </h2>
-              <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl text-white mb-10 max-w-2xl mx-auto leading-relaxed">
                 Our Ottawa experts are here to help you find the perfect closet door solution for your home
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
