@@ -108,7 +108,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                 For Ottawa Homes
               </span>
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-12 max-w-3xl mx-auto text-white/80 font-light leading-relaxed tracking-wide px-4">
+            <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-12 max-w-3xl mx-auto text-white font-light leading-relaxed tracking-wide px-4">
               Get your free quote today. Professional measurement, design, and
               installation included.
             </p>
@@ -117,7 +117,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                 <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
                   <span>✓</span> 500+
                 </div>
-                <div className="text-xs sm:text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">
+                <div className="text-xs sm:text-[10px] text-slate-200 uppercase tracking-[0.2em] font-medium">
                   Happy Customers
                 </div>
               </div>
@@ -125,7 +125,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                 <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
                   <span>✓</span> 5.0
                 </div>
-                <div className="text-xs sm:text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">
+                <div className="text-xs sm:text-[10px] text-slate-200 uppercase tracking-[0.2em] font-medium">
                   Star Rating
                 </div>
               </div>
@@ -133,7 +133,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                 <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
                   <span>✓</span> 15+
                 </div>
-                <div className="text-xs sm:text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">
+                <div className="text-xs sm:text-[10px] text-slate-200 uppercase tracking-[0.2em] font-medium">
                   Years Experience
                 </div>
               </div>
@@ -141,7 +141,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                 <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
                   <span>✓</span> Licensed
                 </div>
-                <div className="text-xs sm:text-[10px] text-white/60 uppercase tracking-[0.2em] font-medium">
+                <div className="text-xs sm:text-[10px] text-slate-200 uppercase tracking-[0.2em] font-medium">
                   & Insured
                 </div>
               </div>
@@ -182,12 +182,12 @@ export default function ClientPage({ products }: { products: Product[] }) {
                   placement="hero"
                   variant="trust_signal"
                   size="md"
-                  className="text-white/70"
+                  className="text-slate-100"
                 />
               </div>
 
               {/* Professional badges */}
-              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
+              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white">
                 <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
                   <span className="w-2 h-2 bg-green-400 rounded-full" />
                   <span>BBB A+ Rated</span>

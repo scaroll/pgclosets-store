@@ -184,7 +184,7 @@ export default function AdvancedCTA({
 
       {/* Social proof */}
       {socialProof.enabled && (
-        <div className="text-sm text-white/80">
+        <div className="text-sm text-white">
           {socialProof.count && (
             <div className="flex items-center gap-1">
               <Users className="w-4 h-4" />
@@ -201,7 +201,7 @@ export default function AdvancedCTA({
 
       {/* Value proposition */}
       {valueProposition.enabled && (
-        <div className="text-sm text-white/90">
+        <div className="text-sm text-white">
           {valueProposition.benefit && (
             <div className="font-medium">{valueProposition.benefit}</div>
           )}
@@ -213,7 +213,7 @@ export default function AdvancedCTA({
 
       {/* Risk reduction */}
       {riskReduction.enabled && (
-        <div className="text-xs text-white/70 flex items-center gap-3">
+        <div className="text-xs text-slate-200 flex items-center gap-3">
           {riskReduction.warranty && (
             <span className="flex items-center gap-1">
               <Shield className="w-3 h-3" />

@@ -37,7 +37,7 @@ export default function OfflinePage() {
             You're Currently Offline
           </h1>
 
-          <p className="text-lg text-white/80 mb-8 leading-relaxed">
+          <p className="text-lg text-white mb-8 leading-relaxed">
             Don't worry! You can still browse previously visited pages and
             explore our cached content while offline.
           </p>
@@ -72,7 +72,7 @@ export default function OfflinePage() {
               className="block p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors border border-white/20 backdrop-blur-sm"
             >
               <div className="text-sm font-medium">Products</div>
-              <div className="text-xs text-white/70">Browse catalog</div>
+              <div className="text-xs text-slate-200">Browse catalog</div>
             </Link>
 
             <Link
@@ -80,7 +80,7 @@ export default function OfflinePage() {
               className="block p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors border border-white/20 backdrop-blur-sm"
             >
               <div className="text-sm font-medium">Contact</div>
-              <div className="text-xs text-white/70">Get in touch</div>
+              <div className="text-xs text-slate-200">Get in touch</div>
             </Link>
           </div>
         </div>
@@ -93,32 +93,32 @@ export default function OfflinePage() {
               <svg className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
-              <span className="text-white/90">Browse cached product pages</span>
+              <span className="text-white">Browse cached product pages</span>
             </div>
             <div className="flex items-center">
               <svg className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
-              <span className="text-white/90">View business information</span>
+              <span className="text-white">View business information</span>
             </div>
             <div className="flex items-center">
               <svg className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
-              <span className="text-white/90">Access saved project gallery</span>
+              <span className="text-white">Access saved project gallery</span>
             </div>
             <div className="flex items-center">
               <svg className="w-4 h-4 text-yellow-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
-              <span className="text-white/70">Form submissions will sync when online</span>
+              <span className="text-slate-200">Form submissions will sync when online</span>
             </div>
           </div>
         </div>
 
         {/* Connection Status */}
         <div className="mt-6 text-center">
-          <div id="connection-status" className="text-sm text-white/60">
+          <div id="connection-status" className="text-sm text-slate-300">
             <span className="inline-block w-2 h-2 bg-red-400 rounded-full mr-2" />
             Offline - Checking connection...
           </div>

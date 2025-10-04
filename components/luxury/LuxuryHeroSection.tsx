@@ -156,7 +156,7 @@ export function LuxuryHeroSection({
 
       {/* Decorative Elements */}
       <div className="absolute top-4 right-4 z-30">
-        <div className="text-luxury-caps text-white/40">
+        <div className="text-luxury-caps text-slate-300">
           Est. 2009
         </div>
       </div>
