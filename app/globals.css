@@ -81,6 +81,14 @@
   animation-delay: 400ms;
 }
 
+.animation-delay-2000 {
+  animation-delay: 2000ms;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4000ms;
+}
+
 /* Hover Animations */
 .hover-lift {
   transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);

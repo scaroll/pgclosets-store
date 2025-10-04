@@ -1,15 +1,14 @@
+"use client"
+
 import { FeaturedProducts } from "@/components/store/featured-products"
 import { HeroSection } from "@/components/store/hero-section"
 import { Button } from "@/components/ui/button"
 import { getFeaturedProducts, productCategories } from "@/lib/enhanced-renin-products"
 import Image from "next/image"
 import StandardLayout from "@/components/layout/StandardLayout"
+import { motion } from "framer-motion"
 
-export const metadata = {
-  title: "Premium Closet Door Store | Renin Products | PG Closets Ottawa",
-  description:
-    "Shop premium Renin closet doors online. Barn doors, bypass doors, bifold doors with professional installation. Free shipping in Ottawa area.",
-}
+// Metadata moved to parent layout or will be set via generateMetadata
 
 export default function StorePage() {
   const featuredProducts = getFeaturedProducts()
@@ -22,24 +21,55 @@ export default function StorePage() {
         <CategoriesSection />
         <FeaturedProducts products={featuredProducts} />
 
-        <section className="bg-gradient-to-br from-gray-50 to-white py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="bg-white shadow-xl p-16 text-center">
-              <h2 className="text-3xl font-extralight text-slate-900 mb-4 tracking-tight">Need Help Choosing?</h2>
-              <p className="text-lg text-slate-600 font-light mb-8 max-w-2xl mx-auto">
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="bg-gradient-to-br from-pg-navy via-pg-navy to-pg-sky py-24 relative overflow-hidden"
+        >
+          {/* Animated background */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full mix-blend-overlay filter blur-xl animate-blob" />
+            <div className="absolute top-0 right-10 w-64 h-64 bg-pg-sky rounded-full mix-blend-overlay filter blur-xl animate-blob animation-delay-2000" />
+            <div className="absolute bottom-10 left-1/2 w-64 h-64 bg-white rounded-full mix-blend-overlay filter blur-xl animate-blob animation-delay-4000" />
+          </div>
+
+          <div className="max-w-4xl mx-auto px-4 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-center"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
+                Need Help Choosing?
+              </h2>
+              <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
                 Our Ottawa experts are here to help you find the perfect closet door solution for your home
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="primary" size="lg" href="/contact">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  href="/contact"
+                  className="bg-white text-pg-navy hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl font-semibold"
+                >
                   Free Consultation
                 </Button>
-                <Button variant="secondary" size="lg" href="mailto:spencer@peoplesgrp.com">
-                  Email: spencer@peoplesgrp.com
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  href="mailto:spencer@peoplesgrp.com"
+                  className="border-2 border-white text-white hover:bg-white hover:text-pg-navy hover:scale-105 transition-all duration-300 backdrop-blur-sm bg-white/10 font-semibold"
+                >
+                  Email Us
                 </Button>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
       </main>
     </StandardLayout>
   )
@@ -47,42 +77,60 @@ export default function StorePage() {
 
 function CategoriesSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-extralight text-slate-900 mb-4 tracking-tight">Shop by Category</h2>
-          <p className="text-lg text-slate-600 font-light max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-5xl font-bold text-slate-900 mb-6 tracking-tight">Shop by Category</h2>
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Discover our complete range of premium Renin closet doors and hardware
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {productCategories.map((category, index) => (
-            <a
+            <motion.a
               key={category.id}
               href={`/store/products?category=${category.id}`}
-              className="bg-white shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -12, scale: 1.02 }}
+              className="bg-white rounded-lg shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-500 border border-gray-100"
             >
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden relative">
                 <Image
                   src={category.heroImage || "/placeholder.svg"}
                   alt={`${category.name} - Premium closet doors by Renin`}
                   width={400}
                   height={300}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   priority={index < 3}
                   loading={index < 3 ? "eager" : "lazy"}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-extralight text-slate-900 mb-2 tracking-wide group-hover:text-slate-700 transition-colors">{category.name}</h3>
-                <p className="text-slate-600 font-light mb-4">{category.description}</p>
-                <Button variant="secondary" size="sm">
-                  Shop {category.name}
+              <div className="p-8 text-center">
+                <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-pg-navy transition-colors duration-300">
+                  {category.name}
+                </h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">{category.description}</p>
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="group-hover:bg-pg-navy group-hover:text-white group-hover:border-pg-navy transition-all duration-300"
+                >
+                  Explore {category.name}
                 </Button>
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>
