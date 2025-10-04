@@ -43,6 +43,18 @@ export default function PgHeader() {
     }, 300)
   }, [clearCloseTimeout])
 
+  const handleMenuClick = useCallback((menuKey: string) => {
+    // Toggle menu on click - if clicking same menu, close it; if different menu, switch
+    if (activeMenu === menuKey && megaMenuOpen) {
+      setMegaMenuOpen(false)
+      setActiveMenu(null)
+    } else {
+      clearCloseTimeout()
+      setActiveMenu(menuKey)
+      setMegaMenuOpen(true)
+    }
+  }, [activeMenu, megaMenuOpen, clearCloseTimeout])
+
   const handleMegaMenuMouseEnter = useCallback(() => {
     clearCloseTimeout()
     setMegaMenuOpen(true)
@@ -103,6 +115,7 @@ export default function PgHeader() {
               <Button
                 variant="ghost"
                 size="default"
+                onClick={() => handleMenuClick('products')}
                 onMouseEnter={() => handleMenuHover('products')}
                 onMouseLeave={handleMenuLeave}
                 className="flex items-center space-x-1 relative text-gray-900 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-pg-navy px-4 py-3 group touch-target h-auto"
@@ -150,6 +163,7 @@ export default function PgHeader() {
               <Button
                 variant="ghost"
                 size="default"
+                onClick={() => handleMenuClick('services')}
                 onMouseEnter={() => handleMenuHover('services')}
                 onMouseLeave={handleMenuLeave}
                 className="flex items-center space-x-1 relative text-gray-900 font-medium text-sm tracking-[0.05em] transition-colors duration-200 hover:text-pg-navy px-4 py-3 group touch-target h-auto"
