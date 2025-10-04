@@ -162,9 +162,9 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, activeMenu, onClose }) => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
-        className="absolute top-full left-0 w-full bg-white shadow-2xl border-t border-gray-100 z-50"
+        className="bg-white shadow-2xl border-t border-gray-200 z-50 min-w-[600px]"
       >
-        <div className="container mx-auto px-6 py-8">
+        <div className="px-6 py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {sections.map((section, sectionIndex) => (
               <div key={section.title} className="space-y-4">
