@@ -46,18 +46,9 @@ export default function ClientPage({ products }: { products: Product[] }) {
       <div className="bg-white">
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
           <HeroVideo />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80 z-10" />
 
-          {/* Enhanced logo background pattern overlay */}
-          <div className="absolute inset-0 z-10">
-            <LogoBackgroundPatterns
-              pattern="luxury"
-              opacity={0.03}
-              animated={true}
-              density="sparse"
-              className="text-white"
-            />
-          </div>
+          {/* Enhanced logo background pattern overlay - removed for better visibility */}
 
           {/* Logo watermark overlay - temporarily disabled */}
           {/* <div className="absolute top-8 right-8 z-15 opacity-20">
@@ -97,14 +88,14 @@ export default function ClientPage({ products }: { products: Product[] }) {
             </div>
 
             <div className="mb-8">
-              <div className="inline-flex items-center space-x-2 border border-white/20 text-white px-4 py-2 text-xs font-medium tracking-[0.1em] uppercase">
+              <div className="inline-flex items-center space-x-2 border-2 border-white text-white px-4 py-2 text-xs font-medium tracking-[0.1em] uppercase backdrop-blur-sm bg-white/10">
                 <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
                 <span>Free In-Home Consultations</span>
               </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-light mb-6 sm:mb-8 leading-[1.05] text-white tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold mb-6 sm:mb-8 leading-[1.05] text-white tracking-tight">
               <span className="block">Quality Closets</span>
-              <span className="block text-3xl sm:text-4xl lg:text-5xl mt-2 opacity-90">
+              <span className="block text-3xl sm:text-4xl lg:text-5xl mt-2 font-light">
                 For Ottawa Homes
               </span>
             </h1>
@@ -114,34 +105,34 @@ export default function ClientPage({ products }: { products: Product[] }) {
             </p>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-8 sm:mb-12 max-w-4xl mx-auto text-white px-4">
               <div className="text-center px-2">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 flex items-center justify-center gap-2">
                   <span>✓</span> 500+
                 </div>
-                <div className="text-xs sm:text-[10px] text-slate-200 uppercase tracking-[0.2em] font-medium">
+                <div className="text-sm text-white uppercase tracking-wide font-medium">
                   Happy Customers
                 </div>
               </div>
               <div className="text-center px-2">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 flex items-center justify-center gap-2">
                   <span>✓</span> 5.0
                 </div>
-                <div className="text-xs sm:text-[10px] text-slate-200 uppercase tracking-[0.2em] font-medium">
+                <div className="text-sm text-white uppercase tracking-wide font-medium">
                   Star Rating
                 </div>
               </div>
               <div className="text-center px-2">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 flex items-center justify-center gap-2">
                   <span>✓</span> 15+
                 </div>
-                <div className="text-xs sm:text-[10px] text-slate-200 uppercase tracking-[0.2em] font-medium">
+                <div className="text-sm text-white uppercase tracking-wide font-medium">
                   Years Experience
                 </div>
               </div>
               <div className="text-center px-2">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-light mb-1 flex items-center justify-center gap-2">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 flex items-center justify-center gap-2">
                   <span>✓</span> Licensed
                 </div>
-                <div className="text-xs sm:text-[10px] text-slate-200 uppercase tracking-[0.2em] font-medium">
+                <div className="text-sm text-white uppercase tracking-wide font-medium">
                   & Insured
                 </div>
               </div>
@@ -169,40 +160,26 @@ export default function ClientPage({ products }: { products: Product[] }) {
 
               <Link
                 href="/products"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-medium text-base tracking-[0.1em] uppercase transition-all duration-300 hover:bg-white hover:text-black border-2 border-white/50 hover:border-white group touch-target"
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-medium text-base tracking-[0.1em] uppercase transition-all duration-300 hover:bg-white hover:text-black border-2 border-white group touch-target"
               >
                 <span className="relative z-10">View Products</span>
               </Link>
             </div>
 
-            {/* Enhanced trust signals below CTAs */}
-            <div className="mt-8 space-y-6">
-              <div className="flex justify-center">
-                <LogoConversionOptimizer
-                  placement="hero"
-                  variant="trust_signal"
-                  size="md"
-                  className="text-slate-100"
-                />
-              </div>
-
-              {/* Professional badges */}
+            {/* Simplified trust signals - showing only top 3 */}
+            <div className="mt-10">
               <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white">
-                <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
+                <div className="flex items-center gap-2 bg-white/20 px-5 py-2.5 rounded-full backdrop-blur-sm border border-white/30">
                   <span className="w-2 h-2 bg-green-400 rounded-full" />
-                  <span>BBB A+ Rated</span>
+                  <span className="font-medium">BBB A+ Rated</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
+                <div className="flex items-center gap-2 bg-white/20 px-5 py-2.5 rounded-full backdrop-blur-sm border border-white/30">
                   <span className="w-2 h-2 bg-yellow-400 rounded-full" />
-                  <span>Google Reviews 5.0</span>
+                  <span className="font-medium">5.0 ⭐ Rating</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
+                <div className="flex items-center gap-2 bg-white/20 px-5 py-2.5 rounded-full backdrop-blur-sm border border-white/30">
                   <span className="w-2 h-2 bg-blue-400 rounded-full" />
-                  <span>Free Consultation</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
-                  <span className="w-2 h-2 bg-purple-400 rounded-full" />
-                  <span>Lifetime Warranty</span>
+                  <span className="font-medium">Free Consultation</span>
                 </div>
               </div>
             </div>
