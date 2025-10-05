@@ -28,7 +28,7 @@ export async function getProducts(params: {
   query?: string;
   collection?: string;
   limit?: number;
-}): Promise<Product[]> {
+} = {}): Promise<Product[]> {
   // For static generation, use local data directly to avoid API calls during build
   if (typeof window === "undefined") {
     let filteredProducts = [...localProducts];

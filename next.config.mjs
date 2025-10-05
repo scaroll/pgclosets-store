@@ -46,6 +46,7 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 31536000, // 1 year cache
     formats: ["image/avif", "image/webp"], // AVIF first for better compression
+    qualities: [75, 85, 90, 95], // Configure quality levels for Next.js 16
     domains: [
       "www.pgclosets.com",
       "pgclosets.com",

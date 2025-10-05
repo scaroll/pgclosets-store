@@ -259,7 +259,7 @@ export function AdvancedImage({
           fadeIn && isLoading ? "opacity-0 scale-105" : "opacity-100 scale-100",
           "hover:scale-105 transition-transform duration-300"
         )}
-        onLoadingComplete={handleImageLoad}
+        onLoad={handleImageLoad}
         onLoadStart={handleImageLoadStart}
         onError={handleImageError}
         aria-describedby={isLoading ? `image-loading-${alt}` : undefined}
