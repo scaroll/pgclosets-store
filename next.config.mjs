@@ -15,6 +15,9 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === "production",
   },
 
+  // Production optimizations
+  poweredByHeader: false,
+
   experimental: {
     serverActions: {
       allowedOrigins:
