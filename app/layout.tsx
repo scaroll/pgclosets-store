@@ -11,8 +11,7 @@ import {
   generateWebSiteSchema,
   generateOrganizationSchema,
 } from "../lib/seo/local-business-schema";
-import type React from "react";
-import { Suspense } from "react";
+import { Suspense, type React } from "react";
 import Script from "next/script";
 import { Toaster } from "sonner";
 import { ValuePropBanner } from "../components/conversion/ValuePropBanner";

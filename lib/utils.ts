@@ -14,8 +14,11 @@ export function cn(...inputs: ClassValue[]) {
  * @param currency - The currency code (e.g., 'USD', 'CAD').
  * @returns A formatted currency string.
  */
-export function formatPrice(price: number, currency: string = 'CAD'): string {
-  const priceInDollars = typeof price === 'number' ? price : 0;
+export function formatPrice(
+  price: number | null | undefined,
+  currency: string = 'CAD'
+): string {
+  const priceInDollars = typeof price === 'number' ? price / 100 : 0;
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency,

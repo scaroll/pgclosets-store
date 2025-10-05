@@ -1,122 +1,142 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { Button } from "../../../components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card"
-import { Input } from "../../../components/ui/input"
-import { Label } from "../../../components/ui/label"
-import { Badge } from "../../../components/ui/badge"
-import { MediaSelector } from "../../../components/MediaSelector"
-import { useToast } from "../../../hooks/use-toast"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs"
-import { Textarea } from "../../../components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../components/ui/select"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Button } from "../../../components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../components/ui/card";
+import { Input } from "../../../components/ui/input";
+import { Label } from "../../../components/ui/label";
+import { Badge } from "../../../components/ui/badge";
+import { MediaSelector } from "../../../components/MediaSelector";
+import { useToast } from "../../../hooks/use-toast";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../../../components/ui/tabs";
+import { Textarea } from "../../../components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../../components/ui/select";
 
 interface Product {
-  slug: string
-  title: string
-  type: string
-  priceMin: number
-  priceMax?: number
-  image: string
-  badges?: string[]
-  description?: string
-  gallery?: string[]
+  slug: string;
+  title: string;
+  type: string;
+  priceMin: number;
+  priceMax?: number;
+  image: string;
+  badges?: string[];
+  description?: string;
+  gallery?: string[];
 }
 
 interface BlobFile {
-  url: string
-  pathname: string
-  size: number
-  uploadedAt: string
-  filename: string
+  url: string;
+  pathname: string;
+  size: number;
+  uploadedAt: string;
+  filename: string;
 }
 
 export default function ProductManagement() {
-  const [products, setProducts] = useState<Product[]>([])
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [saving, setSaving] = useState(false)
-  const { toast } = useToast()
+  const [products, setProducts] = useState<Product[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const { toast } = useToast();
 
+  // loadProducts is intentionally omitted to run only once on mount
+  // Adding it would cause infinite loop unless wrapped in useCallback
   useEffect(() => {
-    loadProducts()
-  }, [])
+    loadProducts();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const loadProducts = async () => {
     try {
-      const response = await fetch("/data/products.json")
-      const data = await response.json()
-      setProducts(data.items || [])
-    } catch (_error) {
+      const response = await fetch("/data/products.json");
+      const data = await response.json();
+      setProducts(data.items || []);
+    } catch {
       toast({
         title: "Error",
         description: "Failed to load products",
-      })
+      });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleImageSelect = (files: BlobFile[]) => {
     if (selectedProduct && files.length > 0) {
       const updatedProduct = {
         ...selectedProduct,
         image: files[0].url,
-      }
-      setSelectedProduct(updatedProduct)
-      updateProductInList(updatedProduct)
+      };
+      setSelectedProduct(updatedProduct);
+      updateProductInList(updatedProduct);
     }
-  }
+  };
 
   const handleGallerySelect = (files: BlobFile[]) => {
     if (selectedProduct) {
       const updatedProduct = {
         ...selectedProduct,
         gallery: files.map((f) => f.url),
-      }
-      setSelectedProduct(updatedProduct)
-      updateProductInList(updatedProduct)
+      };
+      setSelectedProduct(updatedProduct);
+      updateProductInList(updatedProduct);
     }
-  }
+  };
 
   const updateProductInList = (updatedProduct: Product) => {
-    setProducts(products.map((p) => (p.slug === updatedProduct.slug ? updatedProduct : p)))
-  }
+    setProducts(
+      products.map((p) => (p.slug === updatedProduct.slug ? updatedProduct : p))
+    );
+  };
 
   const handleProductUpdate = (field: keyof Product, value: any) => {
     if (selectedProduct) {
       const updatedProduct = {
         ...selectedProduct,
         [field]: value,
-      }
-      setSelectedProduct(updatedProduct)
-      updateProductInList(updatedProduct)
+      };
+      setSelectedProduct(updatedProduct);
+      updateProductInList(updatedProduct);
     }
-  }
+  };
 
   const saveProducts = async () => {
-    setSaving(true)
+    setSaving(true);
     try {
       // In a real app, this would save to a database
       // For now, we&apos;ll just show success
       toast({
         title: "Success",
         description: "Products updated successfully",
-      })
-    } catch (_error) {
+      });
+    } catch {
       toast({
         title: "Error",
         description: "Failed to save products",
-      })
+      });
     } finally {
-      setSaving(false)
+      setSaving(false);
     }
-  }
+  };
 
   if (loading) {
-    return <div className="p-8">Loading products...</div>
+    return <div className="p-8">Loading products...</div>;
   }
 
   return (
@@ -140,7 +160,9 @@ export default function ProductManagement() {
                 <div
                   key={product.slug}
                   className={`p-3 rounded-lg border cursor-pointer transition-colors ${
-                    selectedProduct?.slug === product.slug ? "bg-primary/10 border-primary" : "hover:bg-muted"
+                    selectedProduct?.slug === product.slug
+                      ? "bg-primary/10 border-primary"
+                      : "hover:bg-muted"
                   }`}
                   onClick={() => setSelectedProduct(product)}
                 >
@@ -157,7 +179,9 @@ export default function ProductManagement() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-medium truncate">{product.title}</p>
-                      <p className="text-sm text-muted-foreground">{product.type}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {product.type}
+                      </p>
                       <p className="text-sm font-medium">
                         ${product.priceMin}
                         {product.priceMax ? ` - $${product.priceMax}` : ""}
@@ -192,14 +216,18 @@ export default function ProductManagement() {
                         <Input
                           id="title"
                           value={selectedProduct.title}
-                          onChange={(e) => handleProductUpdate("title", e.target.value)}
+                          onChange={(e) =>
+                            handleProductUpdate("title", e.target.value)
+                          }
                         />
                       </div>
                       <div>
                         <Label htmlFor="type">Type</Label>
                         <Select
                           value={selectedProduct.type}
-                          onValueChange={(value) => handleProductUpdate("type", value)}
+                          onValueChange={(value) =>
+                            handleProductUpdate("type", value)
+                          }
                         >
                           <SelectTrigger>
                             <SelectValue />
@@ -219,7 +247,9 @@ export default function ProductManagement() {
                       <Textarea
                         id="description"
                         value={selectedProduct.description || ""}
-                        onChange={(e) => handleProductUpdate("description", e.target.value)}
+                        onChange={(e) =>
+                          handleProductUpdate("description", e.target.value)
+                        }
                         placeholder="Product description..."
                       />
                     </div>
@@ -253,7 +283,11 @@ export default function ProductManagement() {
                         <MediaSelector
                           onSelect={handleImageSelect}
                           maxSelections={1}
-                          trigger={<Button variant="outline">Change Primary Image</Button>}
+                          trigger={
+                            <Button variant="outline">
+                              Change Primary Image
+                            </Button>
+                          }
                         />
                       </div>
                     </div>
@@ -261,29 +295,35 @@ export default function ProductManagement() {
                     <div>
                       <Label>Gallery Images</Label>
                       <div className="mt-2 space-y-4">
-                        {selectedProduct.gallery && selectedProduct.gallery.length > 0 && (
-                          <div className="grid grid-cols-4 gap-2">
-                            {selectedProduct.gallery.map((img, index) => (
-                              <div key={index} className="w-24 h-24 rounded border overflow-hidden">
-                                <Image
-                                  src={img || "/placeholder.svg"}
-                                  alt={`Gallery ${index + 1}`}
-                                  width={96}
-                                  height={96}
-                                  className="w-24 h-24 object-cover"
-                                  unoptimized
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                        {selectedProduct.gallery &&
+                          selectedProduct.gallery.length > 0 && (
+                            <div className="grid grid-cols-4 gap-2">
+                              {selectedProduct.gallery.map((img, index) => (
+                                <div
+                                  key={index}
+                                  className="w-24 h-24 rounded border overflow-hidden"
+                                >
+                                  <Image
+                                    src={img || "/placeholder.svg"}
+                                    alt={`Gallery ${index + 1}`}
+                                    width={96}
+                                    height={96}
+                                    className="w-24 h-24 object-cover"
+                                    unoptimized
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         <MediaSelector
                           onSelect={handleGallerySelect}
                           maxSelections={10}
                           selectedFiles={selectedProduct.gallery || []}
                           trigger={
                             <Button variant="outline">
-                              {selectedProduct.gallery?.length ? "Update Gallery" : "Add Gallery Images"}
+                              {selectedProduct.gallery?.length
+                                ? "Update Gallery"
+                                : "Add Gallery Images"}
                             </Button>
                           }
                         />
@@ -299,7 +339,12 @@ export default function ProductManagement() {
                           id="priceMin"
                           type="number"
                           value={selectedProduct.priceMin}
-                          onChange={(e) => handleProductUpdate("priceMin", Number.parseInt(e.target.value))}
+                          onChange={(e) =>
+                            handleProductUpdate(
+                              "priceMin",
+                              Number.parseInt(e.target.value)
+                            )
+                          }
                         />
                       </div>
                       <div>
@@ -311,7 +356,9 @@ export default function ProductManagement() {
                           onChange={(e) =>
                             handleProductUpdate(
                               "priceMax",
-                              e.target.value ? Number.parseInt(e.target.value) : undefined,
+                              e.target.value
+                                ? Number.parseInt(e.target.value)
+                                : undefined
                             )
                           }
                         />
@@ -324,12 +371,14 @@ export default function ProductManagement() {
           ) : (
             <Card>
               <CardContent className="flex items-center justify-center h-64">
-                <p className="text-muted-foreground">Select a product to edit</p>
+                <p className="text-muted-foreground">
+                  Select a product to edit
+                </p>
               </CardContent>
             </Card>
           )}
         </div>
       </div>
     </div>
-  )
+  );
 }

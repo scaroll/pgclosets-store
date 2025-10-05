@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import HeroVideo from "../HeroVideo";
 import type { Product } from "@/types/commerce";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice } from "@/lib/pricing";
 import StandardLayout from "@/components/layout/StandardLayout";
-import { LocalBusinessJSONLD } from "@/lib/seo";
+import { LocalBusinessJSONLD } from "@/lib/seo/LocalBusinessJSONLD";
 import { LogoBackgroundPatterns } from "@/components/brand/LogoBackgroundPatterns";
 import { AnimatedLogo } from "@/components/brand/AnimatedLogo";
 // import { ResponsiveLogoVariants } from "@/components/brand/ResponsiveLogoVariants" // Temporarily disabled
@@ -15,25 +15,13 @@ import {
   trackLogoInteraction,
 } from "@/lib/analytics/logo-tracking";
 import {
-  LogoConversionOptimizer,
   CTALogoButton,
 } from "@/components/conversion/LogoConversionOptimizer";
 
 export default function ClientPage({ products }: { products: Product[] }) {
   const [quoteStep, setQuoteStep] = useState(0);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [heroLogoVisible, setHeroLogoVisible] = useState(false);
-
-  const handleHeroLogoClick = () => {
-    trackLogoInteraction({
-      event: "hero_logo_click",
-      logo_type: "hero",
-      interaction_type: "click",
-      page_location: "/",
-      user_journey_stage: "awareness",
-      conversion_context: "hero_branding",
-    });
-  };
+  const [_heroLogoVisible, setHeroLogoVisible] = useState(false);
 
   const handleSelectProduct = (product: Product) => {
     setSelectedProduct(product);
@@ -46,9 +34,18 @@ export default function ClientPage({ products }: { products: Product[] }) {
       <div className="bg-white">
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
           <HeroVideo />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
 
-          {/* Enhanced logo background pattern overlay - removed for better visibility */}
+          {/* Enhanced logo background pattern overlay */}
+          <div className="absolute inset-0 z-10">
+            <LogoBackgroundPatterns
+              pattern="luxury"
+              opacity={0.03}
+              animated={true}
+              density="sparse"
+              className="text-white"
+            />
+          </div>
 
           {/* Logo watermark overlay - temporarily disabled */}
           {/* <div className="absolute top-8 right-8 z-15 opacity-20">
@@ -65,7 +62,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
           {/* Removed ambient glow effects for cleaner aesthetic */}
           <div className="relative z-20 text-center px-4 max-w-7xl mx-auto">
             {/* Premium hero logo */}
-            <div className="mb-12 flex justify-center">
+            <div className="mb-8 flex justify-center">
               <AnimatedLogo
                 animation="luxury"
                 width={200}
@@ -83,68 +80,26 @@ export default function ClientPage({ products }: { products: Product[] }) {
                   });
                 }}
                 className="filter drop-shadow-2xl cursor-pointer"
-                onClick={handleHeroLogoClick}
               />
             </div>
 
-            <div className="mb-8">
-              <div className="inline-flex items-center space-x-2 border-2 border-white text-white px-4 py-2 text-xs font-medium tracking-[0.1em] uppercase backdrop-blur-sm bg-white/10">
-                <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-                <span>Free In-Home Consultations</span>
-              </div>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold mb-6 sm:mb-8 leading-[1.05] text-white tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
-              <span className="block">Quality Closets</span>
-              <span className="block text-3xl sm:text-4xl lg:text-5xl mt-2 font-light">
-                For Ottawa Homes
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-light mb-4 text-white tracking-tight">
+              <span className="block">Elevated Taste</span>
+              <span className="block text-3xl sm:text-4xl lg:text-5xl mt-1 opacity-90">
+                Without Pretense
               </span>
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-12 max-w-3xl mx-auto text-white font-light leading-relaxed tracking-wide px-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              Get your free quote today. Professional measurement, design, and
-              installation included.
+            <p className="text-base sm:text-lg lg:text-xl mb-8 max-w-2xl mx-auto text-white/80 font-light leading-relaxed">
+              Official Renin dealer offering curated collections, professional installation, and lifetime warranty for your Ottawa home.
             </p>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-8 sm:mb-12 max-w-4xl mx-auto text-white px-4">
-              <div className="text-center px-2">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 flex items-center justify-center gap-2">
-                  <span>✓</span> 500+
-                </div>
-                <div className="text-sm text-white uppercase tracking-wide font-medium">
-                  Happy Customers
-                </div>
-              </div>
-              <div className="text-center px-2">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 flex items-center justify-center gap-2">
-                  <span>✓</span> 5.0
-                </div>
-                <div className="text-sm text-white uppercase tracking-wide font-medium">
-                  Star Rating
-                </div>
-              </div>
-              <div className="text-center px-2">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 flex items-center justify-center gap-2">
-                  <span>✓</span> 15+
-                </div>
-                <div className="text-sm text-white uppercase tracking-wide font-medium">
-                  Years Experience
-                </div>
-              </div>
-              <div className="text-center px-2">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 flex items-center justify-center gap-2">
-                  <span>✓</span> Licensed
-                </div>
-                <div className="text-sm text-white uppercase tracking-wide font-medium">
-                  & Insured
-                </div>
-              </div>
-            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/request-work"
-                className="add-to-cart inline-flex items-center justify-center px-8 py-4 bg-white text-black font-medium text-base tracking-[0.1em] uppercase transition-all duration-300 hover:bg-black hover:text-white border-2 border-white group touch-target"
+                className="add-to-cart inline-flex items-center justify-center px-10 py-4 bg-white text-black font-medium text-base tracking-wider uppercase transition-all duration-300 hover:bg-gray-200 border-2 border-white group touch-target"
               >
-                <span className="relative z-10">Get Free Quote</span>
+                <span className="relative z-10">Get a Free Quote</span>
                 <svg
-                  className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                  className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -160,26 +115,26 @@ export default function ClientPage({ products }: { products: Product[] }) {
 
               <Link
                 href="/products"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-medium text-base tracking-[0.1em] uppercase transition-all duration-300 hover:bg-white hover:text-black border-2 border-white group touch-target"
+                className="inline-flex items-center justify-center px-10 py-4 bg-transparent text-white font-medium text-base tracking-wider uppercase transition-all duration-300 hover:bg-white hover:text-black border-2 border-white/50 hover:border-white group touch-target"
               >
                 <span className="relative z-10">View Products</span>
               </Link>
             </div>
 
-            {/* Simplified trust signals - showing only top 3 */}
-            <div className="mt-10">
-              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white">
-                <div className="flex items-center gap-2 bg-white/20 px-5 py-2.5 rounded-full backdrop-blur-sm border border-white/30">
-                  <span className="w-2 h-2 bg-green-400 rounded-full" />
-                  <span className="font-medium">BBB A+ Rated</span>
+            {/* Enhanced trust signals below CTAs */}
+            <div className="mt-12 space-y-4">
+              <div className="flex items-center justify-center gap-6 text-sm text-white/80">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  <span>BBB A+ Rated</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/20 px-5 py-2.5 rounded-full backdrop-blur-sm border border-white/30">
+                <div className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-400 rounded-full" />
-                  <span className="font-medium">5.0 ⭐ Rating</span>
+                  <span>Google 5.0 ⭐⭐⭐⭐⭐</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/20 px-5 py-2.5 rounded-full backdrop-blur-sm border border-white/30">
+                <div className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-blue-400 rounded-full" />
-                  <span className="font-medium">Free Consultation</span>
+                  <span>Lifetime Warranty</span>
                 </div>
               </div>
             </div>
@@ -201,8 +156,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                 Choose Your Style
               </h2>
               <p className="text-lg text-slate-600 max-w-2xl mx-auto font-light tracking-wide">
-                Browse our collection and get an instant quote. Free
-                consultation included.
+                Browse our curated collection of premium closet doors.
               </p>
             </div>
 
@@ -223,20 +177,8 @@ export default function ClientPage({ products }: { products: Product[] }) {
                       quality={85}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    {/* Logo watermark on product images - temporarily disabled */}
-                    {/* <div className="absolute bottom-2 right-2 opacity-30 group-hover:opacity-50 transition-opacity duration-300">
-                    <ResponsiveLogoVariants
-                      variant="compact"
-                      theme="dark"
-                      width={40}
-                      height={8}
-                      className="filter drop-shadow-sm"
-                    />
-                  </div> */}
-
                     <div className="absolute top-2 left-2 bg-black text-white px-3 py-1 text-xs font-medium tracking-[0.2em] uppercase">
-                      Free Quote
+                      Bestseller
                     </div>
                   </div>
                   <div className="p-6">
@@ -247,7 +189,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                       {product.description}
                     </p>
                     <div className="text-3xl font-extralight text-slate-900 mb-6 tracking-tight">
-                      {formatPrice(product.variants[0]?.price)}
+                      {formatPrice(product.variants?.[0]?.price ?? 0)}
                     </div>
                     <div className="flex gap-2">
                       <CTALogoButton
@@ -257,7 +199,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                         trackingContext="product_card_quote"
                         className="add-to-cart flex-1 text-sm uppercase tracking-widest py-3"
                       >
-                        Free Quote
+                        Get Quote
                       </CTALogoButton>
                       <CTALogoButton
                         href={`/products/${product.handle}`}
@@ -269,28 +211,6 @@ export default function ClientPage({ products }: { products: Product[] }) {
                       >
                         Details
                       </CTALogoButton>
-                    </div>
-
-                    {/* Enhanced trust signals on product cards */}
-                    <div className="mt-3 pt-3 border-t border-gray-100 space-y-2">
-                      <LogoConversionOptimizer
-                        placement="pricing"
-                        variant="trust_signal"
-                        size="sm"
-                      />
-                      <div className="flex items-center justify-between text-xs text-gray-600">
-                        <div className="flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-                          <span>Licensed & Insured</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
-                          <span>Lifetime Warranty</span>
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-center text-xs text-gray-500">
-                        <span>⭐⭐⭐⭐⭐ 5.0 (500+ Reviews)</span>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -304,10 +224,10 @@ export default function ClientPage({ products }: { products: Product[] }) {
             <div className="max-w-4xl mx-auto px-4">
               <div className="text-center mb-12">
                 <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-[#1B4A9C]">
-                  Get Your Quote
+                  Get Your Instant Quote
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Professional installation included
+                  Professional installation always included.
                 </p>
               </div>
 
@@ -315,7 +235,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                 {quoteStep === 1 && (
                   <div className="text-center">
                     <h3 className="text-2xl font-bold mb-8 text-[#1B4A9C]">
-                      Choose Your Door Style
+                      1. Choose Your Door Style
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                       {products.map((product) => (
@@ -339,7 +259,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                             {product.title}
                           </div>
                           <div className="text-[#1B4A9C] font-bold text-lg">
-                            {formatPrice(product.variants[0]?.price)}
+                            {formatPrice(product.variants?.[0]?.price ?? 0)}
                           </div>
                         </button>
                       ))}
@@ -350,11 +270,11 @@ export default function ClientPage({ products }: { products: Product[] }) {
                 {quoteStep === 2 && selectedProduct && (
                   <div className="text-center">
                     <h3 className="text-2xl font-bold mb-8 text-[#1B4A9C]">
-                      Your Quote: {selectedProduct.title}
+                      2. Your Quote: {selectedProduct.title}
                     </h3>
                     <div className="bg-white p-8 border-2 border-[#E0E0E0] mb-6">
                       <div className="text-4xl font-bold text-[#1B4A9C] mb-6">
-                        {formatPrice(selectedProduct.variants[0]?.price)}
+                        {formatPrice(selectedProduct.variants?.[0]?.price ?? 0)}
                       </div>
                       <div className="text-sm text-gray-600 mb-6">
                         ✓ Professional installation included
@@ -366,7 +286,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                       href="/contact"
                       className="add-to-cart bg-[#1B4A9C] text-white px-8 py-4 font-semibold hover:bg-[#153A7E] transition-all uppercase tracking-wide inline-block"
                     >
-                      Book Consultation
+                      Book Free Consultation
                     </Link>
                   </div>
                 )}

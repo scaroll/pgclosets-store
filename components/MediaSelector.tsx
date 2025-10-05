@@ -1,29 +1,33 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState } from "react"
-import { Button } from "../ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog"
-import { MediaGallery } from "@/components/MediaGallery"
-import { FileUpload } from "../ui/file-upload"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs"
-import { useToast } from "@/hooks/use-toast"
+import { useState, type React } from "react";
+import { Button } from "../ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
+import { MediaGallery } from "@/components/MediaGallery";
+import { FileUpload } from "../ui/file-upload";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { useToast } from "@/hooks/use-toast";
 
 interface BlobFile {
-  url: string
-  pathname: string
-  size: number
-  uploadedAt: string
-  filename: string
+  url: string;
+  pathname: string;
+  size: number;
+  uploadedAt: string;
+  filename: string;
 }
 
 interface MediaSelectorProps {
-  onSelect: (files: BlobFile[]) => void
-  selectedFiles?: string[]
-  maxSelections?: number
-  fileTypes?: string[]
-  trigger?: React.ReactNode
+  onSelect: (files: BlobFile[]) => void;
+  selectedFiles?: string[];
+  maxSelections?: number;
+  fileTypes?: string[];
+  trigger?: React.ReactNode;
 }
 
 export function MediaSelector({
@@ -33,51 +37,51 @@ export function MediaSelector({
   fileTypes = [".jpg", ".jpeg", ".png", ".gif", ".webp"],
   trigger,
 }: MediaSelectorProps) {
-  const [open, setOpen] = useState(false)
-  const [selected, setSelected] = useState<BlobFile[]>([])
-  const { toast } = useToast()
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState<BlobFile[]>([]);
+  const { toast } = useToast();
 
   const handleSelect = (file: BlobFile) => {
     if (maxSelections === 1) {
-      setSelected([file])
+      setSelected([file]);
     } else {
-      const isSelected = selected.some((f) => f.url === file.url)
+      const isSelected = selected.some((f) => f.url === file.url);
       if (isSelected) {
-        setSelected(selected.filter((f) => f.url !== file.url))
+        setSelected(selected.filter((f) => f.url !== file.url));
       } else if (selected.length < maxSelections) {
-        setSelected([...selected, file])
+        setSelected([...selected, file]);
       } else {
         toast({
           title: "Selection Limit",
           description: `You can only select up to ${maxSelections} files`,
           variant: "destructive",
-        })
+        });
       }
     }
-  }
+  };
 
   const handleConfirm = () => {
-    onSelect(selected)
-    setOpen(false)
-    setSelected([])
-  }
+    onSelect(selected);
+    setOpen(false);
+    setSelected([]);
+  };
 
   const handleUpload = async (file: File) => {
-    const formData = new FormData()
-    formData.append("file", file)
+    const formData = new FormData();
+    formData.append("file", file);
 
     try {
       const response = await fetch("/api/upload", {
         method: "POST",
         body: formData,
-      })
+      });
 
       if (response.ok) {
-        const data = await response.json()
+        const data = await response.json();
         toast({
           title: "Success",
           description: "File uploaded successfully",
-        })
+        });
         // Auto-select the uploaded file
         const newFile: BlobFile = {
           url: data.url,
@@ -85,23 +89,25 @@ export function MediaSelector({
           size: file.size,
           uploadedAt: new Date().toISOString(),
           filename: file.name,
-        }
-        setSelected([newFile])
+        };
+        setSelected([newFile]);
       } else {
-        throw new Error("Upload failed")
+        throw new Error("Upload failed");
       }
-    } catch (_error) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to upload file",
         variant: "destructive",
-      })
+      });
     }
-  }
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>{trigger || <Button variant="outline">Select Media</Button>}</DialogTrigger>
+      <DialogTrigger asChild>
+        {trigger || <Button variant="outline">Select Media</Button>}
+      </DialogTrigger>
       <DialogContent className="max-w-4xl max-h-[80vh] overflow-hidden">
         <DialogHeader>
           <DialogTitle>Select Media Files</DialogTitle>
@@ -124,7 +130,11 @@ export function MediaSelector({
           </TabsContent>
 
           <TabsContent value="upload">
-            <FileUpload onUpload={handleUpload} accept={fileTypes.join(",")} maxSize={4.5 * 1024 * 1024} />
+            <FileUpload
+              onUpload={handleUpload}
+              accept={fileTypes.join(",")}
+              maxSize={4.5 * 1024 * 1024}
+            />
           </TabsContent>
         </Tabs>
 
@@ -143,5 +153,5 @@ export function MediaSelector({
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

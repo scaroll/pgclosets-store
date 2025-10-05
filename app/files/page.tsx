@@ -1,67 +1,72 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { Button } from "../../components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
-import { FileUpload } from "../../components/ui/file-upload"
-import { Trash2, Download, Eye } from "lucide-react"
-import { useToast } from "../../hooks/use-toast"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Button } from "../../components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../components/ui/card";
+import { FileUpload } from "../../components/ui/file-upload";
+import { Trash2, Download, Eye } from "lucide-react";
+import { useToast } from "../../hooks/use-toast";
 
 interface BlobFile {
-  url: string
-  pathname: string
-  size: number
-  uploadedAt: string
-  filename: string
+  url: string;
+  pathname: string;
+  size: number;
+  uploadedAt: string;
+  filename: string;
 }
 
 export default function FilesPage() {
-  const [files, setFiles] = useState<BlobFile[]>([])
-  const [loading, setLoading] = useState(true)
-  const { toast } = useToast()
+  const [files, setFiles] = useState<BlobFile[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
 
   const fetchFiles = async () => {
     try {
-      const response = await fetch("/api/list")
-      const data = await response.json()
-      setFiles(data.files || [])
-    } catch (_error) {
+      const response = await fetch("/api/list");
+      const data = await response.json();
+      setFiles(data.files || []);
+    } catch {
       toast({
         title: "Error",
         description: "Failed to load files",
-      })
+      });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleUpload = async (file: File) => {
-    const formData = new FormData()
-    formData.append("file", file)
+    const formData = new FormData();
+    formData.append("file", file);
 
     try {
       const response = await fetch("/api/upload", {
         method: "POST",
         body: formData,
-      })
+      });
 
       if (response.ok) {
         toast({
           title: "Success",
           description: "File uploaded successfully",
-        })
-        fetchFiles() // Refresh the file list
+        });
+        fetchFiles(); // Refresh the file list
       } else {
-        throw new Error("Upload failed")
+        throw new Error("Upload failed");
       }
-    } catch (_error) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to upload file",
-      })
+      });
     }
-  }
+  };
 
   const handleDelete = async (url: string) => {
     try {
@@ -71,47 +76,51 @@ export default function FilesPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ url }),
-      })
+      });
 
       if (response.ok) {
         toast({
           title: "Success",
           description: "File deleted successfully",
-        })
-        fetchFiles() // Refresh the file list
+        });
+        fetchFiles(); // Refresh the file list
       } else {
-        throw new Error("Delete failed")
+        throw new Error("Delete failed");
       }
-    } catch (_error) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to delete file",
-      })
+      });
     }
-  }
+  };
 
   const formatFileSize = (bytes: number) => {
-    if (bytes === 0) return "0 Bytes"
-    const k = 1024
-    const sizes = ["Bytes", "KB", "MB", "GB"]
-    const i = Math.floor(Math.log(bytes) / Math.log(k))
-    return `${Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2))  } ${  sizes[i]}`
-  }
+    if (bytes === 0) return "0 Bytes";
+    const k = 1024;
+    const sizes = ["Bytes", "KB", "MB", "GB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return `${Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
+  };
 
   const isImage = (filename: string) => {
-    return /\.(jpg|jpeg|png|gif|webp)$/i.test(filename)
-  }
+    return /\.(jpg|jpeg|png|gif|webp)$/i.test(filename);
+  };
 
+  // fetchFiles is intentionally omitted to run only once on mount
+  // Adding it would cause infinite loop unless wrapped in useCallback
   useEffect(() => {
-    fetchFiles()
-  }, [])
+    fetchFiles();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">File Management</h1>
-          <p className="text-muted-foreground">Upload and manage your files in Vercel Blob storage</p>
+          <p className="text-muted-foreground">
+            Upload and manage your files in Vercel Blob storage
+          </p>
         </div>
 
         {/* Upload Section */}
@@ -143,7 +152,10 @@ export default function FilesPage() {
             ) : (
               <div className="space-y-4">
                 {files.map((file) => (
-                  <div key={file.url} className="flex items-center justify-between p-4 border rounded-lg">
+                  <div
+                    key={file.url}
+                    className="flex items-center justify-between p-4 border rounded-lg"
+                  >
                     <div className="flex items-center space-x-4">
                       {isImage(file.filename) && (
                         <Image
@@ -157,12 +169,17 @@ export default function FilesPage() {
                       <div>
                         <p className="font-medium">{file.filename}</p>
                         <p className="text-sm text-muted-foreground">
-                          {formatFileSize(file.size)} • {new Date(file.uploadedAt).toLocaleDateString()}
+                          {formatFileSize(file.size)} •{" "}
+                          {new Date(file.uploadedAt).toLocaleDateString()}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Button variant="outline" size="sm" onClick={() => window.open(file.url, "_blank")}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => window.open(file.url, "_blank")}
+                      >
                         <Eye className="w-4 h-4 mr-1" />
                         View
                       </Button>
@@ -170,10 +187,10 @@ export default function FilesPage() {
                         variant="outline"
                         size="sm"
                         onClick={() => {
-                          const a = document.createElement("a")
-                          a.href = file.url
-                          a.download = file.filename
-                          a.click()
+                          const a = document.createElement("a");
+                          a.href = file.url;
+                          a.download = file.filename;
+                          a.click();
                         }}
                       >
                         <Download className="w-4 h-4 mr-1" />
@@ -197,5 +214,5 @@ export default function FilesPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

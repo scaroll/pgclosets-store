@@ -1,20 +1,18 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState, useRef, useCallback } from "react"
-import Image from "next/image"
-import { Button } from "./button"
-import { Progress } from "./progress"
-import { Upload, X, FileImage, AlertCircle, CheckCircle } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { useState, useRef, useCallback, type React } from "react";
+import Image from "next/image";
+import { Button } from "./button";
+import { Progress } from "./progress";
+import { Upload, X, FileImage, AlertCircle, CheckCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface FileUploadProps {
-  accept?: string
-  maxSize?: number // in bytes
-  onUpload?: (file: File) => Promise<void> // Added onUpload prop for actual file upload
-  className?: string
-  disabled?: boolean
+  accept?: string;
+  maxSize?: number; // in bytes
+  onUpload?: (file: File) => Promise<void>; // Added onUpload prop for actual file upload
+  className?: string;
+  disabled?: boolean;
 }
 
 export function FileUpload({
@@ -24,151 +22,151 @@ export function FileUpload({
   className,
   disabled = false,
 }: FileUploadProps) {
-  const [file, setFile] = useState<File | null>(null)
-  const [preview, setPreview] = useState<string | null>(null)
-  const [isDragging, setIsDragging] = useState(false)
-  const [uploadProgress, setUploadProgress] = useState(0)
-  const [isUploading, setIsUploading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [isUploaded, setIsUploaded] = useState(false)
-  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [file, setFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [isUploading, setIsUploading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isUploaded, setIsUploaded] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const validateFile = (file: File): string | null => {
     if (file.size > maxSize) {
-      return `File size must be less than ${(maxSize / 1024 / 1024).toFixed(1)}MB`
+      return `File size must be less than ${(maxSize / 1024 / 1024).toFixed(1)}MB`;
     }
 
     if (accept === "image/*" && !file.type.startsWith("image/")) {
-      return "Please select a valid image file"
+      return "Please select a valid image file";
     }
 
-    return null
-  }
+    return null;
+  };
 
   const handleFileSelect = useCallback(
     async (selectedFile: File) => {
-      const validationError = validateFile(selectedFile)
+      const validationError = validateFile(selectedFile);
       if (validationError) {
-        setError(validationError)
-        return
+        setError(validationError);
+        return;
       }
 
-      setError(null)
-      setFile(selectedFile)
-      onUpload?.(selectedFile)
+      setError(null);
+      setFile(selectedFile);
+      onUpload?.(selectedFile);
 
       // Create preview for images
       if (selectedFile.type.startsWith("image/")) {
-        const reader = new FileReader()
+        const reader = new FileReader();
         reader.onload = (e) => {
-          setPreview(e.target?.result as string)
-        }
-        reader.readAsDataURL(selectedFile)
+          setPreview(e.target?.result as string);
+        };
+        reader.readAsDataURL(selectedFile);
       }
 
       if (onUpload) {
-        await handleUpload(selectedFile)
+        await handleUpload(selectedFile);
       } else {
         // Simulate upload process for demo
-        simulateUpload()
+        simulateUpload();
       }
     },
-    [maxSize, accept, onUpload],
-  )
+    [maxSize, accept, onUpload]
+  );
 
   const handleUpload = async (file: File) => {
-    if (!onUpload) return
+    if (!onUpload) return;
 
-    setIsUploading(true)
-    setUploadProgress(0)
+    setIsUploading(true);
+    setUploadProgress(0);
 
     try {
       // Start progress animation
       const progressInterval = setInterval(() => {
-        setUploadProgress((prev) => Math.min(prev + 10, 90))
-      }, 100)
+        setUploadProgress((prev) => Math.min(prev + 10, 90));
+      }, 100);
 
-      await onUpload(file)
+      await onUpload(file);
 
-      clearInterval(progressInterval)
-      setUploadProgress(100)
-      setIsUploaded(true)
+      clearInterval(progressInterval);
+      setUploadProgress(100);
+      setIsUploaded(true);
     } catch (error) {
-      setError("Upload failed. Please try again.")
-      console.error("Upload error:", error)
+      setError("Upload failed. Please try again.");
+      console.error("Upload error:", error);
     } finally {
-      setIsUploading(false)
+      setIsUploading(false);
     }
-  }
+  };
 
   const simulateUpload = async () => {
-    setIsUploading(true)
-    setUploadProgress(0)
+    setIsUploading(true);
+    setUploadProgress(0);
 
     // Simulate upload progress
     for (let i = 0; i <= 100; i += 10) {
-      await new Promise((resolve) => setTimeout(resolve, 100))
-      setUploadProgress(i)
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      setUploadProgress(i);
     }
 
-    setIsUploading(false)
-    setIsUploaded(true)
-  }
+    setIsUploading(false);
+    setIsUploaded(true);
+  };
 
   const handleDrop = useCallback(
     (e: React.DragEvent) => {
-      e.preventDefault()
-      setIsDragging(false)
+      e.preventDefault();
+      setIsDragging(false);
 
-      if (disabled) return
+      if (disabled) return;
 
-      const droppedFile = e.dataTransfer.files[0]
+      const droppedFile = e.dataTransfer.files[0];
       if (droppedFile) {
-        handleFileSelect(droppedFile)
+        handleFileSelect(droppedFile);
       }
     },
-    [disabled, handleFileSelect],
-  )
+    [disabled, handleFileSelect]
+  );
 
   const handleDragOver = useCallback(
     (e: React.DragEvent) => {
-      e.preventDefault()
+      e.preventDefault();
       if (!disabled) {
-        setIsDragging(true)
+        setIsDragging(true);
       }
     },
-    [disabled],
-  )
+    [disabled]
+  );
 
   const handleDragLeave = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    setIsDragging(false)
-  }, [])
+    e.preventDefault();
+    setIsDragging(false);
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0]
+    const selectedFile = e.target.files?.[0];
     if (selectedFile) {
-      handleFileSelect(selectedFile)
+      handleFileSelect(selectedFile);
     }
-  }
+  };
 
   const removeFile = () => {
-    setFile(null)
-    setPreview(null)
-    setError(null)
-    setUploadProgress(0)
-    setIsUploading(false)
-    setIsUploaded(false)
+    setFile(null);
+    setPreview(null);
+    setError(null);
+    setUploadProgress(0);
+    setIsUploading(false);
+    setIsUploaded(false);
     if (fileInputRef.current) {
-      fileInputRef.current.value = ""
+      fileInputRef.current.value = "";
     }
-  }
+  };
 
   const openFileDialog = () => {
     if (!disabled) {
-      fileInputRef.current?.click()
+      fileInputRef.current?.click();
     }
-  }
+  };
 
   return (
     <div className={cn("w-full", className)}>
@@ -192,20 +190,20 @@ export function FileUpload({
             isDragging
               ? "border-primary bg-primary/5 scale-105"
               : "border-border hover:border-primary/50 hover:bg-muted/30",
-            disabled && "opacity-50 cursor-not-allowed",
+            disabled && "opacity-50 cursor-not-allowed"
           )}
         >
           <div className="flex flex-col items-center space-y-4">
             <div
               className={cn(
                 "w-16 h-16 rounded-full flex items-center justify-center transition-colors duration-200",
-                isDragging ? "bg-primary/20" : "bg-muted",
+                isDragging ? "bg-primary/20" : "bg-muted"
               )}
             >
               <Upload
                 className={cn(
                   "w-8 h-8 transition-colors duration-200",
-                  isDragging ? "text-primary" : "text-muted-foreground",
+                  isDragging ? "text-primary" : "text-muted-foreground"
                 )}
               />
             </div>
@@ -213,9 +211,12 @@ export function FileUpload({
               <p className="text-lg font-medium text-foreground mb-1">
                 {isDragging ? "Drop your file here" : "Upload a file"}
               </p>
-              <p className="text-sm text-muted-foreground">Drag and drop or click to browse</p>
+              <p className="text-sm text-muted-foreground">
+                Drag and drop or click to browse
+              </p>
               <p className="text-xs text-muted-foreground mt-2">
-                {accept === "image/*" ? "Images" : "Files"} up to {(maxSize / 1024 / 1024).toFixed(1)}MB
+                {accept === "image/*" ? "Images" : "Files"} up to{" "}
+                {(maxSize / 1024 / 1024).toFixed(1)}MB
               </p>
             </div>
           </div>
@@ -227,7 +228,13 @@ export function FileUpload({
             <div className="flex items-start space-x-4">
               {preview ? (
                 <div className="relative w-16 h-16 rounded-lg overflow-hidden">
-                  <Image src={preview || "/placeholder.svg"} alt="Preview" fill unoptimized className="object-cover" />
+                  <Image
+                    src={preview || "/placeholder.svg"}
+                    alt="Preview"
+                    fill
+                    unoptimized
+                    className="object-cover"
+                  />
                 </div>
               ) : (
                 <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center">
@@ -236,14 +243,20 @@ export function FileUpload({
               )}
 
               <div className="flex-1 min-w-0">
-                <p className="font-medium text-foreground truncate">{file.name}</p>
-                <p className="text-sm text-muted-foreground">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                <p className="font-medium text-foreground truncate">
+                  {file.name}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {(file.size / 1024 / 1024).toFixed(2)} MB
+                </p>
 
                 {/* Upload Progress */}
                 {isUploading && (
                   <div className="mt-2">
                     <Progress value={uploadProgress} className="h-2" />
-                    <p className="text-xs text-muted-foreground mt-1">Uploading... {uploadProgress}%</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Uploading... {uploadProgress}%
+                    </p>
                   </div>
                 )}
 
@@ -278,5 +291,5 @@ export function FileUpload({
         </div>
       )}
     </div>
-  )
+  );
 }
