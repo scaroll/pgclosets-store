@@ -60,8 +60,8 @@ export default function WarrantyPage() {
             <h3 className="text-2xl font-bold mb-4">Need Warranty Service?</h3>
             <p className="text-gray-700 mb-6">
               Contact our support team at{' '}
-              <a href="tel:613-555-0100" className="text-pg-accent hover:underline">
-                (613) 555-0100
+              <a href="tel:613-422-5800" className="text-pg-accent hover:underline">
+                (613) 422-5800
               </a>{' '}
               or email{' '}
               <a href="mailto:info@pgclosets.ca" className="text-pg-accent hover:underline">

@@ -131,7 +131,7 @@ export function ContactForm() {
               aria-invalid={errors.phone ? "true" : "false"}
               aria-describedby={errors.phone ? "phone-error" : undefined}
               autoComplete="tel"
-              placeholder="(613) 555-0123"
+              placeholder="(613) 422-5800"
             />
             {errors.phone && (
               <p id="phone-error" className="text-pg-status-error text-xs mt-1" role="alert" aria-live="assertive">

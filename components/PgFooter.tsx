@@ -3,7 +3,7 @@ import { PGLogo } from "@/ui/pg-logo";
 
 export default function PgFooter() {
   return (
-    <footer className="bg-gradient-to-b from-slate-900 to-black text-white relative overflow-hidden">
+    <footer className="bg-gradient-to-b from-slate-900 to-black text-white relative overflow-hidden" role="contentinfo" aria-label="Site footer">
 
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -65,9 +65,11 @@ export default function PgFooter() {
             <div className="flex gap-4 pt-4">
               {/* Social Media Icons with hover effects */}
               <a
-                href="#"
+                href="https://facebook.com/pgclosets"
                 className="text-slate-400 hover:text-white transition-all duration-300 hover:scale-110"
-                aria-label="Facebook"
+                aria-label="Visit PG Closets on Facebook"
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <svg
                   className="w-5 h-5"
@@ -78,9 +80,11 @@ export default function PgFooter() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://instagram.com/pgclosets"
                 className="text-slate-400 hover:text-white transition-all duration-300 hover:scale-110"
-                aria-label="Instagram"
+                aria-label="Visit PG Closets on Instagram"
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <svg
                   className="w-5 h-5"
@@ -91,9 +95,11 @@ export default function PgFooter() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://linkedin.com/company/pgclosets"
                 className="text-slate-400 hover:text-white transition-all duration-300 hover:scale-110"
-                aria-label="LinkedIn"
+                aria-label="Visit PG Closets on LinkedIn"
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <svg
                   className="w-5 h-5"
@@ -257,7 +263,7 @@ export default function PgFooter() {
               Ottawa homeowners.
             </div>
           </div>
-          <nav className="flex gap-8 mt-4 md:mt-0">
+          <nav className="flex gap-8 mt-4 md:mt-0" aria-label="Footer legal and consultation links">
             <Link
               href="/privacy-policy"
               className="text-slate-500 font-light text-sm tracking-wide hover:text-white transition-all duration-300 relative group"

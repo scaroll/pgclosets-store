@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import { getProducts } from "@/lib/actions/commerce"
-import ClientPage from "./ClientPage"
+import HomePage from "./HomePage"
 
 export const metadata: Metadata = {
   title: 'PG Closets | Elevated Taste Without Pretense | Ottawa\'s Premium Closet Doors',
@@ -44,7 +43,6 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function Home() {
-  const products = await getProducts({})
-  return <ClientPage products={products} />
+export default function Home() {
+  return <HomePage />
 }

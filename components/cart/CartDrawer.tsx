@@ -32,6 +32,7 @@ const Trash2 = ({ className }: { className?: string }) => (
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "../ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "../ui/sheet"
+import { AddToQuoteButton } from "@/components/quote/AddToQuoteButton"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -158,7 +159,13 @@ export default function CartDrawer() {
                   <Button className="w-full" size="lg" onClick={closeCart} asChild>
                     <Link href="/checkout">Proceed to Checkout</Link>
                   </Button>
-                  <Button variant="outline" className="w-full bg-transparent" onClick={closeCart} asChild>
+                  <AddToQuoteButton
+                    convertFromCart
+                    variant="outline"
+                    size="lg"
+                    className="w-full"
+                  />
+                  <Button variant="ghost" className="w-full" onClick={closeCart} asChild>
                     <Link href="/cart">View Full Cart</Link>
                   </Button>
                 </div>

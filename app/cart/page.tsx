@@ -8,13 +8,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/ca
 import { Input } from "../../components/ui/input"
 import { Separator } from "../../components/ui/separator"
 import { useCart } from "../../lib/useCart"
-import { Minus, Plus, Trash2 } from "lucide-react"
+import { Minus, Plus, Trash2, FileText, ShoppingCart } from "lucide-react"
 import StandardLayout from "@/components/layout/StandardLayout"
+import { AddToQuoteButton } from "@/components/quote/AddToQuoteButton"
 
 export default function CartPage() {
   const { items } = useCart()
   const [isCheckingOut, setIsCheckingOut] = useState(false)
-  
+
   const getTotal = () => {
     return items.reduce((total, item) => total + (item.price * item.qty), 0)
   }
@@ -139,10 +140,18 @@ export default function CartPage() {
               </div>
 
               <Button className="w-full" onClick={handleCheckout} disabled={isCheckingOut}>
+                <ShoppingCart className="w-4 h-4 mr-2" />
                 {isCheckingOut ? "Processing..." : "Checkout"}
               </Button>
 
-              <Button variant="outline" className="w-full bg-transparent" asChild>
+              <AddToQuoteButton
+                convertFromCart
+                variant="outline"
+                size="default"
+                className="w-full"
+              />
+
+              <Button variant="ghost" className="w-full" asChild>
                 <Link href="/products">Continue Shopping</Link>
               </Button>
             </CardContent>

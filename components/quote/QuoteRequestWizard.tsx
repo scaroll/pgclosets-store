@@ -438,7 +438,7 @@ export default function QuoteRequestWizard() {
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
-                placeholder="(613) 555-0123"
+                placeholder="(613) 422-5800"
                 className={errors.phone ? "border-red-500" : ""}
               />
               {errors.phone && (

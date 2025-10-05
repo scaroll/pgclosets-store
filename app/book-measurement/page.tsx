@@ -336,7 +336,7 @@ export default function BookMeasurementPage() {
                 What if I need to reschedule my appointment?
               </h3>
               <p className="text-gray-600">
-                You can reschedule your appointment by calling us at (613) 555-0123 or emailing
+                You can reschedule your appointment by calling us at (613) 422-5800 or emailing
                 info@pgclosets.ca. We ask for at least 24 hours notice when possible.
               </p>
             </div>
@@ -387,7 +387,7 @@ export default function BookMeasurementPage() {
             <div className="text-center">
               <Phone className="w-8 h-8 mx-auto mb-4 text-blue-400" />
               <h3 className="text-lg font-semibold mb-2">Call Us</h3>
-              <p className="text-gray-300">(613) 555-0123</p>
+              <p className="text-gray-300">(613) 422-5800</p>
               <p className="text-sm text-gray-400">Monday - Friday, 9 AM - 5 PM</p>
             </div>
 

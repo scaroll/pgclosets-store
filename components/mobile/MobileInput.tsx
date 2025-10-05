@@ -56,18 +56,18 @@ export const MobileInput = React.forwardRef<HTMLInputElement, MobileInputProps>(
       "text-gray-900 placeholder-gray-500",
       "focus:outline-none focus:ring-2 focus:ring-pg-sky focus:border-pg-sky",
 
-      // Mobile-optimized sizing
-      "h-12 text-base", // 48px height, 16px font prevents zoom on iOS
+      // Mobile-optimized sizing - increased to 52px for better touch targets
+      "h-13 text-base min-h-[52px]", // 52px height, 16px font prevents zoom on iOS
 
       // Touch-friendly interactions
-      "active:border-pg-navy",
+      "active:border-pg-navy touch-manipulation",
 
       // Error state
       error && "border-red-500 focus:ring-red-500 focus:border-red-500",
 
       // Variant styles
       variant === "search" && "rounded-full pl-12 pr-4",
-      variant === "floating" && "pt-6 pb-2 h-14",
+      variant === "floating" && "pt-6 pb-2 h-14 min-h-[56px]",
 
       className
     );
@@ -120,6 +120,7 @@ export const MobileInput = React.forwardRef<HTMLInputElement, MobileInputProps>(
           id={inputId}
           className={baseInputClasses}
           placeholder={variant === "floating" ? " " : placeholder}
+          enterKeyHint="next"
           {...inputProps}
           {...props}
         />

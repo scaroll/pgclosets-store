@@ -125,26 +125,26 @@ export function MobileProductCard({
               product={product}
               variant="default"
               size="default"
-              className="w-full bg-pg-navy hover:bg-navy text-white font-medium py-3 sm:py-2.5 rounded-lg transition-colors duration-200 min-h-[48px] sm:min-h-[44px] active:bg-pg-navy/90"
+              className="w-full bg-pg-navy hover:bg-navy text-white font-medium py-4 sm:py-2.5 rounded-lg transition-colors duration-200 min-h-[52px] sm:min-h-[44px] active:bg-pg-navy/90 touch-manipulation"
             />
           ) : (
             <Button
               variant="outline"
               size="default"
               disabled
-              className="w-full py-3 sm:py-2.5 rounded-lg opacity-50 cursor-not-allowed min-h-[48px] sm:min-h-[44px]"
+              className="w-full py-4 sm:py-2.5 rounded-lg opacity-50 cursor-not-allowed min-h-[52px] sm:min-h-[44px]"
             >
               Out of Stock
             </Button>
           )}
 
           {/* Mobile-stacked secondary actions */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-2">
             <Button
               variant="outline"
               size="default"
               href={`/store/products/${product.slug}`}
-              className="border-gray-300 text-gray-700 hover:bg-gray-50 py-3 sm:py-2.5 rounded-lg transition-colors duration-200 min-h-[48px] sm:min-h-[44px] active:bg-gray-100"
+              className="border-gray-300 text-gray-700 hover:bg-gray-50 py-4 sm:py-2.5 rounded-lg transition-colors duration-200 min-h-[52px] sm:min-h-[44px] active:bg-gray-100 touch-manipulation"
             >
               View Details
             </Button>
@@ -153,7 +153,7 @@ export function MobileProductCard({
               product={product}
               variant="outline"
               size="default"
-              className="border-gray-300 text-gray-700 hover:bg-gray-50 py-3 sm:py-2.5 rounded-lg transition-colors duration-200 min-h-[48px] sm:min-h-[44px] active:bg-gray-100"
+              className="border-gray-300 text-gray-700 hover:bg-gray-50 py-4 sm:py-2.5 rounded-lg transition-colors duration-200 min-h-[52px] sm:min-h-[44px] active:bg-gray-100 touch-manipulation"
             />
           </div>
         </div>

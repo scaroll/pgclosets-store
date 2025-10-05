@@ -8,10 +8,34 @@ export function NewsletterSignup() {
   const [email, setEmail] = useState("")
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle newsletter signup
-    setIsSubmitted(true)
+
+    // Basic email validation
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address')
+      return
+    }
+
+    try {
+      // Call newsletter API
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setIsSubmitted(true)
+      } else {
+        alert(result.error || 'Failed to subscribe. Please try again.')
+      }
+    } catch (error) {
+      console.error('Newsletter subscription error:', error)
+      alert('Failed to subscribe. Please try again later.')
+    }
   }
 
   if (isSubmitted) {

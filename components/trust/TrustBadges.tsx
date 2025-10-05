@@ -242,7 +242,7 @@ export default function TrustBadges({
                 <div>
                   <h4 className="font-semibold text-slate-900">Direct Contact</h4>
                   <p className="text-sm text-slate-600">Speak directly with our team</p>
-                  <p className="text-sm font-medium text-green-600">(613) 555-0123</p>
+                  <p className="text-sm font-medium text-green-600">(613) 422-5800</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 p-6 bg-white rounded-lg border border-slate-200">

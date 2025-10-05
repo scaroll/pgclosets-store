@@ -1,0 +1,253 @@
+/**
+ * Critical CSS - Above the Fold Styles
+ * Inlined in <head> for instant rendering
+ * Optimized for Core Web Vitals (LCP, FCP)
+ */
+
+/* CSS Variables - Critical subset */
+:root {
+  --pg-black: #000000;
+  --pg-white: #ffffff;
+  --pg-charcoal: #1a1a1a;
+  --pg-pearl: #f7fafc;
+  --pg-border-light: #f1f5f9;
+  --pg-text-primary: #000000;
+  --pg-text-secondary: #1e293b;
+  --pg-button-primary: #000000;
+}
+
+/* Reset and base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--pg-text-primary);
+  background: var(--pg-white);
+  font-size: 16px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+/* Navigation - Critical */
+.nav-modern {
+  height: 64px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--pg-border-light);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+/* Container - Critical */
+.container-apple {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  width: 100%;
+}
+
+/* Button - Critical */
+.btn-primary {
+  background-color: var(--pg-button-primary);
+  color: var(--pg-white);
+  border-radius: 0;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border: 2px solid var(--pg-button-primary);
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Typography - Critical */
+.text-h1 {
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--pg-text-primary);
+  text-wrap: balance;
+}
+
+.text-h2 {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--pg-text-primary);
+  text-wrap: balance;
+}
+
+.text-body-m {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+  color: var(--pg-text-secondary);
+  text-wrap: pretty;
+}
+
+/* Loading states */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Prevent layout shift */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Grid - Critical */
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+/* Flexbox utilities */
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+/* Spacing utilities - Critical */
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Width utilities */
+.w-full {
+  width: 100%;
+}
+
+/* Background utilities */
+.bg-white {
+  background-color: var(--pg-white);
+}
+
+.bg-gray-50 {
+  background-color: var(--pg-pearl);
+}
+
+/* Responsive breakpoints */
+@media (min-width: 640px) {
+  .grid {
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-modern {
+    height: 72px;
+  }
+
+  .text-h1 {
+    font-size: 64px;
+  }
+
+  .text-h2 {
+    font-size: 40px;
+  }
+
+  .container-apple {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-apple {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .text-h1 {
+    font-size: 36px;
+  }
+
+  .text-h2 {
+    font-size: 24px;
+  }
+}
+
+/* Accessibility - Critical focus states */
+*:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

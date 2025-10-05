@@ -202,18 +202,64 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms-of-service`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+  ]
+
+  // Additional service area pages
+  const additionalLocationPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/installation-ottawa`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+  ]
+
+  // Account pages (authenticated, but still in sitemap for completeness)
+  const accountPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/cart`,
+      lastModified,
+      changeFrequency: 'always',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/checkout`,
+      lastModified,
+      changeFrequency: 'always',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/search`,
+      lastModified,
+      changeFrequency: 'always',
+      priority: 0.5,
+    },
   ]
 
   // Combine all pages with location pages prioritized for local SEO
   return [
     ...corePages,
     ...locationPages, // High priority for Ottawa market
+    ...additionalLocationPages,
     ...reninLocationPages,
     ...categoryPages,
     ...productPages,
     ...storePages,
     ...storeProductPages,
     ...infoPages,
+    ...accountPages,
     ...legalPages,
   ]
 }

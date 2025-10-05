@@ -217,15 +217,18 @@ export function MobileNavigation({ className }: MobileNavigationProps) {
                     href={item.href}
                     onClick={closeMobileMenu}
                     className={cn(
-                      "block w-full text-left px-4 py-4 text-lg font-medium text-pg-navy",
+                      "block w-full text-left px-4 py-5 mb-2 text-lg font-medium text-pg-navy",
                       "hover:text-pg-sky hover:bg-pg-sky/10 active:bg-pg-sky/20",
                       "transition-all duration-200 rounded-lg",
                       "focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2",
-                      "border-b border-gray-100 last:border-b-0"
+                      "border-b border-gray-100 last:border-b-0",
+                      "min-h-[52px] flex items-center touch-manipulation"
                     )}
                     style={{
                       animationDelay: `${index * 50}ms`,
-                      animation: isMobileMenuOpen ? "slideInFromRight 0.3s ease-out forwards" : "none"
+                      animation: isMobileMenuOpen ? "slideInFromRight 0.3s ease-out forwards" : "none",
+                      transform: "translate3d(0, 0, 0)",
+                      willChange: "transform, opacity"
                     }}
                   >
                     {item.label}
@@ -251,7 +254,7 @@ export function MobileNavigation({ className }: MobileNavigationProps) {
 
               {/* Contact info */}
               <div className="mt-4 text-center text-sm text-gray-600">
-                <p>Call us: (613) 555-CLOSETS</p>
+                <p>Call us: (613) 422-5800</p>
                 <p className="text-xs">Mon-Fri: 8am-6pm | Sat: 9am-4pm</p>
               </div>
             </div>

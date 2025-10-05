@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "../styles/mobile-performance.css";
 import "../styles/mobile-touch.css";
+import "../styles/mobile-enhancements.css";
 import ClientLayout from "./clientLayout";
 import PerformanceMonitor from "../components/performance/performance-monitor";
 import { BUSINESS_INFO } from "../lib/business-config";
@@ -11,7 +12,7 @@ import {
   generateWebSiteSchema,
   generateOrganizationSchema,
 } from "../lib/seo/local-business-schema";
-import { Suspense, type React } from "react";
+import { Suspense } from "react";
 import Script from "next/script";
 import { Toaster } from "sonner";
 import { ValuePropBanner } from "../components/conversion/ValuePropBanner";

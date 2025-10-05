@@ -101,9 +101,9 @@ export class ClientValidator {
         isValid: false,
         error: this.commonErrors.phone,
         suggestions: [
-          "Format: (613) 555-1234",
-          "Format: 613-555-1234",
-          "Format: 613.555.1234",
+          "Format: (613) 422-5800",
+          "Format: 613-422-5800",
+          "Format: 613.422.5800",
         ],
       };
     }

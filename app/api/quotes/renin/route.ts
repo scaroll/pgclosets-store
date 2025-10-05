@@ -389,7 +389,7 @@ async function handleReninQuoteRequest(
     salesContact: {
       name: "Ottawa Renin Sales Team",
       email: "ottawa@pgclosets.com",
-      phone: "(613) 555-DOOR"
+      phone: "(613) 422-5800"
     },
     nextSteps: [
       "Our sales team will contact you within 24 hours",

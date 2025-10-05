@@ -441,7 +441,7 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
               value={customer.phone}
               onChange={(e) => setCustomer({...customer, phone: e.target.value})}
               className="w-full p-3 border border-gray-300 rounded-lg"
-              placeholder="(613) 555-1234"
+              placeholder="(613) 422-5800"
             />
           </div>
 

@@ -472,17 +472,6 @@ const ProductsClient = ({ initialProducts }: { initialProducts: Product[] }) => 
   const itemsPerPage = 12; // Optimized for performance
   const { measureAndReport, measureDOMNodes } = usePerformanceMonitoring();
 
-  // Performance monitoring
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      if (process.env.NODE_ENV === 'development') {
-        measureAndReport();
-      }
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [measureAndReport, paginatedProducts.length]);
-
   const filterOptions = useMemo(() => extractProductAttributes(initialProducts), [initialProducts]);
 
   const filteredProducts = useMemo(() =>
@@ -495,6 +484,17 @@ const ProductsClient = ({ initialProducts }: { initialProducts: Product[] }) => 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
+  // Performance monitoring (moved after paginatedProducts is defined)
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      if (process.env.NODE_ENV === 'development') {
+        measureAndReport();
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [measureAndReport, paginatedProducts.length]);
 
   const handleFilterChange = useCallback((newFilters: ActiveFilters) => {
     setActiveFilters(newFilters);

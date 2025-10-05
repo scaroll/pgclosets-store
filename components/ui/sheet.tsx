@@ -24,6 +24,13 @@ interface SheetTitleProps {
   className?: string
 }
 
+interface SheetTriggerProps {
+  children: React.ReactNode
+  asChild?: boolean
+  className?: string
+  onClick?: () => void
+}
+
 // Stub implementations for sheet components
 export function Sheet({ children, open, onOpenChange }: SheetProps) {
   return (
@@ -69,5 +76,20 @@ export function SheetTitle({ children, className }: SheetTitleProps) {
     <h2 className={`text-lg font-semibold ${className || ''}`}>
       {children}
     </h2>
+  )
+}
+
+export function SheetTrigger({ children, asChild, className, onClick }: SheetTriggerProps) {
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(children as React.ReactElement, {
+      onClick: onClick || children.props.onClick,
+      className: `${children.props.className || ''} ${className || ''}`.trim()
+    })
+  }
+
+  return (
+    <button onClick={onClick} className={className}>
+      {children}
+    </button>
   )
 }

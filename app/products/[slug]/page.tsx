@@ -2,9 +2,9 @@ import { notFound } from "next/navigation";
 import { getProductByHandle, getProducts } from "@/lib/actions/commerce";
 import { formatPrice } from "@/lib/utils";
 import StandardLayout from "@/components/layout/StandardLayout";
-import { EnhancedProductDetailPage } from "@/components/product/EnhancedProductDetailPage";
+import { PremiumProductDetailPage } from "./PremiumProductDetailPage";
 
-// Enable ISR: Revalidate every hour instead of force-static
+// Enable ISR: Revalidate every hour
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
@@ -58,7 +58,7 @@ export default async function ProductDetailPage({
     await getProducts({ collection: product.collection?.handle })
   )
     .filter((p) => p.id !== product.id)
-    .slice(0, 3);
+    .slice(0, 4);
 
   return (
     <StandardLayout>
@@ -109,7 +109,7 @@ export default async function ProductDetailPage({
           }),
         }}
       />
-      <EnhancedProductDetailPage
+      <PremiumProductDetailPage
         product={{
           id: product.id,
           title: product.title,
@@ -118,9 +118,11 @@ export default async function ProductDetailPage({
           images: product.images || [],
           variants: product.variants,
           collection: product.collection,
+          metadata: product.metadata,
         }}
         relatedProducts={relatedProducts.map((p) => ({
-          id: p.handle,
+          id: p.id,
+          handle: p.handle,
           title: p.title,
           description: p.description,
           thumbnail: p.thumbnail,
