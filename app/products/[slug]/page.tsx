@@ -3,6 +3,7 @@ import { getProductByHandle, getProducts } from "@/lib/actions/commerce";
 import { formatPrice } from "@/lib/utils";
 import StandardLayout from "@/components/layout/StandardLayout";
 import { PremiumProductDetailPage } from "./PremiumProductDetailPage";
+import { BUSINESS_INFO } from "@/lib/business-config";
 
 // Enable ISR: Revalidate every hour
 export const revalidate = 3600;
@@ -91,10 +92,10 @@ export default async function ProductDetailPage({
               itemCondition: "https://schema.org/NewCondition",
               seller: {
                 "@type": "Organization",
-                name: "PG Closets",
-                url: "https://pgclosets.com",
-                telephone: "(613) 422-5800",
-                email: "info@pgclosets.com",
+                name: BUSINESS_INFO.name,
+                url: BUSINESS_INFO.urls.main,
+                telephone: BUSINESS_INFO.phone,
+                email: BUSINESS_INFO.email,
               },
             },
             image: product.thumbnail ? [product.thumbnail] : [],

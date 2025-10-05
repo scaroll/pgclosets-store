@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Formats a price in dollars to a currency string.
- * @param price - The price in dollars.
+ * @param price - The price in dollars (NOT cents - whole dollar amounts).
  * @param currency - The currency code (e.g., 'USD', 'CAD').
  * @returns A formatted currency string.
  */
@@ -18,7 +18,7 @@ export function formatPrice(
   price: number | null | undefined,
   currency: string = 'CAD'
 ): string {
-  const priceInDollars = typeof price === 'number' ? price / 100 : 0;
+  const priceInDollars = typeof price === 'number' ? price : 0;
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency,

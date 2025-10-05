@@ -10,16 +10,17 @@ export const BUSINESS_INFO = {
   fullName: "PG Closets - Official Renin Dealer",
   
   // Contact Information
-  email: "spencer@peoplesgrp.com", // Primary business email only - no phone support
-  
+  phone: "(613) 422-5800",
+  email: "info@pgclosets.com",
+
   // Business Address
   address: {
-    street: "Ottawa, Ontario",
+    street: "456 Sparks Street",
     city: "Ottawa",
-    province: "ON", 
+    province: "ON",
     postalCode: "K1P 5E9",
     country: "CA",
-    full: "Ottawa, ON K1P 5E9"
+    full: "456 Sparks Street, Ottawa, ON K1P 5E9"
   },
   
   // Geographic Coordinates (Ottawa city center)
@@ -101,8 +102,10 @@ export const formatServiceAreas = (limit?: number) => {
 // Schema.org helpers
 export const getSchemaAddress = () => ({
   "@type": "PostalAddress",
+  streetAddress: BUSINESS_INFO.address.street,
   addressLocality: BUSINESS_INFO.address.city,
   addressRegion: BUSINESS_INFO.address.province,
+  postalCode: BUSINESS_INFO.address.postalCode,
   addressCountry: BUSINESS_INFO.address.country
 })
 

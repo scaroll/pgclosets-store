@@ -130,6 +130,14 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   const ip = (request as any).ip || request.headers.get("x-forwarded-for") || "unknown"
 
+  // Canonical domain redirect (non-www → www)
+  const host = request.headers.get("host")
+  if (host && host === "pgclosets.com") {
+    const url = request.nextUrl.clone()
+    url.host = "www.pgclosets.com"
+    return NextResponse.redirect(url, 301)
+  }
+
   // Rate limiting check
   if (!checkRateLimit(ip)) {
     return new NextResponse("Too Many Requests", {
