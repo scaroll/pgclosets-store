@@ -15,13 +15,29 @@ export default async function ProductsPage({
 
   return (
     <StandardLayout>
-      <main className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h1 className="text-4xl lg:text-5xl font-extralight tracking-tight text-slate-900 mb-4">Premium Door Collection</h1>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto font-light tracking-wide">Browse our complete selection of luxury closet doors with instant pricing and professional installation</p>
+      {/* Hero Section */}
+      <section className="relative bg-black text-white py-24 md:py-32">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black/90" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight mb-6 leading-[0.95]">
+              Curated
+              <br />
+              <span className="text-4xl md:text-5xl lg:text-6xl opacity-90">
+                Collection
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed">
+              Discover premium closet solutions crafted for discerning homeowners.
+              Each piece selected for exceptional quality and timeless design.
+            </p>
           </div>
+        </div>
+      </section>
 
+      {/* Products Section */}
+      <main className="bg-white py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6">
           <ProductsClient initialProducts={products} />
         </div>
       </main>

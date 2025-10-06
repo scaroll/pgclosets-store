@@ -69,15 +69,30 @@ export default function PgHeader() {
   return (
     <>
       <header className="nav-modern sticky top-0 z-40 bg-white/98 backdrop-blur-2xl border-b border-gray-100 transition-all duration-300" role="banner">
-        {/* Top bar with phone number */}
-        <div className="bg-black text-white py-2 px-4 text-center text-sm font-medium tracking-wider">
-          <a
-            href="tel:6134225800"
-            className="hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded px-2 py-1"
-            aria-label="Call us now for a free quote at 613-422-5800"
-          >
-            📞 Speak to a Designer Now: (613) 422-5800
-          </a>
+        {/* Top bar with phone number and quick links */}
+        <div className="bg-black text-white py-3 px-4">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            {/* Quick Links */}
+            <div className="hidden md:flex items-center gap-4 text-xs tracking-wider">
+              <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>
+              <span className="text-gray-600">|</span>
+              <Link href="/services" className="hover:text-gray-300 transition-colors">Services</Link>
+              <span className="text-gray-600">|</span>
+              <Link href="/contact" className="hover:text-gray-300 transition-colors">Contact</Link>
+            </div>
+
+            {/* Phone Number */}
+            <a
+              href="tel:6134225800"
+              className="text-sm md:text-base font-medium tracking-wider hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded px-2 py-1 mx-auto md:mx-0"
+              aria-label="Call us now for a free quote at 613-422-5800"
+            >
+              📞 Speak to a Designer Now: (613) 422-5800
+            </a>
+
+            {/* Empty div for flex spacing on desktop */}
+            <div className="hidden md:block w-32"></div>
+          </div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           <Link
@@ -85,20 +100,20 @@ export default function PgHeader() {
             className="flex items-center gap-3 group"
             aria-label="PG Closets - Go to homepage"
           >
-            <div className="relative w-8 h-8">
+            <div className="relative w-12 h-12">
               <PGLogo
-                width={32}
-                height={32}
+                width={48}
+                height={48}
                 withWordmark={false}
                 aria-hidden="true"
                 className="text-black"
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-bold tracking-[0.2em] text-black leading-none">
+              <span className="text-lg font-bold tracking-[0.2em] text-black leading-none">
                 PG CLOSETS
               </span>
-              <span className="text-[10px] text-gray-500 font-medium tracking-[0.15em] mt-0.5">OTTAWA</span>
+              <span className="text-xs text-gray-500 font-medium tracking-[0.15em] mt-0.5">OTTAWA</span>
             </div>
           </Link>
 

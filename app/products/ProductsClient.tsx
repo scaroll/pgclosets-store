@@ -159,7 +159,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
   });
 
   return (
-    <div ref={targetRef} className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg border border-gray-200">
+    <div ref={targetRef} className="group bg-white overflow-hidden transition-all duration-500 hover:shadow-xl border border-gray-100">
       <Link href={`/products/${product.handle}`} className="block">
         <div className="relative aspect-square bg-gray-50 overflow-hidden">
           {isIntersecting && !imageError ? (
@@ -167,46 +167,46 @@ const ProductCard = memo(({ product }: { product: Product }) => {
               src={product.thumbnail || '/placeholder.svg'}
               alt={product.title}
               fill
-              className={`object-cover hover:scale-105 transition-all duration-300 ${
+              className={`object-cover group-hover:scale-105 transition-all duration-700 ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
               onLoad={() => setImageLoaded(true)}
               onError={() => setImageError(true)}
               priority={false}
-              quality={75}
+              quality={85}
             />
           ) : imageError ? (
-            <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-              <span className="text-gray-400 text-sm">Image not available</span>
+            <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+              <span className="text-gray-400 text-sm font-light">Image not available</span>
             </div>
           ) : (
-            <div className="w-full h-full bg-gray-200 animate-pulse" />
+            <div className="w-full h-full bg-gray-100 animate-pulse" />
           )}
           {isIntersecting && !imageLoaded && !imageError && (
-            <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+            <div className="absolute inset-0 bg-gray-100 animate-pulse" />
           )}
           {product.variants[0]?.price && product.variants[0]?.price > 500 && (
-            <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 text-xs font-medium uppercase">
+            <div className="absolute top-3 left-3 bg-black text-white px-3 py-1.5 text-xs font-medium tracking-wider uppercase">
               Premium
             </div>
           )}
         </div>
       </Link>
-      <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">{product.title}</h3>
-        <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
-        <div className="text-xl font-bold text-gray-900 mb-4">
+      <div className="p-6">
+        <h3 className="text-lg font-light tracking-wide text-black mb-2 line-clamp-1">{product.title}</h3>
+        <p className="text-gray-600 text-sm font-light mb-4 line-clamp-2 leading-relaxed">{product.description}</p>
+        <div className="text-2xl font-light tracking-wide text-black mb-6">
           {formatPrice(product.variants[0]?.price || 0)}
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <Link
             href={`/products/${product.handle}`}
-            className="flex-1 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors text-center text-sm font-medium"
+            className="flex-1 bg-black text-white py-3 px-4 hover:bg-gray-900 transition-all duration-300 text-center text-sm font-medium tracking-wider uppercase"
           >
             View Details
           </Link>
-          <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors text-sm font-medium">
+          <button className="px-4 py-3 border border-black text-black hover:bg-black hover:text-white transition-all duration-300 text-sm font-medium tracking-wider uppercase">
             Quote
           </button>
         </div>
@@ -537,7 +537,7 @@ const ProductsClient = ({ initialProducts }: { initialProducts: Product[] }) => 
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 bg-gray-50">
+      <div className="flex-1 bg-white">
         {/* Mobile filter button */}
         <div className="lg:hidden bg-white border-b border-gray-200 p-4">
           <button
