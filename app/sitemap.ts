@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { products } from './products/products-data'
 import { BUSINESS_INFO } from '../lib/business-config'
+import { getNeighborhoodSlugs } from '../lib/seo/neighborhoods'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = BUSINESS_INFO.urls.main
@@ -216,6 +217,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
+  // Neighborhood area pages (new SEO-optimized pages)
+  const neighborhoodPages: MetadataRoute.Sitemap = getNeighborhoodSlugs().map((slug, index) => ({
+    url: `${baseUrl}/areas/${slug}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: index === 0 ? 0.9 : 0.85, // Ottawa gets highest priority
+  }))
+
   // Additional service area pages
   const additionalLocationPages: MetadataRoute.Sitemap = [
     {
@@ -251,6 +260,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Combine all pages with location pages prioritized for local SEO
   return [
     ...corePages,
+    ...neighborhoodPages, // NEW: Neighborhood landing pages for SEO
     ...locationPages, // High priority for Ottawa market
     ...additionalLocationPages,
     ...reninLocationPages,

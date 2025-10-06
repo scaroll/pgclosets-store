@@ -29,7 +29,7 @@ const nextConfig = {
             ]
           : ["*"],
     },
-    // Enable modern bundling optimizations
+    // DIVISION 14 AGENT 7: Enhanced bundling optimizations
     optimizePackageImports: [
       "lucide-react",
       "@radix-ui/react-dialog",
@@ -37,7 +37,21 @@ const nextConfig = {
       "@radix-ui/react-tabs",
       "@radix-ui/react-accordion",
       "framer-motion",
+      "date-fns",
+      "recharts",
+      "react-hook-form",
     ],
+    // Enable optimized CSS
+    optimizeCss: true,
+    // Enable Turbopack for faster builds
+    turbo: {
+      rules: {
+        "*.svg": {
+          loaders: ["@svgr/webpack"],
+          as: "*.js",
+        },
+      },
+    },
   },
 
   // Image optimization - Enhanced for performance

@@ -14,11 +14,16 @@
     "agents:convert-anchors": "node scripts/agents/convert-anchors.js",
     "optimize:images": "node scripts/optimize-images.js",
     "optimize:images:test": "node scripts/optimize-images.js --test",
+    "division2:execute": "ts-node scripts/division2-renin-integration.ts",
+    "division2:test": "ts-node scripts/division2-renin-integration.ts --limit 10",
+    "division2:clean": "rm -rf data/renin public/products/renin",
     "lint": "next lint",
     "start": "next start",
     "analyze": "ANALYZE=true npm run build",
     "analyze-bundle": "node scripts/analyze-bundle.js",
-    "perf": "npm run analyze-bundle && npm run build"
+    "perf": "npm run analyze-bundle && npm run build",
+    "validate:performance": "node scripts/performance-validation.js",
+    "perf:all": "npm run analyze-bundle && npm run validate:performance"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

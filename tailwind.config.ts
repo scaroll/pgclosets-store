@@ -27,12 +27,35 @@ const config: Config = {
     'will-change-transform',
     'will-change-opacity',
     'aspect-square',
-    'aspect-video'
+    'aspect-video',
+    // Design System animations
+    'ds-animate-fade-in',
+    'ds-animate-slide-up',
+    'ds-animate-scale-in',
+    'ds-animate-shimmer',
+    'ds-delay-100',
+    'ds-delay-200',
+    'ds-delay-300',
+    'ds-delay-400',
+    'ds-delay-500'
   ],
   theme: {
     extend: {
       // Design System Colors
       colors: {
+        // Luxury Design System Colors
+        charcoal: '#1C1C1C',
+        graphite: '#2D2D2D',
+        slate: '#4A4A4A',
+        stone: '#6B6B6B',
+        pearl: '#F8F6F0',
+        cream: '#FDF6E3',
+        ivory: '#FFFFF0',
+        bronze: '#8B7355',
+        copper: '#B87333',
+        gold: '#D4AF37',
+        'rose-gold': '#B76E79',
+
         // Keep existing shadcn/ui colors for compatibility
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
