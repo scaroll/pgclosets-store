@@ -17,6 +17,7 @@ import Script from "next/script";
 import { Toaster } from "sonner";
 import { ValuePropBanner } from "../components/conversion/ValuePropBanner";
 import { MobileStickyCTA } from "../components/conversion/MobileStickyCTA";
+import { VercelToolbarWrapper } from "../components/VercelToolbar";
 // import { Analytics } from "@vercel/analytics/react"
 // import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -258,6 +259,9 @@ export default function RootLayout({
           {/* <Analytics /> */}
           {/* <SpeedInsights /> */}
         </Suspense>
+
+        {/* Vercel Toolbar for visual inspection */}
+        <VercelToolbarWrapper />
       </body>
     </html>
   );
