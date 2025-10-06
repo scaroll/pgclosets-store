@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./globals-unified.css";
 import "../styles/mobile-performance.css";
 import "../styles/mobile-touch.css";
 import "../styles/mobile-enhancements.css";

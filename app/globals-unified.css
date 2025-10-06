@@ -1,0 +1,426 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * PG CLOSETS UNIFIED DESIGN SYSTEM
+ * Single source of truth for all visual styles
+ * "Elevated Taste Without Pretense"
+ */
+
+/* ============================================================================
+   DESIGN TOKENS - CSS VARIABLES
+   ============================================================================ */
+
+@layer base {
+  :root {
+    /* COLORS - Black/White Luxury Aesthetic */
+    --pg-primary: #000000;
+    --pg-secondary: #ffffff;
+    --pg-charcoal: #1a1a1a;
+    --pg-graphite: #4a5568;
+    --pg-pearl: #f7fafc;
+
+    /* TEXT COLORS - WCAG AA Compliant */
+    --pg-text-primary: #000000;
+    --pg-text-secondary: #1e293b;
+    --pg-text-muted: #64748b;
+    --pg-text-inverse: #ffffff;
+
+    /* BORDERS */
+    --pg-border-default: #e2e8f0;
+    --pg-border-light: #f1f5f9;
+    --pg-border-dark: #000000;
+    --pg-border-subtle: rgba(0, 0, 0, 0.1);
+    --pg-border-focus: #2563eb;
+
+    /* SEMANTIC COLORS */
+    --pg-success: #10b981;
+    --pg-warning: #f59e0b;
+    --pg-error: #dc2626;
+    --pg-info: #0f172a;
+
+    /* SURFACES */
+    --pg-surface-primary: #ffffff;
+    --pg-surface-secondary: #fafafa;
+    --pg-surface-black: #000000;
+
+    /* SHADOWS - Subtle and Elegant */
+    --pg-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --pg-shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --pg-shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --pg-shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --pg-shadow-lift: 0 10px 40px rgba(0, 0, 0, 0.15);
+    --pg-shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.18);
+    --pg-shadow-2xl: 0 25px 80px rgba(0, 0, 0, 0.25);
+
+    /* TRANSITIONS - Smooth and Elegant */
+    --pg-transition-fast: 150ms cubic-bezier(0.23, 1, 0.32, 1);
+    --pg-transition-base: 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    --pg-transition-slow: 500ms cubic-bezier(0.23, 1, 0.32, 1);
+    --pg-transition-slower: 700ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-white text-black;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.011em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus States - WCAG AA Compliant */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid var(--pg-border-focus);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* ============================================================================
+   UNIFIED BUTTON SYSTEM
+   ============================================================================ */
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-6 py-2.5 min-h-[48px];
+    @apply text-sm font-medium tracking-wide uppercase;
+    @apply border-2 transition-all duration-300;
+    @apply focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-black focus-visible:ring-offset-3;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply relative overflow-hidden;
+  }
+
+  .btn-primary {
+    @apply bg-black text-white border-black;
+  }
+
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-white;
+    @apply transform scale-x-0 origin-left;
+    @apply transition-transform duration-700;
+    @apply z-0;
+  }
+
+  .btn-primary:hover {
+    @apply text-black -translate-y-1 shadow-lg;
+  }
+
+  .btn-primary:hover::before {
+    @apply scale-x-100;
+  }
+
+  .btn-primary > * {
+    @apply relative z-10;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-black border-black;
+  }
+
+  .btn-secondary::before {
+    content: '';
+    @apply absolute inset-0 bg-black;
+    @apply transform scale-x-0 origin-left;
+    @apply transition-transform duration-700;
+    @apply z-0;
+  }
+
+  .btn-secondary:hover {
+    @apply text-white -translate-y-1 shadow-lg;
+  }
+
+  .btn-secondary:hover::before {
+    @apply scale-x-100;
+  }
+
+  .btn-secondary > * {
+    @apply relative z-10;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-black border-transparent;
+    @apply hover:bg-neutral-50 hover:border-neutral-200;
+  }
+}
+
+/* ============================================================================
+   UNIFIED CARD SYSTEM
+   ============================================================================ */
+
+@layer components {
+  .card {
+    @apply bg-white border border-black/10;
+    @apply transition-all duration-700;
+    @apply relative overflow-hidden;
+  }
+
+  .card::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-0.5;
+    @apply bg-black -translate-x-full;
+    @apply transition-transform duration-700;
+  }
+
+  .card:hover {
+    @apply -translate-y-1 shadow-2xl border-black/20;
+  }
+
+  .card:hover::before {
+    @apply translate-x-0;
+  }
+
+  .card-elevated {
+    @apply shadow-medium border-none;
+  }
+
+  .card-elevated:hover {
+    @apply shadow-2xl;
+  }
+}
+
+/* ============================================================================
+   UNIFIED TYPOGRAPHY
+   ============================================================================ */
+
+@layer components {
+  .heading-1 {
+    @apply text-5xl lg:text-6xl font-light leading-tight tracking-tight text-black;
+  }
+
+  .heading-2 {
+    @apply text-4xl lg:text-5xl font-light leading-snug tracking-tight text-black;
+  }
+
+  .heading-3 {
+    @apply text-3xl lg:text-4xl font-normal leading-snug tracking-normal text-black;
+  }
+
+  .heading-4 {
+    @apply text-2xl lg:text-3xl font-normal leading-normal tracking-normal text-black;
+  }
+
+  .heading-5 {
+    @apply text-xl lg:text-2xl font-medium leading-normal tracking-wide text-neutral-800;
+  }
+
+  .heading-6 {
+    @apply text-lg lg:text-xl font-semibold leading-normal tracking-wide text-neutral-800 uppercase;
+  }
+
+  .body-lg {
+    @apply text-lg font-normal leading-relaxed text-neutral-700;
+  }
+
+  .body {
+    @apply text-base font-normal leading-normal text-neutral-700;
+  }
+
+  .body-sm {
+    @apply text-sm font-normal leading-normal text-neutral-600;
+  }
+
+  .caption {
+    @apply text-xs font-medium tracking-wider uppercase text-neutral-600;
+  }
+
+  .label {
+    @apply text-sm font-semibold tracking-wide text-black;
+  }
+}
+
+/* ============================================================================
+   UNIFIED INPUT SYSTEM
+   ============================================================================ */
+
+@layer components {
+  .input {
+    @apply w-full h-10 px-4 py-2;
+    @apply text-base text-black bg-white;
+    @apply border-2 border-black/20;
+    @apply transition-all duration-300;
+    @apply focus:outline-none focus:ring-3 focus:ring-black focus:border-black;
+    @apply disabled:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .input-error {
+    @apply border-red-500 focus:ring-red-500 focus:border-red-500;
+  }
+
+  .textarea {
+    @apply input min-h-[120px] resize-vertical;
+  }
+}
+
+/* ============================================================================
+   UNIFIED ANIMATION SYSTEM
+   ============================================================================ */
+
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 700ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 500ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 300ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+@layer utilities {
+  /* Text Colors */
+  .text-primary {
+    color: var(--pg-text-primary);
+  }
+  .text-secondary {
+    color: var(--pg-text-secondary);
+  }
+  .text-muted {
+    color: var(--pg-text-muted);
+  }
+
+  /* Background Colors */
+  .bg-primary {
+    background-color: var(--pg-primary);
+  }
+  .bg-secondary {
+    background-color: var(--pg-secondary);
+  }
+  .bg-charcoal {
+    background-color: var(--pg-charcoal);
+  }
+
+  /* Border Colors */
+  .border-primary {
+    border-color: var(--pg-border-dark);
+  }
+  .border-subtle {
+    border-color: var(--pg-border-subtle);
+  }
+
+  /* Shadows */
+  .shadow-subtle {
+    box-shadow: var(--pg-shadow-subtle);
+  }
+  .shadow-soft {
+    box-shadow: var(--pg-shadow-soft);
+  }
+  .shadow-medium {
+    box-shadow: var(--pg-shadow-medium);
+  }
+  .shadow-strong {
+    box-shadow: var(--pg-shadow-strong);
+  }
+  .shadow-lift {
+    box-shadow: var(--pg-shadow-lift);
+  }
+}
