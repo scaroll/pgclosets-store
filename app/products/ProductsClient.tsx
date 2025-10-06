@@ -159,7 +159,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
   });
 
   return (
-    <div ref={targetRef} className="group bg-white overflow-hidden transition-all duration-500 hover:shadow-xl border border-gray-100">
+    <div ref={targetRef} className="group bg-white overflow-hidden transition-all duration-700 hover:shadow-2xl border border-black/10 hover:border-black/20">
       <Link href={`/products/${product.handle}`} className="block">
         <div className="relative aspect-square bg-gray-50 overflow-hidden">
           {isIntersecting && !imageError ? (
@@ -217,7 +217,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
 
 ProductCard.displayName = 'ProductCard';
 
-// Filter Sidebar Component
+// Luxury Filter Sidebar Component
 const FilterSidebar = memo(({
   filterOptions,
   activeFilters,
@@ -242,21 +242,21 @@ const FilterSidebar = memo(({
   );
 
   return (
-    <div className={`bg-white border-r border-gray-200 transition-all duration-300 ${isOpen ? 'w-80' : 'w-0 overflow-hidden lg:w-80'}`}>
+    <div className={`bg-white border-r border-black/10 transition-all duration-300 ${isOpen ? 'w-80' : 'w-0 overflow-hidden lg:w-80'}`}>
       <div className="p-6 space-y-6">
         {/* Filter Header */}
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-medium text-slate-900">Filters</h3>
+          <h3 className="text-lg font-light tracking-wide text-black">Filters</h3>
           <button
             onClick={onToggle}
-            className="lg:hidden p-2 text-slate-600 hover:text-slate-900"
+            className="lg:hidden p-2 text-black hover:text-gray-600 transition-colors"
           >
             ✕
           </button>
         </div>
 
         {/* Results Count */}
-        <div className="text-sm text-slate-600">
+        <div className="text-sm font-light text-gray-600">
           Showing {filteredProductCount} of {totalProductCount} products
         </div>
 
@@ -264,7 +264,7 @@ const FilterSidebar = memo(({
         {hasActiveFilters && (
           <button
             onClick={onClearFilters}
-            className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+            className="text-sm text-black hover:text-gray-600 font-light underline underline-offset-4 transition-colors"
           >
             Clear all filters
           </button>
@@ -272,23 +272,23 @@ const FilterSidebar = memo(({
 
         {/* Search */}
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">Search</label>
+          <label className="block text-sm font-light text-black mb-2 tracking-wide">Search</label>
           <input
             type="text"
             value={activeFilters.search || ''}
             onChange={(e) => onFilterChange({ ...activeFilters, search: e.target.value || undefined })}
             placeholder="Search products..."
-            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all"
           />
         </div>
 
         {/* Categories */}
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">Categories</label>
+          <label className="block text-sm font-light text-black mb-2 tracking-wide">Categories</label>
           <select
             value={activeFilters.category || ''}
             onChange={(e) => onFilterChange({ ...activeFilters, category: e.target.value || undefined })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
           >
             <option value="">All Categories</option>
             {filterOptions.categories.map(category => (
@@ -300,11 +300,11 @@ const FilterSidebar = memo(({
         {/* Door Styles */}
         {filterOptions.doorStyles.length > 0 && (
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">Door Styles</label>
+            <label className="block text-sm font-light text-black mb-2 tracking-wide">Door Styles</label>
             <select
               value={activeFilters.doorStyle || ''}
               onChange={(e) => onFilterChange({ ...activeFilters, doorStyle: e.target.value || undefined })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
             >
               <option value="">All Styles</option>
               {filterOptions.doorStyles.map(style => (
@@ -316,7 +316,7 @@ const FilterSidebar = memo(({
 
         {/* Price Ranges */}
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">Price Range</label>
+          <label className="block text-sm font-light text-black mb-2 tracking-wide">Price Range</label>
           <select
             value={activeFilters.priceRange ? `${activeFilters.priceRange.min}-${activeFilters.priceRange.max}` : ''}
             onChange={(e) => {
@@ -331,7 +331,7 @@ const FilterSidebar = memo(({
                 }
               }
             }}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
           >
             <option value="">All Prices</option>
             {filterOptions.priceRanges.map(range => (
@@ -345,11 +345,11 @@ const FilterSidebar = memo(({
         {/* Door Types */}
         {filterOptions.doorTypes.length > 0 && (
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">Door Types</label>
+            <label className="block text-sm font-light text-black mb-2 tracking-wide">Door Types</label>
             <select
               value={activeFilters.doorType || ''}
               onChange={(e) => onFilterChange({ ...activeFilters, doorType: e.target.value || undefined })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
             >
               <option value="">All Types</option>
               {filterOptions.doorTypes.map(type => (
@@ -362,11 +362,11 @@ const FilterSidebar = memo(({
         {/* Materials */}
         {filterOptions.materials.length > 0 && (
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">Materials</label>
+            <label className="block text-sm font-light text-black mb-2 tracking-wide">Materials</label>
             <select
               value={activeFilters.material || ''}
               onChange={(e) => onFilterChange({ ...activeFilters, material: e.target.value || undefined })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
             >
               <option value="">All Materials</option>
               {filterOptions.materials.map(material => (
@@ -379,11 +379,11 @@ const FilterSidebar = memo(({
         {/* Finishes */}
         {filterOptions.finishes.length > 0 && (
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">Colors/Finishes</label>
+            <label className="block text-sm font-light text-black mb-2 tracking-wide">Colors/Finishes</label>
             <select
               value={activeFilters.finish || ''}
               onChange={(e) => onFilterChange({ ...activeFilters, finish: e.target.value || undefined })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
             >
               <option value="">All Finishes</option>
               {filterOptions.finishes.map(finish => (
@@ -399,7 +399,7 @@ const FilterSidebar = memo(({
 
 FilterSidebar.displayName = 'FilterSidebar';
 
-// Pagination component
+// Luxury Pagination component
 const Pagination = memo(({
   currentPage,
   totalPages,
@@ -428,11 +428,11 @@ const Pagination = memo(({
   };
 
   return (
-    <div className="flex justify-center items-center space-x-2 mt-8 mb-4">
+    <div className="flex justify-center items-center space-x-2 mt-12 mb-4">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-4 py-2.5 text-sm font-light tracking-wide text-black bg-white border border-black/20 hover:bg-black hover:text-white transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
       >
         Previous
       </button>
@@ -441,10 +441,10 @@ const Pagination = memo(({
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={`px-3 py-2 text-sm font-medium rounded-md ${
+          className={`px-4 py-2.5 text-sm font-light tracking-wide transition-all duration-300 ${
             currentPage === page
-              ? 'bg-blue-600 text-white'
-              : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50'
+              ? 'bg-black text-white border border-black'
+              : 'text-black bg-white border border-black/20 hover:bg-black hover:text-white'
           }`}
         >
           {page}
@@ -454,7 +454,7 @@ const Pagination = memo(({
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-4 py-2.5 text-sm font-light tracking-wide text-black bg-white border border-black/20 hover:bg-black hover:text-white transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
       >
         Next
       </button>
@@ -539,22 +539,22 @@ const ProductsClient = ({ initialProducts }: { initialProducts: Product[] }) => 
       {/* Main Content */}
       <div className="flex-1 bg-white">
         {/* Mobile filter button */}
-        <div className="lg:hidden bg-white border-b border-gray-200 p-4">
+        <div className="lg:hidden bg-white border-b border-black/10 p-4">
           <button
             onClick={() => setIsFilterOpen(true)}
-            className="flex items-center gap-2 text-slate-700 hover:text-slate-900"
+            className="flex items-center gap-2 text-black hover:text-gray-600 transition-colors font-light tracking-wide"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.707A1 1 0 013 7V4z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.707A1 1 0 013 7V4z" />
             </svg>
-            Filters ({Object.values(activeFilters).filter(v => v !== undefined && v !== '').length})
+            Filters {Object.values(activeFilters).filter(v => v !== undefined && v !== '').length > 0 && `(${Object.values(activeFilters).filter(v => v !== undefined && v !== '').length})`}
           </button>
         </div>
 
         <div className="p-6">
           {/* Results info */}
-          <div className="mb-6">
-            <p className="text-sm text-gray-600">
+          <div className="mb-8">
+            <p className="text-sm font-light text-gray-600 tracking-wide">
               Showing {startIndex + 1}-{Math.min(endIndex, filteredProducts.length)} of {filteredProducts.length} products
               {totalPages > 1 && ` (Page ${currentPage} of ${totalPages})`}
             </p>
@@ -566,9 +566,9 @@ const ProductsClient = ({ initialProducts }: { initialProducts: Product[] }) => 
                 <ProductCard key={product.id} product={product} />
               ))
             ) : (
-              <div className="col-span-full text-center py-12">
-                <div className="text-slate-500 text-lg mb-2">No products found</div>
-                <div className="text-slate-400 text-sm">Try adjusting your filters to see more results</div>
+              <div className="col-span-full text-center py-16">
+                <div className="text-black text-xl font-light mb-3 tracking-wide">No products found</div>
+                <div className="text-gray-500 text-sm font-light tracking-wide">Try adjusting your filters to see more results</div>
               </div>
             )}
           </div>
