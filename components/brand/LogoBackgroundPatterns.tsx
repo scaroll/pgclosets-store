@@ -42,10 +42,10 @@ export function LogoBackgroundPatterns({
     if (customColor) return customColor;
 
     const colorMap = {
-      gray: '#6b7280',
+      gray: 'var(--color-text-muted)',
       slate: '#475569',
       brand: 'var(--color-text-muted)',
-      custom: customColor || '#6b7280'
+      custom: customColor || 'var(--color-text-muted)'
     };
 
     return colorMap[color];

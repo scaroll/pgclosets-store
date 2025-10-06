@@ -67,7 +67,7 @@
 }
 
 .form-input::placeholder {
-  color: #6b7280; /* Ensure placeholder text meets contrast requirements */
+  color: var(--color-text-muted); /* Ensure placeholder text meets contrast requirements */
 }
 
 /* Error states with sufficient contrast */

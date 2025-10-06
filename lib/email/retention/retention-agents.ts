@@ -98,7 +98,7 @@ export class LoyaltyProgramAgent {
 
           <p>We're thrilled to announce that you've been upgraded to <strong>${newTier}</strong> status in our loyalty program!</p>
 
-          <div style="background: #1B4A9C; color: white; padding: 30px; border-radius: 12px; margin: 30px 0;">
+          <div style="background: var(--color-primary); color: white; padding: 30px; border-radius: 12px; margin: 30px 0;">
             <h2 style="margin-top: 0;">Your New Benefits:</h2>
             ${this.getTierBenefits(newTier).map(b => `<div style="margin: 10px 0;">✓ ${b}</div>`).join('')}
           </div>
@@ -129,7 +129,7 @@ export class LoyaltyProgramAgent {
 
     const html = `
       <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
-        <div style="background: #1B4A9C; color: white; padding: 30px; text-align: center;">
+        <div style="background: var(--color-primary); color: white; padding: 30px; text-align: center;">
           <h1>Your Loyalty Points</h1>
         </div>
 
@@ -147,7 +147,7 @@ export class LoyaltyProgramAgent {
           ${loyaltyStatus.nextTier ? `
             <div style="background: #F0F9FF; padding: 20px; border-radius: 8px; margin: 20px 0;">
               <p style="margin: 0;"><strong>Only ${loyaltyStatus.pointsToNextTier} points away from ${loyaltyStatus.nextTier} status!</strong></p>
-              <p style="margin: 10px 0 0 0; color: #6B7280;">Earn points on every purchase.</p>
+              <p style="margin: 10px 0 0 0; color: var(--color-text-muted);">Earn points on every purchase.</p>
             </div>
           ` : ''}
 
@@ -207,11 +207,11 @@ export class ReengagementAgent {
 
           <p>It's been a while since we've seen you! We wanted to reach out with a special offer just for you.</p>
 
-          <div style="background: #1B4A9C; color: white; text-align: center; padding: 40px; border-radius: 12px; margin: 30px 0;">
+          <div style="background: var(--color-primary); color: white; text-align: center; padding: 40px; border-radius: 12px; margin: 30px 0;">
             <h2 style="margin: 0; font-size: 32px;">${incentive.value}</h2>
             <p style="margin: 10px 0 20px 0; font-size: 18px;">Welcome Back Offer</p>
             ${incentive.code ? `
-              <div style="background: white; color: #1B4A9C; padding: 15px; border-radius: 8px; font-size: 24px; font-weight: 700; letter-spacing: 2px;">
+              <div style="background: white; color: var(--color-primary); padding: 15px; border-radius: 8px; font-size: 24px; font-weight: 700; letter-spacing: 2px;">
                 ${incentive.code}
               </div>
             ` : ''}
@@ -229,7 +229,7 @@ export class ReengagementAgent {
             <a href="https://www.pgclosets.com" style="display: inline-block; background: #10B981; color: white; padding: 18px 50px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px; margin: 20px 0;">Claim My Offer</a>
           </center>
 
-          <p style="color: #6B7280; font-size: 14px; margin-top: 30px;">Offer expires in 7 days</p>
+          <p style="color: var(--color-text-muted); font-size: 14px; margin-top: 30px;">Offer expires in 7 days</p>
         </div>
       </div>
     `;
@@ -252,7 +252,7 @@ export class ReengagementAgent {
   async sendFeedbackRequest(profile: CustomerProfile) {
     const html = `
       <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
-        <div style="background: #1B4A9C; color: white; padding: 30px; text-align: center;">
+        <div style="background: var(--color-primary); color: white; padding: 30px; text-align: center;">
           <h1>We Want to Hear From You</h1>
         </div>
 
@@ -265,7 +265,7 @@ export class ReengagementAgent {
             <a href="https://www.pgclosets.com/feedback?email=${encodeURIComponent(profile.email)}" style="display: inline-block; background: #10B981; color: white; padding: 15px 40px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0;">Share Your Feedback</a>
           </center>
 
-          <p style="font-size: 14px; color: #6B7280;">Takes less than 2 minutes • Get 10% off your next purchase as a thank you</p>
+          <p style="font-size: 14px; color: var(--color-text-muted);">Takes less than 2 minutes • Get 10% off your next purchase as a thank you</p>
         </div>
       </div>
     `;

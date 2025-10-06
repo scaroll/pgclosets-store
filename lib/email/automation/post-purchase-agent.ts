@@ -70,7 +70,7 @@ export class PostPurchaseAgent {
             <p><strong>Estimated Delivery:</strong> ${config.estimatedDelivery?.toLocaleDateString()}</p>
           </div>
           <center>
-            <a href="${config.trackingUrl}" style="display: inline-block; background: #1B4A9C; color: white; padding: 15px 40px; text-decoration: none; border-radius: 8px; font-weight: bold;">Track Your Order</a>
+            <a href="${config.trackingUrl}" style="display: inline-block; background: var(--color-primary); color: white; padding: 15px 40px; text-decoration: none; border-radius: 8px; font-weight: bold;">Track Your Order</a>
           </center>
         </div>
       </div>
@@ -91,7 +91,7 @@ export class PostPurchaseAgent {
   async sendReviewRequest(config: PostPurchaseConfig) {
     const html = `
       <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
-        <div style="background: #1B4A9C; color: white; padding: 30px; text-align: center;">
+        <div style="background: var(--color-primary); color: white; padding: 30px; text-align: center;">
           <h1>⭐ How Did We Do?</h1>
         </div>
         <div style="padding: 40px 30px;">
@@ -129,7 +129,7 @@ export class PostPurchaseAgent {
         <div style="padding: 40px 30px;">
           <p>Hi ${config.firstName || 'there'},</p>
           <p>Love your new closet? Share the love and earn rewards!</p>
-          <div style="background: #1B4A9C; color: white; text-align: center; padding: 30px; border-radius: 12px; margin: 30px 0;">
+          <div style="background: var(--color-primary); color: white; text-align: center; padding: 30px; border-radius: 12px; margin: 30px 0;">
             <div style="font-size: 48px; font-weight: 700;">$100</div>
             <div style="font-size: 18px;">For every friend who installs a closet</div>
             <div style="font-size: 14px; margin-top: 10px; opacity: 0.9;">They get $100 off too!</div>
@@ -173,7 +173,7 @@ export class PostPurchaseAgent {
           <h3>Order Summary:</h3>
           <div style="background: #F9FAFB; padding: 20px; border-radius: 8px;">
             ${itemsHtml}
-            <div style="font-size: 20px; font-weight: 700; color: #1B4A9C; text-align: right; margin-top: 15px; padding-top: 15px; border-top: 2px solid #1B4A9C;">
+            <div style="font-size: 20px; font-weight: 700; color: var(--color-primary); text-align: right; margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--color-primary);">
               Total: $${config.orderTotal.toFixed(2)}
             </div>
           </div>

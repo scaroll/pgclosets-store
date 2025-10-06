@@ -21,8 +21,8 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Header */}
-      <header className="bg-[#1B4A9C] text-white sticky top-0 z-50 shadow-lg">
-        <div className="bg-[#1B4A9C] py-2 text-center text-sm">
+      <header className="bg-[var(--color-primary)] text-white sticky top-0 z-50 shadow-lg">
+        <div className="bg-[var(--color-primary)] py-2 text-center text-sm">
           <div className="flex items-center justify-center gap-4">
             <span>⭐ 5.0</span>
             <span>• 500+ Installations</span>
@@ -44,24 +44,24 @@ export default function ServicesPage() {
               </div>
               <div>
                 <div className="font-bold text-xl">PG CLOSETS</div>
-                <div className="text-xs text-[#9BC4E2]">Premium Solutions</div>
+                <div className="text-xs text-[var(--color-secondary)]">Premium Solutions</div>
               </div>
             </Link>
 
             <nav className="hidden md:flex items-center gap-8">
-              <Link href="/" className="hover:text-[#9BC4E2] transition-colors">
+              <Link href="/" className="hover:text-[var(--color-secondary)] transition-colors">
                 Home
               </Link>
-              <Link href="/products" className="hover:text-[#9BC4E2] transition-colors">
+              <Link href="/products" className="hover:text-[var(--color-secondary)] transition-colors">
                 Products
               </Link>
-              <Link href="/about" className="hover:text-[#9BC4E2] transition-colors">
+              <Link href="/about" className="hover:text-[var(--color-secondary)] transition-colors">
                 About
               </Link>
-              <Link href="/services" className="text-[#9BC4E2] font-semibold">
+              <Link href="/services" className="text-[var(--color-secondary)] font-semibold">
                 Services
               </Link>
-              <Link href="/contact" className="hover:text-[#9BC4E2] transition-colors">
+              <Link href="/contact" className="hover:text-[var(--color-secondary)] transition-colors">
                 Contact
               </Link>
             </nav>
@@ -69,13 +69,13 @@ export default function ServicesPage() {
             <div className="flex items-center gap-4">
               <a
                 href="mailto:spencer@peoplesgrp.com"
-                className="hidden md:block text-lg font-semibold hover:text-[#9BC4E2] transition-colors"
+                className="hidden md:block text-lg font-semibold hover:text-[var(--color-secondary)] transition-colors"
               >
                 Email Us
               </a>
               <Link
                 href="/contact"
-                className="bg-[#9BC4E2] text-[#1B4A9C] px-6 py-2 font-semibold hover:bg-white transition-colors"
+                className="bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 font-semibold hover:bg-white transition-colors"
               >
                 Get Quote
               </Link>
@@ -188,7 +188,7 @@ export default function ServicesPage() {
                 </ul>
                 <Link
                   href="/contact"
-                  className="w-full bg-[#1B4A9C] text-white px-4 py-2 font-semibold hover:bg-[#2563eb] transition-colors text-center block"
+                  className="w-full bg-[var(--color-primary)] text-white px-4 py-2 font-semibold hover:bg-[#2563eb] transition-colors text-center block"
                 >
                   Schedule Installation
                 </Link>
@@ -245,7 +245,7 @@ export default function ServicesPage() {
                 </ul>
                 <Link
                   href="/contact"
-                  className="w-full border-2 border-[#1B4A9C] text-[#1B4A9C] px-4 py-2 font-semibold hover:bg-[#1B4A9C] hover:text-white transition-colors text-center block"
+                  className="w-full border-2 border-[var(--color-primary)] text-[var(--color-primary)] px-4 py-2 font-semibold hover:bg-[var(--color-primary)] hover:text-white transition-colors text-center block"
                 >
                   Book Consultation
                 </Link>
@@ -302,7 +302,7 @@ export default function ServicesPage() {
                 </ul>
                 <Link
                   href="/contact"
-                  className="w-full bg-[#1B4A9C] text-white px-4 py-2 font-semibold hover:bg-[#2563eb] transition-colors text-center block"
+                  className="w-full bg-[var(--color-primary)] text-white px-4 py-2 font-semibold hover:bg-[#2563eb] transition-colors text-center block"
                 >
                   Discuss Custom Project
                 </Link>
@@ -384,13 +384,13 @@ export default function ServicesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="bg-[#1B4A9C] text-white px-8 py-4 text-lg font-semibold hover:bg-[#2563eb] shadow-xl transition-colors inline-block"
+                className="bg-[var(--color-primary)] text-white px-8 py-4 text-lg font-semibold hover:bg-[#2563eb] shadow-xl transition-colors inline-block"
               >
                 Schedule Free Consultation →
               </Link>
               <Link
                 href="/products"
-                className="border-2 border-[#1B4A9C] text-[#1B4A9C] px-8 py-4 text-lg font-semibold hover:bg-[#1B4A9C] hover:text-white transition-colors inline-block"
+                className="border-2 border-[var(--color-primary)] text-[var(--color-primary)] px-8 py-4 text-lg font-semibold hover:bg-[var(--color-primary)] hover:text-white transition-colors inline-block"
               >
                 Browse Products
               </Link>
@@ -412,7 +412,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#1B4A9C] text-white py-16">
+      <footer className="bg-[var(--color-primary)] text-white py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
@@ -428,7 +428,7 @@ export default function ServicesPage() {
                 </div>
                 <div>
                   <div className="font-bold text-xl">PG CLOSETS</div>
-                  <div className="text-xs text-[#9BC4E2]">Premium Solutions</div>
+                  <div className="text-xs text-[var(--color-secondary)]">Premium Solutions</div>
                 </div>
               </div>
               <p className="text-gray-300 mb-4">

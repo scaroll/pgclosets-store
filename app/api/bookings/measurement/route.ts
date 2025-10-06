@@ -49,7 +49,7 @@ const sendEmailNotification = async (bookingData: MeasurementBookingData, confir
 
       <p>Thank you for booking a free measurement consultation with PG Closets. Here are your appointment details:</p>
 
-      <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+      <div style="background: var(--color-bg-secondary); padding: 20px; border-radius: 8px; margin: 20px 0;">
         <h3>Appointment Details</h3>
         <p><strong>Confirmation Number:</strong> ${confirmationNumber}</p>
         <p><strong>Date:</strong> ${new Date(bookingData.booking.preferredDate).toLocaleDateString()}</p>
@@ -88,7 +88,7 @@ const sendEmailNotification = async (bookingData: MeasurementBookingData, confir
     html: `
       <h2>New Measurement Booking Received</h2>
 
-      <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+      <div style="background: var(--color-bg-secondary); padding: 20px; border-radius: 8px; margin: 20px 0;">
         <h3>Customer Information</h3>
         <p><strong>Name:</strong> ${bookingData.customer.firstName} ${bookingData.customer.lastName}</p>
         <p><strong>Email:</strong> ${bookingData.customer.email}</p>

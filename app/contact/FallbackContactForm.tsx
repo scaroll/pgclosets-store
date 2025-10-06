@@ -36,7 +36,7 @@ export function FallbackContactForm() {
 
   return (
     <div className="py-8">
-      <h3 className="text-xl font-semibold text-[#1B4A9C] mb-6">
+      <h3 className="text-xl font-semibold text-[var(--color-primary)] mb-6">
         Contact Form
       </h3>
       {state.message && (
@@ -62,7 +62,7 @@ export function FallbackContactForm() {
             <input
               id="firstName"
               {...register("firstName")}
-              className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[#1B4A9C]"
+              className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[var(--color-primary)]"
             />
             {errors.firstName && (
               <p className="text-red-500 text-xs mt-1">
@@ -80,7 +80,7 @@ export function FallbackContactForm() {
             <input
               id="lastName"
               {...register("lastName")}
-              className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[#1B4A9C]"
+              className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[var(--color-primary)]"
             />
             {errors.lastName && (
               <p className="text-red-500 text-xs mt-1">
@@ -101,7 +101,7 @@ export function FallbackContactForm() {
               id="email"
               type="email"
               {...register("email")}
-              className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[#1B4A9C]"
+              className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[var(--color-primary)]"
             />
             {errors.email && (
               <p className="text-red-500 text-xs mt-1">
@@ -120,7 +120,7 @@ export function FallbackContactForm() {
               id="phone"
               type="tel"
               {...register("phone")}
-              className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[#1B4A9C]"
+              className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[var(--color-primary)]"
             />
             {errors.phone && (
               <p className="text-red-500 text-xs mt-1">
@@ -140,7 +140,7 @@ export function FallbackContactForm() {
             id="message"
             rows={4}
             {...register("message")}
-            className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[#1B4A9C]"
+            className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:border-[var(--color-primary)]"
             placeholder="Tell us about your closet door project..."
           />
           {errors.message && (
@@ -153,13 +153,13 @@ export function FallbackContactForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-[#1B4A9C] text-white px-8 py-3 font-semibold hover:bg-[#153A7E] transition-all disabled:bg-gray-400"
+            className="bg-[var(--color-primary)] text-white px-8 py-3 font-semibold hover:bg-[var(--color-primary)] transition-all disabled:bg-gray-400"
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </button>
           <a
             href="mailto:info@pgclosets.com?subject=Closet Door Project"
-            className="border-2 border-[#1B4A9C] text-[#1B4A9C] px-8 py-3 font-semibold hover:bg-[#1B4A9C] hover:text-white transition-all text-center"
+            className="border-2 border-[var(--color-primary)] text-[var(--color-primary)] px-8 py-3 font-semibold hover:bg-[var(--color-primary)] hover:text-white transition-all text-center"
           >
             Email Directly
           </a>

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Design System Tokens */
+@import '../styles/tokens.css';
+@import '../styles/typography.css';
+
 /* Performance optimizations for products page */
 @import '../styles/products-optimization.css';
 
@@ -1028,7 +1032,7 @@ a:not(.btn-primary):not(.btn-secondary):focus-visible {
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, #f0f0f0 0px, #e0e0e0 40px, #f0f0f0 80px);
+  background: linear-gradient(90deg, #f0f0f0 0px, var(--color-border-default) 40px, #f0f0f0 80px);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite;
 }

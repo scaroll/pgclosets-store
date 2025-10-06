@@ -54,10 +54,10 @@ export async function sendContactEmail(data: ContactEmailData) {
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: #1B4A9C; color: white; padding: 20px; text-align: center; }
+            .header { background: var(--color-primary); color: white; padding: 20px; text-align: center; }
             .content { background: #f9f9f9; padding: 20px; margin: 20px 0; }
             .field { margin-bottom: 15px; }
-            .label { font-weight: bold; color: #1B4A9C; }
+            .label { font-weight: bold; color: var(--color-primary); }
             .value { margin-top: 5px; }
             .footer { text-align: center; color: #666; font-size: 12px; padding: 20px; }
           </style>
@@ -143,9 +143,9 @@ export async function sendContactConfirmation(data: ContactEmailData) {
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: #1B4A9C; color: white; padding: 20px; text-align: center; }
+            .header { background: var(--color-primary); color: white; padding: 20px; text-align: center; }
             .content { padding: 20px; }
-            .cta { background: #9BC4E2; color: #1B4A9C; padding: 15px 30px; text-decoration: none; display: inline-block; margin: 20px 0; border-radius: 5px; font-weight: bold; }
+            .cta { background: var(--color-secondary); color: var(--color-primary); padding: 15px 30px; text-decoration: none; display: inline-block; margin: 20px 0; border-radius: 5px; font-weight: bold; }
           </style>
         </head>
         <body>

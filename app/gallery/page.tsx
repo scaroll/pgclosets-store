@@ -19,7 +19,7 @@ export default function GalleryPage() {
       <div className="pt-24 pb-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <Heading level={1} className="mb-4 text-[#1B4A9C]">
+            <Heading level={1} className="mb-4 text-[var(--color-primary)]">
               Project Gallery
             </Heading>
             <Text size="lg" variant="secondary" className="max-w-3xl mx-auto">
@@ -31,19 +31,19 @@ export default function GalleryPage() {
           <Section variant="light" spacing="md" className="bg-gray-50 mb-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div>
-                <div className="text-3xl font-bold text-[#1B4A9C] mb-2">500+</div>
+                <div className="text-3xl font-bold text-[var(--color-primary)] mb-2">500+</div>
                 <Text size="sm" variant="secondary">Completed Projects</Text>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#1B4A9C] mb-2">15+</div>
+                <div className="text-3xl font-bold text-[var(--color-primary)] mb-2">15+</div>
                 <Text size="sm" variant="secondary">Years Experience</Text>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#1B4A9C] mb-2">5.0★</div>
+                <div className="text-3xl font-bold text-[var(--color-primary)] mb-2">5.0★</div>
                 <Text size="sm" variant="secondary">Google Rating</Text>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#1B4A9C] mb-2">98%</div>
+                <div className="text-3xl font-bold text-[var(--color-primary)] mb-2">98%</div>
                 <Text size="sm" variant="secondary">Satisfaction Rate</Text>
               </div>
             </div>
@@ -51,22 +51,22 @@ export default function GalleryPage() {
 
           <MediaGallery />
 
-          <Section variant="dark" spacing="lg" className="bg-[#1B4A9C] text-white mt-12">
+          <Section variant="dark" spacing="lg" className="bg-[var(--color-primary)] text-white mt-12">
             <div className="text-center">
               <Heading level={2} className="text-white mb-4">
                 Ready to Transform Your Space?
               </Heading>
-              <Text size="lg" className="mb-6 text-[#9BC4E2]">
+              <Text size="lg" className="mb-6 text-[var(--color-secondary)]">
                 Join 500+ satisfied Ottawa homeowners who chose PG Closets for their premium door solutions.
               </Text>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact">
-                  <Button variant="primary" size="lg" className="bg-[#9BC4E2] text-[#1B4A9C] hover:bg-white">
+                  <Button variant="primary" size="lg" className="bg-[var(--color-secondary)] text-[var(--color-primary)] hover:bg-white">
                     Get Free Quote
                   </Button>
                 </Link>
                 <Link href="tel:6134225800">
-                  <Button variant="secondary" size="lg" className="text-[#9BC4E2]">
+                  <Button variant="secondary" size="lg" className="text-[var(--color-secondary)]">
                     Call (613) 422-5800
                   </Button>
                 </Link>
@@ -76,17 +76,17 @@ export default function GalleryPage() {
         </div>
       </div>
 
-      <footer className="bg-[#1B4A9C] text-white py-16">
+      <footer className="bg-[var(--color-primary)] text-white py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <Link href="/" className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-[#9BC4E2] flex items-center justify-center text-[#1B4A9C] font-bold text-lg">
+                <div className="w-12 h-12 bg-[var(--color-secondary)] flex items-center justify-center text-[var(--color-primary)] font-bold text-lg">
                   PG
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">PG CLOSETS</h3>
-                  <p className="text-[#9BC4E2]">Premium Solutions</p>
+                  <p className="text-[var(--color-secondary)]">Premium Solutions</p>
                 </div>
               </Link>
               <Text variant="secondary" className="text-gray-300 mb-6">
@@ -95,7 +95,7 @@ export default function GalleryPage() {
             </div>
 
             <div>
-              <Heading level={4} className="text-lg mb-4 text-[#9BC4E2]">
+              <Heading level={4} className="text-lg mb-4 text-[var(--color-secondary)]">
                 Sitemap
               </Heading>
               <div className="space-y-2">
@@ -118,7 +118,7 @@ export default function GalleryPage() {
             </div>
 
             <div>
-              <Heading level={4} className="text-lg mb-4 text-[#9BC4E2]">
+              <Heading level={4} className="text-lg mb-4 text-[var(--color-secondary)]">
                 Contact
               </Heading>
               <div className="space-y-2 text-gray-300">
@@ -127,7 +127,7 @@ export default function GalleryPage() {
                 <div>Ottawa & Surrounding Areas</div>
                 <div className="mt-4 pt-4 border-t border-gray-600">
                   <Text size="sm" variant="secondary">
-                    <div className="font-semibold text-[#9BC4E2] mb-2">Business Hours:</div>
+                    <div className="font-semibold text-[var(--color-secondary)] mb-2">Business Hours:</div>
                     <div>Mon-Fri: 8:00 AM - 6:00 PM</div>
                     <div>Sat: 9:00 AM - 4:00 PM</div>
                     <div>Sun: By Appointment</div>

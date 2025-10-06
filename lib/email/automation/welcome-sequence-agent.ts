@@ -192,18 +192,18 @@ export class WelcomeSequenceAgent {
             <style>
               body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
               .container { max-width: 600px; margin: 0 auto; background: var(--color-secondary); }
-              .header { background: linear-gradient(135deg, #1B4A9C 0%, #2563EB 100%); color: white; padding: 40px 20px; text-align: center; }
+              .header { background: linear-gradient(135deg, var(--color-primary) 0%, #2563EB 100%); color: white; padding: 40px 20px; text-align: center; }
               .header h1 { margin: 0; font-size: 28px; font-weight: 700; }
               .content { padding: 40px 30px; }
-              .content h2 { color: #1B4A9C; margin-top: 0; }
-              .cta-button { display: inline-block; background: #1B4A9C; color: white; padding: 15px 40px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; }
+              .content h2 { color: var(--color-primary); margin-top: 0; }
+              .cta-button { display: inline-block; background: var(--color-primary); color: white; padding: 15px 40px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; }
               .cta-button:hover { background: #2563EB; }
               .features { margin: 30px 0; }
               .feature { margin: 20px 0; padding-left: 30px; position: relative; }
               .feature:before { content: '✓'; position: absolute; left: 0; color: #10B981; font-weight: bold; }
-              .footer { background: #F9FAFB; padding: 30px; text-align: center; color: #6B7280; font-size: 14px; }
+              .footer { background: #F9FAFB; padding: 30px; text-align: center; color: var(--color-text-muted); font-size: 14px; }
               .social-links { margin: 20px 0; }
-              .social-links a { margin: 0 10px; color: #1B4A9C; text-decoration: none; }
+              .social-links a { margin: 0 10px; color: var(--color-primary); text-decoration: none; }
             </style>
           </head>
           <body>

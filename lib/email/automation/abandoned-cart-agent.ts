@@ -263,10 +263,10 @@ export class AbandonedCartAgent {
             : ''
         }
         <div style="flex: 1;">
-          <div style="font-weight: 600; color: #1B4A9C;">${item.name}</div>
-          <div style="color: #6B7280;">Quantity: ${item.quantity}</div>
+          <div style="font-weight: 600; color: var(--color-primary);">${item.name}</div>
+          <div style="color: var(--color-text-muted);">Quantity: ${item.quantity}</div>
         </div>
-        <div style="font-weight: 700; color: #1B4A9C;">$${item.price.toFixed(2)}</div>
+        <div style="font-weight: 700; color: var(--color-primary);">$${item.price.toFixed(2)}</div>
       </div>
     `
       )
@@ -281,10 +281,10 @@ export class AbandonedCartAgent {
             <style>
               body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
               .container { max-width: 600px; margin: 0 auto; background: var(--color-secondary); }
-              .header { background: #1B4A9C; color: white; padding: 30px 20px; text-align: center; }
+              .header { background: var(--color-primary); color: white; padding: 30px 20px; text-align: center; }
               .content { padding: 40px 30px; }
               .cart-items { background: #F9FAFB; padding: 20px; border-radius: 8px; margin: 20px 0; }
-              .total { font-size: 20px; font-weight: 700; color: #1B4A9C; text-align: right; margin-top: 15px; padding-top: 15px; border-top: 2px solid #1B4A9C; }
+              .total { font-size: 20px; font-weight: 700; color: var(--color-primary); text-align: right; margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--color-primary); }
               .cta-button { display: inline-block; background: #10B981; color: white; padding: 15px 40px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; }
               .cta-button:hover { background: #059669; }
             </style>
@@ -301,7 +301,7 @@ export class AbandonedCartAgent {
                 <p>We noticed you left some items in your cart. Don't worry - we've saved them for you!</p>
 
                 <div class="cart-items">
-                  <h3 style="margin-top: 0; color: #1B4A9C;">Your Items:</h3>
+                  <h3 style="margin-top: 0; color: var(--color-primary);">Your Items:</h3>
                   ${itemsHtml}
                   <div class="total">Total: $${config.totalValue.toFixed(2)}</div>
                 </div>
@@ -341,7 +341,7 @@ export class AbandonedCartAgent {
         <html>
           <body>
             <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
-              <div style="background: #1B4A9C; color: white; padding: 30px; text-align: center;">
+              <div style="background: var(--color-primary); color: white; padding: 30px; text-align: center;">
                 <h1>⏰ Still Thinking It Over?</h1>
               </div>
 
@@ -402,7 +402,7 @@ export class AbandonedCartAgent {
 
                 <p>We don't want you to miss out! As a thank you for considering PG Closets, we're offering you an exclusive discount:</p>
 
-                <div style="background: #1B4A9C; color: white; text-align: center; padding: 30px; border-radius: 12px; margin: 30px 0;">
+                <div style="background: var(--color-primary); color: white; text-align: center; padding: 30px; border-radius: 12px; margin: 30px 0;">
                   <div style="font-size: 16px; text-transform: uppercase; letter-spacing: 2px;">Your Exclusive Code</div>
                   <div style="font-size: 36px; font-weight: 700; margin: 15px 0; letter-spacing: 3px;">COMEBACK10</div>
                   <div style="font-size: 18px;">Save 10% on your consultation</div>

@@ -457,7 +457,7 @@ class ImageAuditAnalyzer {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PG Closets - Image Audit Report</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; padding: 20px; background: var(--color-bg-secondary); }
         .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 8px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         h1 { color: #333; border-bottom: 3px solid #007acc; padding-bottom: 10px; }
         h2 { color: #555; margin-top: 30px; }

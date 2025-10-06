@@ -53,7 +53,7 @@ export default function ContactClientPage() {
         <Text variant="body" className="mt-2 mb-8">
           Use the form below to tell us about your project. Prefer email?{" "}
           <a
-            className="underline text-[#1B4A9C] hover:text-[#9BC4E2]"
+            className="underline text-[var(--color-primary)] hover:text-[var(--color-secondary)]"
             href="mailto:info@pgclosets.com"
           >
             info@pgclosets.com
@@ -81,7 +81,7 @@ export default function ContactClientPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">PG CLOSETS</h3>
-                  <p className="text-[#9BC4E2]">Premium Solutions</p>
+                  <p className="text-[var(--color-secondary)]">Premium Solutions</p>
                 </div>
               </Link>
               <p className="text-gray-600 mb-6">
@@ -97,31 +97,31 @@ export default function ContactClientPage() {
               <div className="space-y-2">
                 <Link
                   href="/"
-                  className="block text-gray-600 hover:text-[#1B4A9C]"
+                  className="block text-gray-600 hover:text-[var(--color-primary)]"
                 >
                   Home
                 </Link>
                 <Link
                   href="/products"
-                  className="block text-gray-600 hover:text-[#1B4A9C]"
+                  className="block text-gray-600 hover:text-[var(--color-primary)]"
                 >
                   Products
                 </Link>
                 <Link
                   href="/about"
-                  className="block text-gray-600 hover:text-[#1B4A9C]"
+                  className="block text-gray-600 hover:text-[var(--color-primary)]"
                 >
                   About
                 </Link>
                 <Link
                   href="/services"
-                  className="block text-gray-600 hover:text-[#1B4A9C]"
+                  className="block text-gray-600 hover:text-[var(--color-primary)]"
                 >
                   Services
                 </Link>
                 <Link
                   href="/contact"
-                  className="block text-gray-600 hover:text-[#1B4A9C]"
+                  className="block text-gray-600 hover:text-[var(--color-primary)]"
                 >
                   Contact
                 </Link>
@@ -139,7 +139,7 @@ export default function ContactClientPage() {
                 {/* Added business hours section */}
                 <div className="mt-4 pt-4 border-t border-gray-200">
                   <div className="text-sm">
-                    <div className="font-semibold text-[#1B4A9C] mb-2">
+                    <div className="font-semibold text-[var(--color-primary)] mb-2">
                       Business Hours:
                     </div>
                     <div>Mon-Fri: 8:00 AM - 6:00 PM</div>
@@ -154,15 +154,15 @@ export default function ContactClientPage() {
 
           <div className="mt-8 pt-8 border-t border-gray-200 text-sm text-gray-600 text-center">
             <div className="flex flex-wrap justify-center gap-4 mb-4">
-              <Link href="/privacy-policy" className="hover:text-[#1B4A9C]">
+              <Link href="/privacy-policy" className="hover:text-[var(--color-primary)]">
                 Privacy Policy
               </Link>
               <span>|</span>
-              <Link href="/terms-of-service" className="hover:text-[#1B4A9C]">
+              <Link href="/terms-of-service" className="hover:text-[var(--color-primary)]">
                 Terms of Service
               </Link>
               <span>|</span>
-              <Link href="/return-policy" className="hover:text-[#1B4A9C]">
+              <Link href="/return-policy" className="hover:text-[var(--color-primary)]">
                 Return Policy
               </Link>
             </div>

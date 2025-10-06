@@ -103,7 +103,7 @@ export class DynamicContentAgent {
       return {
         type: 'value-prop',
         content: `
-          <div style="background: linear-gradient(135deg, #1B4A9C 0%, #2563EB 100%); color: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <div style="background: linear-gradient(135deg, var(--color-primary) 0%, #2563EB 100%); color: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <p style="margin: 0;"><strong>💎 Valued Customer Benefits</strong></p>
             <p style="margin: 10px 0 0 0;">As a VIP customer, you get: Priority scheduling, exclusive discounts, and lifetime support.</p>
           </div>
@@ -249,10 +249,10 @@ export class ProductRecommendationAgent {
     const productsHtml = recommendations.map(product => `
       <div style="border: 1px solid var(--color-border-default); border-radius: 8px; padding: 15px; margin: 10px 0;">
         <img src="${product.image}" alt="${product.name}" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
-        <h3 style="margin: 10px 0; color: #1B4A9C;">${product.name}</h3>
-        <p style="color: #6B7280; font-size: 14px; margin: 5px 0;">${product.reason}</p>
+        <h3 style="margin: 10px 0; color: var(--color-primary);">${product.name}</h3>
+        <p style="color: var(--color-text-muted); font-size: 14px; margin: 5px 0;">${product.reason}</p>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
-          <span style="font-size: 24px; font-weight: 700; color: #1B4A9C;">$${product.price}</span>
+          <span style="font-size: 24px; font-weight: 700; color: var(--color-primary);">$${product.price}</span>
           <a href="https://www.pgclosets.com/products/${product.id}" style="background: #10B981; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 600;">View Details</a>
         </div>
       </div>
@@ -260,7 +260,7 @@ export class ProductRecommendationAgent {
 
     return `
       <div style="margin: 30px 0;">
-        <h2 style="color: #1B4A9C; margin-bottom: 20px;">Recommended For You</h2>
+        <h2 style="color: var(--color-primary); margin-bottom: 20px;">Recommended For You</h2>
         ${productsHtml}
       </div>
     `;

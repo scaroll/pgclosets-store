@@ -223,7 +223,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
           <section className="py-20 bg-white">
             <div className="max-w-4xl mx-auto px-4">
               <div className="text-center mb-12">
-                <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-[#1B4A9C]">
+                <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-[var(--color-primary)]">
                   Get Your Instant Quote
                 </h2>
                 <p className="text-lg text-gray-600">
@@ -231,10 +231,10 @@ export default function ClientPage({ products }: { products: Product[] }) {
                 </p>
               </div>
 
-              <div className="bg-[#F5F5F5] p-8 border-2 border-[#E0E0E0]">
+              <div className="bg-[var(--color-bg-secondary)] p-8 border-2 border-[var(--color-border-default)]">
                 {quoteStep === 1 && (
                   <div className="text-center">
-                    <h3 className="text-2xl font-bold mb-8 text-[#1B4A9C]">
+                    <h3 className="text-2xl font-bold mb-8 text-[var(--color-primary)]">
                       1. Choose Your Door Style
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -242,7 +242,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                         <button
                           key={product.id}
                           onClick={() => handleSelectProduct(product)}
-                          className="product-item p-6 bg-white border-2 border-[#E0E0E0] hover:border-[#1B4A9C] transition-all touch-target"
+                          className="product-item p-6 bg-white border-2 border-[var(--color-border-default)] hover:border-[var(--color-primary)] transition-all touch-target"
                         >
                           <div className="aspect-square relative mb-3 overflow-hidden">
                             <Image
@@ -255,10 +255,10 @@ export default function ClientPage({ products }: { products: Product[] }) {
                               quality={75}
                             />
                           </div>
-                          <div className="font-semibold text-[#1B4A9C] mb-1 text-sm">
+                          <div className="font-semibold text-[var(--color-primary)] mb-1 text-sm">
                             {product.title}
                           </div>
-                          <div className="text-[#1B4A9C] font-bold text-lg">
+                          <div className="text-[var(--color-primary)] font-bold text-lg">
                             {formatPrice(product.variants?.[0]?.price ?? 0)}
                           </div>
                         </button>
@@ -269,11 +269,11 @@ export default function ClientPage({ products }: { products: Product[] }) {
 
                 {quoteStep === 2 && selectedProduct && (
                   <div className="text-center">
-                    <h3 className="text-2xl font-bold mb-8 text-[#1B4A9C]">
+                    <h3 className="text-2xl font-bold mb-8 text-[var(--color-primary)]">
                       2. Your Quote: {selectedProduct.title}
                     </h3>
-                    <div className="bg-white p-8 border-2 border-[#E0E0E0] mb-6">
-                      <div className="text-4xl font-bold text-[#1B4A9C] mb-6">
+                    <div className="bg-white p-8 border-2 border-[var(--color-border-default)] mb-6">
+                      <div className="text-4xl font-bold text-[var(--color-primary)] mb-6">
                         {formatPrice(selectedProduct.variants?.[0]?.price ?? 0)}
                       </div>
                       <div className="text-sm text-gray-600 mb-6">
@@ -284,7 +284,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                     </div>
                     <Link
                       href="/contact"
-                      className="add-to-cart bg-[#1B4A9C] text-white px-8 py-4 font-semibold hover:bg-[#153A7E] transition-all uppercase tracking-wide inline-block"
+                      className="add-to-cart bg-[var(--color-primary)] text-white px-8 py-4 font-semibold hover:bg-[var(--color-primary)] transition-all uppercase tracking-wide inline-block"
                     >
                       Book Free Consultation
                     </Link>

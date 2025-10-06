@@ -82,12 +82,12 @@ export const newsletterTemplates = {
           <style>
             body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background: #F9FAFB; }
             .container { max-width: 600px; margin: 0 auto; background: var(--color-secondary); }
-            .header { background: linear-gradient(135deg, #1B4A9C 0%, #2563EB 100%); color: white; padding: 40px 20px; text-align: center; }
+            .header { background: linear-gradient(135deg, var(--color-primary) 0%, #2563EB 100%); color: white; padding: 40px 20px; text-align: center; }
             .header h1 { margin: 0; font-size: 32px; }
             .hero { width: 100%; height: auto; }
             .content { padding: 30px; }
             .section { margin: 30px 0; }
-            .section-title { color: #1B4A9C; font-size: 22px; font-weight: 700; margin-bottom: 15px; }
+            .section-title { color: var(--color-primary); font-size: 22px; font-weight: 700; margin-bottom: 15px; }
             .cta-button { display: inline-block; background: #10B981; color: white; padding: 15px 40px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; }
             .footer { background: #1F2937; color: white; padding: 30px; text-align: center; }
             .social-links a { display: inline-block; margin: 0 10px; color: white; text-decoration: none; }
@@ -138,7 +138,7 @@ export const newsletterTemplates = {
             ${section.image ? `<img src="${section.image}" alt="${section.title}" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">` : ''}
             <h2 class="section-title">${section.title}</h2>
             <p>${section.content}</p>
-            ${section.link ? `<a href="${section.link}" style="color: #1B4A9C; font-weight: 600;">Read More →</a>` : ''}
+            ${section.link ? `<a href="${section.link}" style="color: var(--color-primary); font-weight: 600;">Read More →</a>` : ''}
           </div>
         `;
 
