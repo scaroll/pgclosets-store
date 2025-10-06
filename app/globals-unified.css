@@ -264,7 +264,7 @@
     @apply text-base text-black bg-white;
     @apply border-2 border-black/20;
     @apply transition-all duration-300;
-    @apply focus:outline-none focus:ring-3 focus:ring-black focus:border-black;
+    @apply focus:outline-none focus:ring-2 focus:ring-black focus:border-black;
     @apply disabled:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-60;
   }
 
