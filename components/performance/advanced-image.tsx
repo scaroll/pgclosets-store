@@ -40,7 +40,7 @@ const generateBlurDataURL = (width = 10, height = 10): string => {
   if (ctx) {
     const gradient = ctx.createLinearGradient(0, 0, width, height)
     gradient.addColorStop(0, '#f3f4f6')
-    gradient.addColorStop(0.5, '#e5e7eb')
+    gradient.addColorStop(0.5, 'var(--color-border-default)')
     gradient.addColorStop(1, '#d1d5db')
 
     ctx.fillStyle = gradient

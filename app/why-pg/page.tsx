@@ -1,6 +1,9 @@
 import type { Metadata } from "next"
 import StandardLayout from "@/components/layout/StandardLayout"
-import { Button } from "../../components/ui/button"
+import Button from "@/components/ui/Button-new"
+import Heading from "@/components/ui/Heading-new"
+import Text from "@/components/ui/Text-new"
+import Section from "@/components/ui/Section-new"
 import Link from "next/link"
 
 export const metadata: Metadata = {
@@ -53,25 +56,24 @@ export default function WhyPGPage() {
     <StandardLayout>
       <div className="bg-gray-50">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-white pt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="headline-large text-4xl md:text-6xl text-pg-dark mb-6">Why Choose PG Closets?</h1>
-          <p className="text-xl text-pg-gray mb-8 max-w-3xl mx-auto">
-            As Ottawa&apos;s official Renin dealer, we combine premium products with local expertise and transparent service
-            to deliver exceptional results.
-          </p>
-        </div>
-      </section>
+        <Section variant="light" spacing="xl" className="bg-gradient-to-br from-gray-50 to-white pt-24">
+          <div className="text-center">
+            <Heading level={1} className="text-4xl md:text-6xl text-pg-dark mb-6">Why Choose PG Closets?</Heading>
+            <Text size="lg" className="text-xl text-pg-gray mb-8 max-w-3xl mx-auto">
+              As Ottawa&apos;s official Renin dealer, we combine premium products with local expertise and transparent service
+              to deliver exceptional results.
+            </Text>
+          </div>
+        </Section>
 
       {/* Values Section */}
-      <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="headline-large text-3xl md:text-4xl text-pg-dark mb-4">Our Core Values</h2>
-            <p className="text-lg text-pg-gray max-w-2xl mx-auto">
-              These principles guide everything we do, from initial consultation to final installation
-            </p>
-          </div>
+      <Section variant="default" spacing="xl">
+        <div className="text-center mb-16">
+          <Heading level={2} className="text-3xl md:text-4xl text-pg-dark mb-4">Our Core Values</Heading>
+          <Text size="lg" className="text-lg text-pg-gray max-w-2xl mx-auto">
+            These principles guide everything we do, from initial consultation to final installation
+          </Text>
+        </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((value, index) => (
@@ -81,23 +83,21 @@ export default function WhyPGPage() {
                     <span className="text-2xl">{value.icon}</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-pg-dark mb-3">{value.title}</h3>
-                    <p className="text-pg-gray leading-relaxed">{value.description}</p>
+                    <Heading level={3} className="text-xl text-pg-dark mb-3">{value.title}</Heading>
+                    <Text className="text-pg-gray leading-relaxed">{value.description}</Text>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Metrics Section */}
-      <section className="section-padding bg-pg-offwhite">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="headline-large text-3xl md:text-4xl text-pg-dark mb-4">Our Track Record</h2>
-            <p className="text-lg text-pg-gray">Numbers that demonstrate our commitment to excellence</p>
-          </div>
+      <Section variant="light" spacing="xl" className="bg-pg-offwhite">
+        <div className="text-center mb-16">
+          <Heading level={2} className="text-3xl md:text-4xl text-pg-dark mb-4">Our Track Record</Heading>
+          <Text size="lg" className="text-lg text-pg-gray">Numbers that demonstrate our commitment to excellence</Text>
+        </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {metrics.map((metric, index) => (
@@ -108,16 +108,14 @@ export default function WhyPGPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Comparison Section */}
-      <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="headline-large text-3xl md:text-4xl text-pg-dark mb-4">PG Closets vs. Big Box Stores</h2>
-            <p className="text-lg text-pg-gray">See why local expertise makes all the difference</p>
-          </div>
+      <Section variant="default" spacing="xl">
+        <div className="text-center mb-16">
+          <Heading level={2} className="text-3xl md:text-4xl text-pg-dark mb-4">PG Closets vs. Big Box Stores</Heading>
+          <Text size="lg" className="text-lg text-pg-gray">See why local expertise makes all the difference</Text>
+        </div>
 
           <div className="bg-pg-offwhite rounded-2xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -164,30 +162,29 @@ export default function WhyPGPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-pg-navy text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="headline-large text-3xl md:text-4xl mb-6">Experience the PG Closets Difference</h2>
-          <p className="text-xl mb-8 opacity-90">
+      <Section variant="dark" spacing="xl" className="bg-pg-navy text-white">
+        <div className="text-center">
+          <Heading level={2} className="text-3xl md:text-4xl mb-6">Experience the PG Closets Difference</Heading>
+          <Text size="lg" className="text-xl mb-8 opacity-90">
             Ready to see why Ottawa homeowners choose us for their door and closet needs?
-          </p>
+          </Text>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
-              <Button className="bg-white text-pg-navy hover:bg-pg-offwhite px-8 py-4 text-lg rounded-full font-semibold">
+              <Button variant="primary" size="lg" className="bg-white text-pg-navy hover:bg-pg-offwhite px-8 py-4 rounded-full">
                 Request Work
               </Button>
             </Link>
             <Link href="/contact">
-              <Button className="border-2 border-white text-white hover:bg-white hover:text-pg-navy px-8 py-4 text-lg rounded-full font-semibold bg-transparent">
+              <Button variant="secondary" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-pg-navy px-8 py-4 rounded-full bg-transparent">
                 Get Free Quote
               </Button>
             </Link>
           </div>
         </div>
-      </section>
+      </Section>
       </div>
     </StandardLayout>
   )

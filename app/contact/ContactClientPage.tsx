@@ -4,6 +4,9 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import StandardLayout from "@/components/layout/StandardLayout";
+import Heading from "@/components/ui/Heading-new";
+import Text from "@/components/ui/Text-new";
+import Card from "@/components/ui/Card-new";
 
 // Dynamically import the contact form to reduce initial bundle size
 const ContactForm = dynamic(
@@ -44,10 +47,10 @@ export default function ContactClientPage() {
       </div>
 
       <section className="max-w-[1200px] mx-auto px-6 py-12">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-[#1B4A9C] mb-4">
+        <Heading level={1} className="mb-4">
           Request Work
-        </h1>
-        <p className="mt-2 text-slate-600 mb-8">
+        </Heading>
+        <Text variant="body" className="mt-2 mb-8">
           Use the form below to tell us about your project. Prefer email?{" "}
           <a
             className="underline text-[#1B4A9C] hover:text-[#9BC4E2]"
@@ -55,11 +58,11 @@ export default function ContactClientPage() {
           >
             info@pgclosets.com
           </a>
-        </p>
+        </Text>
 
-        <div className="mt-8 border border-slate-200 bg-white p-6 shadow-sm">
+        <Card className="mt-8">
           <ContactForm />
-        </div>
+        </Card>
       </section>
 
       {/* Call-to-Action Section */}
@@ -88,9 +91,9 @@ export default function ContactClientPage() {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-[#1B4A9C]">
+              <Heading level={4} className="mb-4">
                 Sitemap
-              </h4>
+              </Heading>
               <div className="space-y-2">
                 <Link
                   href="/"
@@ -126,9 +129,9 @@ export default function ContactClientPage() {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-[#1B4A9C]">
+              <Heading level={4} className="mb-4">
                 Contact
-              </h4>
+              </Heading>
               <div className="space-y-2 text-gray-600">
                 <div>(613) 422-5800</div>
                 <div>info@pgclosets.com</div>

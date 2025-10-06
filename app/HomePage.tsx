@@ -4,7 +4,10 @@ import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
+import Button from "@/components/ui/Button-new"
+import Heading from "@/components/ui/Heading-new"
+import Text from "@/components/ui/Text-new"
+import Section from "@/components/ui/Section-new"
 import StandardLayout from "@/components/layout/StandardLayout"
 
 export default function HomePage() {
@@ -73,27 +76,29 @@ export default function HomePage() {
           className="relative z-20 text-center px-6 max-w-5xl mx-auto"
           style={{ opacity }}
         >
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white mb-6 leading-[0.95]"
           >
-            Elevated Taste
-            <br />
-            <span className="text-4xl md:text-6xl lg:text-7xl opacity-90">
-              Without Pretense
-            </span>
-          </motion.h1>
+            <Heading level={1} className="text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-[0.95]">
+              Elevated Taste
+              <br />
+              <span className="text-4xl md:text-6xl lg:text-7xl opacity-90">
+                Without Pretense
+              </span>
+            </Heading>
+          </motion.div>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-lg md:text-xl lg:text-2xl text-white/90 font-light mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            Transform your space with premium closet solutions
-          </motion.p>
+            <Text size="lg" className="text-lg md:text-xl lg:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Transform your space with premium closet solutions
+            </Text>
+          </motion.div>
 
           {/* CTA Button */}
           <motion.div
@@ -102,12 +107,12 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button
-              asChild
-              size="xl"
-              className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white transition-all duration-500 min-w-[240px] group"
-            >
-              <Link href="/request-work" className="relative">
+            <Link href="/request-work">
+              <Button
+                variant="primary"
+                size="lg"
+                className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[240px] group"
+              >
                 <span className="relative z-10 flex items-center gap-2">
                   Get a Free Quote
                   <svg
@@ -124,19 +129,18 @@ export default function HomePage() {
                     />
                   </svg>
                 </span>
-              </Link>
-            </Button>
+              </Button>
+            </Link>
 
-            <Button
-              asChild
-              size="xl"
-              variant="outline"
-              className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black hover:border-white transition-all duration-500 min-w-[240px]"
-            >
-              <Link href="/products">
+            <Link href="/products">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black hover:border-white min-w-[240px]"
+              >
                 <span className="relative z-10">Explore Collection</span>
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Trust Indicators */}
@@ -186,22 +190,21 @@ export default function HomePage() {
       </section>
 
       {/* Featured Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-black mb-4">
-              Crafted for Ottawa
-            </h2>
-            <p className="text-lg md:text-xl text-black/70 font-light max-w-2xl mx-auto">
-              Premium closet solutions designed to elevate your home
-            </p>
-          </motion.div>
+      <Section variant="light" spacing="xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <Heading level={2} className="text-4xl md:text-5xl lg:text-6xl text-black mb-4">
+            Crafted for Ottawa
+          </Heading>
+          <Text size="lg" className="text-lg md:text-xl text-black/70 max-w-2xl mx-auto">
+            Premium closet solutions designed to elevate your home
+          </Text>
+        </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -232,13 +235,12 @@ export default function HomePage() {
                 <div className="text-4xl mb-4 text-black group-hover:scale-110 transition-transform duration-500">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-medium text-black mb-2">{feature.title}</h3>
-                <p className="text-black/70 font-light">{feature.description}</p>
+                <Heading level={3} className="text-xl text-black mb-2">{feature.title}</Heading>
+                <Text className="text-black/70">{feature.description}</Text>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Full-Width Image Section */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
@@ -258,52 +260,51 @@ export default function HomePage() {
           className="absolute inset-0 flex items-center justify-center text-center px-6"
         >
           <div className="max-w-3xl">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white mb-6">
+            <Heading level={2} className="text-4xl md:text-5xl lg:text-6xl text-white mb-6">
               Designed to Inspire
-            </h2>
-            <p className="text-lg md:text-xl text-white/90 font-light mb-8">
+            </Heading>
+            <Text size="lg" className="text-lg md:text-xl text-white/90 mb-8">
               Every detail considered, every space transformed
-            </p>
-            <Button
-              asChild
-              size="xl"
-              className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white transition-all duration-500"
-            >
-              <Link href="/products">
+            </Text>
+            <Link href="/products">
+              <Button
+                variant="primary"
+                size="lg"
+                className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white"
+              >
                 <span className="relative z-10">View Our Work</span>
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-24 bg-black text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-6">
-              Ready to Transform Your Space?
-            </h2>
-            <p className="text-lg md:text-xl text-white/80 font-light mb-12 max-w-2xl mx-auto">
-              Book a free consultation with our design specialists today
-            </p>
+      <Section variant="dark" spacing="xl" className="bg-black text-white">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <Heading level={2} className="text-4xl md:text-5xl lg:text-6xl mb-6">
+            Ready to Transform Your Space?
+          </Heading>
+          <Text size="lg" className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto">
+            Book a free consultation with our design specialists today
+          </Text>
+          <Link href="/request-work">
             <Button
-              asChild
-              size="xl"
-              className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white transition-all duration-500 min-w-[280px]"
+              variant="primary"
+              size="lg"
+              className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[280px]"
             >
-              <Link href="/request-work">
-                <span className="relative z-10">Schedule Consultation</span>
-              </Link>
+              <span className="relative z-10">Schedule Consultation</span>
             </Button>
-          </motion.div>
-        </div>
-      </section>
+          </Link>
+        </motion.div>
+      </Section>
     </StandardLayout>
   )
 }

@@ -191,7 +191,7 @@ export class WelcomeSequenceAgent {
           <head>
             <style>
               body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-              .container { max-width: 600px; margin: 0 auto; background: #ffffff; }
+              .container { max-width: 600px; margin: 0 auto; background: var(--color-secondary); }
               .header { background: linear-gradient(135deg, #1B4A9C 0%, #2563EB 100%); color: white; padding: 40px 20px; text-align: center; }
               .header h1 { margin: 0; font-size: 28px; font-weight: 700; }
               .content { padding: 40px 30px; }

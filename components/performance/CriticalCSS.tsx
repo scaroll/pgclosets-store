@@ -20,8 +20,8 @@ const criticalStyles = `
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.6;
-    color: #000000;
-    background: #ffffff;
+    color: var(--color-primary);
+    background: var(--color-secondary);
     font-size: 16px;
     font-weight: 400;
     text-rendering: optimizeLegibility;
@@ -51,15 +51,15 @@ const criticalStyles = `
 
   /* Critical button styles */
   .btn-primary {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
     border-radius: 0;
     font-weight: 500;
     font-size: 14px;
     letter-spacing: 0.025em;
     text-transform: uppercase;
     padding: 16px 32px;
-    border: 2px solid #000000;
+    border: 2px solid var(--color-primary);
     min-height: 48px;
     display: inline-flex;
     align-items: center;
@@ -73,7 +73,7 @@ const criticalStyles = `
     font-weight: 300;
     line-height: 1.05;
     letter-spacing: -0.03em;
-    color: #000000;
+    color: var(--color-primary);
   }
 
   /* Loading skeleton */

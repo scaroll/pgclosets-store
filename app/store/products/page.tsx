@@ -2,6 +2,8 @@ import { arcatProducts, productCategories, getProductsByCategory, searchProducts
 import { ProductGrid } from "@/components/store/product-grid"
 import { ProductFilters } from "@/components/store/product-filters"
 import StandardLayout from "@/components/layout/StandardLayout"
+import Heading from "@/components/ui/Heading-new"
+import Text from "@/components/ui/Text-new"
 
 interface ProductsPageProps {
   searchParams: Promise<{
@@ -66,12 +68,12 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       <main className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-12">
-            <h1 className="text-4xl lg:text-5xl font-extralight tracking-tight text-slate-900 mb-4">{selectedCategory ? selectedCategory.name : "All Products"}</h1>
-            <p className="text-lg text-slate-600 font-light">
+            <Heading level={1} className="mb-4">{selectedCategory ? selectedCategory.name : "All Products"}</Heading>
+            <Text size="lg" variant="secondary">
               {selectedCategory
                 ? selectedCategory.description
                 : "Browse our complete catalog of premium Renin closet doors and hardware"}
-            </p>
+            </Text>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8">
@@ -86,7 +88,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
             <div className="flex-1">
               <div className="mb-6 flex items-center justify-between">
-                <p className="text-slate-600 font-light">Showing {filteredProducts.length} products</p>
+                <Text size="base" variant="secondary">Showing {filteredProducts.length} products</Text>
               </div>
 
               <ProductGrid products={filteredProducts as any} />

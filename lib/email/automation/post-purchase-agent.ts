@@ -155,7 +155,7 @@ export class PostPurchaseAgent {
 
   private getOrderConfirmationHtml(config: PostPurchaseConfig): string {
     const itemsHtml = config.items.map(item => `
-      <div style="padding: 10px 0; border-bottom: 1px solid #E5E7EB;">
+      <div style="padding: 10px 0; border-bottom: 1px solid var(--color-border-default);">
         <strong>${item.name}</strong> × ${item.quantity}
       </div>
     `).join('');

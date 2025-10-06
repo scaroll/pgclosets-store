@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Auto-Generated Tokens from Live Site */
+@import "../styles/tokens.css";
+@import "../styles/typography.css";
+
 /**
  * PG CLOSETS UNIFIED DESIGN SYSTEM
  * Single source of truth for all visual styles
@@ -15,22 +19,22 @@
 @layer base {
   :root {
     /* COLORS - Black/White Luxury Aesthetic */
-    --pg-primary: #000000;
-    --pg-secondary: #ffffff;
+    --pg-primary: var(--color-primary);
+    --pg-secondary: var(--color-secondary);
     --pg-charcoal: #1a1a1a;
     --pg-graphite: #4a5568;
     --pg-pearl: #f7fafc;
 
     /* TEXT COLORS - WCAG AA Compliant */
-    --pg-text-primary: #000000;
+    --pg-text-primary: var(--color-primary);
     --pg-text-secondary: #1e293b;
     --pg-text-muted: #64748b;
-    --pg-text-inverse: #ffffff;
+    --pg-text-inverse: var(--color-secondary);
 
     /* BORDERS */
     --pg-border-default: #e2e8f0;
     --pg-border-light: #f1f5f9;
-    --pg-border-dark: #000000;
+    --pg-border-dark: var(--color-primary);
     --pg-border-subtle: rgba(0, 0, 0, 0.1);
     --pg-border-focus: #2563eb;
 
@@ -38,12 +42,12 @@
     --pg-success: #10b981;
     --pg-warning: #f59e0b;
     --pg-error: #dc2626;
-    --pg-info: #0f172a;
+    --pg-info: var(--color-text-muted);
 
     /* SURFACES */
-    --pg-surface-primary: #ffffff;
+    --pg-surface-primary: var(--color-secondary);
     --pg-surface-secondary: #fafafa;
-    --pg-surface-black: #000000;
+    --pg-surface-black: var(--color-primary);
 
     /* SHADOWS - Subtle and Elegant */
     --pg-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04);

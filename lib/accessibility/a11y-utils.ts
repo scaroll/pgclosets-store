@@ -94,12 +94,12 @@ export function suggestAccessibleColor(
   preferDark: boolean = true
 ): string {
   const bgRgb = hexToRgb(background);
-  if (!bgRgb) return preferDark ? '#000000' : '#FFFFFF';
+  if (!bgRgb) return preferDark ? 'var(--color-primary)' : 'var(--color-secondary)';
 
   const bgLum = getLuminance(bgRgb.r, bgRgb.g, bgRgb.b);
 
   // If background is dark, suggest light text; if light, suggest dark text
-  return bgLum > 0.5 ? '#000000' : '#FFFFFF';
+  return bgLum > 0.5 ? 'var(--color-primary)' : 'var(--color-secondary)';
 }
 
 // ============================================================================

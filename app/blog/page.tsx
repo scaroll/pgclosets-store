@@ -1,7 +1,10 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Button } from "../../components/ui/button"
 import StandardLayout from "@/components/layout/StandardLayout"
+import Button from '@/components/ui/Button-new'
+import Heading from '@/components/ui/Heading-new'
+import Text from '@/components/ui/Text-new'
+import Section from '@/components/ui/Section-new'
 
 export const metadata = {
   title: "Closet Door Blog | Tips & Guides | PG Closets Ottawa",
@@ -123,12 +126,14 @@ export default function BlogPage() {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Closet Door Expertise & Tips</h1>
-          <p className="text-xl text-blue-100 mb-6">
+      <Section variant="dark" spacing="lg" className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <Heading level={1} className="text-white mb-4">
+            Closet Door Expertise & Tips
+          </Heading>
+          <Text size="lg" className="text-blue-100 mb-6">
             Expert advice from Ottawa&apos;s trusted Renin dealer on closet doors, installation, and home improvement
-          </p>
+          </Text>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <span className="bg-blue-500 px-3 py-1 rounded-full">Installation Guides</span>
             <span className="bg-blue-500 px-3 py-1 rounded-full">Product Reviews</span>
@@ -136,15 +141,18 @@ export default function BlogPage() {
             <span className="bg-blue-500 px-3 py-1 rounded-full">Design Inspiration</span>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Featured Posts */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Articles</h2>
-            <p className="text-lg text-gray-600">Our most popular guides and expert insights</p>
-          </div>
+      <Section spacing="lg">
+        <div className="text-center mb-12">
+          <Heading level={2} className="mb-4">
+            Featured Articles
+          </Heading>
+          <Text size="lg" variant="secondary">
+            Our most popular guides and expert insights
+          </Text>
+        </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             {featuredPosts.map((post) => (
@@ -170,12 +178,12 @@ export default function BlogPage() {
                     <span>{post.date}</span>
                     <span>{post.readTime}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                  <Heading level={3} className="mb-3 line-clamp-2">
                     <Link href={`/blog/${post.id}`} className="hover:text-blue-600 transition-colors">
                       {post.title}
                     </Link>
-                  </h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
+                  </Heading>
+                  <Text variant="secondary" className="mb-4 line-clamp-3">{post.excerpt}</Text>
                   <Link
                     href={`/blog/${post.id}`}
                     className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
@@ -186,15 +194,18 @@ export default function BlogPage() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* All Posts */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6">
+      <Section spacing="lg" variant="light" className="bg-gray-50">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">All Articles</h2>
-            <p className="text-lg text-gray-600">Browse our complete collection of closet door guides and tips</p>
+            <Heading level={2} className="mb-4">
+              All Articles
+            </Heading>
+            <Text size="lg" variant="secondary">
+              Browse our complete collection of closet door guides and tips
+            </Text>
           </div>
 
           <div className="space-y-8">
@@ -224,12 +235,12 @@ export default function BlogPage() {
                       <span>{post.date}</span>
                       <span>{post.readTime}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    <Heading level={3} className="mb-3">
                       <Link href={`/blog/${post.id}`} className="hover:text-blue-600 transition-colors">
                         {post.title}
                       </Link>
-                    </h3>
-                    <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                    </Heading>
+                    <Text variant="secondary" className="mb-4">{post.excerpt}</Text>
                     <Link
                       href={`/blog/${post.id}`}
                       className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
@@ -242,51 +253,49 @@ export default function BlogPage() {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Newsletter Signup */}
-      <section className="py-16 bg-blue-600 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Stay Updated with Home Improvement Tips</h2>
-          <p className="text-xl text-blue-100 mb-8">
+      <Section spacing="lg" variant="dark" className="bg-blue-600 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <Heading level={2} className="text-white mb-4">
+            Stay Updated with Home Improvement Tips
+          </Heading>
+          <Text size="lg" className="text-blue-100 mb-8">
             Get the latest closet door trends, installation tips, and Ottawa home improvement advice
-          </p>
+          </Text>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <input type="email" placeholder="Enter your email" className="flex-1 px-4 py-3 rounded-lg text-gray-900" />
-            <Button className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium">
+            <Button variant="primary" size="md" className="bg-white text-blue-600 hover:bg-gray-100">
               Subscribe
             </Button>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* CTA Section */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Closets?</h2>
-          <p className="text-lg text-gray-600 mb-8">
+      <Section spacing="lg">
+        <div className="max-w-4xl mx-auto text-center">
+          <Heading level={2} className="mb-4">
+            Ready to Transform Your Closets?
+          </Heading>
+          <Text size="lg" variant="secondary" className="mb-8">
             Get expert advice and professional installation from Ottawa&apos;s trusted Renin dealer
-          </p>
+          </Text>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              variant="primary"
-              size="lg"
-              href="/request-work"
-              className="bg-blue-600 text-white hover:bg-blue-700"
-            >
-              Get Free Quote →
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              href="/products"
-              className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-            >
-              Browse Products
-            </Button>
+            <Link href="/request-work">
+              <Button variant="primary" size="lg" className="bg-blue-600 hover:bg-blue-700">
+                Get Free Quote →
+              </Button>
+            </Link>
+            <Link href="/products">
+              <Button variant="secondary" size="lg">
+                Browse Products
+              </Button>
+            </Link>
           </div>
         </div>
-      </section>
+      </Section>
     </StandardLayout>
   )
 }

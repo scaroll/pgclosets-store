@@ -443,15 +443,15 @@ const { AccessibleProgress } = UXLibrary.Accessibility;
 const { ColorContrastValidator } = UXLibrary.Accessibility;
 
 <ColorContrastValidator
-  foreground="#000000"
-  background="#ffffff"
+  foreground="var(--color-primary)"
+  background="var(--color-secondary)"
   text="Sample Text"
   level="AA"
 />`}
             >
               <UXLibrary.Accessibility.ColorContrastValidator
-                foreground="#000000"
-                background="#ffffff"
+                foreground="var(--color-primary)"
+                background="var(--color-secondary)"
                 text="This is sample text for contrast testing"
                 level="AA"
               />

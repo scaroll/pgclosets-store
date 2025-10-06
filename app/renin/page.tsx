@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
-import { Button } from "../../components/ui/button";
+import Link from "next/link";
 import StandardLayout from "@/components/layout/StandardLayout";
+import Button from '@/components/ui/Button-new';
+import Heading from '@/components/ui/Heading-new';
+import Text from '@/components/ui/Text-new';
+import Section from '@/components/ui/Section-new';
 import { BUSINESS_INFO, getSchemaAddress, getSchemaGeo } from "../../lib/business-config";
 
 export const metadata: Metadata = {
@@ -159,30 +163,24 @@ export default function ReninPage() {
               </svg>
               <span>Official Renin Authorized Dealer</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-extralight tracking-tight mb-6">
+            <Heading level={1} className="text-white mb-6">
               Renin Closet Doors
               <span className="block text-4xl md:text-5xl text-blue-300 mt-2">Ottawa's Premier Collection</span>
-            </h1>
-            <p className="text-xl md:text-2xl font-light tracking-wide text-slate-200 mb-12 max-w-4xl mx-auto leading-relaxed">
+            </Heading>
+            <Text size="lg" className="text-slate-200 mb-12 max-w-4xl mx-auto">
               Experience the finest in Canadian-made closet doors. As Ottawa's official Renin dealer, we bring you premium quality, expert installation, and unmatched style for your home.
-            </p>
+            </Text>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="primary"
-                size="lg"
-                href="/request-work"
-                className="bg-white text-slate-900 hover:bg-slate-100 shadow-xl font-medium tracking-wider uppercase px-8 py-4 text-lg"
-              >
-                Get Free Quote →
-              </Button>
-              <Button
-                variant="secondary"
-                size="lg"
-                href="#products"
-                className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-lg"
-              >
-                Browse Collection
-              </Button>
+              <Link href="/request-work">
+                <Button variant="primary" size="lg" className="bg-white text-slate-900 hover:bg-slate-100 shadow-xl">
+                  Get Free Quote →
+                </Button>
+              </Link>
+              <Link href="#products">
+                <Button variant="secondary" size="lg" className="text-white">
+                  Browse Collection
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -226,14 +224,15 @@ export default function ReninPage() {
       </section>
 
       {/* Product Categories */}
-      <section id="products" className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">Renin Product Collections</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover our complete range of Renin closet doors and storage solutions, each designed to elevate your Ottawa home.
-            </p>
-          </div>
+      <Section id="products" spacing="lg">
+        <div className="text-center mb-16">
+          <Heading level={2} className="mb-6" balance>
+            Renin Product Collections
+          </Heading>
+          <Text size="lg" variant="secondary" className="max-w-3xl mx-auto">
+            Discover our complete range of Renin closet doors and storage solutions, each designed to elevate your Ottawa home.
+          </Text>
+        </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -288,10 +287,10 @@ export default function ReninPage() {
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    <Heading level={3} className="mb-3 group-hover:text-blue-600 transition-colors">
                       {category.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">{category.description}</p>
+                    </Heading>
+                    <Text variant="secondary" className="mb-4">{category.description}</Text>
                     <ul className="space-y-1 mb-6">
                       {category.features.map((feature, idx) => (
                         <li key={idx} className="text-sm text-gray-500 flex items-center">
@@ -302,34 +301,32 @@ export default function ReninPage() {
                         </li>
                       ))}
                     </ul>
-                    <Button
-                      variant="secondary"
-                      href={category.href}
-                      className="w-full"
-                    >
-                      Explore {category.title} →
-                    </Button>
+                    <Link href={category.href} className="w-full">
+                      <Button variant="secondary" className="w-full">
+                        Explore {category.title} →
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Ottawa Service Area Map */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-light text-gray-900 mb-6">Serving Ottawa & Surrounding Areas</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Professional Renin installation and service across the National Capital Region
-            </p>
-          </div>
+      <Section spacing="lg" variant="light" className="bg-gray-50">
+        <div className="text-center mb-16">
+          <Heading level={2} className="mb-6" balance>
+            Serving Ottawa & Surrounding Areas
+          </Heading>
+          <Text size="lg" variant="secondary" className="max-w-3xl mx-auto">
+            Professional Renin installation and service across the National Capital Region
+          </Text>
+        </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Primary Service Areas</h3>
+              <Heading level={3} className="mb-6">Primary Service Areas</Heading>
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { name: "Ottawa", delivery: "Same day service", href: "/renin/ottawa" },
@@ -352,7 +349,7 @@ export default function ReninPage() {
             </div>
 
             <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Quick Service Facts</h3>
+              <Heading level={3} className="mb-4">Quick Service Facts</Heading>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full" />
@@ -373,18 +370,18 @@ export default function ReninPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Featured Products */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-light text-gray-900 mb-6">Featured Renin Products</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Handpicked selections from our most popular Renin collections
-            </p>
-          </div>
+      <Section spacing="lg">
+        <div className="text-center mb-16">
+          <Heading level={2} className="mb-6" balance>
+            Featured Renin Products
+          </Heading>
+          <Text size="lg" variant="secondary" className="max-w-3xl mx-auto">
+            Handpicked selections from our most popular Renin collections
+          </Text>
+        </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
             {[
@@ -425,7 +422,7 @@ export default function ReninPage() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
+                  <Heading level={3} className="mb-2">{product.name}</Heading>
                   <div className="flex items-center space-x-2 mb-4">
                     <span className="text-2xl font-bold text-green-600">{product.price}</span>
                     <span className="text-lg text-gray-400 line-through">{product.originalPrice}</span>
@@ -447,18 +444,18 @@ export default function ReninPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Customer Testimonials */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-light text-gray-900 mb-6">What Ottawa Customers Say</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Real reviews from satisfied customers across Ottawa
-            </p>
-          </div>
+      <Section spacing="lg" variant="light" className="bg-gray-50">
+        <div className="text-center mb-16">
+          <Heading level={2} className="mb-6" balance>
+            What Ottawa Customers Say
+          </Heading>
+          <Text size="lg" variant="secondary" className="max-w-3xl mx-auto">
+            Real reviews from satisfied customers across Ottawa
+          </Text>
+        </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -494,7 +491,7 @@ export default function ReninPage() {
                     ))}
                   </div>
                 </div>
-                <p className="text-gray-700 mb-4 italic">"{testimonial.review}"</p>
+                <Text variant="secondary" className="mb-4 italic">"{testimonial.review}"</Text>
                 <div className="border-t pt-4">
                   <div className="font-semibold text-gray-900">{testimonial.name}</div>
                   <div className="text-sm text-gray-600">{testimonial.location}</div>
@@ -503,40 +500,35 @@ export default function ReninPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-light mb-6">Ready to Transform Your Ottawa Home?</h2>
-          <p className="text-xl text-blue-100 mb-12 leading-relaxed">
+      <Section spacing="lg" variant="dark" className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <div className="text-center">
+          <Heading level={2} className="text-white mb-6" balance>
+            Ready to Transform Your Ottawa Home?
+          </Heading>
+          <Text size="lg" className="text-blue-100 mb-12 max-w-2xl mx-auto">
             Join hundreds of satisfied Ottawa homeowners who chose PG Closets for their Renin closet door solutions.
             Get your free consultation today.
-          </p>
+          </Text>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button
-              variant="primary"
-              size="lg"
-              href="/request-work"
-              className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl font-medium tracking-wider uppercase px-8 py-4 text-lg"
-            >
-              Get Free Quote →
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              href="mailto:spencer@peoplesgrp.com"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg"
-            >
-              Email: spencer@peoplesgrp.com
-            </Button>
+            <Link href="/request-work">
+              <Button variant="primary" size="lg" className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl">
+                Get Free Quote →
+              </Button>
+            </Link>
+            <Link href="mailto:spencer@peoplesgrp.com">
+              <Button variant="secondary" size="lg" className="text-white">
+                Email: spencer@peoplesgrp.com
+              </Button>
+            </Link>
           </div>
           <div className="mt-8 text-blue-200 text-sm">
             Licensed & Insured • Lifetime Warranty • 15+ Years Experience
           </div>
         </div>
-      </section>
+      </Section>
     </StandardLayout>
   );
 }

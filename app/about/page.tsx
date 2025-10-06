@@ -4,42 +4,43 @@ import Image from "next/image";
 import Link from "next/link";
 import PgHeader from "@/components/PgHeader";
 import PgFooter from "@/components/PgFooter";
+import Button from "@/components/ui/Button-new";
+import Heading from "@/components/ui/Heading-new";
+import Text from "@/components/ui/Text-new";
+import Section from "@/components/ui/Section-new";
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
       <PgHeader />
 
-      <section className="pt-32 pb-24 bg-gradient-to-br from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-block text-xs text-slate-500 font-light uppercase tracking-widest mb-6">
-                OUR STORY
-              </span>
-              <h1 className="text-5xl md:text-6xl font-extralight text-slate-900 mb-8 tracking-tight leading-tight">
-                Family-Owned Excellence Since 2010
-              </h1>
-              <p className="text-xl text-slate-600 mb-8 font-light leading-relaxed tracking-wide">
-                Ottawa-operated and family-owned, PG Closets has been
-                transforming homes across the region with premium Renin door
-                systems and exceptional service for over a decade.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/contact"
-                  className="bg-slate-900 text-white font-light px-12 py-4 text-lg tracking-wide transition-all duration-500 hover:bg-slate-800 hover:shadow-2xl hover:scale-105 uppercase inline-block"
-                >
+      <Section variant="light" spacing="xl" className="pt-32 bg-gradient-to-br from-white to-gray-50">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span className="inline-block text-xs text-slate-500 font-light uppercase tracking-widest mb-6">
+              OUR STORY
+            </span>
+            <Heading level={1} className="text-5xl md:text-6xl text-slate-900 mb-8 leading-tight">
+              Family-Owned Excellence Since 2010
+            </Heading>
+            <Text size="lg" className="text-xl text-slate-600 mb-8 leading-relaxed tracking-wide">
+              Ottawa-operated and family-owned, PG Closets has been
+              transforming homes across the region with premium Renin door
+              systems and exceptional service for over a decade.
+            </Text>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/contact">
+                <Button variant="primary" size="lg" className="bg-slate-900 text-white hover:bg-slate-800 hover:shadow-2xl hover:scale-105">
                   Get Free Consultation
-                </Link>
-                <Link
-                  href="/products"
-                  className="border border-slate-300 text-slate-700 font-light px-12 py-4 text-lg tracking-wide transition-all duration-300 inline-block hover:border-slate-900 hover:bg-slate-900 hover:text-white"
-                >
+                </Button>
+              </Link>
+              <Link href="/products">
+                <Button variant="secondary" size="lg" className="border border-slate-300 text-slate-700 hover:border-slate-900 hover:bg-slate-900 hover:text-white">
                   Browse Collection
-                </Link>
-              </div>
+                </Button>
+              </Link>
             </div>
+          </div>
             <div className="relative">
               <div className="aspect-square overflow-hidden shadow-2xl border-4 border-[#87ceeb]">
                 <Image
@@ -62,34 +63,32 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+      </Section>
 
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl font-extralight text-slate-900 mb-8 tracking-tight">
-                The PG Closets Journey
-              </h2>
-              <div className="space-y-6 text-lg text-slate-600 font-light leading-relaxed tracking-wide">
-                <p>
+      <Section variant="default" spacing="xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <Heading level={2} className="text-4xl text-slate-900 mb-8">
+              The PG Closets Journey
+            </Heading>
+            <div className="space-y-6">
+                <Text size="lg" className="text-lg text-slate-600 leading-relaxed tracking-wide">
                   {"What started as a small family business has grown into Ottawa&apos;s most trusted name in premium door " +
                     "systems. As an official Renin dealer, we combine the quality and innovation of Canada&apos;s leading door " +
                     "manufacturer with the personal touch and local expertise that only a family business can provide."}
-                </p>
-                <p>
+                </Text>
+                <Text size="lg" className="text-lg text-slate-600 leading-relaxed tracking-wide">
                   {"Our commitment to excellence has earned us the trust of over 500 Ottawa families, and we&apos;re proud to " +
                     "maintain a 98% customer satisfaction rating. Every project, from a simple barn door to a complete " +
                     "closet system, receives the same attention to detail and dedication to quality that has defined our " +
                     "business from day one."}
-                </p>
-                <p>
+                </Text>
+                <Text size="lg" className="text-lg text-slate-600 leading-relaxed tracking-wide">
                   {"Today, we continue to grow while staying true to our founding principles: transparent pricing, quality " +
                     "products, professional installation, and exceptional customer service. When you choose PG Closets, " +
                     "you&apos;re not just getting a door system – you&apos;re joining a family of satisfied customers who trust us " +
                     "with their homes."}
-                </p>
+                </Text>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-6">
@@ -131,94 +130,89 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+      </Section>
+
+      <Section variant="light" spacing="xl" className="bg-gradient-to-br from-gray-50 to-white">
+        <div className="text-center mb-20">
+          <span className="inline-block text-xs text-slate-500 font-light uppercase tracking-widest mb-6">
+            OUR VALUES
+          </span>
+          <Heading level={2} className="text-5xl text-slate-900 mb-8">
+            What Drives Us
+          </Heading>
+          <Text size="lg" className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed tracking-wide">
+            Our mission is simple: to provide Ottawa homeowners with premium
+            door solutions that enhance both function and beauty in their
+            homes.
+          </Text>
         </div>
-      </section>
 
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="inline-block text-xs text-slate-500 font-light uppercase tracking-widest mb-6">
-              OUR VALUES
-            </span>
-            <h2 className="text-5xl font-extralight text-slate-900 mb-8 tracking-tight">
-              What Drives Us
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
-              Our mission is simple: to provide Ottawa homeowners with premium
-              door solutions that enhance both function and beauty in their
-              homes.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-10 text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border border-gray-100">
-              <div className="w-20 h-20 bg-slate-50 flex items-center justify-center mx-auto mb-8 border border-slate-200">
-                <span className="text-3xl">🏆</span>
-              </div>
-              <h3 className="text-2xl font-light text-slate-900 mb-6 uppercase tracking-widest">
-                Quality First
-              </h3>
-              <p className="text-slate-600 font-light leading-relaxed tracking-wide">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-white p-10 text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border border-gray-100">
+            <div className="w-20 h-20 bg-slate-50 flex items-center justify-center mx-auto mb-8 border border-slate-200">
+              <span className="text-3xl">🏆</span>
+            </div>
+            <Heading level={3} className="text-2xl text-slate-900 mb-6 uppercase tracking-widest">
+              Quality First
+            </Heading>
+            <Text className="text-slate-600 leading-relaxed tracking-wide">
                 {"We partner exclusively with Renin, Canada&apos;s premier door manufacturer, to ensure every product meets the " +
                   "highest standards of excellence and durability."}
-              </p>
-            </div>
+            </Text>
+          </div>
 
-            <div className="bg-white p-10 text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border border-gray-100">
-              <div className="w-20 h-20 bg-slate-50 flex items-center justify-center mx-auto mb-8 border border-slate-200">
-                <span className="text-3xl">🤝</span>
-              </div>
-              <h3 className="text-2xl font-light text-slate-900 mb-6 uppercase tracking-widest">
-                Personal Service
-              </h3>
-              <p className="text-slate-600 font-light leading-relaxed tracking-wide">
+          <div className="bg-white p-10 text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border border-gray-100">
+            <div className="w-20 h-20 bg-slate-50 flex items-center justify-center mx-auto mb-8 border border-slate-200">
+              <span className="text-3xl">🤝</span>
+            </div>
+            <Heading level={3} className="text-2xl text-slate-900 mb-6 uppercase tracking-widest">
+              Personal Service
+            </Heading>
+            <Text className="text-slate-600 leading-relaxed tracking-wide">
                 As a family business, we treat every customer like family,
                 providing personalized attention and care throughout your entire
                 project journey.
-              </p>
-            </div>
+            </Text>
+          </div>
 
-            <div className="bg-white p-10 text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border border-gray-100">
-              <div className="w-20 h-20 bg-slate-50 flex items-center justify-center mx-auto mb-8 border border-slate-200">
-                <span className="text-3xl">🎯</span>
-              </div>
-              <h3 className="text-2xl font-light text-slate-900 mb-6 uppercase tracking-widest">
-                Local Focus
-              </h3>
-              <p className="text-slate-600 font-light leading-relaxed tracking-wide">
+          <div className="bg-white p-10 text-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border border-gray-100">
+            <div className="w-20 h-20 bg-slate-50 flex items-center justify-center mx-auto mb-8 border border-slate-200">
+              <span className="text-3xl">🎯</span>
+            </div>
+            <Heading level={3} className="text-2xl text-slate-900 mb-6 uppercase tracking-widest">
+              Local Focus
+            </Heading>
+            <Text className="text-slate-600 leading-relaxed tracking-wide">
                 {"We&apos;re proud to call Ottawa home and are committed to serving our community with integrity, excellence, " +
                   "and unwavering dedication."}
-              </p>
-            </div>
+            </Text>
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="py-24 bg-slate-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-5xl font-extralight mb-8 tracking-tight">
+      <Section variant="dark" spacing="xl" className="bg-slate-900 text-white">
+        <div className="text-center">
+          <Heading level={2} className="text-5xl mb-8">
             Ready to Work Together?
-          </h2>
-          <p className="text-xl mb-12 font-light leading-relaxed tracking-wide max-w-2xl mx-auto">
+          </Heading>
+          <Text size="lg" className="text-xl mb-12 leading-relaxed tracking-wide max-w-2xl mx-auto">
             {"Experience the PG Closets difference for yourself. Let&apos;s create something beautiful and functional for your " +
               "home."}
-          </p>
+          </Text>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-slate-900 px-12 py-5 font-light text-xl uppercase tracking-widest hover:bg-gray-100 hover:scale-105 transition-all duration-300 inline-block"
-            >
-              Start Your Project
+            <Link href="/contact">
+              <Button variant="primary" size="lg" className="bg-white text-slate-900 hover:bg-gray-100 hover:scale-105">
+                Start Your Project
+              </Button>
             </Link>
-            <Link
-              href="/contact"
-              className="border-2 border-white text-white px-12 py-5 font-light text-xl uppercase tracking-widest hover:bg-white hover:text-slate-900 hover:scale-105 transition-all duration-300 inline-block"
-            >
-              Get In Touch
+            <Link href="/contact">
+              <Button variant="secondary" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-slate-900 hover:scale-105">
+                Get In Touch
+              </Button>
             </Link>
           </div>
         </div>
-      </section>
+      </Section>
 
       <PgFooter />
     </div>

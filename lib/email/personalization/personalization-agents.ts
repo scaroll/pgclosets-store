@@ -247,7 +247,7 @@ export class ProductRecommendationAgent {
    */
   getRecommendationEmailBlock(recommendations: ProductRecommendation[]): string {
     const productsHtml = recommendations.map(product => `
-      <div style="border: 1px solid #E5E7EB; border-radius: 8px; padding: 15px; margin: 10px 0;">
+      <div style="border: 1px solid var(--color-border-default); border-radius: 8px; padding: 15px; margin: 10px 0;">
         <img src="${product.image}" alt="${product.name}" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
         <h3 style="margin: 10px 0; color: #1B4A9C;">${product.name}</h3>
         <p style="color: #6B7280; font-size: 14px; margin: 5px 0;">${product.reason}</p>

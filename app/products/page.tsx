@@ -2,6 +2,8 @@ import { getProducts } from '@/lib/actions/commerce';
 import { unstable_noStore as noStore } from 'next/cache';
 import StandardLayout from '@/components/layout/StandardLayout';
 import ProductsClient from './ProductsClient';
+import Heading from '@/components/ui/Heading-new';
+import Text from '@/components/ui/Text-new';
 
 export default async function ProductsPage({
   searchParams,
@@ -20,17 +22,17 @@ export default async function ProductsPage({
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black/90" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight mb-6 leading-[0.95]">
+            <Heading level={1} balance className="text-5xl md:text-6xl lg:text-7xl mb-6 leading-[0.95] text-white">
               Curated
               <br />
               <span className="text-4xl md:text-5xl lg:text-6xl opacity-90">
                 Collection
               </span>
-            </h1>
-            <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed">
+            </Heading>
+            <Text size="lg" className="text-white/80 leading-relaxed md:text-xl">
               Discover premium closet solutions crafted for discerning homeowners.
               Each piece selected for exceptional quality and timeless design.
-            </p>
+            </Text>
           </div>
         </div>
       </section>

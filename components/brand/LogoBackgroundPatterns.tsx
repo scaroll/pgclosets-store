@@ -44,7 +44,7 @@ export function LogoBackgroundPatterns({
     const colorMap = {
       gray: '#6b7280',
       slate: '#475569',
-      brand: '#0f172a',
+      brand: 'var(--color-text-muted)',
       custom: customColor || '#6b7280'
     };
 

@@ -174,7 +174,7 @@ const configurationSections: ConfigurationSection[] = [
     priceImpact: 'additive',
     options: [
       { id: 'natural-oak', name: 'Natural Oak', value: '#D2B48C', price: 0, finish: 'matte', popular: true },
-      { id: 'white-gloss', name: 'White Gloss', value: '#FFFFFF', price: 75, finish: 'gloss' },
+      { id: 'white-gloss', name: 'White Gloss', value: 'var(--color-secondary)', price: 75, finish: 'gloss' },
       { id: 'charcoal-black', name: 'Charcoal Black', value: '#2D2D2D', price: 100, finish: 'matte', premium: true },
       { id: 'espresso', name: 'Espresso', value: '#3C2414', price: 125, finish: 'satin' },
       { id: 'slate-gray', name: 'Slate Gray', value: '#708090', price: 100, finish: 'matte' },

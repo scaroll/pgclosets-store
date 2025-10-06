@@ -1,6 +1,9 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import Button from '@/components/ui/Button-new'
+import Heading from '@/components/ui/Heading-new'
+import Text from '@/components/ui/Text-new'
+import Section from '@/components/ui/Section-new'
 import { Wrench, Shield, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -11,57 +14,62 @@ export const metadata: Metadata = {
 export default function InstallationPage() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="relative bg-pg-primary text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Professional Installation
-            </h1>
-            <p className="text-xl text-pg-primary-light mb-8">
-              Certified technicians delivering flawless installation for your closet and door systems
-            </p>
-          </div>
+      {/* Hero Section */}
+      <Section variant="dark" spacing="lg" className="bg-pg-primary text-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <Heading level={1} className="text-white mb-6">
+            Professional Installation
+          </Heading>
+          <Text size="lg" className="text-pg-primary-light mb-8">
+            Certified technicians delivering flawless installation for your closet and door systems
+          </Text>
         </div>
-      </section>
+      </Section>
 
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[
-              {
-                icon: <Wrench className="h-12 w-12 text-pg-accent" />,
-                title: 'Expert Technicians',
-                description: 'Fully certified installers with years of experience in custom closets and door systems'
-              },
-              {
-                icon: <Clock className="h-12 w-12 text-pg-accent" />,
-                title: 'Timely Completion',
-                description: 'Efficient installation process completed on schedule with minimal disruption'
-              },
-              {
-                icon: <Shield className="h-12 w-12 text-pg-accent" />,
-                title: 'Quality Guaranteed',
-                description: 'Comprehensive warranty coverage on both products and installation workmanship'
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-gray-50 p-8 rounded-lg text-center">
-                <div className="flex justify-center mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-              </div>
-            ))}
-          </div>
+      {/* Features */}
+      <Section spacing="lg">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {[
+            {
+              icon: <Wrench className="h-12 w-12 text-pg-accent" />,
+              title: 'Expert Technicians',
+              description: 'Fully certified installers with years of experience in custom closets and door systems'
+            },
+            {
+              icon: <Clock className="h-12 w-12 text-pg-accent" />,
+              title: 'Timely Completion',
+              description: 'Efficient installation process completed on schedule with minimal disruption'
+            },
+            {
+              icon: <Shield className="h-12 w-12 text-pg-accent" />,
+              title: 'Quality Guaranteed',
+              description: 'Comprehensive warranty coverage on both products and installation workmanship'
+            }
+          ].map((item, idx) => (
+            <div key={idx} className="bg-gray-50 p-8 rounded-lg text-center">
+              <div className="flex justify-center mb-4">{item.icon}</div>
+              <Heading level={3} className="mb-3">
+                {item.title}
+              </Heading>
+              <Text variant="secondary">{item.description}</Text>
+            </div>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      <section className="bg-pg-secondary py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Schedule Your Installation</h2>
+      {/* CTA */}
+      <Section variant="light" spacing="lg" className="bg-pg-secondary">
+        <div className="text-center">
+          <Heading level={2} className="mb-6">
+            Schedule Your Installation
+          </Heading>
           <Link href="/request-work">
-            <Button size="lg">Get Started</Button>
+            <Button size="lg" variant="primary">
+              Get Started
+            </Button>
           </Link>
         </div>
-      </section>
+      </Section>
     </div>
   )
 }

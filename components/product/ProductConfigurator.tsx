@@ -68,7 +68,7 @@ const mockConfigurationSections: ConfigurationSection[] = [
     required: true,
     options: [
       { id: 'natural', name: 'Natural', value: '#D2B48C', price: 0 },
-      { id: 'white', name: 'White', value: '#FFFFFF', price: 50 },
+      { id: 'white', name: 'White', value: 'var(--color-secondary)', price: 50 },
       { id: 'black', name: 'Black', value: '#2D2D2D', price: 75 },
       { id: 'espresso', name: 'Espresso', value: '#3C2414', price: 100 },
       { id: 'gray', name: 'Gray', value: '#808080', price: 75 }

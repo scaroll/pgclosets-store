@@ -1,0 +1,28 @@
+/**
+ * Design Tokens - Auto-generated from live site
+ * Generated: 2025-10-06T03:27:37.556Z
+ * Sources: https://pgclosets.com, https://pgclosets.com/services, https://pgclosets.com/faq, https://pgclosets.com/products
+ */
+
+:root {
+  /* Colors */
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-accent: #0f172a;
+
+  /* Text Colors */
+  --color-text-primary: #000000;
+  --color-text-secondary: #ffffff;
+  --color-text-muted: #0f172a;
+
+  /* Background Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #111827;
+
+  /* Border Colors */
+  --color-border-default: #e5e7eb;
+  --color-border-subtle: rgba(0, 0, 0, 0.1);
+
+  /* Typography */
+  --font-family: Inter, -apple-system, "system-ui", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}

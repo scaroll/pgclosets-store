@@ -9,7 +9,7 @@ export default function manifest(): MetadataRoute.Manifest {
       'Official Renin dealer providing custom closet doors, storage solutions, and professional installation in Ottawa. Browse barn doors, bifold doors, and complete closet systems.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#ffffff',
+    background_color: 'var(--color-secondary)',
     theme_color: '#1e293b',
     orientation: 'portrait-primary',
     scope: '/',

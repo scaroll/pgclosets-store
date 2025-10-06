@@ -108,34 +108,34 @@
 
 :root {
   /* Refined color palette matching PG logo aesthetic */
-  --pg-black: #000000;
+  --pg-black: var(--color-primary);
   --pg-charcoal: #1a1a1a;
   --pg-slate: #2d3748;
   --pg-graphite: #4a5568;
   --pg-silver: #cbd5e0;
   --pg-pearl: #f7fafc;
-  --pg-white: #ffffff;
+  --pg-white: var(--color-secondary);
 
   /* Missing variables for compatibility */
-  --pg-navy: #000000;  /* Using black for navy */
+  --pg-navy: var(--color-primary);  /* Using black for navy */
   --pg-sky: #4a5568;   /* Using graphite for sky */
   --pg-offwhite: #f7fafc; /* Using pearl for offwhite */
 
   /* Accent colors - minimal and sophisticated */
-  --pg-accent: #0f172a; /* Deep navy-black */
+  --pg-accent: var(--color-text-muted); /* Deep navy-black */
   --pg-accent-light: #1e293b;
   --pg-border: #e2e8f0;
   --pg-border-light: #f1f5f9;
 
   /* Typography colors - WCAG AA compliant (contrast ratios) */
-  --pg-text-primary: #000000; /* 21:1 ratio on white */
+  --pg-text-primary: var(--color-primary); /* 21:1 ratio on white */
   --pg-text-secondary: #1e293b; /* 12.03:1 ratio - Enhanced from #2d3748 */
   --pg-text-muted: #64748b; /* 4.52:1 ratio - Enhanced from #718096 */
-  --pg-text-inverse: #ffffff;
+  --pg-text-inverse: var(--color-secondary);
 
   /* Interactive states */
-  --pg-link: #0f172a;
-  --pg-link-hover: #000000;
+  --pg-link: var(--color-text-muted);
+  --pg-link-hover: var(--color-primary);
   --pg-focus: #2563eb;
 
   /* Status colors - WCAG AA compliant */
@@ -144,11 +144,11 @@
   --pg-warning: #f59e0b; /* Already compliant */
 
   /* Button colors - sophisticated and clean */
-  --pg-button-primary: #000000;
+  --pg-button-primary: var(--color-primary);
   --pg-button-primary-hover: #1a1a1a;
-  --pg-button-secondary: #ffffff;
+  --pg-button-secondary: var(--color-secondary);
   --pg-button-secondary-hover: #f7fafc;
-  --pg-button-border: #000000;
+  --pg-button-border: var(--color-primary);
 }
 
 html {
@@ -372,7 +372,7 @@ input:disabled,
 select:disabled,
 textarea:disabled {
   background: #f8f9fa;
-  border-color: #e5e7eb;
+  border-color: var(--color-border-default);
   color: var(--pg-text-muted);
   cursor: not-allowed;
   opacity: 0.6;
@@ -675,7 +675,7 @@ textarea:valid:focus {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --pg-offwhite: #111827;
+    --pg-offwhite: var(--color-bg-secondary);
     --pg-dark: #f9fafb;
     --pg-border: #374151;
   }
@@ -977,25 +977,25 @@ a:not(.btn-primary):not(.btn-secondary):focus-visible {
 @media (prefers-contrast: high) {
   :root {
     --pg-navy: #1a2951;
-    --pg-dark: #000000;
+    --pg-dark: var(--color-primary);
     --pg-gray: #4a4a4a;
     --pg-border: #333333;
 
     /* Enhanced high contrast colors */
-    --pg-text-primary: #000000;
+    --pg-text-primary: var(--color-primary);
     --pg-text-secondary: #1a1a1a;
     --pg-text-muted: #333333;
-    --pg-button-primary: #000000;
+    --pg-button-primary: var(--color-primary);
     --pg-button-primary-hover: #1a1a1a;
     --pg-button-secondary: #333333;
-    --pg-button-secondary-hover: #000000;
+    --pg-button-secondary-hover: var(--color-primary);
     --pg-link: #0000EE;
     --pg-link-hover: #000080;
   }
 
   .card-apple {
     border-width: 3px;
-    border-color: #000000;
+    border-color: var(--color-primary);
   }
 
   button,
@@ -1013,7 +1013,7 @@ a:not(.btn-primary):not(.btn-secondary):focus-visible {
 
   *:focus-visible {
     outline-width: 4px;
-    outline-color: #000000;
+    outline-color: var(--color-primary);
   }
 }
 

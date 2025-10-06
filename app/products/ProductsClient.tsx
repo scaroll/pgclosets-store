@@ -7,6 +7,10 @@ import Image from 'next/image';
 import { formatPrice } from '@/lib/utils';
 import { useIntersectionObserver } from '@/lib/hooks/use-intersection-observer';
 import { usePerformanceMonitoring } from '@/lib/performance-metrics';
+import Button from '@/components/ui/Button-new';
+import Heading from '@/components/ui/Heading-new';
+import Text from '@/components/ui/Text-new';
+import Card from '@/components/ui/Card-new';
 
 // Enhanced filter types for Renin products
 interface FilterOptions {
@@ -159,7 +163,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
   });
 
   return (
-    <div ref={targetRef} className="group bg-white overflow-hidden transition-all duration-700 hover:shadow-2xl border border-black/10 hover:border-black/20">
+    <Card hover padding="md" className="group overflow-hidden" ref={targetRef as any}>
       <Link href={`/products/${product.handle}`} className="block">
         <div className="relative aspect-square bg-gray-50 overflow-hidden">
           {isIntersecting && !imageError ? (
@@ -178,7 +182,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
             />
           ) : imageError ? (
             <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-              <span className="text-gray-400 text-sm font-light">Image not available</span>
+              <Text size="sm" variant="muted">Image not available</Text>
             </div>
           ) : (
             <div className="w-full h-full bg-gray-100 animate-pulse" />
@@ -193,25 +197,24 @@ const ProductCard = memo(({ product }: { product: Product }) => {
           )}
         </div>
       </Link>
-      <div className="p-6">
-        <h3 className="text-lg font-light tracking-wide text-black mb-2 line-clamp-1">{product.title}</h3>
-        <p className="text-gray-600 text-sm font-light mb-4 line-clamp-2 leading-relaxed">{product.description}</p>
-        <div className="text-2xl font-light tracking-wide text-black mb-6">
+      <div className="mt-4">
+        <Heading level={3} className="mb-2 line-clamp-1">{product.title}</Heading>
+        <Text size="sm" variant="secondary" className="mb-4 line-clamp-2 leading-relaxed">{product.description}</Text>
+        <Text size="lg" className="mb-6 text-2xl font-light tracking-wide">
           {formatPrice(product.variants[0]?.price || 0)}
-        </div>
+        </Text>
         <div className="flex gap-3">
-          <Link
-            href={`/products/${product.handle}`}
-            className="flex-1 bg-black text-white py-3 px-4 hover:bg-gray-900 transition-all duration-300 text-center text-sm font-medium tracking-wider uppercase"
-          >
-            View Details
+          <Link href={`/products/${product.handle}`} className="flex-1">
+            <Button variant="primary" size="md" fullWidth>
+              View Details
+            </Button>
           </Link>
-          <button className="px-4 py-3 border border-black text-black hover:bg-black hover:text-white transition-all duration-300 text-sm font-medium tracking-wider uppercase">
+          <Button variant="secondary" size="md">
             Quote
-          </button>
+          </Button>
         </div>
       </div>
-    </div>
+    </Card>
   );
 });
 
@@ -246,7 +249,7 @@ const FilterSidebar = memo(({
       <div className="p-6 space-y-6">
         {/* Filter Header */}
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-light tracking-wide text-black">Filters</h3>
+          <Heading level={3}>Filters</Heading>
           <button
             onClick={onToggle}
             className="lg:hidden p-2 text-black hover:text-gray-600 transition-colors"
@@ -256,18 +259,15 @@ const FilterSidebar = memo(({
         </div>
 
         {/* Results Count */}
-        <div className="text-sm font-light text-gray-600">
+        <Text size="sm" variant="secondary">
           Showing {filteredProductCount} of {totalProductCount} products
-        </div>
+        </Text>
 
         {/* Clear Filters */}
         {hasActiveFilters && (
-          <button
-            onClick={onClearFilters}
-            className="text-sm text-black hover:text-gray-600 font-light underline underline-offset-4 transition-colors"
-          >
+          <Button variant="ghost" size="sm" onClick={onClearFilters} className="underline underline-offset-4">
             Clear all filters
-          </button>
+          </Button>
         )}
 
         {/* Search */}
@@ -429,35 +429,34 @@ const Pagination = memo(({
 
   return (
     <div className="flex justify-center items-center space-x-2 mt-12 mb-4">
-      <button
+      <Button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-4 py-2.5 text-sm font-light tracking-wide text-black bg-white border border-black/20 hover:bg-black hover:text-white transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
+        variant="secondary"
+        size="sm"
       >
         Previous
-      </button>
+      </Button>
 
       {getPageNumbers().map(page => (
-        <button
+        <Button
           key={page}
           onClick={() => onPageChange(page)}
-          className={`px-4 py-2.5 text-sm font-light tracking-wide transition-all duration-300 ${
-            currentPage === page
-              ? 'bg-black text-white border border-black'
-              : 'text-black bg-white border border-black/20 hover:bg-black hover:text-white'
-          }`}
+          variant={currentPage === page ? 'primary' : 'secondary'}
+          size="sm"
         >
           {page}
-        </button>
+        </Button>
       ))}
 
-      <button
+      <Button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-4 py-2.5 text-sm font-light tracking-wide text-black bg-white border border-black/20 hover:bg-black hover:text-white transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
+        variant="secondary"
+        size="sm"
       >
         Next
-      </button>
+      </Button>
     </div>
   );
 });
@@ -567,8 +566,8 @@ const ProductsClient = ({ initialProducts }: { initialProducts: Product[] }) => 
               ))
             ) : (
               <div className="col-span-full text-center py-16">
-                <div className="text-black text-xl font-light mb-3 tracking-wide">No products found</div>
-                <div className="text-gray-500 text-sm font-light tracking-wide">Try adjusting your filters to see more results</div>
+                <Heading level={3} className="mb-3">No products found</Heading>
+                <Text size="sm" variant="muted">Try adjusting your filters to see more results</Text>
               </div>
             )}
           </div>

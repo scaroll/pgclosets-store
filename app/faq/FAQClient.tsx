@@ -4,6 +4,10 @@ import StandardLayout from "@/components/layout/StandardLayout"
 import Link from "next/link"
 import { useState } from "react"
 import { FAQSchema } from "@/components/seo/FAQSchema"
+import Heading from "@/components/ui/Heading-new"
+import Text from "@/components/ui/Text-new"
+import Button from "@/components/ui/Button-new"
+import Card from "@/components/ui/Card-new"
 
 interface FAQItem {
   id: string
@@ -210,25 +214,23 @@ export default function FAQClient() {
       <main className="max-w-6xl mx-auto px-4 py-12">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-light tracking-tight text-slate-900 mb-6">
+          <Heading level={1} className="mb-6">
             Frequently Asked Questions
-          </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          </Heading>
+          <Text variant="large" className="max-w-3xl mx-auto mb-8">
             Get answers to common questions about our free quote process, professional installation,
             warranty coverage, and service areas throughout Ottawa.
-          </p>
+          </Text>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors"
-            >
-              Get Your Free Quote
+            <Link href="/contact">
+              <Button variant="primary" size="lg">
+                Get Your Free Quote
+              </Button>
             </Link>
-            <a
-              href="tel:6134225800"
-              className="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-colors"
-            >
-              Call (613) 422-5800
+            <a href="tel:6134225800">
+              <Button variant="secondary" size="lg">
+                Call (613) 422-5800
+              </Button>
             </a>
           </div>
         </div>
@@ -255,10 +257,7 @@ export default function FAQClient() {
         {/* FAQ Items */}
         <div className="space-y-4">
           {filteredItems.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden"
-            >
+            <Card key={item.id} className="overflow-hidden">
               <button
                 onClick={() => toggleItem(item.id)}
                 className="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-inset"
@@ -266,9 +265,9 @@ export default function FAQClient() {
                 aria-controls={`answer-${item.id}`}
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-medium text-slate-900 pr-4">
+                  <Heading level={3} className="pr-4">
                     {item.question}
-                  </h3>
+                  </Heading>
                   <svg
                     className={`w-5 h-5 text-slate-500 transition-transform duration-200 flex-shrink-0 ${
                       openItems.has(item.id) ? "rotate-180" : ""
@@ -286,43 +285,43 @@ export default function FAQClient() {
                   id={`answer-${item.id}`}
                   className="px-6 pb-4 border-t border-gray-100"
                 >
-                  <p className="text-slate-600 leading-relaxed pt-4">
+                  <Text variant="body" className="pt-4">
                     {item.answer}
-                  </p>
+                  </Text>
                 </div>
               )}
-            </div>
+            </Card>
           ))}
         </div>
 
         {/* Call-to-Action Section */}
-        <div className="mt-16 bg-gray-50 rounded-xl p-8 text-center">
-          <h2 className="text-2xl font-light text-slate-900 mb-4">
+        <Card className="mt-16 text-center">
+          <Heading level={2} className="mb-4">
             Still Have Questions?
-          </h2>
-          <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
+          </Heading>
+          <Text variant="body" className="mb-6 max-w-2xl mx-auto">
             Our friendly team is here to help! Contact us for personalized answers about your closet project,
             schedule your free consultation, or get your custom quote today.
-          </p>
+          </Text>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors"
-            >
-              Schedule Free Consultation
+            <Link href="/contact">
+              <Button variant="primary" size="lg">
+                Schedule Free Consultation
+              </Button>
             </Link>
-            <a
-              href="mailto:info@pgclosets.com"
-              className="inline-flex items-center justify-center px-8 py-3 border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-white transition-colors"
-            >
-              Email Your Questions
+            <a href="mailto:info@pgclosets.com">
+              <Button variant="secondary" size="lg">
+                Email Your Questions
+              </Button>
             </a>
           </div>
-          <div className="mt-4 text-sm text-slate-500">
-            <p>Licensed & Insured • Serving Ottawa & Surrounding Areas</p>
-            <p>2-Year Workmanship Warranty • Free Quotes & Consultations</p>
+          <div className="mt-4">
+            <Text variant="small">
+              Licensed & Insured • Serving Ottawa & Surrounding Areas<br />
+              2-Year Workmanship Warranty • Free Quotes & Consultations
+            </Text>
           </div>
-        </div>
+        </Card>
       </main>
     </StandardLayout>
     </>

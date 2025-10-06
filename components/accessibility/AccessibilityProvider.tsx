@@ -239,9 +239,9 @@ function AccessibilityStyles({ settings }: { settings: AccessibilitySettings }) 
       .high-contrast input,
       .high-contrast select,
       .high-contrast textarea {
-        border: 3px solid #000000 !important;
-        background: #ffffff !important;
-        color: #000000 !important;
+        border: 3px solid var(--color-primary) !important;
+        background: var(--color-secondary) !important;
+        color: var(--color-primary) !important;
       }
 
       .high-contrast a {
@@ -305,8 +305,8 @@ function AccessibilityStyles({ settings }: { settings: AccessibilitySettings }) 
         position: absolute;
         top: -40px;
         left: 6px;
-        background: #000000;
-        color: #ffffff;
+        background: var(--color-primary);
+        color: var(--color-secondary);
         padding: 8px;
         text-decoration: none;
         border-radius: 4px;

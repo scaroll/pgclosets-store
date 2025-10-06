@@ -25,7 +25,7 @@ export function PGLogo({
     >
       <defs>
         <linearGradient id="pgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#0f172a" />
+          <stop offset="0%" stopColor="var(--color-text-muted)" />
           <stop offset="100%" stopColor="#1e293b" />
         </linearGradient>
       </defs>
@@ -37,7 +37,7 @@ export function PGLogo({
         fontFamily="Inter, system-ui, sans-serif"
         fontSize="14"
         fontWeight="700"
-        fill="#fff"
+        fill="var(--color-secondary)"
       >
         PG
       </text>
@@ -48,7 +48,7 @@ export function PGLogo({
           fontFamily="Inter, system-ui, sans-serif"
           fontSize="16"
           fontWeight="600"
-          fill="#0f172a"
+          fill="var(--color-text-muted)"
         >
           PG Closets
         </text>

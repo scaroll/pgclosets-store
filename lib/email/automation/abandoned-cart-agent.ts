@@ -256,7 +256,7 @@ export class AbandonedCartAgent {
     const itemsHtml = config.items
       .map(
         (item) => `
-      <div style="border-bottom: 1px solid #E5E7EB; padding: 15px 0; display: flex; align-items: center;">
+      <div style="border-bottom: 1px solid var(--color-border-default); padding: 15px 0; display: flex; align-items: center;">
         ${
           item.image
             ? `<img src="${item.image}" alt="${item.name}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; margin-right: 15px;">`
@@ -280,7 +280,7 @@ export class AbandonedCartAgent {
           <head>
             <style>
               body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-              .container { max-width: 600px; margin: 0 auto; background: #ffffff; }
+              .container { max-width: 600px; margin: 0 auto; background: var(--color-secondary); }
               .header { background: #1B4A9C; color: white; padding: 30px 20px; text-align: center; }
               .content { padding: 40px 30px; }
               .cart-items { background: #F9FAFB; padding: 20px; border-radius: 8px; margin: 20px 0; }

@@ -3,8 +3,11 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import Button from "@/components/ui/Button-new";
+import Heading from "@/components/ui/Heading-new";
+import Text from "@/components/ui/Text-new";
+import Card from "@/components/ui/Card-new";
+import { Card as ShadcnCard, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { formatPrice } from "@/lib/utils";
 import {
@@ -225,20 +228,20 @@ export function PremiumProductDetailPage({
           <div className="space-y-6">
             {/* Category & Title */}
             <div>
-              <p className="text-sm uppercase tracking-widest text-gray-500 mb-2">
+              <Text size="xs" className="uppercase tracking-widest text-gray-500 mb-2">
                 {product.collection?.title || "Premium Collection"}
-              </p>
-              <h1 className="text-4xl lg:text-5xl font-extralight tracking-tight text-gray-900 mb-4">
+              </Text>
+              <Heading level={1} className="mb-4">
                 {product.title}
-              </h1>
+              </Heading>
             </div>
 
             {/* Price */}
             <div className="flex items-baseline gap-3">
-              <span className="text-3xl font-extralight text-gray-900">
+              <Text size="lg" className="text-3xl font-extralight">
                 {formatPrice(selectedVariant.price * 100)}
-              </span>
-              <span className="text-sm text-gray-500">CAD</span>
+              </Text>
+              <Text size="sm" variant="muted">CAD</Text>
             </div>
 
             {/* Rating */}
@@ -251,13 +254,13 @@ export function PremiumProductDetailPage({
                   />
                 ))}
               </div>
-              <span className="text-sm text-gray-600">4.8 (127 reviews)</span>
+              <Text size="sm" variant="secondary">4.8 (127 reviews)</Text>
             </div>
 
             {/* Description */}
-            <p className="text-gray-600 leading-relaxed">
+            <Text size="base" variant="secondary" className="leading-relaxed">
               {product.description}
-            </p>
+            </Text>
 
             {/* Variant Selection (if multiple variants) */}
             {product.variants.length > 1 && (
@@ -289,22 +292,23 @@ export function PremiumProductDetailPage({
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
               <Button
                 size="lg"
-                variant="brand-primary"
-                className="flex-1"
+                variant="primary"
+                className="flex-1 inline-flex items-center justify-center"
               >
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 Request Quote
               </Button>
-              <Button
-                size="lg"
-                variant="brand-outline"
-                asChild
-              >
-                <Link href="/contact">
+              <Link href="/contact" className="flex-1">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  fullWidth
+                  className="inline-flex items-center justify-center"
+                >
                   <FileText className="w-5 h-5 mr-2" />
                   Schedule Consultation
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </div>
 
             {/* Trust Signals */}
@@ -528,9 +532,9 @@ export function PremiumProductDetailPage({
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div className="mt-20">
-            <h2 className="text-3xl font-extralight tracking-tight text-gray-900 mb-8">
+            <Heading level={2} className="mb-8">
               Related Products
-            </h2>
+            </Heading>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {relatedProducts.map((related) => (
                 <Link
@@ -538,7 +542,7 @@ export function PremiumProductDetailPage({
                   href={`/products/${related.handle}`}
                   className="group"
                 >
-                  <Card className="border-0 shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                  <Card hover padding="sm" className="overflow-hidden">
                     <div className="relative aspect-square bg-gray-50">
                       <Image
                         src={related.thumbnail || "/placeholder.svg"}
@@ -547,17 +551,17 @@ export function PremiumProductDetailPage({
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <CardContent className="p-4">
-                      <h3 className="font-medium text-gray-900 mb-1 line-clamp-2">
+                    <div className="mt-4">
+                      <Heading level={3} className="mb-1 line-clamp-2">
                         {related.title}
-                      </h3>
-                      <p className="text-sm text-gray-500 mb-2">
+                      </Heading>
+                      <Text size="sm" variant="muted" className="mb-2">
                         {related.collection?.title}
-                      </p>
-                      <p className="text-lg font-extralight text-gray-900">
+                      </Text>
+                      <Text size="lg" className="font-extralight">
                         {formatPrice(related.variants[0]?.price * 100)}
-                      </p>
-                    </CardContent>
+                      </Text>
+                    </div>
                   </Card>
                 </Link>
               ))}

@@ -46,7 +46,7 @@ export const colors = {
 
   // Neutral Palette - Warm and approachable
   neutral: {
-    white: '#ffffff',
+    white: 'var(--color-secondary)',
     offwhite: '#fafaf9',
     50: '#fafaf9',
     100: '#f5f5f4',
@@ -103,10 +103,10 @@ export const colors = {
 
   // Surface Colors
   surface: {
-    primary: '#ffffff',
+    primary: 'var(--color-secondary)',
     secondary: '#fafaf9',
     tertiary: '#f5f5f4',
-    elevated: '#ffffff',
+    elevated: 'var(--color-secondary)',
     overlay: 'rgba(0, 0, 0, 0.5)',
   },
 
@@ -115,7 +115,7 @@ export const colors = {
     primary: '#1c1917',      // 16.63:1 contrast ratio on white
     secondary: '#57534e',    // 7.42:1 contrast ratio on white
     tertiary: '#78716c',     // 4.76:1 contrast ratio on white
-    inverse: '#ffffff',
+    inverse: 'var(--color-secondary)',
     disabled: '#a8a29e',
     link: '#1e3a5f',
     linkHover: '#334e68',

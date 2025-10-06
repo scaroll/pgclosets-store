@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import StandardLayout from "@/components/layout/StandardLayout";
+import Button from '@/components/ui/Button-new';
+import Heading from '@/components/ui/Heading-new';
+import Text from '@/components/ui/Text-new';
+import Section from '@/components/ui/Section-new';
 
 export const metadata: Metadata = {
   title:
@@ -44,50 +48,43 @@ export default function ServicesPage() {
 
           <div className="relative z-10 container mx-auto px-4 text-center text-white">
             <div className="max-w-4xl mx-auto space-y-6">
-              <span className="inline-block text-xs text-slate-300 font-light uppercase tracking-widest mb-4">
+              <Text size="xs" variant="secondary" className="inline-block uppercase tracking-widest mb-4">
                 Professional Excellence
-              </span>
-              <h1 className="text-5xl lg:text-6xl font-extralight leading-tight tracking-tight">
+              </Text>
+              <Heading level={1} className="text-white mb-6">
                 Luxury Closet Door
                 <br />
                 <span className="text-slate-200">Services</span>
-              </h1>
-              <p className="text-xl lg:text-2xl text-slate-200 max-w-2xl mx-auto font-light tracking-wide">
+              </Heading>
+              <Text size="lg" variant="secondary" className="max-w-2xl mx-auto mb-8">
                 Expert installation • Custom solutions • Lifetime warranty
-              </p>
+              </Text>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/contact"
-                  className="bg-slate-900 text-white font-light px-12 py-4 text-lg tracking-wide transition-all duration-500 hover:bg-slate-800 hover:shadow-2xl hover:scale-105 uppercase inline-block"
-                >
-                  Get Free Consultation
-                </Link>
-                <Link
-                  href="/products"
-                  className="border border-slate-300 text-slate-100 font-light px-12 py-4 text-lg tracking-wide transition-all duration-300 hover:border-white hover:text-white inline-block"
-                >
-                  Browse Collection
-                </Link>
+                <Button variant="primary" size="lg" className="bg-slate-900 hover:opacity-90">
+                  <Link href="/contact">Get Free Consultation</Link>
+                </Button>
+                <Button variant="secondary" size="lg">
+                  <Link href="/products">Browse Collection</Link>
+                </Button>
               </div>
             </div>
           </div>
         </section>
 
         {/* Services Grid with Luxury Styling */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <span className="inline-block text-xs text-slate-500 font-light uppercase tracking-widest mb-4">
-                Our Services
-              </span>
-              <h2 className="text-4xl lg:text-5xl font-extralight text-slate-900 mb-4 tracking-tight">
-                Our Services
-              </h2>
-              <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light tracking-wide">
-                Comprehensive closet door solutions from consultation to
-                installation
-              </p>
-            </div>
+        <Section spacing="lg">
+          <div className="text-center mb-16">
+            <Text size="xs" variant="muted" className="inline-block uppercase tracking-widest mb-4">
+              Our Services
+            </Text>
+            <Heading level={2} className="mb-4" balance>
+              Our Services
+            </Heading>
+            <Text size="lg" variant="secondary" className="max-w-2xl mx-auto">
+              Comprehensive closet door solutions from consultation to
+              installation
+            </Text>
+          </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Installation Service */}
@@ -104,14 +101,14 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-light text-slate-900 mb-3 tracking-wide uppercase">
+                  <Heading level={3} className="mb-3 uppercase">
                     Professional Installation
-                  </h3>
-                  <p className="text-slate-600 mb-4 font-light leading-relaxed">
+                  </Heading>
+                  <Text variant="secondary" className="mb-4">
                     Expert installation of all Renin closet door systems with
                     precision and care. Our certified installers ensure perfect
                     fit and function.
-                  </p>
+                  </Text>
                   <ul className="space-y-2 text-sm text-slate-600 mb-6 font-light">
                     <li className="flex items-center gap-2">
                       <svg
@@ -156,11 +153,10 @@ export default function ServicesPage() {
                       Clean-up included
                     </li>
                   </ul>
-                  <Link
-                    href="/contact"
-                    className="w-full bg-slate-900 text-white py-3 font-light hover:bg-slate-800 transition-all duration-500 hover:shadow-xl text-sm uppercase tracking-widest text-center block"
-                  >
-                    Schedule Installation
+                  <Link href="/contact" className="w-full">
+                    <Button variant="primary" className="w-full" size="md">
+                      Schedule Installation
+                    </Button>
                   </Link>
                 </div>
               </div>
@@ -179,13 +175,13 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-light text-slate-900 mb-3 tracking-wide uppercase">
+                  <Heading level={3} className="mb-3 uppercase">
                     Free Consultation
-                  </h3>
-                  <p className="text-slate-600 mb-4 font-light leading-relaxed">
+                  </Heading>
+                  <Text variant="secondary" className="mb-4">
                     In-home consultation to assess your space, discuss options,
                     and provide instant CAD pricing for your project.
-                  </p>
+                  </Text>
                   <ul className="space-y-2 text-sm text-slate-600 mb-6 font-light">
                     <li className="flex items-center gap-2">
                       <svg
@@ -230,11 +226,10 @@ export default function ServicesPage() {
                       Design recommendations
                     </li>
                   </ul>
-                  <Link
-                    href="/contact"
-                    className="w-full border border-slate-300 text-slate-700 py-3 font-light hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 text-sm uppercase tracking-widest text-center block"
-                  >
-                    Book Consultation
+                  <Link href="/contact" className="w-full">
+                    <Button variant="secondary" className="w-full" size="md">
+                      Book Consultation
+                    </Button>
                   </Link>
                 </div>
               </div>
@@ -253,13 +248,13 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-light text-slate-900 mb-3 tracking-wide uppercase">
+                  <Heading level={3} className="mb-3 uppercase">
                     Custom Solutions
-                  </h3>
-                  <p className="text-slate-600 mb-4 font-light leading-relaxed">
+                  </Heading>
+                  <Text variant="secondary" className="mb-4">
                     Tailored closet door solutions for unique spaces, including
                     custom sizing, finishes, and hardware configurations.
-                  </p>
+                  </Text>
                   <ul className="space-y-2 text-sm text-slate-600 mb-6 font-light">
                     <li className="flex items-center gap-2">
                       <svg
@@ -304,32 +299,29 @@ export default function ServicesPage() {
                       Special hardware
                     </li>
                   </ul>
-                  <Link
-                    href="/contact"
-                    className="w-full bg-slate-900 text-white py-3 font-light hover:bg-slate-800 transition-all duration-500 hover:shadow-xl text-sm uppercase tracking-widest text-center block"
-                  >
-                    Discuss Custom Project
+                  <Link href="/contact" className="w-full">
+                    <Button variant="primary" className="w-full" size="md">
+                      Discuss Custom Project
+                    </Button>
                   </Link>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+        </Section>
 
         {/* Process Section with Luxury Typography */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <span className="inline-block text-xs text-slate-500 font-light uppercase tracking-widest mb-4">
-                Our Process
-              </span>
-              <h2 className="text-4xl lg:text-5xl font-extralight text-slate-900 mb-4 tracking-tight">
-                Our Process
-              </h2>
-              <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light tracking-wide">
-                Simple, transparent process from consultation to completion
-              </p>
-            </div>
+        <Section spacing="lg" variant="light">
+          <div className="text-center mb-16">
+            <Text size="xs" variant="muted" className="inline-block uppercase tracking-widest mb-4">
+              Our Process
+            </Text>
+            <Heading level={2} className="mb-4" balance>
+              Our Process
+            </Heading>
+            <Text size="lg" variant="secondary" className="max-w-2xl mx-auto">
+              Simple, transparent process from consultation to completion
+            </Text>
+          </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {[
@@ -373,40 +365,37 @@ export default function ServicesPage() {
                       {item.step}
                     </div>
                   </div>
-                  <h3 className="text-xl font-light text-slate-900 mb-2 tracking-wide uppercase">
+                  <Heading level={3} className="mb-2 uppercase text-center">
                     {item.title}
-                  </h3>
-                  <p className="text-slate-600 font-light">
+                  </Heading>
+                  <Text variant="secondary" className="text-center">
                     {item.description}
-                  </p>
+                  </Text>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
+        </Section>
 
         {/* CTA Section with Luxury Styling */}
-        <section className="py-20 bg-slate-900">
-          <div className="max-w-4xl mx-auto px-4 text-center text-white">
-            <h2 className="text-4xl lg:text-5xl font-extralight mb-6 tracking-tight">
+        <Section spacing="lg" variant="dark" className="bg-slate-900">
+          <div className="text-center">
+            <Heading level={2} className="text-white mb-6" balance>
               Ready to Get Started?
-            </h2>
-            <p className="text-xl text-slate-200 mb-8 font-light tracking-wide max-w-2xl mx-auto">
+            </Heading>
+            <Text size="lg" className="mb-8 max-w-2xl mx-auto text-slate-200">
               Transform your space with premium Renin closet doors. Free
               consultation, transparent pricing, lifetime warranty.
-            </p>
+            </Text>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-slate-900 px-12 py-4 font-light text-lg uppercase tracking-widest hover:bg-gray-100 hover:scale-105 transition-all duration-300 inline-block"
-              >
-                Schedule Free Consultation
+              <Link href="/contact">
+                <Button variant="primary" size="lg" className="bg-white text-slate-900 hover:bg-gray-100">
+                  Schedule Free Consultation
+                </Button>
               </Link>
-              <Link
-                href="/products"
-                className="border-2 border-white text-white px-12 py-4 font-light text-lg uppercase tracking-widest hover:bg-white hover:text-slate-900 transition-all duration-300 inline-block"
-              >
-                Browse Collection
+              <Link href="/products">
+                <Button variant="secondary" size="lg" className="text-white">
+                  Browse Collection
+                </Button>
               </Link>
             </div>
             <div className="mt-8 flex items-center justify-center gap-6 text-sm text-slate-300 font-light">
@@ -426,7 +415,7 @@ export default function ServicesPage() {
               <div>Lifetime Warranty</div>
             </div>
           </div>
-        </section>
+        </Section>
       </main>
     </StandardLayout>
   );

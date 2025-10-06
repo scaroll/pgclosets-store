@@ -125,7 +125,7 @@ export function getBlurDataURL(width: number = 10, height: number = 10): string 
       <filter id="blur">
         <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
       </filter>
-      <rect width="${width}" height="${height}" fill="#e5e7eb" filter="url(#blur)" />
+      <rect width="${width}" height="${height}" fill="var(--color-border-default)" filter="url(#blur)" />
     </svg>
   `;
 
