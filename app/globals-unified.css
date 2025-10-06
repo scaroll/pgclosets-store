@@ -273,7 +273,7 @@
   }
 
   .textarea {
-    @apply input min-h-[120px] resize-vertical;
+    @apply input min-h-[120px] resize-y;
   }
 }
 
