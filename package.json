@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": ">=20.x"
   },
   "scripts": {
     "build": "next build",
@@ -121,6 +121,7 @@
     "@vitejs/plugin-react": "^5.0.3",
     "autoprefixer": "^10.4.20",
     "buffer": "^6.0.3",
+    "critters": "^0.0.23",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.2.4",
     "eslint-plugin-unused-imports": "^4.2.0",
