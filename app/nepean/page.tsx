@@ -68,6 +68,18 @@ export default function NepeanPage() {
               Serving Barrhaven, Manotick, Riverside South, and all Nepean communities with professional Renin closet
               door installation
             </p>
+            <div className="max-w-3xl mx-auto mb-8">
+              <p className="text-lg text-blue-50 mb-4 leading-relaxed">
+                From Barrhaven's newest developments to Manotick's charming village homes, Nepean's diverse communities
+                trust PG Closets for premium closet solutions. As Ottawa's official Renin dealer, we deliver expert
+                installation with lifetime warranty coverage throughout all of Nepean.
+              </p>
+              <p className="text-base text-blue-100">
+                <a href="/gallery" className="underline hover:text-white">
+                  Browse Nepean project gallery →
+                </a>
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 variant="primary"
@@ -75,15 +87,15 @@ export default function NepeanPage() {
                 href="/request-work"
                 className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
               >
-                Get Free Nepean Quote →
+                Get Free Quote
               </Button>
               <Button
                 variant="secondary"
                 size="lg"
-                href="/products"
+                href="/book-measurement"
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
               >
-                Browse Products
+                Book Measurement
               </Button>
             </div>
           </div>
@@ -185,6 +197,26 @@ export default function NepeanPage() {
         </div>
       </section>
 
+      {/* Product Links */}
+      <section className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-4">Popular in Nepean</h3>
+          <p className="text-gray-600 text-lg">
+            <a href="/products/bypass-doors" className="text-blue-600 hover:underline mr-4">
+              Bypass Doors
+            </a>
+            |
+            <a href="/products/barn-doors" className="text-blue-600 hover:underline ml-4 mr-4">
+              Barn Doors
+            </a>
+            |
+            <a href="/products/interior-doors" className="text-blue-600 hover:underline ml-4">
+              Interior Doors
+            </a>
+          </p>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -199,7 +231,7 @@ export default function NepeanPage() {
               href="/request-work"
               className="bg-white text-blue-600 hover:bg-gray-100"
             >
-              Get Free Nepean Quote →
+              Get Free Quote
             </Button>
             <Button
               variant="secondary"

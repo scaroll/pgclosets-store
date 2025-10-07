@@ -10,7 +10,6 @@ export const BUSINESS_INFO = {
   fullName: "PG Closets - Official Renin Dealer",
   
   // Contact Information
-  phone: "(613) 422-5800",
   email: "info@pgclosets.com",
 
   // Business Address

@@ -10,6 +10,7 @@ import { useQuote } from "@/hooks/useQuote"
 import { QuoteItemCard } from "@/components/quote/QuoteItemCard"
 import { QuoteContactForm } from "@/components/quote/QuoteContactForm"
 import type { QuoteFormData } from "@/lib/types/quote"
+import { trackCTAClick, trackQuoteStart, trackMeasurementHelperClick } from "@/lib/analytics/events"
 import { ArrowLeft, FileText } from "lucide-react"
 
 export default function QuotePage() {
@@ -62,7 +63,7 @@ export default function QuotePage() {
               Add products to your quote to get a customized estimate from our team
             </p>
             <div className="flex gap-4 justify-center">
-              <Button asChild size="lg" className="bg-black hover:bg-gray-800">
+              <Button asChild size="lg" variant="primary">
                 <Link href="/products">Browse Products</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
@@ -166,7 +167,7 @@ export default function QuotePage() {
                     </div>
                   </div>
 
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">
+                  <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-default)] rounded-lg p-4 text-sm text-[var(--color-text-body)]">
                     <p className="font-medium mb-1">Note:</p>
                     <p>This is an estimated total. Final pricing will be confirmed in your quote.</p>
                   </div>
@@ -211,11 +212,19 @@ export default function QuotePage() {
                     </div>
                     <Button
                       size="lg"
+                      variant="primary"
                       className="w-full mt-4"
-                      onClick={() => setShowContactForm(true)}
+                      onClick={() => {
+                        trackQuoteStart({ items: itemCount, total });
+                        setShowContactForm(true);
+                      }}
                     >
-                      Continue to Contact Form
+                      Get Free Quote
                     </Button>
+                    {/* Reassurance Copy - Mobile */}
+                    <p className="text-sm text-gray-600 text-center mt-2">
+                      No obligation • Reply within 24h
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -247,7 +256,7 @@ export default function QuotePage() {
                     </div>
                   </div>
 
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">
+                  <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-default)] rounded-lg p-4 text-sm text-[var(--color-text-body)]">
                     <p className="font-medium mb-1">What happens next?</p>
                     <ul className="list-disc list-inside space-y-1 text-xs">
                       <li>Submit your information</li>
@@ -257,11 +266,35 @@ export default function QuotePage() {
                     </ul>
                   </div>
 
-                  <Button size="lg" className="w-full" onClick={() => setShowContactForm(true)}>
-                    Continue to Contact Form
+                  <Button
+                    size="lg"
+                    variant="primary"
+                    className="w-full"
+                    onClick={() => {
+                      trackQuoteStart({ items: itemCount, total });
+                      setShowContactForm(true);
+                    }}
+                  >
+                    Get Free Quote
                   </Button>
 
-                  <Button variant="outline" className="w-full" asChild>
+                  {/* Reassurance Copy */}
+                  <p className="text-sm text-gray-600 text-center mt-2">
+                    No obligation • Reply within 24h
+                  </p>
+
+                  {/* Measurement Helper */}
+                  <p className="text-sm text-center mt-2">
+                    <Link
+                      href="/book-measurement"
+                      className="text-blue-600 hover:underline"
+                      onClick={() => trackMeasurementHelperClick({ location: 'quote-page' })}
+                    >
+                      Need help measuring? View our guide →
+                    </Link>
+                  </p>
+
+                  <Button variant="outline" className="w-full mt-4" asChild>
                     <Link href="/products">Add More Items</Link>
                   </Button>
                 </CardContent>

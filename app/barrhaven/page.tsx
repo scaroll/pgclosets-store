@@ -68,6 +68,18 @@ export default function BarrhavenPage() {
               Serving Stonebridge, Half Moon Bay, Davidson Heights, and all Barrhaven communities with professional
               Renin closet door installation
             </p>
+            <div className="max-w-3xl mx-auto mb-8">
+              <p className="text-lg text-blue-50 mb-4 leading-relaxed">
+                Barrhaven's fastest-growing community deserves top-tier home solutions that match your lifestyle. From
+                waterfront properties in Half Moon Bay to executive homes in Stonebridge, PG Closets delivers premium
+                Renin closet systems with expert installation and complete warranty protection.
+              </p>
+              <p className="text-base text-blue-100">
+                <a href="/gallery" className="underline hover:text-white">
+                  View Barrhaven transformations →
+                </a>
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 variant="primary"
@@ -75,15 +87,15 @@ export default function BarrhavenPage() {
                 href="/request-work"
                 className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
               >
-                Get Free Barrhaven Quote →
+                Get Free Quote
               </Button>
               <Button
                 variant="secondary"
                 size="lg"
-                href="/products"
+                href="/book-measurement"
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
               >
-                Browse Products
+                Book Measurement
               </Button>
             </div>
           </div>
@@ -184,6 +196,26 @@ export default function BarrhavenPage() {
         </div>
       </section>
 
+      {/* Product Links */}
+      <section className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-4">Popular in Barrhaven</h3>
+          <p className="text-gray-600 text-lg">
+            <a href="/products/barn-doors" className="text-blue-600 hover:underline mr-4">
+              Barn Doors
+            </a>
+            |
+            <a href="/products/bypass-doors" className="text-blue-600 hover:underline ml-4 mr-4">
+              Bypass Doors
+            </a>
+            |
+            <a href="/products/interior-doors" className="text-blue-600 hover:underline ml-4">
+              Interior Doors
+            </a>
+          </p>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -198,7 +230,7 @@ export default function BarrhavenPage() {
               href="/request-work"
               className="bg-white text-blue-600 hover:bg-gray-100"
             >
-              Get Free Barrhaven Quote →
+              Get Free Quote
             </Button>
             <Button
               variant="secondary"

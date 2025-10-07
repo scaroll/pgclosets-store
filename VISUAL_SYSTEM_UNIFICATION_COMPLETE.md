@@ -64,7 +64,7 @@ node scripts/refactor-to-tokens.js --src ./app ./components ./lib
 
 **Components Created**:
 
-1. **Button-new.tsx**
+1. **components/ui/button.tsx**
    - Variants: primary, secondary, ghost
    - Sizes: sm, md, lg
    - Full-width support
@@ -245,7 +245,7 @@ All Pages
 
 ```
 UI Kit Components (components/ui/)
-    ├── Button-new.tsx
+    ├── button.tsx
     ├── Heading-new.tsx
     ├── Text-new.tsx
     ├── Card-new.tsx
@@ -263,7 +263,7 @@ UI Kit Components (components/ui/)
 
 ```tsx
 // Standard import pattern used across all pages
-import Button from '@/components/ui/Button-new';
+import { Button } from '@/components/ui/button';
 import Heading from '@/components/ui/Heading-new';
 import Text from '@/components/ui/Text-new';
 import Card from '@/components/ui/Card-new';
@@ -367,7 +367,7 @@ vercel --prod --yes
 2. `scripts/refactor-to-tokens.js` - Hex color replacer
 3. `styles/tokens.css` - CSS variables
 4. `styles/typography.css` - Typography system
-5. `components/ui/Button-new.tsx` - Button component
+5. `components/ui/button.tsx` - Unified button component
 6. `components/ui/Heading-new.tsx` - Heading component
 7. `components/ui/Text-new.tsx` - Text component
 8. `components/ui/Card-new.tsx` - Card component

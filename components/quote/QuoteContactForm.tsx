@@ -44,9 +44,8 @@ export function QuoteContactForm({ onSubmit }: QuoteContactFormProps) {
       newErrors.email = "Invalid email address"
     }
 
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required"
-    } else if (!/^\+?[\d\s\-\(\)]+$/.test(formData.phone)) {
+    // Phone is now optional, only validate if provided
+    if (formData.phone.trim() && !/^\+?[\d\s\-\(\)]+$/.test(formData.phone)) {
       newErrors.phone = "Invalid phone number"
     }
 
@@ -162,14 +161,14 @@ export function QuoteContactForm({ onSubmit }: QuoteContactFormProps) {
 
               <div className="space-y-2">
                 <Label htmlFor="phone">
-                  Phone <span className="text-red-500">*</span>
+                  Phone (Optional)
                 </Label>
                 <Input
                   id="phone"
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => handleChange("phone", e.target.value)}
-                  placeholder="(613) 422-5800"
+                  placeholder="Optional contact number"
                   aria-invalid={!!errors.phone}
                   className={errors.phone ? "border-red-500" : ""}
                 />
@@ -268,6 +267,11 @@ export function QuoteContactForm({ onSubmit }: QuoteContactFormProps) {
               "Submit Quote Request"
             )}
           </Button>
+
+          {/* Reassurance Copy */}
+          <p className="text-sm text-gray-600 text-center font-medium">
+            No obligation • Ottawa team replies within 24h
+          </p>
 
           <p className="text-sm text-gray-500 text-center">
             By submitting this form, you agree to be contacted by PG Closets regarding your quote request.

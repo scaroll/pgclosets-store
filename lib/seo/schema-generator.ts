@@ -61,7 +61,6 @@ export function generateProductSchema(product: ProductSchemaInput) {
         '@type': 'Organization',
         name: BUSINESS_INFO.name,
         url: BUSINESS_INFO.urls.main,
-        telephone: BUSINESS_INFO.phone,
         email: BUSINESS_INFO.email
       },
       shippingDetails: {
@@ -141,7 +140,6 @@ export function generateLocalBusinessSchema() {
     image: `${BUSINESS_INFO.urls.main}${BUSINESS_INFO.urls.logo}`,
     description: 'Premium closet doors and custom storage solutions in Ottawa. Official Renin dealer with professional installation.',
     url: BUSINESS_INFO.urls.main,
-    telephone: BUSINESS_INFO.phone,
     email: BUSINESS_INFO.email,
     address: getSchemaAddress(),
     geo: getSchemaGeo(),
@@ -227,8 +225,7 @@ export function generateServiceSchema(service: ServiceSchemaInput) {
       '@type': 'LocalBusiness',
       name: BUSINESS_INFO.fullName,
       address: getSchemaAddress(),
-      telephone: BUSINESS_INFO.phone,
-      email: BUSINESS_INFO.email,
+        email: BUSINESS_INFO.email,
       url: BUSINESS_INFO.urls.main
     },
     areaServed: (service.areaServed || BUSINESS_INFO.serviceAreas).map(area => ({
@@ -292,13 +289,11 @@ export function generateOrganizationSchema() {
     logo: `${BUSINESS_INFO.urls.main}${BUSINESS_INFO.urls.logo}`,
     description: 'Premium closet doors and custom storage solutions in Ottawa',
     email: BUSINESS_INFO.email,
-    telephone: BUSINESS_INFO.phone,
     address: getSchemaAddress(),
     sameAs: Object.values(BUSINESS_INFO.social).filter(Boolean),
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: BUSINESS_INFO.phone,
-      contactType: 'customer service',
+        contactType: 'customer service',
       email: BUSINESS_INFO.email,
       areaServed: 'CA',
       availableLanguage: ['en', 'fr']
@@ -379,8 +374,7 @@ export function generateNeighborhoodSchema(neighborhood: Neighborhood) {
     provider: {
       '@type': 'LocalBusiness',
       name: BUSINESS_INFO.fullName,
-      telephone: BUSINESS_INFO.phone,
-      email: BUSINESS_INFO.email,
+        email: BUSINESS_INFO.email,
       address: getSchemaAddress(),
       url: BUSINESS_INFO.urls.main,
       geo: {

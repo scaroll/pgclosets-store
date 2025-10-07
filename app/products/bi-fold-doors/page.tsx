@@ -60,7 +60,7 @@ export default function BiFoldDoorsPage() {
             </Link>
             <Link href="/request-work">
               <Button variant="outline" size="lg" className="bg-white text-pg-primary hover:bg-gray-100">
-                Request Quote
+                Get Free Quote
               </Button>
             </Link>
           </div>

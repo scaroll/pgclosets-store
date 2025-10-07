@@ -151,7 +151,7 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                 onClick={onClose}
                 className="flex items-center justify-center gap-2 w-full bg-black text-white px-6 py-4 text-sm font-bold tracking-wide hover:bg-gray-800 transition-colors"
               >
-                GET FREE CONSULTATION
+                GET FREE QUOTE
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -170,12 +170,13 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
 
             {/* Contact info */}
             <div className="pt-6 pb-8 border-t border-gray-100">
-              <a
-                href="tel:6134225800"
+              <Link
+                href="/contact"
+                onClick={onClose}
                 className="block text-center text-sm text-gray-600 hover:text-black transition-colors"
               >
-                Call us: <span className="font-semibold">(613) 422-5800</span>
-              </a>
+                Questions? <span className="font-semibold">Email Us</span>
+              </Link>
             </div>
           </div>
         </nav>

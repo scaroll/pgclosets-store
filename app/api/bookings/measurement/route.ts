@@ -74,7 +74,7 @@ const sendEmailNotification = async (bookingData: MeasurementBookingData, confir
         <li>Have any inspiration photos or ideas ready to share</li>
       </ul>
 
-      <p>If you need to reschedule or have any questions, please contact us at <a href="mailto:info@pgclosets.ca">info@pgclosets.ca</a> or call us at (613) 422-5800.</p>
+      <p>If you need to reschedule or have any questions, please contact us at <a href="mailto:info@pgclosets.ca">info@pgclosets.ca</a>.</p>
 
       <p>We look forward to helping you create your perfect space!</p>
 

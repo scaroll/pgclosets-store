@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 // Common validation patterns
-const phoneRegex = /^(\+1\s?)?(\d{3}[-.\s]?)?\d{3}[-.\s]?\d{4}$/;
 const postalCodeRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/; // Canadian postal code
 const nameRegex = /^[a-zA-Z\s'-]+$/;
 
@@ -13,13 +12,6 @@ export const emailSchema = z
   .max(320, "Email address too long")
   .toLowerCase()
   .trim();
-
-export const phoneSchema = z
-  .string()
-  .optional()
-  .refine((val) => !val || phoneRegex.test(val), {
-    message: "Invalid phone number format. Use format: +1 (XXX) XXX-XXXX or XXX-XXX-XXXX",
-  });
 
 export const nameSchema = z
   .string()
@@ -40,7 +32,6 @@ export const contactFormSchema = z.object({
   firstName: nameSchema,
   lastName: nameSchema,
   email: emailSchema,
-  phone: phoneSchema,
   message: z
     .string()
     .min(1, "Message is required")
@@ -73,7 +64,6 @@ export const quoteRequestSchema = z.object({
   customer: z.object({
     name: nameSchema,
     email: emailSchema,
-    phone: phoneSchema,
     province: z
       .string()
       .min(2, "Province is required")
@@ -154,7 +144,6 @@ export const userProfileSchema = z.object({
   email: emailSchema,
   firstName: nameSchema,
   lastName: nameSchema,
-  phone: phoneSchema,
   address: z.object({
     street: z
       .string()
@@ -261,10 +250,6 @@ export const measurementBookingSchema = z.object({
     firstName: nameSchema,
     lastName: nameSchema,
     email: emailSchema,
-    phone: z
-      .string()
-      .min(1, "Phone number is required")
-      .regex(phoneRegex, "Invalid phone number format"),
   }),
   address: z.object({
     street: z

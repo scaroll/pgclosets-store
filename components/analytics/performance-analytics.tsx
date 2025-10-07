@@ -203,20 +203,6 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
           })
         })
 
-        // Track phone number clicks
-        const phoneLinks = document.querySelectorAll('a[href^="tel:"]')
-        phoneLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            if (gtag) {
-              gtag("event", "phone_click", {
-                event_category: "Conversions",
-                event_label: "Phone Call",
-                value: 1,
-              })
-            }
-          })
-        })
-
         // Track email clicks
         const emailLinks = document.querySelectorAll('a[href^="mailto:"]')
         emailLinks.forEach((link) => {

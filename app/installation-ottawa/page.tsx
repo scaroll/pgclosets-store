@@ -65,7 +65,7 @@ export default function InstallationOttawaPage() {
               <Button className="btn-primary px-8 py-4 text-lg rounded-full">Schedule Installation</Button>
             </Link>
             <Link href="/request-work">
-              <Button className="btn-secondary px-8 py-4 text-lg rounded-full">Get Quote</Button>
+              <Button className="btn-secondary px-8 py-4 text-lg rounded-full">Get Free Quote</Button>
             </Link>
           </div>
         </div>

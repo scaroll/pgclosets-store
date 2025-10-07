@@ -94,7 +94,6 @@ export default async function ProductDetailPage({
                 "@type": "Organization",
                 name: BUSINESS_INFO.name,
                 url: BUSINESS_INFO.urls.main,
-                telephone: BUSINESS_INFO.phone,
                 email: BUSINESS_INFO.email,
               },
             },

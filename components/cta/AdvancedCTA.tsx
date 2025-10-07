@@ -359,15 +359,15 @@ export const UrgentBookingCTA = (props: Partial<AdvancedCTAProps>) => (
   />
 )
 
-export const PhoneCallCTA = (props: Partial<AdvancedCTAProps>) => (
+export const EmailCTA = (props: Partial<AdvancedCTAProps>) => (
   <AdvancedCTA
-    variant="phone"
+    variant="primary"
     size="md"
-    icon="phone"
-    text="Call (613) 422-5800 - Speak Now"
+    icon="message"
+    text="Email Us - Quick Response"
     socialProof={{
       enabled: true,
-      recentAction: "Average response time: 30 seconds"
+      recentAction: "Average response time: 2 hours"
     }}
     urgency={{
       enabled: true,
@@ -383,7 +383,7 @@ export const QuoteCTA = (props: Partial<AdvancedCTAProps>) => (
     variant="quote"
     size="lg"
     icon="calculator"
-    text="Get Instant Quote in 24 Hours"
+    text="Get Free Quote"
     valueProposition={{
       enabled: true,
       benefit: "Professional consultation included",
@@ -459,7 +459,7 @@ export function getContextualCTA(context: {
   }
 
   if (pageType === "contact") {
-    return PhoneCallCTA
+    return EmailCTA
   }
 
   return QuoteCTA

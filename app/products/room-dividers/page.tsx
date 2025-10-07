@@ -314,10 +314,10 @@ export default async function RoomDividersPage() {
               Request Free Consultation
             </Link>
             <Link
-              href="tel:+1613EXAMPLE"
+              href="mailto:info@pgclosets.com"
               className="border border-white text-white px-8 py-4 text-lg font-light hover:bg-white hover:text-slate-900 transition-all duration-300 uppercase tracking-widest"
             >
-              Call Now
+              Email Us
             </Link>
           </div>
         </div>

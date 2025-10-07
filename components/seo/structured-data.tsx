@@ -95,7 +95,6 @@ export function OrganizationSchema({
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: _contactPoint.telephone,
       email: _contactPoint.email,
       contactType: _contactPoint.contactType,
       availableLanguage: _contactPoint.availableLanguage,
@@ -138,7 +137,6 @@ export function LocalBusinessSchema({
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+1-800-742-5673",
       email: "hello@pgclosets.com",
       contactType: "customer service",
       availableLanguage: ["English", "French"],

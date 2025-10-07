@@ -956,24 +956,38 @@ a:not(.btn-primary):not(.btn-secondary):focus-visible {
   border: 0 !important;
 }
 
-/* Motion preferences for accessibility */
+/* Motion preferences for accessibility - Enhanced for Win #10 */
 @media (prefers-reduced-motion: reduce) {
   .card-apple:hover,
   .btn-primary:hover,
-  .btn-secondary:hover {
-    transform: none;
+  .btn-secondary:hover,
+  .card-modern:hover {
+    transform: none !important;
   }
 
   .animate-bounce,
   .animate-spin,
-  .animate-shimmer {
-    animation: none;
+  .animate-shimmer,
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-scale-in {
+    animation: none !important;
   }
 
-  * {
+  /* Disable all animations and transitions */
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Preserve critical transitions for usability */
+  button:active,
+  a:active {
+    transition-duration: 0ms !important;
   }
 }
 
@@ -1051,11 +1065,34 @@ a:not(.btn-primary):not(.btn-secondary):focus-visible {
   animation: pulse-glow 2s infinite;
 }
 
-/* Enhanced focus states for better accessibility */
+/* Enhanced focus states for better accessibility - Win #10 */
 *:focus-visible {
-  outline: 3px solid var(--pg-sky);
+  outline: 3px solid var(--pg-focus);
   outline-offset: 2px;
   border-radius: 4px;
+  box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.15);
+}
+
+/* Ensure all interactive elements have visible focus */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[role="link"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--pg-focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.15);
+}
+
+/* Card focus states */
+.card-modern:focus-visible,
+.card-apple:focus-visible {
+  outline: 3px solid var(--pg-focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.15);
 }
 
 /* Improved disabled states */

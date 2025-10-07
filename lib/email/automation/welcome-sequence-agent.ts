@@ -232,7 +232,7 @@ export class WelcomeSequenceAgent {
                   <a href="https://www.pgclosets.com/quote" class="cta-button">Get Your Free Quote</a>
                 </center>
 
-                <p>Have questions? Our team is here to help! Reply to this email or call us at <strong>(613) 422-5800</strong>.</p>
+                <p>Have questions? Our team is here to help! Reply to this email anytime.</p>
 
                 <p>Looking forward to helping you create the organized, beautiful space of your dreams!</p>
 
@@ -248,7 +248,7 @@ export class WelcomeSequenceAgent {
                 </div>
 
                 <p>PG Closets - Custom Storage Solutions<br>
-                Ottawa, Ontario | (613) 422-5800</p>
+                Ottawa, Ontario | info@pgclosets.com</p>
 
                 <p>You're receiving this email because you signed up at pgclosets.com<br>
                 <a href="{{unsubscribe_url}}">Unsubscribe</a> | <a href="https://www.pgclosets.com/privacy">Privacy Policy</a></p>

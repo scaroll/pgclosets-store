@@ -321,7 +321,7 @@ export default function QuoteRequestWizard() {
       {/* Progress Header */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold text-gray-900">Request Your Free Quote</h2>
+          <h2 className="text-2xl font-bold text-gray-900">Get Free Quote</h2>
           <div className="flex items-center gap-2 text-sm text-gray-500">
             {saveStatus === "saving" && (
               <>
@@ -438,7 +438,7 @@ export default function QuoteRequestWizard() {
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
-                placeholder="(613) 422-5800"
+                placeholder="Optional contact number"
                 className={errors.phone ? "border-red-500" : ""}
               />
               {errors.phone && (

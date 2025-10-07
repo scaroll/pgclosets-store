@@ -68,6 +68,18 @@ export default function KanataPage() {
               Serving Kanata Lakes, Bridlewood, Morgan&apos;s Grant, and all Kanata neighborhoods with professional Renin
               closet door installation
             </p>
+            <div className="max-w-3xl mx-auto mb-8">
+              <p className="text-lg text-blue-50 mb-4 leading-relaxed">
+                Kanata's tech hub families deserve premium home solutions that match their modern lifestyle. As Ottawa's
+                official Renin dealer, we specialize in elegant closet systems perfect for Kanata's executive homes in
+                Kanata Lakes and family-friendly communities throughout the area.
+              </p>
+              <p className="text-base text-blue-100">
+                <a href="/gallery" className="underline hover:text-white">
+                  See Kanata installation examples →
+                </a>
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 variant="primary"
@@ -75,15 +87,15 @@ export default function KanataPage() {
                 href="/request-work"
                 className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
               >
-                Get Free Kanata Quote →
+                Get Free Quote
               </Button>
               <Button
                 variant="secondary"
                 size="lg"
-                href="/products"
+                href="/book-measurement"
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
               >
-                Browse Products
+                Book Measurement
               </Button>
             </div>
           </div>
@@ -220,6 +232,23 @@ export default function KanataPage() {
               family&apos;s routine. We&apos;re proud to serve this vibrant community with professional installation and ongoing
               support.
             </p>
+
+            <div className="mt-8 text-center">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Popular in Kanata</h3>
+              <p className="text-gray-600">
+                <a href="/products/bifold-doors" className="text-blue-600 hover:underline mr-4">
+                  Bifold Doors
+                </a>
+                |
+                <a href="/products/bypass-doors" className="text-blue-600 hover:underline ml-4 mr-4">
+                  Bypass Doors
+                </a>
+                |
+                <a href="/products/barn-doors" className="text-blue-600 hover:underline ml-4">
+                  Barn Doors
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>

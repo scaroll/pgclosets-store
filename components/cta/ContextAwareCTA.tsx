@@ -310,13 +310,13 @@ export const DefaultContextRules: ContextRule[] = [
     priority: 70,
     condition: (context) => context.deviceType === "mobile" && context.scrollDepth > 60,
     ctaProps: {
-      variant: "phone",
+      variant: "primary",
       size: "lg",
-      text: "Call (613) 422-5800",
-      icon: "phone",
+      text: "Email Us Now",
+      icon: "message",
       socialProof: {
         enabled: true,
-        recentAction: "Average call response: 30 seconds"
+        recentAction: "Average email response: 2 hours"
       }
     }
   },

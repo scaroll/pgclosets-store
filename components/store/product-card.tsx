@@ -5,6 +5,8 @@ import { Button } from "../ui/button";
 import { AddToCartButton } from "../ui/add-to-cart-button";
 import { RequestQuoteButton } from "../ui/request-quote-button";
 import { OptimizedImage } from "../ui/optimized-image";
+import { BadgeChip } from "../ui/badge-chip";
+import { trackCTAClick } from "@/lib/analytics/events";
 import { useState } from "react";
 
 interface ProductCardProps {
@@ -36,9 +38,14 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const primaryImage = imageSources[0];
   const fallbackImage = imageSources[1];
 
+  // Generate benefit line from features or benefits
+  const benefitLine = product.benefits
+    || (product.features?.slice(0, 2).join(" • "))
+    || null;
+
   return (
     <div className="bg-white border border-gray-200 hover:border-black transition-all duration-300 overflow-hidden group relative">
-      <div className="aspect-[4/3] overflow-hidden bg-gray-50 relative">
+      <div className="aspect-square overflow-hidden bg-gray-50 relative">
         {_isLoading && (
           <div className="absolute inset-0 bg-gray-100 animate-pulse">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
@@ -49,7 +56,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           src={primaryImage || "/placeholder.svg"}
           alt={`${product.name} - Professional closet door by Renin - PG Closets`}
           width={400}
-          height={300}
+          height={400}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -58,77 +65,62 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           placeholder="blur"
         />
 
+        {/* Chips - positioned in top-right */}
+        <div className="absolute top-2 right-2 flex gap-1.5 flex-wrap justify-end">
+          {product.bestseller && (
+            <BadgeChip variant="bestseller">Bestseller</BadgeChip>
+          )}
+          {product.inStockOttawa && (
+            <BadgeChip variant="inStock">In Stock Ottawa</BadgeChip>
+          )}
+          {product.isNew && (
+            <BadgeChip variant="new">New</BadgeChip>
+          )}
+        </div>
+
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
       </div>
 
       <div className="p-5">
-        <div className="mb-3">
-          <h3 className="text-base font-medium mb-1.5 text-black line-clamp-1">
-            <a
-              href={`/store/products/${product.slug}`}
-              className="hover:text-black/70 transition-colors duration-200"
-            >
-              {product.name}
-            </a>
-          </h3>
-          <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
-            {product.description}
-          </p>
-        </div>
+        {/* Title */}
+        <h3 className="text-base font-semibold mb-2 text-black line-clamp-2 leading-tight">
+          <a
+            href={`/store/products/${product.slug}`}
+            className="hover:text-black/70 transition-colors duration-200"
+          >
+            {product.name}
+          </a>
+        </h3>
 
-        <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
-          <span className="text-xl font-light text-black">
-            {formatPrice(product.price)}
-          </span>
-          {product.inStock ? (
-            <span className="text-[10px] text-black/60 uppercase tracking-wider font-medium">
-              Available
-            </span>
-          ) : (
-            <span className="text-[10px] text-red-600/60 uppercase tracking-wider font-medium">
-              Sold Out
-            </span>
-          )}
-        </div>
+        {/* Benefit line or From price */}
+        <p className="text-sm text-gray-600 mb-4">
+          {benefitLine || `From ${formatPrice(product.price)}`}
+        </p>
 
-        <div className="space-y-2">
-          {product.inStock ? (
-            <AddToCartButton
-              product={product}
-              variant="default"
-              size="sm"
-              className="w-full bg-black hover:bg-white hover:text-black text-white font-medium py-2.5 text-xs uppercase tracking-wider border-2 border-black transition-all duration-300"
-            />
-          ) : (
-            <Button
-              variant="outline"
-              size="sm"
-              disabled
-              className="w-full py-2.5 text-xs uppercase tracking-wider opacity-30 cursor-not-allowed border-2 border-gray-300"
-            >
-              Sold Out
-            </Button>
-          )}
+        {/* Primary CTA */}
+        <a href="/request-work" className="block mb-2">
+          <Button
+            variant="default"
+            size="sm"
+            className="w-full bg-black hover:bg-white hover:text-black text-white font-medium py-2.5 text-xs uppercase tracking-wider border-2 border-black transition-all duration-300"
+            onClick={() => trackCTAClick({ location: 'product-card', label: 'Get Quote', product: product.name })}
+          >
+            Get Quote
+          </Button>
+        </a>
 
-          <div className="grid grid-cols-2 gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              href={`/store/products/${product.slug}`}
-              className="border border-gray-300 text-black/70 hover:border-black hover:text-black py-2 text-xs uppercase tracking-wider transition-all duration-200"
-            >
-              View
-            </Button>
-
-            <RequestQuoteButton
-              product={product}
-              variant="outline"
-              size="sm"
-              className="border border-gray-300 text-black/70 hover:border-black hover:text-black py-2 text-xs uppercase tracking-wider transition-all duration-200"
-            />
-          </div>
-        </div>
+        {/* Secondary CTA */}
+        <a href={`/store/products/${product.slug}`} className="block">
+          <Button
+            variant="outline"
+            size="sm"
+            className="w-full border border-gray-300 text-black/70 hover:border-black hover:text-black py-2 text-xs uppercase tracking-wider transition-all duration-200"
+            onClick={() => trackCTAClick({ location: 'product-card', label: 'Details', product: product.name })}
+          >
+            Details
+          </Button>
+        </a>
       </div>
     </div>
   );

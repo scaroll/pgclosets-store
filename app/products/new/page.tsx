@@ -32,7 +32,7 @@ export default function NewArrivalsPage() {
               <Button size="lg" variant="default">View All Products</Button>
             </Link>
             <Link href="/request-work">
-              <Button size="lg" variant="outline">Get Custom Quote</Button>
+              <Button size="lg" variant="outline">Get Free Quote</Button>
             </Link>
           </div>
         </div>

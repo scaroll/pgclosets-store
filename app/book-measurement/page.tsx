@@ -17,7 +17,7 @@ import {
 import MeasurementScheduler from '@/components/booking/measurement-scheduler'
 import Heading from '@/components/ui/Heading-new'
 import Text from '@/components/ui/Text-new'
-import Button from '@/components/ui/Button-new'
+import { Button } from '@/components/ui/button'
 import Card from '@/components/ui/Card-new'
 
 export const metadata: Metadata = {
@@ -339,8 +339,7 @@ export default function BookMeasurementPage() {
                 What if I need to reschedule my appointment?
               </Heading>
               <Text variant="body">
-                You can reschedule your appointment by calling us at (613) 422-5800 or emailing
-                info@pgclosets.ca. We ask for at least 24 hours notice when possible.
+                You can reschedule your appointment by emailing info@pgclosets.ca. We ask for at least 24 hours notice when possible.
               </Text>
             </Card>
 
@@ -386,14 +385,7 @@ export default function BookMeasurementPage() {
       {/* Contact Information */}
       <section className="py-16 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <Phone className="w-8 h-8 mx-auto mb-4 text-blue-400" />
-              <Heading level={3} className="mb-2 text-white">Call Us</Heading>
-              <Text variant="body" className="text-gray-300">(613) 422-5800</Text>
-              <Text variant="small" className="text-gray-400">Monday - Friday, 9 AM - 5 PM</Text>
-            </div>
-
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <Mail className="w-8 h-8 mx-auto mb-4 text-blue-400" />
               <Heading level={3} className="mb-2 text-white">Email Us</Heading>
@@ -403,9 +395,9 @@ export default function BookMeasurementPage() {
 
             <div className="text-center">
               <MessageCircle className="w-8 h-8 mx-auto mb-4 text-blue-400" />
-              <Heading level={3} className="mb-2 text-white">Live Chat</Heading>
+              <Heading level={3} className="mb-2 text-white">Contact Form</Heading>
               <Text variant="body" className="text-gray-300">Available on our website</Text>
-              <Text variant="small" className="text-gray-400">Monday - Friday, 9 AM - 5 PM</Text>
+              <Text variant="small" className="text-gray-400">Fast response guaranteed</Text>
             </div>
           </div>
 

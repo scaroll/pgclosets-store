@@ -254,7 +254,7 @@ export function MobileNavigation({ className }: MobileNavigationProps) {
 
               {/* Contact info */}
               <div className="mt-4 text-center text-sm text-gray-600">
-                <p>Call us: (613) 422-5800</p>
+                <p>Email: info@pgclosets.ca</p>
                 <p className="text-xs">Mon-Fri: 8am-6pm | Sat: 9am-4pm</p>
               </div>
             </div>

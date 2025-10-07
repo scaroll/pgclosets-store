@@ -154,9 +154,9 @@ export const ConversionMessages = {
     text: "Book Today - Limited Slots Available",
     subtext: "Only 3 consultation slots left this week"
   },
-  phone: {
-    text: "Call Now for Instant Quote",
-    subtext: "(613) 422-5800 • Speak with an expert"
+  email: {
+    text: "Email for Quick Quote",
+    subtext: "info@pgclosets.ca • Quick response"
   },
   secondary: {
     text: "View Our Premium Collection",

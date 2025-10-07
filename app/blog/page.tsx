@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import StandardLayout from "@/components/layout/StandardLayout"
-import Button from '@/components/ui/Button-new'
+import { Button } from '@/components/ui/button'
 import Heading from '@/components/ui/Heading-new'
 import Text from '@/components/ui/Text-new'
 import Section from '@/components/ui/Section-new'

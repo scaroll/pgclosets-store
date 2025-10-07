@@ -7,6 +7,7 @@ import { Button } from "../ui/button";
 import { AddToCartButton } from "../ui/add-to-cart-button";
 import { RequestQuoteButton } from "../ui/request-quote-button";
 import { OptimizedImage } from "../ui/optimized-image";
+import { BadgeChip } from "../ui/badge-chip";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -44,14 +45,19 @@ export function MobileProductCard({
   const primaryImage = imageSources[0];
   const fallbackImage = imageSources[1];
 
+  // Generate benefit line from features or benefits
+  const benefitLine = product.benefits
+    || (product.features?.slice(0, 2).join(" • "))
+    || null;
+
   return (
     <div className={cn(
       "bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group border border-gray-100",
       "mobile-optimized-card", // Custom mobile optimization class
       className
     )}>
-      {/* Mobile-optimized image container with larger aspect ratio */}
-      <div className="aspect-[4/3] md:aspect-[4/3] overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 relative">
+      {/* Mobile-optimized image container */}
+      <div className="aspect-square overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 relative">
         {_isLoading && (
           <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
@@ -62,7 +68,7 @@ export function MobileProductCard({
           src={primaryImage || "/placeholder.svg"}
           alt={`${product.name} - Professional closet door by Renin - PG Closets`}
           width={400}
-          height={300}
+          height={400}
           className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
           priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -71,18 +77,17 @@ export function MobileProductCard({
           placeholder="blur"
         />
 
-        {/* Mobile-specific quick action overlay */}
-        <div className="absolute top-2 right-2 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-          <div className="bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-md">
-            <svg
-              className="w-4 h-4 text-gray-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-          </div>
+        {/* Chips - positioned in top-right */}
+        <div className="absolute top-2 right-2 flex gap-1.5 flex-wrap justify-end max-w-[60%]">
+          {product.bestseller && (
+            <BadgeChip variant="bestseller">Bestseller</BadgeChip>
+          )}
+          {product.inStockOttawa && (
+            <BadgeChip variant="inStock">In Stock Ottawa</BadgeChip>
+          )}
+          {product.isNew && (
+            <BadgeChip variant="new">New</BadgeChip>
+          )}
         </div>
       </div>
 
@@ -97,16 +102,14 @@ export function MobileProductCard({
               {product.name}
             </a>
           </h3>
+          {/* Benefit line or price */}
           <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
-            {product.description}
+            {benefitLine || `From ${formatPrice(product.price)}`}
           </p>
         </div>
 
-        {/* Mobile-optimized price and stock */}
+        {/* Mobile-optimized stock status */}
         <div className="flex items-center justify-between mb-3 sm:mb-4">
-          <span className="text-xl sm:text-2xl font-bold text-gray-900">
-            {formatPrice(product.price)}
-          </span>
           {product.inStock ? (
             <span className="bg-green-100 text-green-800 text-xs px-2.5 py-1 rounded-full font-medium">
               In Stock

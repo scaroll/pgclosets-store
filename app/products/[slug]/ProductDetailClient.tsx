@@ -226,9 +226,9 @@ export default function ProductDetailClient({
                     Request Work
                   </Button>
                 </Link>
-                <Link href="/contact">
+                <Link href="/request-work">
                   <Button className="btn-secondary px-8 py-4 text-lg">
-                    Get a Quote
+                    Get Free Quote
                   </Button>
                 </Link>
               </div>

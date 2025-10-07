@@ -99,15 +99,15 @@ export default function ClientPage({ products }: { products: Product[] }) {
             </TrackingCTA>
 
             <TrackingCTA
-              ctaText="Call Now for Instant Quote"
-              ctaLocation="Hero_Phone"
-              conversionType="phone"
-              href="tel:+16134225800"
+              ctaText="Email Us for Quote"
+              ctaLocation="Hero_Email"
+              conversionType="email"
+              href="mailto:info@pgclosets.com"
             >
               <div className="group bg-green-600 text-white hover:bg-green-700 font-semibold px-12 py-6 text-xl tracking-wide transition-all duration-500 hover:shadow-2xl hover:scale-105 rounded-lg">
                 <span className="flex items-center justify-center gap-3">
-                  📞 Call Now: (613) 422-5800
-                  <span className="text-sm opacity-90">Instant Quote</span>
+                  📧 Email Us: info@pgclosets.com
+                  <span className="text-sm opacity-90">Quick Response</span>
                 </span>
               </div>
             </TrackingCTA>
@@ -355,11 +355,11 @@ export default function ClientPage({ products }: { products: Product[] }) {
                       href="/contact"
                     />
                     <a
-                      href="tel:+16134225800"
+                      href="mailto:info@pgclosets.com"
                       className="flex items-center justify-center gap-3 bg-green-600 text-white px-8 py-4 font-semibold hover:bg-green-700 transition-all duration-300 text-lg tracking-wide rounded-lg"
                     >
-                      📞 Call Now: (613) 422-5800
-                      <span className="text-sm opacity-90">Instant Booking</span>
+                      📧 Email Us: info@pgclosets.com
+                      <span className="text-sm opacity-90">Fast Response</span>
                     </a>
                   </div>
                 </div>
@@ -387,11 +387,11 @@ export default function ClientPage({ products }: { products: Product[] }) {
               href="/request-work"
             />
             <a
-              href="tel:+16134225800"
+              href="mailto:info@pgclosets.com"
               className="bg-green-600 text-white hover:bg-green-700 font-semibold px-12 py-6 text-xl tracking-wide transition-all duration-500 hover:shadow-2xl hover:scale-105 rounded-lg flex items-center justify-center gap-3"
             >
-              📞 (613) 422-5800
-              <span className="text-sm opacity-90">Call Now</span>
+              📧 info@pgclosets.com
+              <span className="text-sm opacity-90">Email Now</span>
             </a>
           </div>
 

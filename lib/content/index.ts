@@ -198,8 +198,6 @@ export const commonContent = {
     tagline: 'Elevated Taste Without Pretense',
     established: '2010',
     location: 'Ottawa, Ontario',
-    phone: '(613) 422-5800',
-    phoneRaw: '6134225800',
     email: 'info@pgclosets.com',
     serviceArea: 'Ottawa and surrounding communities',
 
@@ -236,7 +234,7 @@ export const commonContent = {
   cta: {
     primary: 'Get Free Consultation',
     secondary: 'Browse Collections',
-    phone: 'Call (613) 422-5800',
+    contact: 'Contact Us',
     email: 'Email Us',
     quote: 'Get Your Quote',
     schedule: 'Schedule Appointment',

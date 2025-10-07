@@ -48,7 +48,6 @@ export const ENV_CONFIG = {
 
   // Business Configuration
   BUSINESS: {
-    PHONE: process.env.BUSINESS_PHONE || '+1-613-XXX-XXXX',
     EMAIL: process.env.BUSINESS_EMAIL || 'info@pgclosets.com',
     ADDRESS: process.env.BUSINESS_ADDRESS || '123 Main St, Ottawa, ON',
     HOURS: {

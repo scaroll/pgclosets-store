@@ -15,7 +15,6 @@ export function LocalBusinessJSONLD() {
       description: "Premium closet doors and custom storage solutions in Ottawa",
       url: BUSINESS_INFO.urls.main,
       email: BUSINESS_INFO.email,
-      telephone: BUSINESS_INFO.phone,
       address: getSchemaAddress(),
       geo: getSchemaGeo(),
       areaServed: getSchemaServiceAreas(),
@@ -75,7 +74,6 @@ export function OrganizationJSONLD() {
       logo: `${BUSINESS_INFO.urls.main}${BUSINESS_INFO.urls.logo}`,
       description: "Premium closet doors and custom storage solutions in Ottawa",
       email: BUSINESS_INFO.email,
-      telephone: BUSINESS_INFO.phone,
       address: getSchemaAddress(),
       sameAs: Object.values(BUSINESS_INFO.social).filter(Boolean),
     })
@@ -143,8 +141,7 @@ export function ProductJSONLD({ product }: ProductJSONLDProps) {
           "@type": "Organization",
           name: BUSINESS_INFO.name,
           url: BUSINESS_INFO.urls.main,
-          telephone: BUSINESS_INFO.phone,
-          email: BUSINESS_INFO.email
+              email: BUSINESS_INFO.email
         },
         shippingDetails: {
           "@type": "OfferShippingDetails",
@@ -355,8 +352,7 @@ export function ServiceJSONLD({ service }: ServiceJSONLDProps) {
         "@type": "LocalBusiness",
         name: BUSINESS_INFO.fullName,
         address: getSchemaAddress(),
-        telephone: BUSINESS_INFO.phone,
-        email: BUSINESS_INFO.email,
+          email: BUSINESS_INFO.email,
         url: BUSINESS_INFO.urls.main
       },
       areaServed: service.areaServed.map(area => ({

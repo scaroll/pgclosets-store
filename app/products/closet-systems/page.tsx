@@ -390,10 +390,10 @@ export default async function ClosetSystemsPage() {
                   Schedule Free Consultation
                 </Link>
                 <Link
-                  href="tel:+1613EXAMPLE"
+                  href="mailto:info@pgclosets.com"
                   className="block w-full border border-slate-300 text-slate-700 py-4 text-center font-light hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 uppercase tracking-widest"
                 >
-                  Call for Quote
+                  Email Us
                 </Link>
                 <p className="text-center text-sm text-slate-600 font-light">
                   Serving Ottawa, Kanata, Nepean, Orleans, and surrounding areas

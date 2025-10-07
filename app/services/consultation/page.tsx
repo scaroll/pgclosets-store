@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import Button from '@/components/ui/Button-new'
+import { Button } from '@/components/ui/button'
 import Heading from '@/components/ui/Heading-new'
 import Text from '@/components/ui/Text-new'
 import Section from '@/components/ui/Section-new'

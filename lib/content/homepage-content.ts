@@ -146,7 +146,6 @@ export const homepageContent = {
     secondary: {
       heading: "Questions? We're Here to Help.",
       body: "Our team is ready to discuss your project, answer questions, and provide the information you need to make confident decisions.",
-      phone: "(613) 422-5800",
       email: "info@pgclosets.com",
       hours: "Monday-Friday: 8AM-6PM | Saturday: 9AM-4PM"
     }

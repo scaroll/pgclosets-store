@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Mail, MapPin, Clock, Phone, Facebook, Instagram, Linkedin, Send, CheckCircle2, Shield, Award, Users, Calendar } from "lucide-react";
+import { Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Send, CheckCircle2, Shield, Award, Users, Calendar } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -101,7 +101,7 @@ export function Footer() {
                   { href: "/about", label: "About Us" },
                   { href: "/gallery", label: "Gallery" },
                   { href: "/contact", label: "Contact" },
-                  { href: "/request-work", label: "Get a Quote" },
+                  { href: "/request-work", label: "Get Free Quote" },
                 ].map((link) => (
                   <Link
                     key={link.href}
@@ -131,18 +131,6 @@ export function Footer() {
                       className="hover:text-white transition-colors duration-300 block"
                     >
                       info@pgclosets.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 text-slate-300">
-                  <Phone className="w-5 h-5 text-slate-500 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <a
-                      href="tel:+16134225800"
-                      className="hover:text-white transition-colors duration-300 block"
-                    >
-                      (613) 422-5800
                     </a>
                   </div>
                 </div>

@@ -1,6 +1,8 @@
 "use client";
 import StandardLayout from "@/components/layout/StandardLayout";
 import TrustBadges from "@/components/trust/TrustBadges";
+import { Button } from "@/components/ui/button";
+import { trackCTAClick, trackMeasurementHelperClick } from "@/lib/analytics/events";
 // import QuoteRequestWizard from "@/components/quote/QuoteRequestWizard"; // Temporarily disabled due to build issue
 
 export default function RequestWorkClient() {
@@ -8,18 +10,18 @@ export default function RequestWorkClient() {
     <StandardLayout>
       <main className="bg-gradient-to-br from-gray-50 to-white">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 sm:py-16">
+        <section className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] text-white py-12 sm:py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
               Request Your Free Consultation
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-blue-100 mb-6 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/80 mb-6 leading-relaxed">
               Transform your Ottawa home with premium Renin closet doors
             </p>
             <div className="flex flex-wrap justify-center gap-3 sm:gap-6 text-sm md:text-base mb-6">
               <div className="flex items-center gap-2">
                 <svg
-                  className="w-5 h-5 text-green-300"
+                  className="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -33,7 +35,7 @@ export default function RequestWorkClient() {
               </div>
               <div className="flex items-center gap-2">
                 <svg
-                  className="w-5 h-5 text-green-300"
+                  className="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -47,7 +49,7 @@ export default function RequestWorkClient() {
               </div>
               <div className="flex items-center gap-2">
                 <svg
-                  className="w-5 h-5 text-green-300"
+                  className="w-5 h-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -62,20 +64,20 @@ export default function RequestWorkClient() {
             </div>
 
             {/* Additional trust badges */}
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-xs text-blue-100 px-2">
-              <div className="flex items-center gap-2 bg-blue-500/20 px-3 py-1.5 rounded-full backdrop-blur-sm">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-xs text-white/80 px-2">
+              <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-sm">
                 <span>⭐⭐⭐⭐⭐</span>
                 <span>5.0 Star Rating</span>
               </div>
-              <div className="flex items-center gap-2 bg-blue-500/20 px-3 py-1.5 rounded-full backdrop-blur-sm">
+              <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-sm">
                 <span>🏆</span>
                 <span>BBB A+ Rated</span>
               </div>
-              <div className="flex items-center gap-2 bg-blue-500/20 px-3 py-1.5 rounded-full backdrop-blur-sm">
+              <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-sm">
                 <span>👥</span>
                 <span>500+ Happy Customers</span>
               </div>
-              <div className="flex items-center gap-2 bg-blue-500/20 px-3 py-1.5 rounded-full backdrop-blur-sm">
+              <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-sm">
                 <span>📅</span>
                 <span>15+ Years Experience</span>
               </div>
@@ -104,28 +106,48 @@ export default function RequestWorkClient() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Name *</label>
-                    <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required />
+                    <input type="text" className="w-full px-4 py-2 border-2 border-[var(--color-border-default)] rounded-lg focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]" required />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
-                    <input type="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required />
+                    <input type="email" className="w-full px-4 py-2 border-2 border-[var(--color-border-default)] rounded-lg focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]" required />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
-                    <input type="tel" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required />
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone (Optional)</label>
+                    <input type="tel" className="w-full px-4 py-2 border-2 border-[var(--color-border-default)] rounded-lg focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
-                    <input type="text" defaultValue="Ottawa" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    <input type="text" defaultValue="Ottawa" className="w-full px-4 py-2 border-2 border-[var(--color-border-default)] rounded-lg focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Project Details</label>
-                  <textarea className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" rows={4} placeholder="Tell us about your closet project..." />
+                  <textarea className="w-full px-4 py-2 border-2 border-[var(--color-border-default)] rounded-lg focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]" rows={4} placeholder="Tell us about your closet project..." />
                 </div>
-                <button type="submit" className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                  Request Free Quote
-                </button>
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="lg"
+                  className="w-full"
+                  onClick={() => trackCTAClick({ location: 'request-work-form', label: 'Get Free Quote' })}
+                >
+                  Get Free Quote
+                </Button>
+                {/* Reassurance Copy */}
+                <p className="text-sm text-gray-600 text-center mt-2">
+                  No obligation • Reply within 24h
+                </p>
+                {/* Measurement Helper */}
+                <p className="text-sm text-center mt-2">
+                  <a
+                    href="/book-measurement"
+                    className="text-blue-600 hover:underline"
+                    onClick={() => trackMeasurementHelperClick({ location: 'request-work-page' })}
+                  >
+                    Need help measuring? View our guide →
+                  </a>
+                </p>
               </form>
             </div>
           </div>
@@ -145,9 +167,9 @@ export default function RequestWorkClient() {
 
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <div className="text-center bg-white p-6 rounded-lg shadow-sm border">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-[var(--color-bg-secondary)] rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
-                    className="w-8 h-8 text-blue-600"
+                    className="w-8 h-8 text-[var(--color-primary)]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -167,15 +189,15 @@ export default function RequestWorkClient() {
                   Authorized dealer with access to the complete Renin product
                   line and warranty support.
                 </p>
-                <div className="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full inline-block">
+                <div className="text-xs bg-[var(--color-bg-secondary)] text-[var(--color-primary)] px-3 py-1 rounded-full inline-block">
                   Certified Partner
                 </div>
               </div>
 
               <div className="text-center bg-white p-6 rounded-lg shadow-sm border">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-[var(--color-bg-secondary)] rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
-                    className="w-8 h-8 text-green-600"
+                    className="w-8 h-8 text-[var(--color-primary)]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -201,15 +223,15 @@ export default function RequestWorkClient() {
                   Licensed and insured installers serving Ottawa, Kanata,
                   Nepean, Orleans, and Barrhaven.
                 </p>
-                <div className="text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full inline-block">
+                <div className="text-xs bg-[var(--color-bg-secondary)] text-[var(--color-primary)] px-3 py-1 rounded-full inline-block">
                   $2M Insurance
                 </div>
               </div>
 
               <div className="text-center bg-white p-6 rounded-lg shadow-sm border">
-                <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-[var(--color-bg-secondary)] rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
-                    className="w-8 h-8 text-yellow-600"
+                    className="w-8 h-8 text-[var(--color-primary)]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -229,7 +251,7 @@ export default function RequestWorkClient() {
                   Professional installation within 2 weeks of order confirmation
                   with comprehensive lifetime warranty.
                 </p>
-                <div className="text-xs bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full inline-block">
+                <div className="text-xs bg-[var(--color-bg-secondary)] text-[var(--color-primary)] px-3 py-1 rounded-full inline-block">
                   Guaranteed
                 </div>
               </div>

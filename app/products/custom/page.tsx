@@ -51,7 +51,7 @@ export default function CustomSolutionsPage() {
           </p>
           <Link href="/request-work">
             <Button size="lg" variant="secondary">
-              Request Custom Quote
+              Get Free Quote
             </Button>
           </Link>
         </div>

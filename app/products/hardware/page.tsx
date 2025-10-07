@@ -262,15 +262,15 @@ export default async function HardwarePage() {
                 <div className="space-y-3">
                   <Link
                     href="/request-work"
-                    className="block w-full bg-white text-slate-900 py-3 font-light hover:bg-gray-100 transition-all duration-300 uppercase tracking-widest"
+                    className="block w-full bg-white text-slate-900 py-3 font-light hover:bg-gray-100 transition-all duration-300 uppercase tracking-widest text-center"
                   >
-                    Request Free Quote
+                    Get Free Quote
                   </Link>
                   <Link
-                    href="tel:+1613EXAMPLE"
+                    href="mailto:info@pgclosets.com"
                     className="block w-full border border-white text-white py-3 font-light hover:bg-white hover:text-slate-900 transition-all duration-300 uppercase tracking-widest"
                   >
-                    Call Now
+                    Email Us
                   </Link>
                 </div>
               </div>

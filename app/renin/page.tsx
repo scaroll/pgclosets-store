@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import StandardLayout from "@/components/layout/StandardLayout";
-import Button from '@/components/ui/Button-new';
+import { Button } from '@/components/ui/button';
 import Heading from '@/components/ui/Heading-new';
 import Text from '@/components/ui/Text-new';
 import Section from '@/components/ui/Section-new';
@@ -62,7 +62,6 @@ export default function ReninPage() {
         name: `${BUSINESS_INFO.name} - Official Renin Dealer`,
         description: "Official Renin dealer in Ottawa offering premium closet doors and storage solutions",
         url: `${BUSINESS_INFO.urls.main}/renin`,
-        telephone: BUSINESS_INFO.email,
         email: BUSINESS_INFO.email,
         address: getSchemaAddress(),
         geo: getSchemaGeo(),

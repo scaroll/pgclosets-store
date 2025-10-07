@@ -46,12 +46,12 @@ export function Header() {
       >
         {/* Top announcement bar */}
         <div className="bg-black text-white text-center py-2 px-4">
-          <a
-            href="tel:6134225800"
+          <Link
+            href="/request-work"
             className="text-xs sm:text-sm font-medium tracking-wide hover:text-gray-200 transition-colors"
           >
-            Free Design Consultation: (613) 422-5800
-          </a>
+            Get Free Quote — 2-Week Install • Lifetime Warranty
+          </Link>
         </div>
 
         {/* Main header */}
@@ -114,6 +114,8 @@ export function Header() {
                   onClick={() => setIsMobileOpen(!isMobileOpen)}
                   className="lg:hidden p-2 hover:bg-gray-50 rounded-full transition-colors"
                   aria-label={isMobileOpen ? "Close menu" : "Open menu"}
+                  aria-expanded={isMobileOpen}
+                  aria-controls="mobile-menu"
                 >
                   {isMobileOpen ? (
                     <X className="w-6 h-6 text-gray-700" />
@@ -127,7 +129,7 @@ export function Header() {
                   href="/request-work"
                   className="hidden lg:inline-flex items-center gap-2 bg-black text-white px-6 py-2.5 text-sm font-medium tracking-wide hover:bg-gray-800 transition-colors"
                 >
-                  FREE CONSULTATION
+                  GET FREE QUOTE
                   <svg
                     className="w-4 h-4"
                     fill="none"

@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { BadgeChip } from "@/components/ui/badge-chip"
 import { CTALogoButton } from "@/components/conversion/LogoConversionOptimizer"
 import { LogoConversionOptimizer } from "@/components/conversion/LogoConversionOptimizer"
 
@@ -28,6 +29,11 @@ export function ProductCard({
   imageLoadingPriority = "lazy",
   className,
 }: ProductCardProps) {
+  // Generate benefit line from metadata or features
+  const benefitLine = (product.metadata?.benefits as string)
+    || (product.metadata?.features as string[])?.slice(0, 2).join(" • ")
+    || null;
+
   return (
     <Card
       variant="elevated"
@@ -49,29 +55,39 @@ export function ProductCard({
         {/* Gradient Overlay on Hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-        {/* Free Quote Badge */}
-        <div className="absolute top-3 left-3">
+        {/* Chips - positioned in top-right */}
+        <div className="absolute top-3 right-3 flex gap-1.5 flex-wrap justify-end">
+          {product.metadata?.bestseller && (
+            <BadgeChip variant="bestseller">Bestseller</BadgeChip>
+          )}
+          {product.metadata?.inStockOttawa && (
+            <BadgeChip variant="inStock">In Stock Ottawa</BadgeChip>
+          )}
+          {product.metadata?.isNew && (
+            <BadgeChip variant="new">New</BadgeChip>
+          )}
+        </div>
+
+        {/* Free Quote Badge - moved to bottom-left */}
+        <div className="absolute bottom-3 left-3">
           <Badge variant="default" size="default" className="bg-black text-white hover:bg-black/90 tracking-[0.2em] uppercase font-medium">
-            Free Quote
+            Get Quote
           </Badge>
         </div>
       </div>
 
       {/* Product Details */}
       <CardHeader className="space-y-2">
-        <CardTitle className="text-xl font-light tracking-wide">
+        <CardTitle className="text-xl font-light tracking-wide line-clamp-2">
           {product.title}
         </CardTitle>
-        <CardDescription className="text-sm font-light truncate">
-          {product.description}
+        {/* Benefit line or price */}
+        <CardDescription className="text-sm font-light">
+          {benefitLine || `From ${formatPrice(product.variants[0]?.price)}`}
         </CardDescription>
       </CardHeader>
 
       <CardContent className="space-y-4">
-        {/* Price */}
-        <div className="text-3xl font-extralight text-slate-900 tracking-tight">
-          {formatPrice(product.variants[0]?.price)}
-        </div>
 
         {/* Action Buttons */}
         <div className="flex gap-2">
@@ -82,7 +98,7 @@ export function ProductCard({
             trackingContext="product_card_quote"
             className="add-to-cart flex-1 text-sm uppercase tracking-widest py-3"
           >
-            Free Quote
+            Get Quote
           </CTALogoButton>
           <CTALogoButton
             href={`/products/${product.handle}`}

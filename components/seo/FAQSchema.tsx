@@ -87,7 +87,7 @@ export function LocalBusinessFAQSchema() {
     'name': 'PG Closets',
     'description': 'Ottawa\'s premier closet door and storage solution provider. Official Renin dealer.',
     'url': 'https://www.pgclosets.com',
-    'telephone': '+1-613-422-5800',
+    'email': 'info@pgclosets.ca',
     'address': {
       '@type': 'PostalAddress',
       'addressLocality': 'Ottawa',

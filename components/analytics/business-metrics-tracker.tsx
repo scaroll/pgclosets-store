@@ -254,8 +254,6 @@ export function BusinessMetricsTracker() {
           trackBusinessEvent('contact_interest', { source: 'button_click', text, url: href })
         } else if (text.includes('brochure') || text.includes('download')) {
           trackBusinessEvent('brochure_interest', { source: 'button_click', text, url: href })
-        } else if (href.includes('tel:')) {
-          trackBusinessEvent('phone_click', { phone: href.replace('tel:', ''), source: 'click' })
         } else if (href.includes('mailto:')) {
           trackBusinessEvent('email_click', { email: href.replace('mailto:', ''), source: 'click' })
         }

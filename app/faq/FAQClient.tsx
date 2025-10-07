@@ -6,7 +6,7 @@ import { useState } from "react"
 import { FAQSchema } from "@/components/seo/FAQSchema"
 import Heading from "@/components/ui/Heading-new"
 import Text from "@/components/ui/Text-new"
-import Button from "@/components/ui/Button-new"
+import { Button } from "@/components/ui/button"
 import Card from "@/components/ui/Card-new"
 
 interface FAQItem {
@@ -38,7 +38,7 @@ export default function FAQClient() {
       id: "free-quote",
       category: "quote-process",
       question: "How do I get a free quote from PG Closets?",
-      answer: "Getting your free quote is simple! Use our online contact form to describe your project, or call us directly at (613) 422-5800. We'll schedule a complimentary in-home consultation where we measure your space, discuss your needs, and provide a detailed written estimate—all at no cost to you."
+      answer: "Getting your free quote is simple! Use our online contact form to describe your project, or email us at info@pgclosets.com. We'll schedule a complimentary in-home consultation where we measure your space, discuss your needs, and provide a detailed written estimate—all at no cost to you."
     },
     {
       id: "quote-timeline",
@@ -136,13 +136,13 @@ export default function FAQClient() {
       id: "warranty-service",
       category: "warranty",
       question: "How do I get warranty service?",
-      answer: "Simply call us at (613) 422-5800 or email info@pgclosets.com. We'll schedule a service visit to assess and resolve any warranty issues promptly. Most warranty calls are resolved within a few days of your initial contact."
+      answer: "Simply email us at info@pgclosets.com. We'll schedule a service visit to assess and resolve any warranty issues promptly. Most warranty calls are resolved within a few days of your initial contact."
     },
     {
       id: "post-installation-support",
       category: "warranty",
       question: "Do you provide support after installation?",
-      answer: "Absolutely! We're here for the life of your closet system. Whether you need adjustment, maintenance tips, or additional storage solutions, we're just a phone call away. Building long-term relationships with our clients is important to us."
+      answer: "Absolutely! We're here for the life of your closet system. Whether you need adjustment, maintenance tips, or additional storage solutions, we're just an email away. Building long-term relationships with our clients is important to us."
     },
 
     // Service Areas Category
@@ -227,11 +227,11 @@ export default function FAQClient() {
                 Get Your Free Quote
               </Button>
             </Link>
-            <a href="tel:6134225800">
+            <Link href="mailto:info@pgclosets.com">
               <Button variant="secondary" size="lg">
-                Call (613) 422-5800
+                Email Us Today
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
 

@@ -68,6 +68,18 @@ export default function OrleansPage() {
               Serving Blackburn Hamlet, Navan, Cumberland, and all Orleans communities with professional Renin closet
               door installation
             </p>
+            <div className="max-w-3xl mx-auto mb-8">
+              <p className="text-lg text-blue-50 mb-4 leading-relaxed">
+                Orleans' bilingual community from Chapel Hill to Cumberland enjoys personalized service in English and
+                French. As Ottawa's trusted Renin dealer, we bring premium closet door expertise to eastern Ottawa's
+                vibrant neighborhoods with guaranteed quality and lifetime warranty support.
+              </p>
+              <p className="text-base text-blue-100">
+                <a href="/gallery" className="underline hover:text-white">
+                  Explore Orleans installations →
+                </a>
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 variant="primary"
@@ -75,15 +87,15 @@ export default function OrleansPage() {
                 href="/request-work"
                 className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
               >
-                Get Free Orleans Quote →
+                Get Free Quote
               </Button>
               <Button
                 variant="secondary"
                 size="lg"
-                href="/products"
+                href="/book-measurement"
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
               >
-                Browse Products
+                Book Measurement
               </Button>
             </div>
           </div>
@@ -176,6 +188,26 @@ export default function OrleansPage() {
         </div>
       </section>
 
+      {/* Product Links */}
+      <section className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-4">Popular in Orleans</h3>
+          <p className="text-gray-600 text-lg">
+            <a href="/products/bifold-doors" className="text-blue-600 hover:underline mr-4">
+              Bifold Doors
+            </a>
+            |
+            <a href="/products/room-dividers" className="text-blue-600 hover:underline ml-4 mr-4">
+              Room Dividers
+            </a>
+            |
+            <a href="/products/barn-doors" className="text-blue-600 hover:underline ml-4">
+              Barn Doors
+            </a>
+          </p>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -190,7 +222,7 @@ export default function OrleansPage() {
               href="/request-work"
               className="bg-white text-blue-600 hover:bg-gray-100"
             >
-              Get Free Orleans Quote →
+              Get Free Quote
             </Button>
             <Button
               variant="secondary"

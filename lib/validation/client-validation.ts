@@ -9,7 +9,6 @@ import { z } from "zod";
 
 // Real-time validation patterns
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^(\+1\s?)?(\d{3}[-.\s]?)?\d{3}[-.\s]?\d{4}$/;
 const nameRegex = /^[a-zA-Z\s'-]+$/;
 const postalCodeRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
 
@@ -37,7 +36,6 @@ export class ClientValidator {
     maxLength: (max: number) => `Must be no more than ${max} characters`,
     pattern: "Invalid format",
     email: "Please enter a valid email address",
-    phone: "Please enter a valid phone number (e.g., (555) 123-4567)",
     name: "Name can only contain letters, spaces, hyphens, and apostrophes",
     postalCode: "Please enter a valid Canadian postal code (e.g., K1A 0A6)",
   };
@@ -72,39 +70,6 @@ export class ClientValidator {
         isValid: false,
         error: this.commonErrors.email,
         suggestions,
-      };
-    }
-
-    return { isValid: true };
-  }
-
-  /**
-   * Validate phone number with formatting suggestions
-   */
-  static validatePhone(phone: string): ValidationResult {
-    if (!phone.trim()) {
-      return { isValid: true }; // Phone is often optional
-    }
-
-    const cleanPhone = phone.replace(/[^\d+()-\s]/g, "");
-
-    if (cleanPhone.length < 10) {
-      return {
-        isValid: false,
-        error: "Phone number is too short",
-        suggestions: ["Include area code (e.g., 613-555-1234)"],
-      };
-    }
-
-    if (!phoneRegex.test(cleanPhone)) {
-      return {
-        isValid: false,
-        error: this.commonErrors.phone,
-        suggestions: [
-          "Format: (613) 422-5800",
-          "Format: 613-422-5800",
-          "Format: 613.422.5800",
-        ],
       };
     }
 
@@ -370,21 +335,6 @@ export class FormValidator {
  * Real-time input formatter
  */
 export class InputFormatter {
-  /**
-   * Format phone number as user types
-   */
-  static formatPhone(value: string): string {
-    const digits = value.replace(/\D/g, "");
-
-    if (digits.length <= 3) {
-      return digits;
-    } else if (digits.length <= 6) {
-      return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
-    } else {
-      return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
-    }
-  }
-
   /**
    * Format postal code as user types
    */

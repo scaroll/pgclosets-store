@@ -4,37 +4,34 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:ring-2 focus-visible:ring-offset-3 cursor-pointer select-none uppercase tracking-wider relative overflow-hidden group",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium uppercase tracking-wide transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
   {
     variants: {
       variant: {
-        default: "bg-black text-white border-2 border-black hover:bg-white hover:text-black before:absolute before:inset-0 before:bg-white before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100",
-        destructive: "bg-red-600 text-white border-2 border-red-600 hover:bg-white hover:text-red-600",
-        outline:
-          "border-2 border-black bg-transparent text-black hover:bg-black hover:text-white before:absolute before:inset-0 before:bg-black before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100",
-        secondary: "bg-gray-100 text-black border-2 border-gray-100 hover:bg-black hover:text-white hover:border-black",
-        ghost: "text-black hover:bg-gray-50 border-2 border-transparent",
-        link: "text-black underline-offset-4 hover:underline border-none",
-        primary:
-          "bg-black text-white border-2 border-black hover:bg-white hover:text-black shadow-sm hover:shadow-lg",
-        "brand-primary":
-          "bg-black text-white border-2 border-black hover:bg-transparent hover:text-black transition-all duration-300",
+        default: "bg-[var(--color-primary)] text-white border-2 border-[var(--color-primary)] hover:bg-[var(--color-primary)]/90",
+        primary: "bg-[var(--color-primary)] text-white border-2 border-[var(--color-primary)] hover:bg-[var(--color-primary)]/90",
+        "brand-primary": "bg-[var(--color-primary)] text-white border-2 border-[var(--color-primary)] hover:bg-[var(--color-primary)]/90",
+        secondary:
+          "bg-transparent text-[var(--color-primary)] border-2 border-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white",
         "brand-secondary":
-          "bg-white text-black border-2 border-black hover:bg-black hover:text-white transition-all duration-300",
+          "bg-[var(--color-secondary)] text-[var(--color-primary)] border-2 border-[var(--color-secondary)] hover:bg-[var(--color-secondary)]/90",
+        outline:
+          "bg-transparent text-[var(--color-text-primary)] border-2 border-[var(--color-border-default)] hover:bg-[var(--color-bg-secondary)]",
         "brand-outline":
-          "border-2 border-black text-black bg-transparent hover:bg-black hover:text-white transition-all duration-300",
+          "bg-transparent text-[var(--color-primary)] border-2 border-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white",
+        ghost:
+          "bg-transparent text-[var(--color-text-primary)] hover:bg-[var(--color-bg-secondary)] border-2 border-transparent",
         "brand-ghost":
-          "text-black hover:bg-gray-50 transition-all duration-200 border-2 border-transparent",
+          "bg-transparent text-[var(--color-primary)] hover:bg-[var(--color-bg-secondary)] border-2 border-transparent",
+        link: "bg-transparent text-[var(--color-primary)] underline underline-offset-4 border-none h-auto p-0",
+        destructive: "bg-red-600 text-white border-2 border-red-600 hover:bg-red-700",
       },
       size: {
-        sm: "h-9 px-4 py-1.5 text-xs",
-        default: "h-11 px-6 py-2 text-sm",
-        lg: "h-12 px-8 py-3 text-sm",
-        xl: "h-14 px-10 py-4 text-base",
+        sm: "h-9 px-4 text-xs",
+        default: "h-11 px-6 text-sm",
+        lg: "h-12 px-8 text-sm",
+        xl: "h-14 px-10 text-base",
         icon: "h-11 w-11 p-0",
-        "icon-sm": "h-9 w-9 p-0",
-        "icon-lg": "h-12 w-12 p-0",
-        "icon-xl": "h-14 w-14 p-0",
       },
     },
     defaultVariants: {
@@ -51,26 +48,21 @@ export interface ButtonProps
   href?: string;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    { className, variant, size, asChild = false, href, ...props },
-    ref
-  ) => {
-    const buttonClasses = cn(buttonVariants({ variant, size, className }));
-
-    // Determine the component to render
+const Button = React.forwardRef<HTMLElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, href, ...props }, ref) => {
     const Comp = asChild ? Slot : href ? "a" : "button";
 
     return (
       <Comp
-        className={buttonClasses}
-        ref={ref}
         {...(href && !asChild ? { href } : {})}
+        ref={ref as any}
+        className={cn(buttonVariants({ variant, size }), className)}
         {...props}
       />
     );
   }
 );
+
 Button.displayName = "Button";
 
 export { Button, buttonVariants };

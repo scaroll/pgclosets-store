@@ -185,7 +185,7 @@ export class PostPurchaseAgent {
             <div>✓ You'll receive updates along the way</div>
           </div>
 
-          <p>Questions? Call us at <strong>(613) 422-5800</strong></p>
+          <p>Questions? Reply to this email anytime</p>
         </div>
       </div>
     `;

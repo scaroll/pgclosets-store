@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "../ui/card"
 import { AddToCartButton } from "./ui/add-to-cart-button"
+import { BadgeChip } from "../ui/badge-chip"
 
 type Props = {
   product: {
@@ -18,9 +19,15 @@ type Props = {
 export function SimpleProductCard({ product }: Props) {
   return (
     <Card className="overflow-hidden hover:shadow-md transition">
-      <div className="relative aspect-[4/3]">
+      <div className="relative aspect-square">
         <Link href={`/simple-products/${product.slug}`}>
-          <Image src={product.image || "/placeholder.svg"} alt={product.title} fill className="object-cover" />
+          <Image
+            src={product.image || "/placeholder.svg"}
+            alt={product.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </Link>
       </div>
       <CardContent className="p-4">

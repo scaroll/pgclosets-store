@@ -31,7 +31,7 @@ export function RequestQuoteButton({
         className={`inline-flex items-center gap-2 ${className}`}
       >
         <MessageCircle className="w-4 h-4" />
-        Request Quote
+        Get Free Quote
       </Button>
       <LuxuryQuoteForm
         open={open}

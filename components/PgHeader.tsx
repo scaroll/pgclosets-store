@@ -69,7 +69,7 @@ export default function PgHeader() {
   return (
     <>
       <header className="nav-modern sticky top-0 z-40 bg-white/98 backdrop-blur-2xl border-b border-gray-100 transition-all duration-300" role="banner">
-        {/* Top bar with phone number and quick links */}
+        {/* Top bar with email and quick links */}
         <div className="bg-black text-white py-3 px-4">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             {/* Quick Links */}
@@ -81,13 +81,13 @@ export default function PgHeader() {
               <Link href="/contact" className="hover:text-gray-300 transition-colors">Contact</Link>
             </div>
 
-            {/* Phone Number */}
+            {/* Email */}
             <a
-              href="tel:6134225800"
+              href="mailto:info@pgclosets.com"
               className="text-sm md:text-base font-medium tracking-wider hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded px-2 py-1 mx-auto md:mx-0"
-              aria-label="Call us now for a free quote at 613-422-5800"
+              aria-label="Email us for a free quote at info@pgclosets.com"
             >
-              📞 Speak to a Designer Now: (613) 422-5800
+              📧 Email a Designer: info@pgclosets.com
             </a>
 
             {/* Empty div for flex spacing on desktop */}

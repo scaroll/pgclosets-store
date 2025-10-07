@@ -153,10 +153,9 @@ export function GoogleTagManager({ gtmId, dataLayer = {}, enableDebug = false }:
         const isExternal = link.hostname !== window.location.hostname
         const isDownload = link.href.match(/\.(pdf|doc|docx|xls|xlsx|ppt|pptx|zip|rar|7z|exe|dmg)$/i)
         const isEmail = link.href.startsWith('mailto:')
-        const isPhone = link.href.startsWith('tel:')
 
         gtmPush({
-          event: isExternal ? 'external_link_click' : isDownload ? 'file_download' : isEmail ? 'email_click' : isPhone ? 'phone_click' : 'internal_link_click',
+          event: isExternal ? 'external_link_click' : isDownload ? 'file_download' : isEmail ? 'email_click' : 'internal_link_click',
           link_url: link.href,
           link_text: link.textContent?.trim() || '',
           link_id: link.id || 'unknown',

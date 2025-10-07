@@ -398,7 +398,7 @@ export default function MeasurementScheduler({ onSuccess, className = '' }: Meas
               <input
                 type="tel"
                 required
-                placeholder="(613) 422-5800"
+                placeholder="Optional contact number"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                 value={formData.customer.phone}
                 onChange={(e) => setFormData(prev => ({

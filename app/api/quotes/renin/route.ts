@@ -20,7 +20,6 @@ const reninQuoteRequestSchema = z.object({
     firstName: z.string().min(1, "First name is required").max(50),
     lastName: z.string().min(1, "Last name is required").max(50),
     email: z.string().email("Invalid email address"),
-    phone: z.string().optional(),
     postalCode: z.string().regex(/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/, "Invalid Canadian postal code"),
     customerType: z.enum(["residential", "contractor", "senior"])
   }),
@@ -213,7 +212,7 @@ async function sendSlackNotification(quote: ReninQuoteRequest, calculation: Quot
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `*🏠 New Renin Quote Request*\n\n*Customer:* ${quote.customer.firstName} ${quote.customer.lastName}\n*Email:* ${quote.customer.email}\n*Phone:* ${quote.customer.phone || 'Not provided'}\n*Type:* ${quote.customer.customerType}\n*Postal Code:* ${quote.customer.postalCode}`
+          text: `*🏠 New Renin Quote Request*\n\n*Customer:* ${quote.customer.firstName} ${quote.customer.lastName}\n*Email:* ${quote.customer.email}\n*Type:* ${quote.customer.customerType}\n*Postal Code:* ${quote.customer.postalCode}`
         }
       },
       {
@@ -388,8 +387,7 @@ async function handleReninQuoteRequest(
     validUntil: calculateQuoteExpiry(),
     salesContact: {
       name: "Ottawa Renin Sales Team",
-      email: "ottawa@pgclosets.com",
-      phone: "(613) 422-5800"
+      email: "ottawa@pgclosets.com"
     },
     nextSteps: [
       "Our sales team will contact you within 24 hours",

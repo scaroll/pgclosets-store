@@ -35,7 +35,6 @@ export function ProductSchema({ product, reviews }: ProductSchemaProps) {
         "@type": "Organization",
         name: "PG Closets",
         url: "https://pgclosets.com",
-        telephone: "(613) 422-5800",
         email: "info@pgclosets.com"
       }
     },

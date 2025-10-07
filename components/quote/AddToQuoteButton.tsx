@@ -80,7 +80,7 @@ export function AddToQuoteButton({
       ) : (
         <>
           <FileText className="w-4 h-4" />
-          {isAdding ? "Adding..." : "Request Quote"}
+          {isAdding ? "Adding..." : "Get Free Quote"}
         </>
       )}
     </Button>

@@ -39,7 +39,7 @@ export default function LazyQuoteSection({
   if (quoteStep === 2 && selectedProduct) {
     return (
       <section className="py-16 px-4 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-light mb-8 text-center">Request Quote</h2>
+        <h2 className="text-3xl font-light mb-8 text-center">Get Free Quote</h2>
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h3 className="text-xl font-medium mb-4">{selectedProduct.title}</h3>
           <p className="text-gray-600 mb-6">{selectedProduct.description}</p>

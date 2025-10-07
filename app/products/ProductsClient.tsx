@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { formatPrice } from '@/lib/utils';
 import { useIntersectionObserver } from '@/lib/hooks/use-intersection-observer';
 import { usePerformanceMonitoring } from '@/lib/performance-metrics';
-import Button from '@/components/ui/Button-new';
+import { Button } from '@/components/ui/button';
 import Heading from '@/components/ui/Heading-new';
 import Text from '@/components/ui/Text-new';
 import Card from '@/components/ui/Card-new';

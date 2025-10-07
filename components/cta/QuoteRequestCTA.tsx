@@ -166,16 +166,15 @@ export const QuoteRequestCTA: React.FC<QuoteRequestCTAProps> = ({
 
           <div>
             <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 mb-2">
-              Phone *
+              Phone (Optional)
             </label>
             <input
               id="phone"
               type="tel"
-              required
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-              placeholder="(613) 422-5800"
+              placeholder="Optional contact number"
             />
           </div>
         </div>

@@ -157,7 +157,6 @@ class InteractionTracker {
     const href = link.href
     const isExternal = href && !href.includes(window.location.hostname)
     const isDownload = link.download || href?.match(/\.(pdf|doc|docx|xls|xlsx|zip|jpg|png)$/i)
-    const isTel = href?.startsWith('tel:')
     const isEmail = href?.startsWith('mailto:')
 
     if (isExternal) {
@@ -172,12 +171,6 @@ class InteractionTracker {
         file_name: link.download || href.split('/').pop(),
         link_text: text
       })
-    } else if (isTel) {
-      this.trackInteraction('phone_click', 'phone_link', 1, {
-        phone_number: href.replace('tel:', ''),
-        link_text: text
-      })
-      this.funnelTracker?.trackPhoneCall(href.replace('tel:', ''))
     } else if (isEmail) {
       this.trackInteraction('email_click', 'email_link', 1, {
         email_address: href.replace('mailto:', ''),

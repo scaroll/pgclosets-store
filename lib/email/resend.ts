@@ -28,7 +28,6 @@ interface ContactEmailData {
   firstName: string;
   lastName: string;
   email: string;
-  phone?: string;
   message: string;
 }
 
@@ -76,12 +75,6 @@ export async function sendContactEmail(data: ContactEmailData) {
                 <div class="label">Email:</div>
                 <div class="value"><a href="mailto:${data.email}">${data.email}</a></div>
               </div>
-              ${data.phone ? `
-                <div class="field">
-                  <div class="label">Phone:</div>
-                  <div class="value"><a href="tel:${data.phone}">${data.phone}</a></div>
-                </div>
-              ` : ''}
               <div class="field">
                 <div class="label">Message:</div>
                 <div class="value">${data.message.replace(/\n/g, '<br>')}</div>
@@ -157,7 +150,7 @@ export async function sendContactConfirmation(data: ContactEmailData) {
               <p>Hi ${data.firstName},</p>
               <p>Thank you for reaching out to PG Closets. We've received your message and our team will get back to you within 24 hours.</p>
               <p><strong>Your Message:</strong><br>${data.message.replace(/\n/g, '<br>')}</p>
-              <p>If you have any urgent questions, feel free to call us at <a href="tel:613-422-5800">(613) 422-5800</a>.</p>
+              <p>If you have any urgent questions, feel free to reply to this email.</p>
               <a href="https://www.pgclosets.com" class="cta">Visit Our Website</a>
               <p>Best regards,<br>The PG Closets Team</p>
             </div>

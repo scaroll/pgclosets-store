@@ -68,6 +68,18 @@ export default function OttawaPage() {
               Serving downtown Ottawa, Centretown, Byward Market, and surrounding neighborhoods with professional Renin
               closet door installation
             </p>
+            <div className="max-w-3xl mx-auto mb-12">
+              <p className="text-lg text-slate-100 mb-4 leading-relaxed">
+                Serving Ottawa's downtown core from Parliament Hill to the Rideau Canal with premium Renin closet
+                solutions. As the capital region's trusted official Renin dealer, we bring expert installation and
+                lifetime warranty support to your Glebe heritage home or Byward Market condo.
+              </p>
+              <p className="text-base text-slate-200">
+                <a href="/gallery" className="underline hover:text-white">
+                  View our recent Ottawa installations →
+                </a>
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 variant="primary"
@@ -75,15 +87,15 @@ export default function OttawaPage() {
                 href="/request-work"
                 className="bg-white text-slate-900 hover:bg-slate-100 shadow-xl font-light tracking-widest uppercase"
               >
-                Get Free Ottawa Quote →
+                Get Free Quote
               </Button>
               <Button
                 variant="secondary"
                 size="lg"
-                href="/products"
-                className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
+                href="/book-measurement"
+                className="border-2 border-white text-white hover:bg-white hover:text-slate-900"
               >
-                Browse Products
+                Book Measurement
               </Button>
             </div>
           </div>
@@ -215,6 +227,23 @@ export default function OttawaPage() {
               Closets has the expertise to deliver beautiful, functional closet door solutions that complement your
               Ottawa home's unique character.
             </p>
+
+            <div className="mt-8 text-center">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Popular in Ottawa</h3>
+              <p className="text-gray-600">
+                <a href="/products/barn-doors" className="text-blue-600 hover:underline mr-4">
+                  Barn Doors
+                </a>
+                |
+                <a href="/products/room-dividers" className="text-blue-600 hover:underline ml-4 mr-4">
+                  Room Dividers
+                </a>
+                |
+                <a href="/products/bypass-doors" className="text-blue-600 hover:underline ml-4">
+                  Bypass Doors
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>

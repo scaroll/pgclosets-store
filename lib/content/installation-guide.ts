@@ -296,7 +296,7 @@ export const installationGuide = {
     service: {
       title: "How to Request Warranty Service",
       process: [
-        "Contact us by phone (613) 422-5800 or email info@pgclosets.com",
+        "Contact us by email at info@pgclosets.com",
         "Describe the issue you're experiencing",
         "We'll schedule a service visit to assess and resolve",
         "Most warranty issues are addressed within 3-5 business days",
@@ -309,7 +309,7 @@ export const installationGuide = {
     heading: "Ready to Begin?",
     body: "Schedule your complimentary consultation and experience the PG Closets difference. Professional service from start to finish.",
     buttonText: "Book Your Consultation",
-    phone: "(613) 422-5800",
+    email: "info@pgclosets.com",
     altText: "Questions about our installation process? Our team is here to help."
   }
 } as const

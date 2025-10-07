@@ -1,7 +1,7 @@
 import { MediaGallery } from "../../components/MediaGallery"
 import PgHeader from "../../PgHeader"
 import Link from "next/link"
-import Button from '@/components/ui/Button-new'
+import { Button } from '@/components/ui/button'
 import Heading from '@/components/ui/Heading-new'
 import Text from '@/components/ui/Text-new'
 import Section from '@/components/ui/Section-new'
@@ -65,9 +65,9 @@ export default function GalleryPage() {
                     Get Free Quote
                   </Button>
                 </Link>
-                <Link href="tel:6134225800">
+                <Link href="mailto:info@pgclosets.com">
                   <Button variant="secondary" size="lg" className="text-[var(--color-secondary)]">
-                    Call (613) 422-5800
+                    Email Us Today
                   </Button>
                 </Link>
               </div>
@@ -122,15 +122,13 @@ export default function GalleryPage() {
                 Contact
               </Heading>
               <div className="space-y-2 text-gray-300">
-                <div>(613) 422-5800</div>
                 <div>info@pgclosets.com</div>
                 <div>Ottawa & Surrounding Areas</div>
                 <div className="mt-4 pt-4 border-t border-gray-600">
                   <Text size="sm" variant="secondary">
-                    <div className="font-semibold text-[var(--color-secondary)] mb-2">Business Hours:</div>
-                    <div>Mon-Fri: 8:00 AM - 6:00 PM</div>
-                    <div>Sat: 9:00 AM - 4:00 PM</div>
-                    <div>Sun: By Appointment</div>
+                    <div className="font-semibold text-[var(--color-secondary)] mb-2">Email Response Time:</div>
+                    <div>Mon-Fri: Within 24 hours</div>
+                    <div>Weekends: Within 48 hours</div>
                   </Text>
                 </div>
                 <div className="mt-2">Licensed & Insured</div>

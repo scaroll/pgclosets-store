@@ -4,11 +4,12 @@ import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import Button from "@/components/ui/Button-new"
+import { Button } from "@/components/ui/button"
 import Heading from "@/components/ui/Heading-new"
 import Text from "@/components/ui/Text-new"
 import Section from "@/components/ui/Section-new"
 import StandardLayout from "@/components/layout/StandardLayout"
+import { trackCTAClick } from "@/lib/analytics/events"
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -64,6 +65,7 @@ export default function HomePage() {
               className="object-cover"
               priority
               quality={90}
+              sizes="100vw"
             />
           )}
         </motion.div>
@@ -82,11 +84,7 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <Heading level={1} className="text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-[0.95]">
-              Elevated Taste
-              <br />
-              <span className="text-4xl md:text-6xl lg:text-7xl opacity-90">
-                Without Pretense
-              </span>
+              Premium Closet Doors for Ottawa Homes
             </Heading>
           </motion.div>
 
@@ -96,7 +94,7 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <Text size="lg" className="text-lg md:text-xl lg:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Transform your space with premium closet solutions
+              Official Renin Dealer | Expert Installation
             </Text>
           </motion.div>
 
@@ -112,6 +110,7 @@ export default function HomePage() {
                 variant="primary"
                 size="lg"
                 className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[240px] group"
+                onClick={() => trackCTAClick({ location: 'hero', label: 'Get a Free Quote' })}
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Get a Free Quote
@@ -137,6 +136,7 @@ export default function HomePage() {
                 variant="secondary"
                 size="lg"
                 className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black hover:border-white min-w-[240px]"
+                onClick={() => trackCTAClick({ location: 'hero', label: 'Explore Collection' })}
               >
                 <span className="relative z-10">Explore Collection</span>
               </Button>
@@ -250,6 +250,7 @@ export default function HomePage() {
           fill
           className="object-cover"
           quality={90}
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/30" />
         <motion.div
@@ -271,6 +272,7 @@ export default function HomePage() {
                 variant="primary"
                 size="lg"
                 className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white"
+                onClick={() => trackCTAClick({ location: 'mid-page-image', label: 'View Our Work' })}
               >
                 <span className="relative z-10">View Our Work</span>
               </Button>
@@ -299,6 +301,7 @@ export default function HomePage() {
               variant="primary"
               size="lg"
               className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[280px]"
+              onClick={() => trackCTAClick({ location: 'footer', label: 'Schedule Consultation' })}
             >
               <span className="relative z-10">Schedule Consultation</span>
             </Button>

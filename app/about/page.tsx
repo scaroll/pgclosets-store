@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PgHeader from "@/components/PgHeader";
 import PgFooter from "@/components/PgFooter";
-import Button from "@/components/ui/Button-new";
+import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/Heading-new";
 import Text from "@/components/ui/Text-new";
 import Section from "@/components/ui/Section-new";
@@ -277,10 +277,10 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <span className="text-[#87ceeb] text-xl">📱</span>
+                  <span className="text-[#87ceeb] text-xl">💬</span>
                   <div>
-                    <div className="font-bold text-white">Phone</div>
-                    <div>(613) 422-5800</div>
+                    <div className="font-bold text-white">Contact</div>
+                    <div>Email us for fast response</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">

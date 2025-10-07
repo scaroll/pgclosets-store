@@ -165,18 +165,18 @@ export default function OptimizedContactForm({
           </div>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="tel:+16134225800"
+          <button
+            onClick={() => window.open("mailto:info@pgclosets.com", "_blank")}
             className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
           >
-            📞 Questions? Call (613) 422-5800
-          </a>
-          <button
-            onClick={() => window.open("mailto:spencer@peoplesgrp.com", "_blank")}
-            className="border border-green-600 text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors"
-          >
-            📧 Email Us Directly
+            📧 Email Us: info@pgclosets.com
           </button>
+          <a
+            href="/contact"
+            className="border border-green-600 text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors text-center"
+          >
+            💬 Visit Contact Page
+          </a>
         </div>
       </div>
     )
@@ -209,11 +209,10 @@ export default function OptimizedContactForm({
           />
           <input
             type="tel"
-            placeholder="Phone Number *"
+            placeholder="Phone Number (Optional)"
             value={formData.phone}
             onChange={(e) => updateFormData("phone", e.target.value)}
             className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
           />
           <select
             value={formData.projectType}
@@ -327,7 +326,7 @@ export default function OptimizedContactForm({
 
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Phone Number *
+                    Phone Number (Optional)
                   </label>
                   <input
                     type="tel"
@@ -336,7 +335,7 @@ export default function OptimizedContactForm({
                     className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
                       errors.phone ? "border-red-500" : "border-slate-300"
                     }`}
-                    placeholder="(613) 422-5800"
+                    placeholder="Optional contact number"
                   />
                   {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
                 </div>
@@ -575,17 +574,16 @@ export default function OptimizedContactForm({
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <a
-              href="tel:+16134225800"
+              href="mailto:info@pgclosets.com?subject=Quote Request"
               className="flex items-center justify-center gap-2 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold"
             >
-              <Phone className="w-4 h-4" />
-              Call (613) 422-5800
+              📧 Email Us Now
             </a>
             <a
-              href="mailto:spencer@peoplesgrp.com?subject=Quote Request"
+              href="/contact"
               className="flex items-center justify-center gap-2 px-4 py-3 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-colors font-semibold"
             >
-              📧 Email Directly
+              💬 Contact Page
             </a>
           </div>
 

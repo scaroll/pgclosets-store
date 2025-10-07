@@ -1,15 +1,16 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/components/ui/Button-new";
+import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/Heading-new";
 import Text from "@/components/ui/Text-new";
 import Card from "@/components/ui/Card-new";
 import { Card as ShadcnCard, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { formatPrice } from "@/lib/utils";
+import { trackCTAClick, trackStickyMobileCTA, trackMeasurementHelperClick } from "@/lib/analytics/events";
 import {
   ZoomIn,
   ChevronLeft,
@@ -78,6 +79,18 @@ export function PremiumProductDetailPage({
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
+  const [showStickyCTA, setShowStickyCTA] = useState(false);
+
+  // Mobile sticky CTA visibility handler
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show sticky CTA after scrolling 200px on mobile
+      setShowStickyCTA(window.scrollY > 200);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Prepare gallery images
   const galleryImages = useMemo(() => {
@@ -165,6 +178,7 @@ export function PremiumProductDetailPage({
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 priority
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
 
               {/* Zoom Button */}
@@ -217,6 +231,7 @@ export function PremiumProductDetailPage({
                       alt={`${product.title} view ${index + 1}`}
                       fill
                       className="object-cover"
+                      sizes="100px"
                     />
                   </button>
                 ))}
@@ -290,28 +305,63 @@ export function PremiumProductDetailPage({
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
-              <Button
-                size="lg"
-                variant="primary"
-                className="flex-1 inline-flex items-center justify-center"
-              >
-                <ShoppingCart className="w-5 h-5 mr-2" />
-                Request Quote
-              </Button>
-              <Link href="/contact" className="flex-1">
+              <Link href="/request-work" className="flex-1">
+                <Button
+                  size="lg"
+                  variant="primary"
+                  fullWidth
+                  className="inline-flex items-center justify-center"
+                  onClick={() => trackCTAClick({ location: 'pdp-main', label: 'Get Free Quote' })}
+                >
+                  Get Free Quote
+                </Button>
+              </Link>
+              <Link href="/book-measurement" className="flex-1">
                 <Button
                   size="lg"
                   variant="secondary"
                   fullWidth
                   className="inline-flex items-center justify-center"
+                  onClick={() => trackCTAClick({ location: 'pdp-main', label: 'Book Measurement' })}
                 >
-                  <FileText className="w-5 h-5 mr-2" />
-                  Schedule Consultation
+                  Book Measurement
                 </Button>
               </Link>
             </div>
 
-            {/* Trust Signals */}
+            {/* Reassurance Copy */}
+            <p className="text-sm text-gray-600 text-center mt-2">
+              No obligation • Reply within 24h
+            </p>
+
+            {/* Measurement Helper Link */}
+            <p className="text-sm text-center mt-2">
+              <Link
+                href="/book-measurement"
+                className="text-blue-600 hover:underline"
+                onClick={() => trackMeasurementHelperClick({ location: 'pdp' })}
+              >
+                Need help measuring? View our guide →
+              </Link>
+            </p>
+
+            {/* Trust Signals / Social Proof */}
+            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-700 mt-4 mb-6">
+              <div className="flex items-center gap-2">
+                <span>⭐ 5.0</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span>500+ Installs</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span>BBB A+</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span>Lifetime Warranty</span>
+              </div>
+            </div>
+
+            {/* Legacy Trust Signals */}
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gray-200">
               <div className="text-center">
                 <Shield className="w-6 h-6 mx-auto mb-2 text-gray-600" />
@@ -532,9 +582,20 @@ export function PremiumProductDetailPage({
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div className="mt-20">
-            <Heading level={2} className="mb-8">
-              Related Products
-            </Heading>
+            <div className="flex items-center justify-between mb-8">
+              <Heading level={2}>
+                Related Products
+              </Heading>
+              {product.collection && (
+                <Link
+                  href={`/products/${product.collection.handle}`}
+                  className="text-sm text-blue-600 hover:underline flex items-center gap-1"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  View all {product.collection.title}
+                </Link>
+              )}
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {relatedProducts.map((related) => (
                 <Link
@@ -588,6 +649,7 @@ export function PremiumProductDetailPage({
               alt={product.title}
               fill
               className="object-contain"
+              sizes="(max-width: 768px) 100vw, 80vw"
             />
           </div>
           {galleryImages.length > 1 && (
@@ -614,6 +676,38 @@ export function PremiumProductDetailPage({
           )}
         </div>
       )}
+
+      {/* Mobile Sticky CTA Bar */}
+      <div
+        className={`
+          fixed bottom-0 left-0 right-0 z-50 bg-white border-t-2 border-gray-200 shadow-lg
+          transition-transform duration-300 ease-in-out
+          md:hidden
+          ${showStickyCTA ? 'translate-y-0' : 'translate-y-full'}
+        `}
+      >
+        <div className="flex items-center gap-3 p-4">
+          <div className="relative w-16 h-16 flex-shrink-0 bg-gray-50 rounded overflow-hidden">
+            <Image
+              src={galleryImages[0]}
+              alt={product.title}
+              fill
+              className="object-cover"
+              sizes="64px"
+            />
+          </div>
+          <Link href="/request-work" className="flex-1">
+            <Button
+              size="lg"
+              variant="primary"
+              className="w-full"
+              onClick={() => trackStickyMobileCTA({ product: product.title })}
+            >
+              Get Free Quote
+            </Button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

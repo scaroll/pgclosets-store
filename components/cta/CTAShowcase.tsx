@@ -12,7 +12,6 @@ import { UrgencyCTA } from './UrgencyCTA'
 import { TrustBadges, CompactTrustBadge, TrustSeal } from './TrustBadges'
 import { SocialProof, CustomerCount, LiveActivity, TrustScore } from './SocialProof'
 import { QuoteRequestCTA, QuickQuoteButton } from './QuoteRequestCTA'
-import { PhoneCTA, PhoneLink, CallNowBanner } from './PhoneCTA'
 import { ArrowRight, Phone, Shield, Award } from 'lucide-react'
 
 export const CTAShowcase: React.FC = () => {
@@ -218,38 +217,6 @@ export const CTAShowcase: React.FC = () => {
         </div>
       </section>
 
-      {/* Phone CTAs */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-bold text-gray-900">Phone CTAs</h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-6 bg-gray-50 rounded-lg">
-            <h3 className="font-semibold text-gray-700 mb-4">Button</h3>
-            <PhoneCTA variant="button" size="lg" />
-          </div>
-
-          <div className="p-6 bg-gray-50 rounded-lg">
-            <h3 className="font-semibold text-gray-700 mb-4">Card</h3>
-            <PhoneCTA variant="card" showHours />
-          </div>
-
-          <div className="p-6 bg-gray-50 rounded-lg space-y-4">
-            <h3 className="font-semibold text-gray-700">Phone Link</h3>
-            <PhoneLink label="Call us today" />
-          </div>
-        </div>
-
-        <div className="p-6 bg-gray-50 rounded-lg">
-          <h3 className="font-semibold text-gray-700 mb-4">Call Now Banner</h3>
-          <CallNowBanner message="Get instant quote over the phone" />
-        </div>
-
-        <div className="p-6 bg-gray-50 rounded-lg">
-          <h3 className="font-semibold text-gray-700 mb-4">Urgent Banner</h3>
-          <CallNowBanner urgent message="Weekend special - Call now!" />
-        </div>
-      </section>
-
       {/* Quote Request */}
       <section className="space-y-6">
         <h2 className="text-2xl font-bold text-gray-900">Quote Request CTAs</h2>
@@ -290,8 +257,8 @@ export const CTAShowcase: React.FC = () => {
             <PrimaryCTA variant="filled" size="lg">
               Get Your Free Quote
             </PrimaryCTA>
-            <SecondaryCTA variant="minimal" size="lg" icon={<Phone className="h-5 w-5" />}>
-              (613) 422-5800
+            <SecondaryCTA variant="minimal" size="lg">
+              Email Us
             </SecondaryCTA>
           </div>
 

@@ -6,7 +6,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Phone, MapPin, Star, CheckCircle2, ArrowRight, Clock, Award } from 'lucide-react'
+import { Mail, MapPin, Star, CheckCircle2, ArrowRight, Clock, Award } from 'lucide-react'
 import {
   OTTAWA_NEIGHBORHOODS,
   getNeighborhood,
@@ -128,7 +128,7 @@ export default function NeighborhoodPage({ params }: Props) {
                   href="/contact"
                   className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
                 >
-                  <Phone className="h-5 w-5" />
+                  <Mail className="h-5 w-5" />
                   Free Consultation
                 </Link>
                 <Link
@@ -239,18 +239,18 @@ export default function NeighborhoodPage({ params }: Props) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
-                href="/contact"
+                href="mailto:info@pgclosets.com"
                 className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
               >
-                <Phone className="h-5 w-5" />
-                Call {BUSINESS_INFO.phone}
+                <Mail className="h-5 w-5" />
+                Email Us Today
               </Link>
               <Link
                 href="/request-work"
                 className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 rounded-lg font-semibold transition-colors"
               >
                 <Clock className="h-5 w-5" />
-                Request Quote
+                Get Free Quote
               </Link>
             </div>
           </div>

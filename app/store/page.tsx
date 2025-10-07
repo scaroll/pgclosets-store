@@ -1,6 +1,6 @@
 import { FeaturedProducts } from "@/components/store/featured-products";
 import { HeroSection } from "@/components/store/hero-section";
-import Button from "@/components/ui/Button-new";
+import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/Heading-new";
 import Text from "@/components/ui/Text-new";
 import Card from "@/components/ui/Card-new";

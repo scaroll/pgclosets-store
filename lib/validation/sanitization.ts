@@ -57,13 +57,6 @@ export function sanitizeEmail(email: string): string {
     .replace(/[^\w@.-]/g, ""); // Keep only valid email characters
 }
 
-// Phone number sanitization
-export function sanitizePhone(phone: string): string {
-  return phone
-    .replace(/[^\d+()-\s]/g, "") // Keep only digits, +, (, ), -, space
-    .trim();
-}
-
 // URL sanitization
 export function sanitizeUrl(url: string): string {
   try {
@@ -143,8 +136,6 @@ function deepSanitizeObject<T>(obj: T): T {
       // Apply appropriate sanitization based on key name
       if (key.toLowerCase().includes('email')) {
         (sanitized as any)[key] = sanitizeEmail(value);
-      } else if (key.toLowerCase().includes('phone')) {
-        (sanitized as any)[key] = sanitizePhone(value);
       } else if (key.toLowerCase().includes('postalcode') || key.toLowerCase().includes('postal_code')) {
         (sanitized as any)[key] = sanitizePostalCode(value);
       } else {
@@ -221,7 +212,6 @@ export const sanitizationPresets = {
     firstName: (value: string) => sanitizeFormInput(value, 100),
     lastName: (value: string) => sanitizeFormInput(value, 100),
     email: sanitizeEmail,
-    phone: sanitizePhone,
     message: (value: string) => sanitizeFormInput(value, 2000),
   },
   quoteRequest: {
@@ -229,7 +219,6 @@ export const sanitizationPresets = {
     "product.category": (value: string) => sanitizeFormInput(value, 100),
     "customer.name": (value: string) => sanitizeFormInput(value, 100),
     "customer.email": sanitizeEmail,
-    "customer.phone": sanitizePhone,
     "customer.province": (value: string) => value.toUpperCase().trim(),
     notes: (value: string) => sanitizeFormInput(value, 1000),
   },

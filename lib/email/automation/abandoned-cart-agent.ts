@@ -313,7 +313,7 @@ export class AbandonedCartAgent {
                 </center>
 
                 <p>Questions? Our team is here to help!<br>
-                Call us at <strong>(613) 422-5800</strong> or reply to this email.</p>
+                Reply to this email anytime.</p>
 
                 <p>Best regards,<br>
                 <strong>The PG Closets Team</strong></p>
@@ -367,7 +367,7 @@ export class AbandonedCartAgent {
                   <a href="${config.checkoutUrl}" style="display: inline-block; background: #10B981; color: white; padding: 15px 40px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0;">View My Cart</a>
                 </center>
 
-                <p>Questions? Call us at <strong>(613) 422-5800</strong></p>
+                <p>Questions? Reply to this email anytime</p>
               </div>
             </div>
           </body>
@@ -420,7 +420,7 @@ export class AbandonedCartAgent {
 
                 <p>This is the last time we'll email you about this cart. Don't miss this special offer!</p>
 
-                <p>Questions? Call us at <strong>(613) 422-5800</strong></p>
+                <p>Questions? Reply to this email anytime</p>
               </div>
             </div>
           </body>

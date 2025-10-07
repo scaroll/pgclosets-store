@@ -1,6 +1,6 @@
 import { describe, expect, test, beforeEach } from 'vitest';
 import { ClientValidator, FormValidator, InputFormatter } from '../client-validation';
-import { sanitizeText, sanitizeEmail, sanitizePhone } from '../sanitization';
+import { sanitizeText, sanitizeEmail } from '../sanitization';
 import { contactFormSchema, quoteRequestSchema } from '../schemas';
 
 describe('Input Validation Security Tests', () => {
@@ -15,18 +15,6 @@ describe('Input Validation Security Tests', () => {
       expect(ClientValidator.validateEmail('user@').isValid).toBe(false);
       expect(ClientValidator.validateEmail('@domain.com').isValid).toBe(false);
       expect(ClientValidator.validateEmail('user..double@domain.com').isValid).toBe(false);
-    });
-
-    test('should validate phone numbers correctly', () => {
-      // Valid phone numbers
-      expect(ClientValidator.validatePhone('(613) 555-1234').isValid).toBe(true);
-      expect(ClientValidator.validatePhone('613-555-1234').isValid).toBe(true);
-      expect(ClientValidator.validatePhone('613.555.1234').isValid).toBe(true);
-      expect(ClientValidator.validatePhone('+1 613 555 1234').isValid).toBe(true);
-
-      // Invalid phone numbers
-      expect(ClientValidator.validatePhone('123').isValid).toBe(false);
-      expect(ClientValidator.validatePhone('abc-def-ghij').isValid).toBe(false);
     });
 
     test('should validate names correctly', () => {
@@ -100,12 +88,6 @@ describe('Input Validation Security Tests', () => {
       expect(sanitizeEmail('user+tag@domain.com')).toBe('user+tag@domain.com');
       expect(sanitizeEmail('invalid<script>@domain.com')).toBe('invalidscript@domain.com');
     });
-
-    test('should sanitize phone numbers', () => {
-      expect(sanitizePhone('(613) 555-1234')).toBe('(613) 555-1234');
-      expect(sanitizePhone('613.555.1234abc')).toBe('613.555.1234');
-      expect(sanitizePhone('+1-613-555-1234')).toBe('+1-613-555-1234');
-    });
   });
 
   describe('Schema Validation', () => {
@@ -114,7 +96,6 @@ describe('Input Validation Security Tests', () => {
         firstName: 'John',
         lastName: 'Doe',
         email: 'john@example.com',
-        phone: '613-555-1234',
         message: 'Test message'
       };
 
@@ -127,7 +108,6 @@ describe('Input Validation Security Tests', () => {
         firstName: '',
         lastName: 'Doe',
         email: 'invalid-email',
-        phone: 'abc',
         message: ''
       };
 
@@ -147,8 +127,7 @@ describe('Input Validation Security Tests', () => {
         },
         customer: {
           name: 'John Doe',
-          email: 'john@example.com',
-          phone: '613-555-1234'
+          email: 'john@example.com'
         },
         notes: 'Test notes'
       };
@@ -193,12 +172,6 @@ describe('Input Validation Security Tests', () => {
   });
 
   describe('Input Formatting', () => {
-    test('should format phone numbers correctly', () => {
-      expect(InputFormatter.formatPhone('6135551234')).toBe('(613) 555-1234');
-      expect(InputFormatter.formatPhone('613555')).toBe('(613) 555');
-      expect(InputFormatter.formatPhone('613')).toBe('613');
-    });
-
     test('should format postal codes correctly', () => {
       expect(InputFormatter.formatPostalCode('k1a0a6')).toBe('K1A 0A6');
       expect(InputFormatter.formatPostalCode('K1A')).toBe('K1A');
@@ -283,7 +256,6 @@ describe('Input Validation Security Tests', () => {
   describe('Edge Cases and Error Handling', () => {
     test('should handle null and undefined inputs safely', () => {
       expect(() => ClientValidator.validateEmail('')).not.toThrow();
-      expect(() => ClientValidator.validatePhone('')).not.toThrow();
       expect(() => ClientValidator.validateName('')).not.toThrow();
     });
 

@@ -133,7 +133,6 @@ export default function ContactClientPage() {
                 Contact
               </Heading>
               <div className="space-y-2 text-gray-600">
-                <div>(613) 422-5800</div>
                 <div>info@pgclosets.com</div>
                 <div>Ottawa & Surrounding Areas</div>
                 {/* Added business hours section */}

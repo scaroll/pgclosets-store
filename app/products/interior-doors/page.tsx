@@ -60,7 +60,7 @@ const ProductCard = ({ product }: { product: Product }) => (
           href="/request-work"
           className="px-4 py-3 border border-slate-300 text-slate-700 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 text-sm uppercase tracking-widest font-light"
         >
-          Quote
+          Get Quote
         </Link>
       </div>
     </div>
@@ -97,14 +97,28 @@ export default async function InteriorDoorsPage() {
                 href="/request-work"
                 className="bg-slate-900 text-white px-8 py-4 text-lg font-light hover:bg-slate-800 transition-all duration-500 hover:shadow-xl uppercase tracking-widest"
               >
-                Free Measurement in Ottawa
+                Get Free Quote
               </Link>
               <Link
-                href="/contact"
+                href="/book-measurement"
                 className="border border-slate-300 text-slate-700 px-8 py-4 text-lg font-light hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 uppercase tracking-widest"
               >
-                Contact Us
+                Book Measurement
               </Link>
+            </div>
+            <div className="flex flex-wrap justify-center gap-3 mt-6">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-700 text-xs font-medium uppercase tracking-wider rounded-full">
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                Licensed & Insured
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-700 text-xs font-medium uppercase tracking-wider rounded-full">
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                2-Week Install
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-700 text-xs font-medium uppercase tracking-wider rounded-full">
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                Lifetime Warranty
+              </span>
             </div>
           </div>
         </div>
@@ -252,10 +266,10 @@ export default async function InteriorDoorsPage() {
               Request Free Quote
             </Link>
             <Link
-              href="tel:+1613EXAMPLE"
+              href="mailto:info@pgclosets.com"
               className="border border-white text-white px-8 py-4 text-lg font-light hover:bg-white hover:text-slate-900 transition-all duration-300 uppercase tracking-widest"
             >
-              Call Now
+              Email Us
             </Link>
           </div>
         </div>

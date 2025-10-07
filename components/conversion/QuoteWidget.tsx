@@ -384,8 +384,8 @@ export default function QuoteWidget({
           </p>
           <div className="flex gap-2">
             <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors text-sm">
-              <Phone className="w-4 h-4" />
-              Call (613) 422-5800
+              <MessageCircle className="w-4 h-4" />
+              Email Us
             </button>
             <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm">
               <MessageCircle className="w-4 h-4" />
