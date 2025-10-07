@@ -59,11 +59,26 @@ export const trackQuoteStart = (params?: {
   source?: 'pdp' | 'quote_page' | 'header' | 'hero'
   product_id?: string
   product_name?: string
+  door_type?: string
+  opening_width?: number
+  opening_height?: number
+  panel_count?: number
+  finish?: string
+  soft_close?: boolean
+  quantity?: number
 }) => {
   gtmTrackEvent('quote_start', {
     source: params?.source || 'unknown',
     product_id: params?.product_id,
     product_name: params?.product_name,
+    // Core fields only - no PII
+    door_type: params?.door_type,
+    opening_width: params?.opening_width,
+    opening_height: params?.opening_height,
+    panel_count: params?.panel_count,
+    finish: params?.finish,
+    soft_close: params?.soft_close,
+    quantity: params?.quantity,
     event_category: 'Lead Generation',
     event_label: 'Quote Form Started',
   })
@@ -74,12 +89,27 @@ export const trackQuoteSubmit = (params: {
   products?: string[]
   total_value?: number
   success: boolean
+  door_type?: string
+  opening_width?: number
+  opening_height?: number
+  panel_count?: number
+  finish?: string
+  soft_close?: boolean
+  quantity?: number
 }) => {
   gtmTrackEvent('quote_submit', {
     form_id: params.form_id,
     products: params.products,
     total_value: params.total_value,
     success: params.success,
+    // Core fields only - no PII
+    door_type: params?.door_type,
+    opening_width: params?.opening_width,
+    opening_height: params?.opening_height,
+    panel_count: params?.panel_count,
+    finish: params?.finish,
+    soft_close: params?.soft_close,
+    quantity: params?.quantity,
     event_category: 'Lead Generation',
     event_label: params.success ? 'Quote Submitted Successfully' : 'Quote Submission Failed',
   })

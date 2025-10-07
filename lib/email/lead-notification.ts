@@ -27,6 +27,22 @@ const BUSINESS_CONFIG = {
   timezone: process.env.BUSINESS_TIMEZONE || 'America/Toronto',
 };
 
+interface DoorSelection {
+  series: string;
+  doorType: 'sliding' | 'bypass' | 'bifold' | 'pivot' | 'barn' | 'mirror';
+  openingWidthIn: number;
+  openingHeightIn: number;
+  panelCount: number;
+  finish: string;
+  hardware: string;
+  softClose: boolean;
+  handles: string;
+  quantity: number;
+  notes?: string;
+  productUrl?: string;
+  images?: string[];
+}
+
 interface LeadNotificationData {
   leadId: string;
   name: string;
@@ -39,6 +55,7 @@ interface LeadNotificationData {
   consent: boolean;
   submittedAt: string;
   ipAddress: string;
+  doorSelection?: DoorSelection;
 }
 
 /**
@@ -63,6 +80,27 @@ function formatDateTime(isoString: string): string {
     timeStyle: 'short',
     timeZone: BUSINESS_CONFIG.timezone,
   }).format(date);
+}
+
+/**
+ * Format door type for display
+ */
+const DOOR_TYPE_LABELS: Record<DoorSelection['doorType'], string> = {
+  sliding: 'Sliding',
+  bypass: 'Bypass',
+  bifold: 'Bifold',
+  pivot: 'Pivot',
+  barn: 'Barn Door',
+  mirror: 'Mirror Door',
+};
+
+/**
+ * Format dimensions with one decimal precision
+ */
+function formatDimensions(widthIn: number, heightIn: number): string {
+  const w = Math.round(widthIn * 10) / 10;
+  const h = Math.round(heightIn * 10) / 10;
+  return `${w}″ × ${h}″`;
 }
 
 /**
@@ -147,6 +185,123 @@ function generateEmailHTML(data: LeadNotificationData): string {
               </table>
             </td>
           </tr>
+
+          ${data.doorSelection ? `
+          <!-- Door Selection -->
+          <tr>
+            <td style="padding: 20px 30px;">
+              <h2 style="margin: 0 0 15px; font-size: 18px; color: #1B4A9C; border-bottom: 2px solid #9BC4E2; padding-bottom: 10px;">
+                🚪 Door Selection
+              </h2>
+              <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f9f9f9; border-radius: 4px; overflow: hidden;">
+                <tr>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #666; font-size: 14px; width: 40%;">
+                    <strong>Series:</strong>
+                  </td>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #333; font-size: 14px;">
+                    ${data.doorSelection.series}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #666; font-size: 14px;">
+                    <strong>Door Type:</strong>
+                  </td>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #333; font-size: 14px;">
+                    ${DOOR_TYPE_LABELS[data.doorSelection.doorType]}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #666; font-size: 14px;">
+                    <strong>Opening Size:</strong>
+                  </td>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #333; font-size: 14px;">
+                    ${formatDimensions(data.doorSelection.openingWidthIn, data.doorSelection.openingHeightIn)}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #666; font-size: 14px;">
+                    <strong>Panel Count:</strong>
+                  </td>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #333; font-size: 14px;">
+                    ${data.doorSelection.panelCount} panel${data.doorSelection.panelCount !== 1 ? 's' : ''}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #666; font-size: 14px;">
+                    <strong>Finish:</strong>
+                  </td>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #333; font-size: 14px;">
+                    ${data.doorSelection.finish}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #666; font-size: 14px;">
+                    <strong>Hardware:</strong>
+                  </td>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #333; font-size: 14px;">
+                    ${data.doorSelection.hardware}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #666; font-size: 14px;">
+                    <strong>Soft-Close:</strong>
+                  </td>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #333; font-size: 14px;">
+                    ${data.doorSelection.softClose ? '✅ Yes' : '❌ No'}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #666; font-size: 14px;">
+                    <strong>Handles:</strong>
+                  </td>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #333; font-size: 14px;">
+                    ${data.doorSelection.handles}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 15px; ${data.doorSelection.notes || data.doorSelection.productUrl || (data.doorSelection.images && data.doorSelection.images.length > 0) ? 'border-bottom: 1px solid #e0e0e0;' : ''} color: #666; font-size: 14px;">
+                    <strong>Quantity:</strong>
+                  </td>
+                  <td style="padding: 12px 15px; ${data.doorSelection.notes || data.doorSelection.productUrl || (data.doorSelection.images && data.doorSelection.images.length > 0) ? 'border-bottom: 1px solid #e0e0e0;' : ''} color: #333; font-size: 14px;">
+                    ${data.doorSelection.quantity}
+                  </td>
+                </tr>
+                ${data.doorSelection.notes ? `
+                <tr>
+                  <td style="padding: 12px 15px; ${data.doorSelection.productUrl || (data.doorSelection.images && data.doorSelection.images.length > 0) ? 'border-bottom: 1px solid #e0e0e0;' : ''} color: #666; font-size: 14px; vertical-align: top;">
+                    <strong>Notes:</strong>
+                  </td>
+                  <td style="padding: 12px 15px; ${data.doorSelection.productUrl || (data.doorSelection.images && data.doorSelection.images.length > 0) ? 'border-bottom: 1px solid #e0e0e0;' : ''} color: #333; font-size: 14px; white-space: pre-wrap;">
+                    ${data.doorSelection.notes}
+                  </td>
+                </tr>
+                ` : ''}
+                ${data.doorSelection.productUrl ? `
+                <tr>
+                  <td style="padding: 12px 15px; ${data.doorSelection.images && data.doorSelection.images.length > 0 ? 'border-bottom: 1px solid #e0e0e0;' : ''} color: #666; font-size: 14px;">
+                    <strong>Product Page:</strong>
+                  </td>
+                  <td style="padding: 12px 15px; ${data.doorSelection.images && data.doorSelection.images.length > 0 ? 'border-bottom: 1px solid #e0e0e0;' : ''} color: #333; font-size: 14px;">
+                    <a href="${data.doorSelection.productUrl}" style="color: #1B4A9C; text-decoration: none;">View Product</a>
+                  </td>
+                </tr>
+                ` : ''}
+                ${data.doorSelection.images && data.doorSelection.images.length > 0 ? `
+                <tr>
+                  <td colspan="2" style="padding: 15px;">
+                    <strong style="display: block; margin-bottom: 10px; color: #666; font-size: 14px;">Reference Images:</strong>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                      ${data.doorSelection.images.slice(0, 3).map(img => `
+                        <img src="${img}" alt="Door reference" style="max-width: 150px; max-height: 150px; border-radius: 4px; border: 1px solid #e0e0e0;" />
+                      `).join('')}
+                    </div>
+                  </td>
+                </tr>
+                ` : ''}
+              </table>
+            </td>
+          </tr>
+          ` : ''}
 
           ${productInterest ? `
           <!-- Product Interest -->
@@ -248,6 +403,23 @@ CUSTOMER INFORMATION:
 Name:              ${name}
 Email:             ${email}
 Location:          ${location}
+
+${data.doorSelection ? `
+🚪 DOOR SELECTION:
+-------------------------------------
+Series:            ${data.doorSelection.series}
+Door Type:         ${DOOR_TYPE_LABELS[data.doorSelection.doorType]}
+Opening Size:      ${formatDimensions(data.doorSelection.openingWidthIn, data.doorSelection.openingHeightIn)}
+Panel Count:       ${data.doorSelection.panelCount}
+Finish:            ${data.doorSelection.finish}
+Hardware:          ${data.doorSelection.hardware}
+Soft-Close:        ${data.doorSelection.softClose ? 'Yes' : 'No'}
+Handles:           ${data.doorSelection.handles}
+Quantity:          ${data.doorSelection.quantity}${data.doorSelection.notes ? `
+Notes:             ${data.doorSelection.notes}` : ''}${data.doorSelection.productUrl ? `
+Product Page:      ${data.doorSelection.productUrl}` : ''}${data.doorSelection.images && data.doorSelection.images.length > 0 ? `
+Reference Images:  ${data.doorSelection.images.slice(0, 3).join('\n                   ')}` : ''}
+` : ''}
 
 ${productInterest ? `
 PRODUCT INTEREST:

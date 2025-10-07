@@ -4,6 +4,25 @@ import { checkRateLimit } from '@/lib/rate-limit';
 import { sendLeadNotification } from '@/lib/email/lead-notification';
 import { v4 as uuidv4 } from 'uuid';
 
+// Door selection schema for quote requests
+const doorSelectionSchema = z.object({
+  series: z.string().min(1, 'Series is required'),
+  doorType: z.enum(['sliding', 'bypass', 'bifold', 'pivot', 'barn', 'mirror'], {
+    errorMap: () => ({ message: 'Invalid door type' }),
+  }),
+  openingWidthIn: z.number().positive('Opening width must be greater than 0'),
+  openingHeightIn: z.number().positive('Opening height must be greater than 0'),
+  panelCount: z.number().int().positive('Panel count must be at least 1'),
+  finish: z.string().min(1, 'Finish is required'),
+  hardware: z.string().min(1, 'Hardware is required'),
+  softClose: z.boolean(),
+  handles: z.string().min(1, 'Handles selection is required'),
+  quantity: z.number().int().positive('Quantity must be at least 1'),
+  notes: z.string().max(1000, 'Notes too long').optional(),
+  productUrl: z.string().url('Invalid product URL').optional(),
+  images: z.array(z.string().url('Invalid image URL')).max(10, 'Maximum 10 images').optional(),
+});
+
 // Zod validation schema matching LeadFormData type
 const leadSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters').max(100, 'Name too long'),
@@ -26,7 +45,20 @@ const leadSchema = z.object({
   consent: z.boolean().refine((val) => val === true, {
     message: 'You must consent to be contacted to submit this form',
   }),
-});
+  doorSelection: doorSelectionSchema.optional(),
+}).refine(
+  (data) => {
+    // Require doorSelection when serviceType is 'quote'
+    if (data.serviceType === 'quote' && !data.doorSelection) {
+      return false;
+    }
+    return true;
+  },
+  {
+    message: 'Door selection is required for quote requests',
+    path: ['doorSelection'],
+  }
+);
 
 // Response type
 interface LeadResponse {
