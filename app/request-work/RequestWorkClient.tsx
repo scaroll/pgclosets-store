@@ -13,7 +13,7 @@ export default function RequestWorkClient() {
         <section className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] text-white py-12 sm:py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
-              Request Your Free Consultation
+              Request Your Free Online Quote
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-white/80 mb-6 leading-relaxed">
               Transform your Ottawa home with premium Renin closet doors
@@ -304,7 +304,7 @@ export default function RequestWorkClient() {
               )}
             </div>
             <div className="mt-8 text-gray-600">
-              Free consultation within 30km of Ottawa • Same-day quotes
+              Free online quote within 30km of Ottawa • Same-day quotes
               available
             </div>
           </div>

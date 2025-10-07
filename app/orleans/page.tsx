@@ -4,7 +4,7 @@ import StandardLayout from "@/components/layout/StandardLayout"
 export const metadata = {
   title: "Closet Doors Orleans | Professional Installation | PG Closets",
   description:
-    "Premium closet door installation in Orleans. Official Renin dealer serving Blackburn Hamlet, Navan, Cumberland, and surrounding areas. Free consultation and transparent pricing.",
+    "Premium closet door installation in Orleans. Official Renin dealer serving Blackburn Hamlet, Navan, Cumberland, and surrounding areas. Free online quote and transparent pricing.",
   keywords:
     "closet doors Orleans, barn doors Orleans, bypass doors Orleans, bifold doors Orleans, professional installation Orleans, Renin dealer Orleans",
   openGraph: {

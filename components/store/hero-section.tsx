@@ -63,7 +63,7 @@ export function HeroSection() {
               href="/contact"
               className="border-3 border-white text-white hover:bg-white hover:text-pg-navy hover:scale-105 transition-all duration-300 backdrop-blur-sm bg-white/20 font-semibold"
             >
-              Free Consultation
+              Free Online Quote
             </Button>
           </motion.div>
         </div>

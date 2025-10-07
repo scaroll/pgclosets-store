@@ -67,7 +67,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: 'Contact Us',
         short_name: 'Contact',
-        description: 'Get in touch for a free consultation',
+        description: 'Get in touch for a free online quote',
         url: '/contact',
         icons: [{ src: '/icon-192x192.png', sizes: '192x192' }],
       },

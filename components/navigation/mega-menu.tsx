@@ -457,7 +457,7 @@ export function MegaMenu({ activeMenu, onClose }: MegaMenuProps) {
                   className="btn-luxury-secondary hover:shadow-luxury-medium transform hover:scale-105 transition-all duration-300 group w-full sm:w-auto"
                 >
                   <Zap className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-                  <span className="whitespace-nowrap">Free Consultation</span>
+                  <span className="whitespace-nowrap">Free Online Quote</span>
                 </Button>
               </Link>
               <Link href="/contact" onClick={onClose}>

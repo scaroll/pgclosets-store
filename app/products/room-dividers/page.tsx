@@ -311,7 +311,7 @@ export default async function RoomDividersPage() {
               href="/request-work"
               className="bg-white text-slate-900 px-8 py-4 text-lg font-light hover:bg-gray-100 transition-all duration-300 uppercase tracking-widest"
             >
-              Request Free Consultation
+              Request Free Online Quote
             </Link>
             <Link
               href="mailto:info@pgclosets.com"

@@ -23,7 +23,7 @@ const popularSearches = [
 const quickLinks = [
   { label: "All Products", href: "/products" },
   { label: "Design Ideas", href: "/gallery" },
-  { label: "Free Consultation", href: "/request-work" },
+  { label: "Free Online Quote", href: "/request-work" },
 ]
 
 export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {

@@ -65,13 +65,13 @@ const blogPosts = {
       <h2>Working with a Professional</h2>
       <p>As Ottawa&apos;s authorized Renin dealer, PG Closets understands local building codes, climate considerations, and architectural styles. Our team provides:</p>
       <ul>
-        <li>Free in-home consultations</li>
+        <li>Free online quotes</li>
         <li>Custom sizing for unique openings</li>
         <li>Professional installation</li>
         <li>Lifetime warranty on workmanship</li>
       </ul>
 
-      <p>Ready to find the perfect closet doors for your Ottawa home? Contact us today for a free consultation and discover why hundreds of Ottawa homeowners trust PG Closets for their closet door needs.</p>
+      <p>Ready to find the perfect closet doors for your Ottawa home? Contact us today for a free online quote and discover why hundreds of Ottawa homeowners trust PG Closets for their closet door needs.</p>
     `,
     date: "2024-01-15",
     readTime: "8 min read",
@@ -169,7 +169,7 @@ const blogPosts = {
         <li>Code compliance</li>
       </ul>
 
-      <p>As Ottawa&apos;s authorized Renin dealer, PG Closets helps you make the right choice for your home. We offer free consultations to assess your space and recommend the best solution for your needs and budget.</p>
+      <p>As Ottawa&apos;s authorized Renin dealer, PG Closets helps you make the right choice for your home. We offer free online quotes to assess your space and recommend the best solution for your needs and budget.</p>
     `,
     date: "2024-01-10",
     readTime: "6 min read",
@@ -262,7 +262,7 @@ const blogPosts = {
       <h2>The PG Closets Difference</h2>
       <p>As Ottawa&apos;s trusted Renin dealer, we offer:</p>
       <ul>
-        <li>Free in-home consultations</li>
+        <li>Free online quotes</li>
         <li>Transparent Canadian pricing</li>
         <li>Professional installation team</li>
         <li>Lifetime workmanship warranty</li>

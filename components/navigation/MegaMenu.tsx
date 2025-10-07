@@ -223,7 +223,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, activeMenu, onClose }) => {
             <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
               <div className="text-center sm:text-left">
                 <h4 className="text-lg font-semibold text-gray-900">Ready to get started?</h4>
-                <p className="text-sm text-gray-600">Schedule your free consultation today</p>
+                <p className="text-sm text-gray-600">Schedule your free online quote today</p>
               </div>
               <div className="flex space-x-4">
                 <Link

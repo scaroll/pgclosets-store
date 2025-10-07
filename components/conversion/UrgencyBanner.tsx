@@ -58,7 +58,7 @@ export default function UrgencyBanner({
           icon: <Clock className="w-5 h-5" />,
           message: "Limited Time Offer Ends In:",
           countdown: `${timeLeft.hours.toString().padStart(2, '0')}:${timeLeft.minutes.toString().padStart(2, '0')}:${timeLeft.seconds.toString().padStart(2, '0')}`,
-          cta: "Book Your Free Consultation Now",
+          cta: "Book Your Free Online Quote Now",
           bgColor: "bg-gradient-to-r from-red-600 to-red-700"
         }
 
@@ -92,7 +92,7 @@ export default function UrgencyBanner({
       case "consultation":
         return {
           icon: <Phone className="w-5 h-5" />,
-          message: "🎯 Free In-Home Consultation Available",
+          message: "🎯 Free Online Quote Available",
           detail: "Professional assessment • No obligation • Same-day booking",
           cta: "Schedule Today",
           bgColor: "bg-gradient-to-r from-green-600 to-blue-600"

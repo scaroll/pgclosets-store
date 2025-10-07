@@ -294,7 +294,7 @@ export default function HomePage() {
             Ready to Transform Your Space?
           </Heading>
           <Text size="lg" className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto">
-            Book a free consultation with our design specialists today
+            Book a free online quote with our design specialists today
           </Text>
           <Link href="/request-work">
             <Button

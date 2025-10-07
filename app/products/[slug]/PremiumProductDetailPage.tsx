@@ -151,7 +151,7 @@ export function PremiumProductDetailPage({
     "Removal and disposal of old doors",
     "2-year workmanship warranty",
     "Lifetime manufacturer warranty",
-    "Free consultation and measurement",
+    "Free online quote and measurement",
   ];
 
   const handlePrevImage = () => {
@@ -317,7 +317,7 @@ export function PremiumProductDetailPage({
             {/* Trust Row - North Star Strategy: Trust near CTA */}
             <TrustRow variant="full" className="my-6" />
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Policy: Free online quote + paid on-site measurement */}
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link href="/request-work" className="flex-1">
                 <Button
@@ -335,7 +335,7 @@ export function PremiumProductDetailPage({
                   Get Free Quote
                 </Button>
               </Link>
-              <Link href="/book-measurement" className="flex-1">
+              <Link href="mailto:info@pgclosets.com" className="flex-1">
                 <Button
                   size="lg"
                   variant="secondary"
@@ -343,36 +343,25 @@ export function PremiumProductDetailPage({
                   className="inline-flex items-center justify-center"
                   onClick={() => trackCTAClick({
                     location: 'pdp',
-                    label: 'book_measurement',
+                    label: 'email_us',
                     product_id: product.id,
                     product_name: product.title
                   })}
                 >
-                  Book Measurement
+                  Email Us
                 </Button>
               </Link>
             </div>
 
-            {/* Reassurance Copy - Enhanced per North Star */}
+            {/* Reassurance Copy - Policy: Email-only, no free online quote */}
             <p className="text-sm text-gray-600 text-center mt-3">
-              No obligation • Reply in 24h • Free consultation
+              No obligation • Reply within 24h
             </p>
 
-            {/* Measurement Helper Link */}
-            <p className="text-sm text-center mt-2">
-              <Link
-                href="/book-measurement"
-                className="text-blue-600 hover:underline"
-                onClick={() => trackMeasurementHelperClick({ location: 'pdp' })}
-              >
-                Need help measuring? View our guide →
-              </Link>
-            </p>
-
-            {/* Scheduling info - North Star: evenings/weekends clarity */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
-              <p className="text-sm text-blue-900 text-center">
-                <strong>Flexible scheduling:</strong> Consultations available evenings & weekends
+            {/* On-site measurement disclosure */}
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-4">
+              <p className="text-sm text-gray-700 text-center">
+                <strong>Need sizing help?</strong> Use our measurement guide or request an on-site measurement (paid service available)
               </p>
             </div>
           </div>

@@ -149,7 +149,7 @@ export default function ClientHomePage() {
 
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">Premium Closet Doors for Ottawa Homes</h1>
           <p className="text-lg lg:text-xl mb-8 max-w-3xl mx-auto">
-            Official Renin Dealer • 500+ Installations • Free Measurement
+            Official Renin Dealer • 500+ Installations • Free Online Quote
           </p>
 
           <div className="flex justify-center space-x-8 mb-8 text-[var(--color-secondary)]">

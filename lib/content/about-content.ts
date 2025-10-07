@@ -8,7 +8,7 @@ export const aboutContent = {
     tagline: "Our Story",
     headline: "Family-Owned Excellence Since 2010",
     introduction: "Ottawa-operated and family-owned, PG Closets has been transforming homes across the region with premium Renin door systems and exceptional service for over a decade.",
-    ctaPrimary: "Get Free Consultation",
+    ctaPrimary: "Get Free Online Quote",
     ctaSecondary: "Browse Collection"
   },
 

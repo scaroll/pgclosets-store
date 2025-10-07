@@ -201,7 +201,7 @@ Every product backed by PG Closets' commitment to quality, professional installa
 
 export const seoDescriptions = {
   barnDoors: "Premium barn doors for Ottawa homes. Modern, rustic, and transitional styles. Professional installation, lifetime hardware warranty. Official Renin dealer.",
-  closetSystems: "Custom closet systems designed for Ottawa homeowners. Maximize space, enhance organization. Free consultation, expert installation, 2-year warranty.",
+  closetSystems: "Custom closet systems designed for Ottawa homeowners. Maximize space, enhance organization. Free online quote, expert installation, 2-year warranty.",
   bifoldDoors: "Quality bifold closet doors in wood, composite, and glass. Space-saving solutions for bedrooms, laundries, pantries. Professional installation available.",
   hardware: "Premium barn door hardware and closet accessories. Heavy-duty track systems, soft-close mechanisms, multiple finishes. Built to last."
 } as const

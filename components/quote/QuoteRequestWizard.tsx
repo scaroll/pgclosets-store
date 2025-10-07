@@ -289,7 +289,7 @@ export default function QuoteRequestWizard() {
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-blue-600 font-semibold">3.</span>
-                <span>We'll schedule a free consultation at your convenience</span>
+                <span>We'll schedule a free online quote at your convenience</span>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-blue-600 font-semibold">4.</span>
@@ -603,7 +603,7 @@ export default function QuoteRequestWizard() {
                 id="measurements"
                 value={formData.measurements}
                 onChange={(e) => handleInputChange("measurements", e.target.value)}
-                placeholder="If you have measurements (width x height), please provide them. If not, we'll measure during our free consultation."
+                placeholder="If you have measurements (width x height), please provide them. If not, we'll measure during our free online quote."
                 rows={3}
               />
               <p className="text-sm text-gray-500 mt-1">Don't worry if you don't have measurements - we'll handle this during our consultation</p>

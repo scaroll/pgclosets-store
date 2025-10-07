@@ -84,7 +84,7 @@ export default async function HardwarePage() {
                 href="/request-work"
                 className="bg-slate-900 text-white px-8 py-4 text-lg font-light hover:bg-slate-800 transition-all duration-500 hover:shadow-xl uppercase tracking-widest"
               >
-                Free Consultation in Ottawa
+                Free Online Quote in Ottawa
               </Link>
               <Link
                 href="/contact"

@@ -483,7 +483,7 @@ export default function MeasurementScheduler({ onSuccess, className = '' }: Meas
             </div>
 
             <p className="text-sm text-gray-600">
-              We currently provide free measurement services in the Ottawa area (postal codes starting with K).
+              We currently provide free online quote services in the Ottawa area (postal codes starting with K).
             </p>
           </div>
 
@@ -814,7 +814,7 @@ export default function MeasurementScheduler({ onSuccess, className = '' }: Meas
             <h3 className="font-semibold text-blue-900 mb-2">What to Expect</h3>
             <ul className="text-blue-800 space-y-1 text-sm">
               <li>• Our professional measurement specialist will arrive on time</li>
-              <li>• Free consultation and precise measurements</li>
+              <li>• Free online quote and precise measurements</li>
               <li>• Discussion of your project requirements and recommendations</li>
               <li>• Detailed quote provided within 24-48 hours</li>
               <li>• No obligation - completely free service</li>

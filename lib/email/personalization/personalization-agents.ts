@@ -133,7 +133,7 @@ export class DynamicContentAgent {
     // New leads: Book consultation
     if (profile.purchaseCount === 0 && !profile.interests.includes('consultation-booked')) {
       return {
-        text: 'Book Free Consultation',
+        text: 'Book Free Online Quote',
         url: 'https://www.pgclosets.com/book-consultation'
       };
     }

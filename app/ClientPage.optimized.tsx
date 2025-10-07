@@ -257,7 +257,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
             <PrimaryCTA
               size="lg"
               text="Get Custom Quote"
-              subtext="Free consultation • Custom designs"
+              subtext="Free online quote • Custom designs"
               href="/request-work"
             />
           </div>
@@ -291,7 +291,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                 🎯 Your Personalized Quote
               </h2>
               <p className="text-lg text-blue-700">
-                Professional installation included • Lifetime warranty • FREE consultation
+                Professional installation included • Lifetime warranty • FREE online quote
               </p>
             </div>
 
@@ -338,7 +338,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                     <div className="text-lg text-green-700 mb-6 space-y-2">
                       <div>✓ Professional installation included ($300 value)</div>
                       <div>✓ Lifetime warranty</div>
-                      <div>✓ FREE in-home consultation</div>
+                      <div>✓ FREE online quote</div>
                       <div>✓ 2-week delivery guarantee</div>
                     </div>
                     <div className="bg-amber-100 border border-amber-300 rounded-lg p-4 mb-6">
@@ -350,7 +350,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <UrgentCTA
                       size="lg"
-                      text="Book FREE Consultation Now"
+                      text="Book FREE Online Quote Now"
                       subtext="Secure this price • Limited slots"
                       href="/contact"
                     />
@@ -396,7 +396,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
           </div>
 
           <div className="mt-8 text-slate-400 text-sm">
-            🛡️ Licensed & Insured • ⭐ 5-Star Rated • 🎯 Lifetime Warranty • 🚚 FREE Consultation
+            🛡️ Licensed & Insured • ⭐ 5-Star Rated • 🎯 Lifetime Warranty • 🚚 FREE Online Quote
           </div>
         </div>
       </section>

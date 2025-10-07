@@ -17,7 +17,7 @@ export default function CheckoutTrustFlow({
 }: CheckoutTrustFlowProps) {
 
   const steps = [
-    { id: "consultation", label: "Free Consultation", icon: Phone },
+    { id: "consultation", label: "Free Online Quote", icon: Phone },
     { id: "quote", label: "Custom Quote", icon: Award },
     { id: "payment", label: "Secure Payment", icon: CreditCard },
     { id: "completion", label: "Installation", icon: Check }
@@ -29,7 +29,7 @@ export default function CheckoutTrustFlow({
 
   const trustElements = {
     consultation: {
-      headline: "Free In-Home Consultation",
+      headline: "Free Online Quote",
       subheadline: "No obligation • Professional assessment • Instant pricing",
       features: [
         {

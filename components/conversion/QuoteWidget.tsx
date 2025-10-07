@@ -302,13 +302,13 @@ export default function QuoteWidget({
               <div className="text-xs text-green-600">
                 ✓ Professional installation included<br/>
                 ✓ Lifetime warranty<br/>
-                ✓ Free consultation
+                ✓ Free online quote
               </div>
             </div>
 
             <div className="text-center mb-6">
               <p className="text-slate-600 text-sm">
-                This is a preliminary estimate. Get an exact quote with our free in-home consultation.
+                This is a preliminary estimate. Get an exact quote with our free online quote.
               </p>
             </div>
           </div>

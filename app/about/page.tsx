@@ -31,7 +31,7 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact">
                 <Button variant="primary" size="lg" className="bg-slate-900 text-white hover:bg-slate-800 hover:shadow-2xl hover:scale-105">
-                  Get Free Consultation
+                  Get Free Online Quote
                 </Button>
               </Link>
               <Link href="/products">

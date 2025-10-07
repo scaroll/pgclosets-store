@@ -152,14 +152,14 @@ export function LiveChatWidget({ config: customConfig }: LiveChatWidgetProps) {
     }
 
     if (lower.includes('size') || lower.includes('measure')) {
-      return "We offer standard sizes and custom dimensions. For best results, I recommend booking a free in-home consultation where we'll take precise measurements. Should I schedule that for you?"
+      return "We offer standard sizes and custom dimensions. For best results, I recommend booking a free online quote where we'll take precise measurements. Should I schedule that for you?"
     }
 
     if (lower.includes('shipping') || lower.includes('delivery')) {
       return "Great question! We offer FREE shipping and delivery throughout the Ottawa area. Delivery typically takes 2-3 weeks from order confirmation."
     }
 
-    return "Thanks for your message! For detailed assistance, I'd recommend speaking with one of our design experts. Would you like me to schedule a free consultation call?"
+    return "Thanks for your message! For detailed assistance, I'd recommend speaking with one of our design experts. Would you like me to schedule a free online quote call?"
   }
 
   /**

@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Barn Doors Ottawa | Renin Sliding Barn Doors | PG Closets',
-  description: 'Transform your Ottawa home with premium Renin barn doors. Professional installation, free measurement, and custom sliding barn door solutions. Contact PG Closets today.',
+  description: 'Transform your Ottawa home with premium Renin barn doors. Professional installation, free online quote, and custom sliding barn door solutions. Contact PG Closets today.',
   keywords: 'barn doors Ottawa, sliding barn doors, Renin barn doors, interior barn doors, custom barn doors, barn door installation Ottawa',
   openGraph: {
     title: 'Premium Barn Doors in Ottawa | PG Closets',
@@ -187,7 +187,7 @@ export default async function BarnDoorsPage() {
             Ready to Transform Your Space?
           </h2>
           <p className="text-xl font-light mb-8 text-slate-300">
-            Get a free consultation and measurement for your barn door project in Ottawa
+            Get a free online quote and measurement for your barn door project in Ottawa
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

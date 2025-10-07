@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Closet Systems Ottawa | Complete Renin Closet Solutions | PG Closets',
-  description: 'Transform your Ottawa closets with complete Renin closet systems. Custom organization, premium doors, and professional installation. Free consultation available.',
+  description: 'Transform your Ottawa closets with complete Renin closet systems. Custom organization, premium doors, and professional installation. Free online quote available.',
   keywords: 'closet systems Ottawa, custom closets, closet organization, Renin closets, walk-in closets, reach-in closets, closet design Ottawa',
   openGraph: {
     title: 'Complete Closet Systems in Ottawa | PG Closets',
@@ -387,7 +387,7 @@ export default async function ClosetSystemsPage() {
                   href="/request-work"
                   className="block w-full bg-slate-900 text-white py-4 text-center font-light hover:bg-slate-800 transition-all duration-300 uppercase tracking-widest"
                 >
-                  Schedule Free Consultation
+                  Schedule Free Online Quote
                 </Link>
                 <Link
                   href="mailto:info@pgclosets.com"

@@ -625,7 +625,7 @@ function generateSEODescription(
   product: LegacyReninProduct,
   category: typeof RENIN_CATEGORY_TAXONOMY[string]
 ): string {
-  return `${product.name} - Premium ${category.name.toLowerCase()} with professional installation in Ottawa. Authorized Renin dealer with warranty support. Free consultation and measurement.`;
+  return `${product.name} - Premium ${category.name.toLowerCase()} with professional installation in Ottawa. Authorized Renin dealer with warranty support. Free online quote and measurement.`;
 }
 
 /**

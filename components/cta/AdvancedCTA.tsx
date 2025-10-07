@@ -334,7 +334,7 @@ export const UrgentBookingCTA = (props: Partial<AdvancedCTAProps>) => (
     variant="urgent"
     size="lg"
     icon="calendar"
-    text="Book Free Consultation - 3 Slots Left This Week"
+    text="Book Free Online Quote - 3 Slots Left This Week"
     urgency={{
       enabled: true,
       slotsLeft: 3,

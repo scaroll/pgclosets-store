@@ -107,7 +107,7 @@ export const CTAShowcase: React.FC = () => {
           <div className="p-6 bg-gray-50 rounded-lg">
             <h3 className="font-semibold text-gray-700 mb-4">Time-Based</h3>
             <UrgencyCTA urgencyType="time" urgencyMessage="Offer ends Friday">
-              Book Free Consultation
+              Book Free Online Quote
             </UrgencyCTA>
           </div>
 

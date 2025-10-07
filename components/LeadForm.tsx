@@ -219,7 +219,7 @@ export function LeadForm({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="quote">Free Quote</SelectItem>
-            <SelectItem value="measure">Free In-Home Measurement</SelectItem>
+            <SelectItem value="measure">Free Online Quote Measurement</SelectItem>
             <SelectItem value="general">General Inquiry</SelectItem>
           </SelectContent>
         </Select>

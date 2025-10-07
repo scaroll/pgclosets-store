@@ -106,7 +106,7 @@ export function FitmentTable({ spec, className = '' }: FitmentTableProps) {
       {/* Measurement Help */}
       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
         <p className="text-sm text-yellow-900">
-          <strong>Not sure about your measurements?</strong> Our team provides free in-home measurements
+          <strong>Not sure about your measurements?</strong> Our team provides free online quote measurements
           to ensure perfect fit. Book a measurement consultation or upload photos in your quote request.
         </p>
       </div>

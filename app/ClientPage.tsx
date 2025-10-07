@@ -286,7 +286,7 @@ export default function ClientPage({ products }: { products: Product[] }) {
                       href="/contact"
                       className="add-to-cart bg-[var(--color-primary)] text-white px-8 py-4 font-semibold hover:bg-[var(--color-primary)] transition-all uppercase tracking-wide inline-block"
                     >
-                      Book Free Consultation
+                      Book Free Online Quote
                     </Link>
                   </div>
                 )}

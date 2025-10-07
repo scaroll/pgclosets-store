@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const title = `Custom Closet Doors ${neighborhood.name} | ${BUSINESS_INFO.name}`
-  const description = `${neighborhood.description} Professional Renin closet door installation in ${neighborhood.name}. Free consultation, lifetime warranty.`
+  const description = `${neighborhood.description} Professional Renin closet door installation in ${neighborhood.name}. Free online quote, lifetime warranty.`
 
   return {
     title,
@@ -129,7 +129,7 @@ export default function NeighborhoodPage({ params }: Props) {
                   className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
                 >
                   <Mail className="h-5 w-5" />
-                  Free Consultation
+                  Free Online Quote
                 </Link>
                 <Link
                   href="/products"
@@ -235,7 +235,7 @@ export default function NeighborhoodPage({ params }: Props) {
               Ready to Transform Your {neighborhood.name} Home?
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Schedule your free consultation today. We serve all of {neighborhood.displayName}.
+              Schedule your free online quote today. We serve all of {neighborhood.displayName}.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link

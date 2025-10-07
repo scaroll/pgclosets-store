@@ -391,7 +391,7 @@ async function handleReninQuoteRequest(
     },
     nextSteps: [
       "Our sales team will contact you within 24 hours",
-      "Schedule a free in-home consultation",
+      "Schedule a free online quote",
       "Finalize product selection and measurements",
       "Book your installation appointment"
     ]

@@ -90,7 +90,7 @@ export function generateProductMetadata(product: {
  */
 export function generateLocationMetadata(location: string): Metadata {
   const title = `Custom Closets ${location} | ${BUSINESS_INFO.name}`
-  const description = `Professional closet door installation and storage solutions in ${location}. Official Renin dealer with lifetime warranty. Free consultation. Expert installation.`
+  const description = `Professional closet door installation and storage solutions in ${location}. Official Renin dealer with lifetime warranty. Free online quote. Expert installation.`
 
   return generateMetadata({
     title,

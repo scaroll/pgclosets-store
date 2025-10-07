@@ -137,7 +137,7 @@ export function LuxuryHeroSection({
         <HeroCard className="p-6 max-w-sm backdrop-blur-md">
           <div className="text-center">
             <h3 className="text-lg font-light text-slate-900 mb-2">Ready to Transform Your Space?</h3>
-            <p className="text-sm text-slate-600 mb-4">Get a free consultation with our design experts</p>
+            <p className="text-sm text-slate-600 mb-4">Get a free online quote with our design experts</p>
             <LuxuryButton variant="gold" size="sm" href="/contact">
               Schedule Now
             </LuxuryButton>

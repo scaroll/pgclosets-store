@@ -61,7 +61,7 @@ const testimonials = [
     name: "Robert Williams",
     location: "Stittsville, Ottawa",
     rating: 5,
-    text: "Professional service from start to finish. The free consultation was thorough, pricing was transparent, and installation was quick. Our closet is now a showpiece!",
+    text: "Professional service from start to finish. The free online quote was thorough, pricing was transparent, and installation was quick. Our closet is now a showpiece!",
     image: "/testimonials/customer-6.jpg",
     project: "Walk-in Closet Design"
   }

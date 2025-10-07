@@ -218,7 +218,7 @@ export class NewsletterContentAgent {
         {
           type: 'offer',
           title: 'Limited Time: Free Design Consultation',
-          content: 'Book your free in-home consultation this month and receive a complimentary 3D design rendering of your new space!',
+          content: 'Book your free online quote this month and receive a complimentary 3D design rendering of your new space!',
           link: 'https://www.pgclosets.com/book-consultation',
         },
         {

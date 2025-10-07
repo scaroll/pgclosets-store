@@ -70,7 +70,7 @@ export const QuoteRequestCTA: React.FC<QuoteRequestCTAProps> = ({
   }
 
   const benefits = [
-    { icon: CheckCircle, text: 'Free consultation & measurement' },
+    { icon: CheckCircle, text: 'Free online quote & measurement' },
     { icon: CheckCircle, text: 'Response within 24 hours' },
     { icon: CheckCircle, text: 'No obligation quote' }
   ]

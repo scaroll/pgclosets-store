@@ -1,7 +1,7 @@
 export const metadata = {
   title: "Request Quote | Premium Closet Doors | PG Closets Ottawa",
   description:
-    "Request a personalized quote for premium Renin closet doors. Professional installation available. Free consultation in Ottawa area.",
+    "Request a personalized quote for premium Renin closet doors. Professional installation available. Free online quote in Ottawa area.",
   robots: {
     index: false,
     follow: true,
@@ -89,7 +89,7 @@ export default function CheckoutPage() {
               </svg>
               Request Your Quote Now
             </a>
-            <p className="text-sm text-pg-gray mt-4">Free consultation • No obligation • Instant response</p>
+            <p className="text-sm text-pg-gray mt-4">Free online quote • No obligation • Instant response</p>
           </div>
         </div>
       </div>

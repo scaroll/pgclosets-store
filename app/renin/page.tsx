@@ -509,7 +509,7 @@ export default function ReninPage() {
           </Heading>
           <Text size="lg" className="text-blue-100 mb-12 max-w-2xl mx-auto">
             Join hundreds of satisfied Ottawa homeowners who chose PG Closets for their Renin closet door solutions.
-            Get your free consultation today.
+            Get your free online quote today.
           </Text>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/request-work">

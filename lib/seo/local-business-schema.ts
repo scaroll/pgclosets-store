@@ -177,7 +177,7 @@ export function generateLocalBusinessSchema() {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Free In-Home Consultation",
+          "name": "Free Online Quote",
           "description": "Professional consultation and measurement service"
         },
         "price": "0",

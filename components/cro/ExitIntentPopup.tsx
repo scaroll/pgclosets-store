@@ -75,9 +75,9 @@ const defaultOffers: ExitIntentOffer[] = [
   {
     id: 'free_consultation',
     title: 'Not Sure What You Need?',
-    description: 'Book a free in-home consultation with our design experts. No obligation!',
+    description: 'Book a free online quote with our design experts. No obligation!',
     type: 'consultation',
-    cta: 'Schedule Free Consultation',
+    cta: 'Schedule Free Online Quote',
     ctaLink: 'https://clienthub.getjobber.com/client_hubs/0193e7c8-2c4b-7a8b-b0c1-4c5e6f7a8b9c/public/request_forms/0193e7c8-2c4b-7a8b-b0c1-4c5e6f7a8b9d',
     urgency: {
       message: 'Limited slots available this week'

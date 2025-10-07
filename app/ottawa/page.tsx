@@ -4,7 +4,7 @@ import StandardLayout from "@/components/layout/StandardLayout"
 export const metadata = {
   title: "Closet Doors Ottawa | Professional Installation | PG Closets",
   description:
-    "Premium closet door installation in Ottawa. Official Renin dealer serving downtown Ottawa, Centretown, Byward Market, and surrounding areas. Free consultation and transparent pricing.",
+    "Premium closet door installation in Ottawa. Official Renin dealer serving downtown Ottawa, Centretown, Byward Market, and surrounding areas. Free online quote and transparent pricing.",
   keywords:
     "closet doors Ottawa, barn doors Ottawa, bypass doors Ottawa, bifold doors Ottawa, professional installation Ottawa, Renin dealer Ottawa",
   openGraph: {

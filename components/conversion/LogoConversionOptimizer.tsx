@@ -298,6 +298,6 @@ export function CTALogoButton({
  *   href="/request-work"
  *   trackingContext="hero_cta"
  * >
- *   Request Free Consultation
+ *   Request Free Online Quote
  * </CTALogoButton>
  */

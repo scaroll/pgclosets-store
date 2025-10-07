@@ -354,7 +354,7 @@ export function generateFAQMetadata(): Metadata {
  */
 export function generateContactMetadata(): Metadata {
   const title = 'Contact Us - Ottawa Closet Door Specialists | PG Closets'
-  const description = 'Get in touch for a free consultation. Professional closet door installation serving Ottawa and surrounding areas. Email info@pgclosets.ca or request a quote online.'
+  const description = 'Get in touch for a free online quote. Professional closet door installation serving Ottawa and surrounding areas. Email info@pgclosets.ca or request a quote online.'
   const url = `${CANONICAL_URL}/contact`
 
   return {

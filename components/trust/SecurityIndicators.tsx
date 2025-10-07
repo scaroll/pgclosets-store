@@ -111,7 +111,7 @@ export default function SecurityIndicators({
 
         <div className="text-center">
           <div className="text-xs text-slate-500">
-            ✓ No hidden fees • ✓ Free consultation • ✓ Money-back guarantee
+            ✓ No hidden fees • ✓ Free online quote • ✓ Money-back guarantee
           </div>
         </div>
       </div>
@@ -221,7 +221,7 @@ export default function SecurityIndicators({
               </span>
               <span className="flex items-center gap-1">
                 <Award className="w-3 h-3" />
-                Free Consultation
+                Free Online Quote
               </span>
               <span className="flex items-center gap-1">
                 <Check className="w-3 h-3" />

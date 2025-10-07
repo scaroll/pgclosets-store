@@ -143,7 +143,7 @@ export default function ReninOttawaPage() {
               itemOffered: {
                 "@type": "Service",
                 name: "Same-Day Quote Service",
-                description: "Free consultation and quote within 24 hours in Ottawa"
+                description: "Free online quote and quote within 24 hours in Ottawa"
               }
             },
             {

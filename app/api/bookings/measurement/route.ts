@@ -47,7 +47,7 @@ const sendEmailNotification = async (bookingData: MeasurementBookingData, confir
       <h2>Your Measurement Appointment is Confirmed!</h2>
       <p>Dear ${bookingData.customer.firstName} ${bookingData.customer.lastName},</p>
 
-      <p>Thank you for booking a free measurement consultation with PG Closets. Here are your appointment details:</p>
+      <p>Thank you for booking a free online quote with PG Closets. Here are your appointment details:</p>
 
       <div style="background: var(--color-bg-secondary); padding: 20px; border-radius: 8px; margin: 20px 0;">
         <h3>Appointment Details</h3>

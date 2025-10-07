@@ -6,7 +6,7 @@
  *
  * North Star Strategy: Pillar 5 - PDP Elevation
  * - Persistent CTA on mobile (bottom of screen)
- * - "Get Free Quote • No obligation • Reply in 24h" copy
+ * - "Get Free Quote • No obligation • Reply in 24h" copy (email-only, no free online quote)
  * - High-contrast, easy tap target (48px min)
  * - Analytics tracking for sticky_cta_click events
  */
@@ -92,9 +92,9 @@ export function PDPStickyCTA({
       <div className="absolute inset-x-0 bottom-full h-4 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
 
       <div className="bg-white border-t border-gray-200 shadow-2xl px-4 py-3">
-        {/* Reassurance copy above button */}
+        {/* Reassurance copy above button - Policy: Email-only, no free online quote */}
         <p className="text-xs text-center text-gray-600 mb-2">
-          No obligation • Reply in 24h • Free consultation
+          No obligation • Reply in 24h
         </p>
 
         <Link

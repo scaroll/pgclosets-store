@@ -26,7 +26,7 @@ export default function ConsultationPage() {
           <Link href="/request-work">
             <Button size="lg" variant="secondary">
               <Calendar className="mr-2 h-5 w-5" />
-              Schedule Free Consultation
+              Schedule Free Online Quote
             </Button>
           </Link>
         </div>
@@ -73,7 +73,7 @@ export default function ConsultationPage() {
             Ready to Get Started?
           </Heading>
           <Text size="lg" variant="secondary" className="mb-8 max-w-2xl mx-auto">
-            Book your free consultation today and let's bring your vision to life
+            Book your free online quote today and let's bring your vision to life
           </Text>
           <Link href="/request-work">
             <Button size="lg" variant="primary">

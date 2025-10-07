@@ -300,7 +300,7 @@ export function ProductQuickView({
               <div className="rounded-lg bg-muted/50 p-4">
                 <p className="text-sm text-muted-foreground">
                   Free shipping on orders over $500. Professional installation available.
-                  Contact us for a free consultation.
+                  Contact us for a free online quote.
                 </p>
               </div>
             </div>

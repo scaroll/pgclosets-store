@@ -21,12 +21,12 @@ import { Button } from '@/components/ui/button'
 import Card from '@/components/ui/Card-new'
 
 export const metadata: Metadata = {
-  title: 'Free Measurement Service | Book Your Appointment | PG Closets',
+  title: 'Free Online Quote Service | Book Your Appointment | PG Closets',
   description: 'Book a free professional measurement consultation for your Renin closet doors, barn doors, and hardware. Serving Ottawa and surrounding areas with expert installation guidance.',
-  keywords: 'free measurement, closet measurement, barn door measurement, Renin products, Ottawa, professional consultation',
+  keywords: 'free online quote, closet measurement, barn door measurement, Renin products, Ottawa, professional consultation',
   openGraph: {
-    title: 'Free Measurement Service | PG Closets',
-    description: 'Professional measurement service for Renin closet solutions in Ottawa. Book your free consultation today.',
+    title: 'Free Online Quote Service | PG Closets',
+    description: 'Professional measurement service for Renin closet solutions in Ottawa. Book your free online quote today.',
     type: 'website',
   }
 }
@@ -84,7 +84,7 @@ export default function BookMeasurementPage() {
               </div>
               <a href="#booking-form" className="block mt-6">
                 <Button variant="primary" size="lg" className="w-full">
-                  Book Your Free Measurement
+                  Book Your Free Online Quote
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </a>
@@ -162,7 +162,7 @@ export default function BookMeasurementPage() {
               </div>
               <Heading level={3} className="mb-2">Book Online</Heading>
               <Text variant="body">
-                Schedule your free measurement appointment using our easy online booking system.
+                Schedule your free online quote appointment using our easy online booking system.
               </Text>
             </div>
 
@@ -207,7 +207,7 @@ export default function BookMeasurementPage() {
               Ottawa Area Service Coverage
             </Heading>
             <Text variant="body">
-              We proudly serve the greater Ottawa area with our free measurement service.
+              We proudly serve the greater Ottawa area with our free online quote service.
             </Text>
           </div>
 
@@ -371,7 +371,7 @@ export default function BookMeasurementPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              Book Your Free Measurement Appointment
+              Book Your Free Online Quote Appointment
             </Heading>
             <Text variant="body">
               Ready to get started? Schedule your professional measurement consultation today.

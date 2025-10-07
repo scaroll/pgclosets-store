@@ -149,7 +149,7 @@ export function generateConsultationServiceSchema() {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${baseUrl}/services#consultation`,
-    "name": "Free In-Home Closet Consultation",
+    "name": "Free Online Quote Closet Consultation",
     "description": "Complimentary in-home consultation and measurement service for custom closet solutions. Expert advice on Renin products and design options for your space.",
     "provider": {
       "@type": "LocalBusiness",
@@ -284,7 +284,7 @@ export function generateServiceCollectionSchema() {
           "item": {
             "@type": "Service",
             "@id": `${baseUrl}/services#consultation`,
-            "name": "Free In-Home Consultation",
+            "name": "Free Online Quote",
             "description": "Complimentary consultation and measurement"
           }
         },

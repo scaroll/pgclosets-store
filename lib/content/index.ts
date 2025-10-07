@@ -232,7 +232,7 @@ export const commonContent = {
   },
 
   cta: {
-    primary: 'Get Free Consultation',
+    primary: 'Get Free Online Quote',
     secondary: 'Browse Collections',
     contact: 'Contact Us',
     email: 'Email Us',
@@ -242,7 +242,7 @@ export const commonContent = {
   },
 
   features: [
-    'Free In-Home Consultation',
+    'Free Online Quote',
     '2-Year Workmanship Warranty',
     'Professional Installation',
     'Transparent Pricing',

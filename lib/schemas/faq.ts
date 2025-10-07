@@ -92,9 +92,9 @@ export const defaultFAQs: FAQItem[] = [
       'Renin is a trusted Canadian manufacturer known for quality, innovation, and reliability. Their doors feature superior materials, modern designs, smooth operation, and excellent warranties backed by decades of experience.',
   },
   {
-    question: 'Do you offer free consultations?',
+    question: 'Do you offer free online quotes?',
     answer:
-      'Yes! We provide free in-home consultations where we measure your space, discuss your needs and preferences, and provide expert recommendations and accurate pricing.',
+      'Yes! We provide free online quotes where we measure your space, discuss your needs and preferences, and provide expert recommendations and accurate pricing.',
   },
   {
     question: 'How do I maintain my new closet doors?',

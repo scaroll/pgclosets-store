@@ -4,7 +4,7 @@ import StandardLayout from "@/components/layout/StandardLayout"
 export const metadata = {
   title: "Closet Doors Kanata | Professional Installation | PG Closets",
   description:
-    "Premium closet door installation in Kanata. Official Renin dealer serving Kanata Lakes, Bridlewood, Morgan's Grant, and surrounding areas. Free consultation and transparent pricing.",
+    "Premium closet door installation in Kanata. Official Renin dealer serving Kanata Lakes, Bridlewood, Morgan's Grant, and surrounding areas. Free online quote and transparent pricing.",
   keywords:
     "closet doors Kanata, barn doors Kanata, bypass doors Kanata, bifold doors Kanata, professional installation Kanata, Renin dealer Kanata",
   openGraph: {

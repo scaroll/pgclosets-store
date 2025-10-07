@@ -313,9 +313,9 @@ export const faqContent = {
 
   cta: {
     heading: "Still Have Questions?",
-    body: "Our friendly team is here to help! Contact us for personalized answers about your closet project, schedule your free consultation, or get your custom quote today.",
+    body: "Our friendly team is here to help! Contact us for personalized answers about your closet project, schedule your free online quote, or get your custom quote today.",
     buttons: {
-      primary: "Schedule Free Consultation",
+      primary: "Schedule Free Online Quote",
       secondary: "Email Your Questions"
     },
     contact: {

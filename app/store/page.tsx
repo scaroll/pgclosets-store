@@ -41,7 +41,7 @@ export default function StorePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="/contact">
                   <Button variant="primary" size="lg">
-                    Free Consultation
+                    Free Online Quote
                   </Button>
                 </a>
                 <a href="mailto:spencer@peoplesgrp.com">

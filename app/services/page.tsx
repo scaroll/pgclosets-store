@@ -11,13 +11,13 @@ export const metadata: Metadata = {
   title:
     "Professional Closet Door Services Ottawa | Installation & Consultation | PG Closets",
   description:
-    "Expert closet door installation, consultation, and custom solutions in Ottawa. Free in-home consultation, professional installation, lifetime warranty. Serving Ottawa, Kanata, Nepean, Orleans, Barrhaven.",
+    "Expert closet door installation, consultation, and custom solutions in Ottawa. Free online quote, professional installation, lifetime warranty. Serving Ottawa, Kanata, Nepean, Orleans, Barrhaven.",
   keywords:
     "closet door installation Ottawa, professional door installation, custom closet solutions, home consultation Ottawa, door repair services, closet renovation Ottawa",
   openGraph: {
     title: "Professional Closet Door Services Ottawa | PG Closets",
     description:
-      "Expert closet door installation and consultation services in Ottawa. Free consultation, professional installation, lifetime warranty.",
+      "Expert closet door installation and consultation services in Ottawa. Free online quote, professional installation, lifetime warranty.",
     images: [
       {
         url: "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg",
@@ -61,7 +61,7 @@ export default function ServicesPage() {
               </Text>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="primary" size="lg" className="bg-slate-900 hover:opacity-90">
-                  <Link href="/contact">Get Free Consultation</Link>
+                  <Link href="/contact">Get Free Online Quote</Link>
                 </Button>
                 <Button variant="secondary" size="lg">
                   <Link href="/products">Browse Collection</Link>
@@ -176,7 +176,7 @@ export default function ServicesPage() {
                 </div>
                 <div className="p-6">
                   <Heading level={3} className="mb-3 uppercase">
-                    Free Consultation
+                    Free Online Quote
                   </Heading>
                   <Text variant="secondary" className="mb-4">
                     In-home consultation to assess your space, discuss options,
@@ -328,7 +328,7 @@ export default function ServicesPage() {
                 {
                   step: "1",
                   title: "Consultation",
-                  description: "Free in-home consultation and measurement",
+                  description: "Free online quote and measurement",
                   image: "/images/arcat/renin_176733_hd.jpg",
                 },
                 {
@@ -389,7 +389,7 @@ export default function ServicesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
                 <Button variant="primary" size="lg" className="bg-white text-slate-900 hover:bg-gray-100">
-                  Schedule Free Consultation
+                  Schedule Free Online Quote
                 </Button>
               </Link>
               <Link href="/products">

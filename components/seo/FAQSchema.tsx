@@ -65,7 +65,7 @@ export function LocalBusinessFAQSchema() {
     },
     {
       question: 'Do you offer free quotes for closet door installations?',
-      answer: 'Yes, we offer free quotes for all closet door and storage system installations. Contact us to schedule your free consultation.'
+      answer: 'Yes, we offer free quotes for all closet door and storage system installations. Contact us to schedule your free online quote.'
     },
     {
       question: 'Are you an authorized Renin dealer?',

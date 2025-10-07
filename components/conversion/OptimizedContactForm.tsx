@@ -159,7 +159,7 @@ export default function OptimizedContactForm({
           <div className="font-semibold mb-2">What happens next:</div>
           <div className="space-y-1 text-left">
             <div>✓ Custom quote prepared (within 24 hours)</div>
-            <div>✓ FREE consultation scheduled</div>
+            <div>✓ FREE online quote scheduled</div>
             <div>✓ Professional site assessment</div>
             <div>✓ Detailed project timeline provided</div>
           </div>
@@ -508,7 +508,7 @@ export default function OptimizedContactForm({
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4" />
-                  <span>FREE in-home consultation and measurements</span>
+                  <span>FREE online quote and measurements</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4" />

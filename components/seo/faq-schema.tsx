@@ -160,7 +160,7 @@ export const pgClosetsFAQs: FAQItem[] = [
   },
   {
     question: "How much do custom closet doors cost?",
-    answer: "Closet door pricing varies based on size, style, and hardware selection. Our doors typically range from $200-$800 per door including professional installation. Contact us for a free in-home consultation and accurate quote.",
+    answer: "Closet door pricing varies based on size, style, and hardware selection. Our doors typically range from $200-$800 per door including professional installation. Contact us for a free online quote and accurate quote.",
     category: "Pricing"
   },
   {
@@ -169,8 +169,8 @@ export const pgClosetsFAQs: FAQItem[] = [
     category: "Customization"
   },
   {
-    question: "Do you offer free consultations?",
-    answer: "Absolutely! We provide free in-home consultations where we'll measure your spaces, discuss your style preferences, and provide detailed quotes. There's no obligation and we'll help you explore all available options.",
+    question: "Do you offer free online quotes?",
+    answer: "Absolutely! We provide free online quotes where we'll measure your spaces, discuss your style preferences, and provide detailed quotes. There's no obligation and we'll help you explore all available options.",
     category: "Consultation"
   },
   {

@@ -4,7 +4,7 @@ import StandardLayout from "@/components/layout/StandardLayout"
 export const metadata = {
   title: "Closet Doors Nepean | Professional Installation | PG Closets",
   description:
-    "Premium closet door installation in Nepean. Official Renin dealer serving Barrhaven, Manotick, Riverside South, and surrounding areas. Free consultation and transparent pricing.",
+    "Premium closet door installation in Nepean. Official Renin dealer serving Barrhaven, Manotick, Riverside South, and surrounding areas. Free online quote and transparent pricing.",
   keywords:
     "closet doors Nepean, barn doors Nepean, bypass doors Nepean, bifold doors Nepean, professional installation Nepean, Renin dealer Nepean",
   openGraph: {

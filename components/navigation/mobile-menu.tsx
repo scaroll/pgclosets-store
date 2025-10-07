@@ -118,7 +118,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </Link>
 
               <Link href="/consultation" onClick={onClose}>
-                <Button className="w-full bg-primary hover:bg-primary/90">Free Consultation</Button>
+                <Button className="w-full bg-primary hover:bg-primary/90">Free Online Quote</Button>
               </Link>
             </div>
           </div>

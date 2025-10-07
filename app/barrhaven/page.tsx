@@ -4,7 +4,7 @@ import StandardLayout from "@/components/layout/StandardLayout"
 export const metadata = {
   title: "Closet Doors Barrhaven | Professional Installation | PG Closets",
   description:
-    "Premium closet door installation in Barrhaven. Official Renin dealer serving Stonebridge, Half Moon Bay, Davidson Heights, and surrounding areas. Free consultation and transparent pricing.",
+    "Premium closet door installation in Barrhaven. Official Renin dealer serving Stonebridge, Half Moon Bay, Davidson Heights, and surrounding areas. Free online quote and transparent pricing.",
   keywords:
     "closet doors Barrhaven, barn doors Barrhaven, bypass doors Barrhaven, bifold doors Barrhaven, professional installation Barrhaven, Renin dealer Barrhaven",
   openGraph: {

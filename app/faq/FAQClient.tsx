@@ -301,12 +301,12 @@ export default function FAQClient() {
           </Heading>
           <Text variant="body" className="mb-6 max-w-2xl mx-auto">
             Our friendly team is here to help! Contact us for personalized answers about your closet project,
-            schedule your free consultation, or get your custom quote today.
+            schedule your free online quote, or get your custom quote today.
           </Text>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
               <Button variant="primary" size="lg">
-                Schedule Free Consultation
+                Schedule Free Online Quote
               </Button>
             </Link>
             <a href="mailto:info@pgclosets.com">
