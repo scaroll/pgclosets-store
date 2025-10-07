@@ -11,6 +11,9 @@ import { Card as ShadcnCard, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { formatPrice } from "@/lib/utils";
 import { trackCTAClick, trackStickyMobileCTA, trackMeasurementHelperClick } from "@/lib/analytics/events";
+import { TrustRow } from "@/components/conversion/TrustRow";
+import { PDPStickyCTA } from "@/components/conversion/PDPStickyCTA";
+import { FitmentTable, defaultFitmentSpecs } from "@/components/products/FitmentTable";
 import {
   ZoomIn,
   ChevronLeft,
@@ -251,13 +254,21 @@ export function PremiumProductDetailPage({
               </Heading>
             </div>
 
-            {/* Price */}
+            {/* Price - "From $X" format per North Star Strategy */}
             <div className="flex items-baseline gap-3">
+              <Text size="xs" variant="muted" className="uppercase tracking-wider">
+                From
+              </Text>
               <Text size="lg" className="text-3xl font-extralight">
                 {formatPrice(selectedVariant.price * 100)}
               </Text>
               <Text size="sm" variant="muted">CAD</Text>
             </div>
+            {product.variants.length > 1 && (
+              <Text size="xs" variant="secondary" className="mt-1">
+                Final price based on size and finish selection
+              </Text>
+            )}
 
             {/* Rating */}
             <div className="flex items-center gap-2">
@@ -303,15 +314,23 @@ export function PremiumProductDetailPage({
               </div>
             )}
 
+            {/* Trust Row - North Star Strategy: Trust near CTA */}
+            <TrustRow variant="full" className="my-6" />
+
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-4">
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link href="/request-work" className="flex-1">
                 <Button
                   size="lg"
                   variant="primary"
                   fullWidth
                   className="inline-flex items-center justify-center"
-                  onClick={() => trackCTAClick({ location: 'pdp-main', label: 'Get Free Quote' })}
+                  onClick={() => trackCTAClick({
+                    location: 'pdp',
+                    label: 'get_quote',
+                    product_id: product.id,
+                    product_name: product.title
+                  })}
                 >
                   Get Free Quote
                 </Button>
@@ -322,16 +341,21 @@ export function PremiumProductDetailPage({
                   variant="secondary"
                   fullWidth
                   className="inline-flex items-center justify-center"
-                  onClick={() => trackCTAClick({ location: 'pdp-main', label: 'Book Measurement' })}
+                  onClick={() => trackCTAClick({
+                    location: 'pdp',
+                    label: 'book_measurement',
+                    product_id: product.id,
+                    product_name: product.title
+                  })}
                 >
                   Book Measurement
                 </Button>
               </Link>
             </div>
 
-            {/* Reassurance Copy */}
-            <p className="text-sm text-gray-600 text-center mt-2">
-              No obligation • Reply within 24h
+            {/* Reassurance Copy - Enhanced per North Star */}
+            <p className="text-sm text-gray-600 text-center mt-3">
+              No obligation • Reply in 24h • Free consultation
             </p>
 
             {/* Measurement Helper Link */}
@@ -345,49 +369,30 @@ export function PremiumProductDetailPage({
               </Link>
             </p>
 
-            {/* Trust Signals / Social Proof */}
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-700 mt-4 mb-6">
-              <div className="flex items-center gap-2">
-                <span>⭐ 5.0</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span>500+ Installs</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span>BBB A+</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span>Lifetime Warranty</span>
-              </div>
-            </div>
-
-            {/* Legacy Trust Signals */}
-            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gray-200">
-              <div className="text-center">
-                <Shield className="w-6 h-6 mx-auto mb-2 text-gray-600" />
-                <p className="text-xs text-gray-600">Lifetime Warranty</p>
-              </div>
-              <div className="text-center">
-                <Wrench className="w-6 h-6 mx-auto mb-2 text-gray-600" />
-                <p className="text-xs text-gray-600">Professional Install</p>
-              </div>
-              <div className="text-center">
-                <Check className="w-6 h-6 mx-auto mb-2 text-gray-600" />
-                <p className="text-xs text-gray-600">Canadian Made</p>
-              </div>
+            {/* Scheduling info - North Star: evenings/weekends clarity */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+              <p className="text-sm text-blue-900 text-center">
+                <strong>Flexible scheduling:</strong> Consultations available evenings & weekends
+              </p>
             </div>
           </div>
         </div>
 
         {/* Product Details Tabs */}
         <div className="mt-20">
-          <Tabs defaultValue="specs" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 bg-gray-100 p-1 rounded-lg">
+          <Tabs defaultValue="fitment" className="w-full">
+            <TabsList className="grid w-full grid-cols-5 bg-gray-100 p-1 rounded-lg">
+              <TabsTrigger
+                value="fitment"
+                className="data-[state=active]:bg-white data-[state=active]:shadow-sm"
+              >
+                Fitment
+              </TabsTrigger>
               <TabsTrigger
                 value="specs"
                 className="data-[state=active]:bg-white data-[state=active]:shadow-sm"
               >
-                Technical Specs
+                Specs
               </TabsTrigger>
               <TabsTrigger
                 value="installation"
@@ -408,6 +413,11 @@ export function PremiumProductDetailPage({
                 Reviews
               </TabsTrigger>
             </TabsList>
+
+            {/* Fitment & Compatibility - North Star Strategy: Priority #1 */}
+            <TabsContent value="fitment" className="mt-8">
+              <FitmentTable spec={defaultFitmentSpecs.bypassDoor} />
+            </TabsContent>
 
             {/* Technical Specifications */}
             <TabsContent value="specs" className="mt-8">
@@ -677,37 +687,12 @@ export function PremiumProductDetailPage({
         </div>
       )}
 
-      {/* Mobile Sticky CTA Bar */}
-      <div
-        className={`
-          fixed bottom-0 left-0 right-0 z-50 bg-white border-t-2 border-gray-200 shadow-lg
-          transition-transform duration-300 ease-in-out
-          md:hidden
-          ${showStickyCTA ? 'translate-y-0' : 'translate-y-full'}
-        `}
-      >
-        <div className="flex items-center gap-3 p-4">
-          <div className="relative w-16 h-16 flex-shrink-0 bg-gray-50 rounded overflow-hidden">
-            <Image
-              src={galleryImages[0]}
-              alt={product.title}
-              fill
-              className="object-cover"
-              sizes="64px"
-            />
-          </div>
-          <Link href="/request-work" className="flex-1">
-            <Button
-              size="lg"
-              variant="primary"
-              className="w-full"
-              onClick={() => trackStickyMobileCTA({ product: product.title })}
-            >
-              Get Free Quote
-            </Button>
-          </Link>
-        </div>
-      </div>
+      {/* Mobile Sticky CTA - North Star Strategy: Enhanced with reassurance copy */}
+      <PDPStickyCTA
+        productId={product.id}
+        productName={product.title}
+        scrollThreshold={200}
+      />
     </div>
   );
 }
