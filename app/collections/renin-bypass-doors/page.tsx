@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import simpleProducts from "@/data/simple-products.json";
+import enhancedProducts from "@/data/enhanced-products.json";
 import { QuickConfigureCard } from "@/components/products/QuickConfigureCard";
 import StandardLayout from "@/components/layout/StandardLayout";
 
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 };
 
 export default function ReninBypassDoorsPage() {
-  const bypassDoors = simpleProducts.filter(p =>
-    p.category === 'Renin Bypass Doors' && p.id.startsWith('renin-')
+  const bypassDoors = enhancedProducts.filter(p =>
+    p.category === 'Renin Bypass Doors'
   );
 
   return (

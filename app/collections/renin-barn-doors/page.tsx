@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import simpleProducts from "@/data/simple-products.json";
+import enhancedProducts from "@/data/enhanced-products.json";
 import { QuickConfigureCard } from "@/components/products/QuickConfigureCard";
 import StandardLayout from "@/components/layout/StandardLayout";
 
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
 
 export default function ReninBarnDoorsPage() {
   // Filter for Renin Barn Doors
-  const barnDoors = simpleProducts.filter(p =>
-    p.category === 'Renin Barn Doors' && p.id.startsWith('renin-')
+  const barnDoors = enhancedProducts.filter(p =>
+    p.category === 'Renin Barn Doors'
   );
 
   return (
