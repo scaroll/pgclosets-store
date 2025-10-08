@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import simpleProducts from "@/data/simple-products.json";
-import { SimpleProductCard } from "@/components/simple-product-card";
+import { QuickConfigureCard } from "@/components/products/QuickConfigureCard";
 import StandardLayout from "@/components/layout/StandardLayout";
 
 export const metadata: Metadata = {
@@ -47,9 +47,9 @@ export default function ReninBypassDoorsPage() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 lg:grid-cols-3 gap-8">
           {bypassDoors.map((product) => (
-            <SimpleProductCard key={product.id} product={product as any} />
+            <QuickConfigureCard key={product.id} product={product as any} />
           ))}
         </div>
       </div>
