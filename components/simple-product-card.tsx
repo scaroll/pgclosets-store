@@ -3,6 +3,8 @@ import Link from "next/link"
 import { Card, CardContent } from "../ui/card"
 import { AddToCartButton } from "./ui/add-to-cart-button"
 import { BadgeChip } from "../ui/badge-chip"
+import { QuickConfigure } from "./configurator/QuickConfigure"
+import type { ProductConfiguratorData } from "@/types/configurator"
 
 type Props = {
   product: {
@@ -13,6 +15,7 @@ type Props = {
     price: number
     image: string
     category: string
+    configurator_data?: ProductConfiguratorData
   }
 }
 
@@ -38,17 +41,31 @@ export function SimpleProductCard({ product }: Props) {
         <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{product.description}</p>
         <div className="mt-3 font-semibold">${(product.price / 100).toFixed(2)}</div>
 
-        <div className="mt-4">
-          <AddToCartButton
+        {/* Quick Configure - if product has configurator data */}
+        {product.configurator_data && (
+          <QuickConfigure
             product={{
-              ...product,
-              name: product.title,
-              inStock: true, // Assume in stock for simple products
+              id: product.id,
+              title: product.title,
+              configuratorData: product.configurator_data
             }}
-            size="sm"
-            className="w-full"
           />
-        </div>
+        )}
+
+        {/* Legacy Add to Cart - keep for backward compatibility */}
+        {!product.configurator_data && (
+          <div className="mt-4">
+            <AddToCartButton
+              product={{
+                ...product,
+                name: product.title,
+                inStock: true,
+              }}
+              size="sm"
+              className="w-full"
+            />
+          </div>
+        )}
       </CardContent>
     </Card>
   )

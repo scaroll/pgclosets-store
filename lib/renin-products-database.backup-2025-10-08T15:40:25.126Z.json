@@ -42,79 +42,7 @@
         "Finish": "Multiple finish options available"
       },
       "inStock": true,
-      "featured": true,
-      "metadata": {
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 799,
-          "installed_price_from_cad": 799,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
-      }
+      "featured": true
     },
     {
       "id": "barn-sherwood-invisiglide",
@@ -143,79 +71,7 @@
         "Finish": "Natural wood stains available"
       },
       "inStock": true,
-      "featured": true,
-      "metadata": {
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 899,
-          "installed_price_from_cad": 899,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
-      }
+      "featured": true
     },
     {
       "id": "bypass-harmony-1-lite",
@@ -244,79 +100,7 @@
         "Frame": "Anodized aluminum"
       },
       "inStock": true,
-      "featured": false,
-      "metadata": {
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 549,
-          "installed_price_from_cad": 549,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
-      }
+      "featured": false
     },
     {
       "id": "bifold-euro-3-lite",
@@ -345,79 +129,7 @@
         "Frame": "Solid wood construction"
       },
       "inStock": true,
-      "featured": false,
-      "metadata": {
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 449,
-          "installed_price_from_cad": 449,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
-      }
+      "featured": false
     },
     {
       "id": "pivot-provincial-8-lite",
@@ -446,79 +158,7 @@
         "Frame": "Solid wood construction"
       },
       "inStock": true,
-      "featured": false,
-      "metadata": {
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 499,
-          "installed_price_from_cad": 499,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
-      }
+      "featured": false
     },
     {
       "id": "hardware-soft-close-track",
@@ -547,79 +187,7 @@
         "Installation": "Wall-mounted"
       },
       "inStock": true,
-      "featured": false,
-      "metadata": {
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 159,
-          "installed_price_from_cad": 159,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
-      }
+      "featured": false
     },
     {
       "id": "renin-bd041",
@@ -677,77 +245,7 @@
         ],
         "videos": [],
         "extractedFrom": "augusta-1-lite-framed-mullion-design-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.383Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 56500,
-          "installed_price_from_cad": 56500,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.383Z"
       },
       "created_at": "2025-10-08T01:41:32.383Z",
       "updated_at": "2025-10-08T01:41:32.383Z"
@@ -814,77 +312,7 @@
         "pdfs": [],
         "videos": [],
         "extractedFrom": "authentic-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.385Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 49999,
-          "installed_price_from_cad": 49999,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.385Z"
       },
       "created_at": "2025-10-08T01:41:32.385Z",
       "updated_at": "2025-10-08T01:41:32.385Z"
@@ -939,77 +367,7 @@
         ],
         "videos": [],
         "extractedFrom": "boca-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.386Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 67500,
-          "installed_price_from_cad": 67500,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.386Z"
       },
       "created_at": "2025-10-08T01:41:32.386Z",
       "updated_at": "2025-10-08T01:41:32.386Z"
@@ -1067,77 +425,7 @@
         ],
         "videos": [],
         "extractedFrom": "cheval-z-design-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.386Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 67900,
-          "installed_price_from_cad": 67900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.386Z"
       },
       "created_at": "2025-10-08T01:41:32.386Z",
       "updated_at": "2025-10-08T01:41:32.386Z"
@@ -1197,77 +485,7 @@
         ],
         "videos": [],
         "extractedFrom": "cristo-1-lite-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.386Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 63900,
-          "installed_price_from_cad": 63900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.386Z"
       },
       "created_at": "2025-10-08T01:41:32.386Z",
       "updated_at": "2025-10-08T01:41:32.386Z"
@@ -1324,77 +542,7 @@
         ],
         "videos": [],
         "extractedFrom": "crochet-multi-x-design-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.386Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 56500,
-          "installed_price_from_cad": 56500,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.386Z"
       },
       "created_at": "2025-10-08T01:41:32.386Z",
       "updated_at": "2025-10-08T01:41:32.386Z"
@@ -1464,77 +612,7 @@
         ],
         "videos": [],
         "extractedFrom": "driftwood-extra-tall-k-design-invisiglide-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.386Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 74500,
-          "installed_price_from_cad": 74500,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.386Z"
       },
       "created_at": "2025-10-08T01:41:32.386Z",
       "updated_at": "2025-10-08T01:41:32.386Z"
@@ -1595,77 +673,7 @@
         ],
         "videos": [],
         "extractedFrom": "driftwood-k-design-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.387Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 58900,
-          "installed_price_from_cad": 58900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.387Z"
       },
       "created_at": "2025-10-08T01:41:32.387Z",
       "updated_at": "2025-10-08T01:41:32.387Z"
@@ -1725,77 +733,7 @@
         ],
         "videos": [],
         "extractedFrom": "dunmore-k-lite-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.387Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 63900,
-          "installed_price_from_cad": 63900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.387Z"
       },
       "created_at": "2025-10-08T01:41:32.387Z",
       "updated_at": "2025-10-08T01:41:32.387Z"
@@ -1856,77 +794,7 @@
         ],
         "videos": [],
         "extractedFrom": "easy-build-langley-chevron-design-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.387Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 60900,
-          "installed_price_from_cad": 60900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.387Z"
       },
       "created_at": "2025-10-08T01:41:32.387Z",
       "updated_at": "2025-10-08T01:41:32.387Z"
@@ -1982,77 +850,7 @@
           "https://www.renin.com/wp-content/uploads/2020/11/BD062-Easy-Build-2-Pavilion-5-Lite_16x9_D4_v2.mp4"
         ],
         "extractedFrom": "easy-build-pavilion-5-lite-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.387Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 60900,
-          "installed_price_from_cad": 60900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.387Z"
       },
       "created_at": "2025-10-08T01:41:32.387Z",
       "updated_at": "2025-10-08T01:41:32.387Z"
@@ -2114,77 +912,7 @@
         ],
         "videos": [],
         "extractedFrom": "easy-build-ready-to-assemble-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.388Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 59900,
-          "installed_price_from_cad": 59900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.388Z"
       },
       "created_at": "2025-10-08T01:41:32.388Z",
       "updated_at": "2025-10-08T01:41:32.388Z"
@@ -2245,77 +973,7 @@
         ],
         "videos": [],
         "extractedFrom": "easy-build-salinas-z-design-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.388Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 67900,
-          "installed_price_from_cad": 67900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.388Z"
       },
       "created_at": "2025-10-08T01:41:32.388Z",
       "updated_at": "2025-10-08T01:41:32.388Z"
@@ -2376,77 +1034,7 @@
         ],
         "videos": [],
         "extractedFrom": "easy-build-stone-k-design-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.388Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 60900,
-          "installed_price_from_cad": 60900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.388Z"
       },
       "created_at": "2025-10-08T01:41:32.388Z",
       "updated_at": "2025-10-08T01:41:32.388Z"
@@ -2509,77 +1097,7 @@
         "pdfs": [],
         "videos": [],
         "extractedFrom": "flair-pine-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.388Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 54900,
-          "installed_price_from_cad": 54900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.388Z"
       },
       "created_at": "2025-10-08T01:41:32.388Z",
       "updated_at": "2025-10-08T01:41:32.388Z"
@@ -2645,77 +1163,7 @@
         ],
         "videos": [],
         "extractedFrom": "gatsby-chevron-2-panel-shaker-design-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.388Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 62900,
-          "installed_price_from_cad": 62900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.388Z"
       },
       "created_at": "2025-10-08T01:41:32.388Z",
       "updated_at": "2025-10-08T01:41:32.388Z"
@@ -2785,77 +1233,7 @@
         ],
         "videos": [],
         "extractedFrom": "glim-extra-tall-4-lite-invisiglide-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.388Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 74500,
-          "installed_price_from_cad": 74500,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.388Z"
       },
       "created_at": "2025-10-08T01:41:32.388Z",
       "updated_at": "2025-10-08T01:41:32.388Z"
@@ -2916,77 +1294,7 @@
           "https://www.renin.com/wp-content/uploads/2021/04/Renin-Quick-Hang-Barn-Door-Installation-Instructions-No-Soft-Close-1.mp4"
         ],
         "extractedFrom": "hall-3-lite-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.389Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 63900,
-          "installed_price_from_cad": 63900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.389Z"
       },
       "created_at": "2025-10-08T01:41:32.389Z",
       "updated_at": "2025-10-08T01:41:32.389Z"
@@ -3051,77 +1359,7 @@
         ],
         "videos": [],
         "extractedFrom": "herringbone-chevron-design-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.389Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 75900,
-          "installed_price_from_cad": 75900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.389Z"
       },
       "created_at": "2025-10-08T01:41:32.389Z",
       "updated_at": "2025-10-08T01:41:32.389Z"
@@ -3178,77 +1416,7 @@
         ],
         "videos": [],
         "extractedFrom": "hollow-core-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.389Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 64500,
-          "installed_price_from_cad": 64500,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.389Z"
       },
       "created_at": "2025-10-08T01:41:32.389Z",
       "updated_at": "2025-10-08T01:41:32.389Z"
@@ -3311,77 +1479,7 @@
         "pdfs": [],
         "videos": [],
         "extractedFrom": "lace-multi-x-design-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.389Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 56500,
-          "installed_price_from_cad": 56500,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.389Z"
       },
       "created_at": "2025-10-08T01:41:32.389Z",
       "updated_at": "2025-10-08T01:41:32.389Z"
@@ -3447,77 +1545,7 @@
         "pdfs": [],
         "videos": [],
         "extractedFrom": "metal-works-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.389Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 39999,
-          "installed_price_from_cad": 39999,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.389Z"
       },
       "created_at": "2025-10-08T01:41:32.389Z",
       "updated_at": "2025-10-08T01:41:32.389Z"
@@ -3581,77 +1609,7 @@
         ],
         "videos": [],
         "extractedFrom": "pavilion-5-lite-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.389Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 63900,
-          "installed_price_from_cad": 63900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.389Z"
       },
       "created_at": "2025-10-08T01:41:32.389Z",
       "updated_at": "2025-10-08T01:41:32.389Z"
@@ -3736,77 +1694,7 @@
         "pdfs": [],
         "videos": [],
         "extractedFrom": "provincial-8-lite-design-single-track-bypass-hardware-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.390Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 108000,
-          "installed_price_from_cad": 108000,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.390Z"
       },
       "created_at": "2025-10-08T01:41:32.390Z",
       "updated_at": "2025-10-08T01:41:32.390Z"
@@ -3868,77 +1756,7 @@
         ],
         "videos": [],
         "extractedFrom": "sagrada-double-x-design-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.390Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 52300,
-          "installed_price_from_cad": 52300,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.390Z"
       },
       "created_at": "2025-10-08T01:41:32.390Z",
       "updated_at": "2025-10-08T01:41:32.390Z"
@@ -4001,77 +1819,7 @@
         ],
         "videos": [],
         "extractedFrom": "salinas-z-design-pine-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.390Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 73900,
-          "installed_price_from_cad": 73900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.390Z"
       },
       "created_at": "2025-10-08T01:41:32.390Z",
       "updated_at": "2025-10-08T01:41:32.390Z"
@@ -4128,77 +1876,7 @@
           "https://www.renin.com/wp-content/uploads/2021/04/Renin-Quick-Hang-Barn-Door-Installation-Instructions-No-Soft-Close-1.mp4"
         ],
         "extractedFrom": "sherwood-arrow-design-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.390Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 58900,
-          "installed_price_from_cad": 58900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.390Z"
       },
       "created_at": "2025-10-08T01:41:32.390Z",
       "updated_at": "2025-10-08T01:41:32.390Z"
@@ -4250,77 +1928,7 @@
         ],
         "videos": [],
         "extractedFrom": "sherwood-extra-tall-arrow-design-barn-door.json",
-        "lastSync": "2025-10-08T01:41:32.390Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 50000,
-          "installed_price_from_cad": 50000,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.390Z"
       },
       "created_at": "2025-10-08T01:41:32.390Z",
       "updated_at": "2025-10-08T01:41:32.390Z"
@@ -4389,77 +1997,7 @@
         ],
         "videos": [],
         "extractedFrom": "sherwood-extra-tall-arrow-design-invisiglide-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.390Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 74500,
-          "installed_price_from_cad": 74500,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.390Z"
       },
       "created_at": "2025-10-08T01:41:32.390Z",
       "updated_at": "2025-10-08T01:41:32.390Z"
@@ -4518,77 +2056,7 @@
         ],
         "videos": [],
         "extractedFrom": "stone-k-design-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.390Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 42900,
-          "installed_price_from_cad": 42900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.390Z"
       },
       "created_at": "2025-10-08T01:41:32.390Z",
       "updated_at": "2025-10-08T01:41:32.390Z"
@@ -4662,77 +2130,7 @@
         ],
         "videos": [],
         "extractedFrom": "stone-k-design-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.391Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 67900,
-          "installed_price_from_cad": 67900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.391Z"
       },
       "created_at": "2025-10-08T01:41:32.391Z",
       "updated_at": "2025-10-08T01:41:32.391Z"
@@ -4793,77 +2191,7 @@
         ],
         "videos": [],
         "extractedFrom": "sussex-complete-barn-door-kit.json",
-        "lastSync": "2025-10-08T01:41:32.391Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 69900,
-          "installed_price_from_cad": 69900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.391Z"
       },
       "created_at": "2025-10-08T01:41:32.391Z",
       "updated_at": "2025-10-08T01:41:32.391Z"
@@ -4930,77 +2258,7 @@
         ],
         "videos": [],
         "extractedFrom": "truporte-versastyle-bifold-sliding-door-hardware-kit.json",
-        "lastSync": "2025-10-08T01:41:32.391Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 50000,
-          "installed_price_from_cad": 50000,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.391Z"
       },
       "created_at": "2025-10-08T01:41:32.391Z",
       "updated_at": "2025-10-08T01:41:32.391Z"
@@ -5070,77 +2328,7 @@
         ],
         "videos": [],
         "extractedFrom": "ashbury-2-panel-insert-design-with-steel-frame-bifold-door.json",
-        "lastSync": "2025-10-08T01:41:32.391Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 28900,
-          "installed_price_from_cad": 28900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.391Z"
       },
       "created_at": "2025-10-08T01:41:32.391Z",
       "updated_at": "2025-10-08T01:41:32.391Z"
@@ -5192,77 +2380,7 @@
         ],
         "videos": [],
         "extractedFrom": "euro-1-lite-bifold-door-2.json",
-        "lastSync": "2025-10-08T01:41:32.394Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 50900,
-          "installed_price_from_cad": 50900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.394Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
       "updated_at": "2025-10-08T02:00:00.220Z"
@@ -5314,77 +2432,7 @@
         ],
         "videos": [],
         "extractedFrom": "euro-1-lite-bifold-door.json",
-        "lastSync": "2025-10-08T01:41:32.394Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 50900,
-          "installed_price_from_cad": 50900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.394Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
       "updated_at": "2025-10-08T02:00:00.220Z"
@@ -5436,77 +2484,7 @@
         ],
         "videos": [],
         "extractedFrom": "euro-3-lite-bifold-door-2.json",
-        "lastSync": "2025-10-08T01:41:32.395Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 50900,
-          "installed_price_from_cad": 50900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.395Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
       "updated_at": "2025-10-08T02:00:00.220Z"
@@ -5558,77 +2536,7 @@
         ],
         "videos": [],
         "extractedFrom": "euro-3-lite-bifold-door.json",
-        "lastSync": "2025-10-08T01:41:32.395Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 50900,
-          "installed_price_from_cad": 50900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.395Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
       "updated_at": "2025-10-08T02:00:00.220Z"
@@ -5684,77 +2592,7 @@
         ],
         "videos": [],
         "extractedFrom": "georgian-6-panel-insert-design-with-steel-frame-bifold-door.json",
-        "lastSync": "2025-10-08T01:41:32.396Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 54900,
-          "installed_price_from_cad": 54900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.396Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
       "updated_at": "2025-10-08T02:00:00.220Z"
@@ -5810,77 +2648,7 @@
         ],
         "videos": [],
         "extractedFrom": "parsons-flush-panel-insert-design-with-steel-frame-bifold-door.json",
-        "lastSync": "2025-10-08T01:41:32.397Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 54900,
-          "installed_price_from_cad": 54900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.397Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
       "updated_at": "2025-10-08T02:00:00.220Z"
@@ -5943,77 +2711,7 @@
           "Style": "Modern"
         },
         "extractedFrom": "eclipse-mirror-bypass-door-48.json",
-        "lastSync": "2025-10-08T01:41:32.393Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 74900,
-          "installed_price_from_cad": 74900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.393Z"
       },
       "created_at": "2025-10-08T01:41:32.393Z",
       "updated_at": "2025-10-08T01:41:32.393Z"
@@ -6084,77 +2782,7 @@
           "Style": "Luxury"
         },
         "extractedFrom": "elegance-bypass-mirror-door-system-72.json",
-        "lastSync": "2025-10-08T01:41:32.393Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 109900,
-          "installed_price_from_cad": 109900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.393Z"
       },
       "created_at": "2025-10-08T01:41:32.393Z",
       "updated_at": "2025-10-08T01:41:32.393Z"
@@ -6216,77 +2844,7 @@
           "Style": "Contemporary"
         },
         "extractedFrom": "harmony-bypass-closet-door-system.json",
-        "lastSync": "2025-10-08T01:41:32.393Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 89900,
-          "installed_price_from_cad": 89900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.393Z"
       },
       "created_at": "2025-10-08T01:41:32.393Z",
       "updated_at": "2025-10-08T01:41:32.393Z"
@@ -6338,77 +2896,7 @@
         ],
         "videos": [],
         "extractedFrom": "ashbury-2-panel-design-steel-frame-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.394Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 33900,
-          "installed_price_from_cad": 33900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.394Z"
       },
       "created_at": "2025-10-08T01:41:32.394Z",
       "updated_at": "2025-10-08T01:41:32.394Z"
@@ -6465,77 +2953,7 @@
         ],
         "videos": [],
         "extractedFrom": "ashbury-2-panel-insert-design-with-steel-frame-bifold-door.json",
-        "lastSync": "2025-10-08T01:41:32.394Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 54900,
-          "installed_price_from_cad": 54900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.394Z"
       },
       "created_at": "2025-10-08T01:41:32.394Z",
       "updated_at": "2025-10-08T01:41:32.394Z"
@@ -6591,77 +3009,7 @@
         ],
         "videos": [],
         "extractedFrom": "crochet-multi-x-design-pivot-door.json",
-        "lastSync": "2025-10-08T01:41:32.394Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 59900,
-          "installed_price_from_cad": 59900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.394Z"
       },
       "created_at": "2025-10-08T01:41:32.394Z",
       "updated_at": "2025-10-08T01:41:32.394Z"
@@ -6714,77 +3062,7 @@
         ],
         "videos": [],
         "extractedFrom": "euro-1-lite-bypass-door-2.json",
-        "lastSync": "2025-10-08T01:41:32.395Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 67400,
-          "installed_price_from_cad": 67400,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.395Z"
       },
       "created_at": "2025-10-08T01:41:32.395Z",
       "updated_at": "2025-10-08T01:41:32.395Z"
@@ -6846,77 +3124,7 @@
         ],
         "videos": [],
         "extractedFrom": "euro-1-lite-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.395Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 67400,
-          "installed_price_from_cad": 67400,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.395Z"
       },
       "created_at": "2025-10-08T01:41:32.395Z",
       "updated_at": "2025-10-08T01:41:32.395Z"
@@ -6974,77 +3182,7 @@
         ],
         "videos": [],
         "extractedFrom": "euro-1-lite-design-pivot-door.json",
-        "lastSync": "2025-10-08T01:41:32.395Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 52900,
-          "installed_price_from_cad": 52900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.395Z"
       },
       "created_at": "2025-10-08T01:41:32.395Z",
       "updated_at": "2025-10-08T01:41:32.395Z"
@@ -7097,77 +3235,7 @@
         ],
         "videos": [],
         "extractedFrom": "euro-3-lite-bypass-door-2.json",
-        "lastSync": "2025-10-08T01:41:32.395Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 67400,
-          "installed_price_from_cad": 67400,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.395Z"
       },
       "created_at": "2025-10-08T01:41:32.395Z",
       "updated_at": "2025-10-08T01:41:32.395Z"
@@ -7220,77 +3288,7 @@
         ],
         "videos": [],
         "extractedFrom": "euro-3-lite-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.396Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 67400,
-          "installed_price_from_cad": 67400,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.396Z"
       },
       "created_at": "2025-10-08T01:41:32.396Z",
       "updated_at": "2025-10-08T01:41:32.396Z"
@@ -7346,77 +3344,7 @@
         ],
         "videos": [],
         "extractedFrom": "euro-3-lite-design-pivot-door.json",
-        "lastSync": "2025-10-08T01:41:32.396Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 52900,
-          "installed_price_from_cad": 52900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.396Z"
       },
       "created_at": "2025-10-08T01:41:32.396Z",
       "updated_at": "2025-10-08T01:41:32.396Z"
@@ -7469,77 +3397,7 @@
         ],
         "videos": [],
         "extractedFrom": "euro-5-lite-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.396Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 67400,
-          "installed_price_from_cad": 67400,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.396Z"
       },
       "created_at": "2025-10-08T01:41:32.396Z",
       "updated_at": "2025-10-08T01:41:32.396Z"
@@ -7592,77 +3450,7 @@
         ],
         "videos": [],
         "extractedFrom": "galloway-4-panel-design-steel-frame-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.396Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 33900,
-          "installed_price_from_cad": 33900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.396Z"
       },
       "created_at": "2025-10-08T01:41:32.396Z",
       "updated_at": "2025-10-08T01:41:32.396Z"
@@ -7723,77 +3511,7 @@
         ],
         "videos": [],
         "extractedFrom": "georgian-6-panel-design-steel-frame-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.396Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 33900,
-          "installed_price_from_cad": 33900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.396Z"
       },
       "created_at": "2025-10-08T01:41:32.396Z",
       "updated_at": "2025-10-08T01:41:32.396Z"
@@ -7850,77 +3568,7 @@
         ],
         "videos": [],
         "extractedFrom": "harmony-1-lite-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.396Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 64900,
-          "installed_price_from_cad": 64900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.396Z"
       },
       "created_at": "2025-10-08T01:41:32.396Z",
       "updated_at": "2025-10-08T01:41:32.396Z"
@@ -7985,77 +3633,7 @@
         ],
         "videos": [],
         "extractedFrom": "lace-multi-x-design-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.397Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 64900,
-          "installed_price_from_cad": 64900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.397Z"
       },
       "created_at": "2025-10-08T01:41:32.397Z",
       "updated_at": "2025-10-08T01:41:32.397Z"
@@ -8108,77 +3686,7 @@
         ],
         "videos": [],
         "extractedFrom": "parsons-flush-panel-design-steel-frame-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.397Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 33900,
-          "installed_price_from_cad": 33900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.397Z"
       },
       "created_at": "2025-10-08T01:41:32.397Z",
       "updated_at": "2025-10-08T01:41:32.397Z"
@@ -8234,77 +3742,7 @@
         ],
         "videos": [],
         "extractedFrom": "provincial-8-lite-design-pivot-door.json",
-        "lastSync": "2025-10-08T01:41:32.397Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 59900,
-          "installed_price_from_cad": 59900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.397Z"
       },
       "created_at": "2025-10-08T01:41:32.397Z",
       "updated_at": "2025-10-08T01:41:32.397Z"
@@ -8365,77 +3803,7 @@
         ],
         "videos": [],
         "extractedFrom": "savona-2-panel-arched-design-steel-frame-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.397Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 33900,
-          "installed_price_from_cad": 33900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.397Z"
       },
       "created_at": "2025-10-08T01:41:32.397Z",
       "updated_at": "2025-10-08T01:41:32.397Z"
@@ -8504,77 +3872,7 @@
         ],
         "videos": [],
         "extractedFrom": "trident-double-k-design-bypass-door-2.json",
-        "lastSync": "2025-10-08T01:41:32.398Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 64900,
-          "installed_price_from_cad": 64900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.398Z"
       },
       "created_at": "2025-10-08T01:41:32.398Z",
       "updated_at": "2025-10-08T01:41:32.398Z"
@@ -8643,77 +3941,7 @@
         ],
         "videos": [],
         "extractedFrom": "trident-double-k-design-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.398Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 64900,
-          "installed_price_from_cad": 64900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.398Z"
       },
       "created_at": "2025-10-08T01:41:32.398Z",
       "updated_at": "2025-10-08T01:41:32.398Z"
@@ -8778,77 +4006,7 @@
         ],
         "videos": [],
         "extractedFrom": "twilight-1-lite-bypass-door.json",
-        "lastSync": "2025-10-08T01:41:32.398Z",
-        "configurator_data": {
-          "opening_min_width": 30,
-          "opening_max_width": 48,
-          "opening_min_height": 80,
-          "opening_max_height": 96,
-          "panel_options": [
-            1
-          ],
-          "finish_options": [
-            {
-              "id": "bright-white",
-              "name": "Bright White",
-              "color": "#FFFFFF",
-              "price_modifier": 0
-            },
-            {
-              "id": "matte-black",
-              "name": "Matte Black",
-              "color": "#1A1A1A",
-              "price_modifier": 3000
-            },
-            {
-              "id": "natural-oak",
-              "name": "Natural Oak",
-              "color": "#D4A574",
-              "price_modifier": 5000
-            },
-            {
-              "id": "espresso",
-              "name": "Espresso",
-              "color": "#3E2723",
-              "price_modifier": 5000
-            }
-          ],
-          "base_price_cad": 64900,
-          "installed_price_from_cad": 64900,
-          "price_per_panel": 0,
-          "lead_time_weeks": 2,
-          "includes": [
-            "Professional in-home measurement",
-            "Custom fabrication",
-            "Professional installation",
-            "Hardware and tracks",
-            "Post-install cleanup",
-            "30-day fit check"
-          ],
-          "addons": [
-            {
-              "id": "soft-close",
-              "name": "Soft-Close Upgrade",
-              "description": "Quiet, smooth closing mechanism",
-              "price_cad": 7500,
-              "category": "hardware"
-            },
-            {
-              "id": "haul-away",
-              "name": "Old Door Haul-Away",
-              "description": "We remove and dispose of your old doors",
-              "price_cad": 5000,
-              "category": "service"
-            },
-            {
-              "id": "rush",
-              "name": "Rush Fabrication",
-              "description": "1-week install instead of 2-3 weeks",
-              "price_cad": 15000,
-              "category": "service"
-            }
-          ]
-        }
+        "lastSync": "2025-10-08T01:41:32.398Z"
       },
       "created_at": "2025-10-08T01:41:32.398Z",
       "updated_at": "2025-10-08T01:41:32.398Z"

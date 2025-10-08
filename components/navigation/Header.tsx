@@ -7,6 +7,7 @@ import { PGLogo } from "../ui/pg-logo"
 import { MegaMenuNav } from "./MegaMenuNav"
 import { MobileDrawer } from "./MobileDrawer"
 import { SearchOverlay } from "./SearchOverlay"
+import { UtilityBar, EnhancedHeaderActions } from "./UtilityBar"
 import { cn } from "@/lib/utils"
 
 export function Header() {
@@ -44,15 +45,8 @@ export function Header() {
             : "bg-white"
         )}
       >
-        {/* Top announcement bar */}
-        <div className="bg-black text-white text-center py-2 px-4">
-          <Link
-            href="/request-work"
-            className="text-xs sm:text-sm font-medium tracking-wide hover:text-gray-200 transition-colors"
-          >
-            Get Free Quote — 2-Week Install • Lifetime Warranty
-          </Link>
-        </div>
+        {/* Utility Bar - Trust signals */}
+        <UtilityBar />
 
         {/* Main header */}
         <div className="border-b border-gray-100">
@@ -96,18 +90,8 @@ export function Header() {
                   <Search className="w-5 h-5 text-gray-700" />
                 </button>
 
-                {/* Cart */}
-                <Link
-                  href="/cart"
-                  className="p-2 hover:bg-gray-50 rounded-full transition-colors relative"
-                  aria-label="Shopping cart"
-                >
-                  <ShoppingBag className="w-5 h-5 text-gray-700" />
-                  {/* Cart count badge - add your cart count logic here */}
-                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-black text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                    0
-                  </span>
-                </Link>
+                {/* Enhanced CTA Actions - Desktop */}
+                <EnhancedHeaderActions />
 
                 {/* Mobile menu button */}
                 <button
@@ -124,25 +108,16 @@ export function Header() {
                   )}
                 </button>
 
-                {/* CTA Button - Desktop only */}
+                {/* Legacy Cart - Keep for backward compatibility */}
                 <Link
-                  href="/request-work"
-                  className="hidden lg:inline-flex items-center gap-2 bg-black text-white px-6 py-2.5 text-sm font-medium tracking-wide hover:bg-gray-800 transition-colors"
+                  href="/cart"
+                  className="hidden p-2 hover:bg-gray-50 rounded-full transition-colors relative"
+                  aria-label="Shopping cart"
                 >
-                  GET FREE QUOTE
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
+                  <ShoppingBag className="w-5 h-5 text-gray-700" />
+                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-black text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                    0
+                  </span>
                 </Link>
               </div>
             </div>
@@ -151,19 +126,10 @@ export function Header() {
       </header>
 
       {/* Mobile Drawer */}
-      <MobileDrawer
-        isOpen={isMobileOpen}
-        onClose={() => setIsMobileOpen(false)}
-      />
+      <MobileDrawer isOpen={isMobileOpen} onClose={() => setIsMobileOpen(false)} />
 
       {/* Search Overlay */}
-      <SearchOverlay
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-      />
-
-      {/* Spacer to prevent content jump */}
-      <div className="h-[104px] sm:h-[112px]" />
+      <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </>
   )
 }

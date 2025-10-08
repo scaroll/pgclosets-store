@@ -17,6 +17,7 @@ import Script from "next/script";
 import { Toaster } from "sonner";
 import { ValuePropBanner } from "../components/conversion/ValuePropBanner";
 import { MobileStickyCTA } from "../components/conversion/MobileStickyCTA";
+import { StickyMobileBar } from "../components/navigation/StickyMobileBar";
 import { VercelToolbarWrapper } from "../components/VercelToolbar";
 // import { Analytics } from "@vercel/analytics/react"
 // import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -250,8 +251,13 @@ export default function RootLayout({
 
         <Toaster richColors />
 
-        {/* Mobile Sticky CTA - Conversion Optimization */}
-        <MobileStickyCTA />
+        {/* Enhanced Mobile Sticky Bar - Primary CTA */}
+        <StickyMobileBar />
+
+        {/* Legacy Mobile Sticky CTA - Keep for backward compatibility */}
+        <div className="hidden">
+          <MobileStickyCTA />
+        </div>
 
         {/* Performance Monitoring */}
         <PerformanceMonitor />

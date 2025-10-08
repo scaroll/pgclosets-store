@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import simpleProducts from "@/data/simple-products.json"
 import { SimpleAddToCartButton } from "@/components/simple-add-to-cart-button"
+import { EnhancedProductDetail } from "@/components/product/EnhancedProductDetail"
 
 type Props = { params: { slug: string } }
 
@@ -14,6 +15,12 @@ export default async function SimpleProductDetail({ params }: Props) {
   const product = (simpleProducts as any[]).find((p) => p.slug === slug)
   if (!product) return <div className="py-20 text-center">Product not found.</div>
 
+  // Use enhanced PDP if product has configurator data
+  if (product.configurator_data) {
+    return <EnhancedProductDetail product={product} />
+  }
+
+  // Legacy PDP for products without configurator
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid lg:grid-cols-2 gap-10">
