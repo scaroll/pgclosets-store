@@ -10,6 +10,10 @@ import Text from "@/components/ui/Text-new"
 import Section from "@/components/ui/Section-new"
 import StandardLayout from "@/components/layout/StandardLayout"
 import { trackCTAClick } from "@/lib/analytics/events"
+import { CategoryTiles } from "@/components/home/CategoryTiles"
+import { WhyPGSection } from "@/components/home/WhyPGSection"
+import { FeaturedProjects } from "@/components/home/FeaturedProjects"
+import { ConversionCTA } from "@/components/conversion/ConversionCTA"
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -242,6 +246,15 @@ export default function HomePage() {
           </div>
       </Section>
 
+      {/* Category Tiles - Shop by Door Type */}
+      <CategoryTiles />
+
+      {/* Why Choose PG Closets */}
+      <WhyPGSection />
+
+      {/* Featured Ottawa Projects */}
+      <FeaturedProjects />
+
       {/* Full-Width Image Section */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
         <Image
@@ -281,7 +294,10 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* Final CTA Section */}
+      {/* Conversion-Optimized CTA Section */}
+      <ConversionCTA />
+
+      {/* Final CTA Section - Kept for brand consistency */}
       <Section variant="dark" spacing="xl" className="bg-black text-white">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -291,21 +307,33 @@ export default function HomePage() {
           className="text-center"
         >
           <Heading level={2} className="text-4xl md:text-5xl lg:text-6xl mb-6">
-            Ready to Transform Your Space?
+            Start Your Project Today
           </Heading>
           <Text size="lg" className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto">
-            Book a free online quote with our design specialists today
+            Join 500+ satisfied Ottawa homeowners. Free quote, no obligation.
           </Text>
-          <Link href="/request-work">
-            <Button
-              variant="primary"
-              size="lg"
-              className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[280px]"
-              onClick={() => trackCTAClick({ location: 'footer', label: 'Schedule Consultation' })}
-            >
-              <span className="relative z-10">Schedule Consultation</span>
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/instant-estimate">
+              <Button
+                variant="primary"
+                size="lg"
+                className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[240px]"
+                onClick={() => trackCTAClick({ location: 'footer', label: 'Get Instant Estimate' })}
+              >
+                <span className="relative z-10">Get Instant Estimate</span>
+              </Button>
+            </Link>
+            <a href="tel:6137016393">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black min-w-[240px]"
+                onClick={() => trackCTAClick({ location: 'footer', label: 'Call Now' })}
+              >
+                <span className="relative z-10">Call (613) 701-6393</span>
+              </Button>
+            </a>
+          </div>
         </motion.div>
       </Section>
     </StandardLayout>
