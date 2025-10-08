@@ -9,186 +9,15 @@
     ],
     "transformedAt": "2025-10-08T01:41:32.398Z",
     "source": "renin-extraction-kit",
-    "version": "2.0.0",
-    "lastUpdated": "2025-10-08T02:00:00.220Z",
-    "reninProductsCount": 63
+    "version": "2.0.0"
+  },
+  "statistics": {
+    "totalProcessed": 69,
+    "successful": 69,
+    "failed": 0,
+    "errors": []
   },
   "products": [
-    {
-      "id": "barn-gatsby-chevron",
-      "name": "Gatsby Chevron Barn Door",
-      "slug": "gatsby-chevron-barn-door",
-      "price": 799,
-      "category": "barn",
-      "subcategory": "sliding",
-      "images": [
-        "/renin_images/barn_doors/gatsby_chevron_main.jpg",
-        "/renin_images/barn_doors/gatsby_chevron_detail.jpg",
-        "/renin_images/barn_doors/gatsby_chevron_installed.jpg"
-      ],
-      "description": "Premium sliding barn door featuring distinctive chevron pattern design. Crafted from high-quality materials with smooth-gliding hardware system.",
-      "features": [
-        "Chevron pattern design",
-        "Smooth-gliding track system",
-        "Premium hardware included",
-        "Professional installation available",
-        "Lifetime warranty"
-      ],
-      "specifications": {
-        "Material": "Engineered wood with laminate finish",
-        "Thickness": "1.375 inches",
-        "Standard Sizes": "24\", 28\", 30\", 32\", 36\"",
-        "Hardware": "Soft-close track system included",
-        "Finish": "Multiple finish options available"
-      },
-      "inStock": true,
-      "featured": true
-    },
-    {
-      "id": "barn-sherwood-invisiglide",
-      "name": "Sherwood InvisiGlide Barn Door",
-      "slug": "sherwood-invisiglide-barn-door",
-      "price": 899,
-      "category": "barn",
-      "subcategory": "sliding",
-      "images": [
-        "/renin_images/barn_doors/sherwood_invisiglide_main.jpg",
-        "/renin_images/barn_doors/sherwood_invisiglide_detail.jpg"
-      ],
-      "description": "Elegant barn door with InvisiGlide technology for ultra-quiet operation. Features rich wood grain texture and premium finish.",
-      "features": [
-        "InvisiGlide quiet operation",
-        "Rich wood grain texture",
-        "Premium finish options",
-        "Easy installation system",
-        "Canadian craftsmanship"
-      ],
-      "specifications": {
-        "Material": "Solid wood construction",
-        "Thickness": "1.5 inches",
-        "Standard Sizes": "28\", 30\", 32\", 36\"",
-        "Hardware": "InvisiGlide track system",
-        "Finish": "Natural wood stains available"
-      },
-      "inStock": true,
-      "featured": true
-    },
-    {
-      "id": "bypass-harmony-1-lite",
-      "name": "Harmony 1-Lite Bypass Door",
-      "slug": "harmony-1-lite-bypass-door",
-      "price": 549,
-      "category": "bypass",
-      "subcategory": "sliding",
-      "images": [
-        "/renin_images/bypass_doors/harmony_1_lite_main.jpg",
-        "/renin_images/bypass_doors/harmony_1_lite_detail.jpg"
-      ],
-      "description": "Space-saving bypass door system with single frosted glass panel. Perfect for modern closet applications.",
-      "features": [
-        "Space-saving design",
-        "Frosted glass panel",
-        "Smooth bypass operation",
-        "Modern aesthetic",
-        "Easy maintenance"
-      ],
-      "specifications": {
-        "Material": "Aluminum frame with glass",
-        "Glass Type": "Frosted safety glass",
-        "Standard Sizes": "48\", 60\", 72\", 96\"",
-        "Hardware": "Bypass track system included",
-        "Frame": "Anodized aluminum"
-      },
-      "inStock": true,
-      "featured": false
-    },
-    {
-      "id": "bifold-euro-3-lite",
-      "name": "Euro 3-Lite Bifold Door",
-      "slug": "euro-3-lite-bifold-door",
-      "price": 449,
-      "category": "bifold",
-      "subcategory": "folding",
-      "images": [
-        "/renin_images/bifold_doors/euro_3_lite_main.jpg",
-        "/renin_images/bifold_doors/euro_3_lite_detail.jpg"
-      ],
-      "description": "Contemporary bifold door with three glass panels. Maximizes opening space while maintaining style.",
-      "features": [
-        "Three glass panel design",
-        "Space-maximizing fold",
-        "Contemporary styling",
-        "Smooth operation",
-        "Durable construction"
-      ],
-      "specifications": {
-        "Material": "Wood frame with glass panels",
-        "Glass Type": "Clear tempered glass",
-        "Standard Sizes": "24\", 30\", 32\", 36\"",
-        "Hardware": "Pivot hinge system",
-        "Frame": "Solid wood construction"
-      },
-      "inStock": true,
-      "featured": false
-    },
-    {
-      "id": "pivot-provincial-8-lite",
-      "name": "Provincial 8-Lite Pivot Door",
-      "slug": "provincial-8-lite-pivot-door",
-      "price": 499,
-      "category": "pivot",
-      "subcategory": "hinged",
-      "images": [
-        "/renin_images/pivot_doors/provincial_8_lite_main.jpg",
-        "/renin_images/pivot_doors/provincial_8_lite_detail.jpg"
-      ],
-      "description": "Classic pivot door with eight glass panels in traditional provincial style. Timeless elegance for any home.",
-      "features": [
-        "Eight glass panel design",
-        "Provincial styling",
-        "Pivot hinge system",
-        "Traditional elegance",
-        "Quality craftsmanship"
-      ],
-      "specifications": {
-        "Material": "Solid wood with glass",
-        "Glass Type": "Clear glass panels",
-        "Standard Sizes": "28\", 30\", 32\", 36\"",
-        "Hardware": "Heavy-duty pivot hinges",
-        "Frame": "Solid wood construction"
-      },
-      "inStock": true,
-      "featured": false
-    },
-    {
-      "id": "hardware-soft-close-track",
-      "name": "Soft-Close Track System",
-      "slug": "soft-close-track-system",
-      "price": 159,
-      "category": "hardware",
-      "subcategory": "tracks",
-      "images": [
-        "/renin_images/hardware/soft_close_track_main.jpg",
-        "/renin_images/hardware/soft_close_track_detail.jpg"
-      ],
-      "description": "Premium soft-close track system for barn doors. Ensures quiet, controlled closing every time.",
-      "features": [
-        "Soft-close mechanism",
-        "Quiet operation",
-        "Easy installation",
-        "Adjustable settings",
-        "Premium materials"
-      ],
-      "specifications": {
-        "Material": "Stainless steel",
-        "Length": "6ft, 8ft, 10ft options",
-        "Weight Capacity": "Up to 200 lbs",
-        "Finish": "Brushed stainless steel",
-        "Installation": "Wall-mounted"
-      },
-      "inStock": true,
-      "featured": false
-    },
     {
       "id": "renin-bd041",
       "title": "Augusta 1-Lite Framed Mullion Design Complete Barn Door Kit with Mix and Match Hardware",
@@ -2337,7 +2166,7 @@
       "id": "renin-eu3110",
       "title": "Euro 1-Lite Bifold Door",
       "handle": "euro-1-lite-bifold-door",
-      "description": "The stylish sophistication of our Euro 1-lite sliding bifold closet doors with contemporary frosted glass inserts can clearly be attributed to their Italian design heritage.",
+      "description": "The stylish sophistication of our Euro 1-lite sliding bifold closet doors with contemporary frosted glass inserts can clearly be attributed to their Italian design heritage. Each of the doors two panels feature full-height frosted glass inserts and solid engineered wood framing prefinished in Iron Age and completed with a round knob pull in Satin Nickel finish.",
       "thumbnail": "https://www.renin.com/wp-content/uploads/2020/11/EU3110_Euro-1-Lite-Bifold_Iron-Age_Lifestyle-1-scaled.jpg",
       "images": [
         {
@@ -2350,18 +2179,18 @@
           "id": "renin-eu3110-variant-1",
           "title": "Standard",
           "sku": "EU3110",
-          "price": 50900,
+          "price": 40900,
           "inventory_quantity": 100
         }
       ],
       "tags": [
-        "closet-doors",
+        "bifold-doors",
         "bifold"
       ],
       "collection": {
-        "id": "renin-closet-doors",
-        "title": "Renin Closet Doors",
-        "handle": "renin-closet-doors"
+        "id": "renin-bifold-doors",
+        "title": "Renin Bifold Doors",
+        "handle": "renin-bifold-doors"
       },
       "metadata": {
         "source": "renin",
@@ -2370,26 +2199,35 @@
           "Model Number": "EU3110",
           "Door Style and Color": "1-Lite bifold door in Iron Age",
           "Number of Panels": 2,
-          "Finished Opening Size": "24\", 30\", 36\" x 80 1/4 - 80 5/8\"",
+          "Finished Opening Size": [
+            "24\" x 80 1/4 - 80 5/8\"",
+            "30\" x 80 1/4 - 80 5/8\"",
+            "36\" x 80 1/4 - 80 5/8\""
+          ],
+          "Actual Panel Size": [
+            "23 5/8\" x 77 3/4\"",
+            "29 5/8\" x 77 3/4\"",
+            "35 5/8\" x 77 3/4\""
+          ],
           "Door Thickness": "7/8\""
         },
         "pdfs": [
-          "https://www.renin.com/wp-content/uploads/2020/12/Renin_Euro_Bifold_Doors-Installation-Instructions_2018_03.pdf",
+          "https://www.renin.com/wp-content/uploads/2016/12/Euro_Bifold_Instruction_Sheet.pdf",
           "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
           "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
         ],
         "videos": [],
-        "extractedFrom": "euro-1-lite-bifold-door-2.json",
-        "lastSync": "2025-10-08T01:41:32.394Z"
+        "extractedFrom": "euro-1-lite-bifold-door-iron-age.json",
+        "lastSync": "2025-10-08T01:41:32.392Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
-      "updated_at": "2025-10-08T02:00:00.220Z"
+      "updated_at": "2025-10-08T01:41:32.392Z"
     },
     {
       "id": "renin-eu3010",
       "title": "Euro 1-Lite Bifold Door",
       "handle": "euro-1-lite-bifold-door",
-      "description": "The stylish sophistication of our Euro 1-lite sliding bifold closet doors with contemporary frosted glass inserts can clearly be attributed to their Italian design heritage.",
+      "description": "The stylish sophistication of our Euro 1-lite sliding bifold closet doors with contemporary frosted glass inserts can clearly be attributed to their Italian design heritage. Each of the doors two panels feature full-height frosted glass inserts and solid engineered wood framing prefinished in Off-White and completed with a round knob pull in Satin Nickel finish.",
       "thumbnail": "https://www.renin.com/wp-content/uploads/2020/11/EU3010_Euro_1-Lite-Bifold_Off-White_Lifestyle-1.jpg",
       "images": [
         {
@@ -2402,18 +2240,18 @@
           "id": "renin-eu3010-variant-1",
           "title": "Standard",
           "sku": "EU3010",
-          "price": 50900,
+          "price": 40900,
           "inventory_quantity": 100
         }
       ],
       "tags": [
-        "closet-doors",
+        "bifold-doors",
         "bifold"
       ],
       "collection": {
-        "id": "renin-closet-doors",
-        "title": "Renin Closet Doors",
-        "handle": "renin-closet-doors"
+        "id": "renin-bifold-doors",
+        "title": "Renin Bifold Doors",
+        "handle": "renin-bifold-doors"
       },
       "metadata": {
         "source": "renin",
@@ -2422,26 +2260,35 @@
           "Model Number": "EU3010",
           "Door Style and Color": "1-Lite bifold door in Off-White",
           "Number of Panels": 2,
-          "Finished Opening Size": "24\", 30\", or 36\" x 80 1/4 - 80 5/8\"",
+          "Finished Opening Size": [
+            "24\" x 80 1/4 - 80 5/8\"",
+            "30\" x 80 1/4 - 80 5/8\"",
+            "36\" x 80 1/4 - 80 5/8\""
+          ],
+          "Actual Panel Size": [
+            "23 5/8\" x 77 3/4\"",
+            "29 5/8\" x 77 3/4\"",
+            "35 5/8\" x 77 3/4\""
+          ],
           "Door Thickness": "7/8\""
         },
         "pdfs": [
-          "https://www.renin.com/wp-content/uploads/2020/12/Renin_Euro_Bifold_Doors-Installation-Instructions_2018_03.pdf",
+          "https://www.renin.com/wp-content/uploads/2016/12/Euro_Bifold_Instruction_Sheet.pdf",
           "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
           "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
         ],
         "videos": [],
-        "extractedFrom": "euro-1-lite-bifold-door.json",
-        "lastSync": "2025-10-08T01:41:32.394Z"
+        "extractedFrom": "euro-1-lite-bifold-door-off-white.json",
+        "lastSync": "2025-10-08T01:41:32.392Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
-      "updated_at": "2025-10-08T02:00:00.220Z"
+      "updated_at": "2025-10-08T01:41:32.392Z"
     },
     {
       "id": "renin-eu3150",
       "title": "Euro 3-Lite Bifold Door",
       "handle": "euro-3-lite-bifold-door",
-      "description": "Our Euro 3-lite sliding bifold closet doors showcase a stack window design with contemporary frosted glass inserts that protect privacy while adding light.",
+      "description": "Our Euro 3-lite sliding bifold closet doors showcase a stack window design with contemporary frosted glass inserts that protect privacy while adding light. Each of the bifold doors two panels feature three vertical, frosted glass inserts.",
       "thumbnail": "https://www.renin.com/wp-content/uploads/2021/01/EU3150_Euro-3-Lite-Bifold_Iron-Age_Lifestyle-1-scaled.jpg",
       "images": [
         {
@@ -2454,18 +2301,18 @@
           "id": "renin-eu3150-variant-1",
           "title": "Standard",
           "sku": "EU3150",
-          "price": 50900,
+          "price": 40900,
           "inventory_quantity": 100
         }
       ],
       "tags": [
-        "closet-doors",
+        "bifold-doors",
         "bifold"
       ],
       "collection": {
-        "id": "renin-closet-doors",
-        "title": "Renin Closet Doors",
-        "handle": "renin-closet-doors"
+        "id": "renin-bifold-doors",
+        "title": "Renin Bifold Doors",
+        "handle": "renin-bifold-doors"
       },
       "metadata": {
         "source": "renin",
@@ -2474,26 +2321,35 @@
           "Model Number": "EU3150",
           "Door Style and Color": "3-Lite bifold door in Iron Age",
           "Number of Panels": 2,
-          "Finished Opening Size": "24\", 30\", or 36\" x 80 1/4 - 80 5/8\"",
+          "Finished Opening Size": [
+            "24\" x 80 1/4 - 80 5/8\"",
+            "30\" x 80 1/4 - 80 5/8\"",
+            "36\" x 80 1/4 - 80 5/8\""
+          ],
+          "Actual Panel Size": [
+            "23 5/8\" x 77 3/4\"",
+            "29 5/8\" x 77 3/4\"",
+            "35 5/8\" x 77 3/4\""
+          ],
           "Door Thickness": "7/8\""
         },
         "pdfs": [
-          "https://www.renin.com/wp-content/uploads/2020/12/Renin_Euro_Bifold_Doors-Installation-Instructions_2018_03.pdf",
+          "https://www.renin.com/wp-content/uploads/2016/12/Euro_Bifold_Instruction_Sheet.pdf",
           "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
           "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
         ],
         "videos": [],
-        "extractedFrom": "euro-3-lite-bifold-door-2.json",
-        "lastSync": "2025-10-08T01:41:32.395Z"
+        "extractedFrom": "euro-3-lite-bifold-door-iron-age.json",
+        "lastSync": "2025-10-08T01:41:32.392Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
-      "updated_at": "2025-10-08T02:00:00.220Z"
+      "updated_at": "2025-10-08T01:41:32.392Z"
     },
     {
       "id": "renin-eu3080",
       "title": "Euro 3-Lite Bifold Door",
       "handle": "euro-3-lite-bifold-door",
-      "description": "Our Euro 3-lite sliding bifold closet doors showcase a stack window design with contemporary frosted glass inserts that protect privacy while adding light.",
+      "description": "Our Euro 3-lite sliding bifold closet doors showcase a stack window design with contemporary frosted glass inserts that protect privacy while adding light. Each of the bifold doors two panels feature three vertical, frosted glass inserts.",
       "thumbnail": "https://www.renin.com/wp-content/uploads/2020/12/EU3080_Euro-3-Lite-Bifold_Off-White_Lifestyle-2-scaled.jpg",
       "images": [
         {
@@ -2506,18 +2362,18 @@
           "id": "renin-eu3080-variant-1",
           "title": "Standard",
           "sku": "EU3080",
-          "price": 50900,
+          "price": 40900,
           "inventory_quantity": 100
         }
       ],
       "tags": [
-        "closet-doors",
+        "bifold-doors",
         "bifold"
       ],
       "collection": {
-        "id": "renin-closet-doors",
-        "title": "Renin Closet Doors",
-        "handle": "renin-closet-doors"
+        "id": "renin-bifold-doors",
+        "title": "Renin Bifold Doors",
+        "handle": "renin-bifold-doors"
       },
       "metadata": {
         "source": "renin",
@@ -2526,20 +2382,29 @@
           "Model Number": "EU3080",
           "Door Style and Color": "3-Lite bifold door in Off-White",
           "Number of Panels": 2,
-          "Finished Opening Size": "24\", 30\", or 36\" x 80 1/4 - 80 5/8\"",
+          "Finished Opening Size": [
+            "24\" x 80 1/4 - 80 5/8\"",
+            "30\" x 80 1/4 - 80 5/8\"",
+            "36\" x 80 1/4 - 80 5/8\""
+          ],
+          "Actual Panel Size": [
+            "23 5/8\" x 77 3/4\"",
+            "29 5/8\" x 77 3/4\"",
+            "35 5/8\" x 77 3/4\""
+          ],
           "Door Thickness": "7/8\""
         },
         "pdfs": [
-          "https://www.renin.com/wp-content/uploads/2020/12/Renin_Euro_Bifold_Doors-Installation-Instructions_2018_03.pdf",
+          "https://www.renin.com/wp-content/uploads/2016/12/Euro_Bifold_Instruction_Sheet.pdf",
           "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
           "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
         ],
         "videos": [],
-        "extractedFrom": "euro-3-lite-bifold-door.json",
-        "lastSync": "2025-10-08T01:41:32.395Z"
+        "extractedFrom": "euro-3-lite-bifold-door-off-white.json",
+        "lastSync": "2025-10-08T01:41:32.392Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
-      "updated_at": "2025-10-08T02:00:00.220Z"
+      "updated_at": "2025-10-08T01:41:32.392Z"
     },
     {
       "id": "renin-bi0221bw18",
@@ -2553,8 +2418,16 @@
           "altText": "Product image 1"
         },
         {
-          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_16_Georgian_Wood-Grain-Textured_Double_Open_Lifestyle-scaled.jpg",
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_16_Georgian_Wood-Grain-Textured_Double_Closed_Lifestyle-scaled.jpg",
           "altText": "Product image 2"
+        },
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_16_Georgian_Wood-Grain-Textured_Single_Open_Lifestyle-scaled.jpg",
+          "altText": "Product image 3"
+        },
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_16_Georgian_Wood-Grain-Textured_Single_Closed_Prod-scaled.jpg",
+          "altText": "Product image 4"
         }
       ],
       "variants": [
@@ -2562,46 +2435,52 @@
           "id": "renin-bi0221bw18-variant-1",
           "title": "Standard",
           "sku": "BI0221BW18",
-          "price": 54900,
+          "price": 28900,
           "inventory_quantity": 100
         }
       ],
       "tags": [
-        "closet-doors",
+        "bifold-doors",
         "bifold"
       ],
       "collection": {
-        "id": "renin-closet-doors",
-        "title": "Renin Closet Doors",
-        "handle": "renin-closet-doors"
+        "id": "renin-bifold-doors",
+        "title": "Renin Bifold Doors",
+        "handle": "renin-bifold-doors"
       },
       "metadata": {
         "source": "renin",
         "sku": "BI0221BW18",
         "specifications": {
           "Model Number": "BI0221BW18",
-          "Door Style and Color": "White 6 wood grain textured panel bifold door",
-          "Frame": "Bright White steel",
-          "Panels": "2 panels (24\", 30\", 36\") or 4 panels (48\", 60\", 72\")",
-          "Height": "80 3/8\" - 80 7/8\""
+          "Door Style and Color": "White 6 wood grain textured panel bifold door with Bright White steel frame",
+          "Number of Panels": "2 panels for 24\", 30\" and 36\" doors; 4 panels for 48\", 60\" and 72\" doors",
+          "Finished Opening Size": [
+            "23 3/4\" - 24\" x 80 3/8 - 80 7/8\"",
+            "29 3/4\" - 30\" x 80 3/8 - 80 7/8\"",
+            "35 3/4\" - 36\" x 80 3/8 - 80 7/8\"",
+            "47 3/4\" - 48\" x 80 3/8 - 80 7/8\"",
+            "59 3/4\" - 60\" x 80 3/8 - 80 7/8\"",
+            "71 3/4\" - 72\" x 80 3/8 - 80 7/8\""
+          ]
         },
         "pdfs": [
-          "https://www.renin.com/wp-content/uploads/2021/01/Renin_Metal_Frame_Bifold_Doors-Installation-Instructions_2020_01.pdf",
           "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
-          "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
+          "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf",
+          "https://www.renin.com/wp-content/uploads/2020/12/BI0221-Steel-Bifold-Installation-Guide.pdf"
         ],
         "videos": [],
         "extractedFrom": "georgian-6-panel-insert-design-with-steel-frame-bifold-door.json",
-        "lastSync": "2025-10-08T01:41:32.396Z"
+        "lastSync": "2025-10-08T01:41:32.392Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
-      "updated_at": "2025-10-08T02:00:00.220Z"
+      "updated_at": "2025-10-08T01:41:32.392Z"
     },
     {
       "id": "renin-bi0221bw10",
       "title": "Parsons Flush Panel Insert Design with Steel Frame Bifold Door",
       "handle": "parsons-flush-panel-insert-design-with-steel-frame-bifold-door",
-      "description": "Coordinating with any room, The Parsons flush panel design bifold closet door's Bright White narrow frame encases smooth, prefinished whitewood inserts with an integrated ergonomic handle.",
+      "description": "Coordinating with any room, The Parsons flush panel design bifold closet door's Bright White narrow frame encases smooth, prefinished whitewood inserts with an integrated ergonomic handle. Giving you an additional 4 inches for more complete access to your closet or space, the folding closet door operates as a rolling pivot system with Easy-Roll bifold closet door hardware and low-profile bottom track.",
       "thumbnail": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_10_Parsons_Flush-White-Wood-Textured_Single_Closed_Lifestyle-scaled.jpg",
       "images": [
         {
@@ -2609,8 +2488,16 @@
           "altText": "Product image 1"
         },
         {
-          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_10_Parsons_Flush-White-Wood-Textured_Double_Open_Lifestyle-scaled.jpg",
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_10_Parsons_Flush-White-Wood-Textured_Double_Closed_Lifestyle-scaled.jpg",
           "altText": "Product image 2"
+        },
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_10_Parsons_Flush-White-Wood-Textured_Single_Open_Lifestyle-scaled.jpg",
+          "altText": "Product image 3"
+        },
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_10_Parsons_Flush-White-Wood-Textured_Single_Closed_Prod-scaled.jpg",
+          "altText": "Product image 4"
         }
       ],
       "variants": [
@@ -2618,40 +2505,46 @@
           "id": "renin-bi0221bw10-variant-1",
           "title": "Standard",
           "sku": "BI0221BW10",
-          "price": 54900,
+          "price": 28900,
           "inventory_quantity": 100
         }
       ],
       "tags": [
-        "closet-doors",
+        "bifold-doors",
         "bifold"
       ],
       "collection": {
-        "id": "renin-closet-doors",
-        "title": "Renin Closet Doors",
-        "handle": "renin-closet-doors"
+        "id": "renin-bifold-doors",
+        "title": "Renin Bifold Doors",
+        "handle": "renin-bifold-doors"
       },
       "metadata": {
         "source": "renin",
         "sku": "BI0221BW10",
         "specifications": {
           "Model Number": "BI0221BW10",
-          "Door Style and Color": "White flush white-wood textured panel insert bifold door",
-          "Frame Finish": "Bright White",
-          "Number of Panels": "2-4 panels",
-          "Finished Opening Size": "Multiple sizes from 23 3/4\" to 72\""
+          "Door Style and Color": "White flush white-wood textured panel insert bifold door with Bright White steel frame",
+          "Number of Panels": "2 panels for 24\", 30\" and 36\" doors; 4 panels for 48\", 60\" and 72\" doors",
+          "Finished Opening Size": [
+            "23 3/4\" - 24\" x 80 3/8 - 80 7/8\"",
+            "29 3/4\" - 30\" x 80 3/8 - 80 7/8\"",
+            "35 3/4\" - 36\" x 80 3/8 - 80 7/8\"",
+            "47 3/4\" - 48\" x 80 3/8 - 80 7/8\"",
+            "59 3/4\" - 60\" x 80 3/8 - 80 7/8\"",
+            "71 3/4\" - 72\" x 80 3/8 - 80 7/8\""
+          ]
         },
         "pdfs": [
-          "https://www.renin.com/wp-content/uploads/2021/01/Renin_Metal_Frame_Bifold_Doors-Installation-Instructions_2020_01.pdf",
           "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
-          "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
+          "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf",
+          "https://www.renin.com/wp-content/uploads/2020/12/BI0221-Steel-Bifold-Installation-Guide.pdf"
         ],
         "videos": [],
         "extractedFrom": "parsons-flush-panel-insert-design-with-steel-frame-bifold-door.json",
-        "lastSync": "2025-10-08T01:41:32.397Z"
+        "lastSync": "2025-10-08T01:41:32.392Z"
       },
       "created_at": "2025-10-08T01:41:32.392Z",
-      "updated_at": "2025-10-08T02:00:00.220Z"
+      "updated_at": "2025-10-08T01:41:32.392Z"
     },
     {
       "id": "renin-byp-eclipse-48",
@@ -3015,6 +2908,110 @@
       "updated_at": "2025-10-08T01:41:32.394Z"
     },
     {
+      "id": "renin-eu3110",
+      "title": "Euro 1-Lite Bifold Door",
+      "handle": "euro-1-lite-bifold-door",
+      "description": "The stylish sophistication of our Euro 1-lite sliding bifold closet doors with contemporary frosted glass inserts can clearly be attributed to their Italian design heritage.",
+      "thumbnail": "https://www.renin.com/wp-content/uploads/2020/11/EU3110_Euro-1-Lite-Bifold_Iron-Age_Lifestyle-1-scaled.jpg",
+      "images": [
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/EU3110_Euro-1-Lite-Bifold_Iron-Age_Lifestyle-1-scaled.jpg",
+          "altText": "Product image 1"
+        }
+      ],
+      "variants": [
+        {
+          "id": "renin-eu3110-variant-1",
+          "title": "Standard",
+          "sku": "EU3110",
+          "price": 50900,
+          "inventory_quantity": 100
+        }
+      ],
+      "tags": [
+        "closet-doors",
+        "bifold"
+      ],
+      "collection": {
+        "id": "renin-closet-doors",
+        "title": "Renin Closet Doors",
+        "handle": "renin-closet-doors"
+      },
+      "metadata": {
+        "source": "renin",
+        "sku": "EU3110",
+        "specifications": {
+          "Model Number": "EU3110",
+          "Door Style and Color": "1-Lite bifold door in Iron Age",
+          "Number of Panels": 2,
+          "Finished Opening Size": "24\", 30\", 36\" x 80 1/4 - 80 5/8\"",
+          "Door Thickness": "7/8\""
+        },
+        "pdfs": [
+          "https://www.renin.com/wp-content/uploads/2020/12/Renin_Euro_Bifold_Doors-Installation-Instructions_2018_03.pdf",
+          "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
+          "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
+        ],
+        "videos": [],
+        "extractedFrom": "euro-1-lite-bifold-door-2.json",
+        "lastSync": "2025-10-08T01:41:32.394Z"
+      },
+      "created_at": "2025-10-08T01:41:32.394Z",
+      "updated_at": "2025-10-08T01:41:32.394Z"
+    },
+    {
+      "id": "renin-eu3010",
+      "title": "Euro 1-Lite Bifold Door",
+      "handle": "euro-1-lite-bifold-door",
+      "description": "The stylish sophistication of our Euro 1-lite sliding bifold closet doors with contemporary frosted glass inserts can clearly be attributed to their Italian design heritage.",
+      "thumbnail": "https://www.renin.com/wp-content/uploads/2020/11/EU3010_Euro_1-Lite-Bifold_Off-White_Lifestyle-1.jpg",
+      "images": [
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/EU3010_Euro_1-Lite-Bifold_Off-White_Lifestyle-1.jpg",
+          "altText": "Product image 1"
+        }
+      ],
+      "variants": [
+        {
+          "id": "renin-eu3010-variant-1",
+          "title": "Standard",
+          "sku": "EU3010",
+          "price": 50900,
+          "inventory_quantity": 100
+        }
+      ],
+      "tags": [
+        "closet-doors",
+        "bifold"
+      ],
+      "collection": {
+        "id": "renin-closet-doors",
+        "title": "Renin Closet Doors",
+        "handle": "renin-closet-doors"
+      },
+      "metadata": {
+        "source": "renin",
+        "sku": "EU3010",
+        "specifications": {
+          "Model Number": "EU3010",
+          "Door Style and Color": "1-Lite bifold door in Off-White",
+          "Number of Panels": 2,
+          "Finished Opening Size": "24\", 30\", or 36\" x 80 1/4 - 80 5/8\"",
+          "Door Thickness": "7/8\""
+        },
+        "pdfs": [
+          "https://www.renin.com/wp-content/uploads/2020/12/Renin_Euro_Bifold_Doors-Installation-Instructions_2018_03.pdf",
+          "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
+          "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
+        ],
+        "videos": [],
+        "extractedFrom": "euro-1-lite-bifold-door.json",
+        "lastSync": "2025-10-08T01:41:32.394Z"
+      },
+      "created_at": "2025-10-08T01:41:32.394Z",
+      "updated_at": "2025-10-08T01:41:32.394Z"
+    },
+    {
       "id": "renin-eu2450",
       "title": "Euro 1-Lite Bypass Door",
       "handle": "euro-1-lite-bypass-door",
@@ -3182,6 +3179,110 @@
         ],
         "videos": [],
         "extractedFrom": "euro-1-lite-design-pivot-door.json",
+        "lastSync": "2025-10-08T01:41:32.395Z"
+      },
+      "created_at": "2025-10-08T01:41:32.395Z",
+      "updated_at": "2025-10-08T01:41:32.395Z"
+    },
+    {
+      "id": "renin-eu3150",
+      "title": "Euro 3-Lite Bifold Door",
+      "handle": "euro-3-lite-bifold-door",
+      "description": "Our Euro 3-lite sliding bifold closet doors showcase a stack window design with contemporary frosted glass inserts that protect privacy while adding light.",
+      "thumbnail": "https://www.renin.com/wp-content/uploads/2021/01/EU3150_Euro-3-Lite-Bifold_Iron-Age_Lifestyle-1-scaled.jpg",
+      "images": [
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2021/01/EU3150_Euro-3-Lite-Bifold_Iron-Age_Lifestyle-1-scaled.jpg",
+          "altText": "Product image 1"
+        }
+      ],
+      "variants": [
+        {
+          "id": "renin-eu3150-variant-1",
+          "title": "Standard",
+          "sku": "EU3150",
+          "price": 50900,
+          "inventory_quantity": 100
+        }
+      ],
+      "tags": [
+        "closet-doors",
+        "bifold"
+      ],
+      "collection": {
+        "id": "renin-closet-doors",
+        "title": "Renin Closet Doors",
+        "handle": "renin-closet-doors"
+      },
+      "metadata": {
+        "source": "renin",
+        "sku": "EU3150",
+        "specifications": {
+          "Model Number": "EU3150",
+          "Door Style and Color": "3-Lite bifold door in Iron Age",
+          "Number of Panels": 2,
+          "Finished Opening Size": "24\", 30\", or 36\" x 80 1/4 - 80 5/8\"",
+          "Door Thickness": "7/8\""
+        },
+        "pdfs": [
+          "https://www.renin.com/wp-content/uploads/2020/12/Renin_Euro_Bifold_Doors-Installation-Instructions_2018_03.pdf",
+          "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
+          "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
+        ],
+        "videos": [],
+        "extractedFrom": "euro-3-lite-bifold-door-2.json",
+        "lastSync": "2025-10-08T01:41:32.395Z"
+      },
+      "created_at": "2025-10-08T01:41:32.395Z",
+      "updated_at": "2025-10-08T01:41:32.395Z"
+    },
+    {
+      "id": "renin-eu3080",
+      "title": "Euro 3-Lite Bifold Door",
+      "handle": "euro-3-lite-bifold-door",
+      "description": "Our Euro 3-lite sliding bifold closet doors showcase a stack window design with contemporary frosted glass inserts that protect privacy while adding light.",
+      "thumbnail": "https://www.renin.com/wp-content/uploads/2020/12/EU3080_Euro-3-Lite-Bifold_Off-White_Lifestyle-2-scaled.jpg",
+      "images": [
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2020/12/EU3080_Euro-3-Lite-Bifold_Off-White_Lifestyle-2-scaled.jpg",
+          "altText": "Product image 1"
+        }
+      ],
+      "variants": [
+        {
+          "id": "renin-eu3080-variant-1",
+          "title": "Standard",
+          "sku": "EU3080",
+          "price": 50900,
+          "inventory_quantity": 100
+        }
+      ],
+      "tags": [
+        "closet-doors",
+        "bifold"
+      ],
+      "collection": {
+        "id": "renin-closet-doors",
+        "title": "Renin Closet Doors",
+        "handle": "renin-closet-doors"
+      },
+      "metadata": {
+        "source": "renin",
+        "sku": "EU3080",
+        "specifications": {
+          "Model Number": "EU3080",
+          "Door Style and Color": "3-Lite bifold door in Off-White",
+          "Number of Panels": 2,
+          "Finished Opening Size": "24\", 30\", or 36\" x 80 1/4 - 80 5/8\"",
+          "Door Thickness": "7/8\""
+        },
+        "pdfs": [
+          "https://www.renin.com/wp-content/uploads/2020/12/Renin_Euro_Bifold_Doors-Installation-Instructions_2018_03.pdf",
+          "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
+          "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
+        ],
+        "videos": [],
+        "extractedFrom": "euro-3-lite-bifold-door.json",
         "lastSync": "2025-10-08T01:41:32.395Z"
       },
       "created_at": "2025-10-08T01:41:32.395Z",
@@ -3517,6 +3618,62 @@
       "updated_at": "2025-10-08T01:41:32.396Z"
     },
     {
+      "id": "renin-bi0221bw18",
+      "title": "Georgian 6 Panel Insert Design with Steel Frame Bifold Door",
+      "handle": "georgian-6-panel-insert-design-with-steel-frame-bifold-door",
+      "description": "Adding a traditional accent to any room, the Georgian bifold closet door features a raised 6-panel square top design, prefinished in white wood grain texture and encased in a Bright White narrow steel frame.",
+      "thumbnail": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_16_Georgian_Wood-Grain-Textured_Single_Closed_Lifestyle-scaled.jpg",
+      "images": [
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_16_Georgian_Wood-Grain-Textured_Single_Closed_Lifestyle-scaled.jpg",
+          "altText": "Product image 1"
+        },
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_16_Georgian_Wood-Grain-Textured_Double_Open_Lifestyle-scaled.jpg",
+          "altText": "Product image 2"
+        }
+      ],
+      "variants": [
+        {
+          "id": "renin-bi0221bw18-variant-1",
+          "title": "Standard",
+          "sku": "BI0221BW18",
+          "price": 54900,
+          "inventory_quantity": 100
+        }
+      ],
+      "tags": [
+        "closet-doors",
+        "bifold"
+      ],
+      "collection": {
+        "id": "renin-closet-doors",
+        "title": "Renin Closet Doors",
+        "handle": "renin-closet-doors"
+      },
+      "metadata": {
+        "source": "renin",
+        "sku": "BI0221BW18",
+        "specifications": {
+          "Model Number": "BI0221BW18",
+          "Door Style and Color": "White 6 wood grain textured panel bifold door",
+          "Frame": "Bright White steel",
+          "Panels": "2 panels (24\", 30\", 36\") or 4 panels (48\", 60\", 72\")",
+          "Height": "80 3/8\" - 80 7/8\""
+        },
+        "pdfs": [
+          "https://www.renin.com/wp-content/uploads/2021/01/Renin_Metal_Frame_Bifold_Doors-Installation-Instructions_2020_01.pdf",
+          "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
+          "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
+        ],
+        "videos": [],
+        "extractedFrom": "georgian-6-panel-insert-design-with-steel-frame-bifold-door.json",
+        "lastSync": "2025-10-08T01:41:32.396Z"
+      },
+      "created_at": "2025-10-08T01:41:32.396Z",
+      "updated_at": "2025-10-08T01:41:32.396Z"
+    },
+    {
       "id": "renin-eu3210",
       "title": "Harmony 1-Lite Bypass Door",
       "handle": "harmony-1-lite-bypass-door",
@@ -3686,6 +3843,62 @@
         ],
         "videos": [],
         "extractedFrom": "parsons-flush-panel-design-steel-frame-bypass-door.json",
+        "lastSync": "2025-10-08T01:41:32.397Z"
+      },
+      "created_at": "2025-10-08T01:41:32.397Z",
+      "updated_at": "2025-10-08T01:41:32.397Z"
+    },
+    {
+      "id": "renin-bi0221bw10",
+      "title": "Parsons Flush Panel Insert Design with Steel Frame Bifold Door",
+      "handle": "parsons-flush-panel-insert-design-with-steel-frame-bifold-door",
+      "description": "Coordinating with any room, The Parsons flush panel design bifold closet door's Bright White narrow frame encases smooth, prefinished whitewood inserts with an integrated ergonomic handle.",
+      "thumbnail": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_10_Parsons_Flush-White-Wood-Textured_Single_Closed_Lifestyle-scaled.jpg",
+      "images": [
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_10_Parsons_Flush-White-Wood-Textured_Single_Closed_Lifestyle-scaled.jpg",
+          "altText": "Product image 1"
+        },
+        {
+          "url": "https://www.renin.com/wp-content/uploads/2020/11/BI0221_10_Parsons_Flush-White-Wood-Textured_Double_Open_Lifestyle-scaled.jpg",
+          "altText": "Product image 2"
+        }
+      ],
+      "variants": [
+        {
+          "id": "renin-bi0221bw10-variant-1",
+          "title": "Standard",
+          "sku": "BI0221BW10",
+          "price": 54900,
+          "inventory_quantity": 100
+        }
+      ],
+      "tags": [
+        "closet-doors",
+        "bifold"
+      ],
+      "collection": {
+        "id": "renin-closet-doors",
+        "title": "Renin Closet Doors",
+        "handle": "renin-closet-doors"
+      },
+      "metadata": {
+        "source": "renin",
+        "sku": "BI0221BW10",
+        "specifications": {
+          "Model Number": "BI0221BW10",
+          "Door Style and Color": "White flush white-wood textured panel insert bifold door",
+          "Frame Finish": "Bright White",
+          "Number of Panels": "2-4 panels",
+          "Finished Opening Size": "Multiple sizes from 23 3/4\" to 72\""
+        },
+        "pdfs": [
+          "https://www.renin.com/wp-content/uploads/2021/01/Renin_Metal_Frame_Bifold_Doors-Installation-Instructions_2020_01.pdf",
+          "https://www.renin.com/wp-content/uploads/2021/05/HowtoMeasure-2021_Final.pdf",
+          "https://www.renin.com/wp-content/uploads/2016/12/RENIN_Closet_Door_Warranty-1.pdf"
+        ],
+        "videos": [],
+        "extractedFrom": "parsons-flush-panel-insert-design-with-steel-frame-bifold-door.json",
         "lastSync": "2025-10-08T01:41:32.397Z"
       },
       "created_at": "2025-10-08T01:41:32.397Z",
