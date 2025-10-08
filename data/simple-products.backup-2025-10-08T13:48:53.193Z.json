@@ -365,7 +365,11 @@
     "title": "Eclipse Mirror Bypass Door - 48\"",
     "description": "Frameless mirror bypass doors with soft-close mechanism. Perfect for modern closets.",
     "price": 74900,
-    "image": "https://picsum.photos/id/1026/1200/900",
+    "image": {
+      "url": "https://picsum.photos/id/1026/1200/900",
+      "type": "main",
+      "alt": "Eclipse Mirror Bypass Door - 48\" - Image 1"
+    },
     "category": "Renin Bypass Doors"
   },
   {
@@ -374,7 +378,11 @@
     "title": "Elegance Bypass Mirror Door System - 72\"",
     "description": "Premium bypass system with full-length mirrors. Whisper-quiet roller system with lifetime warranty.",
     "price": 109900,
-    "image": "https://picsum.photos/id/1037/1200/900",
+    "image": {
+      "url": "https://picsum.photos/id/1037/1200/900",
+      "type": "main",
+      "alt": "Elegance Bypass Mirror Door System - 72\" - Image 1"
+    },
     "category": "Renin Bypass Doors"
   },
   {
@@ -383,7 +391,11 @@
     "title": "Harmony Bypass Closet Door System",
     "description": "Complete bypass closet door system with mirror panels. Smooth gliding track system included.",
     "price": 89900,
-    "image": "https://picsum.photos/id/1024/1200/900",
+    "image": {
+      "url": "https://picsum.photos/id/1024/1200/900",
+      "type": "main",
+      "alt": "Harmony Bypass Closet Door System - Image 1"
+    },
     "category": "Renin Bypass Doors"
   },
   {

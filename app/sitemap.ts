@@ -130,12 +130,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // Individual product pages from Renin database
-  const productPages: MetadataRoute.Sitemap = products.map((product) => ({
-    url: `${baseUrl}/products/${product.id}`,
-    lastModified,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
+  const productPages: MetadataRoute.Sitemap = products.map((product) => {
+    // Generate handle from product name (same logic as in commerce.ts)
+    const handle = product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    return {
+      url: `${baseUrl}/products/${handle}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    };
+  })
 
   // Store pages
   const storePages: MetadataRoute.Sitemap = [
@@ -154,12 +158,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // Store product pages (alternative URLs)
-  const storeProductPages: MetadataRoute.Sitemap = products.map((product) => ({
-    url: `${baseUrl}/store/products/${product.id}`,
-    lastModified,
-    changeFrequency: 'monthly' as const,
-    priority: 0.5,
-  }))
+  const storeProductPages: MetadataRoute.Sitemap = products.map((product) => {
+    // Generate handle from product name (same logic as in commerce.ts)
+    const handle = product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    return {
+      url: `${baseUrl}/store/products/${handle}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    };
+  })
 
   // Blog and information pages
   const infoPages: MetadataRoute.Sitemap = [
@@ -279,12 +287,16 @@ export async function generateProductSitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = BUSINESS_INFO.urls.main
   const lastModified = new Date()
 
-  return products.map((product) => ({
-    url: `${baseUrl}/products/${product.id}`,
-    lastModified,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
+  return products.map((product) => {
+    // Generate handle from product name (same logic as in commerce.ts)
+    const handle = product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    return {
+      url: `${baseUrl}/products/${handle}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    };
+  })
 }
 
 export async function generateLocationSitemap(): Promise<MetadataRoute.Sitemap> {
