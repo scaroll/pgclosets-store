@@ -10,15 +10,19 @@ import Text from "@/components/ui/Text-new"
 import Section from "@/components/ui/Section-new"
 import StandardLayout from "@/components/layout/StandardLayout"
 import { trackCTAClick } from "@/lib/analytics/events"
+import { getPhoneDisplay, getPhoneHref } from "@/lib/business-info"
 import { CategoryTiles } from "@/components/home/CategoryTiles"
 import { WhyPGSection } from "@/components/home/WhyPGSection"
 import { FeaturedProjects } from "@/components/home/FeaturedProjects"
 import { ConversionCTA } from "@/components/conversion/ConversionCTA"
+import { InstantEstimatorWizard } from "@/components/configurator/InstantEstimatorWizard"
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null)
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const [showScrollEstimator, setShowScrollEstimator] = useState(false)
+  const [hasTriggeredScrollEstimator, setHasTriggeredScrollEstimator] = useState(false)
 
   // Safe scroll hook with null check
   const { scrollYProgress } = useScroll({
@@ -38,6 +42,28 @@ export default function HomePage() {
       video.addEventListener('loadeddata', () => setIsVideoLoaded(true))
     }
   }, [])
+
+  // Scroll-triggered estimator at 40% page depth (simulation winner strategy)
+  useEffect(() => {
+    if (typeof window === 'undefined' || hasTriggeredScrollEstimator) return
+
+    const handleScroll = () => {
+      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+
+      // Trigger at 40% scroll depth (optimal engagement point per simulation)
+      if (scrollPercentage >= 40 && !hasTriggeredScrollEstimator) {
+        setShowScrollEstimator(true)
+        setHasTriggeredScrollEstimator(true)
+        trackCTAClick({
+          location: 'scroll_trigger',
+          label: 'Estimator Modal Triggered at 40% Depth'
+        })
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [hasTriggeredScrollEstimator])
 
   return (
     <StandardLayout>
@@ -88,7 +114,7 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <Heading level={1} className="text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-[0.95]">
-              Premium Closet Doors for Ottawa Homes
+              Transform Your Closet in 2-3 Weeks
             </Heading>
           </motion.div>
 
@@ -98,26 +124,26 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <Text size="lg" className="text-lg md:text-xl lg:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Official Renin Dealer | Expert Installation
+              Lifetime Warranty | Expert Installation | 500+ Ottawa Projects
             </Text>
           </motion.div>
 
-          {/* CTA Button */}
+          {/* Multi-CTA Strategy - Optimized for Different User Readiness Levels */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Link href="/request-work">
+            <Link href="/instant-estimate">
               <Button
                 variant="primary"
                 size="lg"
-                className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[240px] group"
-                onClick={() => trackCTAClick({ location: 'hero', label: 'Get a Free Quote' })}
+                className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[200px] group"
+                onClick={() => trackCTAClick({ location: 'hero', label: 'Get Instant Estimate' })}
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Get a Free Quote
+                  Get Instant Estimate
                   <svg
                     className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                     fill="none"
@@ -135,14 +161,25 @@ export default function HomePage() {
               </Button>
             </Link>
 
-            <Link href="/products">
+            <a href={getPhoneHref()}>
               <Button
                 variant="secondary"
                 size="lg"
-                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black hover:border-white min-w-[240px]"
-                onClick={() => trackCTAClick({ location: 'hero', label: 'Explore Collection' })}
+                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black hover:border-white min-w-[200px]"
+                onClick={() => trackCTAClick({ location: 'hero', label: 'Call Now' })}
               >
-                <span className="relative z-10">Explore Collection</span>
+                <span className="relative z-10">Call {getPhoneDisplay()}</span>
+              </Button>
+            </a>
+
+            <Link href="/book-measure">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black hover:border-white min-w-[200px]"
+                onClick={() => trackCTAClick({ location: 'hero', label: 'Book Free Measure' })}
+              >
+                <span className="relative z-10">Book Free Measure</span>
               </Button>
             </Link>
           </motion.div>
@@ -323,19 +360,28 @@ export default function HomePage() {
                 <span className="relative z-10">Get Instant Estimate</span>
               </Button>
             </Link>
-            <a href="tel:6137016393">
+            <a href={getPhoneHref()}>
               <Button
                 variant="secondary"
                 size="lg"
                 className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black min-w-[240px]"
                 onClick={() => trackCTAClick({ location: 'footer', label: 'Call Now' })}
               >
-                <span className="relative z-10">Call (613) 701-6393</span>
+                <span className="relative z-10">Call {getPhoneDisplay()}</span>
               </Button>
             </a>
           </div>
         </motion.div>
       </Section>
+
+      {/* Scroll-Triggered Estimator Wizard (40% depth) */}
+      {showScrollEstimator && (
+        <InstantEstimatorWizard
+          isOpen={showScrollEstimator}
+          onClose={() => setShowScrollEstimator(false)}
+          entryPoint="scroll_trigger"
+        />
+      )}
     </StandardLayout>
   )
 }
