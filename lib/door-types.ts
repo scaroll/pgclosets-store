@@ -3,6 +3,8 @@
  * Single source of truth for category tiles, product hub, and navigation
  */
 
+import { trackProductImpression } from './analytics/enhanced-tracking'
+
 export interface DoorType {
   name: string;
   slug: string;

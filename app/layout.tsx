@@ -19,6 +19,7 @@ import { ValuePropBanner } from "../components/conversion/ValuePropBanner";
 import { MobileStickyCTA } from "../components/conversion/MobileStickyCTA";
 import { StickyMobileBar } from "../components/navigation/StickyMobileBar";
 import { VercelToolbarWrapper } from "../components/VercelToolbar";
+import { CoreWebVitalsTracker } from "../components/analytics/CoreWebVitalsTracker";
 // import { Analytics } from "@vercel/analytics/react"
 // import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -261,6 +262,10 @@ export default function RootLayout({
 
         {/* Performance Monitoring */}
         <PerformanceMonitor />
+
+        {/* Core Web Vitals Tracking - Phase 6 */}
+        <CoreWebVitalsTracker />
+
         <Suspense fallback={null}>
           {/* <Analytics /> */}
           {/* <SpeedInsights /> */}

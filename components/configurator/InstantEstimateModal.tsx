@@ -11,6 +11,7 @@ import { ConfiguratorCalculator } from "@/lib/configurator-calculator";
 import { ConfiguratorState, ProductConfiguratorData, EstimateResult } from "@/types/configurator";
 import { ConfiguratorDataAdapter } from "@/lib/configurator-adapter";
 import { ChevronRight, ChevronLeft } from "lucide-react";
+import { trackWizardProgress, trackQuoteRequest } from "@/lib/analytics/enhanced-tracking";
 
 interface InstantEstimateModalProps {
   isOpen: boolean;
@@ -56,7 +57,20 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
       setStep(4);
       setError(null);
 
-      // Track event
+      // Track quote generation - Phase 6 enhanced tracking
+      trackQuoteRequest({
+        product_name: initialProduct.title,
+        product_category: 'renin_doors',
+        total_estimate: estimate.total_with_addons,
+        door_type: initialProduct.title,
+        dimensions: `${state.width || 0}${state.widthUnit} x ${state.height || 0}${state.heightUnit}`,
+        panels: state.panels || 2,
+        finish: state.finish || 'standard',
+        addons: state.addons,
+        source: 'wizard',
+      });
+
+      // Legacy tracking (keep for backward compatibility)
       if (typeof window !== 'undefined' && (window as any).gtag) {
         (window as any).gtag('event', 'instant_estimate_submit', {
           product_id: initialProduct.id,
@@ -128,7 +142,16 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
       )}
 
       <Button
-        onClick={() => setStep(2)}
+        onClick={() => {
+          trackWizardProgress({
+            step_number: 1,
+            total_steps: 3,
+            dimensions: { width: state.width || 0, height: state.height || 0 },
+            completion_percentage: 33,
+            time_on_step: Date.now() - (window as any).wizardStartTime || 0,
+          });
+          setStep(2);
+        }}
         disabled={!state.width || !state.height}
         className="w-full"
       >
@@ -188,7 +211,17 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
             <ChevronLeft className="mr-2 h-4 w-4" /> Back
           </Button>
           <Button
-            onClick={() => setStep(3)}
+            onClick={() => {
+              const wizardParams: any = {
+                step_number: 2,
+                total_steps: 3,
+                completion_percentage: 66,
+                time_on_step: Date.now() - (window as any).wizardStepTime || 0,
+              };
+              if (state.panels) wizardParams.panels = state.panels;
+              trackWizardProgress(wizardParams);
+              setStep(3);
+            }}
             disabled={!state.panels || !state.finish}
             className="flex-1"
           >

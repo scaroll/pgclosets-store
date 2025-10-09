@@ -4,6 +4,7 @@ import { useState, useRef, useCallback } from "react"
 import Link from "next/link"
 import { ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { trackNavigationClick, trackMegaMenuInteraction } from "@/lib/analytics/enhanced-tracking"
 
 interface MenuItem {
   label: string
@@ -88,6 +89,13 @@ export function MegaMenuNav() {
       clearTimeout(timeoutRef.current)
     }
     setActiveMenu(label)
+
+    // Track mega menu interaction
+    trackMegaMenuInteraction({
+      action: 'open',
+      menu_item: label,
+      section: 'main_nav',
+    })
   }, [])
 
   const handleMouseLeave = useCallback(() => {
@@ -111,6 +119,12 @@ export function MegaMenuNav() {
             <Link
               key={item.label}
               href={item.href}
+              onClick={() => trackNavigationClick({
+                link_text: item.label,
+                link_url: item.href || '',
+                menu_section: 'main_nav',
+                destination_type: 'internal',
+              })}
               className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors relative group"
             >
               {item.label}
@@ -162,7 +176,15 @@ export function MegaMenuNav() {
                             <li key={menuItem.href}>
                               <Link
                                 href={menuItem.href}
-                                onClick={closeMenu}
+                                onClick={() => {
+                                  trackNavigationClick({
+                                    link_text: menuItem.label,
+                                    link_url: menuItem.href,
+                                    menu_section: 'mega_menu',
+                                    destination_type: 'internal',
+                                  })
+                                  closeMenu()
+                                }}
                                 className="block text-sm text-gray-700 hover:text-black transition-colors group"
                               >
                                 <span className="relative">
