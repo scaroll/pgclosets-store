@@ -156,11 +156,11 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Link href="/instant-estimate">
+            <Link href="/instant-estimate" aria-label="Get an instant closet estimate">
               <Button
                 variant="primary"
                 size="lg"
-                className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[200px] group"
+                className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[200px] min-h-[48px] group"
                 onClick={() => trackCTAClick({ location: 'hero', label: 'Get Instant Estimate' })}
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -182,22 +182,22 @@ export default function HomePage() {
               </Button>
             </Link>
 
-            <a href={getPhoneHref()}>
+            <a href={getPhoneHref()} aria-label="Call PG Closets for a free consultation">
               <Button
                 variant="secondary"
                 size="lg"
-                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black hover:border-white min-w-[200px]"
+                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black hover:border-white min-w-[200px] min-h-[48px]"
                 onClick={() => trackCTAClick({ location: 'hero', label: 'Call Now' })}
               >
                 <span className="relative z-10">Call {getPhoneDisplay()}</span>
               </Button>
             </a>
 
-            <Link href="/book-measure">
+            <Link href="/book-measure" aria-label="Book a free in-home measurement appointment">
               <Button
                 variant="secondary"
                 size="lg"
-                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black hover:border-white min-w-[200px]"
+                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black hover:border-white min-w-[200px] min-h-[48px]"
                 onClick={() => trackCTAClick({ location: 'hero', label: 'Book Free Measure' })}
               >
                 <span className="relative z-10">Book Free Measure</span>
@@ -371,21 +371,21 @@ export default function HomePage() {
             Join 500+ satisfied Ottawa homeowners. Free quote, no obligation.
           </Text>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/instant-estimate">
+            <Link href="/instant-estimate" aria-label="Get an instant closet estimate">
               <Button
                 variant="primary"
                 size="lg"
-                className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[240px]"
+                className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[240px] min-h-[48px]"
                 onClick={() => trackCTAClick({ location: 'footer', label: 'Get Instant Estimate' })}
               >
                 <span className="relative z-10">Get Instant Estimate</span>
               </Button>
             </Link>
-            <a href={getPhoneHref()}>
+            <a href={getPhoneHref()} aria-label="Call PG Closets for a free consultation">
               <Button
                 variant="secondary"
                 size="lg"
-                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black min-w-[240px]"
+                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black min-w-[240px] min-h-[48px]"
                 onClick={() => trackCTAClick({ location: 'footer', label: 'Call Now' })}
               >
                 <span className="relative z-10">Call {getPhoneDisplay()}</span>
