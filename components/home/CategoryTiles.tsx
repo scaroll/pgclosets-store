@@ -76,7 +76,7 @@ export function CategoryTiles() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {categories.map((category) => (
             <Card key={category.slug} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-              <Link href={`/collections/${category.slug}`}>
+              <Link href={`/collections/${category.slug}`} aria-label={`Browse ${category.name} collection`}>
                 <div className="relative aspect-[4/3] overflow-hidden cursor-pointer">
                   <Image
                     src={category.image}
@@ -98,7 +98,7 @@ export function CategoryTiles() {
                     <div className="text-sm text-muted-foreground">Starting at</div>
                     <div className="text-xl font-semibold">{category.fromPrice}</div>
                   </div>
-                  <Link href={`/collections/${category.slug}`}>
+                  <Link href={`/collections/${category.slug}`} aria-label={`View all ${category.name}`} className="min-h-[48px] min-w-[48px] flex items-center justify-center">
                     <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:translate-x-1 transition-transform cursor-pointer" />
                   </Link>
                 </div>
