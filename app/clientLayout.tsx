@@ -5,6 +5,7 @@ import Script from "next/script"
 // import { CartDrawer } from "@/components/store/cart-drawer" // Removed - quote-based business
 import SkipNavigation from "@/components/navigation/SkipNavigation"
 import { initEnhancedAnalytics } from "@/lib/analytics/enhanced-tracking"
+import { ErrorBoundary } from "@/components/error/ErrorBoundary"
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   // Initialize Phase 6 enhanced analytics
@@ -28,7 +29,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       <SkipNavigation />
 
       <main id="main-content" role="main" tabIndex={-1}>
-        {children}
+        <ErrorBoundary>
+          {children}
+        </ErrorBoundary>
       </main>
 
       {/* Cart removed - quote-based business model */}

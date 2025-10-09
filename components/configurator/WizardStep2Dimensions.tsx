@@ -87,6 +87,7 @@ export function WizardStep2Dimensions({
         <div>
           <Label htmlFor="width" className="flex items-center gap-2 mb-2">
             Opening Width
+            <span className="text-xs text-muted-foreground font-normal">(Typical: 72"-96")</span>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
@@ -125,6 +126,7 @@ export function WizardStep2Dimensions({
         <div>
           <Label htmlFor="height" className="flex items-center gap-2 mb-2">
             Opening Height
+            <span className="text-xs text-muted-foreground font-normal">(Standard: 80")</span>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
@@ -184,7 +186,11 @@ export function WizardStep2Dimensions({
                 <div className="text-center">
                   <div className="text-2xl font-bold">{panelCount}</div>
                   <div className="text-xs text-muted-foreground">
-                    {panelCount === 2 ? 'Most Popular' : 'Panels'}
+                    {panelCount === 2 ? (
+                      <span className="font-semibold text-green-600">Most Popular ⭐</span>
+                    ) : (
+                      'Panels'
+                    )}
                   </div>
                 </div>
               </label>
