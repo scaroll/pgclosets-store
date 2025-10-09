@@ -4,9 +4,17 @@ import { useState } from "react";
 import Link from "next/link";
 import { Calculator, Calendar, Phone } from "lucide-react";
 import { InstantEstimateModal } from "../configurator/InstantEstimateModal";
+import { getDefaultDoorType } from "@/lib/door-types";
+import enhancedProducts from "@/data/enhanced-products.json";
 
 export function StickyMobileBar() {
   const [showEstimator, setShowEstimator] = useState(false);
+
+  // Get default product for estimator
+  const defaultDoorType = getDefaultDoorType();
+  const defaultProduct = enhancedProducts.find(
+    p => p.category === defaultDoorType.category
+  ) || enhancedProducts[0];
 
   return (
     <>
@@ -41,6 +49,11 @@ export function StickyMobileBar() {
       <InstantEstimateModal
         isOpen={showEstimator}
         onClose={() => setShowEstimator(false)}
+        initialProduct={{
+          id: defaultProduct.id,
+          title: defaultProduct.title,
+          configuratorData: defaultProduct.configurator_data as any
+        }}
       />
     </>
   );

@@ -26,29 +26,28 @@ const navigationItems: NavItem[] = [
     label: "Products",
     megaMenu: [
       {
-        title: "Closet Systems",
+        title: "Door Types",
         items: [
-          { label: "Walk-In Closets", href: "/products/walk-in-closets" },
-          { label: "Reach-In Closets", href: "/products/reach-in-closets" },
-          { label: "Custom Wardrobes", href: "/products/wardrobes" },
-          { label: "Closet Accessories", href: "/products/accessories" },
+          { label: "Barn Doors", href: "/collections/renin-barn-doors" },
+          { label: "Bypass Doors", href: "/collections/renin-bypass-doors" },
+          { label: "Bifold Doors", href: "/collections/renin-bifold-doors" },
+          { label: "Closet Doors", href: "/collections/renin-closet-doors" },
+          { label: "Pivot Doors", href: "/collections/renin-pivot-doors" },
+          { label: "Room Dividers", href: "/collections/renin-room-dividers" },
         ],
       },
       {
-        title: "Storage Solutions",
+        title: "Accessories",
         items: [
-          { label: "Garage Storage", href: "/products/garage-storage" },
-          { label: "Pantry Systems", href: "/products/pantry" },
-          { label: "Home Office", href: "/products/home-office" },
-          { label: "Laundry Room", href: "/products/laundry" },
+          { label: "Hardware", href: "/collections/hardware" },
+          { label: "Mirrors", href: "/collections/mirrors" },
         ],
       },
       {
-        title: "Featured",
+        title: "Browse",
         items: [
-          { label: "New Arrivals", href: "/products/new" },
-          { label: "Best Sellers", href: "/products/best-sellers" },
-          { label: "Shop All", href: "/products" },
+          { label: "All Products", href: "/products" },
+          { label: "Get Estimate", href: "/instant-estimate" },
         ],
       },
     ],
