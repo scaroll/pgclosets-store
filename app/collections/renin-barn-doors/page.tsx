@@ -53,9 +53,6 @@ export default function ReninBarnDoorsPage() {
             <QuickConfigureCard key={product.id} product={product as any} />
           ))}
         </div>
-
-        {/* Add estimator script */}
-        <script src="/scripts/pg-estimator.js" defer></script>
       </div>
     </StandardLayout>
   );

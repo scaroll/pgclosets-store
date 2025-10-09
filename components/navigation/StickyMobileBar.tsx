@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Calculator, Calendar, Phone } from "lucide-react";
 import { getPhoneHref } from "@/lib/business-info";
+import { getSmartDefaultProduct, getDefaultConfiguratorData } from "@/lib/estimator-defaults";
 
 // Dynamic import - wizard only loads when mobile Estimate tapped
 const InstantEstimatorWizard = dynamic(
@@ -14,6 +15,9 @@ const InstantEstimatorWizard = dynamic(
 
 export function StickyMobileBar() {
   const [showEstimator, setShowEstimator] = useState(false);
+
+  // Preselect smart default (bypass doors - most popular)
+  const defaultProduct = getSmartDefaultProduct({ entryPoint: 'mobile_sticky' });
 
   return (
     <>
@@ -48,6 +52,11 @@ export function StickyMobileBar() {
       <InstantEstimatorWizard
         isOpen={showEstimator}
         onClose={() => setShowEstimator(false)}
+        initialProduct={{
+          id: defaultProduct.slug,
+          title: defaultProduct.title,
+          configuratorData: getDefaultConfiguratorData(defaultProduct.slug)
+        }}
         entryPoint="mobile_sticky"
       />
     </>

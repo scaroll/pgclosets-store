@@ -9,6 +9,7 @@ import { ConfiguratorState, ProductConfiguratorData, EstimateResult } from "@/ty
 import { ConfiguratorCalculator } from "@/lib/configurator-calculator"
 import { trackEvent } from "@/lib/analytics/events"
 import { getInitialEstimatorState } from "@/lib/estimator-defaults"
+import { getPhoneHref, getPhoneDisplay } from "@/lib/business-info"
 import { WizardStep1DoorType } from "./WizardStep1DoorType"
 import { WizardStep2Dimensions } from "./WizardStep2Dimensions"
 import { WizardStep3Finishes } from "./WizardStep3Finishes"
@@ -120,7 +121,8 @@ export function InstantEstimatorWizard({
   const canProceed = () => {
     switch (currentStep) {
       case 1:
-        return !!selectedProduct
+        // Require both product selection AND valid configurator data
+        return !!selectedProduct && !!selectedProduct.configuratorData
       case 2:
         return state.width !== null && state.height !== null && state.panels !== null
       case 3:
@@ -228,7 +230,7 @@ export function InstantEstimatorWizard({
 
         {/* Help Text */}
         <p className="text-xs text-center text-muted-foreground pt-4">
-          Need help? Call us at <a href="tel:+16137016393" className="underline hover:text-foreground">(613) 701-6393</a>
+          Need help? Call us at <a href={getPhoneHref()} className="underline hover:text-foreground">{getPhoneDisplay()}</a>
         </p>
       </DialogContent>
     </Dialog>

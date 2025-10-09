@@ -53,8 +53,6 @@ export default function ReninPivotDoorsPage() {
           ))}
         </div>
 
-        {/* Add estimator script */}
-        <script src="/scripts/pg-estimator.js" defer></script>
       </div>
     </StandardLayout>
   );

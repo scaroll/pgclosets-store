@@ -15,11 +15,10 @@ const mobileNavItems = [
   {
     label: "Products",
     items: [
-      { label: "Walk-In Closets", href: "/products/walk-in-closets" },
-      { label: "Reach-In Closets", href: "/products/reach-in-closets" },
-      { label: "Garage Storage", href: "/products/garage-storage" },
-      { label: "Pantry Systems", href: "/products/pantry" },
-      { label: "Shop All", href: "/products" },
+      { label: "Barn Doors", href: "/collections/renin-barn-doors" },
+      { label: "Bypass Doors", href: "/collections/renin-bypass-doors" },
+      { label: "Bifold Doors", href: "/collections/renin-bifold-doors" },
+      { label: "All Products", href: "/products" },
     ],
   },
   {
@@ -28,6 +27,7 @@ const mobileNavItems = [
       { label: "Design Consultation", href: "/services/consultation" },
       { label: "Custom Design", href: "/services/custom-design" },
       { label: "Installation", href: "/services/installation" },
+      { label: "Warranty", href: "/services/warranty" },
     ],
   },
 ]

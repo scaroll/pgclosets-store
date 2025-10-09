@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Calculator } from "lucide-react"
 import { trackCTAClick } from "@/lib/analytics/events"
-import { getSmartDefaultProduct } from "@/lib/estimator-defaults"
+import { getSmartDefaultProduct, getDefaultConfiguratorData } from "@/lib/estimator-defaults"
 
 // Dynamic import - wizard only loads when Quick Configure clicked
 const InstantEstimatorWizard = dynamic(
@@ -132,7 +132,7 @@ export function CategoryTiles() {
         initialProduct={{
           id: defaultProduct.slug,
           title: defaultProduct.title,
-          configuratorData: undefined
+          configuratorData: getDefaultConfiguratorData(defaultProduct.slug)
         }}
         entryPoint="category_tile"
       />
