@@ -10,7 +10,7 @@
   "public": true,
   "git": {
     "deploymentEnabled": {
-      "main": true,
+      "master": true,
       "preview": true
     }
   },
