@@ -7,6 +7,9 @@
 
 import { trackEvent as gtmTrackEvent } from './gtm'
 
+// Re-export trackEvent for components that need direct access
+export { trackEvent } from './gtm'
+
 /**
  * Track CTA click events
  */
