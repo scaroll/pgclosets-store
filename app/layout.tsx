@@ -177,11 +177,11 @@ export default function RootLayout({
         />
 
         {/* Critical Resource Preloading - Phase 7 Performance Optimization */}
-        {/* Preload LCP image for faster paint */}
+        {/* Preload LCP image for faster paint - actual hero image used on homepage */}
         <link
           rel="preload"
           as="image"
-          href="/hero-image.jpg"
+          href="/images/elegant-barn-door-closet.png"
           fetchpriority="high"
         />
 
