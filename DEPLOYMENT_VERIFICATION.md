@@ -174,3 +174,165 @@ $ dig TXT _dmarc.pgclosets.com +short
 
 **Last Verified**: October 9, 2025
 **Next Action**: Complete ImprovMX setup for email forwarding
+
+---
+
+## October 9, 2025 - Phase 7 Audit Fixes & Deployment Pipeline Fix
+
+### HIGH Priority Audit Fixes (Deployed - Commit ea277ec)
+**Build**: ✅ 130+ routes compiled successfully
+**Status**: ⏳ COMMITTED & PUSHED, DEPLOYMENT VERIFICATION PENDING
+
+#### ISSUE-010: Error Boundary Implementation ✅
+**Problem**: Component failures cascade to white screen of death
+**Solution**:
+- Created `ErrorBoundary` component with `componentDidCatch` lifecycle
+- Implemented `DefaultErrorFallback` and `CompactErrorFallback` UIs
+- Wrapped entire app in `clientLayout.tsx`
+- Graceful degradation with retry functionality
+
+**Files Modified**:
+- `components/error/ErrorBoundary.tsx` (CREATED)
+- `app/clientLayout.tsx` (UPDATED)
+
+**Verification Steps** (After Deployment):
+1. Navigate to https://www.pgclosets.com
+2. Open React DevTools and verify ErrorBoundary wrapper exists
+3. Check console for clean error handling
+4. Test any component error triggers fallback UI
+
+---
+
+#### ISSUE-011: Estimator UX Enhancements ✅
+**Problem**: Users unclear about estimator defaults, lack guidance
+**Solution**:
+- Enhanced "Most Popular" indicator: `Most Popular ⭐` with green styling
+- Added typical size hint: `(Typical: 72"-96")` for width input
+- Added standard size hint: `(Standard: 80")` for height input
+
+**Files Modified**:
+- `components/configurator/WizardStep2Dimensions.tsx`
+
+**Verification Steps** (After Deployment):
+1. Navigate to https://www.pgclosets.com/instant-estimate
+2. Open wizard Step 2 (Dimensions)
+3. Verify "Most Popular ⭐" visible on 2-panel option
+4. Verify size hints visible on width/height inputs
+
+---
+
+### Deployment Pipeline Fix (Commit 5979534 + ae0a4b1)
+**Status**: ✅ COMPLETED & PUSHED TO GITHUB
+**Problem**: GitHub pushes not triggering Vercel builds (project ID misalignment + branch name mismatch)
+
+#### Root Cause Analysis
+1. **Project ID Misalignment**: 4 configuration files referenced wrong Vercel project ID
+2. **Branch Name Mismatch**: `vercel.json` had `"main": true` but repo uses `master` branch
+3. **Problematic ignoreCommand**: Complex bash condition potentially canceling builds
+
+#### Canonical Configuration
+```json
+{
+  "orgId": "team_Xzht85INUsoW05STx9DMMyLX",
+  "projectId": "prj_u7Hob8ST9TGSra2mJeYfv0Ox1pgu",
+  "projectName": "pgclosets-store",
+  "scope": "peoples-group"
+}
+```
+
+#### Files Fixed
+
+**1. `.vercel-lock`** (Commit 5979534)
+```diff
+-PROJECT_ID="prj_6ANgYbAznEZ15GxIKc3snbPf7DEf"
++PROJECT_ID="prj_u7Hob8ST9TGSra2mJeYfv0Ox1pgu"
+```
+
+**2. `deploy-to-pgclosets.sh`** (Commit 5979534)
+```diff
+-export VERCEL_PROJECT_ID="prj_6ANgYbAznEZ15GxIKc3snbPf7DEf"
++export VERCEL_PROJECT_ID="prj_u7Hob8ST9TGSra2mJeYfv0Ox1pgu"
+```
+
+**3. `.claude-cli-config.json`** (Commit 5979534)
+```diff
+-"VERCEL_PROJECT_ID": "prj_6ANgYbAznEZ15GxIKc3snbPf7DEf"
++"VERCEL_PROJECT_ID": "prj_u7Hob8ST9TGSra2mJeYfv0Ox1pgu"
+```
+
+**4. `verify-deployment-target.sh`** (Commit 5979534)
+```diff
+-export VERCEL_PROJECT_ID="prj_SmzgeYTYp4LHGzkYTLKJAZJg9718"
++export VERCEL_PROJECT_ID="prj_u7Hob8ST9TGSra2mJeYfv0Ox1pgu"
+```
+
+**5. `vercel.json`** (Commit ae0a4b1)
+```diff
++  "name": "pgclosets-store",
+   "git": {
+     "deploymentEnabled": {
+-      "main": true
++      "master": true,
++      "preview": true
+-    },
+-    "ignoreCommand": "bash -lc '...complex command...'"
++    }
+   }
+```
+
+#### Improvements Made
+- ✅ All project IDs aligned to canonical GitHub-linked project
+- ✅ Branch name corrected from "main" to "master"
+- ✅ Removed problematic `ignoreCommand` (always build on push)
+- ✅ Added missing `"name"` field to vercel.json
+- ✅ Enabled preview deployments for pull requests
+
+#### Commits Pushed
+- `5979534` - Aligned all Vercel project IDs to canonical
+- `ae0a4b1` - Corrected branch name to master + comprehensive docs
+
+#### Documentation Created
+- `docs/DEPLOYMENT_PIPELINE_FIX.md` - Comprehensive 479-line technical documentation
+- `docs/QA_RESULTS.md` - HIGH priority fixes implementation and validation
+
+---
+
+### Deployment Verification (PENDING)
+
+**Current Status**:
+- ✅ All fixes committed and pushed to GitHub
+- ✅ GitHub master branch updated with commits: ea277ec, 5979534, ae0a4b1
+- ⏳ Vercel deployment status: UNKNOWN (requires dashboard check)
+- ⏳ Production site showing old cache (ETag: a97a0c0a16a29f687262de9af3545278, age: ~2 hours)
+
+**Next Steps**:
+1. **Verify Vercel Build Triggered**:
+   - Check https://vercel.com/peoples-group/pgclosets-store/deployments
+   - Confirm build status: "Building" or "Ready" (NOT "Canceled")
+   - Expected: 3 new deployments for commits ea277ec, 5979534, ae0a4b1
+
+2. **Post-Deploy Smoke Tests** (After deployment completes):
+   - Test ISSUE-011: Visit /instant-estimate, verify "Most Popular ⭐" indicator
+   - Test ISSUE-010: Verify ErrorBoundary in React DevTools
+   - Check console for errors
+   - Verify new ETag confirms fresh deployment
+   - Test key pages: Home, /products, collection pages, PDP
+
+3. **Verify Future Deployments Work**:
+   - Make trivial documentation change
+   - Push to master
+   - Confirm Vercel build triggers automatically (no "Canceled" status)
+
+**Deployment Pipeline Success Criteria**:
+- ✅ All configuration files reference same project ID
+- ✅ Branch name matches actual repository branch (master)
+- ✅ No ignoreCommand blocking builds
+- ⏳ Every GitHub push triggers Vercel build (pending verification)
+- ⏳ Deployments complete successfully (pending verification)
+
+**Documentation Reference**:
+- See `docs/DEPLOYMENT_PIPELINE_FIX.md` for complete technical analysis
+- See `docs/QA_RESULTS.md` for audit fix implementation details
+
+**Last Updated**: October 9, 2025 17:51 UTC
+**Next Action**: Monitor Vercel dashboard for build completion and verify deployment
