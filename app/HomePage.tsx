@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -15,7 +16,12 @@ import { CategoryTiles } from "@/components/home/CategoryTiles"
 import { WhyPGSection } from "@/components/home/WhyPGSection"
 import { FeaturedProjects } from "@/components/home/FeaturedProjects"
 import { ConversionCTA } from "@/components/conversion/ConversionCTA"
-import { InstantEstimatorWizard } from "@/components/configurator/InstantEstimatorWizard"
+
+// Dynamic import for wizard - only loads when needed (reduces initial bundle by ~60KB)
+const InstantEstimatorWizard = dynamic(
+  () => import("@/components/configurator/InstantEstimatorWizard").then(mod => ({ default: mod.InstantEstimatorWizard })),
+  { ssr: false }
+)
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -35,11 +41,24 @@ export default function HomePage() {
 
   useEffect(() => {
     setIsMounted(true)
-    // Preload video safely
+
+    // Optimized video preloading - only on desktop/good connection
     if (typeof window !== 'undefined') {
-      const video = document.createElement('video')
-      video.src = '/hero-video.mp4'
-      video.addEventListener('loadeddata', () => setIsVideoLoaded(true))
+      // Check connection quality (avoid preloading on slow connections)
+      const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection
+      const slowConnection = connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')
+      const isMobile = window.innerWidth < 768
+
+      // Only preload video on desktop with good connection
+      if (!slowConnection && !isMobile) {
+        const video = document.createElement('video')
+        video.preload = 'metadata' // Load only metadata, not full video
+        video.src = '/hero-video.mp4'
+        video.addEventListener('loadedmetadata', () => setIsVideoLoaded(true))
+      } else {
+        // On mobile/slow connection, use static image only
+        setIsVideoLoaded(false)
+      }
     }
   }, [])
 
@@ -83,7 +102,9 @@ export default function HomePage() {
               loop
               muted
               playsInline
+              preload="metadata"
               className="w-full h-full object-cover"
+              loading="lazy"
             >
               <source src="/hero-video.mp4" type="video/mp4" />
             </video>

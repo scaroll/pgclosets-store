@@ -9,6 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ConfiguratorCalculator } from "@/lib/configurator-calculator";
 import { ConfiguratorState, ProductConfiguratorData, EstimateResult } from "@/types/configurator";
+import { ConfiguratorDataAdapter } from "@/lib/configurator-adapter";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 
 interface InstantEstimateModalProps {
@@ -17,7 +18,7 @@ interface InstantEstimateModalProps {
   initialProduct?: {
     id: string;
     title: string;
-    configuratorData: ProductConfiguratorData;
+    configuratorData: ProductConfiguratorData | any;
   };
 }
 
@@ -35,12 +36,20 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
   const [result, setResult] = useState<EstimateResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Normalize configurator data on mount
+  const normalizedConfig = initialProduct?.configuratorData
+    ? ConfiguratorDataAdapter.safeNormalize(initialProduct.configuratorData)
+    : null;
+
   const handleCalculate = () => {
-    if (!initialProduct) return;
+    if (!initialProduct || !normalizedConfig) {
+      setError('Product configuration data is unavailable');
+      return;
+    }
 
     try {
       const estimate = ConfiguratorCalculator.calculate(
-        initialProduct.configuratorData,
+        normalizedConfig,
         state
       );
       setResult(estimate);
@@ -129,7 +138,7 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
   );
 
   const renderStep2 = () => {
-    if (!initialProduct) return null;
+    if (!initialProduct || !normalizedConfig) return null;
 
     return (
       <div className="space-y-4">
@@ -139,7 +148,7 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
             value={state.panels?.toString() || ''}
             onValueChange={(val) => setState({ ...state, panels: parseInt(val) })}
           >
-            {initialProduct.configuratorData.panel_options.map((count) => (
+            {normalizedConfig.panel_options.map((count) => (
               <div key={count} className="flex items-center space-x-2">
                 <RadioGroupItem value={count.toString()} id={`panels-${count}`} />
                 <Label htmlFor={`panels-${count}`}>{count} Panel{count > 1 ? 's' : ''}</Label>
@@ -154,7 +163,7 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
             value={state.finish || ''}
             onValueChange={(val) => setState({ ...state, finish: val })}
           >
-            {initialProduct.configuratorData.finish_options.map((finish) => (
+            {normalizedConfig.finish_options.map((finish) => (
               <div key={finish.id} className="flex items-center space-x-2">
                 <RadioGroupItem value={finish.id} id={`finish-${finish.id}`} />
                 <Label htmlFor={`finish-${finish.id}`} className="flex items-center gap-2">
@@ -191,7 +200,7 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
   };
 
   const renderStep3 = () => {
-    if (!initialProduct) return null;
+    if (!initialProduct || !normalizedConfig) return null;
 
     return (
       <div className="space-y-4">
@@ -201,7 +210,7 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
             Add now or decide at measure
           </p>
 
-          {initialProduct.configuratorData.addons.map((addon) => (
+          {normalizedConfig.addons.map((addon) => (
             <div key={addon.id} className="flex items-start space-x-2 mb-2">
               <Checkbox
                 id={`addon-${addon.id}`}
@@ -294,6 +303,32 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
       </div>
     );
   };
+
+  // Handle case where product has no configurator data
+  if (!normalizedConfig) {
+    return (
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Configuration Unavailable</DialogTitle>
+          </DialogHeader>
+          <div className="py-4">
+            <p className="text-sm text-muted-foreground mb-4">
+              This product doesn't support online configuration. Please contact us for a custom quote.
+            </p>
+            <div className="flex gap-2">
+              <Button asChild className="flex-1">
+                <a href="/book-measure">Book Free Measure</a>
+              </Button>
+              <Button variant="outline" onClick={onClose} className="flex-1">
+                Close
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import simpleProducts from "@/data/simple-products.json";
 import { InstantEstimateModal } from "./InstantEstimateModal";
+import { ConfiguratorDataAdapter } from "@/lib/configurator-adapter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -10,9 +11,9 @@ export function InstantEstimateStandalone() {
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const [showEstimator, setShowEstimator] = useState(false);
 
-  // Get products with configurator data
+  // Get products with valid configurator data
   const configurableProducts = simpleProducts.filter(
-    (p: any) => p.configurator_data
+    (p: any) => p.configurator_data && ConfiguratorDataAdapter.safeNormalize(p.configurator_data) !== null
   );
 
   useEffect(() => {

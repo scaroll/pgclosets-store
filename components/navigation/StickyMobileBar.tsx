@@ -1,10 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Calculator, Calendar, Phone } from "lucide-react";
-import { InstantEstimatorWizard } from "../configurator/InstantEstimatorWizard";
 import { getPhoneHref } from "@/lib/business-info";
+
+// Dynamic import - wizard only loads when mobile Estimate tapped
+const InstantEstimatorWizard = dynamic(
+  () => import("../configurator/InstantEstimatorWizard").then(mod => ({ default: mod.InstantEstimatorWizard })),
+  { ssr: false }
+);
 
 export function StickyMobileBar() {
   const [showEstimator, setShowEstimator] = useState(false);

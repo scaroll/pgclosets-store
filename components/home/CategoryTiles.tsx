@@ -1,14 +1,20 @@
 "use client"
 
 import { useState } from "react"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Calculator } from "lucide-react"
 import { trackCTAClick } from "@/lib/analytics/events"
-import { InstantEstimatorWizard } from "@/components/configurator/InstantEstimatorWizard"
 import { getSmartDefaultProduct } from "@/lib/estimator-defaults"
+
+// Dynamic import - wizard only loads when Quick Configure clicked
+const InstantEstimatorWizard = dynamic(
+  () => import("@/components/configurator/InstantEstimatorWizard").then(mod => ({ default: mod.InstantEstimatorWizard })),
+  { ssr: false }
+)
 
 const categories = [
   {
