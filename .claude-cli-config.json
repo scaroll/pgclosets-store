@@ -5,7 +5,7 @@
     "pre_deploy_check": "./verify-deployment-target.sh",
     "environment": {
       "VERCEL_ORG_ID": "team_Xzht85INUsoW05STx9DMMyLX",
-      "VERCEL_PROJECT_ID": "prj_6ANgYbAznEZ15GxIKc3snbPf7DEf",
+      "VERCEL_PROJECT_ID": "prj_u7Hob8ST9TGSra2mJeYfv0Ox1pgu",
       "VERCEL_SCOPE": "peoples-group"
     }
   },

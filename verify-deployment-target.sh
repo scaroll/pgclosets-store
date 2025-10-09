@@ -39,7 +39,7 @@ if [ -z "$VERCEL_PROJECT_ID" ] || [ -z "$VERCEL_ORG_ID" ]; then
     else
         echo "Setting fallback values..."
         export VERCEL_ORG_ID="team_Xzht85INUsoW05STx9DMMyLX"
-        export VERCEL_PROJECT_ID="prj_SmzgeYTYp4LHGzkYTLKJAZJg9718"
+        export VERCEL_PROJECT_ID="prj_u7Hob8ST9TGSra2mJeYfv0Ox1pgu"
     fi
 fi
 
