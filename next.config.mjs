@@ -10,9 +10,14 @@ const nextConfig = {
   // Fix workspace root warning
   outputFileTracingRoot: process.cwd(),
 
-  // Performance optimizations
+  // Phase 7: Enhanced performance optimizations
   compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
+    // Remove console logs in production (except errors/warnings)
+    removeConsole: process.env.NODE_ENV === "production" ? {
+      exclude: ["error", "warn"],
+    } : false,
+    // Remove React properties for smaller bundle
+    reactRemoveProperties: process.env.NODE_ENV === "production",
   },
 
   // Production optimizations

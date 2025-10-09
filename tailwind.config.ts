@@ -16,28 +16,12 @@ const config: Config = {
     "./styles/**/*.{css,scss}",
     "*.{js,ts,jsx,tsx,mdx}"
   ],
-  // Safelist critical classes to prevent purging
+  // Phase 7: Reduced safelist for better CSS purging (only truly dynamic classes)
   safelist: [
-    'animate-pulse',
-    'animate-shimmer',
-    'animate-fade-in',
-    'animate-slide-up',
-    'animate-scale-in',
-    'gpu-accelerated',
-    'will-change-transform',
-    'will-change-opacity',
-    'aspect-square',
+    // Only safelist classes that are dynamically generated
+    'animate-pulse', // Loading states
+    'aspect-square', // Dynamic image aspects
     'aspect-video',
-    // Design System animations
-    'ds-animate-fade-in',
-    'ds-animate-slide-up',
-    'ds-animate-scale-in',
-    'ds-animate-shimmer',
-    'ds-delay-100',
-    'ds-delay-200',
-    'ds-delay-300',
-    'ds-delay-400',
-    'ds-delay-500'
   ],
   theme: {
     extend: {

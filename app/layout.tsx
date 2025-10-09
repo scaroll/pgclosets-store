@@ -176,6 +176,15 @@ export default function RootLayout({
           content={process.env.NEXT_PUBLIC_BING_VERIFICATION}
         />
 
+        {/* Critical Resource Preloading - Phase 7 Performance Optimization */}
+        {/* Preload LCP image for faster paint */}
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-image.jpg"
+          fetchpriority="high"
+        />
+
         {/* Preconnect to important domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -189,6 +198,8 @@ export default function RootLayout({
         {/* DNS Prefetch for external resources */}
         <link rel="dns-prefetch" href="https://www.renin.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://cdn.renin.com" />
+        <link rel="dns-prefetch" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" />
 
         {/* Canonical URL */}
         <link rel="canonical" href={BUSINESS_INFO.urls.main} />
