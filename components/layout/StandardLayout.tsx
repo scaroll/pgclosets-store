@@ -1,6 +1,6 @@
-import React from 'react';
-import PgHeader from '@/components/PgHeader';
 import PgFooter from '@/components/PgFooter';
+import PgHeader from '@/components/PgHeader';
+import React from 'react';
 
 interface StandardLayoutProps {
   children: React.ReactNode;

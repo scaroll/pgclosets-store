@@ -1,18 +1,18 @@
 "use client";
 
+import { MediaGallery } from "@/components/MediaGallery";
+import { useToast } from "@/hooks/use-toast";
 import { useState, type React } from "react";
 import { Button } from "../ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
 } from "../ui/dialog";
-import { MediaGallery } from "@/components/MediaGallery";
 import { FileUpload } from "../ui/file-upload";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { useToast } from "@/hooks/use-toast";
 
 interface BlobFile {
   url: string;

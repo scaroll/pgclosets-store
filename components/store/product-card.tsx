@@ -1,13 +1,11 @@
 "use client";
 
-import { formatPrice } from "@/lib/enhanced-renin-products";
-import { Button } from "../ui/button";
-import { AddToCartButton } from "../ui/add-to-cart-button";
-import { RequestQuoteButton } from "../ui/request-quote-button";
-import { OptimizedImage } from "../ui/optimized-image";
-import { BadgeChip } from "../ui/badge-chip";
 import { trackCTAClick } from "@/lib/analytics/events";
+import { formatPrice } from "@/lib/enhanced-renin-products";
 import { useState } from "react";
+import { BadgeChip } from "../ui/badge-chip";
+import { Button } from "../ui/button";
+import { OptimizedImage } from "../ui/optimized-image";
 
 interface ProductCardProps {
   product: any;

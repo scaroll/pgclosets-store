@@ -78,7 +78,12 @@ export default function PgHeader() {
               <span className="text-gray-600">|</span>
               <Link href="/services" className="hover:text-gray-300 transition-colors">Services</Link>
               <span className="text-gray-600">|</span>
-              <Link href="/contact" className="hover:text-gray-300 transition-colors">Contact</Link>
+              <Link
+                href="/contact"
+                className="hover:text-gray-300 transition-colors"
+              >
+                Contact
+              </Link>
             </div>
 
             {/* Email */}

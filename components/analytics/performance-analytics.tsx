@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect } from "react"
 import Script from "next/script"
+import { useEffect } from "react"
 
 interface PerformanceAnalyticsProps {
   gaId: string

@@ -21,7 +21,10 @@ export function StickyMobileBar() {
 
   return (
     <>
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t shadow-lg">
+      <div
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t shadow-lg"
+        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+      >
         <div className="grid grid-cols-3 divide-x">
           <button
             onClick={() => setShowEstimator(true)}

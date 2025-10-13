@@ -1,5 +1,5 @@
-import { Button } from "../../components/ui/button"
 import StandardLayout from "@/components/layout/StandardLayout"
+import { Button } from "../../components/ui/button"
 
 export const metadata = {
   title: "Closet Doors Kanata | Professional Installation | PG Closets",

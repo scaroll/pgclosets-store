@@ -1,9 +1,9 @@
-import type { Metadata } from "next"
 import StandardLayout from "@/components/layout/StandardLayout"
 import { Button } from "@/components/ui/button"
 import Heading from "@/components/ui/Heading-new"
-import Text from "@/components/ui/Text-new"
 import Section from "@/components/ui/Section-new"
+import Text from "@/components/ui/Text-new"
+import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {

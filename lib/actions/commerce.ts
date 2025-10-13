@@ -1,6 +1,6 @@
+import { products as localProducts } from "@/app/products/products-data";
 import type { Product } from "@/types/commerce";
 import { unstable_noStore as noStore } from "next/cache";
-import { products as localProducts } from "@/app/products/products-data";
 
 const { NEXT_PUBLIC_APP_URL } = process.env;
 // Ensure we always have a valid base URL when constructing API routes.

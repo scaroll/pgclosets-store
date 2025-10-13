@@ -1,11 +1,11 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useFormState } from "react-dom";
-import { contactFormSchema, type ContactFormState } from "@/lib/schema";
 import { submitContactForm } from "@/lib/actions";
+import { contactFormSchema, type ContactFormState } from "@/lib/schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
+import { useFormState } from "react-dom";
+import { useForm } from "react-hook-form";
 
 const initialState: ContactFormState = {
   message: "",

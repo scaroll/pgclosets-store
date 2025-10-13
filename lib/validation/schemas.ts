@@ -64,6 +64,13 @@ export const quoteRequestSchema = z.object({
   customer: z.object({
     name: nameSchema,
     email: emailSchema,
+    phone: z
+      .string()
+      .min(10, "Phone number must be at least 10 digits")
+      .max(20, "Phone number too long")
+      .regex(/^[\d\s\-\(\)\+]+$/, "Phone number contains invalid characters")
+      .trim()
+      .optional(),
     province: z
       .string()
       .min(2, "Province is required")
@@ -250,6 +257,12 @@ export const measurementBookingSchema = z.object({
     firstName: nameSchema,
     lastName: nameSchema,
     email: emailSchema,
+    phone: z
+      .string()
+      .min(10, "Phone number must be at least 10 digits")
+      .max(20, "Phone number too long")
+      .regex(/^[\d\s\-\(\)\+]+$/, "Phone number contains invalid characters")
+      .trim(),
   }),
   address: z.object({
     street: z

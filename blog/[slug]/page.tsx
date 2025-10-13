@@ -384,8 +384,15 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         </header>
 
         {/* Featured Image */}
-        <div className="aspect-[16/9] bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg overflow-hidden mb-12">
-          <img src={post.image || "/placeholder.svg"} alt={post.title} className="w-full h-full object-cover" />
+        <div className="aspect-[16/9] bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg overflow-hidden mb-12 relative">
+          <Image
+            src={post.image || "/placeholder.svg"}
+            alt={post.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 1200px"
+            priority={false}
+          />
         </div>
 
         {/* Article Content */}

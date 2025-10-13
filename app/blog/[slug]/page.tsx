@@ -1,7 +1,7 @@
-import Link from "next/link"
 import Image from "next/image"
-import { Button } from "../../../components/ui/button"
+import Link from "next/link"
 import { notFound } from "next/navigation"
+import { Button } from "../../../components/ui/button"
 
 // Sample blog posts data - in a real app, this would come from a CMS or database
 const blogPosts = {

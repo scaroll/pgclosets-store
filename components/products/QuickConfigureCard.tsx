@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -112,10 +113,12 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
         <Link href={`/simple-products/${product.handle}`}>
           <div className="aspect-square relative overflow-hidden bg-gray-100">
             {product.featured_image && (
-              <img
+              <Image
                 src={product.featured_image}
                 alt={product.title}
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                fill
+                className="object-cover transition-transform duration-300 hover:scale-110"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             )}
           </div>
@@ -140,10 +143,13 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
       <Link href={`/simple-products/${product.handle}`}>
         <div className="aspect-square relative overflow-hidden bg-gray-100">
           {product.featured_image && (
-            <img
+            <Image
               src={product.featured_image}
               alt={product.title}
-              className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+              fill
+              className="object-cover transition-transform duration-300 hover:scale-110"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              priority={false}
             />
           )}
         </div>
@@ -157,9 +163,9 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
           </Link>
         </h3>
 
-        {configData?.base_price_cad && (
+        {typeof configData?.base_price_cad === 'number' && (
           <p className="text-lg font-semibold text-gray-900 mb-4">
-            From ${configData.base_price_cad.toFixed(0)}
+            {new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 }).format(configData.base_price_cad)}
           </p>
         )}
 

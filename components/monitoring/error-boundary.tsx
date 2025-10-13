@@ -1,16 +1,16 @@
 "use client";
 
+import { AlertCircle, Bug, Home, RefreshCw } from "lucide-react";
 import type { ErrorInfo, ReactNode } from "react";
 import React from "react";
 import { Button } from "./ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
 } from "./ui/card";
-import { AlertCircle, RefreshCw, Home, Bug } from "lucide-react";
 
 interface Props {
   children: ReactNode;

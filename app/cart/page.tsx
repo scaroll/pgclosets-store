@@ -1,16 +1,16 @@
 "use client"
 
-import { useState } from "react"
+import StandardLayout from "@/components/layout/StandardLayout"
+import { AddToQuoteButton } from "@/components/quote/AddToQuoteButton"
+import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
 import { Input } from "../../components/ui/input"
 import { Separator } from "../../components/ui/separator"
 import { useCart } from "../../lib/useCart"
-import { Minus, Plus, Trash2, FileText, ShoppingCart } from "lucide-react"
-import StandardLayout from "@/components/layout/StandardLayout"
-import { AddToQuoteButton } from "@/components/quote/AddToQuoteButton"
 
 export default function CartPage() {
   const { items } = useCart()

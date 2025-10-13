@@ -1,7 +1,7 @@
-import { notFound } from "next/navigation"
-import { getProductBySlug, getProductsByCategory } from "@/lib/enhanced-renin-products"
 import { ProductDetailClient } from "@/components/store/product-detail-client"
 import { RelatedProducts } from "@/components/store/related-products"
+import { getProductBySlug, getProductsByCategory } from "@/lib/enhanced-renin-products"
+import { notFound } from "next/navigation"
 
 // Enable ISR: Revalidate every hour
 export const revalidate = 3600

@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import dynamic from "next/dynamic"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -17,18 +16,9 @@ import { WhyPGSection } from "@/components/home/WhyPGSection"
 import { FeaturedProjects } from "@/components/home/FeaturedProjects"
 import { ConversionCTA } from "@/components/conversion/ConversionCTA"
 
-// Dynamic import for wizard - only loads when needed (reduces initial bundle by ~60KB)
-const InstantEstimatorWizard = dynamic(
-  () => import("@/components/configurator/InstantEstimatorWizard").then(mod => ({ default: mod.InstantEstimatorWizard })),
-  { ssr: false }
-)
-
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null)
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
-  const [showScrollEstimator, setShowScrollEstimator] = useState(false)
-  const [hasTriggeredScrollEstimator, setHasTriggeredScrollEstimator] = useState(false)
 
   // Safe scroll hook with null check
   const { scrollYProgress } = useScroll({
@@ -40,8 +30,6 @@ export default function HomePage() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
 
   useEffect(() => {
-    setIsMounted(true)
-
     // Optimized video preloading - only on desktop/good connection
     if (typeof window !== 'undefined') {
       // Check connection quality (avoid preloading on slow connections)
@@ -62,27 +50,6 @@ export default function HomePage() {
     }
   }, [])
 
-  // Scroll-triggered estimator at 40% page depth (simulation winner strategy)
-  useEffect(() => {
-    if (typeof window === 'undefined' || hasTriggeredScrollEstimator) return
-
-    const handleScroll = () => {
-      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
-
-      // Trigger at 40% scroll depth (optimal engagement point per simulation)
-      if (scrollPercentage >= 40 && !hasTriggeredScrollEstimator) {
-        setShowScrollEstimator(true)
-        setHasTriggeredScrollEstimator(true)
-        trackCTAClick({
-          location: 'scroll_trigger',
-          label: 'Estimator Modal Triggered at 40% Depth'
-        })
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [hasTriggeredScrollEstimator])
 
   return (
     <StandardLayout>
@@ -395,14 +362,6 @@ export default function HomePage() {
         </motion.div>
       </Section>
 
-      {/* Scroll-Triggered Estimator Wizard (40% depth) */}
-      {showScrollEstimator && (
-        <InstantEstimatorWizard
-          isOpen={showScrollEstimator}
-          onClose={() => setShowScrollEstimator(false)}
-          entryPoint="scroll_trigger"
-        />
-      )}
     </StandardLayout>
   )
 }

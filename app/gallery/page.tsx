@@ -1,10 +1,10 @@
-import { MediaGallery } from "../../components/MediaGallery"
-import PgHeader from "../../PgHeader"
-import Link from "next/link"
 import { Button } from '@/components/ui/button'
 import Heading from '@/components/ui/Heading-new'
-import Text from '@/components/ui/Text-new'
 import Section from '@/components/ui/Section-new'
+import Text from '@/components/ui/Text-new'
+import Link from "next/link"
+import { StaticProjectGallery } from "../../components/StaticProjectGallery"
+import PgHeader from "../../PgHeader"
 
 export const metadata = {
   title: "Project Gallery | PG Closets Ottawa",
@@ -49,7 +49,7 @@ export default function GalleryPage() {
             </div>
           </Section>
 
-          <MediaGallery />
+          <StaticProjectGallery />
 
           <Section variant="dark" spacing="lg" className="bg-[var(--color-primary)] text-white mt-12">
             <div className="text-center">

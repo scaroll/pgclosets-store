@@ -1,13 +1,13 @@
 "use client"
 
-import { useState, Suspense, useEffect } from "react"
-import { useSearchParams } from "next/navigation"
+import { SearchBreadcrumb } from "@/components/search/SearchBreadcrumb"
+import { SearchFilters } from "@/components/search/SearchFilters"
+import { SearchHeader } from "@/components/search/SearchHeader"
+import { SearchResults } from "@/components/search/SearchResults"
 import { getProducts } from "@/lib/actions/commerce"
 import type { Product } from "@/types/commerce"
-import { SearchFilters } from "@/components/search/SearchFilters"
-import { SearchResults } from "@/components/search/SearchResults"
-import { SearchHeader } from "@/components/search/SearchHeader"
-import { SearchBreadcrumb } from "@/components/search/SearchBreadcrumb"
+import { useSearchParams } from "next/navigation"
+import { Suspense, useEffect, useState } from "react"
 
 function SearchContent() {
   const searchParams = useSearchParams()

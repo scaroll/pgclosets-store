@@ -1,9 +1,9 @@
-import { arcatProducts, productCategories, getProductsByCategory, searchProducts } from "@/lib/enhanced-renin-products"
-import { ProductGrid } from "@/components/store/product-grid"
-import { ProductFilters } from "@/components/store/product-filters"
 import StandardLayout from "@/components/layout/StandardLayout"
+import { ProductFilters } from "@/components/store/product-filters"
+import { ProductGrid } from "@/components/store/product-grid"
 import Heading from "@/components/ui/Heading-new"
 import Text from "@/components/ui/Text-new"
+import { arcatProducts, getProductsByCategory, productCategories, searchProducts } from "@/lib/enhanced-renin-products"
 
 interface ProductsPageProps {
   searchParams: Promise<{

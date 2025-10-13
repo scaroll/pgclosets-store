@@ -43,7 +43,7 @@ export interface QuoteCalculationInput {
   includeInstallation: boolean;
   customerType: 'residential' | 'contractor' | 'senior';
   postalCode: string;
-  doorType?: string;
+  doorType?: string | undefined;
 }
 
 export interface QuoteCalculationResult {
@@ -117,7 +117,7 @@ export interface ReninQuoteResponse {
   salesContact: {
     name: string;
     email: string;
-    phone: string;
+    phone?: string;
   };
   nextSteps: string[];
   error?: string;

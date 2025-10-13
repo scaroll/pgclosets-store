@@ -1,31 +1,31 @@
 "use client";
 
+import {
+    ArrowRight,
+    Award,
+    ChevronRight,
+    Clock,
+    Home,
+    Palette,
+    Sparkles,
+    Star,
+    TrendingUp,
+    Users,
+    Wrench,
+    Zap,
+} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
 } from "../ui/card";
-import { Badge } from "../ui/badge";
-import {
-  ChevronRight,
-  ArrowRight,
-  Sparkles,
-  Zap,
-  Star,
-  TrendingUp,
-  Home,
-  Palette,
-  Wrench,
-  Award,
-  Clock,
-  Users,
-} from "lucide-react";
-import Link from "next/link";
-import { useState, useEffect } from "react";
 
 const menuItems = {
   solutions: {

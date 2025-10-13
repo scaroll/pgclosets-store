@@ -1,8 +1,10 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Star, Grid, List, Heart, ShoppingCart, ArrowRight, Home } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import type { Product } from "@/types/commerce"
+import { ArrowRight, Grid, Heart, Home, List, ShoppingCart, Star } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 // Simple price formatter
 const formatPrice = (price: number): string => {
@@ -11,8 +13,6 @@ const formatPrice = (price: number): string => {
     currency: 'CAD',
   }).format(price / 100) // Convert from cents to dollars
 }
-import Image from "next/image"
-import type { Product } from "@/types/commerce"
 
 interface SearchResultsProps {
   viewMode: string

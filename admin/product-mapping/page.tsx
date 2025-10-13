@@ -47,7 +47,6 @@ export default function ProductMappingPage() {
       type: product.type,
       currentImage: product.image,
       blobImages: [],
-      primaryBlobImage: undefined,
     }))
     setProductMappings(mappings)
   }, [])
@@ -98,15 +97,20 @@ export default function ProductMappingPage() {
   // Remove blob image from product
   const removeBlobImage = (productSlug: string, blobUrl: string) => {
     setProductMappings((prev) =>
-      prev.map((product) =>
-        product.slug === productSlug
-          ? {
-              ...product,
-              blobImages: product.blobImages.filter((url) => url !== blobUrl),
-              primaryBlobImage: product.primaryBlobImage === blobUrl ? product.blobImages[0] : product.primaryBlobImage,
-            }
-          : product,
-      ),
+      prev.map((product): ProductMapping => {
+        if (product.slug !== productSlug) return product;
+
+        const updatedImages = product.blobImages.filter((url) => url !== blobUrl);
+        const newPrimaryImage = product.primaryBlobImage === blobUrl
+          ? updatedImages[0]
+          : product.primaryBlobImage;
+
+        return {
+          ...product,
+          blobImages: updatedImages,
+          primaryBlobImage: newPrimaryImage,
+        };
+      }),
     )
   }
 

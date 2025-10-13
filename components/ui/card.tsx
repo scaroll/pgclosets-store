@@ -1,6 +1,6 @@
-import type * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
+import { cva, type VariantProps } from "class-variance-authority"
+import type * as React from "react"
 
 const cardVariants = cva(
   "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border shadow-sm transition-all duration-300",
@@ -96,4 +96,4 @@ function CardFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement
   )
 }
 
-export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
+export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }

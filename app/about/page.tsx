@@ -1,13 +1,13 @@
 "use client"
 
-import Image from "next/image";
-import Link from "next/link";
-import PgHeader from "@/components/PgHeader";
 import PgFooter from "@/components/PgFooter";
+import PgHeader from "@/components/PgHeader";
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/Heading-new";
-import Text from "@/components/ui/Text-new";
 import Section from "@/components/ui/Section-new";
+import Text from "@/components/ui/Text-new";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutPage() {
   return (
@@ -42,7 +42,7 @@ export default function AboutPage() {
             </div>
           </div>
             <div className="relative">
-              <div className="aspect-square overflow-hidden shadow-2xl border-4 border-[#87ceeb]">
+              <div className="relative aspect-square overflow-hidden shadow-2xl border-4 border-[#87ceeb]">
                 <Image
                   src="/images/arcat/renin_199065_hd.jpg"
                   alt="Premium Renin closet doors installed in Ottawa home"
@@ -93,7 +93,7 @@ export default function AboutPage() {
             </div>
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-6">
-                <div className="aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
+                <div className="relative aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
                   <Image
                     src="/images/arcat/renin_199063_hd.jpg"
                     alt="Georgian 6-Panel Design closet doors"
@@ -101,7 +101,7 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
+                <div className="relative aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
                   <Image
                     src="/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg"
                     alt="Euro 1-Lite bifold closet doors"
@@ -111,7 +111,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="space-y-6 pt-12">
-                <div className="aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
+                <div className="relative aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
                   <Image
                     src="/images/arcat/renin_205721_hd.jpg"
                     alt="Crochet Multi-X Design barn door"
@@ -119,7 +119,7 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
+                <div className="relative aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
                   <Image
                     src="/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg"
                     alt="Euro 5-Lite bypass closet doors"

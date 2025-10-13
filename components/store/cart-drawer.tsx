@@ -1,13 +1,13 @@
 "use client";
 
 import {
-  useCartStore,
-  formatPrice,
-  calculateItemTotal,
+    calculateItemTotal,
+    formatPrice,
+    useCartStore,
 } from "@/lib/stores/cart-store";
 import { Button } from "../ui/button";
+import { Minus, Plus, ShoppingBag, X } from "../ui/icons";
 import { OptimizedImage } from "../ui/optimized-image";
-import { X, Minus, Plus, ShoppingBag } from "../ui/icons";
 
 type CartDrawerProps = Record<string, never>;
 

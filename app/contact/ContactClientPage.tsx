@@ -1,12 +1,12 @@
 "use client";
 
+import StandardLayout from "@/components/layout/StandardLayout";
+import Card from "@/components/ui/Card-new";
+import Heading from "@/components/ui/Heading-new";
+import Text from "@/components/ui/Text-new";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import StandardLayout from "@/components/layout/StandardLayout";
-import Heading from "@/components/ui/Heading-new";
-import Text from "@/components/ui/Text-new";
-import Card from "@/components/ui/Card-new";
 
 // Dynamically import the contact form to reduce initial bundle size
 const ContactForm = dynamic(

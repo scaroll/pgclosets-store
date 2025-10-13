@@ -1,6 +1,18 @@
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import StandardLayout from "@/components/layout/StandardLayout";
-import { InstantEstimateStandalone } from "@/components/configurator/InstantEstimateStandalone";
+
+// Dynamically import heavy component for better initial load
+const InstantEstimateStandalone = dynamic(
+  () => import("@/components/configurator/InstantEstimateStandalone").then(mod => ({ default: mod.InstantEstimateStandalone })),
+  {
+    loading: () => (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      </div>
+    )
+  }
+);
 
 export const metadata: Metadata = {
   title: "Instant Estimate | PG Closets Ottawa",

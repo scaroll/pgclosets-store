@@ -1,15 +1,15 @@
+import StandardLayout from "@/components/layout/StandardLayout";
 import { FeaturedProducts } from "@/components/store/featured-products";
 import { HeroSection } from "@/components/store/hero-section";
 import { Button } from "@/components/ui/button";
+import Card from "@/components/ui/Card-new";
 import Heading from "@/components/ui/Heading-new";
 import Text from "@/components/ui/Text-new";
-import Card from "@/components/ui/Card-new";
 import {
-  getFeaturedProducts,
-  productCategories,
+    getFeaturedProducts,
+    productCategories,
 } from "@/lib/enhanced-renin-products";
 import Image from "next/image";
-import StandardLayout from "@/components/layout/StandardLayout";
 
 export const metadata = {
   title: "Premium Closet Door Store | Renin Products | PG Closets Ottawa",

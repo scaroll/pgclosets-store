@@ -1,10 +1,10 @@
-import Link from "next/link"
-import Image from "next/image"
 import StandardLayout from "@/components/layout/StandardLayout"
 import { Button } from '@/components/ui/button'
 import Heading from '@/components/ui/Heading-new'
-import Text from '@/components/ui/Text-new'
 import Section from '@/components/ui/Section-new'
+import Text from '@/components/ui/Text-new'
+import Image from "next/image"
+import Link from "next/link"
 
 export const metadata = {
   title: "Closet Door Blog | Tips & Guides | PG Closets Ottawa",

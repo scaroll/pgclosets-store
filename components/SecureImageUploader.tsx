@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { AlertCircle, CheckCircle, ImageIcon, Upload, X } from "lucide-react";
 import Image from "next/image";
+import { useCallback, useState } from "react";
+import { Alert, AlertDescription } from "../ui/alert";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Progress } from "../ui/progress";
-import { Alert, AlertDescription } from "../ui/alert";
-import { Upload, X, CheckCircle, AlertCircle, ImageIcon } from "lucide-react";
 
 interface UploadedFile {
   url: string;

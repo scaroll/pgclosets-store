@@ -1,10 +1,10 @@
+import StandardLayout from "@/components/layout/StandardLayout"
+import { ArrowRight, Clock, CreditCard, Heart, MapPin, Package, Settings, ShoppingBag, Star, User } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { Badge } from "../../components/ui/badge"
 import { Button } from "../../components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card"
-import { Badge } from "../../components/ui/badge"
-import { User, Package, MapPin, CreditCard, Settings, Heart, ArrowRight, ShoppingBag, Clock, Star } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import StandardLayout from "@/components/layout/StandardLayout"
 
 export default function AccountPage() {
   const recentOrders = [

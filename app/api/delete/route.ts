@@ -19,7 +19,7 @@ export async function DELETE(request: NextRequest) {
     const session = await SessionManager.requireAdmin(request)
 
     // Rate limiting for delete operations
-    const ip = request.ip || request.headers.get("x-forwarded-for") || "unknown"
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() || request.headers.get("x-real-ip") || "unknown"
     const rateLimit = RateLimiter.check(`delete:${ip}`, 5, 60 * 1000) // 5 deletes per minute
 
     if (!rateLimit.allowed) {
@@ -87,7 +87,7 @@ export async function DELETE(request: NextRequest) {
     // Log security event for failed deletions
     SecurityUtils.logSecurityEvent("FILE_DELETE_FAILED", {
       error: error instanceof Error ? error.message : "Unknown error",
-      ip: request.ip || "unknown",
+      ip: request.headers.get("x-forwarded-for")?.split(",")[0].trim() || request.headers.get("x-real-ip") || "unknown",
       userAgent: request.headers.get("user-agent")
     })
 

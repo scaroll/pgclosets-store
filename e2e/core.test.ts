@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
 test.describe('E-commerce Core Functionality', () => {
   test.beforeEach(async ({ page }) => {

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Calculator } from "lucide-react"
 import { trackCTAClick } from "@/lib/analytics/events"
 import { getSmartDefaultProduct, getDefaultConfiguratorData } from "@/lib/estimator-defaults"
+import { DOOR_TYPES, formatPrice } from "@/lib/door-types"
 
 // Dynamic import - wizard only loads when Quick Configure clicked
 const InstantEstimatorWizard = dynamic(
@@ -16,29 +17,30 @@ const InstantEstimatorWizard = dynamic(
   { ssr: false }
 )
 
-const categories = [
-  {
-    name: "Barn Doors",
-    slug: "renin-barn-doors",
-    image: "https://www.renin.com/wp-content/uploads/2021/06/BD041-Augusta-Bright-White-MM-BD-Beauty-Image-Brick_v4-Square-scaled.jpg",
-    description: "Single-panel sliding doors with modern tracks",
-    fromPrice: "$89900"
-  },
-  {
-    name: "Bypass Doors",
-    slug: "renin-bypass-doors",
-    image: "https://www.renin.com/wp-content/uploads/2019/10/HS215-Bordeaux-Bright-White-Beauty-Room-Image.jpg",
-    description: "Space-saving multi-panel closet doors",
-    fromPrice: "$129900"
-  },
-  {
-    name: "Bifold Doors",
-    slug: "renin-bifold-doors",
-    image: "https://www.renin.com/wp-content/uploads/2019/10/BF209-Chateau-Bright-White-Beauty-Room-Image.jpg",
-    description: "Classic folding doors for standard closets",
-    fromPrice: "$79900"
-  }
-]
+const FEATURED_SLUGS = [
+  "renin-barn-doors",
+  "renin-bypass-doors",
+  "renin-bifold-doors",
+] as const
+
+const categories = FEATURED_SLUGS.map((slug) => {
+  const door = DOOR_TYPES.find((type) => type.slug === slug)
+  return door
+    ? {
+        name: door.name,
+        slug: door.slug,
+        image: door.image,
+        description: door.description,
+        fromPrice: formatPrice(door.fromPrice, true),
+      }
+    : null
+}).filter(Boolean) as Array<{
+  name: string
+  slug: string
+  image: string
+  description: string
+  fromPrice: string
+}>
 
 export function CategoryTiles() {
   const [showEstimator, setShowEstimator] = useState(false)
@@ -49,7 +51,8 @@ export function CategoryTiles() {
     setShowEstimator(true)
     trackCTAClick({
       location: 'category_tile',
-      label: `Quick Configure - ${categoryName}`
+      label: 'Quick Configure',
+      product_name: categoryName,
     })
   }
 

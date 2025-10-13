@@ -1,5 +1,4 @@
-import type { NextRequest} from "next/server";
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { SessionManager, InputValidator, SecurityUtils, DEFAULT_ADMIN, CSRFProtection } from "@/lib/auth"
 import { z } from "zod"
 
@@ -52,7 +51,7 @@ export async function POST(request: NextRequest) {
       SecurityUtils.logSecurityEvent("USER_LOGIN", {
         userId: session.userId,
         email: session.email,
-        ip: request.ip || "unknown",
+        ip: request.headers.get("x-forwarded-for")?.split(",")[0].trim() || request.headers.get("x-real-ip") || "unknown",
         userAgent: request.headers.get("user-agent")
       })
 
@@ -72,7 +71,7 @@ export async function POST(request: NextRequest) {
       // Log failed login attempt
       SecurityUtils.logSecurityEvent("LOGIN_FAILED", {
         email: sanitizedEmail,
-        ip: request.ip || "unknown",
+        ip: request.headers.get("x-forwarded-for")?.split(",")[0].trim() || request.headers.get("x-real-ip") || "unknown",
         userAgent: request.headers.get("user-agent")
       })
 

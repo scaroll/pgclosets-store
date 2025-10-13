@@ -14,18 +14,30 @@ export { trackEvent } from './gtm'
  * Track CTA click events
  */
 export const trackCTAClick = (params: {
-  location: 'grid' | 'pdp' | 'header' | 'hero' | 'footer' | 'sticky_mobile' | 'quote_page' | 'request_work'
-  label: 'get_quote' | 'book_measurement' | 'email_us' | 'view_details' | 'add_to_cart'
+  location: string
+  label: string
   product_id?: string
   product_name?: string
+  destination_url?: string
 }) => {
+  const normalizedLocation = params.location
+    .toLowerCase()
+    .replace(/\s+/g, '_')
+    .replace(/[^a-z0-9_]/g, '')
+
+  const normalizedLabel = params.label
+    .toLowerCase()
+    .replace(/\s+/g, '_')
+    .replace(/[^a-z0-9_]/g, '')
+
   gtmTrackEvent('cta_click', {
     cta_location: params.location,
     cta_label: params.label,
     product_id: params.product_id,
     product_name: params.product_name,
+    destination_url: params.destination_url,
     event_category: 'User Engagement',
-    event_label: `${params.location}_${params.label}`,
+    event_label: `${normalizedLocation}_${normalizedLabel}`,
   })
 
   if (process.env.NODE_ENV === 'development') {

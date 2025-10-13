@@ -1,5 +1,4 @@
-import type { NextRequest} from "next/server";
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { SessionManager, SecurityUtils } from "@/lib/auth"
 
 export async function POST(request: NextRequest) {
@@ -18,7 +17,7 @@ export async function POST(request: NextRequest) {
       SecurityUtils.logSecurityEvent("USER_LOGOUT", {
         userId: session.userId,
         email: session.email,
-        ip: request.ip || "unknown",
+        ip: request.headers.get("x-forwarded-for")?.split(",")[0].trim() || request.headers.get("x-real-ip") || "unknown",
         userAgent: request.headers.get("user-agent")
       })
     }

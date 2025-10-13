@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useRef, useCallback, type React } from "react";
+import { cn } from "@/lib/utils";
+import { AlertCircle, CheckCircle, FileImage, Upload, X } from "lucide-react";
 import Image from "next/image";
+import { useCallback, useRef, useState, type React } from "react";
 import { Button } from "./button";
 import { Progress } from "./progress";
-import { Upload, X, FileImage, AlertCircle, CheckCircle } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 interface FileUploadProps {
   accept?: string;

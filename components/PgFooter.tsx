@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { PGLogo } from "@/ui/pg-logo";
+import Link from "next/link";
 
 export default function PgFooter() {
   return (

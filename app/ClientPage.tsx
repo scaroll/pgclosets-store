@@ -1,22 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { AnimatedLogo } from "@/components/brand/AnimatedLogo";
+import { LogoBackgroundPatterns } from "@/components/brand/LogoBackgroundPatterns";
+import StandardLayout from "@/components/layout/StandardLayout";
+import { formatPrice } from "@/lib/pricing";
+import { LocalBusinessJSONLD } from "@/lib/seo/LocalBusinessJSONLD";
+import type { Product } from "@/types/commerce";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import HeroVideo from "../HeroVideo";
-import type { Product } from "@/types/commerce";
-import { formatPrice } from "@/lib/pricing";
-import StandardLayout from "@/components/layout/StandardLayout";
-import { LocalBusinessJSONLD } from "@/lib/seo/LocalBusinessJSONLD";
-import { LogoBackgroundPatterns } from "@/components/brand/LogoBackgroundPatterns";
-import { AnimatedLogo } from "@/components/brand/AnimatedLogo";
 // import { ResponsiveLogoVariants } from "@/components/brand/ResponsiveLogoVariants" // Temporarily disabled
 import {
-  trackLogoInteraction,
-} from "@/lib/analytics/logo-tracking";
-import {
-  CTALogoButton,
+    CTALogoButton,
 } from "@/components/conversion/LogoConversionOptimizer";
+import {
+    trackLogoInteraction,
+} from "@/lib/analytics/logo-tracking";
 
 export default function ClientPage({ products }: { products: Product[] }) {
   const [quoteStep, setQuoteStep] = useState(0);

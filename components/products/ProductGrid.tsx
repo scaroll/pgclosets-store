@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback, useEffect } from 'react'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { motion, AnimatePresence } from 'framer-motion'
 import { reninProducts, type Product } from '@/data/renin-products'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
@@ -18,8 +19,16 @@ import {
   Sparkles,
   Tag
 } from 'lucide-react'
-import { ProductQuickView } from './ProductQuickView'
-import { ProductFiltersSidebar } from './ProductFiltersSidebar'
+
+// Dynamically import heavy components (only loaded when needed)
+const ProductQuickView = dynamic(
+  () => import('./ProductQuickView').then(mod => ({ default: mod.ProductQuickView })),
+  { ssr: false }
+)
+const ProductFiltersSidebar = dynamic(
+  () => import('./ProductFiltersSidebar').then(mod => ({ default: mod.ProductFiltersSidebar })),
+  { ssr: false }
+)
 
 export interface ProductGridProps {
   /** Initial category filter */
