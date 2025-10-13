@@ -35,7 +35,7 @@ export default function WarrantyPage() {
               },
               {
                 title: '2-Year Installation Warranty',
-                description: 'Our professional installation is guaranteed for 2 years from completion date, covering all labor and adjustments.'
+                description: 'Our professional installation is guaranteed for 5 years from completion date, covering all labor and adjustments.'
               },
               {
                 title: 'Hardware Guarantee',

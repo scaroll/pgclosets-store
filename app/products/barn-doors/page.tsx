@@ -87,7 +87,7 @@ export default async function BarnDoorsPage() {
                 Get Free Quote
               </Link>
               <Link
-                href="/book-measurement"
+                href="/book-measure"
                 className="border border-slate-300 text-slate-700 px-8 py-4 text-lg font-light hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 uppercase tracking-widest"
               >
                 Book Measurement

@@ -57,7 +57,7 @@ export default function TermsOfService() {
               Warranty
             </h2>
             <p className="text-body-m text-pg-dark leading-relaxed" style={{ opacity: 0.75 }}>
-              We provide a comprehensive 2-year workmanship warranty on all installations, plus manufacturer warranty on
+              We provide a comprehensive 5-year workmanship warranty on all installations, plus manufacturer warranty on
               Renin products as specified by the manufacturer. Warranty terms and conditions are detailed in your
               service agreement.
             </p>

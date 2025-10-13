@@ -7,13 +7,13 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Professional Installation Ottawa | Renin Door Systems | PG Closets",
   description:
-    "Professional installation of Renin door systems across Ottawa. Expert technicians, 2-year warranty, and same-day completion. Serving Ottawa, Kanata, Nepean, Orleans, and surrounding areas.",
+    "Professional installation of Renin door systems across Ottawa. Expert technicians, 5-year warranty, and same-day completion. Serving Ottawa, Kanata, Nepean, Orleans, and surrounding areas.",
   keywords:
     "door installation Ottawa, professional installation, Renin door installation, Ottawa door installers, closet door installation, barn door installation Ottawa",
   openGraph: {
     title: "Professional Installation Ottawa | Renin Door Systems | PG Closets",
     description:
-      "Professional installation of Renin door systems across Ottawa. Expert technicians, 2-year warranty, and same-day completion.",
+      "Professional installation of Renin door systems across Ottawa. Expert technicians, 5-year warranty, and same-day completion.",
     images: [{ url: "/og-installation.jpg", width: 1200, height: 630 }],
   },
   alternates: { canonical: "/installation-ottawa" },
@@ -57,7 +57,7 @@ export default function InstallationOttawaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="headline-large text-4xl md:text-6xl text-pg-dark mb-6">Professional Installation in Ottawa</h1>
           <p className="text-xl text-pg-gray mb-8 max-w-3xl mx-auto">
-            Expert installation of Renin door systems by certified technicians. Same-day completion with 2-year
+            Expert installation of Renin door systems by certified technicians. Same-day completion with 5-year
             workmanship warranty.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

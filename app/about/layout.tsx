@@ -1,18 +1,19 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About PG Closets | Official Renin Dealer Ottawa",
+  title: "About Us - Family-Owned Excellence Since 2010 | PG Closets Ottawa",
   description:
-    "Learn about PG Closets, Ottawa's trusted Renin dealer specializing in premium door systems and professional installation. Family-owned business serving Ottawa since 2010.",
+    "Learn about PG Closets - Ottawa's trusted family-owned closet door specialists since 2010. Official Renin dealer serving 500+ families with premium door systems and professional installation.",
   keywords:
-    "about PG Closets, Renin dealer Ottawa, family business Ottawa, door installation company, Ottawa closet company history",
+    "PG Closets about, family-owned Ottawa, Renin dealer Ottawa, closet door specialists, professional installation Ottawa, premium door systems",
   openGraph: {
-    title: "About PG Closets | Official Renin Dealer Ottawa",
+    title: "About PG Closets - Family-Owned Excellence Since 2010",
     description:
-      "Learn about PG Closets, Ottawa's trusted Renin dealer specializing in premium door systems and professional installation.",
-    images: [{ url: "/og-about.jpg", width: 1200, height: 630 }],
+      "Ottawa's premier closet door specialists transforming homes with premium Renin solutions since 2010. Family-owned, locally operated, 500+ installations.",
+    type: "website",
+    url: "https://pgclosets.com/about",
+    locale: "en_CA",
   },
-  alternates: { canonical: "/about" },
 };
 
 export default function AboutLayout({
@@ -20,5 +21,5 @@ export default function AboutLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return <>{children}</>;
 }

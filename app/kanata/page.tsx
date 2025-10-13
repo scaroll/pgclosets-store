@@ -92,7 +92,7 @@ export default function KanataPage() {
               <Button
                 variant="secondary"
                 size="lg"
-                href="/book-measurement"
+                href="/book-measure"
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
               >
                 Book Measurement

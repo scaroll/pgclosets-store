@@ -286,7 +286,7 @@ export default function QuotePage() {
                   {/* Measurement Helper */}
                   <p className="text-sm text-center mt-2">
                     <Link
-                      href="/book-measurement"
+                      href="/book-measure"
                       className="text-blue-600 hover:underline"
                       onClick={() => trackMeasurementHelperClick({ location: 'quote-page' })}
                     >
