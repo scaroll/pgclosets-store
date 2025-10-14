@@ -1,23 +1,7 @@
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 import enhancedProducts from "@/data/enhanced-products.json";
 import StandardLayout from "@/components/layout/StandardLayout";
-
-// Dynamically import QuickConfigureCard
-const QuickConfigureCard = dynamic(
-  () => import("@/components/products/QuickConfigureCard").then(mod => ({ default: mod.QuickConfigureCard })),
-  {
-    loading: () => (
-      <div className="animate-pulse">
-        <div className="aspect-square bg-gray-200 rounded-t-lg mb-4"></div>
-        <div className="p-6 space-y-3">
-          <div className="h-6 bg-gray-200 rounded w-3/4"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-        </div>
-      </div>
-    )
-  }
-);
+import { QuickConfigureCard } from '@/components/products/QuickConfigureCard';
 
 export const metadata: Metadata = {
   title: 'Renin Barn Doors Collection | PG Closets Ottawa',
@@ -34,10 +18,9 @@ export const metadata: Metadata = {
 };
 
 export default function ReninBarnDoorsPage() {
+
   // Filter for Renin Barn Doors
-  const barnDoors = enhancedProducts.filter(p =>
-    p.category === 'Renin Barn Doors'
-  );
+  const barnDoors = enhancedProducts.filter(p => p.category === 'Renin Barn Doors');
 
   return (
     <StandardLayout>
@@ -66,7 +49,7 @@ export default function ReninBarnDoorsPage() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {barnDoors.map((product) => (
-            <QuickConfigureCard key={product.id} product={product as any} />
+            <QuickConfigureCard key={product.id} product={product} />
           ))}
         </div>
       </div>

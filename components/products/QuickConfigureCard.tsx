@@ -10,52 +10,86 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Calculator, ExternalLink } from 'lucide-react';
 
-interface Product {
+interface ConfiguratorData {
+  size?: {
+    opening_min_width_mm?: number;
+    opening_max_width_mm?: number;
+    opening_min_height_mm?: number;
+    opening_max_height_mm?: number;
+  };
+  options?: {
+    panel_options?: string[];
+    finish_options?: string[];
+  };
+  base_price_cad?: number;
+}
+
+interface EstimatorConfig {
+  size_factor: Array<{ max_area_m2: number; factor: number }>;
+  base_model: Record<string, number>;
+  panel_factor: Record<string, number>;
+  finish_factor: Record<string, number>;
+  range_margin: number;
+}
+
+export interface Product {
   id: string;
   title: string;
-  slug: string;
-  handle?: string; // legacy support
+  slug?: string | null;
+  handle?: string | null;
   featured_image?: string;
   price?: number;
-  configurator_data?: {
-    size?: {
-      opening_min_width_mm: number;
-      opening_max_width_mm: number;
-      opening_min_height_mm: number;
-      opening_max_height_mm: number;
-    };
-    options?: {
-      panel_options?: string[];
-      finish_options?: string[];
-    };
-    base_price_cad?: number;
-  };
+  image?: string;
+  configurator_data?: ConfiguratorData | null;
 }
 
 interface QuickConfigureCardProps {
   product: Product;
 }
 
-export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
-  const [width, setWidth] = useState<number>(914); // default 36"
-  const [height, setHeight] = useState<number>(2032); // default 80"
-  const [panels, setPanels] = useState<string>('2');
-  const [finish, setFinish] = useState<string>('matte_white');
-  const [estimate, setEstimate] = useState<{ low: number; high: number } | null>(null);
-  const [calculating, setCalculating] = useState(false);
+// Derive a safe slug with fallbacks and sanitization
+export const deriveSlug = (product: Product): string | null => {
+  const raw = (product.slug ?? product.handle ?? '').trim();
+  if (raw.length > 0 && raw !== 'undefined' && raw !== 'null') {
+    return raw;
+  }
 
+  if (product.title) {
+    const converted = product.title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+    if (converted.length > 0) {
+      return converted;
+    }
+  }
+
+  return null;
+};
+
+export const QuickConfigureCard = ({ product }: QuickConfigureCardProps) => {
   const configData = product.configurator_data;
   const hasConfigurator = !!configData;
+  const safeSlug = deriveSlug(product);
+  const href = safeSlug ? `/simple-products/${encodeURIComponent(safeSlug)}` : '#';
 
-  // Get min/max values with safe defaults
-  const minWidth = configData?.size?.opening_min_width_mm || 600;
-  const maxWidth = configData?.size?.opening_max_width_mm || 3000;
-  const minHeight = configData?.size?.opening_min_height_mm || 1800;
-  const maxHeight = configData?.size?.opening_max_height_mm || 2800;
+  // State for configurator form
+  const [width, setWidth] = useState<number>(configData?.size?.opening_min_width_mm ?? 900);
+  const [height, setHeight] = useState<number>(configData?.size?.opening_min_height_mm ?? 2032);
+  const [panels, setPanels] = useState<string>(configData?.options?.panel_options?.[0] ?? '1');
+  const [finish, setFinish] = useState<string>(configData?.options?.finish_options?.[0] ?? 'matte_white');
+  const [calculating, setCalculating] = useState(false);
+  const [estimate, setEstimate] = useState<{ low: number; high: number } | null>(null);
 
-  // Get options with safe defaults
-  const panelOptions = configData?.options?.panel_options || ['1', '2', '3', '4'];
-  const finishOptions = configData?.options?.finish_options || [
+  // Safe defaults for min/max
+  const minWidth = configData?.size?.opening_min_width_mm ?? 600;
+  const maxWidth = configData?.size?.opening_max_width_mm ?? 3000;
+  const minHeight = configData?.size?.opening_min_height_mm ?? 1800;
+  const maxHeight = configData?.size?.opening_max_height_mm ?? 2800;
+
+  // Options
+  const panelOptions = configData?.options?.panel_options ?? ['1', '2', '3', '4'];
+  const finishOptions = configData?.options?.finish_options ?? [
     'matte_white',
     'matte_black',
     'mirror',
@@ -64,41 +98,34 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
 
   const handleCalculateEstimate = async () => {
     setCalculating(true);
-
     try {
-      // Load config
       const response = await fetch('/estimator.config.json');
-      const cfg = await response.json();
-
-      // Detect type
-      const type = product.title.toLowerCase().includes('bifold') ? 'bifold' :
-                   product.title.toLowerCase().includes('pivot') ? 'pivot' :
-                   product.title.toLowerCase().includes('barn') ? 'barn' :
-                   product.title.toLowerCase().includes('bypass') ? 'bypass' :
-                   product.title.toLowerCase().includes('divider') ? 'divider' : 'bypass';
-
-      // Calculate
+      const cfg = (await response.json()) as EstimatorConfig;
+      const type = product.title.toLowerCase().includes('bifold') ? 'bifold'
+        : product.title.toLowerCase().includes('pivot') ? 'pivot'
+        : product.title.toLowerCase().includes('barn') ? 'barn'
+        : product.title.toLowerCase().includes('bypass') ? 'bypass'
+        : product.title.toLowerCase().includes('divider') ? 'divider' : 'bypass';
       const area = (width / 1000) * (height / 1000);
-      const sizeFactor = cfg.size_factor.find((x: any) => area <= x.max_area_m2)?.factor ||
-                        cfg.size_factor[cfg.size_factor.length - 1].factor;
-      const base = cfg.base_model[type] || cfg.base_model.bypass;
+  const sizeFactorEntry = cfg.size_factor.find((entry) => area <= entry.max_area_m2) ?? cfg.size_factor[cfg.size_factor.length - 1];
+  const sizeFactor = sizeFactorEntry?.factor ?? 1;
+  const base = cfg.base_model[type] ?? cfg.base_model.bypass ?? 0;
       const panelFactor = cfg.panel_factor[panels] || 1.0;
       const finishFactor = cfg.finish_factor[finish] || 1.0;
-
       const basePrice = base * sizeFactor * panelFactor * finishFactor;
       const low = Math.round(basePrice * (1 - cfg.range_margin));
       const high = Math.round(basePrice * (1 + cfg.range_margin));
-
       setEstimate({ low, high });
-
-      // Track in GA4
-      if (typeof window !== 'undefined' && (window as any).dataLayer) {
-        (window as any).dataLayer.push({
+      if (typeof window !== 'undefined') {
+        const dataLayer = (window as unknown as { dataLayer?: Array<Record<string, unknown>> }).dataLayer;
+        if (dataLayer) {
+          dataLayer.push({
           event: 'quick_config_estimate',
           product_id: product.id,
           product_title: product.title,
           estimate: { low, high, width, height, panels, finish, type },
-        });
+          });
+        }
       }
     } catch (error) {
       console.error('Estimate calculation failed:', error);
@@ -107,61 +134,66 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
     }
   };
 
+  const imageContent = (
+    <div className="aspect-square relative overflow-hidden bg-gray-100">
+      {(product.featured_image || product.image) && (
+        <Image
+          src={product.featured_image || product.image || ''}
+          alt={product.title}
+          fill
+          className="object-cover transition-transform duration-300 hover:scale-110"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={false}
+        />
+      )}
+      {!safeSlug && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-white text-xs">
+          Missing slug
+        </div>
+      )}
+    </div>
+  );
+
   if (!hasConfigurator) {
     // Simple card without configurator
     return (
-      <Card className="overflow-hidden hover:shadow-xl transition-shadow">
-        <Link href={`/simple-products/${product.slug}`}>
-          <div className="aspect-square relative overflow-hidden bg-gray-100">
-            {product.featured_image && (
-              <Image
-                src={product.featured_image}
-                alt={product.title}
-                fill
-                className="object-cover transition-transform duration-300 hover:scale-110"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
+      <Card data-slug={safeSlug ?? 'missing'} className="overflow-hidden hover:shadow-xl transition-shadow">
+        {safeSlug ? <Link href={href}>{imageContent}</Link> : imageContent}
+        <div className="p-6">
+          <h3 className="text-xl font-bold mb-2">
+            {safeSlug ? (
+              <Link href={href} className="hover:text-teal-700 transition-colors">
+                {product.title}
+              </Link>
+            ) : (
+              product.title
             )}
-          </div>
-          <div className="p-6">
-            <h3 className="text-xl font-bold mb-2 hover:text-teal-700 transition-colors">
-              {product.title}
-            </h3>
-            {product.price && (
-              <p className="text-lg font-semibold text-gray-900">
-                From ${(product.price / 100).toFixed(2)}
-              </p>
-            )}
-          </div>
-        </Link>
+          </h3>
+          {product.price && (
+            <p className="text-lg font-semibold text-gray-900">
+              From ${(product.price / 100).toFixed(2)}
+            </p>
+          )}
+        </div>
       </Card>
     );
   }
 
   return (
-    <Card className="overflow-hidden hover:shadow-xl transition-shadow">
+    <Card data-slug={safeSlug ?? 'missing'} className="overflow-hidden hover:shadow-xl transition-shadow">
       {/* Product Image */}
-      <Link href={`/simple-products/${product.slug}`}>
-        <div className="aspect-square relative overflow-hidden bg-gray-100">
-          {product.featured_image && (
-            <Image
-              src={product.featured_image}
-              alt={product.title}
-              fill
-              className="object-cover transition-transform duration-300 hover:scale-110"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              priority={false}
-            />
-          )}
-        </div>
-      </Link>
+      {safeSlug ? <Link href={href}>{imageContent}</Link> : imageContent}
 
       {/* Product Info & Configurator */}
       <div className="p-6">
         <h3 className="text-xl font-bold mb-2">
-          <Link href={`/simple-products/${product.slug}`} className="hover:text-teal-700 transition-colors">
-            {product.title}
-          </Link>
+          {safeSlug ? (
+            <Link href={href} className="hover:text-teal-700 transition-colors">
+              {product.title}
+            </Link>
+          ) : (
+            product.title
+          )}
         </h3>
 
         {typeof configData?.base_price_cad === 'number' && (
@@ -171,7 +203,7 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
         )}
 
         {/* Quick Configure Form */}
-        <form onSubmit={(e) => { e.preventDefault(); handleCalculateEstimate(); }} className="space-y-4">
+  <form onSubmit={(e) => { e.preventDefault(); void handleCalculateEstimate(); }} className="space-y-4">
           <div className="grid grid-cols-2 gap-3">
             <div>
               <Label htmlFor={`width-${product.id}`} className="text-xs">
@@ -250,11 +282,17 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
               <Calculator className="w-4 h-4 mr-2" />
               {calculating ? 'Calculating...' : 'Instant Estimate'}
             </Button>
-            <Link href={`/simple-products/${product.slug}`}>
-              <Button type="button" variant="outline" className="px-3">
+            {safeSlug ? (
+              <Link href={href}>
+                <Button type="button" variant="outline" className="px-3">
+                  <ExternalLink className="w-4 h-4" />
+                </Button>
+              </Link>
+            ) : (
+              <Button type="button" variant="outline" className="px-3" disabled>
                 <ExternalLink className="w-4 h-4" />
               </Button>
-            </Link>
+            )}
           </div>
 
           {estimate && (
@@ -274,4 +312,4 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
       </div>
     </Card>
   );
-}
+};
