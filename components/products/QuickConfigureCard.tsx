@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card } from '@/components/ui/card';
@@ -13,7 +13,8 @@ import { Calculator, ExternalLink } from 'lucide-react';
 interface Product {
   id: string;
   title: string;
-  handle: string;
+  slug: string;
+  handle?: string; // legacy support
   featured_image?: string;
   price?: number;
   configurator_data?: {
@@ -110,7 +111,7 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
     // Simple card without configurator
     return (
       <Card className="overflow-hidden hover:shadow-xl transition-shadow">
-        <Link href={`/simple-products/${product.handle}`}>
+        <Link href={`/simple-products/${product.slug}`}>
           <div className="aspect-square relative overflow-hidden bg-gray-100">
             {product.featured_image && (
               <Image
@@ -140,7 +141,7 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
   return (
     <Card className="overflow-hidden hover:shadow-xl transition-shadow">
       {/* Product Image */}
-      <Link href={`/simple-products/${product.handle}`}>
+      <Link href={`/simple-products/${product.slug}`}>
         <div className="aspect-square relative overflow-hidden bg-gray-100">
           {product.featured_image && (
             <Image
@@ -158,7 +159,7 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
       {/* Product Info & Configurator */}
       <div className="p-6">
         <h3 className="text-xl font-bold mb-2">
-          <Link href={`/simple-products/${product.handle}`} className="hover:text-teal-700 transition-colors">
+          <Link href={`/simple-products/${product.slug}`} className="hover:text-teal-700 transition-colors">
             {product.title}
           </Link>
         </h3>
@@ -249,7 +250,7 @@ export function QuickConfigureCard({ product }: QuickConfigureCardProps) {
               <Calculator className="w-4 h-4 mr-2" />
               {calculating ? 'Calculating...' : 'Instant Estimate'}
             </Button>
-            <Link href={`/simple-products/${product.handle}`}>
+            <Link href={`/simple-products/${product.slug}`}>
               <Button type="button" variant="outline" className="px-3">
                 <ExternalLink className="w-4 h-4" />
               </Button>
