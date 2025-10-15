@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
+import { Flex, Grid, Column } from "@once-ui-system/core"
 import { Button } from "@/components/ui/button"
 import Heading from "@/components/ui/Heading-new"
 import Text from "@/components/ui/Text-new"
@@ -28,24 +29,34 @@ export default function HomePage() {
         subheadline="Where Function Meets Luxury"
       />
 
-      {/* Featured Section */}
+      {/* Featured Section - Once UI Layout */}
       <Section variant="light" spacing="xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+        <Flex
+          direction="column"
+          alignItems="center"
+          gap="xl"
+          paddingY="xl"
         >
-          <Heading level={2} className="text-4xl md:text-5xl lg:text-6xl text-black mb-4">
-            Crafted for Ottawa
-          </Heading>
-          <Text size="lg" className="text-lg md:text-xl text-black/70 max-w-2xl mx-auto">
-            Premium closet solutions designed to elevate your home
-          </Text>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <Heading level={2} className="text-4xl md:text-5xl lg:text-6xl text-black mb-4">
+              Crafted for Ottawa
+            </Heading>
+            <Text size="lg" className="text-lg md:text-xl text-black/70 max-w-2xl mx-auto">
+              Premium closet solutions designed to elevate your home
+            </Text>
+          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <Grid
+            columns={{ initial: "1", s: "2", m: "3" }}
+            gap="l"
+            width="100%"
+          >
             {[
               {
                 title: "Premium Quality",
@@ -69,16 +80,27 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
                 viewport={{ once: true }}
-                className="text-center p-8 border border-black/10 hover:border-black/30 transition-colors duration-500 group"
               >
-                <div className="text-4xl mb-4 text-black group-hover:scale-110 transition-transform duration-500">
-                  {feature.icon}
-                </div>
-                <Heading level={3} className="text-xl text-black mb-2">{feature.title}</Heading>
-                <Text className="text-black/70">{feature.description}</Text>
+                <Flex
+                  direction="column"
+                  alignItems="center"
+                  gap="m"
+                  padding="l"
+                  border="neutral-medium"
+                  borderStyle="solid-1"
+                  radius="l"
+                  className="text-center hover:border-black/30 transition-colors duration-500 group h-full"
+                >
+                  <div className="text-4xl mb-4 text-black group-hover:scale-110 transition-transform duration-500">
+                    {feature.icon}
+                  </div>
+                  <Heading level={3} className="text-xl text-black mb-2">{feature.title}</Heading>
+                  <Text className="text-black/70">{feature.description}</Text>
+                </Flex>
               </motion.div>
             ))}
-          </div>
+          </Grid>
+        </Flex>
       </Section>
 
       {/* Category Tiles - Shop by Door Type */}

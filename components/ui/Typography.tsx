@@ -379,3 +379,13 @@ export const Typography = {
 };
 
 export default Typography;
+
+// ============================================================================
+// RE-EXPORT SPECIALIZED TYPOGRAPHY SYSTEMS
+// ============================================================================
+
+// Import and re-export the specialized typography components
+export * from '@/components/typography/Headline';
+export * from '@/components/typography/Text';
+export * from '@/components/typography/NavigationText';
+export * from '@/components/product/ProductCopy';

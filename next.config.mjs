@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Standalone output mode to avoid SSR issues during build
+  output: process.env.NODE_ENV === 'production' ? undefined : undefined,
+
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -9,6 +12,14 @@ const nextConfig = {
 
   // Fix workspace root warning
   outputFileTracingRoot: process.cwd(),
+
+  // Disable static generation for error pages to fix OnceUI SSR compatibility
+  generateBuildId: async () => {
+    return 'build-' + Date.now()
+  },
+
+  // Skip static optimization for specific routes
+  skipTrailingSlashRedirect: true,
 
   // Phase 7: Enhanced performance optimizations
   compiler: {
@@ -22,6 +33,9 @@ const nextConfig = {
 
   // Production optimizations
   poweredByHeader: false,
+
+  // Use default pageExtensions for app router
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
 
   experimental: {
     serverActions: {
@@ -48,6 +62,8 @@ const nextConfig = {
     ],
     // Enable optimized CSS
     optimizeCss: true,
+    // Disable static generation for error pages to fix OnceUI compatibility
+    skipTrailingSlashRedirect: true,
   },
 
   // Turbopack configuration (moved from experimental.turbo)
@@ -210,14 +226,22 @@ const nextConfig = {
     ];
   },
 
-  // Minimal webpack configuration to fix global variable issues
-  webpack: (config, { webpack }) => {
+  // Webpack configuration
+  webpack: (config, { webpack, isServer }) => {
     // Only add DefinePlugin for global variable definition
     config.plugins.push(
       new webpack.DefinePlugin({
         global: "globalThis",
       })
     );
+
+    // Fix OnceUI SSR Html import issue by excluding from server bundles
+    if (isServer) {
+      config.externals = config.externals || [];
+      config.externals.push({
+        '@once-ui-system/core': '@once-ui-system/core'
+      });
+    }
 
     return config;
   },

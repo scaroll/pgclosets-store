@@ -1,5 +1,15 @@
 'use client'
 
+/**
+ * Global Error Handler
+ *
+ * This file handles catastrophic errors that occur outside the root layout.
+ * Must include its own <html> and <body> tags as it replaces the root layout.
+ *
+ * Note: This file MUST NOT import the OnceUI providers or any client components
+ * that depend on SSR context, as it needs to work during static generation.
+ */
+
 export default function GlobalError({
   error,
   reset,
@@ -8,7 +18,7 @@ export default function GlobalError({
   reset: () => void
 }) {
   return (
-    <html>
+    <html lang="en">
       <body>
         <div className="min-h-screen flex items-center justify-center bg-white">
           <div className="text-center px-6">

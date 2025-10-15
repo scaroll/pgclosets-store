@@ -15,6 +15,9 @@
 /* Performance optimizations for products page */
 @import '../styles/products-optimization.css';
 
+/* Apple-Level Polish - Performance & Accessibility */
+@import '../styles/apple-polish.css';
+
 /* Refined Animations - Subtle and Professional */
 @keyframes fade-in {
   from {

@@ -21,6 +21,36 @@ export {
   type DesignTokens,
 } from './tokens';
 
+// Export Apple Design System
+export {
+  appleDesignSystem,
+  appleTypography,
+  appleColors,
+  appleSpacing,
+  appleBorderRadius,
+  appleShadows,
+  appleBlur,
+  appleTransitions,
+  appleBreakpoints,
+  appleZIndex,
+  appleComponents,
+  getResponsiveFontSize,
+  hexToRgba,
+  getElevation,
+  getSpacing,
+  type AppleDesignSystem,
+  type AppleTypography,
+  type AppleColors,
+  type AppleSpacing,
+  type AppleBorderRadius,
+  type AppleShadows,
+  type AppleBlur,
+  type AppleTransitions,
+  type AppleBreakpoints,
+  type AppleZIndex,
+  type AppleComponents,
+} from './apple-tokens';
+
 // Re-export specific token groups for convenience
 export { colors as Colors } from './tokens';
 export { typography as Typography } from './tokens';

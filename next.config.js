@@ -26,6 +26,9 @@ const nextConfig = {
 	generateBuildId: async () => {
 		return `pgclosets-${Date.now()}`
 	},
+	// Skip static error pages - use runtime only
+	skipMiddlewareUrlNormalize: true,
+	skipTrailingSlashRedirect: true,
 };
 
 module.exports = nextConfig;

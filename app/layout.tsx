@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
+// Once UI Design System Styles
+import "@once-ui-system/core/css/styles.css";
+import "@once-ui-system/core/css/tokens.css";
+// Apple Design System - 50 Agent Upgrade (loads after OnceUI for priority)
+import "../styles/apple-typography.css";
+import "../styles/apple-colors.css";
+import "../styles/apple-spacing.css";
+import "../styles/apple-glass.css";
+import "../styles/apple-polish.css";
+// PG Closets Custom Styles
 import "./globals-unified.css";
 import "../styles/mobile-performance.css";
 import "../styles/mobile-touch.css";
 import "../styles/mobile-enhancements.css";
 import ClientLayout from "./clientLayout";
+import { OnceUIProviders } from "./providers";
 import PerformanceMonitor from "../components/performance/performance-monitor";
 import { BUSINESS_INFO } from "../lib/business-config";
 import {
@@ -62,6 +73,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "PG Closets Ottawa",
+  },
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     siteName: BUSINESS_INFO.name,
@@ -88,15 +114,68 @@ export const metadata: Metadata = {
     creator: "@pgclosets",
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GA_ID,
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    other: {
+      "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION || "",
+    },
   },
   other: {
     "geo.region": `CA-${BUSINESS_INFO.address.province}`,
     "geo.placename": BUSINESS_INFO.address.city,
     "geo.position": `${BUSINESS_INFO.coordinates.latitude};${BUSINESS_INFO.coordinates.longitude}`,
     ICBM: `${BUSINESS_INFO.coordinates.latitude}, ${BUSINESS_INFO.coordinates.longitude}`,
+    distribution: "local",
+    coverage: "Ottawa, Ontario, Canada",
+    target: "all",
+    HandheldFriendly: "True",
+    MobileOptimized: "320",
+    "mobile-web-app-capable": "yes",
   },
-  generator: "v0.app",
+  icons: {
+    other: [
+      {
+        rel: "preload",
+        url: "/images/elegant-barn-door-closet.png",
+        // @ts-ignore
+        as: "image",
+        fetchpriority: "high",
+      },
+      {
+        rel: "preconnect",
+        url: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "preconnect",
+        url: "https://fonts.gstatic.com",
+        // @ts-ignore
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preconnect",
+        url: "https://www.google-analytics.com",
+      },
+      {
+        rel: "preconnect",
+        url: "https://www.googletagmanager.com",
+      },
+      {
+        rel: "dns-prefetch",
+        url: "https://www.renin.com",
+      },
+      {
+        rel: "dns-prefetch",
+        url: "https://images.unsplash.com",
+      },
+      {
+        rel: "dns-prefetch",
+        url: "https://cdn.renin.com",
+      },
+      {
+        rel: "dns-prefetch",
+        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -111,191 +190,88 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
-      <head>
-        {/* Local Business Schema for Ottawa market dominance */}
-        <Script
-          id="local-business-schema"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema),
-          }}
-        />
+      <body className={inter.className} suppressHydrationWarning>
+        <OnceUIProviders>
+          {/* Value Proposition Banner - Trust Signals */}
+          <ValuePropBanner />
+          {process.env.NEXT_PUBLIC_GA_ID && (
+            <>
+              <Script
+                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+                strategy="afterInteractive"
+              />
+              <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                    page_title: document.title,
+                    page_location: window.location.href,
+                    custom_map: {
+                      'custom_dimension_1': 'service_area',
+                      'custom_dimension_2': 'product_category'
+                    }
+                  });
 
-        {/* Website Schema for enhanced search features */}
-        <Script
-          id="website-schema"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteSchema),
-          }}
-        />
+                  // Track local business events
+                  gtag('event', 'page_view', {
+                    'service_area': '${BUSINESS_INFO.address.city}',
+                    'business_type': 'local_business',
+                    'product_focus': 'renin_closet_doors'
+                  });
+                `}
+              </Script>
+            </>
+          )}
 
-        {/* Organization Schema for brand authority */}
-        <Script
-          id="organization-schema"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
-        />
-
-        {/* SEO Meta Tags for Ottawa Local Search */}
-        {/* Essential Mobile Viewport - Optimized for mobile performance */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover, user-scalable=yes"
-        />
-
-        {/* Mobile web app meta tags */}
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="PG Closets Ottawa" />
-
-        {/* Prevent automatic telephone number detection */}
-        <meta name="format-detection" content="telephone=no" />
-
-        {/* Geographic and Local Business Meta */}
-        <meta
-          name="geo.region"
-          content={`CA-${BUSINESS_INFO.address.province}`}
-        />
-        <meta name="geo.placename" content={BUSINESS_INFO.address.city} />
-        <meta
-          name="geo.position"
-          content={`${BUSINESS_INFO.coordinates.latitude};${BUSINESS_INFO.coordinates.longitude}`}
-        />
-        <meta
-          name="ICBM"
-          content={`${BUSINESS_INFO.coordinates.latitude}, ${BUSINESS_INFO.coordinates.longitude}`}
-        />
-        <meta name="distribution" content="local" />
-        <meta name="coverage" content="Ottawa, Ontario, Canada" />
-        <meta name="target" content="all" />
-        <meta name="HandheldFriendly" content="True" />
-        <meta name="MobileOptimized" content="320" />
-
-        {/* Local Business Verification */}
-        <meta
-          name="google-site-verification"
-          content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION}
-        />
-        <meta
-          name="msvalidate.01"
-          content={process.env.NEXT_PUBLIC_BING_VERIFICATION}
-        />
-
-        {/* Critical Resource Preloading - Phase 7 Performance Optimization */}
-        {/* Preload LCP image for faster paint - actual hero image used on homepage */}
-        <link
-          rel="preload"
-          as="image"
-          href="/images/elegant-barn-door-closet.png"
-          fetchpriority="high"
-        />
-
-        {/* Preconnect to important domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-
-        {/* DNS Prefetch for external resources */}
-        <link rel="dns-prefetch" href="https://www.renin.com" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        <link rel="dns-prefetch" href="https://cdn.renin.com" />
-        <link rel="dns-prefetch" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" />
-
-        {/* Canonical URL */}
-        <link rel="canonical" href={BUSINESS_INFO.urls.main} />
-      </head>
-      <body className={inter.className}>
-        {/* Value Proposition Banner - Trust Signals */}
-        <ValuePropBanner />
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                  page_title: document.title,
-                  page_location: window.location.href,
-                  custom_map: {
-                    'custom_dimension_1': 'service_area',
-                    'custom_dimension_2': 'product_category'
-                  }
-                });
-
-                // Track local business events
-                gtag('event', 'page_view', {
-                  'service_area': '${BUSINESS_INFO.address.city}',
-                  'business_type': 'local_business',
-                  'product_focus': 'renin_closet_doors'
-                });
-              `}
-            </Script>
-          </>
-        )}
-
-        {/* Google My Business integration */}
-        <Script id="gmb-integration" strategy="afterInteractive">
-          {`
-            // Google My Business click tracking
-            function trackGMBClick(action) {
-              if (typeof gtag !== 'undefined') {
-                gtag('event', 'gmb_interaction', {
-                  'event_category': 'Local Business',
-                  'event_label': action,
-                  'service_area': '${BUSINESS_INFO.address.city}'
-                });
+          {/* Google My Business integration */}
+          <Script id="gmb-integration" strategy="afterInteractive">
+            {`
+              // Google My Business click tracking
+              function trackGMBClick(action) {
+                if (typeof gtag !== 'undefined') {
+                  gtag('event', 'gmb_interaction', {
+                    'event_category': 'Local Business',
+                    'event_label': action,
+                    'service_area': '${BUSINESS_INFO.address.city}'
+                  });
+                }
               }
-            }
-            window.trackGMBClick = trackGMBClick;
-          `}
-        </Script>
+              window.trackGMBClick = trackGMBClick;
+            `}
+          </Script>
 
-        <Suspense
-          fallback={<div className="min-h-screen bg-gray-50 animate-pulse" />}
-        >
-          <ClientLayout>{children}</ClientLayout>
-        </Suspense>
+          <Suspense
+            fallback={<div className="min-h-screen bg-gray-50 animate-pulse" />}
+          >
+            <ClientLayout>{children}</ClientLayout>
+          </Suspense>
 
-        <Toaster richColors />
+          <Toaster richColors />
 
-        {/* Enhanced Mobile Sticky Bar - Primary CTA */}
-        <StickyMobileBar />
+          {/* Enhanced Mobile Sticky Bar - Primary CTA */}
+          <StickyMobileBar />
 
-        {/* Legacy Mobile Sticky CTA - Keep for backward compatibility */}
-        <div className="hidden">
-          <MobileStickyCTA />
-        </div>
+          {/* Legacy Mobile Sticky CTA - Keep for backward compatibility */}
+          <div className="hidden">
+            <MobileStickyCTA />
+          </div>
 
-        {/* Performance Monitoring */}
-        <PerformanceMonitor />
+          {/* Performance Monitoring */}
+          <PerformanceMonitor />
 
-        {/* Core Web Vitals Tracking - Phase 6 */}
-        <CoreWebVitalsTracker />
+          {/* Core Web Vitals Tracking - Phase 6 */}
+          <CoreWebVitalsTracker />
 
-        <Suspense fallback={null}>
-          {/* <Analytics /> */}
-          {/* <SpeedInsights /> */}
-        </Suspense>
+          <Suspense fallback={null}>
+            {/* <Analytics /> */}
+            {/* <SpeedInsights /> */}
+          </Suspense>
 
-        {/* Vercel Toolbar for visual inspection */}
-        <VercelToolbarWrapper />
+          {/* Vercel Toolbar for visual inspection */}
+          <VercelToolbarWrapper />
+        </OnceUIProviders>
       </body>
     </html>
   );

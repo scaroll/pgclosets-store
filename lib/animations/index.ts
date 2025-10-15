@@ -8,6 +8,7 @@
  */
 
 export * from './transitions';
+export * from './page-transitions';
 export * from './hover-effects';
 export * from './scroll-animations';
 export * from './loading-states';
