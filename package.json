@@ -64,7 +64,7 @@
     "@mikro-orm/migrations": "latest",
     "@mikro-orm/postgresql": "latest",
     "@next/codemod": "^15.5.4",
-    "@once-ui-system/core": "^1.4.32",
+    "@once-ui-system/core": "^1.4.0",
     "@opentelemetry/instrumentation-pg": "latest",
     "@opentelemetry/resources": "latest",
     "@opentelemetry/sdk-node": "latest",

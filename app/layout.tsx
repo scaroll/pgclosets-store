@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
-// Once UI Design System Styles
-import "@once-ui-system/core/css/styles.css";
-import "@once-ui-system/core/css/tokens.css";
-// Apple Design System - 50 Agent Upgrade (loads after OnceUI for priority)
+// Once UI Design System Styles - TEMPORARILY DISABLED for Next.js 15 compatibility
+// import "@once-ui-system/core/css/styles.css";
+// import "@once-ui-system/core/css/tokens.css";
+// Apple Design System - 50 Agent Upgrade
 import "../styles/apple-typography.css";
 import "../styles/apple-colors.css";
 import "../styles/apple-spacing.css";
@@ -15,7 +15,7 @@ import "../styles/mobile-performance.css";
 import "../styles/mobile-touch.css";
 import "../styles/mobile-enhancements.css";
 import ClientLayout from "./clientLayout";
-import { OnceUIProviders } from "./providers";
+// import { OnceUIProviders } from "./providers"; // TEMPORARILY DISABLED for Next.js 15 compatibility
 import PerformanceMonitor from "../components/performance/performance-monitor";
 import { BUSINESS_INFO } from "../lib/business-config";
 import {
@@ -191,7 +191,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <body className={inter.className} suppressHydrationWarning>
-        <OnceUIProviders>
+        {/* <OnceUIProviders> TEMPORARILY DISABLED for Next.js 15 compatibility */}
           {/* Value Proposition Banner - Trust Signals */}
           <ValuePropBanner />
           {process.env.NEXT_PUBLIC_GA_ID && (
@@ -271,7 +271,7 @@ export default function RootLayout({
 
           {/* Vercel Toolbar for visual inspection */}
           <VercelToolbarWrapper />
-        </OnceUIProviders>
+        {/* </OnceUIProviders> TEMPORARILY DISABLED for Next.js 15 compatibility */}
       </body>
     </html>
   );

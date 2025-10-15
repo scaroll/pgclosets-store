@@ -29,10 +29,6 @@ const nextConfig = {
 	// Skip static error pages - use runtime only
 	skipMiddlewareUrlNormalize: true,
 	skipTrailingSlashRedirect: true,
-	// Force dynamic rendering to bypass static generation issues
-	experimental: {
-		dynamicIO: true,
-	},
 };
 
 module.exports = nextConfig;
