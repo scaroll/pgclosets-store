@@ -7,6 +7,10 @@ import type { Config } from "tailwindcss";
 import * as tokensModule from "./lib/design-system/tokens";
 const { colors, typography, spacing, borderRadius, shadows } = tokensModule as any;
 
+// Import premium color system
+import * as premiumColors from "./lib/design-system/colors";
+const { neutrals, metals, naturals, semantic, text, backgrounds, borders, interactive } = premiumColors;
+
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -25,20 +29,29 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // Design System Colors
+      // Premium Color System - Ottawa Luxury Market
       colors: {
-        // Luxury Design System Colors
-        charcoal: '#1C1C1C',
-        graphite: '#2D2D2D',
-        slate: '#4A4A4A',
-        stone: '#6B6B6B',
-        pearl: '#F8F6F0',
-        cream: '#FDF6E3',
-        ivory: '#FFFFF0',
-        bronze: '#8B7355',
-        copper: '#B87333',
-        gold: '#D4AF37',
-        'rose-gold': '#B76E79',
+        // Premium Neutrals (Deep Charcoal, Warm Cream, Stone)
+        charcoal: neutrals.charcoal,
+        cream: neutrals.cream,
+        stone: neutrals.stone,
+
+        // Premium Metal Accents
+        copper: metals.copper,
+        bronze: metals.bronze,
+        'rose-gold': metals.roseGold,
+        gold: metals.gold,
+
+        // Nature-Inspired Secondaries
+        sage: naturals.sage,
+        taupe: naturals.taupe,
+        teal: naturals.teal,
+
+        // Semantic Colors (WCAG AAA)
+        success: semantic.success.DEFAULT,
+        warning: semantic.warning.DEFAULT,
+        error: semantic.error.DEFAULT,
+        info: semantic.info.DEFAULT,
 
         // Keep existing shadcn/ui colors for compatibility
         background: 'hsl(var(--background))',
@@ -108,8 +121,13 @@ const config: Config = {
         'pg-gray': colors.neutral[500],
       },
 
-      // Typography from Design System
-      fontFamily: typography.fontFamily,
+      // Typography from Design System - Enhanced with luxury fonts
+      fontFamily: {
+        ...typography.fontFamily,
+        display: ['var(--font-cormorant)', 'Georgia', 'Times New Roman', 'serif'],
+        body: ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'sans-serif'],
+        mono: typography.fontFamily.mono,
+      },
       fontSize: typography.fontSize,
       fontWeight: typography.fontWeight,
       lineHeight: typography.lineHeight,

@@ -1,22 +1,105 @@
-# Robots.txt for PG Closets
+# Robots.txt for PG Closets - Ottawa Custom Closet Doors
+# Official Renin Dealer - Premium Storage Solutions
+# SEO AGENT #7: Optimized for maximum crawl efficiency
+
+# Allow all search engines
 User-agent: *
 Allow: /
 
-# Disallow admin and private areas
-Disallow: /admin/
+# Priority crawl paths (encourage frequent indexing of money pages)
+Allow: /collections/
+Allow: /products/
+Allow: /renin/
+Allow: /kanata
+Allow: /barrhaven
+Allow: /orleans
+Allow: /ottawa
+Allow: /nepean
+Allow: /services/
+Allow: /faq
+Allow: /quote
+Allow: /contact
+Allow: /about
+
+# Disallow private/admin areas
 Disallow: /api/
+Disallow: /admin/
 Disallow: /checkout/
 Disallow: /account/
 Disallow: /cart/
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /dashboard
+Disallow: /orders
+Disallow: /profile
 
-# Allow important pages
-Allow: /products/
-Allow: /about/
-Allow: /contact/
-Allow: /faq/
+# Disallow internal utility pages
+Disallow: /storage-check
+Disallow: /blob-contents
+Disallow: /upload
+Disallow: /files
+Disallow: /navigation-demo
+Disallow: /offline
 
-# Sitemap location
+# Allow important static assets
+Allow: /images/
+Allow: /icons/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+
+# Sitemaps (Main + future image/video sitemaps)
 Sitemap: https://www.pgclosets.com/sitemap.xml
 
-# Crawl delay (optional)
+# Googlebot specific (optimize for Google - our primary search engine)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+# Allow JavaScript rendering
+Allow: /*.js$
+Allow: /*.css$
+Allow: /_next/
+
+# Googlebot Image (optimize for Google Images)
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /products/
+Allow: /collections/
+Disallow: /admin/
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
 Crawl-delay: 1
+
+# Prevent scraping by SEO tools (save crawl budget)
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Allow legitimate social media bots for OpenGraph previews
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# Cache-friendly headers for better indexing
+# Note: These are handled in Next.js config

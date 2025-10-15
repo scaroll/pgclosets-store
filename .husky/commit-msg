@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Commit message validation using commitlint
+echo "📝 Validating commit message..."
+
+npx --no -- commitlint --edit "$1"
+
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "❌ Commit message does not follow conventional commits format"
+  echo ""
+  echo "Valid types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert, security, a11y, seo, ui, ux, content"
+  echo ""
+  echo "Examples:"
+  echo "  feat(homepage): add premium hero section"
+  echo "  fix(checkout): resolve payment validation issue"
+  echo "  docs(readme): update installation instructions"
+  echo "  refactor(components): simplify button component logic"
+  echo ""
+  exit 1
+fi
+
+echo "✅ Commit message is valid!"

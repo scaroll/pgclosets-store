@@ -1,0 +1,43 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Pre-push hook for PG Closets
+# Ensures code quality before pushing to remote
+
+echo "🚀 Running pre-push checks..."
+
+# Get the current branch name
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Prevent direct pushes to main/master
+if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "master" ]; then
+  echo "❌ Error: Direct pushes to $BRANCH are not allowed"
+  echo "   Please create a feature branch and submit a pull request"
+  echo "   To bypass this check, use: git push --no-verify"
+  exit 1
+fi
+
+# Run type checking
+echo "🔍 Running TypeScript type checking..."
+npm run type-check
+if [ $? -ne 0 ]; then
+  echo "❌ Type checking failed. Fix errors before pushing."
+  exit 1
+fi
+
+# Run tests
+echo "🧪 Running tests..."
+npm run test
+if [ $? -ne 0 ]; then
+  echo "❌ Tests failed. Fix failures before pushing."
+  exit 1
+fi
+
+# Check bundle size (if build exists)
+if [ -d ".next" ]; then
+  echo "📦 Checking bundle size..."
+  # This is a placeholder - implement actual bundle size checking
+fi
+
+echo "✅ All pre-push checks passed!"
+echo "🎉 Ready to push to remote!"

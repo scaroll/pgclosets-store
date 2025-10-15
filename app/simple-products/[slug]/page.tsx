@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import simpleProducts from "@/data/simple-products.json"
 import { SimpleAddToCartButton } from "@/components/simple-add-to-cart-button"
-import { EnhancedProductDetail } from "@/components/product/EnhancedProductDetail"
+import { PremiumProductDetail } from "@/components/product/PremiumProductDetail"
 
 type Props = { params: { slug: string } }
 
@@ -10,17 +10,30 @@ export function generateStaticParams() {
   return (simpleProducts as any[]).map((p) => ({ slug: p.slug }))
 }
 
+// Helper function to get related products based on category
+function getRelatedProducts(currentProduct: any, allProducts: any[], limit = 4) {
+  return allProducts
+    .filter(p =>
+      p.id !== currentProduct.id &&
+      p.category === currentProduct.category
+    )
+    .slice(0, limit)
+}
+
 export default async function SimpleProductDetail({ params }: Props) {
   const { slug } = params
   const product = (simpleProducts as any[]).find((p) => p.slug === slug)
   if (!product) return <div className="py-20 text-center">Product not found.</div>
 
-  // Use enhanced PDP if product has configurator data
+  // Get related products for recommendations
+  const relatedProducts = getRelatedProducts(product, simpleProducts as any[], 4)
+
+  // Use premium PDP for all products
   if (product.configurator_data) {
-    return <EnhancedProductDetail product={product} />
+    return <PremiumProductDetail product={product} relatedProducts={relatedProducts} />
   }
 
-  // Legacy PDP for products without configurator
+  // Legacy PDP for products without configurator (fallback)
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid lg:grid-cols-2 gap-10">

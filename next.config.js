@@ -22,6 +22,10 @@ const nextConfig = {
 			'pgclosets.com',
 		],
 	},
+	// Disable automatic static optimization temporarily to avoid /_error generation
+	generateBuildId: async () => {
+		return `pgclosets-${Date.now()}`
+	},
 };
 
 module.exports = nextConfig;

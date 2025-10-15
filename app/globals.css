@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Premium Color System - Ottawa Luxury Market */
+@import '../styles/colors.css';
+
 /* Design System Tokens */
 @import '../styles/tokens.css';
 @import '../styles/typography.css';
+
+/* Luxury Typography System - Magazine-quality fonts */
+@import '../styles/luxury-typography.css';
 
 /* Performance optimizations for products page */
 @import '../styles/products-optimization.css';

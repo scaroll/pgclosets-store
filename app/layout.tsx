@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals-unified.css";
 import "../styles/mobile-performance.css";
 import "../styles/mobile-touch.css";
@@ -23,13 +23,25 @@ import { CoreWebVitalsTracker } from "../components/analytics/CoreWebVitalsTrack
 // import { Analytics } from "@vercel/analytics/react"
 // import { SpeedInsights } from "@vercel/speed-insights/next"
 
-// Optimized font loading
+// Optimized font loading - Premium pairing for luxury aesthetic
+// Inter: Clean, modern body text with variable font support
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
   preload: true,
   fallback: ["system-ui", "arial"],
+});
+
+// Cormorant Garamond: Elegant display font for headings
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-cormorant",
+  preload: true,
+  fallback: ["Georgia", "Times New Roman", "serif"],
 });
 
 export const metadata: Metadata = {
@@ -98,7 +110,7 @@ export default function RootLayout({
   const organizationSchema = generateOrganizationSchema();
 
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <head>
         {/* Local Business Schema for Ottawa market dominance */}
         <Script

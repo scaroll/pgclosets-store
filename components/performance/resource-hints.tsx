@@ -246,8 +246,7 @@ export function CriticalResourceHints() {
         'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2',
       ]}
       modulePreload={[
-        '/_next/static/chunks/main.js',
-        '/_next/static/chunks/pages/_app.js',
+        '/_next/static/chunks/main-app.js',
       ]}
     />
   )
