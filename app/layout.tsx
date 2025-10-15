@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
-// Once UI Design System Styles - TEMPORARILY DISABLED for Next.js 15 compatibility
-// import "@once-ui-system/core/css/styles.css";
-// import "@once-ui-system/core/css/tokens.css";
-// Apple Design System - 50 Agent Upgrade
+// CSS Loading Order (Agent 3 Strategy): OnceUI → Apple → Custom
+import "@once-ui-system/core/css/tokens.css";
+import "@once-ui-system/core/css/styles.css";
+// Apple Design System - 50 Agent Upgrade (loads after OnceUI for cascade priority)
 import "../styles/apple-typography.css";
 import "../styles/apple-colors.css";
 import "../styles/apple-spacing.css";
@@ -15,7 +15,7 @@ import "../styles/mobile-performance.css";
 import "../styles/mobile-touch.css";
 import "../styles/mobile-enhancements.css";
 import ClientLayout from "./clientLayout";
-// import { OnceUIProviders } from "./providers"; // TEMPORARILY DISABLED for Next.js 15 compatibility
+import { OnceUIProviders } from "./providers";
 import PerformanceMonitor from "../components/performance/performance-monitor";
 import { BUSINESS_INFO } from "../lib/business-config";
 import {
@@ -72,13 +72,6 @@ export const metadata: Metadata = {
     "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   alternates: {
     canonical: "/",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-    viewportFit: "cover",
   },
   appleWebApp: {
     capable: true,
@@ -178,6 +171,17 @@ export const metadata: Metadata = {
   },
 };
 
+// Next.js 15: Viewport metadata must be exported as a separate function
+export function generateViewport() {
+  return {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+  };
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -191,7 +195,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <body className={inter.className} suppressHydrationWarning>
-        {/* <OnceUIProviders> TEMPORARILY DISABLED for Next.js 15 compatibility */}
+        <OnceUIProviders>
           {/* Value Proposition Banner - Trust Signals */}
           <ValuePropBanner />
           {process.env.NEXT_PUBLIC_GA_ID && (
@@ -271,7 +275,7 @@ export default function RootLayout({
 
           {/* Vercel Toolbar for visual inspection */}
           <VercelToolbarWrapper />
-        {/* </OnceUIProviders> TEMPORARILY DISABLED for Next.js 15 compatibility */}
+        </OnceUIProviders>
       </body>
     </html>
   );
