@@ -1,5 +1,4 @@
 import React from "react"
-import { Card as OnceCard } from "@once-ui-system/core/components"
 import { cn } from "@/lib/utils"
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -10,43 +9,45 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode
 }
 
-// Spacing map for Once UI Card
+// Spacing map for Tailwind padding
 const spacingMap = {
-  none: "0",
-  sm: "8",
-  default: "16",
-  lg: "24",
-  xl: "32"
+  none: "p-0",
+  sm: "p-2",
+  default: "p-4",
+  lg: "p-6",
+  xl: "p-8"
 } as const;
 
 function Card({ className, variant = "default", spacing = "default", href, onClick, children, ...props }: CardProps) {
-  // Map variant classes to Once UI compatible styles
+  // Map variant classes using Tailwind + Apple Design System
   const variantClasses = cn(
-    variant === "elevated" && "hover:transform hover:-translate-y-1 shadow-lg",
-    variant === "premium" && "border-2 bg-gradient-to-br from-white to-gray-50",
-    variant === "interactive" && "cursor-pointer hover:shadow-md hover:scale-[1.02] transform-gpu",
-    variant === "gradient" && "bg-gradient-to-br from-blue-50 to-indigo-50 border-0",
-    variant === "outline" && "border-2 border-primary/20 bg-transparent hover:border-primary/40"
+    // Base card styles with Apple design system
+    "rounded-xl border bg-white transition-all duration-300",
+    variant === "default" && "border-gray-200 shadow-sm",
+    variant === "elevated" && "border-gray-200 shadow-lg hover:transform hover:-translate-y-1 hover:shadow-xl",
+    variant === "premium" && "border-2 border-[var(--apple-blue)] bg-gradient-to-br from-white to-gray-50 shadow-md",
+    variant === "interactive" && "cursor-pointer border-gray-200 shadow-sm hover:shadow-md hover:scale-[1.02] hover:border-[var(--apple-blue)] transform-gpu",
+    variant === "gradient" && "border-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50 shadow-md",
+    variant === "outline" && "border-2 border-[var(--apple-gray-300)] bg-transparent hover:border-[var(--apple-blue)] hover:shadow-sm",
+    spacingMap[spacing]
   );
 
+  const Component = href ? "a" : "div";
+
   return (
-    <OnceCard
+    <Component
       data-slot="card"
       href={href}
       onClick={onClick}
-      padding={spacingMap[spacing]}
-      radius="l"
-      border="neutral-medium"
-      fillHeight={false}
       className={cn(
-        "flex flex-col gap-6 transition-all duration-300",
+        "flex flex-col gap-6",
         variantClasses,
         className
       )}
       {...props}
     >
       {children}
-    </OnceCard>
+    </Component>
   )
 }
 
@@ -67,7 +68,7 @@ function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElem
   return (
     <h3
       data-slot="card-title"
-      className={cn("text-2xl font-semibold leading-none tracking-tight", className)}
+      className={cn("text-2xl font-semibold leading-none tracking-tight text-[var(--apple-gray-900)]", className)}
       {...props}
     />
   )
@@ -77,7 +78,7 @@ function CardDescription({ className, ...props }: React.HTMLAttributes<HTMLParag
   return (
     <p
       data-slot="card-description"
-      className={cn("text-sm text-muted-foreground", className)}
+      className={cn("text-sm text-[var(--apple-gray-600)]", className)}
       {...props}
     />
   )

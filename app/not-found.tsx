@@ -1,7 +1,9 @@
 import Link from 'next/link'
 
-// Force dynamic rendering to prevent static generation issues with OnceUI
+// Force dynamic rendering to prevent static generation issues
+// This is required for Next.js 15 to prevent Html import errors during static generation
 export const dynamic = 'force-dynamic'
+export const dynamicParams = true
 
 export default function NotFound() {
   return (
