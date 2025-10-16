@@ -105,10 +105,10 @@ const envSchema = z.object({
   // Email Service (Resend) - Optional
   // ============================================
   RESEND_API_KEY: z.string().optional(),
-  RESEND_FROM_EMAIL: emailSchema.optional(),
-  EMAIL_FROM: emailSchema.optional(),
-  EMAIL_REPLY_TO: emailSchema.optional(),
-  CONTACT_EMAIL: emailSchema.optional(),
+  RESEND_FROM_EMAIL: z.string().optional(), // Email format validation removed for Vercel encrypted values
+  EMAIL_FROM: z.string().optional(),
+  EMAIL_REPLY_TO: z.string().optional(),
+  CONTACT_EMAIL: z.string().optional(),
 
   // ============================================
   // External Services (Optional)
