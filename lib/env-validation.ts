@@ -104,9 +104,8 @@ const envSchema = z.object({
   // ============================================
   // Email Service (Resend) - Optional
   // ============================================
-  RESEND_API_KEY: z.string()
-    .regex(/^re_[a-zA-Z0-9]+$/, 'Must be a valid Resend API key (re_xxxxx)')
-    .optional(),
+  RESEND_API_KEY: z.string().optional(),
+  RESEND_FROM_EMAIL: emailSchema.optional(),
   EMAIL_FROM: emailSchema.optional(),
   EMAIL_REPLY_TO: emailSchema.optional(),
   CONTACT_EMAIL: emailSchema.optional(),
