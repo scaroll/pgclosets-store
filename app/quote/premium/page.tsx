@@ -1,7 +1,10 @@
-import PremiumQuoteWizard from "@/components/quote/PremiumQuoteWizard";
-import { Metadata } from "next";
+'use client'
 
-export const metadata: Metadata = {
+import PremiumQuoteWizard from "@/components/quote/PremiumQuoteWizard";
+import type { Metadata } from "next";
+
+// Metadata must be exported from layout.tsx for client components
+// export const metadata: Metadata = {
   title: "Get a Free Quote | PG Closets Ottawa",
   description: "Get a personalized quote for your closet project in Ottawa. Free consultation, professional installation, and 24-hour response time.",
   openGraph: {
@@ -9,7 +12,7 @@ export const metadata: Metadata = {
     description: "Transform your space with custom closet solutions. Free quote, expert design, professional installation.",
     type: "website",
   },
-};
+}; */
 
 export default function PremiumQuotePage() {
   return (
