@@ -9,18 +9,19 @@
  */
 
 import { Resend } from 'resend';
+import { env, services } from '../env-validation';
 
 // Initialize Resend client
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(env.RESEND_API_KEY);
 
-// Email configuration
+// Email configuration from validated environment
 const EMAIL_CONFIG = {
-  from: process.env.EMAIL_FROM || 'PG Closets <onboarding@resend.dev>',
-  replyTo: process.env.EMAIL_REPLY_TO || 'info@pgclosets.ca',
+  from: env.EMAIL_FROM || 'PG Closets <onboarding@resend.dev>',
+  replyTo: env.EMAIL_REPLY_TO || 'info@pgclosets.ca',
 
   // Recipients for contact form submissions
   contactRecipients: [
-    process.env.CONTACT_EMAIL || 'info@pgclosets.ca'
+    env.CONTACT_EMAIL || 'info@pgclosets.ca'
   ]
 };
 
@@ -35,8 +36,8 @@ interface ContactEmailData {
  * Send contact form submission email
  */
 export async function sendContactEmail(data: ContactEmailData) {
-  // Check if API key is configured
-  if (!process.env.RESEND_API_KEY) {
+  // Check if email service is available
+  if (!services.hasEmail()) {
     console.warn('⚠️ RESEND_API_KEY not configured. Email not sent.');
     console.log('Contact form data:', data);
     return {
@@ -124,7 +125,7 @@ export async function sendContactEmail(data: ContactEmailData) {
  * Send confirmation email to customer
  */
 export async function sendContactConfirmation(data: ContactEmailData) {
-  if (!process.env.RESEND_API_KEY) {
+  if (!services.hasEmail()) {
     return { success: false, error: 'Email service not configured' };
   }
 

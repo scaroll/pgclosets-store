@@ -179,6 +179,48 @@ export const userProfileSchema = z.object({
   }).optional(),
 });
 
+// Password validation schema
+export const passwordSchema = z
+  .string()
+  .min(1, "Password is required")
+  .min(8, "Password must be at least 8 characters")
+  .max(128, "Password too long")
+  .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+  .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+  .regex(/[0-9]/, "Password must contain at least one number")
+  .regex(/[^A-Za-z0-9]/, "Password must contain at least one special character");
+
+// Optional password (for login, where we don't need to validate complexity)
+export const loginPasswordSchema = z
+  .string()
+  .min(1, "Password is required");
+
+// Login schema
+export const loginSchema = z.object({
+  email: emailSchema,
+  password: loginPasswordSchema,
+  rememberMe: z.boolean().optional(),
+});
+
+// Registration schema with password confirmation
+export const registrationSchema = z
+  .object({
+    firstName: nameSchema,
+    lastName: nameSchema,
+    email: emailSchema,
+    password: passwordSchema,
+    passwordConfirm: z.string().min(1, "Please confirm your password"),
+    acceptTerms: z
+      .boolean()
+      .refine((val) => val === true, {
+        message: "You must accept the terms and conditions",
+      }),
+  })
+  .refine((data) => data.password === data.passwordConfirm, {
+    message: "Passwords don't match",
+    path: ["passwordConfirm"],
+  });
+
 // API key validation for admin endpoints
 export const apiKeySchema = z
   .string()
@@ -234,6 +276,17 @@ export const searchSchema = z.object({
   }
 );
 
+// Phone validation schema (more permissive than in individual files)
+export const phoneSchema = z
+  .string()
+  .min(10, "Phone number must be at least 10 digits")
+  .max(20, "Phone number too long")
+  .regex(/^[\d\s\-\(\)\+]+$/, "Phone number contains invalid characters")
+  .trim();
+
+// Optional phone schema
+export const optionalPhoneSchema = phoneSchema.optional();
+
 // Type exports
 export type ContactFormData = z.infer<typeof contactFormSchema>;
 export type QuoteRequestData = z.infer<typeof quoteRequestSchema>;
@@ -244,6 +297,8 @@ export type PaginationData = z.infer<typeof paginationSchema>;
 export type SearchData = z.infer<typeof searchSchema>;
 export type MeasurementBookingData = z.infer<typeof measurementBookingSchema>;
 export type AvailabilityCheckData = z.infer<typeof availabilityCheckSchema>;
+export type LoginData = z.infer<typeof loginSchema>;
+export type RegistrationData = z.infer<typeof registrationSchema>;
 
 // Ottawa postal code validation (K0A-K4Z)
 const ottawaPostalCodeRegex = /^[Kk][0-4][A-Za-z][ -]?[0-9][A-Za-z][0-9]$/;
@@ -276,12 +331,8 @@ export const measurementBookingSchema = z.object({
       .max(100, "City name too long")
       .trim(),
     province: z
-      .string()
-      .min(2, "Province is required")
-      .max(3, "Invalid province code")
-      .toUpperCase()
-      .refine((val) => val === "ON", {
-        message: "We currently only provide measurement services in Ontario",
+      .literal("ON", {
+        errorMap: () => ({ message: "We currently only provide measurement services in Ontario" }),
       }),
     postalCode: z
       .string()
@@ -319,7 +370,7 @@ export const measurementBookingSchema = z.object({
       .array(z.string().min(1, "Product ID cannot be empty"))
       .min(1, "Please select at least one product you're interested in")
       .max(10, "Too many products selected"),
-    urgency: z.enum(["low", "medium", "high"]).default("medium"),
+    urgency: z.enum(["low", "medium", "high"]),
     rooms: z
       .array(
         z.object({
@@ -376,6 +427,24 @@ export const schemaRegistry = {
   search: searchSchema,
   measurementBooking: measurementBookingSchema,
   availabilityCheck: availabilityCheckSchema,
+  login: loginSchema,
+  registration: registrationSchema,
 } as const;
 
 export type SchemaName = keyof typeof schemaRegistry;
+
+// Helper function to validate data against a schema
+export function validateSchema<T extends z.ZodType>(
+  schema: T,
+  data: unknown
+): { success: boolean; data?: z.infer<T>; errors?: z.ZodError } {
+  try {
+    const validated = schema.parse(data);
+    return { success: true, data: validated };
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return { success: false, errors: error };
+    }
+    throw error;
+  }
+}

@@ -5,6 +5,7 @@ import { initializeAnalytics } from '../../lib/analytics'
 import { ConsentBanner, useConsentPreferences } from './consent-banner'
 import { EcommercePageTracker } from './ecommerce-tracking'
 import { AnalyticsErrorBoundary } from './error-tracking'
+import { withVoidConsentGuard, withAnalyticsGuard } from '../../lib/analytics/use-consent-guard'
 import type { CookieConsentPreferences, AnalyticsConfig } from '../../types/analytics'
 
 // Analytics Context
@@ -59,14 +60,7 @@ export function AnalyticsProvider({
       const analyticsConfig: Partial<AnalyticsConfig> = {
         measurementId,
         debug,
-        anonymizeIP: true,
-        enableAdvancedMatching: false,
-        enableConsentMode: enableCookieConsent,
-        customDimensions: {
-          user_type: 'custom_map.user_type',
-          page_category: 'custom_map.page_category',
-          device_type: 'custom_map.device_type'
-        },
+        enableCookieConsent,
         ...config
       }
 
@@ -112,9 +106,7 @@ export function AnalyticsProvider({
       const analyticsConfig: Partial<AnalyticsConfig> = {
         measurementId,
         debug,
-        anonymizeIP: true,
-        enableAdvancedMatching: false,
-        enableConsentMode: enableCookieConsent,
+        enableCookieConsent,
         ...config
       }
 
@@ -176,161 +168,213 @@ export function useAnalyticsTracking() {
   const { analytics, hasConsent } = useAnalytics()
 
   // E-commerce tracking
-  const trackPurchase = (transactionId: string, value: number, items: any[], additionalData?: any) => {
-    if (!hasConsent || !analytics) return
-    analytics.trackPurchase({
-      transaction_id: transactionId,
-      value,
-      currency: 'CAD',
-      items,
-      ...additionalData
-    })
-  }
+  const trackPurchase = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (transactionId: string, value: number, items: any[], additionalData?: any) => {
+      analytics.trackPurchase({
+        transaction_id: transactionId,
+        value,
+        currency: 'CAD',
+        items,
+        ...additionalData
+      })
+    }
+  )
 
-  const trackAddToCart = (items: any[], value: number) => {
-    if (!hasConsent || !analytics) return
-    analytics.trackAddToCart({
-      currency: 'CAD',
-      value,
-      items
-    })
-  }
+  const trackAddToCart = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (items: any[], value: number) => {
+      analytics.trackAddToCart({
+        currency: 'CAD',
+        value,
+        items
+      })
+    }
+  )
 
-  const trackRemoveFromCart = (items: any[], value: number) => {
-    if (!hasConsent || !analytics) return
-    analytics.trackRemoveFromCart({
-      currency: 'CAD',
-      value,
-      items
-    })
-  }
+  const trackRemoveFromCart = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (items: any[], value: number) => {
+      analytics.trackRemoveFromCart({
+        currency: 'CAD',
+        value,
+        items
+      })
+    }
+  )
 
-  const trackViewItem = (itemId: string, itemName: string, itemCategory: string, price: number) => {
-    if (!hasConsent || !analytics) return
-    analytics.trackViewItem({
-      item_id: itemId,
-      item_name: itemName,
-      item_category: itemCategory,
-      price,
-      currency: 'CAD'
-    })
-  }
+  const trackViewItem = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (itemId: string, itemName: string, itemCategory: string, price: number) => {
+      analytics.trackViewItem({
+        item_id: itemId,
+        item_name: itemName,
+        item_category: itemCategory,
+        price,
+        currency: 'CAD'
+      })
+    }
+  )
 
-  const trackBeginCheckout = (items: any[], value: number, additionalData?: any) => {
-    if (!hasConsent || !analytics) return
-    analytics.trackBeginCheckout({
-      currency: 'CAD',
-      value,
-      items,
-      ...additionalData
-    })
-  }
+  const trackBeginCheckout = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (items: any[], value: number, additionalData?: any) => {
+      analytics.trackBeginCheckout({
+        currency: 'CAD',
+        value,
+        items,
+        ...additionalData
+      })
+    }
+  )
 
   // Interaction tracking
-  const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
-    if (!hasConsent || !analytics) return
-    analytics.gtag('event', eventName, {
-      event_category: 'Custom Events',
-      event_label: eventName,
-      ...parameters
-    })
-  }
+  const trackEvent = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (eventName: string, parameters?: Record<string, any>) => {
+      analytics.gtag('event', eventName, {
+        event_category: 'Custom Events',
+        event_label: eventName,
+        ...parameters
+      })
+    }
+  )
 
-  const trackSearch = (searchTerm: string, results?: number) => {
-    if (!hasConsent || !analytics) return
-    analytics.trackSearch(searchTerm, results)
-  }
+  const trackSearch = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (searchTerm: string, results?: number) => {
+      analytics.trackSearch(searchTerm, results)
+    }
+  )
 
-  const trackQuoteRequest = (productItems: any[], totalValue: number) => {
-    if (!hasConsent || !analytics) return
-    analytics.trackQuoteRequest({
-      leadType: 'quote_request',
-      leadSource: 'website',
-      leadValue: totalValue,
-      products: productItems,
-      contactInfo: {},
-      timestamp: Date.now(),
-      sessionId: analytics.getSessionId()
-    })
-  }
+  const trackQuoteRequest = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (productItems: any[], totalValue: number) => {
+      analytics.trackQuoteRequest({
+        leadType: 'quote_request',
+        leadSource: 'website',
+        leadValue: totalValue,
+        products: productItems,
+        contactInfo: {},
+        timestamp: Date.now(),
+        sessionId: analytics.getSessionId()
+      })
+    }
+  )
 
-  const trackOutboundClick = (url: string, linkText?: string) => {
-    if (!hasConsent || !analytics) return
-    analytics.trackOutboundClick(url, linkText)
-  }
+  const trackOutboundClick = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (url: string, linkText?: string) => {
+      analytics.trackOutboundClick(url, linkText)
+    }
+  )
 
-  const trackFileDownload = (fileName: string, fileExtension: string) => {
-    if (!hasConsent || !analytics) return
-    analytics.trackFileDownload(fileName, fileExtension)
-  }
+  const trackFileDownload = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (fileName: string, fileExtension: string) => {
+      analytics.trackFileDownload(fileName, fileExtension)
+    }
+  )
 
-  const trackFormSubmission = (formName: string, success: boolean = true) => {
-    if (!hasConsent || !analytics) return
-    analytics.trackFormSubmission(formName, undefined, success)
-  }
+  const trackFormSubmission = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (formName: string, success: boolean = true) => {
+      analytics.trackFormSubmission(formName, undefined, success)
+    }
+  )
 
-  const trackPhoneClick = (phoneNumber: string) => {
-    if (!hasConsent || !analytics) return
-    trackEvent('phone_click', {
-      event_category: 'Contact',
-      event_label: 'Phone Click',
-      phone_number: phoneNumber
-    })
-  }
+  const trackPhoneClick = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (phoneNumber: string) => {
+      trackEvent('phone_click', {
+        event_category: 'Contact',
+        event_label: 'Phone Click',
+        phone_number: phoneNumber
+      })
+    }
+  )
 
-  const trackEmailClick = (emailAddress: string) => {
-    if (!hasConsent || !analytics) return
-    trackEvent('email_click', {
-      event_category: 'Contact',
-      event_label: 'Email Click',
-      email_address: emailAddress
-    })
-  }
+  const trackEmailClick = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (emailAddress: string) => {
+      trackEvent('email_click', {
+        event_category: 'Contact',
+        event_label: 'Email Click',
+        email_address: emailAddress
+      })
+    }
+  )
 
   // Performance and error tracking
-  const trackTiming = (name: string, value: number, category?: string) => {
-    if (!hasConsent || !analytics) return
-    analytics.gtag('event', 'timing_complete', {
-      name,
-      value,
-      event_category: category || 'Performance',
-      event_label: name
-    })
-  }
+  const trackTiming = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (name: string, value: number, category?: string) => {
+      analytics.gtag('event', 'timing_complete', {
+        name,
+        value,
+        event_category: category || 'Performance',
+        event_label: name
+      })
+    }
+  )
 
-  const trackException = (error: Error | string, fatal?: boolean) => {
-    if (!hasConsent || !analytics) return
-    const errorMessage = typeof error === 'string' ? error : error.message
-    const errorStack = typeof error === 'string' ? undefined : error.stack
+  const trackException = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (error: Error | string, fatal?: boolean) => {
+      const errorMessage = typeof error === 'string' ? error : error.message
+      const errorStack = typeof error === 'string' ? undefined : error.stack
 
-    analytics.trackError({
-      errorType: 'manual',
-      errorMessage,
-      errorStack,
-      fatal: fatal || false,
-      timestamp: Date.now(),
-      url: window.location.href,
-      userAgent: navigator.userAgent,
-      sessionId: analytics.getSessionId()
-    })
-  }
+      analytics.trackError({
+        errorType: 'manual',
+        errorMessage,
+        errorStack,
+        fatal: fatal || false,
+        timestamp: Date.now(),
+        url: window.location.href,
+        userAgent: navigator.userAgent,
+        sessionId: analytics.getSessionId()
+      })
+    }
+  )
 
-  // User identification
-  const setUserId = (userId: string) => {
-    if (!analytics) return
-    analytics.setUserId(userId)
-  }
+  // User identification (no consent required for ID management)
+  const setUserId = withAnalyticsGuard(
+    analytics,
+    (userId: string) => {
+      analytics.setUserId(userId)
+    }
+  )
 
-  const clearUserId = () => {
-    if (!analytics) return
-    analytics.clearUserId()
-  }
+  const clearUserId = withAnalyticsGuard(
+    analytics,
+    () => {
+      analytics.clearUserId()
+    }
+  )
 
   // Page tracking
-  const trackPageView = (path?: string, title?: string) => {
-    if (!hasConsent || !analytics) return
-    analytics.trackPageView(path, title)
-  }
+  const trackPageView = withVoidConsentGuard(
+    hasConsent,
+    analytics,
+    (path?: string, title?: string) => {
+      analytics.trackPageView(path, title)
+    }
+  )
 
   return {
     // State

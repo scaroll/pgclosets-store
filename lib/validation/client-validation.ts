@@ -1,16 +1,19 @@
 "use client";
 
 import { z } from "zod";
+import {
+  emailSchema,
+  nameSchema,
+  postalCodeSchema,
+  passwordSchema,
+  fileUploadSchema,
+} from "./schemas";
 
 /**
  * Client-side validation utilities for enhanced UX
  * These complement server-side validation but never replace it
+ * Uses central validation schemas from ./schemas.ts
  */
-
-// Real-time validation patterns
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const nameRegex = /^[a-zA-Z\s'-]+$/;
-const postalCodeRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
 
 export interface ValidationResult {
   isValid: boolean;
@@ -42,98 +45,81 @@ export class ClientValidator {
 
   /**
    * Validate email address with detailed feedback
+   * Uses central emailSchema
    */
   static validateEmail(email: string): ValidationResult {
-    if (!email.trim()) {
-      return { isValid: false, error: this.commonErrors.required };
-    }
+    try {
+      emailSchema.parse(email);
+      return { isValid: true };
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const suggestions = [];
 
-    if (email.length > 320) {
-      return { isValid: false, error: "Email address is too long" };
-    }
+        // Common typos and suggestions
+        if (!email.includes("@")) {
+          suggestions.push("Email must contain an @ symbol");
+        } else if (!email.includes(".")) {
+          suggestions.push("Email must contain a domain extension (.com, .ca, etc.)");
+        } else if (email.includes("..")) {
+          suggestions.push("Remove double periods from email");
+        } else if (email.startsWith(".") || email.endsWith(".")) {
+          suggestions.push("Email cannot start or end with a period");
+        }
 
-    if (!emailRegex.test(email)) {
-      const suggestions = [];
-
-      // Common typos and suggestions
-      if (!email.includes("@")) {
-        suggestions.push("Email must contain an @ symbol");
-      } else if (!email.includes(".")) {
-        suggestions.push("Email must contain a domain extension (.com, .ca, etc.)");
-      } else if (email.includes("..")) {
-        suggestions.push("Remove double periods from email");
-      } else if (email.startsWith(".") || email.endsWith(".")) {
-        suggestions.push("Email cannot start or end with a period");
+        return {
+          isValid: false,
+          error: error.errors[0]?.message || this.commonErrors.email,
+          suggestions,
+        };
       }
-
-      return {
-        isValid: false,
-        error: this.commonErrors.email,
-        suggestions,
-      };
+      return { isValid: false, error: this.commonErrors.email };
     }
-
-    return { isValid: true };
   }
 
   /**
    * Validate name fields
+   * Uses central nameSchema
    */
   static validateName(name: string, fieldName: string = "Name"): ValidationResult {
-    if (!name.trim()) {
-      return { isValid: false, error: `${fieldName} is required` };
+    try {
+      nameSchema.parse(name);
+      return { isValid: true };
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const errorMsg = error.errors[0]?.message || `${fieldName} is invalid`;
+        return {
+          isValid: false,
+          error: errorMsg.replace("Name", fieldName),
+          suggestions: ["Remove numbers and special characters"],
+        };
+      }
+      return { isValid: false, error: `${fieldName} is invalid` };
     }
-
-    if (name.length < 1) {
-      return { isValid: false, error: `${fieldName} is required` };
-    }
-
-    if (name.length > 50) {
-      return { isValid: false, error: `${fieldName} is too long` };
-    }
-
-    if (!nameRegex.test(name)) {
-      return {
-        isValid: false,
-        error: this.commonErrors.name,
-        suggestions: ["Remove numbers and special characters"],
-      };
-    }
-
-    return { isValid: true };
   }
 
   /**
    * Validate Canadian postal code
+   * Uses central postalCodeSchema
    */
   static validatePostalCode(postalCode: string): ValidationResult {
-    if (!postalCode.trim()) {
-      return { isValid: false, error: this.commonErrors.required };
+    try {
+      postalCodeSchema.parse(postalCode);
+      return { isValid: true };
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return {
+          isValid: false,
+          error: error.errors[0]?.message || this.commonErrors.postalCode,
+          suggestions: ["Format: K1A 0A6 (Letter-Number-Letter Number-Letter-Number)"],
+        };
+      }
+      return { isValid: false, error: this.commonErrors.postalCode };
     }
-
-    const cleaned = postalCode.toUpperCase().replace(/[^A-Z0-9]/g, "");
-
-    if (cleaned.length !== 6) {
-      return {
-        isValid: false,
-        error: "Postal code must be 6 characters",
-        suggestions: ["Format: K1A 0A6 or K1A0A6"],
-      };
-    }
-
-    if (!postalCodeRegex.test(postalCode)) {
-      return {
-        isValid: false,
-        error: this.commonErrors.postalCode,
-        suggestions: ["Format: K1A 0A6 (Letter-Number-Letter Number-Letter-Number)"],
-      };
-    }
-
-    return { isValid: true };
   }
 
   /**
    * Validate file upload
+   * Uses central fileUploadSchema
    */
   static validateFile(
     file: File,
@@ -143,42 +129,25 @@ export class ClientValidator {
       allowedExtensions?: string[];
     } = {}
   ): ValidationResult {
-    const {
-      maxSize = 10 * 1024 * 1024, // 10MB default
-      allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"],
-      allowedExtensions = [".jpg", ".jpeg", ".png", ".webp", ".gif"],
-    } = options;
+    try {
+      fileUploadSchema.parse({ file });
+      return { isValid: true };
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const errorMsg = error.errors[0]?.message || "Invalid file";
+        const maxSize = options.maxSize || 10 * 1024 * 1024;
 
-    if (!file) {
-      return { isValid: false, error: "Please select a file" };
+        return {
+          isValid: false,
+          error: errorMsg,
+          suggestions: [
+            `Maximum size: ${(maxSize / 1024 / 1024).toFixed(0)}MB`,
+            `Allowed types: JPEG, PNG, WebP, GIF, PDF`,
+          ],
+        };
+      }
+      return { isValid: false, error: "Invalid file" };
     }
-
-    if (file.size > maxSize) {
-      return {
-        isValid: false,
-        error: `File is too large (${(file.size / 1024 / 1024).toFixed(1)}MB)`,
-        suggestions: [`Maximum size: ${(maxSize / 1024 / 1024).toFixed(0)}MB`],
-      };
-    }
-
-    if (!allowedTypes.includes(file.type)) {
-      return {
-        isValid: false,
-        error: "Invalid file type",
-        suggestions: [`Allowed types: ${allowedTypes.join(", ")}`],
-      };
-    }
-
-    const extension = file.name.toLowerCase().substring(file.name.lastIndexOf("."));
-    if (!allowedExtensions.includes(extension)) {
-      return {
-        isValid: false,
-        error: "Invalid file extension",
-        suggestions: [`Allowed extensions: ${allowedExtensions.join(", ")}`],
-      };
-    }
-
-    return { isValid: true };
   }
 
   /**
@@ -220,21 +189,15 @@ export class ClientValidator {
 
   /**
    * Password strength validation
+   * Uses central passwordSchema
    */
   static validatePassword(password: string): ValidationResult & { strength: number } {
-    if (!password) {
-      return { isValid: false, error: "Password is required", strength: 0 };
-    }
-
     let strength = 0;
     const suggestions: string[] = [];
 
     // Length check
-    if (password.length >= 8) {
-      strength += 20;
-    } else {
-      suggestions.push("Use at least 8 characters");
-    }
+    if (password.length >= 8) strength += 20;
+    else suggestions.push("Use at least 8 characters");
 
     // Complexity checks
     if (/[a-z]/.test(password)) strength += 15;
@@ -253,14 +216,29 @@ export class ClientValidator {
     if (password.length >= 12) strength += 10;
     if (/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d])/.test(password)) strength += 10;
 
-    const isValid = strength >= 60; // Require at least "good" password
-
-    return {
-      isValid,
-      error: isValid ? undefined : "Password is too weak",
-      suggestions: isValid ? [] : suggestions,
-      strength: Math.min(100, strength),
-    };
+    // Use central schema for validation
+    try {
+      passwordSchema.parse(password);
+      return {
+        isValid: true,
+        strength: Math.min(100, strength),
+      };
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return {
+          isValid: false,
+          error: error.errors[0]?.message || "Password is too weak",
+          suggestions,
+          strength: Math.min(100, strength),
+        };
+      }
+      return {
+        isValid: false,
+        error: "Password is invalid",
+        suggestions,
+        strength: Math.min(100, strength),
+      };
+    }
   }
 }
 

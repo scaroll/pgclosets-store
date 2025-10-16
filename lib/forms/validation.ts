@@ -1,17 +1,61 @@
 import { z } from "zod"
+import {
+  emailSchema,
+  nameSchema,
+  postalCodeSchema,
+  passwordSchema,
+  phoneSchema,
+  optionalPhoneSchema,
+  contactFormSchema,
+  loginSchema,
+  registrationSchema,
+} from "../validation/schemas";
 
 /**
  * Form Validation System
  *
- * Comprehensive validation utilities with:
- * - Custom validation rules for Canadian formats
- * - Async validation support
- * - Helpful error messages with recovery suggestions
- * - Multi-field validation
+ * This file now imports from the central validation schemas in lib/validation/schemas.ts
+ * All validation logic is consolidated in a single source of truth.
+ *
+ * @deprecated Many exports here are deprecated. Import directly from lib/validation/schemas.ts instead
  */
 
 // ============================================================================
-// CUSTOM ERROR MESSAGES
+// RE-EXPORT CENTRAL SCHEMAS
+// ============================================================================
+
+/**
+ * @deprecated Import emailSchema from lib/validation/schemas.ts instead
+ */
+export const emailValidator = emailSchema;
+
+/**
+ * @deprecated Import phoneSchema from lib/validation/schemas.ts instead
+ */
+export const phoneValidator = phoneSchema;
+
+/**
+ * @deprecated Import optionalPhoneSchema from lib/validation/schemas.ts instead
+ */
+export const optionalPhoneValidator = optionalPhoneSchema;
+
+/**
+ * @deprecated Import postalCodeSchema from lib/validation/schemas.ts instead
+ */
+export const postalCodeValidator = postalCodeSchema;
+
+/**
+ * @deprecated Import passwordSchema from lib/validation/schemas.ts instead
+ */
+export const passwordValidator = passwordSchema;
+
+/**
+ * @deprecated Import nameSchema from lib/validation/schemas.ts instead
+ */
+export const nameValidator = nameSchema;
+
+// ============================================================================
+// CUSTOM ERROR MESSAGES (kept for backward compatibility)
 // ============================================================================
 
 export const errorMessages = {
@@ -61,7 +105,7 @@ export const errorMessages = {
 }
 
 // ============================================================================
-// VALIDATION PATTERNS
+// VALIDATION PATTERNS (kept for backward compatibility)
 // ============================================================================
 
 // Canadian postal code: K1A 0B1 or K1A0B1
@@ -84,99 +128,8 @@ export const CREDIT_CARD_PATTERNS = {
 }
 
 // ============================================================================
-// ZOD VALIDATORS
+// ADDITIONAL VALIDATORS (not in central schema yet)
 // ============================================================================
-
-/**
- * Email validation with helpful error messages
- */
-export const emailValidator = z
-  .string()
-  .min(1, errorMessages.email.required)
-  .email(errorMessages.email.invalid)
-  .toLowerCase()
-  .trim()
-
-/**
- * Canadian phone number validation
- * Accepts: (613) 555-0123, 613-555-0123, 6135550123, +1 613-555-0123
- */
-export const phoneValidator = z
-  .string()
-  .min(1, errorMessages.phone.required)
-  .refine(
-    (value) => {
-      const cleaned = value.replace(/[\s\-\(\)\+]/g, "")
-      return cleaned.length === 10 || (cleaned.length === 11 && cleaned.startsWith("1"))
-    },
-    errorMessages.phone.invalid
-  )
-  .transform((value) => {
-    // Normalize to (XXX) XXX-XXXX format
-    const cleaned = value.replace(/[\s\-\(\)\+]/g, "")
-    const match = cleaned.match(/^1?(\d{3})(\d{3})(\d{4})$/)
-    if (match) {
-      return `(${match[1]}) ${match[2]}-${match[3]}`
-    }
-    return value
-  })
-
-/**
- * Optional phone validator (allows empty string)
- */
-export const optionalPhoneValidator = z
-  .string()
-  .optional()
-  .refine(
-    (value) => {
-      if (!value || value.trim() === "") return true
-      const cleaned = value.replace(/[\s\-\(\)\+]/g, "")
-      return cleaned.length === 10 || (cleaned.length === 11 && cleaned.startsWith("1"))
-    },
-    errorMessages.phone.invalid
-  )
-
-/**
- * Canadian postal code validation
- * Accepts: K1A 0B1, K1A0B1 (case insensitive)
- */
-export const postalCodeValidator = z
-  .string()
-  .min(1, errorMessages.postalCode.required)
-  .regex(CANADIAN_POSTAL_CODE_REGEX, errorMessages.postalCode.invalid)
-  .transform((value) => {
-    // Normalize to "K1A 0B1" format
-    const cleaned = value.replace(/\s/g, "").toUpperCase()
-    return `${cleaned.slice(0, 3)} ${cleaned.slice(3)}`
-  })
-
-/**
- * Strong password validation
- * Requirements:
- * - At least 8 characters
- * - At least one uppercase letter
- * - At least one lowercase letter
- * - At least one number
- * - At least one special character
- */
-export const passwordValidator = z
-  .string()
-  .min(1, errorMessages.password.required)
-  .min(8, errorMessages.password.tooShort)
-  .refine((value) => /[A-Z]/.test(value), errorMessages.password.noUppercase)
-  .refine((value) => /[a-z]/.test(value), errorMessages.password.noLowercase)
-  .refine((value) => /[0-9]/.test(value), errorMessages.password.noNumber)
-  .refine((value) => /[!@#$%^&*]/.test(value), errorMessages.password.noSpecial)
-
-/**
- * Name validation (2+ characters, letters and spaces)
- */
-export const nameValidator = z
-  .string()
-  .min(1, errorMessages.name.required)
-  .min(2, errorMessages.name.tooShort)
-  .regex(/^[a-zA-Z\s'-]+$/, "Name can only contain letters, spaces, hyphens, and apostrophes")
-  .trim()
 
 /**
  * URL validation
@@ -269,21 +222,29 @@ export const cvvValidator = z
   .regex(/^\d{3,4}$/, errorMessages.creditCard.cvvInvalid)
 
 // ============================================================================
-// COMMON FORM SCHEMAS
+// COMMON FORM SCHEMAS (re-exported from central schemas)
 // ============================================================================
 
 /**
  * Contact form schema
+ * @deprecated Import contactFormSchema from lib/validation/schemas.ts instead
  */
-export const contactFormSchema = z.object({
-  name: nameValidator,
-  email: emailValidator,
-  phone: optionalPhoneValidator,
-  message: z.string().min(10, "Message must be at least 10 characters").max(1000),
-})
+export { contactFormSchema };
 
 /**
- * Quote request form schema
+ * Login form schema
+ * @deprecated Import loginSchema from lib/validation/schemas.ts instead
+ */
+export { loginSchema };
+
+/**
+ * Registration form schema
+ * @deprecated Import registrationSchema from lib/validation/schemas.ts instead
+ */
+export { registrationSchema };
+
+/**
+ * Quote request form schema (backward compatibility wrapper)
  */
 export const quoteRequestSchema = z.object({
   name: nameValidator,
@@ -297,31 +258,6 @@ export const quoteRequestSchema = z.object({
   budget: z.string().optional(),
   notes: z.string().max(1000).optional(),
 })
-
-/**
- * Login form schema
- */
-export const loginSchema = z.object({
-  email: emailValidator,
-  password: z.string().min(1, "Password is required"),
-  rememberMe: z.boolean().optional(),
-})
-
-/**
- * Registration form schema with password confirmation
- */
-export const registrationSchema = z
-  .object({
-    name: nameValidator,
-    email: emailValidator,
-    password: passwordValidator,
-    passwordConfirm: z.string().min(1, errorMessages.passwordConfirm.required),
-    acceptTerms: z.boolean().refine((val) => val === true, "You must accept the terms and conditions"),
-  })
-  .refine((data) => data.password === data.passwordConfirm, {
-    message: errorMessages.passwordConfirm.mismatch,
-    path: ["passwordConfirm"],
-  })
 
 /**
  * Address form schema

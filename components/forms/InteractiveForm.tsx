@@ -16,6 +16,13 @@ import {
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Button } from '../../ui/button';
+import {
+  emailSchema,
+  nameSchema,
+  phoneSchema,
+  postalCodeSchema,
+  passwordSchema,
+} from '../../lib/validation/schemas';
 
 // Validation rules
 export interface ValidationRule {
@@ -80,7 +87,7 @@ interface FormState {
   dirty: boolean;
 }
 
-// Validation utilities
+// Validation utilities using central schemas
 const validateField = (field: FormField, value: any, formData: Record<string, any>): string | null => {
   if (!field.validation) return null;
 
@@ -93,15 +100,19 @@ const validateField = (field: FormField, value: any, formData: Record<string, an
         break;
 
       case 'email':
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (value && !emailRegex.test(value)) {
+        // Use central email validation
+        try {
+          if (value) emailSchema.parse(value);
+        } catch {
           return rule.message;
         }
         break;
 
       case 'phone':
-        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-        if (value && !phoneRegex.test(value.replace(/[\s\-\(\)]/g, ''))) {
+        // Use central phone validation
+        try {
+          if (value) phoneSchema.parse(value);
+        } catch {
           return rule.message;
         }
         break;

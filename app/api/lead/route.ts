@@ -1,8 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { sendLeadNotification } from '@/lib/email/lead-notification';
 import { v4 as uuidv4 } from 'uuid';
+import { env } from '@/lib/env-validation';
 
 // Door selection schema for quote requests
 const doorSelectionSchema = z.object({
@@ -67,9 +69,9 @@ interface LeadResponse {
   leadId?: string;
 }
 
-// CORS headers configuration
+// CORS headers configuration from validated environment
 const corsHeaders = {
-  'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_APP_URL || 'https://www.pgclosets.com',
+  'Access-Control-Allow-Origin': env.NEXT_PUBLIC_APP_URL,
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, x-csrf-token',
   'Access-Control-Max-Age': '86400',
@@ -89,7 +91,7 @@ export async function OPTIONS() {
 export async function POST(request: NextRequest): Promise<NextResponse<LeadResponse>> {
   try {
     // Extract IP address for rate limiting
-    const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
                request.headers.get('x-real-ip') ||
                'unknown';
 
@@ -165,12 +167,51 @@ export async function POST(request: NextRequest): Promise<NextResponse<LeadRespo
 
     // Send email notification
     try {
-      await sendLeadNotification({
+      const notificationData: any = {
         leadId,
-        ...leadData,
+        name: leadData.name,
+        email: leadData.email,
+        phone: leadData.phone,
+        location: leadData.location,
+        serviceType: leadData.serviceType,
+        preferredContact: leadData.preferredContact,
+        consent: leadData.consent,
         submittedAt: new Date().toISOString(),
         ipAddress: ip,
-      });
+      };
+
+      if (leadData.productInterest) {
+        notificationData.productInterest = leadData.productInterest;
+      }
+      if (leadData.message) {
+        notificationData.message = leadData.message;
+      }
+      if (leadData.doorSelection) {
+        const doorSelection: any = {
+          series: leadData.doorSelection.series,
+          doorType: leadData.doorSelection.doorType,
+          openingWidthIn: leadData.doorSelection.openingWidthIn,
+          openingHeightIn: leadData.doorSelection.openingHeightIn,
+          panelCount: leadData.doorSelection.panelCount,
+          finish: leadData.doorSelection.finish,
+          hardware: leadData.doorSelection.hardware,
+          softClose: leadData.doorSelection.softClose,
+          handles: leadData.doorSelection.handles,
+          quantity: leadData.doorSelection.quantity,
+        };
+        if (leadData.doorSelection.notes) {
+          doorSelection.notes = leadData.doorSelection.notes;
+        }
+        if (leadData.doorSelection.productUrl) {
+          doorSelection.productUrl = leadData.doorSelection.productUrl;
+        }
+        if (leadData.doorSelection.images) {
+          doorSelection.images = leadData.doorSelection.images;
+        }
+        notificationData.doorSelection = doorSelection;
+      }
+
+      await sendLeadNotification(notificationData);
     } catch (emailError) {
       // Log error but don't fail the request
       console.error('[Lead API] Email notification failed:', emailError);

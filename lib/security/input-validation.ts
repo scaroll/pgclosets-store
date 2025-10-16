@@ -13,6 +13,14 @@
 
 import DOMPurify from 'isomorphic-dompurify'
 import { z } from 'zod'
+import {
+  emailSchema,
+  nameSchema,
+  postalCodeSchema,
+  passwordSchema,
+  phoneSchema,
+  fileUploadSchema,
+} from '../validation/schemas'
 
 /**
  * Sanitize HTML content to prevent XSS
@@ -161,6 +169,7 @@ export function sanitizeCommandInput(input: string): string | null {
 
 /**
  * Validate file upload
+ * @deprecated Use fileUploadSchema from lib/validation/schemas.ts instead
  */
 export function validateFileUpload(file: {
   name: string
@@ -170,68 +179,30 @@ export function validateFileUpload(file: {
   valid: boolean
   errors: string[]
 } {
-  const errors: string[] = []
-
-  // Allowed file extensions
-  const allowedExtensions = [
-    '.jpg',
-    '.jpeg',
-    '.png',
-    '.gif',
-    '.webp',
-    '.pdf',
-    '.doc',
-    '.docx',
-    '.txt'
-  ]
-
-  const ext = file.name.toLowerCase().substring(file.name.lastIndexOf('.'))
-
-  if (!allowedExtensions.includes(ext)) {
-    errors.push(`File type ${ext} not allowed`)
-  }
-
-  // Max file size: 10MB
-  const maxSize = 10 * 1024 * 1024
-  if (file.size > maxSize) {
-    errors.push('File size exceeds 10MB limit')
-  }
-
-  // Validate MIME type
-  const allowedMimeTypes = [
-    'image/jpeg',
-    'image/png',
-    'image/gif',
-    'image/webp',
-    'application/pdf',
-    'application/msword',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    'text/plain'
-  ]
-
-  if (!allowedMimeTypes.includes(file.type)) {
-    errors.push(`MIME type ${file.type} not allowed`)
-  }
-
-  // Check for double extensions
-  if ((file.name.match(/\./g) || []).length > 1) {
-    errors.push('Multiple file extensions not allowed')
-  }
-
-  return {
-    valid: errors.length === 0,
-    errors
+  try {
+    fileUploadSchema.parse({ file });
+    return { valid: true, errors: [] };
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      const errors = error.errors.map(err => err.message);
+      return { valid: false, errors };
+    }
+    return { valid: false, errors: ['Validation failed'] };
   }
 }
 
 /**
  * Zod schemas for common validation patterns
+ * @deprecated Use schemas from lib/validation/schemas.ts instead
  */
 export const ValidationSchemas = {
-  email: z.string().email().trim().toLowerCase(),
+  email: emailSchema,
+  phone: phoneSchema,
+  name: nameSchema,
+  password: passwordSchema,
+  postalCode: postalCodeSchema,
 
-  phone: z.string().regex(/^[\d+\-\s()]{10,}$/, 'Invalid phone number format'),
-
+  // Additional schemas not in central file
   url: z.string().url().refine(
     url => {
       try {
@@ -244,20 +215,6 @@ export const ValidationSchemas = {
     { message: 'Only HTTP and HTTPS URLs allowed' }
   ),
 
-  name: z
-    .string()
-    .min(1)
-    .max(100)
-    .regex(/^[a-zA-Z\s'-]+$/, 'Name contains invalid characters'),
-
-  password: z
-    .string()
-    .min(12, 'Password must be at least 12 characters')
-    .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
-    .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
-    .regex(/[0-9]/, 'Password must contain at least one number')
-    .regex(/[^A-Za-z0-9]/, 'Password must contain at least one special character'),
-
   slug: z
     .string()
     .min(1)
@@ -265,11 +222,6 @@ export const ValidationSchemas = {
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Invalid slug format'),
 
   alphanumeric: z.string().regex(/^[a-zA-Z0-9]+$/, 'Only alphanumeric characters allowed'),
-
-  postalCode: z.string().regex(
-    /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/,
-    'Invalid Canadian postal code format'
-  ),
 
   creditCard: z.string().regex(/^\d{13,19}$/, 'Invalid credit card number'),
 
@@ -309,7 +261,7 @@ export class InputSanitizer {
           typeof item === 'string' ? sanitizeUserInput(item) : item
         ) as any
       } else if (typeof value === 'object' && value !== null) {
-        sanitized[key as keyof T] = this.sanitizeObject(value) as any
+        sanitized[key as keyof T] = this.sanitizeObject(value)
       } else {
         sanitized[key as keyof T] = value
       }

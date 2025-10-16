@@ -13,8 +13,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Rate limiting
-    const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() || request.headers.get("x-real-ip") || "unknown"
-    const rateLimit = RateLimiter.check(`upload:${ip}`, 10, 60 * 1000) // 10 uploads per minute
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "unknown"
+    const rateLimit = await RateLimiter.check(`upload:${ip}`, 10, 60 * 1000) // 10 uploads per minute
 
     if (!rateLimit.allowed) {
       return NextResponse.json(
@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
     // Log security event for failed uploads
     SecurityUtils.logSecurityEvent("FILE_UPLOAD_FAILED", {
       error: error instanceof Error ? error.message : "Unknown error",
-      ip: request.headers.get("x-forwarded-for")?.split(",")[0].trim() || request.headers.get("x-real-ip") || "unknown",
+      ip: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "unknown",
       userAgent: request.headers.get("user-agent")
     })
 

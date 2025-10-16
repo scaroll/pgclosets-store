@@ -19,8 +19,10 @@ export async function DELETE(request: NextRequest) {
     const session = await SessionManager.requireAdmin(request)
 
     // Rate limiting for delete operations
-    const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() || request.headers.get("x-real-ip") || "unknown"
-    const rateLimit = RateLimiter.check(`delete:${ip}`, 5, 60 * 1000) // 5 deletes per minute
+    const forwardedFor = request.headers.get("x-forwarded-for")
+    const realIp = request.headers.get("x-real-ip")
+    const ip = (forwardedFor?.split(",")[0]?.trim() ?? realIp ?? "unknown")
+    const rateLimit = await RateLimiter.check(`delete:${ip}`, 5, 60 * 1000) // 5 deletes per minute
 
     if (!rateLimit.allowed) {
       return NextResponse.json(
@@ -61,7 +63,7 @@ export async function DELETE(request: NextRequest) {
       userId: session.userId,
       url: sanitizedUrl,
       ip,
-      userAgent: request.headers.get("user-agent")
+      userAgent: request.headers.get("user-agent") ?? undefined
     })
 
     // Delete from Vercel Blob
@@ -72,7 +74,7 @@ export async function DELETE(request: NextRequest) {
       userId: session.userId,
       url: sanitizedUrl,
       ip,
-      userAgent: request.headers.get("user-agent")
+      userAgent: request.headers.get("user-agent") ?? undefined
     })
 
     return NextResponse.json({
@@ -81,14 +83,19 @@ export async function DELETE(request: NextRequest) {
       deletedAt: new Date().toISOString(),
       deletedBy: session.userId,
     })
-  } catch (error) {
-    console.error("Delete error:", error)
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error"
+    console.error("Delete error:", errorMessage)
 
     // Log security event for failed deletions
+    const forwardedFor = request.headers.get("x-forwarded-for")
+    const realIp = request.headers.get("x-real-ip")
+    const ipAddress = (forwardedFor?.split(",")[0]?.trim() ?? realIp ?? "unknown")
+
     SecurityUtils.logSecurityEvent("FILE_DELETE_FAILED", {
-      error: error instanceof Error ? error.message : "Unknown error",
-      ip: request.headers.get("x-forwarded-for")?.split(",")[0].trim() || request.headers.get("x-real-ip") || "unknown",
-      userAgent: request.headers.get("user-agent")
+      error: errorMessage,
+      ip: ipAddress,
+      userAgent: request.headers.get("user-agent") ?? undefined
     })
 
     if (error instanceof Error && error.message === "Admin access required") {
@@ -100,7 +107,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json(
       {
-        error: error instanceof Error ? error.message : "Delete failed",
+        error: errorMessage,
       },
       { status: 500 },
     )
