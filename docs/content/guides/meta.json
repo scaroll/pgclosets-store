@@ -1,0 +1,9 @@
+{
+  "title": "Guides",
+  "order": 4,
+  "pages": {
+    "installation": 1,
+    "maintenance": 2,
+    "troubleshooting": 3
+  }
+}

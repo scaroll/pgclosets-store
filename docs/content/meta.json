@@ -1,0 +1,9 @@
+{
+  "pages": {
+    "getting-started": 1,
+    "products": 2,
+    "design-system": 3,
+    "guides": 4,
+    "api": 5
+  }
+}

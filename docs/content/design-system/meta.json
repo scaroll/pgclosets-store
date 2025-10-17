@@ -1,0 +1,10 @@
+{
+  "title": "Design System",
+  "order": 3,
+  "pages": {
+    "overview": 1,
+    "tokens": 2,
+    "components": 3,
+    "typography": 4
+  }
+}

@@ -1,0 +1,275 @@
+---
+title: "Design Tokens"
+summary: "Unified design tokens powering the PG Closets design system."
+updatedAt: "2025-01-16"
+keywords: "design tokens, colors, typography, spacing, shadows"
+---
+
+# Design Tokens
+
+PG Closets uses a unified design token system that ensures consistency across all digital properties. These tokens are the single source of truth for all design decisions.
+
+## Color System
+
+### Brand Colors
+
+Our primary brand palette reflects the premium, Apple-inspired aesthetic:
+
+```tsx
+import { colors } from '@/lib/design-tokens';
+
+// Brand colors
+colors.brand.black    // #0f1419
+colors.brand.navy     // #243c74
+colors.brand.sky      // #89bee6
+```
+
+### Gray Scale
+
+Apple-inspired grayscale for premium feel:
+
+```tsx
+colors.gray[50]   // #ffffff - Lightest
+colors.gray[100]  // #f5f5f7
+colors.gray[500]  // #86868b - Mid
+colors.gray[900]  // #1d1d1f - Darkest
+```
+
+### Material Palette
+
+Industry-specific colors for closet and interior design:
+
+```tsx
+// Woodgrain tones
+colors.materials.woodgrain.light   // #FAF8F6
+colors.materials.woodgrain.DEFAULT // #8B7355
+colors.materials.woodgrain.dark    // #2F261C
+
+// Metal finishes
+colors.materials.metal.roseGold    // #B76E79
+colors.materials.metal.bronze      // #CD7F32
+colors.materials.metal.champagne   // #F7E7CE
+```
+
+### Semantic Colors
+
+Contextual colors for UI states:
+
+```tsx
+colors.semantic.success.DEFAULT // #388E3C
+colors.semantic.warning.DEFAULT // #F57C00
+colors.semantic.error.DEFAULT   // #C62828
+colors.semantic.info.DEFAULT    // #0277BD
+```
+
+## Typography
+
+### Font Families
+
+```tsx
+typography.fonts.display // Cormorant (serif)
+typography.fonts.body    // Inter (sans-serif)
+typography.fonts.sf      // SF Pro (system)
+typography.fonts.mono    // Monospace
+```
+
+### Type Scale
+
+Apple-inspired modular scale:
+
+| Size | Value | Usage |
+|------|-------|-------|
+| `xs` | 12px | Labels, metadata |
+| `sm` | 14px | Body small, captions |
+| `base` | 16px | Body text |
+| `lg` | 18px | Subheadings |
+| `xl` | 20px | Headings |
+| `2xl` | 24px | Section titles |
+| `3xl` | 30px | Page titles |
+| `4xl` | 36px | Hero headings |
+| `5xl` | 48px | Display large |
+| `6xl` | 64px | Hero display |
+
+### Font Weights
+
+```tsx
+typography.weights.light     // 300
+typography.weights.regular   // 400
+typography.weights.medium    // 500
+typography.weights.semibold  // 600
+typography.weights.bold      // 700
+```
+
+## Spacing
+
+4px base scale (Apple-inspired):
+
+```tsx
+spacing[1]   // 4px
+spacing[2]   // 8px
+spacing[3]   // 12px
+spacing[4]   // 16px
+spacing[6]   // 24px
+spacing[8]   // 32px
+spacing[12]  // 48px
+spacing[16]  // 64px
+```
+
+Semantic spacing:
+
+```tsx
+spacing.xs   // 8px
+spacing.sm   // 12px
+spacing.md   // 16px
+spacing.lg   // 24px
+spacing.xl   // 32px
+spacing['2xl'] // 40px
+```
+
+## Shadows
+
+Apple-inspired subtle shadows:
+
+```tsx
+shadows.xs   // Minimal elevation
+shadows.sm   // Small cards
+shadows.md   // Default cards
+shadows.lg   // Elevated cards
+shadows.xl   // Modals, overlays
+shadows.floating // Special effects
+```
+
+## Border Radius
+
+```tsx
+radius.sm      // 6px
+radius.DEFAULT // 8px
+radius.md      // 10px
+radius.lg      // 12px
+radius.xl      // 16px
+radius['2xl']  // 24px
+radius.full    // 9999px (fully rounded)
+```
+
+## Animations
+
+### Durations
+
+```tsx
+animations.durations.instant // 100ms
+animations.durations.fast    // 150ms
+animations.durations.normal  // 250ms
+animations.durations.slow    // 350ms
+```
+
+### Easings
+
+Apple-style easing curves:
+
+```tsx
+animations.easings.default // cubic-bezier(0.4, 0, 0.2, 1)
+animations.easings.apple   // cubic-bezier(0.23, 1, 0.32, 1)
+```
+
+## Breakpoints
+
+Mobile-first responsive breakpoints:
+
+```tsx
+breakpoints.sm  // 430px  - Mobile (iPhone 14 Pro)
+breakpoints.md  // 744px  - Tablet (iPad Mini)
+breakpoints.lg  // 1068px - Desktop (MacBook Air)
+breakpoints.xl  // 1440px - Large Desktop (iMac)
+```
+
+## Component Tokens
+
+### Buttons
+
+```tsx
+components.button.sizes.sm // 36px height
+components.button.sizes.md // 44px height
+components.button.sizes.lg // 52px height
+components.button.minTouchTarget // 44px (WCAG)
+```
+
+### Cards
+
+```tsx
+components.card.padding.md // 24px
+components.card.radius     // 16px
+components.card.shadow     // shadows.md
+```
+
+### Inputs
+
+```tsx
+components.input.height   // 44px (prevents iOS zoom)
+components.input.fontSize // 16px (prevents iOS zoom)
+```
+
+## Usage Example
+
+```tsx
+import { colors, typography, spacing } from '@/lib/design-tokens';
+
+function MyComponent() {
+  return (
+    <div
+      style={{
+        backgroundColor: colors.gray[50],
+        padding: spacing.lg,
+        borderRadius: radius.xl,
+        boxShadow: shadows.md,
+      }}
+    >
+      <h2
+        style={{
+          fontSize: typography.sizes['2xl'][0],
+          fontWeight: typography.weights.semibold,
+          color: colors.brand.navy,
+        }}
+      >
+        Premium Design
+      </h2>
+    </div>
+  );
+}
+```
+
+## Helper Functions
+
+### Get Color by Path
+
+```tsx
+import { getColor } from '@/lib/design-tokens';
+
+const navyColor = getColor('brand.navy'); // #243c74
+```
+
+### Responsive Font Sizes
+
+```tsx
+import { getResponsiveFontSize } from '@/lib/design-tokens';
+
+const size = getResponsiveFontSize('2xl', '4xl');
+// Returns: clamp(1.5rem, 2vw + 1rem, 2.25rem)
+```
+
+## Best Practices
+
+<Callout type="info">
+
+**Always use design tokens** instead of hard-coded values. This ensures:
+- Visual consistency across the application
+- Easy theme updates and maintenance
+- Accessibility compliance
+- Brand coherence
+
+</Callout>
+
+## Related Resources
+
+- [Component Library](/docs/design-system/components)
+- [Typography Guide](/docs/design-system/typography)
+- [Color Accessibility](/docs/design-system/accessibility)

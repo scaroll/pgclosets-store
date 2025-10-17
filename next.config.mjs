@@ -29,8 +29,8 @@ const nextConfig = {
   // Fix workspace root warning
   outputFileTracingRoot: process.cwd(),
 
-  // Page extensions for App Router
-  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  // Page extensions for App Router (including MDX)
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js', 'mdx', 'md'],
 
   // Advanced Compiler Optimizations
   compiler: {
