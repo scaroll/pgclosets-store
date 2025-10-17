@@ -1,7 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
 // TEMPORARILY DISABLED: OnceUI components cause build failure
@@ -17,17 +16,15 @@ import { CategoryTiles } from "@/components/home/CategoryTiles"
 import { WhyPGSection } from "@/components/home/WhyPGSection"
 import { FeaturedProjects } from "@/components/home/FeaturedProjects"
 import { ConversionCTA } from "@/components/conversion/ConversionCTA"
-import { PremiumHero } from "@/components/home/PremiumHero"
+import { ElevatedHero } from "@/components/home/ElevatedHero"
 
 export default function HomePage() {
   return (
     <StandardLayout>
-      {/* Premium Hero Section */}
-      <PremiumHero
+      {/* Elevated Hero Section - Apple-inspired design with 3D effects */}
+      <ElevatedHero
         videoUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Renin%20Closet%20Doors%20Overview-kpsJMjKcOGc9Rg5Zv39EVupOi0Gv1i.mp4"
         fallbackImage="/images/elegant-barn-door-closet.png"
-        headline="Transform Your Space Into Art"
-        subheadline="Where Function Meets Luxury"
       />
 
       {/* Featured Section - Replacing OnceUI with Tailwind */}

@@ -115,7 +115,7 @@ export function AnimatedLogo({
   const variants = logoVariants[selectedAnimation] || logoVariants.luxury;
 
   // Override duration if provided
-  if (duration && variants.visible && typeof variants.visible === 'object') {
+  if (duration && variants?.visible && typeof variants.visible === 'object') {
     variants.visible.transition = {
       ...variants.visible.transition,
       duration

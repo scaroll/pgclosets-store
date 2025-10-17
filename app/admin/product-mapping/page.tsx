@@ -102,15 +102,24 @@ export default function ProductMappingPage() {
         if (product.slug !== productSlug) return product;
 
         const updatedImages = product.blobImages.filter((url) => url !== blobUrl);
-        const newPrimaryImage = product.primaryBlobImage === blobUrl
-          ? updatedImages[0]
-          : product.primaryBlobImage;
+        const shouldUpdatePrimary = product.primaryBlobImage === blobUrl;
+        const newPrimaryImage = shouldUpdatePrimary ? updatedImages[0] : product.primaryBlobImage;
 
-        return {
-          ...product,
+        // Build the result with conditional property inclusion
+        const result: ProductMapping = {
+          slug: product.slug,
+          title: product.title,
+          type: product.type,
+          currentImage: product.currentImage,
           blobImages: updatedImages,
-          primaryBlobImage: newPrimaryImage,
         };
+
+        // Only add primaryBlobImage if it has a value
+        if (newPrimaryImage) {
+          result.primaryBlobImage = newPrimaryImage;
+        }
+
+        return result;
       }),
     )
   }

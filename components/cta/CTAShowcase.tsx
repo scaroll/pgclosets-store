@@ -12,7 +12,7 @@ import { UrgencyCTA } from './UrgencyCTA'
 import { TrustBadges, CompactTrustBadge, TrustSeal } from './TrustBadges'
 import { SocialProof, CustomerCount, LiveActivity, TrustScore } from './SocialProof'
 import { QuoteRequestCTA, QuickQuoteButton } from './QuoteRequestCTA'
-import { ArrowRight, Phone, Shield, Award } from 'lucide-react'
+import { ArrowRight, Phone, Shield } from 'lucide-react'
 
 export const CTAShowcase: React.FC = () => {
   return (

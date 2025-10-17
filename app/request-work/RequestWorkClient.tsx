@@ -143,7 +143,7 @@ export default function RequestWorkClient() {
                   <a
                     href="/book-measurement"
                     className="text-blue-600 hover:underline"
-                    onClick={() => trackMeasurementHelperClick({ location: 'request-work-page' })}
+                    onClick={() => trackMeasurementHelperClick({ location: 'request_work' })}
                   >
                     Need help measuring? View our guide →
                   </a>

@@ -6,11 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { ServiceAreaCalculator } from "@/lib/configurator-calculator";
-import { CheckCircle, MapPin, Calendar as CalendarIcon } from "lucide-react";
+import { CheckCircle, MapPin } from "lucide-react";
 
 export function BookMeasureForm() {
-  const [step, setStep] = useState(1);
+  const [_step, _setStep] = useState(1);
   const [formData, setFormData] = useState({
     // Address
     street: "",

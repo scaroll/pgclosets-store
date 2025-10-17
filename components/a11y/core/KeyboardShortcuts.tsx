@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useEffect, useState, useCallback, ReactNode } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useAccessibility } from '@/components/accessibility/AccessibilityProvider'
-import { cn } from '@/lib/utils'
 
 /**
  * Keyboard Shortcuts Component

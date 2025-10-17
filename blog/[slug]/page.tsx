@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { notFound } from "next/navigation"
 
@@ -422,21 +423,11 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             Get expert advice and professional installation from Ottawa&apos;s trusted Renin dealer
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              variant="primary"
-              size="lg"
-              href="/request-work"
-              className="bg-white text-blue-600 hover:bg-gray-100"
-            >
-              Get Free Quote →
+            <Button asChild variant="primary" size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+              <Link href="/quote">Get Free Quote →</Link>
             </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              href="/products"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
-            >
-              Browse Products
+            <Button asChild variant="secondary" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-blue-600">
+              <Link href="/products">Browse Products</Link>
             </Button>
           </div>
         </div>

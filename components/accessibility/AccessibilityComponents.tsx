@@ -14,7 +14,7 @@ import { cn } from '../../lib/utils';
 // Accessibility Context
 interface AccessibilityContextType {
   preferences: AccessibilityPreferences;
-  updatePreference: (key: keyof AccessibilityPreferences, value: any) => void;
+  updatePreference: (key: keyof AccessibilityPreferences, value: string | boolean) => void;
   announceMessage: (message: string, priority?: 'polite' | 'assertive') => void;
 }
 
@@ -55,20 +55,24 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [preferences, setPreferences] = useState<AccessibilityPreferences>(defaultPreferences);
   const announcementRef = useRef<HTMLDivElement>(null);
 
-  const updatePreference = (key: keyof AccessibilityPreferences, value: any) => {
+  const updatePreference = (key: keyof AccessibilityPreferences, value: string | boolean) => {
     setPreferences(prev => ({ ...prev, [key]: value }));
 
     // Apply system-level changes
-    if (key === 'fontSize') {
-      document.documentElement.style.fontSize = {
+    if (key === 'fontSize' && typeof value === 'string') {
+      const fontSizes: Record<string, string> = {
         small: '14px',
         medium: '16px',
         large: '18px',
         'extra-large': '24px',
-      }[value];
+      };
+      const fontSize = fontSizes[value];
+      if (fontSize) {
+        document.documentElement.style.fontSize = fontSize;
+      }
     }
 
-    if (key === 'contrast') {
+    if (key === 'contrast' && typeof value === 'string') {
       document.documentElement.setAttribute('data-contrast', value);
     }
 
@@ -408,18 +412,20 @@ export const ColorContrastValidator: React.FC<ColorContrastProps> = ({
       // In production, use a proper color contrast library
       const hex2rgb = (hex: string) => {
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? {
+        if (!result || !result[1] || !result[2] || !result[3]) return null;
+        return {
           r: parseInt(result[1], 16),
           g: parseInt(result[2], 16),
           b: parseInt(result[3], 16)
-        } : null;
+        };
       };
 
       const luminance = (r: number, g: number, b: number) => {
-        const [rs, gs, bs] = [r, g, b].map(c => {
+        const converted = [r, g, b].map(c => {
           c = c / 255;
           return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
         });
+        const [rs = 0, gs = 0, bs = 0] = converted;
         return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
       };
 

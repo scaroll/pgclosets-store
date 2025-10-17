@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from "next/server"
+import type { NextRequest} from "next/server";
+import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 import { createProtectedRoute, rateLimitConfigs } from "@/lib/validation/middleware"
 import { quoteRequestSchema, type QuoteRequestData } from "@/lib/validation/schemas"
@@ -65,7 +66,7 @@ async function handleQuoteRequest(
 
   await sendSlackNotification(slackPayload)
 
-  const supabase = createClient()
+  const supabase = await createClient()
 
   // Use parameterized query approach through Supabase client
   const record = {
@@ -83,7 +84,7 @@ async function handleQuoteRequest(
     metadata: {
       userAgent: request.headers.get("user-agent")?.substring(0, 200),
       referer: request.headers.get("referer") || request.headers.get("origin"),
-      ip: request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown",
+      ip: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown",
     },
   }
 

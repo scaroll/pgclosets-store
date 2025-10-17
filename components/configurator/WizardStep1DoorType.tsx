@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Check } from "lucide-react"
 import { DOOR_TYPES, formatPrice, getConfigurableDoorTypes } from "@/lib/door-types"
 import { getDefaultConfiguratorData } from "@/lib/estimator-defaults"
-import { ProductConfiguratorData } from "@/types/configurator"
+import type { ProductConfiguratorData } from "@/types/configurator"
 import { ConfiguratorDataAdapter } from "@/lib/configurator-adapter"
 import enhancedProducts from "@/data/enhanced-products.json"
 

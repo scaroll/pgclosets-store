@@ -159,11 +159,11 @@ class ConversionFunnelTracker {
     const event: FunnelEvent = {
       step,
       action,
-      value,
-      metadata,
+      ...(value !== undefined && { value }),
+      ...(metadata !== undefined && { metadata }),
       timestamp: Date.now(),
       sessionId: this.analytics.getSessionId(),
-      userId: this.analytics.userId
+      ...(this.analytics.userId !== undefined && { userId: this.analytics.userId })
     }
 
     this.funnelEvents.push(event)

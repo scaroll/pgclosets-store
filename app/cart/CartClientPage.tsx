@@ -24,7 +24,7 @@ export default function CartClientPage() {
 
   const promoDiscount = appliedPromo ? subtotal * 0.1 : 0
   const shipping = subtotal >= 500 ? 0 : 99
-  const finalTotal = subtotal - promoDiscount + shipping + tax
+  const _total = subtotal - promoDiscount + shipping + tax
 
   if (cartItems.length === 0) {
     return (
@@ -265,7 +265,7 @@ export default function CartClientPage() {
 
                 <div className="flex justify-between text-lg font-bold">
                   <span>Total</span>
-                  <span>${finalTotal.toFixed(2)} CAD</span>
+                  <span>${_total.toFixed(2)} CAD</span>
                 </div>
 
                 {shipping > 0 && (

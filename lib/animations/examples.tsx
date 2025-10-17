@@ -11,7 +11,6 @@ import { useState } from 'react';
 import {
   // Transitions
   fadeTransition,
-  slideUpTransition,
   modalTransition,
   // Hover Effects
   liftHover,
@@ -27,8 +26,6 @@ import {
   pulseVariants,
   dotsVariants,
   skeletonVariants,
-  // Micro-Interactions
-  buttonPressEffect,
   checkboxVariants,
   toggleSwitchVariants,
   tooltipVariants,

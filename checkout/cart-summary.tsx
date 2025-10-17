@@ -36,7 +36,7 @@ export function CartSummary({ items, subtotal, tax, installationFee, total, prov
         {items.map((item) => (
           <div key={`${item.product.id}-${item.selectedSize}-${item.selectedFinish}`} className="flex gap-3">
             <OptimizedImage
-              src={item.product.images[0]}
+              src={item.product.images[0] || "/placeholder.svg"}
               alt={`${item.product.name} - Cart item - PG Closets`}
               width={48}
               height={48}

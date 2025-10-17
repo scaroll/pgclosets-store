@@ -1,5 +1,6 @@
 import StandardLayout from "@/components/layout/StandardLayout"
 import { Button } from "../../components/ui/button"
+import Link from "next/link"
 
 export const metadata = {
   title: "Closet Doors Nepean | Professional Installation | PG Closets",
@@ -82,20 +83,20 @@ export default function NepeanPage() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
+                asChild
                 variant="primary"
                 size="lg"
-                href="/request-work"
                 className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
               >
-                Get Free Quote
+                <Link href="/request-work">Get Free Quote</Link>
               </Button>
               <Button
+                asChild
                 variant="secondary"
                 size="lg"
-                href="/book-measure"
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
               >
-                Book Measurement
+                <Link href="/book-measure">Book Measurement</Link>
               </Button>
             </div>
           </div>
@@ -226,20 +227,20 @@ export default function NepeanPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              asChild
               variant="primary"
               size="lg"
-              href="/request-work"
               className="bg-white text-blue-600 hover:bg-gray-100"
             >
-              Get Free Quote
+              <Link href="/request-work">Get Free Quote</Link>
             </Button>
             <Button
+              asChild
               variant="secondary"
               size="lg"
-              href="mailto:spencer@peoplesgrp.com"
               className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
             >
-              Email: spencer@peoplesgrp.com
+              <a href="mailto:spencer@peoplesgrp.com">Email: spencer@peoplesgrp.com</a>
             </Button>
           </div>
         </div>

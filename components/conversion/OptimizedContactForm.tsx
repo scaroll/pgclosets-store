@@ -3,7 +3,7 @@
 "use client"
 
 import { useState } from "react"
-import { CheckCircle, Phone, ArrowRight, Clock, Shield } from "lucide-react"
+import { CheckCircle, ArrowRight, Clock, Shield } from "lucide-react"
 import { OptimizedCTA } from "./OptimizedCTA"
 import { useConversionTracking } from "./ConversionTracking"
 

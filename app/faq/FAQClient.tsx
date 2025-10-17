@@ -217,7 +217,7 @@ export default function FAQClient() {
           <Heading level={1} className="mb-6">
             Frequently Asked Questions
           </Heading>
-          <Text variant="large" className="max-w-3xl mx-auto mb-8">
+          <Text size="lg" className="max-w-3xl mx-auto mb-8">
             Get answers to common questions about our free quote process, professional installation,
             warranty coverage, and service areas throughout Ottawa.
           </Text>
@@ -285,7 +285,7 @@ export default function FAQClient() {
                   id={`answer-${item.id}`}
                   className="px-6 pb-4 border-t border-gray-100"
                 >
-                  <Text variant="body" className="pt-4">
+                  <Text size="base" className="pt-4">
                     {item.answer}
                   </Text>
                 </div>
@@ -299,7 +299,7 @@ export default function FAQClient() {
           <Heading level={2} className="mb-4">
             Still Have Questions?
           </Heading>
-          <Text variant="body" className="mb-6 max-w-2xl mx-auto">
+          <Text size="base" className="mb-6 max-w-2xl mx-auto">
             Our friendly team is here to help! Contact us for personalized answers about your closet project,
             schedule your free online quote, or get your custom quote today.
           </Text>
@@ -316,7 +316,7 @@ export default function FAQClient() {
             </a>
           </div>
           <div className="mt-4">
-            <Text variant="small">
+            <Text size="sm">
               Licensed & Insured • Serving Ottawa & Surrounding Areas<br />
               2-Year Workmanship Warranty • Free Quotes & Consultations
             </Text>

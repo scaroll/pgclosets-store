@@ -4,7 +4,7 @@ import { Button } from "../ui/button"
 import { ShoppingBag } from "../ui/icon-fallback"
 
 export default function CartIcon() {
-  const { getTotalItems, cart: _cart } = useMedusaCart()
+  const { getTotalItems } = useMedusaCart()
   const itemCount = getTotalItems()
 
   const toggleCart = () => {

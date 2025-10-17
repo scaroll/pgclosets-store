@@ -74,7 +74,6 @@ class ErrorTracker {
   private errorCounts: Map<string, number> = new Map()
   private sessionId: string
   private userId?: string
-  private performanceObserver?: PerformanceObserver
   private userActions: string[] = []
 
   constructor() {
@@ -112,7 +111,7 @@ class ErrorTracker {
       this.trackError({
         errorType: 'javascript',
         errorMessage: event.message,
-        errorStack: event.error?.stack,
+        ...(event.error?.stack !== undefined && { errorStack: event.error.stack }),
         fatal: false,
         timestamp: Date.now(),
         url: event.filename || window.location.href,
@@ -132,7 +131,7 @@ class ErrorTracker {
       if (event.target !== window) {
         const target = event.target as HTMLElement
         this.trackError({
-          errorType: 'resource_load',
+          errorType: 'network',
           errorMessage: `Failed to load resource: ${target.tagName}`,
           fatal: false,
           timestamp: Date.now(),
@@ -152,9 +151,9 @@ class ErrorTracker {
   private setupPromiseRejectionTracking(): void {
     window.addEventListener('unhandledrejection', (event) => {
       this.trackError({
-        errorType: 'unhandled_promise',
+        errorType: 'javascript',
         errorMessage: event.reason?.message || 'Unhandled Promise Rejection',
-        errorStack: event.reason?.stack,
+        ...(event.reason?.stack !== undefined && { errorStack: event.reason.stack }),
         fatal: false,
         timestamp: Date.now(),
         url: window.location.href,
@@ -189,9 +188,10 @@ class ErrorTracker {
       // Largest Contentful Paint
       new PerformanceObserver((entryList) => {
         for (const entry of entryList.getEntries()) {
+          const lcpEntry = entry as any
           this.trackPerformanceMetric('LCP', entry.startTime, {
-            element: entry.element?.tagName,
-            url: entry.url
+            element: lcpEntry.element?.tagName,
+            url: lcpEntry.url
           })
         }
       }).observe({ type: 'largest-contentful-paint', buffered: true })
@@ -251,7 +251,7 @@ class ErrorTracker {
 
           if (usagePercent > 80) {
             this.trackError({
-              errorType: 'memory_warning',
+              errorType: 'analytics',
               errorMessage: `High memory usage: ${usagePercent.toFixed(1)}%`,
               fatal: false,
               timestamp: Date.now(),
@@ -277,7 +277,7 @@ class ErrorTracker {
         for (const entry of entryList.getEntries()) {
           if (entry.duration > 50) { // Tasks longer than 50ms
             this.trackError({
-              errorType: 'long_task',
+              errorType: 'analytics',
               errorMessage: `Long task detected: ${entry.duration}ms`,
               fatal: false,
               timestamp: Date.now(),
@@ -310,30 +310,32 @@ class ErrorTracker {
         }
         return response
       } catch (error) {
-        this.trackNetworkError(args[0], 0, error.message)
+        const errorMessage = error instanceof Error ? error.message : 'Network request failed'
+        this.trackNetworkError(args[0], 0, errorMessage)
         throw error
       }
     }
 
     // Monitor XMLHttpRequest failures
     const originalXHR = window.XMLHttpRequest
-    window.XMLHttpRequest = function() {
+    const tracker = this
+    window.XMLHttpRequest = function(this: XMLHttpRequest) {
       const xhr = new originalXHR()
       const originalSend = xhr.send
 
-      xhr.send = function(...args) {
+      xhr.send = function(body?: XMLHttpRequestBodyInit | null) {
         xhr.addEventListener('error', () => {
-          this.trackNetworkError(xhr.responseURL, xhr.status, xhr.statusText)
+          tracker.trackNetworkError(xhr.responseURL, xhr.status, xhr.statusText)
         })
-        return originalSend.apply(xhr, args)
+        return originalSend.call(xhr, body)
       }
 
       return xhr
-    }
+    } as any
   }
 
-  private trackNetworkError(url: string | Request, status: number, statusText: string): void {
-    const urlString = typeof url === 'string' ? url : url.url
+  private trackNetworkError(url: string | Request | URL, status: number, statusText: string): void {
+    const urlString = typeof url === 'string' ? url : (url instanceof URL ? url.href : url.url)
 
     this.trackError({
       errorType: 'network',
@@ -394,15 +396,15 @@ class ErrorTracker {
     if (!this.analytics?.hasAnalyticsConsent()) return
 
     const enhancedError: EnhancedError = {
-      errorType: error.errorType || 'unknown',
+      errorType: error.errorType || 'javascript',
       errorMessage: error.errorMessage || 'Unknown error',
-      errorStack: error.errorStack,
+      ...(error.errorStack !== undefined && { errorStack: error.errorStack }),
       fatal: error.fatal || false,
       timestamp: error.timestamp || Date.now(),
       url: error.url || window.location.href,
       userAgent: error.userAgent || navigator.userAgent,
       sessionId: error.sessionId || this.sessionId,
-      userId: error.userId || this.userId,
+      ...(error.userId !== undefined ? { userId: error.userId } : (this.userId !== undefined ? { userId: this.userId } : {})),
       severity,
       category,
       context: {
@@ -438,9 +440,9 @@ class ErrorTracker {
     state?: Record<string, any>
   }): void {
     this.trackError({
-      errorType: 'react_error',
+      errorType: 'javascript',
       errorMessage: errorInfo.error.message,
-      errorStack: errorInfo.error.stack,
+      ...(errorInfo.error.stack !== undefined && { errorStack: errorInfo.error.stack }),
       fatal: false,
       timestamp: Date.now(),
       url: window.location.href,
@@ -458,7 +460,7 @@ class ErrorTracker {
 
   public trackFormError(formId: string, fieldName: string, errorMessage: string): void {
     this.trackError({
-      errorType: 'form_validation',
+      errorType: 'form',
       errorMessage: `Form validation error: ${errorMessage}`,
       fatal: false,
       timestamp: Date.now(),
@@ -476,7 +478,7 @@ class ErrorTracker {
 
   public trackPaymentError(errorCode: string, errorMessage: string, paymentMethod?: string): void {
     this.trackError({
-      errorType: 'payment_error',
+      errorType: 'payment',
       errorMessage: `Payment failed: ${errorMessage}`,
       fatal: false,
       timestamp: Date.now(),
@@ -493,7 +495,7 @@ class ErrorTracker {
 
   public trackApiError(endpoint: string, method: string, status: number, errorMessage: string): void {
     this.trackError({
-      errorType: 'api_error',
+      errorType: 'network',
       errorMessage: `API error: ${method} ${endpoint} - ${errorMessage}`,
       fatal: false,
       timestamp: Date.now(),
@@ -525,7 +527,7 @@ class ErrorTracker {
     // Track performance issues
     if (this.isPerformanceIssue(name, value)) {
       this.trackError({
-        errorType: 'performance_issue',
+        errorType: 'analytics',
         errorMessage: `Performance threshold exceeded: ${name} = ${value}ms`,
         fatal: false,
         timestamp: Date.now(),
@@ -570,7 +572,7 @@ class ErrorTracker {
     // Alert on repeated errors
     if (count >= 5) {
       this.trackError({
-        errorType: 'error_pattern',
+        errorType: 'analytics',
         errorMessage: `Repeated error detected: ${errorKey} (${count} times)`,
         fatal: false,
         timestamp: Date.now(),
@@ -671,8 +673,8 @@ class ErrorTracker {
     errorsBySeverity: Record<string, number>
     recentErrors: EnhancedError[]
   } {
-    const errorsByCategory = {}
-    const errorsBySeverity = {}
+    const errorsByCategory: Record<string, number> = {}
+    const errorsBySeverity: Record<string, number> = {}
 
     this.errors.forEach(error => {
       errorsByCategory[error.category] = (errorsByCategory[error.category] || 0) + 1
@@ -765,16 +767,16 @@ export class AnalyticsErrorBoundary extends React.Component<
     return { hasError: true, error }
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  override componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     const tracker = getErrorTracker()
     tracker.trackReactError({
       error,
-      errorInfo,
+      errorInfo: { componentStack: errorInfo.componentStack || '' },
       component: this.constructor.name
     })
   }
 
-  render() {
+  override render() {
     if (this.state.hasError) {
       const FallbackComponent = this.props.fallback
       if (FallbackComponent) {

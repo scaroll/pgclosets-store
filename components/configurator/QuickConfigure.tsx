@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ConfiguratorCalculator } from "@/lib/configurator-calculator";
-import { ProductConfiguratorData } from "@/types/configurator";
+import type { ProductConfiguratorData } from "@/types/configurator";
 import { Calculator } from "lucide-react";
 
 interface QuickConfigureProps {

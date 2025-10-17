@@ -4,7 +4,7 @@ import { useMedusaCart } from "@/hooks/use-medusa-cart"
 import { Button } from "@/components/ui/button"
 
 export default function CartIcon() {
-  const { getTotalItems, cart } = useMedusaCart()
+  const { getTotalItems } = useMedusaCart()
   const itemCount = getTotalItems()
 
   const toggleCart = () => {

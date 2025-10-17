@@ -6,7 +6,8 @@
 
 import WorkflowEngine from './workflow-engine';
 import { ALL_WORKFLOWS } from './workflows';
-import { SegmentationEngine, PersonalizationEngine, SubscriberProfile } from './segmentation';
+import type { SubscriberProfile } from './segmentation';
+import { SegmentationEngine, PersonalizationEngine } from './segmentation';
 import AnalyticsEngine from './analytics';
 
 // Initialize system
@@ -420,8 +421,8 @@ export async function generateWeeklyReport() {
       name: w.name,
       active: w.stats.activeInstances,
       completed: w.stats.completedInstances,
-      openRate: w.stats.avgOpenRate.toFixed(2) + '%',
-      clickRate: w.stats.avgClickRate.toFixed(2) + '%'
+      openRate: `${w.stats.avgOpenRate.toFixed(2)  }%`,
+      clickRate: `${w.stats.avgClickRate.toFixed(2)  }%`
     })),
 
     topPerformers: workflows

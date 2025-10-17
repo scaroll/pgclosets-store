@@ -3,8 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import Link from "next/link"
-import { Check, ShoppingBag, ArrowRight, Minus, Plus } from "lucide-react"
+import { Check, ShoppingBag, Minus, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 interface ProductImage {
@@ -88,15 +87,17 @@ export function AppleLayout({ product }: AppleLayoutProps) {
               transition={{ duration: 0.5 }}
               className="relative aspect-square overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-900"
             >
-              <Image
-                src={product.images[selectedImage].url}
-                alt={product.images[selectedImage].alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-                quality={90}
-              />
+              {product.images[selectedImage] && (
+                <Image
+                  src={product.images[selectedImage].url}
+                  alt={product.images[selectedImage].alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                  quality={90}
+                />
+              )}
 
               {/* Image Zoom on Hover */}
               <div className="absolute inset-0 transition-transform duration-500 hover:scale-110" />

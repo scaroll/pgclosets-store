@@ -4,7 +4,6 @@
  */
 
 import type { MetadataRoute } from 'next'
-import { BUSINESS_INFO } from '../lib/business-config'
 
 const CANONICAL_URL = 'https://www.pgclosets.com'
 

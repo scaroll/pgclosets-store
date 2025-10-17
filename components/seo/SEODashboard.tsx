@@ -54,7 +54,7 @@ export function SEODashboard() {
         canonicalPresent: !!document.querySelector('link[rel="canonical"]'),
         hreflangPresent: !!document.querySelector('link[rel="alternate"][hreflang]'),
         imageAltTags: imagesWithAlt,
-        totalImages: totalImages,
+        totalImages,
         internalLinks: document.querySelectorAll('a[href^="/"]').length,
         externalLinks: document.querySelectorAll('a[href^="http"]').length,
         h1Count: document.querySelectorAll('h1').length,

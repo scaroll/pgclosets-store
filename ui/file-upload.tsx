@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useRef, useCallback } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Upload, X, FileImage, AlertCircle, CheckCircle } from "lucide-react"

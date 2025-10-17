@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from "next/server"
+import type { NextRequest} from "next/server";
+import { NextResponse } from "next/server"
 import { SessionManager, SecurityUtils } from "@/lib/auth"
 
 export async function POST(request: NextRequest) {
@@ -14,17 +15,22 @@ export async function POST(request: NextRequest) {
 
     // Log security event
     if (session) {
+      const forwardedFor = request.headers.get("x-forwarded-for")
+      const realIp = request.headers.get("x-real-ip")
+      const ip = (forwardedFor?.split(",")[0]?.trim() ?? realIp ?? "unknown")
+
       SecurityUtils.logSecurityEvent("USER_LOGOUT", {
         userId: session.userId,
         email: session.email,
-        ip: request.headers.get("x-forwarded-for")?.split(",")[0].trim() || request.headers.get("x-real-ip") || "unknown",
-        userAgent: request.headers.get("user-agent")
+        ip,
+        userAgent: request.headers.get("user-agent") ?? undefined
       })
     }
 
     return response
-  } catch (error) {
-    console.error("Logout error:", error)
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error"
+    console.error("Logout error:", errorMessage)
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

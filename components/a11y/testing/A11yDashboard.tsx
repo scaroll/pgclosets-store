@@ -73,7 +73,10 @@ export function A11yDashboard() {
     if (!acc[issue.category]) {
       acc[issue.category] = []
     }
-    acc[issue.category].push(issue)
+    const category = acc[issue.category]
+    if (category) {
+      category.push(issue)
+    }
     return acc
   }, {} as Record<string, AccessibilityIssue[]>)
 

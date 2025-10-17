@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "../../../components/ui/button";
 import StandardLayout from "@/components/layout/StandardLayout";
 import { BUSINESS_INFO, getSchemaAddress, getSchemaGeo } from "../../../lib/business-config";
@@ -214,18 +215,18 @@ export default function ReninOttawaPage() {
               <Button
                 variant="primary"
                 size="lg"
-                href="/request-work"
                 className="bg-white text-slate-900 hover:bg-slate-100 shadow-xl font-medium tracking-wider uppercase px-8 py-4 text-lg"
+                asChild
               >
-                Get Same-Day Quote →
+                <Link href="/request-work">Get Same-Day Quote →</Link>
               </Button>
               <Button
                 variant="secondary"
                 size="lg"
-                href="/renin"
                 className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-lg"
+                asChild
               >
-                Browse Renin Collection
+                <Link href="/renin">Browse Renin Collection</Link>
               </Button>
             </div>
           </div>
@@ -568,18 +569,18 @@ export default function ReninOttawaPage() {
             <Button
               variant="primary"
               size="lg"
-              href="/request-work"
               className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl font-medium tracking-wider uppercase px-8 py-4 text-lg"
+              asChild
             >
-              Get Same-Day Quote →
+              <Link href="/request-work">Get Same-Day Quote →</Link>
             </Button>
             <Button
               variant="secondary"
               size="lg"
-              href="mailto:spencer@peoplesgrp.com"
               className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg"
+              asChild
             >
-              Email: spencer@peoplesgrp.com
+              <a href="mailto:spencer@peoplesgrp.com">Email: spencer@peoplesgrp.com</a>
             </Button>
           </div>
           <div className="mt-8 text-blue-200 text-sm">

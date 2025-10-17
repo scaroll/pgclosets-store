@@ -6,7 +6,7 @@
  */
 
 import { Resend } from 'resend';
-import { CustomerProfile } from '../segmentation/customer-segmentation-agent';
+import type { CustomerProfile } from '../segmentation/customer-segmentation-agent';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

@@ -3,9 +3,16 @@ import type { Product } from '@/types/commerce';
 import { unstable_noStore as noStore } from 'next/cache';
 import Link from 'next/link';
 import Image from 'next/image';
-import { formatPrice } from '@/lib/utils';
 import StandardLayout from '@/components/layout/StandardLayout';
 import type { Metadata } from 'next';
+
+// Format price helper
+function formatPrice(price: number, currency: string = 'CAD'): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+  }).format(price);
+}
 
 export const metadata: Metadata = {
   title: 'Door Hardware Ottawa | Renin Closet & Barn Door Hardware | PG Closets',

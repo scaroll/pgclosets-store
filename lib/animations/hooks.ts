@@ -6,8 +6,10 @@
 
 'use client';
 
-import { useEffect, useState, useRef, RefObject } from 'react';
-import { useInView, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion';
+import type { RefObject } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import type { MotionValue } from 'framer-motion';
+import { useInView, useScroll, useTransform, useSpring } from 'framer-motion';
 import { VIEWPORT_MARGIN, SPRING } from './constants';
 
 /**

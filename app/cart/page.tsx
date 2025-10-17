@@ -37,9 +37,11 @@ export default function CartPage() {
           <div className="text-center py-12">
             <h1 className="text-4xl font-extralight tracking-tight text-slate-900 mb-4">Your Cart is Empty</h1>
             <p className="text-slate-600 font-light tracking-wide mb-8">Add some products to get started!</p>
-            <Button asChild className="bg-slate-900 hover:bg-slate-800 font-light tracking-widest">
-              <Link href="/products">Continue Shopping</Link>
-            </Button>
+            <Link href="/products">
+              <Button className="bg-slate-900 hover:bg-slate-800 font-light tracking-widest">
+                Continue Shopping
+              </Button>
+            </Link>
           </div>
         </div>
       </StandardLayout>
@@ -151,9 +153,11 @@ export default function CartPage() {
                 className="w-full"
               />
 
-              <Button variant="ghost" className="w-full" asChild>
-                <Link href="/products">Continue Shopping</Link>
-              </Button>
+              <Link href="/products">
+                <Button variant="ghost" className="w-full">
+                  Continue Shopping
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </div>

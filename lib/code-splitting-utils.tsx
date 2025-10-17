@@ -10,7 +10,7 @@
  */
 
 import dynamic from 'next/dynamic';
-import { ComponentType } from 'react';
+import type { ComponentType } from 'react';
 
 // ============================================================================
 // TYPES & INTERFACES

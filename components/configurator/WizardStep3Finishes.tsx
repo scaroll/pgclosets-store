@@ -1,12 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Card } from "@/components/ui/card"
 import { Check } from "lucide-react"
-import { ConfiguratorState, ProductConfiguratorData } from "@/types/configurator"
+import type { ConfiguratorState, ProductConfiguratorData } from "@/types/configurator"
 import { formatPrice } from "@/lib/door-types"
 
 interface WizardStep3FinishesProps {

@@ -23,7 +23,7 @@ interface MedusaPaymentSectionProps {
 
 export function MedusaPaymentSection({
   cart,
-  shippingInfo,
+  shippingInfo: _shippingInfo,
   paymentSessions,
   total,
   loading,

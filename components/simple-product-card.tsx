@@ -2,7 +2,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "../ui/card"
 import { AddToCartButton } from "./ui/add-to-cart-button"
-import { BadgeChip } from "../ui/badge-chip"
 import { QuickConfigure } from "./configurator/QuickConfigure"
 import type { ProductConfiguratorData } from "@/types/configurator"
 

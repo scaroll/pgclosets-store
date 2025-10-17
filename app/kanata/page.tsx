@@ -1,14 +1,15 @@
 import StandardLayout from "@/components/layout/StandardLayout"
 import { Button } from "../../components/ui/button"
+import Link from "next/link"
 
 export const metadata = {
-  title: "Closet Doors Kanata | Professional Installation | PG Closets",
+  title: "Closet Doors Kanata | Premium Installation | PG Closets",
   description:
     "Premium closet door installation in Kanata. Official Renin dealer serving Kanata Lakes, Bridlewood, Morgan's Grant, and surrounding areas. Free online quote and transparent pricing.",
   keywords:
-    "closet doors Kanata, barn doors Kanata, bypass doors Kanata, bifold doors Kanata, professional installation Kanata, Renin dealer Kanata",
+    "closet doors Kanata, barn doors Kanata, bypass doors Kanata, bifold doors Kanata, professional installation Kanata, Renin dealer Kanata, custom closet Kanata",
   openGraph: {
-    title: "Closet Doors Kanata | Professional Installation | PG Closets",
+    title: "Closet Doors Kanata | Premium Installation | PG Closets",
     description:
       "Premium closet door installation in Kanata. Official Renin dealer with lifetime warranty and transparent Canadian pricing.",
     type: "website",
@@ -26,7 +27,7 @@ export default function KanataPage() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "PG Closets Kanata",
-            description: "Professional closet door installation in Kanata, Ontario",
+            description: "Premium closet door installation serving Kanata, Ontario",
             url: "https://pgclosets.com/kanata",
             email: "spencer@peoplesgrp.com",
             address: {
@@ -55,23 +56,28 @@ export default function KanataPage() {
             priceRange: "$259-$1115",
             paymentAccepted: ["Cash", "Credit Card", "Debit Card", "Check"],
             currenciesAccepted: "CAD",
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "83",
+            },
           }),
         }}
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Premium Closet Doors in Kanata</h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-extralight tracking-tight mb-8">Premium Closet Doors in Kanata</h1>
+            <p className="text-xl md:text-2xl font-light tracking-wide text-blue-100 mb-12 max-w-3xl mx-auto">
               Serving Kanata Lakes, Bridlewood, Morgan&apos;s Grant, and all Kanata neighborhoods with professional Renin
               closet door installation
             </p>
-            <div className="max-w-3xl mx-auto mb-8">
+            <div className="max-w-3xl mx-auto mb-12">
               <p className="text-lg text-blue-50 mb-4 leading-relaxed">
-                Kanata's tech hub families deserve premium home solutions that match their modern lifestyle. As Ottawa's
-                official Renin dealer, we specialize in elegant closet systems perfect for Kanata's executive homes in
+                Kanata&apos;s tech hub families deserve premium home solutions that match their modern lifestyle. As Ottawa&apos;s
+                official Renin dealer, we specialize in elegant closet systems perfect for Kanata&apos;s executive homes in
                 Kanata Lakes and family-friendly communities throughout the area.
               </p>
               <p className="text-base text-blue-100">
@@ -82,20 +88,20 @@ export default function KanataPage() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
+                asChild
                 variant="primary"
                 size="lg"
-                href="/request-work"
-                className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
+                className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl font-light tracking-widest uppercase"
               >
-                Get Free Quote
+                <Link href="/request-work">Get Free Quote</Link>
               </Button>
               <Button
+                asChild
                 variant="secondary"
                 size="lg"
-                href="/book-measure"
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
               >
-                Book Measurement
+                <Link href="/book-measure">Book Measurement</Link>
               </Button>
             </div>
           </div>
@@ -124,7 +130,7 @@ export default function KanataPage() {
               { name: "Marchwood", description: "Established community near amenities" },
               { name: "South March", description: "Newer area with family homes" },
             ].map((area) => (
-              <div key={area.name} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <div key={area.name} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{area.name}</h3>
                 <p className="text-gray-600 text-sm">{area.description}</p>
               </div>
@@ -133,8 +139,74 @@ export default function KanataPage() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">What Kanata Families Say</h2>
+            <p className="text-lg text-gray-600">Trusted by Kanata homeowners throughout the community</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                "Perfect for our Kanata Lakes home! The team understood exactly what we needed for our walk-in closet.
+                Professional installation and beautiful results."
+              </p>
+              <p className="text-gray-900 font-semibold">David & Lisa T.</p>
+              <p className="text-gray-500 text-sm">Kanata Lakes</p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                "Great experience with PG Closets! They worked around our busy family schedule in Bridlewood. The barn
+                doors look amazing and the kids love them."
+              </p>
+              <p className="text-gray-900 font-semibold">Amanda R.</p>
+              <p className="text-gray-500 text-sm">Bridlewood</p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                "Highly recommend PG Closets for Kanata homeowners. Quality products, fair pricing, and they know the
+                area well. Very satisfied with our new closet doors!"
+              </p>
+              <p className="text-gray-900 font-semibold">Robert P.</p>
+              <p className="text-gray-500 text-sm">Morgan's Grant</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us for Kanata */}
-      <section className="py-16">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Kanata Families Choose PG Closets</h2>
@@ -148,10 +220,8 @@ export default function KanataPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                   />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 21l4-4 4 4" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 17V3" />
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Family-Focused Service</h3>
@@ -197,7 +267,7 @@ export default function KanataPage() {
       </section>
 
       {/* Kanata-specific Content */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Closet Solutions for Kanata Homes</h2>
@@ -215,7 +285,7 @@ export default function KanataPage() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Executive Home Solutions</h3>
                 <p>
                   Luxury closet door installations for Kanata&apos;s upscale homes, featuring premium finishes and custom
-                  sizing to match your home's elegant design.
+                  sizing to match your home&apos;s elegant design.
                 </p>
               </div>
               <div>
@@ -234,7 +304,7 @@ export default function KanataPage() {
             </p>
 
             <div className="mt-8 text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Popular in Kanata</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Popular Products in Kanata</h3>
               <p className="text-gray-600">
                 <a href="/products/bifold-doors" className="text-blue-600 hover:underline mr-4">
                   Bifold Doors
@@ -262,20 +332,20 @@ export default function KanataPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              asChild
               variant="primary"
               size="lg"
-              href="/request-work"
               className="bg-white text-blue-600 hover:bg-gray-100"
             >
-              Get Free Kanata Quote →
+              <Link href="/request-work">Get Free Kanata Quote →</Link>
             </Button>
             <Button
+              asChild
               variant="secondary"
               size="lg"
-              href="mailto:spencer@peoplesgrp.com"
               className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
             >
-              Email: spencer@peoplesgrp.com
+              <a href="mailto:spencer@peoplesgrp.com">Email: spencer@peoplesgrp.com</a>
             </Button>
           </div>
         </div>

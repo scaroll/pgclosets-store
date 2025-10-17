@@ -6,8 +6,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useProductPricing, usePriceDisplay } from '@/hooks/use-product-pricing';
-import { useShippingEstimate, useDeliveryEstimate } from '@/hooks/use-shipping-estimate';
+import { useProductPricing } from '@/hooks/use-product-pricing';
+import { useShippingEstimate } from '@/hooks/use-shipping-estimate';
 import FreightEstimatorWidget from '@/components/product/FreightEstimatorWidget';
 import SampleKitCTA from '@/components/product/SampleKitCTA';
 import { PriceDisplay } from '@/lib/pricing/pricing-engine';
@@ -95,7 +95,7 @@ const EXAMPLE_SERIES: ProductSeries = {
 
 export default function EnhancedProductPage() {
   const [selectedFinish, setSelectedFinish] = useState<FinishOption>(
-    EXAMPLE_SERIES.availableFinishes[0]
+    EXAMPLE_SERIES.availableFinishes[0]!
   );
   const [customWidth, setCustomWidth] = useState(72);
   const [customHeight, setCustomHeight] = useState(80);

@@ -9,7 +9,8 @@
  * - Trigger-based automation
  */
 
-import { ESPIntegrationAgent, EmailPayload } from '../esp-integration-agent';
+import type { EmailPayload } from '../esp-integration-agent';
+import { ESPIntegrationAgent } from '../esp-integration-agent';
 
 export type WorkflowTrigger =
   | 'user_signup'

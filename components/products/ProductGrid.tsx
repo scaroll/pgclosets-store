@@ -5,7 +5,7 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { motion, AnimatePresence } from 'framer-motion'
 import { reninProducts, type Product } from '@/data/renin-products'
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -15,9 +15,7 @@ import {
   Filter,
   X,
   ChevronDown,
-  ArrowUpDown,
-  Sparkles,
-  Tag
+  Sparkles
 } from 'lucide-react'
 
 // Dynamically import heavy components (only loaded when needed)

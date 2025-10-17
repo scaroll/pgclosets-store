@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { Shield, CheckCircle } from 'lucide-react'
 
 export const metadata: Metadata = {

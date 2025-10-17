@@ -1,6 +1,7 @@
 'use client'
 
-import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import type { ReactNode} from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 /**
@@ -29,7 +30,7 @@ export function LiveRegion({
   politeness = 'polite',
   role = 'status',
   atomic = true,
-  relevant = 'additions text',
+  relevant = 'text',
   clearAfter,
   className,
   visible = false
@@ -220,6 +221,7 @@ export function RouteAnnouncer({ route, title }: RouteAnnouncerProps) {
 
       return () => clearTimeout(timeout)
     }
+    return undefined
   }, [route, title])
 
   return (

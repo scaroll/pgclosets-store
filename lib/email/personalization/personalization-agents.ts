@@ -5,7 +5,7 @@
  * Agent 10: Product Recommendation Engine
  */
 
-import { CustomerProfile } from '../segmentation/customer-segmentation-agent';
+import type { CustomerProfile } from '../segmentation/customer-segmentation-agent';
 
 // AGENT 9: Dynamic Content Engine
 export class DynamicContentAgent {

@@ -112,11 +112,11 @@ export class EmailPerformanceAgent {
 
     return Object.entries(INDUSTRY_BENCHMARKS).map(([metric, benchmark]) => ({
       metric,
-      value: metrics[metric as keyof PerformanceMetrics] as number,
+      value: metrics[metric as keyof PerformanceMetrics],
       benchmark,
       performance:
-        (metrics[metric as keyof PerformanceMetrics] as number) > benchmark * 1.1 ? 'above' :
-        (metrics[metric as keyof PerformanceMetrics] as number) < benchmark * 0.9 ? 'below' : 'at'
+        (metrics[metric as keyof PerformanceMetrics]) > benchmark * 1.1 ? 'above' :
+        (metrics[metric as keyof PerformanceMetrics]) < benchmark * 0.9 ? 'below' : 'at'
     }));
   }
 

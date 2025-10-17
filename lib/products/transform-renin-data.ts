@@ -371,7 +371,7 @@ function processProductMedia(
     const media: MediaAsset = {
       id: mediaId,
       url,
-      altText: `${legacyProduct.name} - ${index === 0 ? 'Primary' : 'View ' + index}`,
+      altText: `${legacyProduct.name} - ${index === 0 ? 'Primary' : `View ${  index}`}`,
 
       // Estimate dimensions (will need actual measurement)
       width: isHD ? 2048 : 1024,

@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { X, ExternalLink, Share2 } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/ui/dialog';
+import { Dialog, DialogContent } from '@/ui/dialog';
 import { Button } from '@/ui/button';
 import { Badge } from '@/ui/badge';
 import VideoPlayer from './VideoPlayer';

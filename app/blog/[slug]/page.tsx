@@ -426,20 +426,20 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              asChild
               variant="primary"
               size="lg"
-              href="/request-work"
               className="bg-white text-blue-600 hover:bg-gray-100"
             >
-              Get Free Quote →
+              <Link href="/request-work">Get Free Quote →</Link>
             </Button>
             <Button
+              asChild
               variant="secondary"
               size="lg"
-              href="/products"
               className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
             >
-              Browse Products
+              <Link href="/products">Browse Products</Link>
             </Button>
           </div>
         </div>

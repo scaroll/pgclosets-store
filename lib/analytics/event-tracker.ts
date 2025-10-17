@@ -4,7 +4,6 @@
 import { getAnalytics } from '../analytics'
 import type {
   AnalyticsProductItem,
-  GA4EventParameters,
   LeadAnalyticsData
 } from '../../types/analytics'
 

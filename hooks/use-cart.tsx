@@ -42,13 +42,29 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
       if (existingItemIndex > -1) {
         const updatedItems = [...state.items]
-        updatedItems[existingItemIndex].quantity += quantity
+        const existingItem = updatedItems[existingItemIndex]
+        if (existingItem) {
+          existingItem.quantity += quantity
+        }
         return { ...state, items: updatedItems }
+      }
+
+      const newItem: CartItem = {
+        product,
+        quantity
+      }
+
+      if (selectedSize) {
+        newItem.selectedSize = selectedSize
+      }
+
+      if (selectedFinish) {
+        newItem.selectedFinish = selectedFinish
       }
 
       return {
         ...state,
-        items: [...state.items, { product, quantity, selectedSize, selectedFinish }],
+        items: [...state.items, newItem],
       }
     }
 

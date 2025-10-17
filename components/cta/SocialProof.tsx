@@ -91,8 +91,8 @@ export const SocialProof: React.FC<SocialProofProps> = ({
         )}
       >
         <div className="relative flex h-3 w-3">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
         </div>
         <div className="text-sm">
           <span className="font-semibold text-green-900">12 people</span>
@@ -172,8 +172,8 @@ export const LiveActivity: React.FC<{
       )}
     >
       <div className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
       </div>
       <div className="text-xs">
         <span className="font-semibold text-blue-900">{action}</span>

@@ -2,8 +2,6 @@
 // Comprehensive journey mapping with multi-touch attribution and LTV calculation
 
 import type {
-  AnalyticsProductItem,
-  UserJourneyStep,
   TrafficSource,
   DeviceInfo
 } from '../../types/analytics'

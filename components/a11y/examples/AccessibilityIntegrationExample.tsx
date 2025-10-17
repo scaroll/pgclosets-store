@@ -15,7 +15,6 @@ import {
   LiveRegion,
   LoadingAnnouncer,
   KeyboardShortcuts,
-  useKeyboardShortcut,
   type KeyboardShortcut
 } from '@/components/a11y'
 import { useAccessibility } from '@/components/accessibility/AccessibilityProvider'
@@ -24,7 +23,7 @@ export function AccessibilityIntegrationExample() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [cartMessage, setCartMessage] = useState<string | null>(null)
-  const { settings, announceToScreenReader } = useAccessibility()
+  const { announceToScreenReader } = useAccessibility()
 
   // Define keyboard shortcuts
   const shortcuts: KeyboardShortcut[] = [
@@ -60,14 +59,14 @@ export function AccessibilityIntegrationExample() {
   // Example: Add to cart with accessibility announcements
   const handleAddToCart = async () => {
     setIsLoading(true)
-    announceToScreenReader('Adding item to cart', 'polite')
+    announceToScreenReader('Adding item to cart')
 
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
     setIsLoading(false)
     setCartMessage('Item added to cart successfully')
-    announceToScreenReader('Item added to cart', 'assertive')
+    announceToScreenReader('Item added to cart!')
 
     // Clear message after delay
     setTimeout(() => setCartMessage(null), 3000)

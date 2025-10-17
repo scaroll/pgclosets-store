@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Sparkles } from 'lucide-react'
@@ -29,7 +29,7 @@ export default function NewArrivalsPage() {
           </p>
           <div className="flex gap-4 justify-center">
             <Link href="/products">
-              <Button size="lg" variant="default">View All Products</Button>
+              <Button size="lg" variant="primary">View All Products</Button>
             </Link>
             <Link href="/request-work">
               <Button size="lg" variant="outline">Get Free Quote</Button>

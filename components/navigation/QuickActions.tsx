@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Phone, Mail, Image as ImageIcon, Calendar } from "lucide-react"
+import { Mail, Image as ImageIcon, Calendar } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { trackNavigationClick } from "@/lib/analytics/enhanced-tracking"
 

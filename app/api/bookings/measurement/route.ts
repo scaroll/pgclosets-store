@@ -1,9 +1,10 @@
-import { NextRequest, NextResponse } from "next/server"
+import type { NextRequest} from "next/server";
+import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 import { createProtectedRoute, rateLimitConfigs } from "@/lib/validation/middleware"
-import { measurementBookingSchema, type MeasurementBookingData } from "@/lib/validation/schemas"
+import type { MeasurementBookingData } from "@/lib/validation/schemas"
+import { measurementBookingSchema } from "@/lib/validation/schemas"
 import { sanitizeObject, sanitizationPresets } from "@/lib/validation/sanitization"
-import { products } from "@/app/products/products-data"
 
 // Time slots available for booking (9 AM to 4 PM)
 const AVAILABLE_TIME_SLOTS = [
@@ -30,105 +31,16 @@ const sendSlackNotification = async (payload: unknown) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     })
-  } catch (error) {
-    console.warn("[measurement-booking] Failed to notify Slack", error)
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error"
+    console.warn("[measurement-booking] Failed to notify Slack:", errorMessage)
   }
 }
 
-const sendEmailNotification = async (bookingData: MeasurementBookingData, confirmationNumber: string) => {
+const sendEmailNotification = async (_bookingData: MeasurementBookingData, _confirmationNumber: string) => {
   // In a real implementation, you would integrate with your email service
   // For example: SendGrid, AWS SES, Mailgun, etc.
-
-  const customerEmail = {
-    to: bookingData.customer.email,
-    subject: `Measurement Appointment Confirmed - ${confirmationNumber}`,
-    html: `
-      <h2>Your Measurement Appointment is Confirmed!</h2>
-      <p>Dear ${bookingData.customer.firstName} ${bookingData.customer.lastName},</p>
-
-      <p>Thank you for booking a free online quote with PG Closets. Here are your appointment details:</p>
-
-      <div style="background: var(--color-bg-secondary); padding: 20px; border-radius: 8px; margin: 20px 0;">
-        <h3>Appointment Details</h3>
-        <p><strong>Confirmation Number:</strong> ${confirmationNumber}</p>
-        <p><strong>Date:</strong> ${new Date(bookingData.booking.preferredDate).toLocaleDateString()}</p>
-        <p><strong>Time:</strong> ${bookingData.booking.preferredTime}</p>
-        <p><strong>Duration:</strong> Approximately 2 hours</p>
-        <p><strong>Address:</strong> ${bookingData.address.street}, ${bookingData.address.city}, ${bookingData.address.province} ${bookingData.address.postalCode}</p>
-      </div>
-
-      <h3>What to Expect</h3>
-      <ul>
-        <li>Our professional measurement specialist will arrive at your scheduled time</li>
-        <li>We'll take precise measurements of your space</li>
-        <li>Discuss your project requirements and preferences</li>
-        <li>Provide recommendations based on your selected products</li>
-        <li>Answer any questions you may have</li>
-      </ul>
-
-      <h3>Before Your Appointment</h3>
-      <ul>
-        <li>Please ensure the areas to be measured are accessible</li>
-        <li>Remove any items that might obstruct measurements</li>
-        <li>Have any inspiration photos or ideas ready to share</li>
-      </ul>
-
-      <p>If you need to reschedule or have any questions, please contact us at <a href="mailto:info@pgclosets.ca">info@pgclosets.ca</a>.</p>
-
-      <p>We look forward to helping you create your perfect space!</p>
-
-      <p>Best regards,<br>The PG Closets Team</p>
-    `
-  };
-
-  const adminEmail = {
-    to: "info@pgclosets.ca",
-    subject: `New Measurement Booking - ${confirmationNumber}`,
-    html: `
-      <h2>New Measurement Booking Received</h2>
-
-      <div style="background: var(--color-bg-secondary); padding: 20px; border-radius: 8px; margin: 20px 0;">
-        <h3>Customer Information</h3>
-        <p><strong>Name:</strong> ${bookingData.customer.firstName} ${bookingData.customer.lastName}</p>
-        <p><strong>Email:</strong> ${bookingData.customer.email}</p>
-        <p><strong>Phone:</strong> ${bookingData.customer.phone}</p>
-
-        <h3>Appointment Details</h3>
-        <p><strong>Confirmation Number:</strong> ${confirmationNumber}</p>
-        <p><strong>Date:</strong> ${new Date(bookingData.booking.preferredDate).toLocaleDateString()}</p>
-        <p><strong>Time:</strong> ${bookingData.booking.preferredTime}</p>
-        <p><strong>Address:</strong> ${bookingData.address.street}, ${bookingData.address.city}, ${bookingData.address.province} ${bookingData.address.postalCode}</p>
-        <p><strong>Urgency:</strong> ${bookingData.booking.urgency}</p>
-
-        <h3>Project Details</h3>
-        <p><strong>Description:</strong> ${bookingData.booking.projectDescription}</p>
-
-        <h3>Interested Products</h3>
-        <ul>
-          ${bookingData.booking.interestedProducts.map(productId => {
-            const product = products.find(p => p.id === productId);
-            return `<li>${product ? product.name : productId}</li>`;
-          }).join('')}
-        </ul>
-
-        <h3>Rooms</h3>
-        <ul>
-          ${bookingData.booking.rooms.map(room =>
-            `<li><strong>${room.roomType}</strong>${room.dimensions ? ` - ${room.dimensions}` : ''}${room.notes ? ` (${room.notes})` : ''}</li>`
-          ).join('')}
-        </ul>
-
-        ${bookingData.notes ? `<p><strong>Additional Notes:</strong> ${bookingData.notes}</p>` : ''}
-      </div>
-    `
-  };
-
-  // Log email details (in production, you would actually send these emails)
-  console.log("[measurement-booking] Email notifications prepared:", {
-    customer: customerEmail.to,
-    admin: adminEmail.to,
-    confirmationNumber
-  });
+  // Email notifications would be sent here in production
 }
 
 function generateConfirmationNumber(): string {
@@ -143,7 +55,12 @@ function isWorkingDay(date: Date): boolean {
   return BOOKING_RULES.workingDays.includes(dayOfWeek);
 }
 
-function getTimeSlotAvailability(date: string, existingBookings: any[]): { time: string; available: boolean; reason?: string }[] {
+interface BookingRecord {
+  scheduled_date_time: string;
+  status: string;
+}
+
+function getTimeSlotAvailability(date: string, existingBookings: BookingRecord[]): { time: string; available: boolean; reason?: string }[] {
   const bookingDate = new Date(date);
 
   // Check if it's a working day
@@ -168,11 +85,16 @@ function getTimeSlotAvailability(date: string, existingBookings: any[]): { time:
       return timeStr === time;
     });
 
-    return {
+    const slot: { time: string; available: boolean; reason?: string } = {
       time,
-      available: !isBooked,
-      reason: isBooked ? "Time slot already booked" : undefined
+      available: !isBooked
     };
+
+    if (isBooked) {
+      slot.reason = "Time slot already booked";
+    }
+
+    return slot;
   });
 }
 
@@ -190,7 +112,7 @@ async function handleMeasurementBooking(
   const bookingId = `booking_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const scheduledDateTime = new Date(`${sanitizedData.booking.preferredDate}T${sanitizedData.booking.preferredTime}:00`);
 
-  const supabase = createClient();
+  const supabase = await createClient();
 
   // Check if the time slot is still available
   const { data: existingBookings, error: fetchError } = await supabase
@@ -201,18 +123,19 @@ async function handleMeasurementBooking(
     .lte("scheduled_date_time", new Date(Date.now() + BOOKING_RULES.maxAdvanceDays * 24 * 60 * 60 * 1000).toISOString());
 
   if (fetchError) {
-    console.error("[measurement-booking] Database fetch error:", fetchError);
-    throw new Error("Failed to check availability");
+    const errorMessage = fetchError.message ?? "Unknown database error"
+    console.error("[measurement-booking] Database fetch error:", errorMessage)
+    throw new Error("Failed to check availability")
   }
 
-  const availability = getTimeSlotAvailability(sanitizedData.booking.preferredDate, existingBookings || []);
+  const availability = getTimeSlotAvailability(sanitizedData.booking.preferredDate, existingBookings ?? []);
   const requestedSlot = availability.find(slot => slot.time === sanitizedData.booking.preferredTime);
 
   if (!requestedSlot?.available) {
     return NextResponse.json({
       success: false,
       error: "Time slot no longer available",
-      reason: requestedSlot?.reason || "Unknown availability issue"
+      reason: requestedSlot?.reason ?? "Unknown availability issue"
     }, { status: 409 });
   }
 
@@ -241,24 +164,26 @@ async function handleMeasurementBooking(
     interested_products: sanitizedData.booking.interestedProducts,
     urgency: sanitizedData.booking.urgency,
     rooms: sanitizedData.booking.rooms,
-    notes: sanitizedData.notes || null,
+    notes: sanitizedData.notes ?? null,
 
     // Metadata
     created_at: new Date().toISOString(),
     metadata: {
-      userAgent: request.headers.get("user-agent")?.substring(0, 200),
-      referer: request.headers.get("referer") || request.headers.get("origin"),
-      ip: request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown",
+      userAgent: request.headers.get("user-agent")?.substring(0, 200) ?? null,
+      referer: request.headers.get("referer") ?? request.headers.get("origin") ?? null,
+      ip: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown",
     },
   };
 
-  const { error: insertError } = await supabase
+  const supabaseForInsert = await createClient();
+  const { error: insertError } = await supabaseForInsert
     .from("measurement_bookings")
     .insert(bookingRecord);
 
   if (insertError) {
-    console.error("[measurement-booking] Database insert error:", insertError);
-    throw new Error("Failed to create booking");
+    const errorMessage = insertError.message ?? "Unknown database error"
+    console.error("[measurement-booking] Database insert error:", errorMessage)
+    throw new Error("Failed to create booking")
   }
 
   // Send notifications
@@ -292,8 +217,9 @@ async function handleMeasurementBooking(
     };
 
     await sendSlackNotification(slackPayload);
-  } catch (notificationError) {
-    console.warn("[measurement-booking] Notification error:", notificationError);
+  } catch (notificationError: unknown) {
+    const errorMessage = notificationError instanceof Error ? notificationError.message : "Unknown error"
+    console.warn("[measurement-booking] Notification error:", errorMessage)
     // Don't fail the booking if notifications fail
   }
 
@@ -322,7 +248,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const supabase = createClient();
+    const supabase = await createClient();
 
     // Get existing bookings for the date
     const { data: existingBookings, error } = await supabase
@@ -333,11 +259,12 @@ export async function GET(request: NextRequest) {
       .lt("scheduled_date_time", `${date}T23:59:59.999Z`);
 
     if (error) {
-      console.error("[measurement-booking] Availability check error:", error);
-      throw new Error("Failed to check availability");
+      const errorMessage = error.message ?? "Unknown database error"
+      console.error("[measurement-booking] Availability check error:", errorMessage)
+      throw new Error("Failed to check availability")
     }
 
-    const availability = getTimeSlotAvailability(date, existingBookings || []);
+    const availability = getTimeSlotAvailability(date, existingBookings ?? []);
 
     return NextResponse.json({
       success: true,
@@ -347,12 +274,13 @@ export async function GET(request: NextRequest) {
       }
     });
 
-  } catch (error) {
-    console.error("[measurement-booking] GET error:", error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error"
+    console.error("[measurement-booking] GET error:", errorMessage)
     return NextResponse.json({
       success: false,
       error: "Failed to check availability"
-    }, { status: 500 });
+    }, { status: 500 })
   }
 }
 

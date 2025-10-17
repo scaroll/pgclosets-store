@@ -25,7 +25,7 @@ export function renderWithProviders(
 }
 
 // Wait for async operations
-export const wait For = (ms: number) =>
+export const waitFor = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms))
 
 // Create mock router

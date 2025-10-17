@@ -44,7 +44,7 @@ interface CartSession {
 }
 
 interface CartEvent {
-  type: 'add_item' | 'remove_item' | 'update_quantity' | 'apply_coupon' | 'remove_coupon' | 'proceed_checkout' | 'abandon'
+  type: 'add_item' | 'remove_item' | 'update_quantity' | 'apply_coupon' | 'remove_coupon' | 'proceed_checkout' | 'abandon' | 'session_start' | 'cart_value_change' | 'stage_progression' | 'checkout_complete' | 'abandonment' | 'page_hidden' | 'page_visible'
   timestamp: number
   data: any
 }
@@ -96,7 +96,7 @@ class CartAbandonmentTracker {
     const sessionId = this.generateSessionId()
     this.currentSession = {
       sessionId,
-      userId,
+      ...(userId !== undefined && { userId }),
       startTime: Date.now(),
       lastActivity: Date.now(),
       items: [],
@@ -156,7 +156,10 @@ class CartAbandonmentTracker {
 
     if (existingItemIndex >= 0) {
       // Update quantity
-      this.currentSession.items[existingItemIndex].quantity += item.quantity
+      const existingItem = this.currentSession.items[existingItemIndex]
+      if (existingItem) {
+        existingItem.quantity += item.quantity
+      }
     } else {
       // Add new item
       this.currentSession.items.push(item)
@@ -192,18 +195,20 @@ class CartAbandonmentTracker {
     const itemIndex = this.currentSession.items.findIndex(item => item.item_id === itemId)
     if (itemIndex >= 0) {
       const removedItem = this.currentSession.items[itemIndex]
-      this.currentSession.items.splice(itemIndex, 1)
-      this.currentSession.value = this.calculateCartValue()
-      this.currentSession.lastActivity = Date.now()
+      if (removedItem) {
+        this.currentSession.items.splice(itemIndex, 1)
+        this.currentSession.value = this.calculateCartValue()
+        this.currentSession.lastActivity = Date.now()
 
-      this.trackEvent('remove_item', {
-        item_id: removedItem.item_id,
-        item_name: removedItem.item_name,
-        item_price: removedItem.price,
-        quantity: removedItem.quantity,
-        cart_value: this.currentSession.value,
-        cart_size: this.currentSession.items.length
-      })
+        this.trackEvent('remove_item', {
+          item_id: removedItem.item_id,
+          item_name: removedItem.item_name,
+          item_price: removedItem.price,
+          quantity: removedItem.quantity,
+          cart_value: this.currentSession.value,
+          cart_size: this.currentSession.items.length
+        })
+      }
 
       this.saveSession()
 
@@ -302,7 +307,7 @@ class CartAbandonmentTracker {
 
     const abandonmentEvent: CartAbandonmentEvent = {
       sessionId: this.currentSession.sessionId,
-      userId: this.currentSession.userId,
+      ...(this.currentSession.userId !== undefined && { userId: this.currentSession.userId }),
       abandonmentTime: Date.now(),
       cartValue: this.currentSession.value,
       itemCount: this.currentSession.items.length,
@@ -520,8 +525,9 @@ class CartAbandonmentTracker {
       return counts
     }, {} as Record<string, number>)
 
-    return Object.entries(stageCounts)
-      .sort(([,a], [,b]) => b - a)[0][0]
+    const sorted = Object.entries(stageCounts).sort(([,a], [,b]) => b - a)
+    const mostCommon = sorted[0]
+    return mostCommon ? mostCommon[0] : 'none'
   }
 
   private calculateAverageTimeInCart(abandonments: CartAbandonmentEvent[]): number {

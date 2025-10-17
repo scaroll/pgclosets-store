@@ -110,7 +110,7 @@ async function runTests() {
     console.log(`     Has more: ${page1.hasMore}`);
 
     // Summary
-    console.log('\n' + '━'.repeat(60));
+    console.log(`\n${  '━'.repeat(60)}`);
     console.log('✅ All tests completed successfully!');
     console.log('━'.repeat(60));
 

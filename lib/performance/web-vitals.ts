@@ -5,7 +5,8 @@
  * to analytics for performance monitoring.
  */
 
-import { onCLS, onINP, onLCP, onFCP, onTTFB, Metric } from 'web-vitals'
+import type { Metric } from 'web-vitals';
+import { onCLS, onINP, onLCP, onFCP, onTTFB } from 'web-vitals'
 import { trackEvent, trackTiming } from '@/lib/analytics/gtm'
 
 /**
@@ -54,7 +55,7 @@ function sendToAnalytics(metric: Metric) {
   const { name, value, delta, id, navigationType } = metric
 
   // Get rating
-  const rating = getRating(name as keyof typeof THRESHOLDS, value)
+  const rating = getRating(name, value)
 
   // Track as web vitals event
   trackEvent('web_vitals', {
@@ -89,7 +90,7 @@ function sendToAnalytics(metric: Metric) {
   if (rating === 'poor') {
     console.warn(
       `[Web Vitals] Poor ${name}: ${Math.round(value)} (threshold: ${
-        THRESHOLDS[name as keyof typeof THRESHOLDS].poor
+        THRESHOLDS[name].poor
       })`
     )
   }
@@ -303,7 +304,7 @@ export function getPerformanceEntries() {
 export function getResourceTimings() {
   if (typeof window === 'undefined') return []
 
-  return performance.getEntriesByType('resource') as PerformanceResourceTiming[]
+  return performance.getEntriesByType('resource')
 }
 
 /**
@@ -312,7 +313,7 @@ export function getResourceTimings() {
 export function getNavigationTiming() {
   if (typeof window === 'undefined') return null
 
-  const [entry] = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[]
+  const [entry] = performance.getEntriesByType('navigation')
   return entry || null
 }
 

@@ -218,7 +218,7 @@ export function AccessibilityProvider({ children }: AccessibilityProviderProps) 
   )
 }
 
-function AccessibilityStyles({ settings }: { settings: AccessibilitySettings }) {
+function AccessibilityStyles({ settings: _settings }: { settings: AccessibilitySettings }) {
   return (
     <style jsx global>{`
       /* Reduced Motion */
@@ -375,6 +375,7 @@ export function useKeyboardNavigation() {
       document.addEventListener('keydown', handleKeyDown)
       return () => document.removeEventListener('keydown', handleKeyDown)
     }
+    return undefined
   }, [settings.keyboardNavigation])
 }
 

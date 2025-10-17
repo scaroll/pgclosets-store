@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { ConfiguratorState, ProductConfiguratorData, EstimateResult } from "@/types/configurator"
+import type { ConfiguratorState, ProductConfiguratorData, EstimateResult } from "@/types/configurator"
 import { ConfiguratorCalculator } from "@/lib/configurator-calculator"
 import { trackEvent } from "@/lib/analytics/events"
 import { getInitialEstimatorState } from "@/lib/estimator-defaults"

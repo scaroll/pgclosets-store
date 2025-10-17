@@ -39,7 +39,7 @@ export function Breadcrumbs({
     const paths = pathname?.split("/").filter(Boolean) || []
 
     const generatedItems: BreadcrumbItem[] = paths.map((path, index) => {
-      const href = "/" + paths.slice(0, index + 1).join("/")
+      const href = `/${  paths.slice(0, index + 1).join("/")}`
 
       // Convert kebab-case to Title Case and apply custom labels
       const label = customLabels[path] || path
@@ -176,7 +176,7 @@ function MobileBreadcrumbs({ items, customLabels = {} }: BreadcrumbsProps) {
     if (paths.length <= 1) return null
 
     const parentPath = paths[paths.length - 2]
-    const href = "/" + paths.slice(0, -1).join("/")
+    const href = `/${  paths.slice(0, -1).join("/")}`
     const label = customLabels[parentPath] || parentPath
       .split("-")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))

@@ -250,7 +250,7 @@ export default function MeasurementScheduler({ onSuccess, className = '' }: Meas
   // Format time for display
   const formatTime = (time: string) => {
     const [hour] = time.split(':')
-    const hourNum = parseInt(hour)
+    const hourNum = parseInt(hour!)
     return hourNum <= 12 ? `${hourNum}:00 AM` : `${hourNum - 12}:00 PM`
   }
 

@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ConfiguratorCalculator } from "@/lib/configurator-calculator";
-import { ConfiguratorState, ProductConfiguratorData, EstimateResult } from "@/types/configurator";
+import type { ConfiguratorState, ProductConfiguratorData, EstimateResult } from "@/types/configurator";
 import { ConfiguratorDataAdapter } from "@/lib/configurator-adapter";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { trackWizardProgress, trackQuoteRequest } from "@/lib/analytics/enhanced-tracking";

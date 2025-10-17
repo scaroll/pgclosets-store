@@ -30,7 +30,7 @@ export function MobileStickyCTA() {
 
   // Check if current path should show CTA
   const shouldShow = SHOW_ON_PATHS.some(path =>
-    pathname === path || pathname?.startsWith(path + '/')
+    pathname === path || pathname?.startsWith(`${path  }/`)
   );
 
   // Detect mobile viewport

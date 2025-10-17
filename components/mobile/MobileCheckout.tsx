@@ -101,7 +101,7 @@ export function MobileCheckout({
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-CA', {
       style: 'currency',
-      currency: currency
+      currency
     }).format(amount);
   };
 

@@ -5,7 +5,6 @@ import {
   Clock,
   CheckCircle,
   MapPin,
-  Phone,
   Mail,
   Ruler,
   Star,
@@ -42,7 +41,7 @@ export default function BookMeasurementPage() {
               <Heading level={1} className="mb-6 text-white">
                 Free Professional Measurement Service
               </Heading>
-              <Text variant="large" className="mb-8 text-blue-100">
+              <Text size="lg" className="mb-8 text-blue-100">
                 Get precise measurements and expert recommendations for your Renin closet doors,
                 barn doors, and hardware. Our professional measurement service ensures perfect
                 fit and optimal functionality.
@@ -100,7 +99,7 @@ export default function BookMeasurementPage() {
             <Heading level={2} className="mb-4">
               Why Choose Professional Measurement?
             </Heading>
-            <Text variant="body" className="max-w-3xl mx-auto">
+            <Text size="base" className="max-w-3xl mx-auto">
               Accurate measurements are crucial for the perfect fit and function of your Renin products.
               Our experienced professionals ensure every detail is captured correctly.
             </Text>
@@ -112,7 +111,7 @@ export default function BookMeasurementPage() {
                 <Ruler className="w-8 h-8 text-blue-600" />
               </div>
               <Heading level={3} className="mb-4">Precision Accuracy</Heading>
-              <Text variant="body">
+              <Text size="base">
                 Professional-grade tools and techniques ensure measurements are accurate to the millimeter,
                 preventing costly mistakes and ensuring perfect fit.
               </Text>
@@ -123,7 +122,7 @@ export default function BookMeasurementPage() {
                 <Users className="w-8 h-8 text-green-600" />
               </div>
               <Heading level={3} className="mb-4">Expert Consultation</Heading>
-              <Text variant="body">
+              <Text size="base">
                 Our specialists provide recommendations on the best Renin products for your space,
                 considering functionality, aesthetics, and budget.
               </Text>
@@ -134,7 +133,7 @@ export default function BookMeasurementPage() {
                 <Shield className="w-8 h-8 text-purple-600" />
               </div>
               <Heading level={3} className="mb-4">Quality Guarantee</Heading>
-              <Text variant="body">
+              <Text size="base">
                 All measurements come with our quality guarantee. If there's an issue with our measurements,
                 we'll make it right at no additional cost.
               </Text>
@@ -150,7 +149,7 @@ export default function BookMeasurementPage() {
             <Heading level={2} className="mb-4">
               How Our Measurement Service Works
             </Heading>
-            <Text variant="body">
+            <Text size="base">
               Our streamlined process makes it easy to get professional measurements for your project.
             </Text>
           </div>
@@ -161,7 +160,7 @@ export default function BookMeasurementPage() {
                 1
               </div>
               <Heading level={3} className="mb-2">Book Online</Heading>
-              <Text variant="body">
+              <Text size="base">
                 Schedule your free online quote appointment using our easy online booking system.
               </Text>
             </div>
@@ -171,7 +170,7 @@ export default function BookMeasurementPage() {
                 2
               </div>
               <Heading level={3} className="mb-2">Confirmation Call</Heading>
-              <Text variant="body">
+              <Text size="base">
                 Our team will contact you within 24 hours to confirm your appointment and discuss your project.
               </Text>
             </div>
@@ -181,7 +180,7 @@ export default function BookMeasurementPage() {
                 3
               </div>
               <Heading level={3} className="mb-2">Professional Visit</Heading>
-              <Text variant="body">
+              <Text size="base">
                 Our measurement specialist visits your location and takes precise measurements of your space.
               </Text>
             </div>
@@ -191,7 +190,7 @@ export default function BookMeasurementPage() {
                 4
               </div>
               <Heading level={3} className="mb-2">Detailed Quote</Heading>
-              <Text variant="body">
+              <Text size="base">
                 Receive a comprehensive quote with product recommendations and installation details within 48 hours.
               </Text>
             </div>
@@ -206,7 +205,7 @@ export default function BookMeasurementPage() {
             <Heading level={2} className="mb-4">
               Ottawa Area Service Coverage
             </Heading>
-            <Text variant="body">
+            <Text size="base">
               We proudly serve the greater Ottawa area with our free online quote service.
             </Text>
           </div>
@@ -248,11 +247,11 @@ export default function BookMeasurementPage() {
                   <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <Text variant="body" className="mb-4">
+              <Text size="base" className="mb-4">
                 "The measurement service was incredibly professional. They caught details I would have
                 missed and saved me from a costly mistake. The final installation was perfect!"
               </Text>
-              <Text variant="body" className="font-semibold">Sarah M., Kanata</Text>
+              <Text size="base" className="font-semibold">Sarah M., Kanata</Text>
             </Card>
 
             <Card>
@@ -261,11 +260,11 @@ export default function BookMeasurementPage() {
                   <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <Text variant="body" className="mb-4">
+              <Text size="base" className="mb-4">
                 "Free measurement service that's actually valuable! They provided great recommendations
                 and the quote was very detailed. Highly recommend PG Closets."
               </Text>
-              <Text variant="body" className="font-semibold">Mike R., Orleans</Text>
+              <Text size="base" className="font-semibold">Mike R., Orleans</Text>
             </Card>
 
             <Card>
@@ -274,11 +273,11 @@ export default function BookMeasurementPage() {
                   <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <Text variant="body" className="mb-4">
+              <Text size="base" className="mb-4">
                 "The team was punctual, professional, and thorough. They explained everything clearly
                 and helped us choose the best Renin products for our needs."
               </Text>
-              <Text variant="body" className="font-semibold">Jennifer L., Nepean</Text>
+              <Text size="base" className="font-semibold">Jennifer L., Nepean</Text>
             </Card>
           </div>
         </div>
@@ -298,7 +297,7 @@ export default function BookMeasurementPage() {
               <Heading level={3} className="mb-2">
                 Is the measurement service really free?
               </Heading>
-              <Text variant="body">
+              <Text size="base">
                 Yes, our professional measurement service is completely free with no strings attached.
                 We believe in providing value upfront and earning your business through quality service.
               </Text>
@@ -308,7 +307,7 @@ export default function BookMeasurementPage() {
               <Heading level={3} className="mb-2">
                 How long does a measurement appointment take?
               </Heading>
-              <Text variant="body">
+              <Text size="base">
                 Most measurement appointments take between 1-2 hours, depending on the complexity and
                 number of spaces being measured. We'll provide an estimated duration when we confirm your appointment.
               </Text>
@@ -318,7 +317,7 @@ export default function BookMeasurementPage() {
               <Heading level={3} className="mb-2">
                 What should I do to prepare for the measurement visit?
               </Heading>
-              <Text variant="body">
+              <Text size="base">
                 Please ensure the areas to be measured are accessible and clear of obstructions.
                 It's helpful to have any inspiration photos or specific requirements ready to discuss.
               </Text>
@@ -328,7 +327,7 @@ export default function BookMeasurementPage() {
               <Heading level={3} className="mb-2">
                 Do you provide measurements for DIY installations?
               </Heading>
-              <Text variant="body">
+              <Text size="base">
                 Yes, we provide detailed measurements and installation guidance for DIY customers.
                 We can also arrange professional installation if you prefer.
               </Text>
@@ -338,7 +337,7 @@ export default function BookMeasurementPage() {
               <Heading level={3} className="mb-2">
                 What if I need to reschedule my appointment?
               </Heading>
-              <Text variant="body">
+              <Text size="base">
                 You can reschedule your appointment by emailing info@pgclosets.ca. We ask for at least 24 hours notice when possible.
               </Text>
             </Card>
@@ -347,7 +346,7 @@ export default function BookMeasurementPage() {
               <Heading level={3} className="mb-2">
                 How quickly will I receive my quote after the measurement?
               </Heading>
-              <Text variant="body">
+              <Text size="base">
                 We typically provide detailed quotes within 24-48 hours after the measurement visit.
                 Quotes include product recommendations, pricing, and installation details.
               </Text>
@@ -357,7 +356,7 @@ export default function BookMeasurementPage() {
               <Heading level={3} className="mb-2">
                 Can you measure multiple rooms in one visit?
               </Heading>
-              <Text variant="body">
+              <Text size="base">
                 Absolutely! We can measure multiple rooms, closets, or spaces during a single visit.
                 Just let us know all the areas you'd like measured when booking your appointment.
               </Text>
@@ -373,7 +372,7 @@ export default function BookMeasurementPage() {
             <Heading level={2} className="mb-4">
               Book Your Free Online Quote Appointment
             </Heading>
-            <Text variant="body">
+            <Text size="base">
               Ready to get started? Schedule your professional measurement consultation today.
             </Text>
           </div>
@@ -389,15 +388,15 @@ export default function BookMeasurementPage() {
             <div className="text-center">
               <Mail className="w-8 h-8 mx-auto mb-4 text-blue-400" />
               <Heading level={3} className="mb-2 text-white">Email Us</Heading>
-              <Text variant="body" className="text-gray-300">info@pgclosets.ca</Text>
-              <Text variant="small" className="text-gray-400">We respond within 24 hours</Text>
+              <Text size="base" className="text-gray-300">info@pgclosets.ca</Text>
+              <Text size="sm" className="text-gray-400">We respond within 24 hours</Text>
             </div>
 
             <div className="text-center">
               <MessageCircle className="w-8 h-8 mx-auto mb-4 text-blue-400" />
               <Heading level={3} className="mb-2 text-white">Contact Form</Heading>
-              <Text variant="body" className="text-gray-300">Available on our website</Text>
-              <Text variant="small" className="text-gray-400">Fast response guaranteed</Text>
+              <Text size="base" className="text-gray-300">Available on our website</Text>
+              <Text size="sm" className="text-gray-400">Fast response guaranteed</Text>
             </div>
           </div>
 

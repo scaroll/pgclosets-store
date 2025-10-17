@@ -5,7 +5,7 @@
  * panel count, finishes, and add-ons.
  */
 
-import { ProductConfiguratorData, ConfiguratorState, EstimateResult } from '@/types/configurator';
+import type { ProductConfiguratorData, ConfiguratorState, EstimateResult } from '@/types/configurator';
 
 export class ConfiguratorCalculator {
   /**

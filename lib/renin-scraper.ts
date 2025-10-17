@@ -14,7 +14,8 @@
  * - 1 Database Migration Agent
  */
 
-import { chromium, Browser, Page } from 'playwright';
+import type { Browser} from 'playwright';
+import { chromium } from 'playwright';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import sharp from 'sharp';
@@ -619,7 +620,7 @@ export class ImageOptimizationAgent {
 
     try {
       const inputPath = path.join(process.cwd(), 'public', image.localPath.replace(/^\//, ''));
-      const outputDir = path.dirname(inputPath).replace(/\/$/, '') + '/optimized';
+      const outputDir = `${path.dirname(inputPath).replace(/\/$/, '')  }/optimized`;
       const filename = path.basename(inputPath);
       const outputPath = path.join(outputDir, filename);
 
@@ -854,7 +855,7 @@ export class Division2Orchestrator {
       totalAgents: 25,
       productsExtracted: this.products.length,
       imagesDownloaded: this.reports.reduce((sum, r) => sum + r.imagesDownloaded, 0),
-      duration: duration,
+      duration,
       durationFormatted: `${(duration / 1000).toFixed(2)}s`,
       agentReports: this.reports,
       timestamp: new Date().toISOString(),

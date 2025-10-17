@@ -21,7 +21,6 @@ import {
   ProductBenefit,
   TechSpecs,
   FeatureGrid,
-  ProductStatement,
   NavLink,
   Breadcrumb,
   FormLabel,

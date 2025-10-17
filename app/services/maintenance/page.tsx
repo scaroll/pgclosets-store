@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import StandardLayout from "@/components/layout/StandardLayout";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

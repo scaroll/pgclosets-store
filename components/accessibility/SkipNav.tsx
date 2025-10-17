@@ -135,12 +135,15 @@ export function SkipNav({ links = defaultLinks, className }: SkipNavProps) {
  * Skip to Main Content - Simplified version
  */
 export function SkipToMain({ className }: { className?: string }) {
-  return (
-    <SkipNav
-      links={[{ id: 'main-content', label: 'Skip to main content' }]}
-      className={className}
-    />
-  );
+  const props: SkipNavProps = {
+    links: [{ id: 'main-content', label: 'Skip to main content' }]
+  }
+
+  if (className) {
+    props.className = className
+  }
+
+  return <SkipNav {...props} />
 }
 
 /**

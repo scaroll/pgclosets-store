@@ -17,7 +17,7 @@
  * @component VisualConfigurator
  */
 
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   ChevronLeft,
@@ -42,7 +42,6 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Slider } from '@/components/ui/slider'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
 
@@ -292,7 +291,7 @@ export default function VisualConfigurator({
 
   // ========== Price Calculation ==========
   const calculatePrice = useCallback(() => {
-    let breakdown: PriceBreakdown = {
+    const breakdown: PriceBreakdown = {
       base: product.basePrice,
       style: 0,
       material: 0,

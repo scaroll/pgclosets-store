@@ -78,7 +78,7 @@ export default function ProductManagement() {
   };
 
   const handleImageSelect = (files: BlobFile[]) => {
-    if (selectedProduct && files.length > 0) {
+    if (selectedProduct && files.length > 0 && files[0]) {
       const updatedProduct = {
         ...selectedProduct,
         image: files[0].url,

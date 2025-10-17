@@ -2,7 +2,7 @@
 // Bundle size optimization, lazy loading, caching, and performance monitoring
 
 import dynamic from 'next/dynamic'
-import { memo, lazy, Suspense } from 'react'
+import { memo } from 'react'
 
 // Bundle Analysis Configuration
 export interface BundleAnalysis {
@@ -42,60 +42,60 @@ export const PERFORMANCE_BUDGETS = {
 export const DynamicComponents = {
   // Admin components (heavy)
   AdminDashboard: dynamic(() => import('../components/admin/AdminDashboard'), {
-    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded"></div>,
+    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded" />,
     ssr: false
   }),
 
   AdminLayout: dynamic(() => import('../components/admin/AdminLayout'), {
-    loading: () => <div className="animate-pulse h-screen bg-gray-100"></div>,
+    loading: () => <div className="animate-pulse h-screen bg-gray-100" />,
     ssr: false
   }),
 
   // Analytics components (heavy)
   PerformanceDashboard: dynamic(() => import('../components/performance/performance-dashboard'), {
-    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded"></div>,
+    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded" />,
     ssr: false
   }),
 
   BusinessMetricsTracker: dynamic(() => import('../components/analytics/business-metrics-tracker'), {
-    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded"></div>,
+    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded" />,
     ssr: false
   }),
 
   ErrorTracker: dynamic(() => import('../components/monitoring/comprehensive-error-tracker'), {
-    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded"></div>,
+    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded" />,
     ssr: false
   }),
 
   // Product components (medium)
   ProductGallery: dynamic(() => import('../components/product/ProductGallery'), {
-    loading: () => <div className="animate-pulse h-64 bg-gray-200 rounded"></div>
+    loading: () => <div className="animate-pulse h-64 bg-gray-200 rounded" />
   }),
 
   ProductConfigurator: dynamic(() => import('../components/product/ProductConfigurator'), {
-    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded"></div>
+    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded" />
   }),
 
   // Interactive components
   ChatWidget: dynamic(() => import('../components/chat/ChatWidget'), {
-    loading: () => <div className="animate-pulse w-16 h-16 bg-blue-200 rounded-full fixed bottom-4 right-4"></div>,
+    loading: () => <div className="animate-pulse w-16 h-16 bg-blue-200 rounded-full fixed bottom-4 right-4" />,
     ssr: false
   }),
 
   VirtualConsultation: dynamic(() => import('../components/consultation/VirtualConsultation'), {
-    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded"></div>,
+    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded" />,
     ssr: false
   }),
 
   // Map components (heavy external dependency)
   InteractiveMap: dynamic(() => import('../components/location/InteractiveMap'), {
-    loading: () => <div className="animate-pulse h-64 bg-gray-200 rounded"></div>,
+    loading: () => <div className="animate-pulse h-64 bg-gray-200 rounded" />,
     ssr: false
   }),
 
   // Social media components
   SocialFeed: dynamic(() => import('../components/social/SocialFeed'), {
-    loading: () => <div className="animate-pulse h-48 bg-gray-200 rounded"></div>,
+    loading: () => <div className="animate-pulse h-48 bg-gray-200 rounded" />,
     ssr: false
   })
 }
@@ -333,7 +333,7 @@ export const PerformanceMonitoring = {
     }
 
     const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming
-    const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[]
+    const resources = performance.getEntriesByType('resource')
 
     let totalSize = 0
     let totalGzippedSize = 0

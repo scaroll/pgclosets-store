@@ -3,7 +3,7 @@
  * Allows customers to order finish samples with purchase credit
  */
 
-import type { SampleKit, FinishOption, MaterialType } from '@/types/product-taxonomy';
+import type { SampleKit, MaterialType } from '@/types/product-taxonomy';
 
 export interface SampleKitOrder {
   id: string;

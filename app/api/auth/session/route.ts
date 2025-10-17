@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from "next/server"
+import type { NextRequest} from "next/server";
+import { NextResponse } from "next/server"
 import { SessionManager, CSRFProtection } from "@/lib/auth"
 
 export async function GET(request: NextRequest) {
@@ -35,8 +36,9 @@ export async function GET(request: NextRequest) {
       csrfToken
     }, { headers: response.headers })
 
-  } catch (error) {
-    console.error("Session check error:", error)
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error"
+    console.error("Session check error:", errorMessage)
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

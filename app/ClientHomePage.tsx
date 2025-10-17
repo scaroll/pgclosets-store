@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import Script from "next/script"
 import { useState } from "react"
 
 export default function ClientHomePage() {
@@ -12,24 +13,28 @@ export default function ClientHomePage() {
 
   const products = [
     {
+      id: "continental-door",
       name: "Continental",
       price: 459,
       image: "/images/arcat/renin_176732_hd.jpg",
       specs: "Premium engineered wood core, durable laminate surface",
     },
     {
+      id: "provincial-door",
       name: "Provincial",
       price: 549,
       image: "/images/arcat/renin_205750_hd.jpg",
       specs: "Traditional styling, heavy-duty pivot hinges",
     },
     {
+      id: "gatsby-door",
       name: "Gatsby",
       price: 799,
       image: "/images/arcat/renin_205729_hd.jpg",
       specs: "Modern barn door design, premium hardware included",
     },
     {
+      id: "euro-door",
       name: "Euro",
       price: 899,
       image: "/images/arcat/renin_199063_hd.jpg",
@@ -200,7 +205,7 @@ export default function ClientHomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.map((product, index) => (
               <div
-                key={product.name}
+                key={product.id}
                 className="bg-white shadow-lg overflow-hidden hover:shadow-xl transition-all border border-[var(--color-border-default)]"
               >
                 <div className="aspect-square relative overflow-hidden">
@@ -405,7 +410,7 @@ export default function ClientHomePage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {products.map((product) => (
                       <button
-                        key={product.name}
+                        key={product.id}
                         onClick={() => {
                           setSelectedProduct(product.name)
                           setQuotePrice(product.price)
@@ -454,47 +459,48 @@ export default function ClientHomePage() {
       )}
 
       <footer className="bg-[var(--color-primary)] text-white py-16">
-        <script
+        <Script
+          id="local-business-schema"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: "PG Closets",
-              description:
-                "Premium closet door specialists serving Ottawa and surrounding areas. Official Renin dealer with 15+ years experience and 500+ installations.",
-              url: "https://pgclosets.com",
-              email: "info@pgclosets.com",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Ottawa",
-                addressRegion: "ON",
-                addressCountry: "CA",
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: "45.4215",
-                longitude: "-75.6972",
-              },
-              openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-16:00", "Su by appointment"],
-              priceRange: "$459-$899",
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "5.0",
-                reviewCount: "127",
-                bestRating: "5",
-                worstRating: "1",
-              },
-              areaServed: ["Ottawa", "Kanata", "Orleans", "Nepean", "Barrhaven", "Gloucester"],
-              serviceType: [
-                "Closet Door Installation",
-                "Barn Door Installation",
-                "Bifold Door Installation",
-                "Bypass Door Installation",
-              ],
-            }),
-          }}
-        />
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "PG Closets",
+            description:
+              "Premium closet door specialists serving Ottawa and surrounding areas. Official Renin dealer with 15+ years experience and 500+ installations.",
+            url: "https://pgclosets.com",
+            email: "info@pgclosets.com",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Ottawa",
+              addressRegion: "ON",
+              addressCountry: "CA",
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: "45.4215",
+              longitude: "-75.6972",
+            },
+            openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-16:00", "Su by appointment"],
+            priceRange: "$459-$899",
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "5.0",
+              reviewCount: "127",
+              bestRating: "5",
+              worstRating: "1",
+            },
+            areaServed: ["Ottawa", "Kanata", "Orleans", "Nepean", "Barrhaven", "Gloucester"],
+            serviceType: [
+              "Closet Door Installation",
+              "Barn Door Installation",
+              "Bifold Door Installation",
+              "Bypass Door Installation",
+            ],
+          })}
+        </Script>
 
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

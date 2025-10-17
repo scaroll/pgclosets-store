@@ -223,7 +223,8 @@ export default function ReninPage() {
       </section>
 
       {/* Product Categories */}
-      <Section id="products" spacing="lg">
+      <section id="products" className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <Heading level={2} className="mb-6" balance>
             Renin Product Collections
@@ -310,7 +311,8 @@ export default function ReninPage() {
               </div>
             ))}
           </div>
-      </Section>
+        </div>
+      </section>
 
       {/* Ottawa Service Area Map */}
       <Section spacing="lg" variant="light" className="bg-gray-50">

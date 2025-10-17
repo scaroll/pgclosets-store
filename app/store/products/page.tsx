@@ -80,9 +80,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             <aside className="lg:w-64 flex-shrink-0">
               <ProductFilters
                 categories={productCategories}
-                selectedCategory={category}
-                currentSearch={search}
-                currentSort={sort}
+                {...(category && { selectedCategory: category })}
+                {...(search && { currentSearch: search })}
+                {...(sort && { currentSort: sort })}
               />
             </aside>
 

@@ -116,7 +116,7 @@ export default function QuoteWidget({
 
     return {
       series: formData.series,
-      doorType: formData.doorType as DoorSelection['doorType'],
+      doorType: formData.doorType,
       openingWidthIn: parseFloat(formData.openingWidthIn),
       openingHeightIn: parseFloat(formData.openingHeightIn),
       panelCount: parseInt(formData.panelCount) || 2,

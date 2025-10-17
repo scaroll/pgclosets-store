@@ -4,7 +4,7 @@
  */
 
 import { BUSINESS_INFO } from '../business-config'
-import { OTTAWA_NEIGHBORHOODS, type Neighborhood } from './neighborhoods'
+import { type Neighborhood } from './neighborhoods'
 
 export interface LocalBusinessSchemaOptions {
   location?: Neighborhood

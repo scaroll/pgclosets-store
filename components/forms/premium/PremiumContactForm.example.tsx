@@ -27,14 +27,13 @@ import {
   PremiumInput,
   PremiumTextarea,
   PremiumPhoneInput,
-  PremiumCheckbox,
   usePremiumForm,
   contactFormSchema,
   checkEmailAvailability,
   debounce,
 } from "./index"
 import { cn } from "@/lib/utils"
-import { z } from "zod"
+import type { z } from "zod"
 
 type ContactFormData = z.infer<typeof contactFormSchema>
 

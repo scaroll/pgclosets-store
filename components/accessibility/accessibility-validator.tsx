@@ -58,7 +58,7 @@ const AccessibilityValidator: React.FC<{ enabled?: boolean }> = ({ enabled = fal
       let lastLevel = 0;
       let hasH1 = false;
 
-      headings.forEach((heading, index) => {
+      headings.forEach((heading, _index) => {
         const level = parseInt(heading.tagName.charAt(1));
 
         if (level === 1) {

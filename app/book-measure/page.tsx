@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import StandardLayout from "@/components/layout/StandardLayout";
 import { BookMeasureForm } from "@/components/booking/BookMeasureForm";
 

@@ -3,8 +3,7 @@
  * Generates consistent, optimized metadata for all page types
  */
 
-import { Metadata } from 'next'
-import { BUSINESS_INFO } from './business-config'
+import type { Metadata } from 'next'
 
 const SITE_NAME = 'PG Closets'
 const CANONICAL_URL = 'https://www.pgclosets.com'

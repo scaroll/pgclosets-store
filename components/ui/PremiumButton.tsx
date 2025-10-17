@@ -20,12 +20,7 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import {
-  TIMING,
-  EASING_CURVES,
-  SHADOWS,
-  COPPER_ACCENT,
   prefersReducedMotion,
-  getSafeDuration,
   triggerHaptic,
 } from '@/lib/design-system/interactions';
 

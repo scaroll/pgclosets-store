@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
@@ -15,12 +14,9 @@ import {
   Heart,
   Share2,
   Check,
-  ChevronLeft,
-  ChevronRight,
   Ruler,
   Sparkles,
-  Star,
-  X
+  Star
 } from 'lucide-react'
 
 export interface ProductQuickViewProps {

@@ -16,7 +16,7 @@ interface ConsentBannerProps {
 
 export function ConsentBanner({
   onConsentChange,
-  companyName = "PG Closets",
+  companyName: _companyName = "PG Closets",
   privacyPolicyUrl = "/privacy-policy",
   cookiePolicyUrl = "/cookie-policy"
 }: ConsentBannerProps) {

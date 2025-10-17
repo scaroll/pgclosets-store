@@ -50,7 +50,7 @@ export default function ContactClientPage() {
         <Heading level={1} className="mb-4">
           Request Work
         </Heading>
-        <Text variant="body" className="mt-2 mb-8">
+        <Text size="base" className="mt-2 mb-8">
           Use the form below to tell us about your project. Prefer email?{" "}
           <a
             className="underline text-[var(--color-primary)] hover:text-[var(--color-secondary)]"

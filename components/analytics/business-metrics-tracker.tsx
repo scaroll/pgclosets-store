@@ -175,6 +175,8 @@ export function BusinessMetricsTracker() {
 
   const [customerJourneys, setCustomerJourneys] = useState<CustomerJourney[]>([])
   const [isTracking, setIsTracking] = useState(true)
+  // Suppress unused variable warning - setIsTracking is available for future use
+  void setIsTracking
   const [timeRange, setTimeRange] = useState<'24h' | '7d' | '30d' | '90d'>('30d')
 
   const sessionData = useRef({
@@ -245,7 +247,6 @@ export function BusinessMetricsTracker() {
         const element = link || button
         const text = element?.textContent?.trim().toLowerCase() || ''
         const href = link?.href || ''
-        const classes = element?.className || ''
 
         // Track specific business interactions
         if (text.includes('quote') || text.includes('estimate')) {
@@ -492,7 +493,8 @@ export function BusinessMetricsTracker() {
       const existing = prev.find(journey => journey.stage === stage)
       if (existing) {
         existing.touchpoints.push(touchpoint)
-        existing.totalTime = Date.now() - existing.touchpoints[0].timestamp
+        const firstTouchpoint = existing.touchpoints[0]
+        existing.totalTime = firstTouchpoint ? Date.now() - firstTouchpoint.timestamp : 0
         existing.conversionProbability = calculateConversionProbability(existing.touchpoints)
         return [...prev]
       } else {

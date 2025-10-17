@@ -632,7 +632,7 @@ function generateCSVFeed(products: any[]): string {
     "product_type",
   ]
 
-  let csv = headers.join(",") + "\n"
+  let csv = `${headers.join(",")  }\n`
 
   for (const product of products) {
     const row = [
@@ -649,7 +649,7 @@ function generateCSVFeed(products: any[]): string {
       product.category,
     ]
 
-    csv += row.join(",") + "\n"
+    csv += `${row.join(",")  }\n`
   }
 
   return csv
@@ -670,7 +670,7 @@ function generateTSVFeed(products: any[]): string {
     "product_type",
   ]
 
-  let tsv = headers.join("\t") + "\n"
+  let tsv = `${headers.join("\t")  }\n`
 
   for (const product of products) {
     const row = [
@@ -687,7 +687,7 @@ function generateTSVFeed(products: any[]): string {
       product.category,
     ]
 
-    tsv += row.join("\t") + "\n"
+    tsv += `${row.join("\t")  }\n`
   }
 
   return tsv

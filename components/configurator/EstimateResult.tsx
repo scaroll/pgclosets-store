@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Check, Download, Edit, Phone, Calendar } from "lucide-react"
-import { EstimateResult, ConfiguratorState, ProductConfiguratorData } from "@/types/configurator"
+import type { EstimateResult, ConfiguratorState, ProductConfiguratorData } from "@/types/configurator"
 import { formatPrice } from "@/lib/door-types"
 import { getPhoneHref, getPhoneDisplay } from "@/lib/business-info"
 

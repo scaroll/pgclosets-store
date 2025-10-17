@@ -723,7 +723,7 @@ function setupCoreWebVitalsTracking() {
 
 function setupScrollTracking() {
   // Track 25%, 50%, 75%, 90%, 100% scroll depth
-  let trackedMilestones = new Set<number>()
+  const trackedMilestones = new Set<number>()
   const pageType = getPageType()
 
   const checkScroll = () => {
@@ -748,7 +748,7 @@ function setupScrollTracking() {
 function setupTimeOnPageTracking() {
   const pageType = getPageType()
   const milestones = [30, 60, 120, 300] // 30s, 1m, 2m, 5m
-  let trackedMilestones = new Set<number>()
+  const trackedMilestones = new Set<number>()
 
   milestones.forEach((milestone) => {
     setTimeout(() => {
@@ -788,7 +788,7 @@ function setupExitIntentTracking() {
 }
 
 function setupRageClickDetection() {
-  let clickCounts = new Map<string, { count: number; firstClick: number }>()
+  const clickCounts = new Map<string, { count: number; firstClick: number }>()
 
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement

@@ -8,8 +8,9 @@
  * @agent Agent #15 - Mobile Experience & PWA
  */
 
-import React, { useState, useRef, useCallback } from 'react';
-import { motion, PanInfo, useMotionValue, useTransform } from 'framer-motion';
+import React, { useState, useCallback } from 'react';
+import type { PanInfo} from 'framer-motion';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { HapticFeedback } from '@/lib/mobile/gestures';
 

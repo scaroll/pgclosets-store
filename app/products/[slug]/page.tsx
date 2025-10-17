@@ -1,9 +1,16 @@
 import { notFound } from "next/navigation";
 import { getProductByHandle, getProducts } from "@/lib/actions/commerce";
-import { formatPrice } from "@/lib/utils";
 import StandardLayout from "@/components/layout/StandardLayout";
 import { PremiumProductDetailPage } from "./PremiumProductDetailPage";
 import { BUSINESS_INFO } from "@/lib/business-config";
+
+// Format price helper
+function formatPrice(price: number, currency: string = 'CAD'): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+  }).format(price);
+}
 
 // Enable ISR: Revalidate every hour
 export const revalidate = 3600;
@@ -56,7 +63,9 @@ export default async function ProductDetailPage({
   if (!product) return notFound();
 
   const relatedProducts = (
-    await getProducts({ collection: product.collection?.handle })
+    await getProducts({
+      ...(product.collection?.handle && { collection: product.collection.handle })
+    })
   )
     .filter((p) => p.id !== product.id)
     .slice(0, 4);
@@ -114,21 +123,21 @@ export default async function ProductDetailPage({
           id: product.id,
           title: product.title,
           description: product.description,
-          thumbnail: product.thumbnail,
+          thumbnail: product.thumbnail || null,
           images: product.images || [],
           variants: product.variants,
-          collection: product.collection,
-          metadata: product.metadata,
+          ...(product.collection && { collection: product.collection }),
+          ...(product.metadata && { metadata: product.metadata }),
         }}
         relatedProducts={relatedProducts.map((p) => ({
           id: p.id,
           handle: p.handle,
           title: p.title,
           description: p.description,
-          thumbnail: p.thumbnail,
+          thumbnail: p.thumbnail || null,
           images: p.images || [],
           variants: p.variants,
-          collection: p.collection,
+          ...(p.collection && { collection: p.collection }),
         }))}
       />
     </StandardLayout>

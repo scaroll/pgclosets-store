@@ -87,7 +87,9 @@ export function usePaddle() {
   }
 
   const formatPriceForPaddle = (price: number, province = "ON"): string => {
-    const tax = calculateTax(price, province)
+    // HST rate for Ontario is 13%
+    const taxRate = province === "ON" ? 0.13 : 0.13; // Default to ON rate
+    const tax = calculateTax(price, taxRate)
     const totalPrice = price + tax
     return totalPrice.toFixed(2)
   }

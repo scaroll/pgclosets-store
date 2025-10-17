@@ -52,7 +52,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     if (!trackAnalytics || !videoRef.current) return;
 
     const video = videoRef.current;
-    let analyticsEvents = {
+    const analyticsEvents = {
       started: false,
       reached25: false,
       reached50: false,

@@ -14,7 +14,7 @@ interface ShareButtonsProps {
   description?: string;
 }
 
-export function ShareButtons({ url, title, description }: ShareButtonsProps) {
+export function ShareButtons({ url, title, description: _description }: ShareButtonsProps) {
   const [copied, setCopied] = React.useState(false);
 
   const shareUrls = {

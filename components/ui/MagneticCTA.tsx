@@ -19,8 +19,6 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import {
-  TIMING,
-  COPPER_ACCENT,
   prefersReducedMotion,
   triggerHaptic,
 } from '@/lib/design-system/interactions';

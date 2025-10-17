@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Us - Family-Owned Excellence Since 2010 | PG Closets Ottawa",

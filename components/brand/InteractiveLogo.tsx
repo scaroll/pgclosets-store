@@ -41,10 +41,10 @@ export function InteractiveLogo({
   onClick,
   onHover,
   hapticFeedback = false,
-  soundEnabled = false
+  soundEnabled: _soundEnabled = false
 }: InteractiveLogoProps) {
   const [isHovered, setIsHovered] = React.useState(false);
-  const [isPressed, setIsPressed] = React.useState(false);
+  const [_isPressed, setIsPressed] = React.useState(false);
   const logoRef = React.useRef<HTMLDivElement>(null);
 
   // Motion values for magnetic effect
@@ -316,11 +316,10 @@ export function InteractiveLogoWithTooltip({
   };
 
   return (
-    <div className="relative">
+    <div className="relative" onMouseLeave={handleMouseLeave}>
       <InteractiveLogo
         {...logoProps}
         onHover={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
       />
 
       {/* Tooltip */}

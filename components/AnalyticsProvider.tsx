@@ -33,7 +33,7 @@ export function AnalyticsProvider({ requireConsent = true, delayMs = 2000 }: Ana
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const [isInitialized, setIsInitialized] = useState(false)
-  const [hasConsent, setHasConsent] = useState(false)
+  const [_hasConsent, setHasConsent] = useState(false)
 
   // Only load in production
   if (process.env.NODE_ENV !== 'production') {

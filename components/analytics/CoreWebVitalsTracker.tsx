@@ -135,7 +135,7 @@ export function CoreWebVitalsTracker() {
 
     // Track CLS (Cumulative Layout Shift)
     let clsValue = 0
-    let clsEntries: any[] = []
+    const clsEntries: any[] = []
 
     const clsObserver = new PerformanceObserver((entryList) => {
       for (const entry of entryList.getEntries() as any[]) {

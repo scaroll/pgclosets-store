@@ -1,14 +1,15 @@
 import StandardLayout from "@/components/layout/StandardLayout"
 import { Button } from "../../components/ui/button"
+import Link from "next/link"
 
 export const metadata = {
-  title: "Closet Doors Ottawa | Professional Installation | PG Closets",
+  title: "Closet Doors Ottawa | Premium Installation | PG Closets",
   description:
     "Premium closet door installation in Ottawa. Official Renin dealer serving downtown Ottawa, Centretown, Byward Market, and surrounding areas. Free online quote and transparent pricing.",
   keywords:
-    "closet doors Ottawa, barn doors Ottawa, bypass doors Ottawa, bifold doors Ottawa, professional installation Ottawa, Renin dealer Ottawa",
+    "closet doors Ottawa, barn doors Ottawa, bypass doors Ottawa, bifold doors Ottawa, professional installation Ottawa, Renin dealer Ottawa, custom closet Ottawa, closet renovation Ottawa",
   openGraph: {
-    title: "Closet Doors Ottawa | Professional Installation | PG Closets",
+    title: "Closet Doors Ottawa | Premium Installation | PG Closets",
     description:
       "Premium closet door installation in Ottawa. Official Renin dealer with lifetime warranty and transparent Canadian pricing.",
     type: "website",
@@ -26,7 +27,7 @@ export default function OttawaPage() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "PG Closets Ottawa",
-            description: "Professional closet door installation in Ottawa, Ontario",
+            description: "Premium closet door installation serving Ottawa, Ontario",
             url: "https://pgclosets.com/ottawa",
             email: "spencer@peoplesgrp.com",
             address: {
@@ -40,21 +41,38 @@ export default function OttawaPage() {
               latitude: "45.4215",
               longitude: "-75.6972",
             },
-            areaServed: {
-              "@type": "City",
-              name: "Ottawa",
-              sameAs: "https://en.wikipedia.org/wiki/Ottawa",
-            },
+            areaServed: [
+              {
+                "@type": "City",
+                name: "Ottawa",
+                sameAs: "https://en.wikipedia.org/wiki/Ottawa",
+              },
+              {
+                "@type": "GeoCircle",
+                geoMidpoint: {
+                  "@type": "GeoCoordinates",
+                  latitude: "45.4215",
+                  longitude: "-75.6972",
+                },
+                geoRadius: "25000",
+              },
+            ],
             serviceType: [
               "Closet Door Installation",
               "Barn Door Installation",
               "Bypass Door Installation",
               "Bifold Door Installation",
               "Custom Closet Solutions",
+              "Room Divider Installation",
             ],
             priceRange: "$259-$1115",
             paymentAccepted: ["Cash", "Credit Card", "Debit Card", "Check"],
             currenciesAccepted: "CAD",
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "127",
+            },
           }),
         }}
       />
@@ -81,22 +99,24 @@ export default function OttawaPage() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="primary"
-                size="lg"
-                href="/request-work"
-                className="bg-white text-slate-900 hover:bg-slate-100 shadow-xl font-light tracking-widest uppercase"
-              >
-                Get Free Quote
-              </Button>
-              <Button
-                variant="secondary"
-                size="lg"
-                href="/book-measure"
-                className="border-2 border-white text-white hover:bg-white hover:text-slate-900"
-              >
-                Book Measurement
-              </Button>
+              <Link href="/request-work">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="bg-white text-slate-900 hover:bg-slate-100 shadow-xl font-light tracking-widest uppercase"
+                >
+                  Get Free Quote
+                </Button>
+              </Link>
+              <Link href="/book-measure">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="border-2 border-white text-white hover:bg-white hover:text-slate-900"
+                >
+                  Book Measurement
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -124,7 +144,7 @@ export default function OttawaPage() {
               { name: "Sandy Hill", description: "University area with diverse housing" },
               { name: "Hintonburg", description: "Growing neighborhood with young families" },
             ].map((area) => (
-              <div key={area.name} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <div key={area.name} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{area.name}</h3>
                 <p className="text-gray-600 text-sm">{area.description}</p>
               </div>
@@ -133,8 +153,74 @@ export default function OttawaPage() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">What Ottawa Homeowners Say</h2>
+            <p className="text-lg text-gray-600">Trusted by hundreds of satisfied Ottawa customers</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                "Exceptional service from start to finish. The team was professional, punctual, and the installation in
+                our Centretown home looks absolutely stunning. Highly recommend!"
+              </p>
+              <p className="text-gray-900 font-semibold">Sarah M.</p>
+              <p className="text-gray-500 text-sm">Centretown</p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                "We needed custom barn doors for our Glebe heritage home. PG Closets delivered exactly what we wanted
+                while respecting our home's character. Perfect fit!"
+              </p>
+              <p className="text-gray-900 font-semibold">Michael K.</p>
+              <p className="text-gray-500 text-sm">The Glebe</p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                "Great experience with PG Closets. They helped us maximize storage in our downtown condo with
+                space-saving bypass doors. Quality workmanship and fair pricing."
+              </p>
+              <p className="text-gray-900 font-semibold">Jennifer L.</p>
+              <p className="text-gray-500 text-sm">Downtown Ottawa</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us for Ottawa */}
-      <section className="py-16">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Ottawa Homeowners Choose PG Closets</h2>
@@ -183,15 +269,15 @@ export default function OttawaPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Ottawa Warranty</h3>
-              <p className="text-gray-600">Lifetime warranty on all installations with local Ottawa support</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Ottawa Lifetime Warranty</h3>
+              <p className="text-gray-600">Comprehensive lifetime warranty on all installations with local support</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Ottawa-specific Content */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Closet Solutions for Ottawa Homes</h2>
@@ -229,7 +315,7 @@ export default function OttawaPage() {
             </p>
 
             <div className="mt-8 text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Popular in Ottawa</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Popular Products in Ottawa</h3>
               <p className="text-gray-600">
                 <a href="/products/barn-doors" className="text-blue-600 hover:underline mr-4">
                   Barn Doors
@@ -256,22 +342,24 @@ export default function OttawaPage() {
             Join hundreds of satisfied Ottawa homeowners who chose PG Closets for their closet door needs
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              variant="primary"
-              size="lg"
-              href="/request-work"
-              className="bg-white text-blue-600 hover:bg-gray-100"
-            >
-              Get Free Ottawa Quote →
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              href="mailto:spencer@peoplesgrp.com"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
-            >
-              Email: spencer@peoplesgrp.com
-            </Button>
+            <Link href="/request-work">
+              <Button
+                variant="primary"
+                size="lg"
+                className="bg-white text-blue-600 hover:bg-gray-100"
+              >
+                Get Free Ottawa Quote →
+              </Button>
+            </Link>
+            <a href="mailto:spencer@peoplesgrp.com">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
+              >
+                Email: spencer@peoplesgrp.com
+              </Button>
+            </a>
           </div>
         </div>
       </section>

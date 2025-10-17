@@ -11,7 +11,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 import { HapticFeedback } from '@/lib/mobile/gestures';
-import { motion, AnimatePresence, PanInfo } from 'framer-motion';
+import type { PanInfo } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export interface BottomSheetProps {
   isOpen: boolean;

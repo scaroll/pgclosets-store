@@ -87,7 +87,7 @@ export default function CartPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => updateQuantity(item.product.id, Math.max(0, item.quantity - 1))}
+                      onClick={() => updateQuantity(item.product.id.toString(), Math.max(0, item.quantity - 1))}
                     >
                       <Minus className="w-4 h-4" />
                     </Button>
@@ -95,19 +95,19 @@ export default function CartPage() {
                     <Input
                       type="number"
                       value={item.quantity}
-                      onChange={(e) => updateQuantity(item.product.id, Number.parseInt(e.target.value) || 0)}
+                      onChange={(e) => updateQuantity(item.product.id.toString(), Number.parseInt(e.target.value) || 0)}
                       className="w-16 text-center"
                       min="0"
                     />
 
-                    <Button variant="outline" size="sm" onClick={() => updateQuantity(item.product.id, item.quantity + 1)}>
+                    <Button variant="outline" size="sm" onClick={() => updateQuantity(item.product.id.toString(), item.quantity + 1)}>
                       <Plus className="w-4 h-4" />
                     </Button>
 
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => removeItem(item.product.id)}
+                      onClick={() => removeItem(item.product.id.toString())}
                       className="text-red-600 hover:text-red-700"
                     >
                       <Trash2 className="w-4 h-4" />

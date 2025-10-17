@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { PremiumInput, PremiumInputProps } from "./PremiumInput"
+import type { PremiumInputProps } from "./PremiumInput";
+import { PremiumInput } from "./PremiumInput"
 import { formatPhoneNumber } from "@/lib/forms/validation"
 
 export interface PremiumPhoneInputProps

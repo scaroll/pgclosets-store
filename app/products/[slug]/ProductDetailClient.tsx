@@ -36,7 +36,6 @@ export default function ProductDetailClient({
 }: ProductDetailClientProps) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [activeTab, setActiveTab] = useState("overview");
-  const [mediaTab, setMediaTab] = useState("photos");
 
   const productImages: string[] = getProductImages(product);
 
@@ -105,27 +104,6 @@ export default function ProductDetailClient({
       return [];
     }
   }, [product.id, product.category]);
-
-  const _installationVideos = [
-    {
-      id: "1",
-      title: `How to Install ${product.title} - Step by Step Guide`,
-      thumbnail: `/placeholder.svg?height=360&width=640&text=Installation+Video+1`,
-      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1",
-    },
-    {
-      id: "2",
-      title: `${product.title} Hardware Installation Tips`,
-      thumbnail: `/placeholder.svg?height=360&width=640&text=Hardware+Installation`,
-      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1",
-    },
-    {
-      id: "3",
-      title: `Maintenance and Care for ${product.title}`,
-      thumbnail: `/placeholder.svg?height=360&width=640&text=Maintenance+Guide`,
-      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1",
-    },
-  ];
 
   const defaultFeatures = product.features || [
     "Premium construction materials",

@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export function CheckoutClient() {
   return (
@@ -22,8 +23,8 @@ export function CheckoutClient() {
         </a>
 
         <div className="block">
-          <Button href="/store" variant="secondary">
-            Continue Browsing Products
+          <Button variant="secondary" asChild>
+            <Link href="/store">Continue Browsing Products</Link>
           </Button>
         </div>
       </div>

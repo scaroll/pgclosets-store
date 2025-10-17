@@ -262,12 +262,13 @@ export function GoogleTagManager({ gtmId, dataLayer = {}, enableDebug = false }:
 
     // Resource loading errors
     window.addEventListener('error', (event) => {
-      const target = event.target as HTMLElement
-      if (target !== window && target.tagName) {
+      const target = event.target
+      if (target && target !== window && 'tagName' in target) {
+        const element = target as HTMLElement
         gtmPush({
           event: 'resource_error',
-          resource_type: target.tagName.toLowerCase(),
-          resource_url: (target as any).src || (target as any).href,
+          resource_type: element.tagName.toLowerCase(),
+          resource_url: (element as any).src || (element as any).href,
           page_location: window.location.href,
           timestamp: new Date().toISOString()
         })
@@ -343,7 +344,7 @@ export function GoogleTagManager({ gtmId, dataLayer = {}, enableDebug = false }:
           request_time: Math.round(navTiming.responseStart - navTiming.requestStart),
           response_time: Math.round(navTiming.responseEnd - navTiming.responseStart),
           dom_processing_time: Math.round(navTiming.domContentLoadedEventEnd - navTiming.responseEnd),
-          load_complete_time: Math.round(navTiming.loadEventEnd - navTiming.navigationStart),
+          load_complete_time: Math.round(navTiming.loadEventEnd - navTiming.fetchStart),
           page_location: window.location.href
         })
       }
@@ -522,7 +523,7 @@ export const setUserProperties = (userProperties: Record<string, any>) => {
 // Declare global types
 declare global {
   interface Window {
-    dataLayer: any[]
-    gtag: (...args: any[]) => void
+    dataLayer: unknown[]
+    gtag: (...args: unknown[]) => void
   }
 }

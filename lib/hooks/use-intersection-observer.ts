@@ -29,6 +29,7 @@ export function useIntersectionObserver(
 
     const observer = new IntersectionObserver(
       ([entry]) => {
+        if (!entry) return;
         const isVisible = entry.isIntersecting;
 
         if (isVisible) {
@@ -76,6 +77,7 @@ export function useIntersectionObserverList<T>(
 
       const observer = new IntersectionObserver(
         ([entry]) => {
+          if (!entry) return;
           if (entry.isIntersecting) {
             setVisibleItems(prev => new Set([...prev, index]));
           }

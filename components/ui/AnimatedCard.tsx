@@ -20,9 +20,6 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import {
-  TIMING,
-  SHADOWS,
-  COPPER_ACCENT,
   prefersReducedMotion,
   createScrollRevealObserver,
 } from '@/lib/design-system/interactions';

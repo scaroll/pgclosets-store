@@ -9,7 +9,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Shield, Truck, CreditCard, ArrowRight, CheckCircle, Lock, Timer } from 'lucide-react'
+import { Shield, Truck, ArrowRight, CheckCircle, Lock, Timer } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export interface CheckoutStep {

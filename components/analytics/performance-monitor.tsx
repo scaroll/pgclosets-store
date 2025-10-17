@@ -70,6 +70,7 @@ export function PerformanceMonitor() {
         fidObserver.disconnect()
       }
     }
+    return undefined
   }, [])
 
   return null

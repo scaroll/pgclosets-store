@@ -120,7 +120,7 @@ export class MobileAnalytics {
    */
   private trackScrollDepth(): void {
     let maxScrollDepth = 0;
-    let scrollStartTime = Date.now();
+    const scrollStartTime = Date.now();
     let scrollEventCount = 0;
     const pageUrl = window.location.pathname;
 

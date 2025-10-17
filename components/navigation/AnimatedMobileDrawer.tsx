@@ -11,7 +11,6 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronRight, ChevronDown } from 'lucide-react';
 import { PGLogo } from '../ui/pg-logo';
-import { cn } from '@/lib/utils';
 import { drawerTransition, backdropTransition } from '@/lib/animations/transitions';
 import { staggerChildrenScroll, staggerItemScroll } from '@/lib/animations/scroll-animations';
 

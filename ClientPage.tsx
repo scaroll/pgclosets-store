@@ -43,7 +43,7 @@ export default function ClientPage() {
               >
                 Contact
               </Link>
-              <Button variant="default" size="sm" className="bg-blue-900 hover:bg-blue-700">
+              <Button variant="primary" size="sm" className="bg-blue-900 hover:bg-blue-700">
                 Get Quote
               </Button>
             </nav>
@@ -75,7 +75,7 @@ export default function ClientPage() {
               <Link href="/contact" className="block px-3 py-2 text-gray-900 hover:text-blue-700 font-medium">
                 Contact
               </Link>
-              <Button variant="default" size="sm" className="mx-3 bg-blue-900 hover:bg-blue-700">
+              <Button variant="primary" size="sm" className="mx-3 bg-blue-900 hover:bg-blue-700">
                 Get Quote
               </Button>
             </div>
@@ -99,7 +99,7 @@ export default function ClientPage() {
           <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto font-light">Official dealer of premium Renin products with professional installation.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
-              variant="default"
+              variant="primary"
               size="lg"
               className="bg-white text-blue-900 hover:bg-gray-200 font-semibold px-10 py-4 text-lg transition-transform hover:scale-105"
             >
@@ -185,7 +185,7 @@ export default function ClientPage() {
             Get a free, no-obligation consultation and quote from our experts today.
           </p>
           <Button
-            variant="default"
+            variant="primary"
             size="lg"
             className="bg-white text-blue-900 hover:bg-gray-200 font-semibold px-10 py-4 text-lg transition-transform hover:scale-105"
           >

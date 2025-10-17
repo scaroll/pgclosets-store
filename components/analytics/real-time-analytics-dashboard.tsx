@@ -25,7 +25,8 @@ import {
   Wifi,
   WifiOff,
   RefreshCw,
-  Download
+  Download,
+  FileText
 } from 'lucide-react'
 
 // Real-time analytics data types
@@ -134,7 +135,7 @@ export function RealTimeAnalyticsDashboard() {
   const [isConnected, setIsConnected] = useState(false)
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date())
   const [autoRefresh, setAutoRefresh] = useState(true)
-  const [refreshInterval, setRefreshInterval] = useState(5000) // 5 seconds
+  const [refreshInterval, _setRefreshInterval] = useState(5000) // 5 seconds
 
   const websocketRef = useRef<WebSocket | null>(null)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
@@ -291,11 +292,11 @@ export function RealTimeAnalyticsDashboard() {
       const newActivity: VisitorActivity = {
         id: `activity-${Date.now()}`,
         timestamp: Date.now(),
-        page: `/${['', 'products', 'about', 'contact', 'quote'][Math.floor(Math.random() * 5)]}`,
-        action: activities[Math.floor(Math.random() * activities.length)],
-        location: locations[Math.floor(Math.random() * locations.length)],
-        device: devices[Math.floor(Math.random() * devices.length)],
-        source: sources[Math.floor(Math.random() * sources.length)],
+        page: `/${['', 'products', 'about', 'contact', 'quote'][Math.floor(Math.random() * 5)]!}`,
+        action: activities[Math.floor(Math.random() * activities.length)]!,
+        location: locations[Math.floor(Math.random() * locations.length)]!,
+        device: devices[Math.floor(Math.random() * devices.length)]!,
+        source: sources[Math.floor(Math.random() * sources.length)]!,
         duration: Math.floor(Math.random() * 300) + 30,
         value: Math.random() > 0.8 ? Math.floor(Math.random() * 1000) + 100 : undefined
       }
@@ -311,7 +312,7 @@ export function RealTimeAnalyticsDashboard() {
     if (Math.random() > 0.4) {
       const newEvent: RealtimeEvent = {
         id: `event-${Date.now()}`,
-        type: eventTypes[Math.floor(Math.random() * eventTypes.length)],
+        type: eventTypes[Math.floor(Math.random() * eventTypes.length)]!,
         timestamp: Date.now(),
         data: {
           page: window.location.pathname,

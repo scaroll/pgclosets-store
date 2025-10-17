@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 interface ShippingInfo {
   firstName: string
@@ -96,11 +97,11 @@ export function OrderConfirmation({ orderId, shippingInfo }: OrderConfirmationPr
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button variant="primary" href="/store">
-            Continue Shopping
+          <Button variant="primary" asChild>
+            <Link href="/store">Continue Shopping</Link>
           </Button>
-          <Button variant="secondary" href="/contact">
-            Contact Support
+          <Button variant="secondary" asChild>
+            <Link href="/contact">Contact Support</Link>
           </Button>
         </div>
       </div>

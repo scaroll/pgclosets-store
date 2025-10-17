@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { Ruler, Palette, CheckSquare } from 'lucide-react'
 
 export const metadata: Metadata = {

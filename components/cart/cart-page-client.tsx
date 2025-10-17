@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useCart } from "@/hooks/use-cart"
 import { Button } from "../ui/button"
 import { formatPrice } from "@/lib/renin-products"
@@ -19,8 +20,8 @@ export function CartPageClient() {
             <p className="text-body-l text-pg-gray mb-8 max-w-md mx-auto">
               Looks like you haven&apos;t added any premium closet doors to your cart yet.
             </p>
-            <Button variant="primary" size="lg" href="/store">
-              Shop Closet Doors
+            <Button variant="primary" size="lg" asChild>
+              <Link href="/store">Shop Closet Doors</Link>
             </Button>
           </div>
         </div>
@@ -128,11 +129,11 @@ export function CartPageClient() {
               </div>
 
               <div className="space-y-3">
-                <Button variant="primary" size="lg" href="/checkout" className="w-full">
-                  Proceed to Checkout
+                <Button variant="primary" size="lg" className="w-full" asChild>
+                  <Link href="/checkout">Proceed to Checkout</Link>
                 </Button>
-                <Button variant="secondary" size="lg" href="/store" className="w-full">
-                  Continue Shopping
+                <Button variant="secondary" size="lg" className="w-full" asChild>
+                  <Link href="/store">Continue Shopping</Link>
                 </Button>
               </div>
 

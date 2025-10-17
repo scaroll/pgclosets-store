@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server'
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 
 export async function POST(request: NextRequest) {
@@ -43,13 +44,14 @@ export async function POST(request: NextRequest) {
       },
       { status: 200 }
     )
-  } catch (error) {
-    console.error('Failed to log client error:', error)
-    
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error"
+    console.error('Failed to log client error:', errorMessage)
+
     return NextResponse.json(
-      { 
-        success: false, 
-        message: 'Failed to log error' 
+      {
+        success: false,
+        message: 'Failed to log error'
       },
       { status: 500 }
     )

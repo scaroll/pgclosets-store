@@ -12,7 +12,7 @@ import { useState } from "react"
 import { useCart } from "@/contexts/CartContext"
 
 export default function CartClientPage() {
-  const { items: cartItems, updateQuantity, removeItem, subtotal, tax, total } = useCart()
+  const { items: cartItems, updateQuantity, removeItem, subtotal, tax, total: _total } = useCart()
   const [promoCode, setPromoCode] = useState("")
   const [appliedPromo, setAppliedPromo] = useState<string | null>(null)
 

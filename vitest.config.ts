@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   test: {
     globals: true,
-    environment: 'happy-dom',
+    environment: 'node',
     setupFiles: ['./tests/setup.ts'],
     include: [
       'tests/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
@@ -71,6 +71,7 @@ export default defineConfig({
       '@/app': resolve(__dirname, './app'),
       '@/ui': resolve(__dirname, './ui'),
       '@/styles': resolve(__dirname, './styles'),
+      crypto: 'crypto',
     },
   },
   define: {

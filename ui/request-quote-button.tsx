@@ -7,14 +7,14 @@ import type { Product } from "@/lib/renin-products"
 interface RequestQuoteButtonProps {
   product: Product
   variant?: "primary" | "secondary" | "outline"
-  size?: "sm" | "default" | "lg"
+  size?: "sm" | "md" | "lg"
   className?: string
 }
 
 export function RequestQuoteButton({
   product,
   variant = "outline",
-  size = "default",
+  size = "md",
   className = "",
 }: RequestQuoteButtonProps) {
   const handleRequestQuote = () => {

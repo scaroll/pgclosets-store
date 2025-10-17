@@ -7,7 +7,8 @@
 
 'use client';
 
-import { useState, useCallback, MouseEvent } from 'react';
+import type { MouseEvent } from 'react';
+import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 

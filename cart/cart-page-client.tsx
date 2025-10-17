@@ -4,6 +4,7 @@ import { useCart } from "@/hooks/use-cart"
 import { Button } from "@/components/ui/button"
 import { formatPrice } from "@/lib/renin-products"
 import { ShoppingBag, Minus, Plus, X } from "@/components/ui/icons"
+import Link from "next/link"
 
 export function CartPageClient() {
   const { state, removeItem, updateQuantity, getTotalPrice, getTotalItems } = useCart()
@@ -18,8 +19,8 @@ export function CartPageClient() {
             <p className="text-body-l text-pg-gray mb-8 max-w-md mx-auto">
               Looks like you haven't added any premium closet doors to your cart yet.
             </p>
-            <Button variant="primary" size="lg" href="/store">
-              Shop Closet Doors
+            <Button variant="primary" size="lg" asChild>
+              <Link href="/store">Shop Closet Doors</Link>
             </Button>
           </div>
         </div>
@@ -66,7 +67,7 @@ export function CartPageClient() {
                   <div className="flex items-center justify-between mt-4">
                     <div className="flex items-center gap-3">
                       <button
-                        onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                        onClick={() => updateQuantity(item.product.id.toString(), item.quantity - 1)}
                         className="w-8 h-8 rounded-full border border-pg-border flex items-center justify-center hover:bg-pg-sky/10 transition-colors"
                         aria-label="Decrease quantity"
                       >
@@ -74,7 +75,7 @@ export function CartPageClient() {
                       </button>
                       <span className="w-12 text-center font-medium">{item.quantity}</span>
                       <button
-                        onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                        onClick={() => updateQuantity(item.product.id.toString(), item.quantity + 1)}
                         className="w-8 h-8 rounded-full border border-pg-border flex items-center justify-center hover:bg-pg-sky/10 transition-colors"
                         aria-label="Increase quantity"
                       >
@@ -87,7 +88,7 @@ export function CartPageClient() {
                         {formatPrice(item.product.price * item.quantity)}
                       </p>
                       <button
-                        onClick={() => removeItem(item.product.id)}
+                        onClick={() => removeItem(item.product.id.toString())}
                         className="text-red-500 hover:text-red-700 text-sm flex items-center gap-1 mt-1"
                       >
                         <X className="w-4 h-4" />
@@ -122,11 +123,11 @@ export function CartPageClient() {
               </div>
 
               <div className="space-y-3">
-                <Button variant="primary" size="lg" href="/checkout" className="w-full">
-                  Proceed to Checkout
+                <Button variant="primary" size="lg" className="w-full" asChild>
+                  <Link href="/checkout">Proceed to Checkout</Link>
                 </Button>
-                <Button variant="secondary" size="lg" href="/store" className="w-full">
-                  Continue Shopping
+                <Button variant="secondary" size="lg" className="w-full" asChild>
+                  <Link href="/store">Continue Shopping</Link>
                 </Button>
               </div>
 

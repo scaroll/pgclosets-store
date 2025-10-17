@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Calendar, MessageSquare, CheckCircle, ArrowRight } from 'lucide-react'
+import { Calendar, CheckCircle, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface QuoteRequestCTAProps {

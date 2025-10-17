@@ -24,11 +24,19 @@ interface AnalyticsDashboardProps {
   isAdmin?: boolean
 }
 
+interface DashboardDataState {
+  consent: { status: string; data: any }
+  funnel: { status: string; data: any }
+  errors: { status: string; data: any }
+  interactions: { status: string; data: any }
+  cart: { status: string; data: any }
+}
+
 export function AnalyticsDashboard({ isAdmin = false }: AnalyticsDashboardProps) {
   const { isInitialized, hasConsent, preferences, analytics } = useAnalytics()
   const { trackEvent } = useAnalyticsTracking()
 
-  const [dashboardData, setDashboardData] = useState({
+  const [dashboardData, setDashboardData] = useState<DashboardDataState>({
     consent: { status: 'loading', data: null },
     funnel: { status: 'loading', data: null },
     errors: { status: 'loading', data: null },
@@ -97,7 +105,7 @@ export function AnalyticsDashboard({ isAdmin = false }: AnalyticsDashboardProps)
       } catch (error) {
         const errorTracker = getErrorTracker()
         errorTracker.trackError({
-          errorType: 'test_error',
+          errorType: 'javascript',
           errorMessage: 'This is a test error for validation',
           fatal: false,
           timestamp: Date.now(),
@@ -258,7 +266,7 @@ export function AnalyticsDashboard({ isAdmin = false }: AnalyticsDashboardProps)
   )
 
   const FunnelAnalyticsCard = () => {
-    const funnelData = dashboardData.funnel.data as any
+    const funnelData = dashboardData.funnel.data
 
     return (
       <Card>
@@ -307,7 +315,7 @@ export function AnalyticsDashboard({ isAdmin = false }: AnalyticsDashboardProps)
   }
 
   const ErrorTrackingCard = () => {
-    const errorData = dashboardData.errors.data as any
+    const errorData = dashboardData.errors.data
 
     return (
       <Card>
@@ -353,7 +361,7 @@ export function AnalyticsDashboard({ isAdmin = false }: AnalyticsDashboardProps)
   }
 
   const InteractionTrackingCard = () => {
-    const interactionData = dashboardData.interactions.data as any
+    const interactionData = dashboardData.interactions.data
 
     return (
       <Card>

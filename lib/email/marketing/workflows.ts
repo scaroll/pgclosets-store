@@ -12,7 +12,7 @@
  * 8. VIP Customer (ongoing)
  */
 
-import { WorkflowDefinition } from './workflow-engine';
+import type { WorkflowDefinition } from './workflow-engine';
 
 /**
  * 1. WELCOME SERIES

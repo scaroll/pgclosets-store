@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { X, SlidersHorizontal, ChevronDown } from 'lucide-react';
+import { X, SlidersHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
@@ -178,7 +178,7 @@ export function AdvancedFilters({
         inStock: undefined,
       });
     } else if (value) {
-      const currentValues = filters[category] as string[];
+      const currentValues = filters[category];
       onFilterChange({
         ...filters,
         [category]: currentValues.filter((v) => v !== value),

@@ -4,8 +4,15 @@ import React, { useState, useMemo, useCallback, memo } from 'react';
 import type { Product } from '@/types/commerce';
 import Link from 'next/link';
 import Image from 'next/image';
-import { formatPrice } from '@/lib/utils';
 import { useIntersectionObserver } from '@/lib/hooks/use-intersection-observer';
+
+// Format price helper
+function formatPrice(price: number, currency: string = 'CAD'): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+  }).format(price);
+}
 import { usePerformanceMonitoring } from '@/lib/performance-metrics';
 import { Button } from '@/components/ui/button';
 import Heading from '@/components/ui/Heading-new';
@@ -163,8 +170,9 @@ const ProductCard = memo(({ product }: { product: Product }) => {
   });
 
   return (
-    <Card hover padding="md" className="group overflow-hidden" ref={targetRef as any}>
-      <Link href={`/products/${product.handle}`} className="block">
+    <div ref={targetRef as any}>
+      <Card hover padding="md" className="group overflow-hidden">
+        <Link href={`/products/${product.handle}`} className="block">
         <div className="relative aspect-square bg-gray-50 overflow-hidden">
           {isIntersecting && !imageError ? (
             <Image
@@ -205,7 +213,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
         </Text>
         <div className="flex gap-3">
           <Link href={`/products/${product.handle}`} className="flex-1">
-            <Button variant="primary" size="md" fullWidth>
+            <Button variant="primary" size="md" className="w-full">
               View Details
             </Button>
           </Link>
@@ -214,7 +222,8 @@ const ProductCard = memo(({ product }: { product: Product }) => {
           </Button>
         </div>
       </div>
-    </Card>
+      </Card>
+    </div>
   );
 });
 
@@ -276,7 +285,16 @@ const FilterSidebar = memo(({
           <input
             type="text"
             value={activeFilters.search || ''}
-            onChange={(e) => onFilterChange({ ...activeFilters, search: e.target.value || undefined })}
+            onChange={(e) => {
+              const value = e.target.value;
+              const newFilters = { ...activeFilters };
+              if (value) {
+                newFilters.search = value;
+              } else {
+                delete newFilters.search;
+              }
+              onFilterChange(newFilters);
+            }}
             placeholder="Search products..."
             className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all"
           />
@@ -287,7 +305,16 @@ const FilterSidebar = memo(({
           <label className="block text-sm font-light text-black mb-2 tracking-wide">Categories</label>
           <select
             value={activeFilters.category || ''}
-            onChange={(e) => onFilterChange({ ...activeFilters, category: e.target.value || undefined })}
+            onChange={(e) => {
+              const value = e.target.value;
+              const newFilters = { ...activeFilters };
+              if (value) {
+                newFilters.category = value;
+              } else {
+                delete newFilters.category;
+              }
+              onFilterChange(newFilters);
+            }}
             className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
           >
             <option value="">All Categories</option>
@@ -303,7 +330,16 @@ const FilterSidebar = memo(({
             <label className="block text-sm font-light text-black mb-2 tracking-wide">Door Styles</label>
             <select
               value={activeFilters.doorStyle || ''}
-              onChange={(e) => onFilterChange({ ...activeFilters, doorStyle: e.target.value || undefined })}
+              onChange={(e) => {
+                const value = e.target.value;
+                const newFilters = { ...activeFilters };
+                if (value) {
+                  newFilters.doorStyle = value;
+                } else {
+                  delete newFilters.doorStyle;
+                }
+                onFilterChange(newFilters);
+              }}
               className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
             >
               <option value="">All Styles</option>
@@ -320,16 +356,19 @@ const FilterSidebar = memo(({
           <select
             value={activeFilters.priceRange ? `${activeFilters.priceRange.min}-${activeFilters.priceRange.max}` : ''}
             onChange={(e) => {
-              if (!e.target.value) {
-                onFilterChange({ ...activeFilters, priceRange: undefined });
-              } else {
+              const value = e.target.value;
+              const newFilters = { ...activeFilters };
+              if (value) {
                 const range = filterOptions.priceRanges.find(r =>
-                  `${r.min}-${r.max}` === e.target.value
+                  `${r.min}-${r.max}` === value
                 );
                 if (range) {
-                  onFilterChange({ ...activeFilters, priceRange: { min: range.min, max: range.max } });
+                  newFilters.priceRange = { min: range.min, max: range.max };
                 }
+              } else {
+                delete newFilters.priceRange;
               }
+              onFilterChange(newFilters);
             }}
             className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
           >
@@ -348,7 +387,16 @@ const FilterSidebar = memo(({
             <label className="block text-sm font-light text-black mb-2 tracking-wide">Door Types</label>
             <select
               value={activeFilters.doorType || ''}
-              onChange={(e) => onFilterChange({ ...activeFilters, doorType: e.target.value || undefined })}
+              onChange={(e) => {
+                const value = e.target.value;
+                const newFilters = { ...activeFilters };
+                if (value) {
+                  newFilters.doorType = value;
+                } else {
+                  delete newFilters.doorType;
+                }
+                onFilterChange(newFilters);
+              }}
               className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
             >
               <option value="">All Types</option>
@@ -365,7 +413,16 @@ const FilterSidebar = memo(({
             <label className="block text-sm font-light text-black mb-2 tracking-wide">Materials</label>
             <select
               value={activeFilters.material || ''}
-              onChange={(e) => onFilterChange({ ...activeFilters, material: e.target.value || undefined })}
+              onChange={(e) => {
+                const value = e.target.value;
+                const newFilters = { ...activeFilters };
+                if (value) {
+                  newFilters.material = value;
+                } else {
+                  delete newFilters.material;
+                }
+                onFilterChange(newFilters);
+              }}
               className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
             >
               <option value="">All Materials</option>
@@ -382,7 +439,16 @@ const FilterSidebar = memo(({
             <label className="block text-sm font-light text-black mb-2 tracking-wide">Colors/Finishes</label>
             <select
               value={activeFilters.finish || ''}
-              onChange={(e) => onFilterChange({ ...activeFilters, finish: e.target.value || undefined })}
+              onChange={(e) => {
+                const value = e.target.value;
+                const newFilters = { ...activeFilters };
+                if (value) {
+                  newFilters.finish = value;
+                } else {
+                  delete newFilters.finish;
+                }
+                onFilterChange(newFilters);
+              }}
               className="w-full px-4 py-2.5 border border-black/20 text-sm font-light focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all bg-white"
             >
               <option value="">All Finishes</option>
@@ -469,7 +535,7 @@ const ProductsClient = ({ initialProducts }: { initialProducts: Product[] }) => 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12; // Optimized for performance
-  const { measureAndReport, measureDOMNodes } = usePerformanceMonitoring();
+  const { measureAndReport } = usePerformanceMonitoring();
 
   const filterOptions = useMemo(() => extractProductAttributes(initialProducts), [initialProducts]);
 

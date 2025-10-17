@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 import { InstantSearch } from './InstantSearch';
-import { AdvancedFilters, FilterValues } from './AdvancedFilters';
+import type { FilterValues } from './AdvancedFilters';
+import { AdvancedFilters } from './AdvancedFilters';
 import { SortOptions, DEFAULT_SORT_OPTIONS } from './SortOptions';
 import { SearchResults } from './SearchResults';
 import { Button } from '@/components/ui/button';

@@ -7,7 +7,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import type { Author } from '@/lib/blog/types';
 import { Linkedin, Twitter } from 'lucide-react';
 

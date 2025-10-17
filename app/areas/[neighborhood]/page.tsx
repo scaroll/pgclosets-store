@@ -3,12 +3,11 @@
  * Dynamic neighborhood pages for local SEO optimization
  */
 
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Mail, MapPin, Star, CheckCircle2, ArrowRight, Clock, Award } from 'lucide-react'
 import {
-  OTTAWA_NEIGHBORHOODS,
   getNeighborhood,
   getNearbyNeighborhoods,
   getNeighborhoodSlugs

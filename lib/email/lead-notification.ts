@@ -47,11 +47,12 @@ interface LeadNotificationData {
   leadId: string;
   name: string;
   email: string;
+  phone: string;
   location: string;
   serviceType: 'measure' | 'quote' | 'general';
   productInterest?: string;
   message?: string;
-  preferredContact: 'email';
+  preferredContact: 'email' | 'phone';
   consent: boolean;
   submittedAt: string;
   ipAddress: string;
@@ -507,7 +508,7 @@ export async function sendLeadNotification(data: LeadNotificationData): Promise<
  */
 export async function sendTestLeadNotification(toEmail: string): Promise<void> {
   const testData: LeadNotificationData = {
-    leadId: 'test-' + Date.now(),
+    leadId: `test-${  Date.now()}`,
     name: 'John Doe',
     email: 'john.doe@example.com',
     location: 'Ottawa, ON',

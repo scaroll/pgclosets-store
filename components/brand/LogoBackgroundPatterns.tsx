@@ -84,7 +84,7 @@ export function LogoBackgroundPatterns({
 /**
  * SubtlePattern - Minimal repeating logo elements
  */
-function SubtlePattern({ opacity, scale, color, animated, config }: any) {
+function SubtlePattern({ opacity, scale, color, config }: any) {
   const logoSize = 24 * scale;
 
   return (
@@ -108,7 +108,7 @@ function SubtlePattern({ opacity, scale, color, animated, config }: any) {
 /**
  * GeometricPattern - Angular geometric interpretation of logo
  */
-function GeometricPattern({ opacity, scale, color, animated, config }: any) {
+function GeometricPattern({ opacity, scale, color, config }: any) {
   const size = 40 * scale;
   const halfSize = size / 2;
 
@@ -251,29 +251,29 @@ function WatermarkPattern({ opacity, scale, color, animated }: any) {
  * ConstellationPattern - Connected logo elements forming a network
  */
 function ConstellationPattern({ opacity, scale, color, animated, config }: any) {
-  const points = React.useMemo(() => {
+  type Point = { id: number; x: number; y: number; size: number };
+  const points: Point[] = React.useMemo(() => {
     return Array.from({ length: config.count }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: (0.3 + Math.random() * 0.4) * scale
-    }));
+      size: (0.3 + Math.random() * 0.4) * scale,
+    })) as Point[];
   }, [config.count, scale]);
 
-  const connections = React.useMemo(() => {
-    const connections = [];
+  const connections: Array<{ from: Point; to: Point }> = React.useMemo(() => {
+    const conns: Array<{ from: Point; to: Point }> = [];
     for (let i = 0; i < points.length; i++) {
       for (let j = i + 1; j < points.length; j++) {
-        const distance = Math.sqrt(
-          Math.pow(points[i].x - points[j].x, 2) +
-          Math.pow(points[i].y - points[j].y, 2)
-        );
+        const a = points[i]!;
+        const b = points[j]!;
+        const distance = Math.hypot(a.x - b.x, a.y - b.y);
         if (distance < 30) {
-          connections.push({ from: points[i], to: points[j] });
+          conns.push({ from: a, to: b });
         }
       }
     }
-    return connections;
+    return conns;
   }, [points]);
 
   return (
@@ -336,7 +336,7 @@ function ConstellationPattern({ opacity, scale, color, animated, config }: any) 
 /**
  * LuxuryPattern - Premium pattern with sophisticated elements
  */
-function LuxuryPattern({ opacity, scale, color, animated }: any) {
+function LuxuryPattern({ opacity, color, animated }: any) {
   return (
     <div className="absolute inset-0">
       {/* Primary luxury elements */}

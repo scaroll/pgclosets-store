@@ -4,12 +4,9 @@
  */
 
 import type {
-  DoorType,
-  MaterialType,
   FinishOption,
   GlassOption,
   HardwareOption,
-  PricingRule,
   ProductConfiguration,
   OpeningDimensions
 } from '@/types/product-taxonomy';

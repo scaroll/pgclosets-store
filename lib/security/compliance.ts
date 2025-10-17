@@ -4,7 +4,6 @@
  * Data protection and privacy regulations
  */
 
-import { encrypt, decrypt, encryptPII, decryptPII } from './encryption'
 import { SecurityMonitor } from './monitoring'
 
 /**

@@ -10,7 +10,7 @@ import { useQuote } from "@/hooks/useQuote"
 import { QuoteItemCard } from "@/components/quote/QuoteItemCard"
 import { QuoteContactForm } from "@/components/quote/QuoteContactForm"
 import type { QuoteFormData } from "@/lib/types/quote"
-import { trackCTAClick, trackQuoteStart, trackMeasurementHelperClick } from "@/lib/analytics/events"
+import { trackQuoteStart, trackMeasurementHelperClick } from "@/lib/analytics/events"
 import { ArrowLeft, FileText } from "lucide-react"
 
 export default function QuotePage() {
@@ -215,7 +215,7 @@ export default function QuotePage() {
                       variant="primary"
                       className="w-full mt-4"
                       onClick={() => {
-                        trackQuoteStart({ items: itemCount, total });
+                        trackQuoteStart({ source: 'quote_page' });
                         setShowContactForm(true);
                       }}
                     >
@@ -271,7 +271,7 @@ export default function QuotePage() {
                     variant="primary"
                     className="w-full"
                     onClick={() => {
-                      trackQuoteStart({ items: itemCount, total });
+                      trackQuoteStart({ source: 'quote_page' });
                       setShowContactForm(true);
                     }}
                   >
@@ -288,7 +288,7 @@ export default function QuotePage() {
                     <Link
                       href="/book-measure"
                       className="text-blue-600 hover:underline"
-                      onClick={() => trackMeasurementHelperClick({ location: 'quote-page' })}
+                      onClick={() => trackMeasurementHelperClick({ location: 'quote_page' })}
                     >
                       Need help measuring? View our guide →
                     </Link>

@@ -5,6 +5,10 @@
  * Tracks user engagement with logos, conversion funnel metrics, and brand interaction data.
  */
 
+declare global {
+  function gtag(command: string, eventName: string, params?: Record<string, any>): void;
+}
+
 interface LogoInteractionEvent {
   event: string;
   logo_type: 'header' | 'hero' | 'footer' | 'product' | 'loading' | 'watermark';

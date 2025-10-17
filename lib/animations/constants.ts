@@ -27,6 +27,16 @@ export const EASING = {
 
   // Smooth spring (natural physics)
   spring: [0.34, 1.56, 0.64, 1],
+
+  // Apple-specific easing curves
+  applePhysics: {
+    type: 'spring' as const,
+    damping: 15,      // Apple standard: 15
+    stiffness: 200,   // Apple standard: 200
+    mass: 1           // Apple standard: 1
+  },
+  appleSpring: [0.25, 0.46, 0.45, 0.94] as const, // cubic-bezier(0.25, 0.46, 0.45, 0.94) - "ease-apple"
+  appleSmooth: [0.16, 1, 0.3, 1] as const, // Apple's signature smooth ease
 } as const;
 
 /**

@@ -1,286 +1,260 @@
-import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond } from "next/font/google";
-// CSS Loading Order (Agent 3 Strategy): OnceUI → Apple → Custom
-// TEMPORARILY DISABLED: OnceUI v1.4.32 incompatible with Next.js 15 static generation
-// See WAVE1_AGENT2_NEXTJS15_CRITICAL_ISSUE.md for details
-// import "@once-ui-system/core/css/tokens.css";
-// import "@once-ui-system/core/css/styles.css";
-// Apple Design System - 50 Agent Upgrade (loads after OnceUI for cascade priority)
-import "../styles/apple-typography.css";
-import "../styles/apple-colors.css";
-import "../styles/apple-spacing.css";
-import "../styles/apple-glass.css";
-import "../styles/apple-polish.css";
-// PG Closets Custom Styles
-import "./globals-unified.css";
-import "../styles/mobile-performance.css";
-import "../styles/mobile-touch.css";
-import "../styles/mobile-enhancements.css";
-import ClientLayout from "./clientLayout";
-// TEMPORARILY DISABLED: OnceUI providers cause build failure
-// import { OnceUIProviders } from "./providers";
-import PerformanceMonitor from "../components/performance/performance-monitor";
-import { BUSINESS_INFO } from "../lib/business-config";
-import {
-  generateLocalBusinessSchema,
-  generateWebSiteSchema,
-  generateOrganizationSchema,
-} from "../lib/seo/local-business-schema";
-import { Suspense } from "react";
-import Script from "next/script";
-import { Toaster } from "sonner";
-import { ValuePropBanner } from "../components/conversion/ValuePropBanner";
-import { MobileStickyCTA } from "../components/conversion/MobileStickyCTA";
-import { StickyMobileBar } from "../components/navigation/StickyMobileBar";
-import { VercelToolbarWrapper } from "../components/VercelToolbar";
-import { CoreWebVitalsTracker } from "../components/analytics/CoreWebVitalsTracker";
-// import { Analytics } from "@vercel/analytics/react"
-// import { SpeedInsights } from "@vercel/speed-insights/next"
+import type { Metadata } from 'next'
+import './globals.css'
+import '@/styles/apple-glass.css'
+import { Inter, Playfair_Display } from 'next/font/google'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import ScrollProgress from '@/components/ScrollProgress'
+import Script from 'next/script'
+import { StructuredData } from '@/components/StructuredData'
+import { BUSINESS_INFO } from '@/lib/business-config'
+import Analytics from '@/app/components/Analytics'
 
-// Optimized font loading - Premium pairing for luxury aesthetic
-// Inter: Clean, modern body text with variable font support
+// Font optimization with preloading and display swap
 const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
+  subsets: ['latin'],
+  variable: '--font-sans-body',
+  display: 'swap',
   preload: true,
-  fallback: ["system-ui", "arial"],
-});
+  weight: ['400', '500', '600'],
+  adjustFontFallback: true,
+})
 
-// Cormorant Garamond: Elegant display font for headings
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-cormorant",
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-serif-display',
+  display: 'swap',
   preload: true,
-  fallback: ["Georgia", "Times New Roman", "serif"],
-});
+  weight: ['400', '600', '700'],
+  adjustFontFallback: true,
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(BUSINESS_INFO.urls.main),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: `${BUSINESS_INFO.name} | Custom Closets & Storage Solutions in Ottawa`,
-    template: `%s | ${BUSINESS_INFO.name}`,
+    template: `%s | ${BUSINESS_INFO.name}`
   },
-  description:
-    "Custom closets, pantries & storage solutions in Ottawa. Professional design & installation by local experts.",
-  keywords:
-    "custom closets Ottawa, closet design Ottawa, storage solutions Ottawa, pantry organization, garage storage, closet installation, home organization Ottawa, custom storage NCR",
-  authors: [{ name: BUSINESS_INFO.name }],
+  description: 'Premium custom closets, pantries & storage solutions in Ottawa. Professional design & installation by local experts. Renin authorized dealer.',
+  keywords: [
+    // Primary keywords
+    'custom closets Ottawa',
+    'closet design Ottawa',
+    'storage solutions Ottawa',
+    // Secondary keywords
+    'pantry organization Ottawa',
+    'garage storage Ottawa',
+    'closet installation Ottawa',
+    'home organization Ottawa',
+    'custom storage NCR',
+    // Long-tail keywords
+    'Renin closet doors Ottawa',
+    'custom pantry shelving Ottawa',
+    'walk-in closet design Ottawa',
+    'closet organization systems',
+    // Additional context
+    'closet renovation Ottawa',
+    'storage specialists Ottawa',
+    'custom cabinetry Ottawa',
+    'home improvement Ottawa',
+  ],
+  authors: [{ name: BUSINESS_INFO.name, url: BUSINESS_INFO.urls.main }],
   creator: BUSINESS_INFO.name,
   publisher: BUSINESS_INFO.name,
-  robots:
-    "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-  alternates: {
-    canonical: "/",
-  },
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "PG Closets Ottawa",
-  },
-  formatDetection: {
-    telephone: false,
-  },
   openGraph: {
-    type: "website",
-    siteName: BUSINESS_INFO.name,
+    type: 'website',
+    locale: 'en_CA',
     url: BUSINESS_INFO.urls.main,
-    title: `${BUSINESS_INFO.name} | Custom Closets & Storage Solutions in Ottawa`,
-    description:
-      "Custom closets, pantries & storage solutions in Ottawa. Professional design & installation by local experts.",
-    locale: "en_CA",
+    siteName: `${BUSINESS_INFO.name} - Custom Storage Solutions Ottawa`,
+    title: `${BUSINESS_INFO.name} | Premium Custom Closets & Storage in Ottawa`,
+    description: 'Transform your space with premium custom closets and storage solutions. Professional design & installation in Ottawa. Renin authorized dealer.',
     images: [
       {
         url: BUSINESS_INFO.urls.ogImage,
         width: 1200,
         height: 630,
-        alt: `${BUSINESS_INFO.name} - Custom Storage Solutions Ottawa`,
+        alt: `${BUSINESS_INFO.name} - Premium Custom Storage Solutions Ottawa`,
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: `${BUSINESS_INFO.name} | Custom Closets & Storage Solutions in Ottawa`,
-    description:
-      "Custom closets, pantries & storage solutions in Ottawa. Professional design & installation by local experts.",
+    card: 'summary_large_image',
+    title: `${BUSINESS_INFO.name} | Custom Closets & Storage Ottawa`,
+    description: 'Premium custom closets and storage solutions in Ottawa. Professional design & installation.',
     images: [BUSINESS_INFO.urls.ogImage],
-    creator: "@pgclosets",
+    creator: '@pgclosets',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  // Performance optimization metadata
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    'geo.region': `CA-${BUSINESS_INFO.address.province}`,
+    'geo.placename': BUSINESS_INFO.address.city,
+    'geo.position': `${BUSINESS_INFO.coordinates.latitude};${BUSINESS_INFO.coordinates.longitude}`,
+    ICBM: `${BUSINESS_INFO.coordinates.latitude}, ${BUSINESS_INFO.coordinates.longitude}`,
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
     other: {
-      "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION || "",
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION || '',
     },
   },
-  other: {
-    "geo.region": `CA-${BUSINESS_INFO.address.province}`,
-    "geo.placename": BUSINESS_INFO.address.city,
-    "geo.position": `${BUSINESS_INFO.coordinates.latitude};${BUSINESS_INFO.coordinates.longitude}`,
-    ICBM: `${BUSINESS_INFO.coordinates.latitude}, ${BUSINESS_INFO.coordinates.longitude}`,
-    distribution: "local",
-    coverage: "Ottawa, Ontario, Canada",
-    target: "all",
-    HandheldFriendly: "True",
-    MobileOptimized: "320",
-    "mobile-web-app-capable": "yes",
-  },
-  icons: {
-    other: [
-      {
-        rel: "preload",
-        url: "/images/elegant-barn-door-closet.png",
-        // @ts-ignore
-        as: "image",
-        fetchpriority: "high",
-      },
-      {
-        rel: "preconnect",
-        url: "https://fonts.googleapis.com",
-      },
-      {
-        rel: "preconnect",
-        url: "https://fonts.gstatic.com",
-        // @ts-ignore
-        crossOrigin: "anonymous",
-      },
-      {
-        rel: "preconnect",
-        url: "https://www.google-analytics.com",
-      },
-      {
-        rel: "preconnect",
-        url: "https://www.googletagmanager.com",
-      },
-      {
-        rel: "dns-prefetch",
-        url: "https://www.renin.com",
-      },
-      {
-        rel: "dns-prefetch",
-        url: "https://images.unsplash.com",
-      },
-      {
-        rel: "dns-prefetch",
-        url: "https://cdn.renin.com",
-      },
-      {
-        rel: "dns-prefetch",
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com",
-      },
-    ],
-  },
-};
-
-// Next.js 15: Viewport metadata must be exported as a separate function
-export function generateViewport() {
-  return {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-    viewportFit: "cover",
-  };
 }
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  // Generate structured data for SEO
-  const localBusinessSchema = generateLocalBusinessSchema();
-  const websiteSchema = generateWebSiteSchema();
-  const organizationSchema = generateOrganizationSchema();
+  const shouldInjectToolbar = process.env.NODE_ENV === 'development'
 
   return (
-    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
-      <body className={inter.className} suppressHydrationWarning>
-        {/* TEMPORARILY DISABLED: OnceUI providers cause build failure */}
-        {/* <OnceUIProviders> */}
-          {/* Value Proposition Banner - Trust Signals */}
-          <ValuePropBanner />
-          {process.env.NEXT_PUBLIC_GA_ID && (
-            <>
-              <Script
-                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-                strategy="afterInteractive"
-              />
-              <Script id="google-analytics" strategy="afterInteractive">
-                {`
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                    page_title: document.title,
-                    page_location: window.location.href,
-                    custom_map: {
-                      'custom_dimension_1': 'service_area',
-                      'custom_dimension_2': 'product_category'
+    <html lang="en" className={`scroll-smooth ${playfair.variable} ${inter.variable}`}>
+      <head>
+        {/* Critical Resource Hints - Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.renin.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" />
+
+        {/* Preload critical assets - Hero image */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/elegant-barn-door-closet.png"
+          type="image/png"
+          // @ts-ignore - Next.js supports this
+          fetchpriority="high"
+        />
+
+        {/* Inline critical CSS for above-the-fold content */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            /* Critical CSS - Inlined for immediate rendering */
+            body{margin:0;padding:0;background:#F9FAFB}
+            .dark body{background:#1a1a1a}
+            *{box-sizing:border-box}
+            @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+          `
+        }} />
+
+        {/* Global Structured Data for SEO - Schema.org JSON-LD */}
+        <StructuredData type="full" />
+      </head>
+      <body className="antialiased font-sans-body">
+        {/* Skip to main content link for keyboard navigation */}
+        <a href="#main-content" className="skip-to-content sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-md">
+          Skip to main content
+        </a>
+
+        <ScrollProgress />
+        <Navigation />
+
+        <main id="main-content" className="min-h-screen" tabIndex={-1}>
+          {children}
+        </main>
+
+        <Footer />
+
+        {/* Analytics Component - Handles GA and Vercel Analytics */}
+        <Analytics />
+
+        {/* Google Analytics */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                  page_title: document.title,
+                  page_location: window.location.href,
+                  custom_map: {
+                    'custom_dimension_1': 'service_area',
+                    'custom_dimension_2': 'product_category'
+                  }
+                });
+
+                // Track local business events
+                gtag('event', 'page_view', {
+                  'service_area': '${BUSINESS_INFO.address.city}',
+                  'business_type': 'local_business',
+                  'product_focus': 'custom_closets_storage'
+                });
+              `}
+            </Script>
+          </>
+        )}
+
+        {/* Google My Business integration */}
+        <Script id="gmb-integration" strategy="afterInteractive">
+          {`
+            // Google My Business click tracking
+            function trackGMBClick(action) {
+              if (typeof gtag !== 'undefined') {
+                gtag('event', 'gmb_interaction', {
+                  'event_category': 'Local Business',
+                  'event_label': action,
+                  'service_area': '${BUSINESS_INFO.address.city}'
+                });
+              }
+            }
+            window.trackGMBClick = trackGMBClick;
+          `}
+        </Script>
+
+        {/* Web Vitals tracking - load after page interactive */}
+        <Script
+          id="web-vitals"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if('PerformanceObserver' in window){
+                const observer=new PerformanceObserver(list=>{
+                  list.getEntries().forEach(entry=>{
+                    if(entry.name==='first-contentful-paint'){
+                      console.log('FCP:',entry.startTime);
+                    }
+                    if(entry.entryType==='largest-contentful-paint'){
+                      console.log('LCP:',entry.startTime);
                     }
                   });
-
-                  // Track local business events
-                  gtag('event', 'page_view', {
-                    'service_area': '${BUSINESS_INFO.address.city}',
-                    'business_type': 'local_business',
-                    'product_focus': 'renin_closet_doors'
-                  });
-                `}
-              </Script>
-            </>
-          )}
-
-          {/* Google My Business integration */}
-          <Script id="gmb-integration" strategy="afterInteractive">
-            {`
-              // Google My Business click tracking
-              function trackGMBClick(action) {
-                if (typeof gtag !== 'undefined') {
-                  gtag('event', 'gmb_interaction', {
-                    'event_category': 'Local Business',
-                    'event_label': action,
-                    'service_area': '${BUSINESS_INFO.address.city}'
-                  });
-                }
+                });
+                observer.observe({entryTypes:['paint','largest-contentful-paint']});
               }
-              window.trackGMBClick = trackGMBClick;
-            `}
-          </Script>
+            `
+          }}
+        />
 
-          <Suspense
-            fallback={<div className="min-h-screen bg-gray-50 animate-pulse" />}
-          >
-            <ClientLayout>{children}</ClientLayout>
-          </Suspense>
-
-          <Toaster richColors />
-
-          {/* Enhanced Mobile Sticky Bar - Primary CTA */}
-          <StickyMobileBar />
-
-          {/* Legacy Mobile Sticky CTA - Keep for backward compatibility */}
-          <div className="hidden">
-            <MobileStickyCTA />
-          </div>
-
-          {/* Performance Monitoring */}
-          <PerformanceMonitor />
-
-          {/* Core Web Vitals Tracking - Phase 6 */}
-          <CoreWebVitalsTracker />
-
-          <Suspense fallback={null}>
-            {/* <Analytics /> */}
-            {/* <SpeedInsights /> */}
-          </Suspense>
-
-          {/* Vercel Toolbar for visual inspection */}
-          <VercelToolbarWrapper />
-        {/* </OnceUIProviders> */}
+        {shouldInjectToolbar && (
+          <Script
+            id="vercel-toolbar"
+            src="https://vercel.live/toolbar"
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
-  );
+  )
 }

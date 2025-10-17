@@ -6,7 +6,7 @@
  * and user engagement tracking.
  */
 
-import { AnalyticsProductItem, GA4EventParameters } from '@/types/analytics'
+import type { AnalyticsProductItem} from '@/types/analytics';
 
 // GTM Configuration
 export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || ''

@@ -5,7 +5,7 @@
  * Handles both legacy nested format and new flat format for backward compatibility.
  */
 
-import { ProductConfiguratorData, FinishOption, ProductAddon } from '@/types/configurator';
+import type { ProductConfiguratorData, FinishOption, ProductAddon } from '@/types/configurator';
 
 /**
  * Raw product data structure from JSON (nested format)

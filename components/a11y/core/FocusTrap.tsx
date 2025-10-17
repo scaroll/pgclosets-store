@@ -1,6 +1,7 @@
 'use client'
 
-import React, { ReactNode, useEffect, useRef } from 'react'
+import type { ReactNode} from 'react';
+import React, { useEffect, useRef } from 'react'
 import { createFocusTrap, getFocusableElements } from '@/lib/accessibility/a11y-utils'
 
 /**
@@ -48,13 +49,26 @@ export function FocusTrap({
       }
     }
 
-    // Create focus trap
-    cleanupRef.current = createFocusTrap(container, {
-      initialFocus: initialElement,
+    // Create focus trap with properly typed options
+    const options: {
+      initialFocus?: HTMLElement
+      returnFocus: boolean
+      allowEscape: boolean
+      onEscape?: () => void
+    } = {
       returnFocus,
-      allowEscape,
-      onEscape
-    })
+      allowEscape
+    }
+
+    if (initialElement) {
+      options.initialFocus = initialElement
+    }
+
+    if (onEscape) {
+      options.onEscape = onEscape
+    }
+
+    cleanupRef.current = createFocusTrap(container, options)
 
     return () => {
       if (cleanupRef.current) {
@@ -103,7 +117,10 @@ export function FocusGuard({ children, className }: FocusGuardProps) {
       ) {
         // Return focus to the first focusable element
         e.preventDefault()
-        focusableElements[0].focus()
+        const firstElement = focusableElements[0]
+        if (firstElement) {
+          firstElement.focus()
+        }
       }
     }
 
@@ -142,7 +159,7 @@ export function AutoFocus({
 
   useEffect(() => {
     const container = containerRef.current
-    if (!container) return
+    if (!container) return undefined
 
     const focusElement = () => {
       let element: HTMLElement | null = null
@@ -164,6 +181,7 @@ export function AutoFocus({
       return () => clearTimeout(timeoutId)
     } else {
       focusElement()
+      return undefined
     }
   }, [selector, delay, preventScroll])
 

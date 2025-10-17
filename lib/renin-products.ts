@@ -243,6 +243,22 @@ export function formatProductPrice(price: number): string {
   }).format(price)
 }
 
+// Alias for compatibility
+export function formatPrice(price: number | null | undefined, currency: string = 'CAD'): string {
+  const priceInDollars = typeof price === 'number' ? price : 0;
+  return new Intl.NumberFormat('en-CA', {
+    style: 'currency',
+    currency,
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(priceInDollars);
+}
+
+// Calculate tax (HST for Ontario is 13%)
+export function calculateTax(amount: number, taxRate: number = 0.13): number {
+  return amount * taxRate;
+}
+
 // Get contractor pricing (15% discount)
 export function getContractorPrice(price: number): string {
   const contractorPrice = price * 0.85

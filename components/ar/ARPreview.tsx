@@ -25,20 +25,13 @@ import {
   Camera,
   Smartphone,
   RotateCcw,
-  Move3D,
   X,
   AlertCircle,
   CheckCircle,
-  Download,
-  Share2,
-  Maximize2,
-  Minimize2,
-  ZoomIn,
-  ZoomOut,
-  RotateCw,
   Grid3X3,
   Lightbulb,
-  Info
+  Info,
+  Ruler
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -49,6 +42,21 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { cn } from '@/lib/utils'
 
 // ==================== Types ====================
+
+// Declare model-viewer custom element for TypeScript
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'model-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        src?: string
+        ar?: boolean
+        'ar-modes'?: string
+        'camera-controls'?: boolean
+        'auto-rotate'?: boolean
+      }
+    }
+  }
+}
 
 interface ARPreviewProps {
   productName: string
@@ -99,15 +107,15 @@ interface ARSessionState {
 export default function ARPreview({
   productName,
   productId,
-  modelUrl,
+  modelUrl: _modelUrl,
   arModelUrl,
   androidModelUrl,
   dimensions,
   availableFinishes = [],
-  configuration = {},
+  configuration: _configuration = {},
   onARSessionStart,
   onARSessionEnd,
-  onPlacement,
+  onPlacement: _onPlacement,
   className
 }: ARPreviewProps) {
   // ========== State Management ==========
@@ -303,7 +311,7 @@ export default function ARPreview({
     })
 
     // Animation loop
-    const onXRFrame = (time: number, frame: any) => {
+    const onXRFrame = (_time: number, _frame: any) => {
       session.requestAnimationFrame(onXRFrame)
 
       // Render AR content
@@ -315,11 +323,11 @@ export default function ARPreview({
 
   // ========== Control Handlers ==========
   const handleScaleChange = useCallback((value: number[]) => {
-    setSessionState(prev => ({ ...prev, scale: value[0] }))
+    setSessionState(prev => ({ ...prev, scale: value[0]! }))
   }, [])
 
   const handleRotationChange = useCallback((value: number[]) => {
-    setSessionState(prev => ({ ...prev, rotation: value[0] }))
+    setSessionState(prev => ({ ...prev, rotation: value[0]! }))
   }, [])
 
   const handleFinishChange = useCallback((finishId: string) => {
@@ -334,11 +342,6 @@ export default function ARPreview({
       position: { x: 0, y: 0, z: -1.5 }
     }))
   }, [])
-
-  const handlePlacement = useCallback((position: { x: number; y: number; z: number }) => {
-    setSessionState(prev => ({ ...prev, position, isPlaced: true }))
-    onPlacement?.(position)
-  }, [onPlacement])
 
   const takeScreenshot = useCallback(() => {
     if (!canvasRef.current && !videoRef.current) return
@@ -571,7 +574,7 @@ export default function ARPreview({
                   {availableFinishes.map((finish) => (
                     <Button
                       key={finish.id}
-                      variant={sessionState.selectedFinish === finish.id ? "default" : "outline"}
+                      variant={sessionState.selectedFinish === finish.id ? "primary" : "outline"}
                       size="sm"
                       onClick={() => handleFinishChange(finish.id)}
                       className="flex items-center gap-2 justify-start"

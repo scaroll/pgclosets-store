@@ -3,7 +3,7 @@
  * Provides defaults when product data is incomplete
  */
 
-import { ProductConfiguratorData, FinishOption, ProductAddon } from '@/types/configurator';
+import type { ProductConfiguratorData, FinishOption, ProductAddon } from '@/types/configurator';
 import { DOOR_TYPES, getDefaultDoorType } from '@/lib/door-types';
 
 /**

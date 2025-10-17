@@ -21,7 +21,7 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": false,
-    "exactOptionalPropertyTypes": true,
+    "exactOptionalPropertyTypes": false,
     // Module Resolution
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

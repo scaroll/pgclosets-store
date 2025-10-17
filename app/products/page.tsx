@@ -1,6 +1,6 @@
 import StandardLayout from '@/components/layout/StandardLayout';
 import { ProductsHub } from '@/components/products/ProductsHub';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Shop Closet & Sliding Doors | PG Closets Ottawa',

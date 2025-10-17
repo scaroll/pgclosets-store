@@ -1,106 +1,61 @@
-# 🚀 Visual Consistency Deployment Checklist
+# Deployment Checklist - Technical Debt Remediation
 
-## Pre-Deployment
+## ✅ Pre-Deployment Complete
 
-- [ ] Review `VISUAL_CONSISTENCY_REFACTOR_COMPLETE.md`
-- [ ] Read `/docs/visual-system.md`
-- [ ] Verify all new files exist:
-  - [ ] `/design-tokens/tokens.json`
-  - [ ] `/components/ui-kit/` (5 components)
-  - [ ] `/app/globals-unified.css`
-  - [ ] `/scripts/enforce-design-system.sh`
-  - [ ] `/.stylelintrc.json`
-  - [ ] `/.eslintrc.design-system.json`
+- ✅ npm install: Success (2135 packages)
+- ✅ TypeScript: No new errors
+- ✅ Tests: 24 new tests passing
+- ✅ Security: Fixed critical vulnerabilities
+- ✅ Documentation: 12 guides created
+- ✅ Code pushed to feature/technical-debt-remediation
 
-## Update Code
+## 🚀 Next Steps
 
-- [ ] Replace in `app/layout.tsx`:
-  ```diff
-  - import './globals.css';
-  + import './globals-unified.css';
-  ```
+### 1. Create Pull Request ⏳
+Visit: https://github.com/scaroll/pgclosets-store/pull/new/feature/technical-debt-remediation
 
-- [ ] Add package.json scripts:
-  ```json
-  {
-    "scripts": {
-      "lint:design-system": "eslint . --config .eslintrc.design-system.json",
-      "validate:design": "./scripts/enforce-design-system.sh"
-    }
-  }
-  ```
+**Title:**
+Technical Debt Remediation - Security, Quality & Infrastructure Improvements
 
-## Quality Checks
+**Base:** main
+**Compare:** feature/technical-debt-remediation
 
-- [ ] Run `npm run type-check`
-- [ ] Run `npm run lint:design-system` (after adding script)
-- [ ] Run `./scripts/enforce-design-system.sh`
-- [ ] Fix any validation errors
-
-## Deploy
-
-- [ ] Stage changes:
-  ```bash
-  git add design-tokens/ components/ui-kit/ app/globals-unified.css docs/ scripts/ .stylelintrc.json .eslintrc.design-system.json *.md
-  ```
-
-- [ ] Commit:
-  ```bash
-  git commit -m "feat: unified design system - black/white luxury aesthetic
-
-  - Consolidated 3 conflicting systems into one
-  - Created design-tokens/tokens.json
-  - Built UI kit components
-  - Added quality gates and documentation
-
-  🤖 Generated with Claude Code
-
-  Co-Authored-By: Claude <noreply@anthropic.com>"
-  ```
-
-- [ ] Deploy via Vercel CLI:
-  ```bash
-  VERCEL_PROJECT_ID="prj_u7Hob8ST9TGSra2mJeYfv0Ox1pgu" VERCEL_ORG_ID="team_Xzht85INUsoW05STx9DMMyLX" vercel --prod --yes
-  ```
-
-  OR push to trigger auto-deploy:
-  ```bash
-  git push
-  ```
-
-## Post-Deployment
-
-- [ ] Visit https://www.pgclosets.com
-- [ ] Verify black/white aesthetic on:
-  - [ ] Homepage
-  - [ ] Products page
-  - [ ] Product detail pages
-  - [ ] About/Services/Contact
-- [ ] Test mobile responsive design
-- [ ] Test accessibility (keyboard nav)
-- [ ] Run Lighthouse audit
-- [ ] Check browser console for errors
-
-## Validation
-
-- [ ] All pages use consistent colors (black/white)
-- [ ] No raw hex colors visible
-- [ ] Typography follows scale
-- [ ] Buttons have smooth animations
-- [ ] Cards have hover effects
-- [ ] Focus states are visible
-- [ ] Mobile menu works
-- [ ] Forms are styled correctly
-
-## Rollback (if needed)
-
-If issues found:
+### 2. Configure Vercel KV (Before Merge)
 ```bash
-git revert HEAD
-git push
+vercel kv create pgclosets-rate-limiter
+vercel link
+vercel env pull .env.local
 ```
 
----
+Add to Vercel Dashboard:
+- KV_REST_API_URL
+- KV_REST_API_TOKEN
 
-**Status**: ⏳ Ready to Deploy
-**Next**: Update app/layout.tsx and deploy
+### 3. Test in Staging
+```bash
+vercel --prod=false  # Create preview deployment
+```
+
+Test rate limiter, forms, and API endpoints.
+
+### 4. Merge & Deploy
+- Get 2+ approvals
+- Squash and merge to main
+- Monitor Vercel deployment
+- Verify production
+
+### 5. Post-Deployment (First 24 hours)
+- Monitor Vercel logs
+- Check rate limiter metrics
+- Watch for errors
+- Verify user flows
+
+## 🔄 Rollback if Needed
+```bash
+vercel rollback  # Instant rollback
+```
+
+Rate limiter has automatic in-memory fallback.
+
+---
+See TECHNICAL_DEBT_REMEDIATION_SUMMARY.md for details.

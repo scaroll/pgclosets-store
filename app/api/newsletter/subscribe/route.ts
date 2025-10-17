@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
 import { subscribeToNewsletter } from '@/lib/email/newsletter';
 
 /**
@@ -9,7 +10,7 @@ import { subscribeToNewsletter } from '@/lib/email/newsletter';
  *
  * Returns: { success: boolean, message?: string, error?: string }
  */
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const body = await request.json();
     const { email, firstName, lastName } = body;

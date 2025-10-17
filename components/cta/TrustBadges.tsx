@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Shield, Award, Users, Clock, CheckCircle, Star, Phone } from 'lucide-react'
+import { Shield, Award, CheckCircle, Star } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface TrustBadge {

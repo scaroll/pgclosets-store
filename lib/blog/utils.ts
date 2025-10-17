@@ -34,7 +34,7 @@ export function generateExcerpt(content: string, maxLength: number = 160): strin
     return plainText;
   }
 
-  return plainText.substring(0, maxLength).trim() + '...';
+  return `${plainText.substring(0, maxLength).trim()  }...`;
 }
 
 /**

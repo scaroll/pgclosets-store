@@ -11,7 +11,6 @@
  * - Image optimization and lazy loading
  */
 
-import type { Product, ProductImage, ProductVariant, ProductOption } from '@/types/commerce';
 
 // ============================================================================
 // CORE TYPES - Normalized Schema

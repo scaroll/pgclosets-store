@@ -1,25 +1,31 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/Heading-new";
 import Text from "@/components/ui/Text-new";
 import Card from "@/components/ui/Card-new";
-import { Card as ShadcnCard, CardContent } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { formatPrice } from "@/lib/utils";
-import { trackCTAClick, trackStickyMobileCTA, trackMeasurementHelperClick } from "@/lib/analytics/events";
+import { trackCTAClick } from "@/lib/analytics/events";
 import { TrustRow } from "@/components/conversion/TrustRow";
 import { PDPStickyCTA } from "@/components/conversion/PDPStickyCTA";
 import { FitmentTable, defaultFitmentSpecs } from "@/components/products/FitmentTable";
+
+// Format price helper
+function formatPrice(price: number, currency: string = 'CAD'): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+  }).format(price);
+}
 import {
   ZoomIn,
   ChevronLeft,
   ChevronRight,
   Check,
-  ShoppingCart,
   FileText,
   Wrench,
   Shield,
@@ -81,19 +87,7 @@ export function PremiumProductDetailPage({
 }: PremiumProductDetailPageProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
-  const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
-  const [showStickyCTA, setShowStickyCTA] = useState(false);
-
-  // Mobile sticky CTA visibility handler
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show sticky CTA after scrolling 200px on mobile
-      setShowStickyCTA(window.scrollY > 200);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [selectedVariant, setSelectedVariant] = useState(product.variants[0] || { id: '', title: '', sku: '', price: 0, inventory_quantity: 0 });
 
   // Prepare gallery images
   const galleryImages = useMemo(() => {
@@ -175,14 +169,16 @@ export function PremiumProductDetailPage({
           <div className="space-y-4">
             {/* Main Image */}
             <div className="relative aspect-square bg-gray-50 rounded-lg overflow-hidden group">
-              <Image
-                src={galleryImages[selectedImageIndex]}
-                alt={product.title}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+              {galleryImages[selectedImageIndex] && (
+                <Image
+                  src={galleryImages[selectedImageIndex]}
+                  alt={product.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              )}
 
               {/* Zoom Button */}
               <button
@@ -323,8 +319,7 @@ export function PremiumProductDetailPage({
                 <Button
                   size="lg"
                   variant="primary"
-                  fullWidth
-                  className="inline-flex items-center justify-center"
+                  className="w-full inline-flex items-center justify-center"
                   onClick={() => trackCTAClick({
                     location: 'pdp',
                     label: 'get_quote',
@@ -339,8 +334,7 @@ export function PremiumProductDetailPage({
                 <Button
                   size="lg"
                   variant="secondary"
-                  fullWidth
-                  className="inline-flex items-center justify-center"
+                  className="w-full inline-flex items-center justify-center"
                   onClick={() => trackCTAClick({
                     location: 'pdp',
                     label: 'email_us',
@@ -619,7 +613,7 @@ export function PremiumProductDetailPage({
                         {related.collection?.title}
                       </Text>
                       <Text size="lg" className="font-extralight">
-                        {formatPrice(related.variants[0]?.price * 100)}
+                        {formatPrice((related.variants[0]?.price || 0) * 100)}
                       </Text>
                     </div>
                   </Card>
@@ -643,13 +637,15 @@ export function PremiumProductDetailPage({
             <X className="w-8 h-8" />
           </button>
           <div className="relative max-w-6xl w-full aspect-square">
-            <Image
-              src={galleryImages[selectedImageIndex]}
-              alt={product.title}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 80vw"
-            />
+            {galleryImages[selectedImageIndex] && (
+              <Image
+                src={galleryImages[selectedImageIndex]}
+                alt={product.title}
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 80vw"
+              />
+            )}
           </div>
           {galleryImages.length > 1 && (
             <>

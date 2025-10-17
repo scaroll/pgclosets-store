@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Button } from "@/components/ui/button"
 import { Info } from "lucide-react"
-import { ConfiguratorState, ProductConfiguratorData } from "@/types/configurator"
+import type { ConfiguratorState, ProductConfiguratorData } from "@/types/configurator"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 interface WizardStep2DimensionsProps {

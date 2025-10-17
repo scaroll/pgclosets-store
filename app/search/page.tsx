@@ -37,10 +37,11 @@ function SearchContent() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const fetchedProducts = await getProducts({
-        query: searchQuery,
-        collection: selectedCategory === 'All Categories' ? undefined : selectedCategory
-      })
+      const params: { query: string; collection?: string } = { query: searchQuery }
+      if (selectedCategory !== 'All Categories') {
+        params.collection = selectedCategory
+      }
+      const fetchedProducts = await getProducts(params)
       setProducts(fetchedProducts)
     }
     fetchProducts()
@@ -51,12 +52,16 @@ function SearchContent() {
   }
 
   const filteredResults = products.filter((product) => {
-    const matchesPrice = (product.variants[0]?.price || 0) >= priceRange[0] &&
-                        (product.variants[0]?.price || 0) <= priceRange[1]
+    const firstVariant = product.variants[0]
+    const minPrice = priceRange[0] ?? 0
+    const maxPrice = priceRange[1] ?? 500000
+    const matchesPrice = firstVariant ?
+      (firstVariant.price || 0) >= minPrice && (firstVariant.price || 0) <= maxPrice :
+      true
     const matchesFeatures = selectedFeatures.length === 0 ||
       (product.tags &&
         selectedFeatures.some((feature) =>
-          product.tags.some((productTag) =>
+          product.tags?.some((productTag) =>
             productTag.toLowerCase().includes(feature.toLowerCase())
           )
         ))
@@ -119,16 +124,6 @@ function SearchContent() {
               setViewMode={setViewMode}
               filteredResults={sortedResults}
               resultsCount={sortedResults.length}
-              sortBy={sortBy}
-              setSortBy={setSortBy}
-              showFilters={showFilters}
-              setShowFilters={setShowFilters}
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
-              selectedFeatures={selectedFeatures}
-              setSelectedFeatures={setSelectedFeatures}
-              priceRange={priceRange}
-              setPriceRange={setPriceRange}
             />
           </div>
         </div>

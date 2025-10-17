@@ -1,6 +1,7 @@
 'use client'
 
-import React, { ReactNode } from 'react'
+import type { ReactNode } from 'react';
+import React from 'react'
 import { cn } from '@/lib/utils'
 
 /**
@@ -81,11 +82,16 @@ export function VisuallyHiddenHeading({
 }: VisuallyHiddenHeadingProps) {
   const Component = `h${level}` as keyof JSX.IntrinsicElements
 
-  return (
-    <ScreenReaderOnly as={Component} className={className}>
-      {children}
-    </ScreenReaderOnly>
-  )
+  const props: ScreenReaderOnlyProps = {
+    children,
+    as: Component
+  }
+
+  if (className) {
+    props.className = className
+  }
+
+  return <ScreenReaderOnly {...props} />
 }
 
 export default ScreenReaderOnly

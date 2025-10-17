@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import enhancedProducts from "@/data/enhanced-products.json";
 import StandardLayout from "@/components/layout/StandardLayout";
@@ -9,10 +9,10 @@ const QuickConfigureCard = dynamic(
   {
     loading: () => (
       <div className="animate-pulse">
-        <div className="aspect-square bg-gray-200 rounded-t-lg mb-4"></div>
+        <div className="aspect-square bg-gray-200 rounded-t-lg mb-4" />
         <div className="p-6 space-y-3">
-          <div className="h-6 bg-gray-200 rounded w-3/4"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+          <div className="h-6 bg-gray-200 rounded w-3/4" />
+          <div className="h-4 bg-gray-200 rounded w-1/2" />
         </div>
       </div>
     )
@@ -64,9 +64,9 @@ export default function ReninBifoldDoorsPage() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {bifoldDoors.map((product) => (
-            <QuickConfigureCard key={product.id} product={product as any} />
+            <QuickConfigureCard key={product.id} product={product} />
           ))}
         </div>
       </div>

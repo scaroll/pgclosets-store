@@ -13,7 +13,6 @@ import {
   RENIN_SKU_CONFIG,
 } from './transform-renin-data';
 import {
-  productDataStore,
   initializeProductStore,
   type NormalizedProduct,
   type ProductCategory,

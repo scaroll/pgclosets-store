@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import enhancedProducts from "@/data/enhanced-products.json";
 import StandardLayout from "@/components/layout/StandardLayout";
 import { QuickConfigureCard } from '@/components/products/QuickConfigureCard';

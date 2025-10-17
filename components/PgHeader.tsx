@@ -96,7 +96,7 @@ export default function PgHeader() {
             </a>
 
             {/* Empty div for flex spacing on desktop */}
-            <div className="hidden md:block w-32"></div>
+            <div className="hidden md:block w-32" />
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">

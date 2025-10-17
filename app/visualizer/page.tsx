@@ -144,7 +144,6 @@ export default function VisualizerPage() {
   const [currentConfig, setCurrentConfig] = useState<VisualizerConfig | null>(null);
   const [savedDesigns, setSavedDesigns] = useState<SavedDesign[]>([]);
   const [emailDialogOpen, setEmailDialogOpen] = useState(false);
-  const [quoteDialogOpen, setQuoteDialogOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('visualizer');
 
   // Email form state
@@ -469,7 +468,7 @@ export default function VisualizerPage() {
 
                 {/* Steps */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                  {howItWorks.map((step, index) => (
+                  {howItWorks.map((step) => (
                     <div key={step.step} className="text-center">
                       <div className="relative mb-6">
                         <div className="w-20 h-20 bg-gradient-to-r from-pg-navy to-pg-sky rounded-full flex items-center justify-center mx-auto mb-4">

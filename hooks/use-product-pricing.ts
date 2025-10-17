@@ -9,8 +9,7 @@ import type {
   ProductConfiguration,
   OpeningDimensions,
   FinishOption,
-  GlassOption,
-  HardwareOption
+  GlassOption
 } from '@/types/product-taxonomy';
 
 interface UsePricingOptions {
@@ -216,8 +215,9 @@ export function usePriceHistory(currentPrice: number, productId: string) {
 
   const priceChange = useMemo(() => {
     if (priceHistory.length < 2) return null;
-    const previous = priceHistory[priceHistory.length - 2].price;
-    return currentPrice - previous;
+    const previous = priceHistory[priceHistory.length - 2];
+    if (!previous) return null;
+    return currentPrice - previous.price;
   }, [priceHistory, currentPrice]);
 
   return {
