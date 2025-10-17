@@ -109,6 +109,7 @@
     "@vercel/postgres": "^0.10.0",
     "@vercel/speed-insights": "^1.2.0",
     "@vercel/toolbar": "^0.1.41",
+    "ai": "^5.0.75",
     "awilix": "^11.0.0",
     "axe-core": "^4.11.0",
     "class-variance-authority": "^0.7.1",
