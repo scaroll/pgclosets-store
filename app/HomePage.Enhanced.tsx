@@ -59,7 +59,7 @@ export default function HomePage() {
         fallbackImage="/images/elegant-barn-door-closet.png"
       />
 
-      {/* Featured Section - Replacing OnceUI with Tailwind */}
+      {/* Value Props Section - Premium Benefits */}
       <Section variant="light" spacing="xl">
         <div className="flex flex-col items-center gap-8 py-8">
           <motion.div

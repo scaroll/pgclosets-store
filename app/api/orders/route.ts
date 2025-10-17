@@ -1,212 +1,372 @@
-import { NextResponse } from "next/server"
-import { cookies } from "next/headers"
-
-// Order interface
-interface Order {
-  id: string
-  orderNumber: string
-  customerId?: string
-  date: string
-  status: "pending" | "confirmed" | "processing" | "shipped" | "delivered" | "installed"
-  items: Array<{
-    productId: string
-    name: string
-    image: string
-    price: number
-    quantity: number
-    selectedOptions?: Record<string, string>
-    installationIncluded?: boolean
-  }>
-  subtotal: number
-  tax: number
-  shipping: number
-  discount: number
-  installation: number
-  total: number
-  shippingAddress: {
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    company?: string
-    addressLine1: string
-    addressLine2?: string
-    city: string
-    province: string
-    postalCode: string
-    country: string
-  }
-  billingAddress?: {
-    firstName: string
-    lastName: string
-    addressLine1: string
-    addressLine2?: string
-    city: string
-    province: string
-    postalCode: string
-    country: string
-  }
-  installationDate?: string
-  specialInstructions?: string
-  paymentMethod: string
-  paymentIntentId?: string
-  tracking?: {
-    carrier: string
-    number: string
-    url: string
-  }
-  createdAt: string
-  updatedAt: string
-}
-
-// Mock database - in production, use a real database
-let orders: Order[] = []
+import { NextRequest, NextResponse } from 'next/server';
+import { auth, requireAuth } from '@/lib/auth';
+import { prisma } from '@/lib/db';
+import { generalRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit';
+import { z } from 'zod';
+import { sendOrderConfirmation, type OrderEmailData } from '@/lib/email';
 
 // Generate order number
 function generateOrderNumber(): string {
-  const year = new Date().getFullYear()
-  const random = Math.floor(Math.random() * 1000000)
-  return `PGC-${year}-${random.toString().padStart(6, "0")}`
+  const year = new Date().getFullYear();
+  const random = Math.floor(Math.random() * 1000000);
+  return `PGC-${year}-${random.toString().padStart(6, '0')}`;
 }
 
-// GET /api/orders - Get all orders for current user
-export async function GET(request: Request) {
+// GET /api/orders - Get orders for current user
+export async function GET(req: NextRequest) {
   try {
-    // In production, verify user authentication
-    const cookieStore = await cookies()
-    const userId = cookieStore.get("userId")?.value
+    const session = await auth();
 
-    // Filter orders by user (mock implementation)
-    const userOrders = orders.filter(order =>
-      !userId || order.customerId === userId
-    )
+    if (!session?.user) {
+      return NextResponse.json(
+        { error: 'Authentication required' },
+        { status: 401 }
+      );
+    }
+
+    const { searchParams } = new URL(req.url);
+    const status = searchParams.get('status');
+    const limit = parseInt(searchParams.get('limit') || '10');
+    const page = parseInt(searchParams.get('page') || '1');
+    const skip = (page - 1) * limit;
+
+    // Build where clause
+    const where: any = {
+      userId: session.user.id,
+    };
+
+    if (status) {
+      where.paymentStatus = status;
+    }
+
+    // Get orders with pagination
+    const [orders, totalCount] = await Promise.all([
+      prisma.order.findMany({
+        where,
+        include: {
+          items: {
+            include: {
+              product: {
+                include: {
+                  images: {
+                    take: 1,
+                    orderBy: { position: 'asc' },
+                  },
+                },
+              },
+            },
+          },
+          shippingAddress: true,
+          billingAddress: true,
+        },
+        orderBy: { createdAt: 'desc' },
+        skip,
+        take: limit,
+      }),
+      prisma.order.count({ where }),
+    ]);
 
     return NextResponse.json({
-      success: true,
-      data: userOrders,
-      count: userOrders.length
-    })
+      orders,
+      pagination: {
+        page,
+        limit,
+        total: totalCount,
+        totalPages: Math.ceil(totalCount / limit),
+      },
+    });
   } catch (error) {
-    console.error("Error fetching orders:", error)
+    console.error('[Orders API] GET Error:', error);
     return NextResponse.json(
-      { success: false, error: "Failed to fetch orders" },
+      { error: 'Failed to fetch orders' },
       { status: 500 }
-    )
+    );
   }
 }
 
-// POST /api/orders - Create a new order
-export async function POST(request: Request) {
+// POST /api/orders - Create order from cart (called after successful payment)
+export async function POST(req: NextRequest) {
   try {
-    const body = await request.json()
-
-    // Validate required fields
-    if (!body.items || body.items.length === 0) {
+    // Rate limiting
+    const identifier = getClientIdentifier(req);
+    const { allowed } = await checkRateLimit(identifier, generalRateLimiter);
+    if (!allowed) {
       return NextResponse.json(
-        { success: false, error: "Order must have at least one item" },
-        { status: 400 }
-      )
+        { error: 'Too many requests' },
+        { status: 429 }
+      );
     }
 
-    if (!body.shippingAddress) {
+    const session = await auth();
+    const body = await req.json();
+
+    const {
+      paymentIntentId,
+      cartId,
+      shippingAddress,
+      billingAddress,
+      guestEmail,
+      guestName,
+      guestPhone,
+      customerNotes,
+    } = body;
+
+    if (!paymentIntentId || !cartId) {
       return NextResponse.json(
-        { success: false, error: "Shipping address is required" },
+        { error: 'Payment intent ID and cart ID are required' },
         { status: 400 }
-      )
+      );
     }
 
-    // Create order
-    const order: Order = {
-      id: `ord_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-      orderNumber: generateOrderNumber(),
-      customerId: body.customerId,
-      date: new Date().toISOString(),
-      status: "confirmed",
-      items: body.items,
-      subtotal: body.subtotal || 0,
-      tax: body.tax || 0,
-      shipping: body.shipping || 0,
-      discount: body.discount || 0,
-      installation: body.installation || 0,
-      total: body.total || 0,
-      shippingAddress: body.shippingAddress,
-      billingAddress: body.billingAddress,
-      installationDate: body.installationDate,
-      specialInstructions: body.specialInstructions,
-      paymentMethod: body.paymentMethod || "Credit Card",
-      paymentIntentId: body.paymentIntentId,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+    // Get cart with items
+    const cart = await prisma.cart.findUnique({
+      where: { id: cartId },
+      include: {
+        items: {
+          include: {
+            product: true,
+          },
+        },
+      },
+    });
+
+    if (!cart || cart.items.length === 0) {
+      return NextResponse.json(
+        { error: 'Cart not found or empty' },
+        { status: 404 }
+      );
     }
 
-    // Save order (in production, save to database)
-    orders.push(order)
+    // Calculate totals
+    const subtotal = cart.items.reduce(
+      (sum, item) => sum + (item.product.salePrice || item.product.price) * item.quantity,
+      0
+    );
 
-    // Send confirmation email (in production)
-    // await sendOrderConfirmationEmail(order)
+    const taxRate = 0.13; // 13% HST Ontario
+    const tax = Math.round(subtotal * taxRate);
+    const shippingCost = subtotal >= 10000 ? 0 : 2500; // Free shipping over $100
+    const total = subtotal + tax + shippingCost;
+
+    // Create order in transaction
+    const order = await prisma.$transaction(async (tx) => {
+      // Create shipping address if provided
+      let shippingAddressId = null;
+      if (shippingAddress && session?.user?.id) {
+        const createdAddress = await tx.address.create({
+          data: {
+            ...shippingAddress,
+            userId: session.user.id,
+            type: 'shipping',
+          },
+        });
+        shippingAddressId = createdAddress.id;
+      }
+
+      // Create billing address if provided
+      let billingAddressId = null;
+      if (billingAddress && session?.user?.id) {
+        const createdAddress = await tx.address.create({
+          data: {
+            ...billingAddress,
+            userId: session.user.id,
+            type: 'billing',
+          },
+        });
+        billingAddressId = createdAddress.id;
+      }
+
+      // Create the order
+      const newOrder = await tx.order.create({
+        data: {
+          orderNumber: generateOrderNumber(),
+          userId: session?.user?.id || null,
+          guestEmail: guestEmail || session?.user?.email || null,
+          guestName: guestName || session?.user?.name || null,
+          guestPhone,
+          shippingAddressId,
+          billingAddressId,
+          subtotal,
+          shippingCost,
+          tax,
+          discount: 0,
+          total,
+          paymentStatus: 'paid',
+          paymentMethod: 'card',
+          stripePaymentIntentId: paymentIntentId,
+          fulfillmentStatus: 'pending',
+          customerNotes,
+          items: {
+            create: cart.items.map(item => ({
+              productId: item.productId,
+              productName: item.product.name,
+              variantName: null, // Can be added if using variants
+              sku: item.product.sku,
+              quantity: item.quantity,
+              price: item.product.salePrice || item.product.price,
+              total: (item.product.salePrice || item.product.price) * item.quantity,
+            })),
+          },
+        },
+        include: {
+          items: {
+            include: {
+              product: {
+                include: {
+                  images: { take: 1 },
+                },
+              },
+            },
+          },
+          shippingAddress: true,
+          billingAddress: true,
+        },
+      });
+
+      // Update product inventory
+      for (const item of cart.items) {
+        if (item.product.trackInventory) {
+          await tx.product.update({
+            where: { id: item.productId },
+            data: {
+              inventory: {
+                decrement: item.quantity,
+              },
+            },
+          });
+        }
+      }
+
+      // Clear the cart
+      await tx.cartItem.deleteMany({
+        where: { cartId: cart.id },
+      });
+
+      return newOrder;
+    });
+
+    // Send order confirmation email
+    try {
+      const emailData: OrderEmailData = {
+        orderNumber: order.orderNumber,
+        customerName: order.guestName || order.user?.name || 'Customer',
+        customerEmail: order.guestEmail || order.user?.email || '',
+        orderDate: new Date(order.createdAt).toLocaleDateString('en-US', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }),
+        items: order.items.map(item => ({
+          name: item.productName,
+          quantity: item.quantity,
+          price: item.price, // Already in cents
+          image: item.product.images[0]?.url
+        })),
+        subtotal: order.subtotal, // Already in cents
+        tax: order.tax, // Already in cents
+        shipping: order.shippingCost, // Already in cents
+        total: order.total, // Already in cents
+        shippingAddress: order.shippingAddress || {
+          firstName: order.guestName?.split(' ')[0] || '',
+          lastName: order.guestName?.split(' ').slice(1).join(' ') || '',
+          addressLine1: 'Address on file',
+          city: 'Ottawa',
+          province: 'ON',
+          postalCode: 'K1A 0B1'
+        },
+        estimatedDelivery: order.shippedAt ?
+          new Date(order.shippedAt).toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          }) : undefined
+      };
+
+      if (emailData.customerEmail) {
+        await sendOrderConfirmation(emailData);
+      }
+    } catch (emailError) {
+      console.error('Failed to send order confirmation email:', emailError);
+      // Don't fail the order if email fails
+    }
 
     return NextResponse.json({
       success: true,
-      data: order,
-      orderId: order.id,
-      orderNumber: order.orderNumber
-    })
+      order,
+      orderNumber: order.orderNumber,
+    });
   } catch (error) {
-    console.error("Error creating order:", error)
+    console.error('[Orders API] POST Error:', error);
     return NextResponse.json(
-      { success: false, error: "Failed to create order" },
+      { error: 'Failed to create order' },
       { status: 500 }
-    )
+    );
   }
 }
 
-// PATCH /api/orders - Update order status
-export async function PATCH(request: Request) {
+// GET /api/orders/[id] - Get specific order
+export async function PATCH(req: NextRequest) {
   try {
-    const { orderId, status, tracking } = await request.json()
+    const session = await requireAuth();
+    const body = await req.json();
+
+    const { orderId, status, trackingNumber } = body;
 
     if (!orderId) {
       return NextResponse.json(
-        { success: false, error: "Order ID is required" },
+        { error: 'Order ID is required' },
         { status: 400 }
-      )
+      );
     }
 
-    // Find order
-    const orderIndex = orders.findIndex(o => o.id === orderId)
-    if (orderIndex === -1) {
+    // Check if user owns the order or is admin
+    const order = await prisma.order.findFirst({
+      where: {
+        id: orderId,
+        ...(session.user.role !== 'admin' && { userId: session.user.id }),
+      },
+    });
+
+    if (!order) {
       return NextResponse.json(
-        { success: false, error: "Order not found" },
+        { error: 'Order not found' },
         { status: 404 }
-      )
+      );
     }
 
     // Update order
-    const order = orders[orderIndex];
-    if (!order) {
-      return NextResponse.json(
-        { success: false, error: "Order not found" },
-        { status: 404 }
-      )
-    }
-
-    if (status) {
-      order.status = status
-    }
-    if (tracking) {
-      order.tracking = tracking
-    }
-    order.updatedAt = new Date().toISOString()
+    const updatedOrder = await prisma.order.update({
+      where: { id: orderId },
+      data: {
+        ...(status && { fulfillmentStatus: status }),
+        ...(trackingNumber && { trackingNumber }),
+        ...(status === 'shipped' && { shippedAt: new Date() }),
+        ...(status === 'delivered' && { deliveredAt: new Date() }),
+      },
+      include: {
+        items: {
+          include: {
+            product: {
+              include: {
+                images: { take: 1 },
+              },
+            },
+          },
+        },
+      },
+    });
 
     return NextResponse.json({
       success: true,
-      data: order
-    })
+      order: updatedOrder,
+    });
   } catch (error) {
-    console.error("Error updating order:", error)
+    console.error('[Orders API] PATCH Error:', error);
     return NextResponse.json(
-      { success: false, error: "Failed to update order" },
+      { error: 'Failed to update order' },
       { status: 500 }
-    )
+    );
   }
 }
