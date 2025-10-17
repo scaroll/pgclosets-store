@@ -133,13 +133,6 @@ const components = {
         textDecoration: 'underline',
         textDecorationColor: colors.gray[300],
         textUnderlineOffset: '2px',
-        transition: 'color 150ms ease',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.color = colors.interactive.linkHover;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.color = colors.interactive.link;
       }}
     >
       {children}

@@ -61,6 +61,7 @@
     "validate:all": "npm run quality && npm run security:audit && npm run test"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^2.0.52",
     "@axe-core/react": "^4.10.2",
     "@hookform/resolvers": "^3.10.0",
     "@mdx-js/loader": "^3.1.1",

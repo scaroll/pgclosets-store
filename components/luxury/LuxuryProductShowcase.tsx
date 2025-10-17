@@ -52,7 +52,7 @@ export function LuxuryProductShowcase({
                 description={product.description}
                 image={product.thumbnail || "/placeholder.svg"}
                 imageAlt={product.title}
-                price={formatPrice(product.variants[0]?.price)}
+                price={formatPrice(product.variants?.[0]?.price || 0)}
                 badge="Premium"
                 variant="premium"
                 shimmer={hoveredProduct === product.id}
@@ -163,7 +163,7 @@ export function LuxuryProductComparison({
                 description={product.description}
                 image={product.thumbnail || "/placeholder.svg"}
                 imageAlt={product.title}
-                price={formatPrice(product.variants[0]?.price)}
+                price={formatPrice(product.variants?.[0]?.price || 0)}
                 variant={index === 1 ? "featured" : "premium"}
                 badge={index === 1 ? "Most Popular" : "Premium"}
                 href={`/products/${product.handle}`}

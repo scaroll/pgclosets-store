@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 // Design token types
 interface DesignTokens {
@@ -185,5 +185,3 @@ export function useAnimation(type: keyof DesignTokens['animations'] = 'normal') 
     className: `transition-all duration-[${tokens.animations[type]}] ease-[${tokens.animations.ease}]`,
   };
 }
-
-import { useState } from 'react';

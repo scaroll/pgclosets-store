@@ -24,12 +24,16 @@ export function QuickViewModal({
   onQuoteRequest,
 }: QuickViewModalProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
+  const [selectedVariant, setSelectedVariant] = useState(
+    product.variants?.[0] || { id: '', title: '', sku: '', price: 0, inventory_quantity: 0 }
+  );
 
   // Reset when product changes
   useEffect(() => {
     setSelectedImageIndex(0);
-    setSelectedVariant(product.variants[0]);
+    setSelectedVariant(
+      product.variants?.[0] || { id: '', title: '', sku: '', price: 0, inventory_quantity: 0 }
+    );
   }, [product]);
 
   // Prevent body scroll when modal is open

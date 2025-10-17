@@ -45,7 +45,7 @@ export function EnhancedProductDetailPage({ product, relatedProducts }: Enhanced
     return images.length > 0 ? images : ["/placeholder.svg?height=600&width=600"]
   }, [product])
 
-  const priceText = `From ${formatPrice(product.variants[0]?.price)} CAD`
+  const priceText = `From ${formatPrice(product.variants?.[0]?.price || 0)} CAD`
 
   return (
     <main className="bg-gray-50 py-20">
@@ -394,7 +394,7 @@ export function EnhancedProductDetailPage({ product, relatedProducts }: Enhanced
                     <CardContent className="p-4">
                       <CardTitle className="text-lg font-light">{related.title}</CardTitle>
                       <p className="mt-4 text-lg font-extralight text-slate-800">
-                        {formatPrice(related.variants[0]?.price)}
+                        {formatPrice(related.variants?.[0]?.price || 0)}
                       </p>
                     </CardContent>
                   </Card>

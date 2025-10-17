@@ -17,7 +17,7 @@ export function MedusaProductCard({ product, className = "" }: MedusaProductCard
     if (!product.variants?.[0]?.id) return
 
     try {
-      await addToCart(product.variants[0].id, 1)
+      await addToCart(product.variants?.[0].id, 1)
     } catch (error) {
       console.error("Error adding to cart:", error)
     }

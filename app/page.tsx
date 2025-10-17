@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import HomePage from "./HomePage"
 
+// Force dynamic rendering to avoid clientReferenceManifest error during build
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'PG Closets | Elevated Taste Without Pretense | Ottawa\'s Premium Closet Doors',
   description: 'Transform your Ottawa home with sophisticated closet door solutions. Official Renin dealer offering curated collections, professional installation, and lifetime warranty. Elevated taste without pretense.',

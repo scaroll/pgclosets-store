@@ -1,3 +1,5 @@
+"use client"
+
 import { EnhancedFooter } from '@/components/navigation/EnhancedFooter';
 import PgHeader from '@/components/PgHeader';
 import React from 'react';

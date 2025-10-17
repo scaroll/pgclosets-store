@@ -314,7 +314,7 @@ export function InstantSearch({
                   </div>
 
                   {/* Price */}
-                  {result.product.variants[0]?.price && (
+                  {result.product.variants?.[0]?.price && (
                     <div className="text-sm font-semibold text-gray-900">
                       ${(result.product.variants[0].price / 100).toFixed(0)}
                     </div>

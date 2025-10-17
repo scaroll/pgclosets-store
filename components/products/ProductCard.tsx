@@ -83,7 +83,7 @@ export function ProductCard({
         </CardTitle>
         {/* Benefit line or price */}
         <CardDescription className="text-sm font-light">
-          {benefitLine || `From ${formatPrice(product.variants[0]?.price)}`}
+          {benefitLine || (product.variants?.[0]?.price ? `From ${formatPrice(product.variants[0].price)}` : 'Price on request')}
         </CardDescription>
       </CardHeader>
 

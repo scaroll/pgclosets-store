@@ -26,7 +26,7 @@ export function ProductSchema({ product, reviews }: ProductSchemaProps) {
     },
     offers: {
       "@type": "Offer",
-      price: product.variants[0]?.price || 0,
+      price: product.variants?.[0]?.price || 0,
       priceCurrency: "CAD",
       availability: "https://schema.org/InStock",
       priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],

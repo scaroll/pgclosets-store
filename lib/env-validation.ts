@@ -30,10 +30,10 @@ const envSchema = z.object({
   NODE_ENV: nodeEnvSchema,
 
   // ============================================
-  // Security & Authentication (Required)
+  // Security & Authentication (Required in production)
   // ============================================
-  JWT_SECRET: secretSchema,
-  CSRF_SECRET: z.string().min(16, 'CSRF secret must be at least 16 characters'),
+  JWT_SECRET: z.string().optional(),
+  CSRF_SECRET: z.string().optional(),
 
   // NextAuth (optional - only if using NextAuth)
   NEXTAUTH_SECRET: z.string().min(32).optional(),
@@ -114,9 +114,10 @@ const envSchema = z.object({
   // External Services (Optional)
   // ============================================
   // OpenAI
-  OPENAI_API_KEY: z.string()
-    .regex(/^sk-[a-zA-Z0-9]+$/, 'Must be a valid OpenAI API key')
-    .optional(),
+  OPENAI_API_KEY: z.string().optional().refine(
+    (val) => !val || /^sk-[a-zA-Z0-9_-]+$/.test(val),
+    'Must be a valid OpenAI API key'
+  ),
 
   // Google Maps
   NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: apiKeySchema.optional(),
@@ -200,9 +201,14 @@ const envSchema = z.object({
 })
 
 // Environment-specific validation rules
+// Only enforce production requirements when actually deployed to production (VERCEL_ENV=production)
+// During build (NODE_ENV=production but VERCEL_ENV!=production), allow missing secrets
 const productionRequirements = envSchema.refine(
   (data) => {
-    if (data.NODE_ENV === 'production') {
+    // Only enforce production requirements if actually deployed to production (not during build)
+    const isProductionDeployment = data.VERCEL_ENV === 'production'
+
+    if (isProductionDeployment) {
       const missing: string[] = []
 
       // Check required production variables
