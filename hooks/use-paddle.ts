@@ -10,12 +10,6 @@ interface PaddleInstance {
   };
 }
 
-declare global {
-  interface Window {
-    Paddle: PaddleInstance;
-  }
-}
-
 interface PaddleConfig {
   vendorId: string
   environment: "sandbox" | "production"
@@ -54,9 +48,10 @@ export function usePaddle() {
     script.src = "https://cdn.paddle.com/paddle/paddle.js"
     script.async = true
     script.onload = () => {
-      if (window.Paddle) {
-        window.Paddle.Setup({
-          vendor: Number.parseInt(config.vendorId),
+      const paddle = window.Paddle as unknown as PaddleInstance
+      if (paddle) {
+        paddle.Setup({
+          vendor: parseInt(config.vendorId, 10),
           eventCallback: (data: unknown) => {
             console.log("[v0] Paddle event:", data)
           },
@@ -78,12 +73,13 @@ export function usePaddle() {
   }, [config.vendorId])
 
   const openCheckout = (options: PaddleCheckoutOptions) => {
-    if (!isLoaded || !window.Paddle) {
+    const paddle = window.Paddle as unknown as PaddleInstance
+    if (!isLoaded || !paddle) {
       console.error("[v0] Paddle not loaded")
       return
     }
 
-    window.Paddle.Checkout.open(options)
+    paddle.Checkout.open(options)
   }
 
   const formatPriceForPaddle = (price: number, province = "ON"): string => {

@@ -2,7 +2,7 @@
  * API response and request types
  */
 
-import { Product, Cart, CartItem } from './commerce';
+import type { Product, Cart } from './commerce';
 
 // Generic API response wrapper
 export interface ApiResponse<T = unknown> {

@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 
 // Set required environment variables for testing
-process.env.NODE_ENV = 'test'
+Object.defineProperty(process.env, 'NODE_ENV', { value: 'test', writable: true })
 process.env.JWT_SECRET = 'test-jwt-secret-32-characters-long-for-testing-purposes-only'
 process.env.CSRF_SECRET = 'test-csrf-secret-16chars'
 process.env.NEXT_PUBLIC_APP_URL = 'http://localhost:3000'

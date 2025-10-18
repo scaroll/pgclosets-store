@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { guestEmail, guestName, guestPhone, customerNotes } = validated.data;
+    const { guestEmail, customerNotes } = validated.data;
 
     // Get cart
     const cart = await prisma.cart.findFirst({
@@ -90,10 +90,10 @@ export async function POST(req: NextRequest) {
       0
     );
 
-    const taxRate = 0.13; // 13% HST Ontario
-    const tax = Math.round(subtotal * taxRate);
+    // const taxRate = 0.13; // 13% HST Ontario
+    // const tax = Math.round(subtotal * taxRate);
     const shippingCost = subtotal >= 10000 ? 0 : 2500; // Free shipping over $100
-    const total = subtotal + tax + shippingCost;
+    // const total = subtotal + tax + shippingCost;
 
     // Get customer email
     let customerEmail = guestEmail;
@@ -121,8 +121,8 @@ export async function POST(req: NextRequest) {
           currency: 'cad',
           product_data: {
             name: item.product.name,
-            description: item.product.description.substring(0, 200),
-            images: item.product.images.length > 0
+            description: item.product.description?.substring(0, 200) || '',
+            images: item.product.images.length > 0 && item.product.images[0]
               ? [`${process.env.NEXT_PUBLIC_APP_URL}${item.product.images[0].url}`]
               : undefined,
             metadata: {

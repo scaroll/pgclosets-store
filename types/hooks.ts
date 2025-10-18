@@ -2,8 +2,8 @@
  * Types for React hooks and state management
  */
 
-import { Product, Cart, CartItem } from './commerce';
-import { PaymentSessionData, ShippingInfo, PaymentCallback } from './api';
+import type { Product, Cart, CartItem } from './commerce';
+import type { PaymentCallback } from './api';
 
 // Cart hook types
 export interface UseCartState {

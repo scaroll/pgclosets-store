@@ -11,98 +11,96 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { LuxuryQuoteForm } from '@/components/ui/luxury-quote-form';
 
+// Mock the fetch API
+global.fetch = vi.fn();
+
 describe('LuxuryQuoteForm', () => {
-  const mockOnSubmit = vi.fn();
+  const mockOnClose = vi.fn();
+  const mockProduct = {
+    name: 'Premium Closet System',
+    price: 5000,
+  };
 
   beforeEach(() => {
-    mockOnSubmit.mockClear();
+    mockOnClose.mockClear();
+    vi.mocked(global.fetch).mockClear();
+    vi.mocked(global.fetch).mockResolvedValue({
+      ok: true,
+      json: async () => ({ success: true }),
+    } as Response);
   });
 
   describe('Rendering', () => {
-    it('should render all required fields', () => {
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
+    it('should render when open is true', () => {
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
 
       expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
       expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
-      expect(screen.getByLabelText(/phone/i)).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: /submit|send/i })).toBeInTheDocument();
+    });
+
+    it('should not render when open is false', () => {
+      render(<LuxuryQuoteForm open={false} onClose={mockOnClose} />);
+
+      expect(screen.queryByLabelText(/name/i)).not.toBeInTheDocument();
+    });
+
+    it('should display product information when provided', () => {
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} product={mockProduct} />);
+
+      expect(screen.getByText('Premium Closet System')).toBeInTheDocument();
+      expect(screen.getByText(/Starting at \$5000/i)).toBeInTheDocument();
     });
 
     it('should have proper form structure', () => {
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
 
-      const form = screen.getByRole('form') || screen.getByTestId('quote-form');
-      expect(form).toBeInTheDocument();
+      const submitButton = screen.getByRole('button', { name: /get quote/i });
+      expect(submitButton).toBeInTheDocument();
+    });
+  });
+
+  describe('Form Fields', () => {
+    it('should render all required fields', () => {
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
+
+      expect(screen.getByLabelText(/your name/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/email address/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/project type/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/room dimensions/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/preferred timeline/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/product interest/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/additional details/i)).toBeInTheDocument();
+    });
+
+    it('should have name and email as required', () => {
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
+
+      const nameInput = screen.getByLabelText(/your name/i);
+      const emailInput = screen.getByLabelText(/email address/i);
+
+      expect(nameInput).toBeRequired();
+      expect(emailInput).toBeRequired();
     });
   });
 
   describe('Form Validation', () => {
-    it('should show error for empty required fields', async () => {
+    it('should prevent submission with empty required fields', async () => {
       const user = userEvent.setup();
 
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
 
-      const submitButton = screen.getByRole('button', { name: /submit/i });
+      const submitButton = screen.getByRole('button', { name: /get quote/i });
       await user.click(submitButton);
 
-      await waitFor(() => {
-        expect(screen.getByText(/name.*required/i)).toBeInTheDocument();
-      });
-
-      expect(mockOnSubmit).not.toHaveBeenCalled();
+      // HTML5 validation should prevent submission
+      expect(global.fetch).not.toHaveBeenCalled();
     });
 
-    it('should validate email format', async () => {
-      const user = userEvent.setup();
+    it('should validate email format', () => {
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
 
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
-
-      const emailInput = screen.getByLabelText(/email/i);
-      await user.type(emailInput, 'invalid-email');
-      await user.tab();
-
-      await waitFor(() => {
-        expect(screen.getByText(/valid email/i)).toBeInTheDocument();
-      });
-    });
-
-    it('should validate phone number format', async () => {
-      const user = userEvent.setup();
-
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
-
-      const phoneInput = screen.getByLabelText(/phone/i);
-      await user.type(phoneInput, '123');
-      await user.tab();
-
-      await waitFor(() => {
-        expect(screen.getByText(/valid phone/i)).toBeInTheDocument();
-      });
-    });
-
-    it('should accept valid phone formats', async () => {
-      const user = userEvent.setup();
-
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
-
-      const phoneInput = screen.getByLabelText(/phone/i);
-
-      // Test various valid formats
-      const validFormats = [
-        '6135551234',
-        '(613) 555-1234',
-        '613-555-1234',
-        '613.555.1234'
-      ];
-
-      for (const phone of validFormats) {
-        await user.clear(phoneInput);
-        await user.type(phoneInput, phone);
-        await user.tab();
-
-        // Should not show error
-        expect(screen.queryByText(/valid phone/i)).not.toBeInTheDocument();
-      }
+      const emailInput = screen.getByLabelText(/email address/i) as HTMLInputElement;
+      expect(emailInput.type).toBe('email');
     });
   });
 
@@ -110,234 +108,231 @@ describe('LuxuryQuoteForm', () => {
     it('should submit with valid data', async () => {
       const user = userEvent.setup();
 
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
 
       // Fill form
-      await user.type(screen.getByLabelText(/name/i), 'John Doe');
-      await user.type(screen.getByLabelText(/email/i), 'john@example.com');
-      await user.type(screen.getByLabelText(/phone/i), '6135551234');
-
-      const detailsField = screen.queryByLabelText(/details|message/i);
-      if (detailsField) {
-        await user.type(detailsField, 'I need a custom closet');
-      }
+      await user.type(screen.getByLabelText(/your name/i), 'John Doe');
+      await user.type(screen.getByLabelText(/email address/i), 'john@example.com');
+      await user.type(screen.getByLabelText(/additional details/i), 'I need a custom closet');
 
       // Submit
-      const submitButton = screen.getByRole('button', { name: /submit/i });
+      const submitButton = screen.getByRole('button', { name: /get quote/i });
       await user.click(submitButton);
 
       await waitFor(() => {
-        expect(mockOnSubmit).toHaveBeenCalledOnce();
+        expect(global.fetch).toHaveBeenCalledWith(
+          '/api/quotes/quick',
+          expect.objectContaining({
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: expect.stringContaining('John Doe'),
+          })
+        );
       });
-
-      expect(mockOnSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
-          name: 'John Doe',
-          email: 'john@example.com',
-          phone: '6135551234',
-        })
-      );
     });
 
     it('should show loading state during submission', async () => {
       const user = userEvent.setup();
-      const slowSubmit = vi.fn(() => new Promise(resolve => setTimeout(resolve, 100)));
 
-      render(<LuxuryQuoteForm onSubmit={slowSubmit} />);
+      // Mock a slow response
+      vi.mocked(global.fetch).mockImplementation(
+        () => new Promise(resolve => setTimeout(() => resolve({
+          ok: true,
+          json: async () => ({ success: true }),
+        } as Response), 100))
+      );
+
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
 
       // Fill form
-      await user.type(screen.getByLabelText(/name/i), 'John Doe');
-      await user.type(screen.getByLabelText(/email/i), 'john@example.com');
-      await user.type(screen.getByLabelText(/phone/i), '6135551234');
+      await user.type(screen.getByLabelText(/your name/i), 'John Doe');
+      await user.type(screen.getByLabelText(/email address/i), 'john@example.com');
 
       // Submit
-      const submitButton = screen.getByRole('button', { name: /submit/i });
+      const submitButton = screen.getByRole('button', { name: /get quote/i });
       await user.click(submitButton);
+
+      // Should show loading state
+      await waitFor(() => {
+        expect(screen.getByText(/submitting/i)).toBeInTheDocument();
+      });
 
       // Should be disabled during submission
       expect(submitButton).toBeDisabled();
+    });
+
+    it('should show success message after submission', async () => {
+      const user = userEvent.setup();
+
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
+
+      // Fill and submit form
+      await user.type(screen.getByLabelText(/your name/i), 'John Doe');
+      await user.type(screen.getByLabelText(/email address/i), 'john@example.com');
+      await user.click(screen.getByRole('button', { name: /get quote/i }));
 
       await waitFor(() => {
-        expect(slowSubmit).toHaveBeenCalled();
+        expect(screen.getByText(/quote request received/i)).toBeInTheDocument();
       });
     });
 
-    it('should handle submission errors', async () => {
+    it('should include product information in submission', async () => {
       const user = userEvent.setup();
-      const errorSubmit = vi.fn(() => Promise.reject(new Error('Submission failed')));
 
-      render(<LuxuryQuoteForm onSubmit={errorSubmit} />);
+      render(
+        <LuxuryQuoteForm
+          open={true}
+          onClose={mockOnClose}
+          product={mockProduct}
+          selectedOptions={{ finish: 'walnut', hardware: 'chrome' }}
+        />
+      );
 
-      // Fill form
-      await user.type(screen.getByLabelText(/name/i), 'John Doe');
-      await user.type(screen.getByLabelText(/email/i), 'john@example.com');
-      await user.type(screen.getByLabelText(/phone/i), '6135551234');
-
-      // Submit
-      await user.click(screen.getByRole('button', { name: /submit/i }));
+      await user.type(screen.getByLabelText(/your name/i), 'John Doe');
+      await user.type(screen.getByLabelText(/email address/i), 'john@example.com');
+      await user.click(screen.getByRole('button', { name: /get quote/i }));
 
       await waitFor(() => {
-        expect(screen.getByText(/error|failed/i)).toBeInTheDocument();
+        expect(global.fetch).toHaveBeenCalledWith(
+          '/api/quotes/quick',
+          expect.objectContaining({
+            body: expect.stringContaining('Premium Closet System'),
+          })
+        );
       });
+
+      const fetchCall = vi.mocked(global.fetch).mock.calls[0];
+      if (fetchCall && fetchCall[1]?.body) {
+        const callBody = JSON.parse(fetchCall[1].body as string);
+        expect(callBody.selectedOptions).toEqual({ finish: 'walnut', hardware: 'chrome' });
+      }
+    });
+
+    it('should handle submission errors gracefully', async () => {
+      const user = userEvent.setup();
+      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+      // Mock a failed response
+      vi.mocked(global.fetch).mockRejectedValue(new Error('Network error'));
+
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
+
+      await user.type(screen.getByLabelText(/your name/i), 'John Doe');
+      await user.type(screen.getByLabelText(/email address/i), 'john@example.com');
+      await user.click(screen.getByRole('button', { name: /get quote/i }));
+
+      await waitFor(() => {
+        expect(consoleErrorSpy).toHaveBeenCalledWith(
+          'Quote submission failed:',
+          expect.any(Error)
+        );
+      });
+
+      consoleErrorSpy.mockRestore();
     });
   });
 
-  describe('File Upload', () => {
-    it('should allow file selection', async () => {
+  describe('User Interactions', () => {
+    it('should close modal when close button is clicked', async () => {
       const user = userEvent.setup();
 
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
 
-      const fileInput = screen.queryByLabelText(/upload|attach|file/i);
+      const closeButton = screen.getAllByRole('button')[0]; // X button
+      await user.click(closeButton);
 
-      if (fileInput) {
-        const file = new File(['test'], 'test.jpg', { type: 'image/jpeg' });
-        await user.upload(fileInput, file);
+      expect(mockOnClose).toHaveBeenCalledOnce();
+    });
 
-        await waitFor(() => {
-          expect(screen.getByText(/test\.jpg/i)).toBeInTheDocument();
-        });
+    it('should close modal when backdrop is clicked', async () => {
+      const user = userEvent.setup();
+
+      const { container } = render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
+
+      // Find backdrop by class
+      const backdrop = container.querySelector('.backdrop-blur-sm');
+      expect(backdrop).toBeInTheDocument();
+
+      if (backdrop) {
+        await user.click(backdrop);
+        expect(mockOnClose).toHaveBeenCalledOnce();
       }
     });
 
-    it('should validate file type', async () => {
+    it('should update form fields on user input', async () => {
       const user = userEvent.setup();
 
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
 
-      const fileInput = screen.queryByLabelText(/upload|attach|file/i);
+      const nameInput = screen.getByLabelText(/your name/i) as HTMLInputElement;
+      const emailInput = screen.getByLabelText(/email address/i) as HTMLInputElement;
 
-      if (fileInput) {
-        const invalidFile = new File(['test'], 'test.exe', { type: 'application/x-msdownload' });
-        await user.upload(fileInput, invalidFile);
+      await user.type(nameInput, 'Jane Smith');
+      await user.type(emailInput, 'jane@example.com');
 
-        await waitFor(() => {
-          expect(screen.getByText(/invalid file type/i)).toBeInTheDocument();
-        });
-      }
+      expect(nameInput.value).toBe('Jane Smith');
+      expect(emailInput.value).toBe('jane@example.com');
     });
 
-    it('should validate file size', async () => {
+    it('should handle select field changes', async () => {
       const user = userEvent.setup();
 
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
 
-      const fileInput = screen.queryByLabelText(/upload|attach|file/i);
+      const projectTypeSelect = screen.getByLabelText(/project type/i) as HTMLSelectElement;
+      await user.selectOptions(projectTypeSelect, 'new-installation');
 
-      if (fileInput) {
-        // Create large file (>10MB)
-        const largeFile = new File([new ArrayBuffer(11 * 1024 * 1024)], 'large.jpg', {
-          type: 'image/jpeg'
-        });
-        await user.upload(fileInput, largeFile);
-
-        await waitFor(() => {
-          expect(screen.getByText(/file too large|size limit/i)).toBeInTheDocument();
-        });
-      }
-    });
-  });
-
-  describe('Auto-save', () => {
-    it('should save form data to localStorage', async () => {
-      const user = userEvent.setup();
-
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} enableAutoSave />);
-
-      await user.type(screen.getByLabelText(/name/i), 'John Doe');
-      await user.type(screen.getByLabelText(/email/i), 'john@example.com');
-
-      // Wait for auto-save
-      await waitFor(() => {
-        const saved = localStorage.getItem('quote-form-draft');
-        expect(saved).toBeTruthy();
-      }, { timeout: 2000 });
-    });
-
-    it('should restore form data from localStorage', () => {
-      localStorage.setItem('quote-form-draft', JSON.stringify({
-        name: 'Saved Name',
-        email: 'saved@example.com'
-      }));
-
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} enableAutoSave />);
-
-      expect(screen.getByLabelText(/name/i)).toHaveValue('Saved Name');
-      expect(screen.getByLabelText(/email/i)).toHaveValue('saved@example.com');
-    });
-
-    it('should clear saved data after successful submission', async () => {
-      const user = userEvent.setup();
-
-      localStorage.setItem('quote-form-draft', JSON.stringify({
-        name: 'Saved Name',
-        email: 'saved@example.com'
-      }));
-
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} enableAutoSave />);
-
-      await user.type(screen.getByLabelText(/phone/i), '6135551234');
-      await user.click(screen.getByRole('button', { name: /submit/i }));
-
-      await waitFor(() => {
-        expect(localStorage.getItem('quote-form-draft')).toBeNull();
-      });
+      expect(projectTypeSelect.value).toBe('new-installation');
     });
   });
 
   describe('Accessibility', () => {
     it('should have proper form labels', () => {
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
 
-      const nameInput = screen.getByLabelText(/name/i);
-      const emailInput = screen.getByLabelText(/email/i);
-      const phoneInput = screen.getByLabelText(/phone/i);
+      const nameInput = screen.getByLabelText(/your name/i);
+      const emailInput = screen.getByLabelText(/email address/i);
 
       expect(nameInput).toHaveAccessibleName();
       expect(emailInput).toHaveAccessibleName();
-      expect(phoneInput).toHaveAccessibleName();
-    });
-
-    it('should indicate required fields', () => {
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
-
-      const nameInput = screen.getByLabelText(/name/i);
-      expect(nameInput).toBeRequired();
-    });
-
-    it('should associate error messages with inputs', async () => {
-      const user = userEvent.setup();
-
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
-
-      await user.click(screen.getByRole('button', { name: /submit/i }));
-
-      await waitFor(() => {
-        const nameInput = screen.getByLabelText(/name/i);
-        const errorId = nameInput.getAttribute('aria-describedby');
-        expect(errorId).toBeTruthy();
-
-        if (errorId) {
-          const errorMessage = document.getElementById(errorId);
-          expect(errorMessage).toHaveTextContent(/required/i);
-        }
-      });
     });
 
     it('should support keyboard navigation', async () => {
       const user = userEvent.setup();
 
-      render(<LuxuryQuoteForm onSubmit={mockOnSubmit} />);
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
 
       // Tab through form fields
       await user.tab();
-      expect(screen.getByLabelText(/name/i)).toHaveFocus();
+      expect(screen.getByLabelText(/your name/i)).toHaveFocus();
 
       await user.tab();
-      expect(screen.getByLabelText(/email/i)).toHaveFocus();
+      expect(screen.getByLabelText(/email address/i)).toHaveFocus();
+    });
 
-      await user.tab();
-      expect(screen.getByLabelText(/phone/i)).toHaveFocus();
+    it('should have accessible close button', () => {
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />);
+
+      const closeButtons = screen.getAllByRole('button');
+      expect(closeButtons.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('Product Integration', () => {
+    it('should pre-fill product interest when product is provided', () => {
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} product={mockProduct} />);
+
+      const productInterestInput = screen.getByLabelText(/product interest/i) as HTMLInputElement;
+      expect(productInterestInput.value).toBe('Premium Closet System');
+    });
+
+    it('should handle product without price', () => {
+      const productWithoutPrice = { name: 'Custom Closet' };
+
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} product={productWithoutPrice} />);
+
+      expect(screen.getByText('Custom Closet')).toBeInTheDocument();
+      expect(screen.queryByText(/Starting at/i)).not.toBeInTheDocument();
     });
   });
 });

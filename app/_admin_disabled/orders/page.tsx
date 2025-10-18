@@ -3,15 +3,11 @@ import { format } from 'date-fns';
 import Link from 'next/link';
 import {
   Package,
-  ShoppingCart,
   DollarSign,
   User,
-  Calendar,
   Truck,
-  CreditCard,
   Filter,
   Download,
-  ChevronRight,
   CheckCircle,
   XCircle,
   Clock

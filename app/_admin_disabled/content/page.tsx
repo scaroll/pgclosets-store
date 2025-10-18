@@ -11,8 +11,7 @@ import {
   Filter,
   Globe,
   Calendar,
-  User,
-  ChevronRight
+  User
 } from 'lucide-react';
 
 const prisma = new PrismaClient();
@@ -321,7 +320,7 @@ export default async function ContentPage() {
         <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
           <p className="text-sm text-gray-600">Last Updated</p>
           <p className="text-lg font-bold text-gray-900">
-            {pages.length > 0
+            {pages.length > 0 && pages[0]
               ? format(new Date(pages[0].updatedAt), 'MMM d')
               : 'Never'}
           </p>

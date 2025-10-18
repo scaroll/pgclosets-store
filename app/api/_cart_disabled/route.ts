@@ -3,7 +3,6 @@ import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { addToCartSchema, updateCartItemSchema } from '@/lib/validation';
 import { generalRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit';
-import { z } from 'zod';
 
 // GET /api/cart - Get current cart
 export async function GET(req: NextRequest) {
@@ -155,7 +154,7 @@ export async function POST(req: NextRequest) {
             cartId_productId_variantId: {
               cartId: cart.id,
               productId,
-              variantId: variantId || null,
+              variantId: variantId || (null as unknown as string),
             },
           },
           create: {
@@ -179,7 +178,7 @@ export async function POST(req: NextRequest) {
         cartId_productId_variantId: {
           cartId: cart.id,
           productId,
-          variantId: variantId || null,
+          variantId: variantId || (null as unknown as string),
         },
       },
       create: {

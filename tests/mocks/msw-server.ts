@@ -103,7 +103,7 @@ export const handlers = [
 
   // Newsletter API
   http.post('/api/newsletter/subscribe', async ({ request }) => {
-    const body = await request.json()
+    const _body = await request.json() // Prefix with _ to indicate intentionally unused
     return HttpResponse.json({
       success: true,
       message: 'Subscription successful',
@@ -125,7 +125,7 @@ export const handlers = [
   }),
 
   // Search API
-  http.get('/api/search', ({ request }) => {
+  http.get('/api/search', ({ request }: { request: Request }) => {
     const url = new URL(request.url)
     const query = url.searchParams.get('q')
 

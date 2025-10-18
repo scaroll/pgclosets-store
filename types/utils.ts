@@ -5,7 +5,7 @@
 import { type ClassValue } from "clsx";
 
 // Class variance authority types
-export interface VariantProps<T extends (...args: any) => any> {
+export interface VariantProps<_T extends (...args: any[]) => any> {
   [key: string]: any;
 }
 
@@ -92,78 +92,29 @@ export interface ProductJSONLD {
   }>;
 }
 
-// Module declarations for external libraries
-declare module '@medusajs/medusa' {
-  export interface Cart {
-    id: string;
-    customer_id?: string;
-    items: any[];
-    subtotal: number;
-    tax_total: number;
-    shipping_total: number;
-    total: number;
-    created_at: string;
-    updated_at: string;
-  }
-
-  export interface LineItem {
-    id: string;
-    cart_id: string;
-    product_id: string;
-    variant_id: string;
-    quantity: number;
-    unit_price: number;
-    total: number;
-    title: string;
-    description?: string;
-    thumbnail?: string;
-  }
-
-  export interface Product {
-    id: string;
-    title: string;
-    handle: string;
-    description?: string;
-    status: string;
-    created_at: string;
-    updated_at: string;
-    deleted_at?: string;
-  }
-}
-
 // JSON file types
 declare module '*.json' {
   const value: Record<string, unknown>;
-  export default value;
 }
 
 // Data directory imports
 declare module '@/data/*' {
   const value: Record<string, unknown>;
-  export default value;
 }
 
-// Global type augmentations
-declare global {
-  // Remove global any types - these should use proper interfaces
-  type Product = import('./commerce').Product;
-  type ProductStore = import('./products').ProductStore;
-
-  interface ArcatProduct {
-    id: string;
-    name: string;
-    description: string;
-    category: string;
-    subcategory?: string;
-    manufacturer: string;
-    model: string;
-    price?: number;
-    images: string[];
-    specifications: Record<string, string | number>;
-    availability: 'available' | 'unavailable' | 'discontinued';
-    tags: string[];
-    lastUpdated: string;
-  }
+// Arcat Product interface
+export interface ArcatProduct {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  subcategory?: string;
+  manufacturer: string;
+  model: string;
+  price?: number;
+  images: string[];
+  specifications: Record<string, string | number>;
+  availability: 'available' | 'unavailable' | 'discontinued';
+  tags: string[];
+  lastUpdated: string;
 }
-
-export {};

@@ -4,20 +4,16 @@ import {
   ShoppingCart,
   Calendar,
   DollarSign,
-  Users,
-  TrendingUp,
-  Clock,
-  CheckCircle
+  TrendingUp
 } from 'lucide-react';
 import Link from 'next/link';
-import { format, startOfMonth, endOfMonth, subDays } from 'date-fns';
+import { format, startOfMonth, endOfMonth } from 'date-fns';
 
 const prisma = new PrismaClient();
 
 async function getDashboardMetrics() {
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const yesterday = subDays(today, 1);
   const monthStart = startOfMonth(now);
   const monthEnd = endOfMonth(now);
 

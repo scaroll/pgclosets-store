@@ -26,7 +26,7 @@ export default defineConfig({
     ],
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'json', 'html', 'lcov'],
+      reporter: ['text', 'json', 'html', 'lcov'] as const,
       exclude: [
         'node_modules/',
         'tests/',
@@ -57,7 +57,7 @@ export default defineConfig({
     teardownTimeout: 10000,
     isolate: true,
     watch: false,
-    reporter: ['verbose', 'junit'],
+    reporters: ['verbose', 'junit'] as const,
     outputFile: {
       junit: './test-results/junit.xml',
     },

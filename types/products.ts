@@ -2,7 +2,7 @@
  * Product-specific types and interfaces
  */
 
-import { Product, ProductVariant, ProductImage } from './commerce';
+import type { Product, ProductImage } from './commerce';
 
 // Product data transformation types
 export interface ProductStore {

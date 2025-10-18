@@ -1,6 +1,4 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
+#!/bin/sh
 # Pre-push hook for PG Closets
 # Ensures code quality before pushing to remote
 
