@@ -110,30 +110,115 @@ export default async function ProductPage({ params }: ProductPageProps) {
       // Database connection failed - use fallback mock data for demo
       console.error('Database connection failed, using fallback data:', dbError);
 
+      // Determine product category and images based on slug
+      const determineCategory = (slug: string): { category: string; images: string[]; description: string } => {
+        if (slug.includes('barn')) {
+          return {
+            category: 'Barn Doors',
+            images: [
+              '/images/products/barn-door-main.jpg',
+              '/images/products/barn-door-detail.jpg',
+              '/images/products/barn-door-hardware.jpg',
+              '/images/products/barn-door-lifestyle.jpg'
+            ],
+            description: 'Premium barn door with modern design. Features smooth sliding hardware, durable construction, and timeless aesthetic. Perfect for adding style and functionality to any space.'
+          };
+        } else if (slug.includes('bifold')) {
+          return {
+            category: 'Bifold Doors',
+            images: [
+              '/images/products/bifold-door-main.jpg',
+              '/images/products/bifold-door-open.jpg',
+              '/images/products/bifold-door-detail.jpg',
+              '/images/products/bifold-door-installation.jpg'
+            ],
+            description: 'Space-saving bifold door system with premium hardware. Smooth operation, elegant design, and maximum accessibility. Ideal for closets and tight spaces.'
+          };
+        } else if (slug.includes('bypass')) {
+          return {
+            category: 'Bypass Doors',
+            images: [
+              '/images/products/bypass-door-main.jpg',
+              '/images/products/bypass-door-system.jpg',
+              '/images/products/bypass-door-detail.jpg',
+              '/images/products/bypass-door-lifestyle.jpg'
+            ],
+            description: 'Sliding bypass door system with sleek track design. Efficient space utilization, smooth gliding action, and contemporary styling. Perfect for modern closets.'
+          };
+        } else if (slug.includes('pivot')) {
+          return {
+            category: 'Pivot Doors',
+            images: [
+              '/images/products/pivot-door-main.jpg',
+              '/images/products/pivot-door-hardware.jpg',
+              '/images/products/pivot-door-detail.jpg',
+              '/images/products/pivot-door-open.jpg'
+            ],
+            description: 'Innovative pivot door with center-hung hardware. Unique rotating mechanism, architectural appeal, and premium construction. Statement piece for any room.'
+          };
+        } else if (slug.includes('hardware')) {
+          return {
+            category: 'Hardware',
+            images: [
+              '/images/products/hardware-main.jpg',
+              '/images/products/hardware-detail.jpg',
+              '/images/products/hardware-finish.jpg',
+              '/images/products/hardware-installation.jpg'
+            ],
+            description: 'Premium door hardware with superior craftsmanship. Multiple finish options, heavy-duty construction, and smooth operation. Complete your door system with style.'
+          };
+        } else if (slug.includes('mirror')) {
+          return {
+            category: 'Mirror Doors',
+            images: [
+              '/images/products/mirror-door-main.jpg',
+              '/images/products/mirror-door-reflection.jpg',
+              '/images/products/mirror-door-frame.jpg',
+              '/images/products/mirror-door-lifestyle.jpg'
+            ],
+            description: 'Elegant mirror door system that expands visual space. High-quality mirror, sturdy frame, and smooth operation. Perfect for bedrooms and dressing areas.'
+          };
+        } else {
+          return {
+            category: 'Doors',
+            images: [
+              '/images/products/door-main.jpg',
+              '/images/products/door-detail.jpg',
+              '/images/products/door-hardware.jpg',
+              '/images/products/door-lifestyle.jpg'
+            ],
+            description: 'Premium door system with quality construction and modern design. Durable materials, smooth operation, and timeless appeal. Transform your space today.'
+          };
+        }
+      };
+
+      const productInfo = determineCategory(slug);
+      const productName = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
       // Create mock product data based on slug
       const mockProduct = {
         id: `mock-${slug}`,
-        name: slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+        name: productName,
         slug,
-        description: 'Premium quality product. Complete product details and pricing will be available soon. Please contact us for more information.',
+        description: productInfo.description,
         status: 'active' as const,
-        category: 'Products',
+        category: productInfo.category,
         price: 49999, // $499.99
-        compareAtPrice: null,
+        compareAtPrice: 59999, // $599.99
         salePrice: null,
         inventory: 10,
         sku: `PGC-${slug.toUpperCase()}`,
         metaTitle: null,
         metaDescription: null,
-        images: [{
-          url: '/images/placeholder-product.jpg',
-          altText: 'Product Image',
-          position: 0,
-          id: 'mock-img-1',
+        images: productInfo.images.map((url, index) => ({
+          url,
+          altText: `${productName} - Image ${index + 1}`,
+          position: index,
+          id: `mock-img-${index + 1}`,
           productId: `mock-${slug}`,
           createdAt: new Date(),
           updatedAt: new Date(),
-        }],
+        })),
         variants: [{
           id: 'mock-variant-1',
           productId: `mock-${slug}`,
