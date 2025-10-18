@@ -21,65 +21,74 @@ function formatPrice(price: number): string {
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const product = await prisma.product.findUnique({
-    where: { slug },
-  });
+  try {
+    const { slug } = await params;
+    const product = await prisma.product.findUnique({
+      where: { slug },
+    });
 
-  if (!product) {
+    if (!product) {
+      return {
+        title: 'Product Not Found | PG Closets',
+      };
+    }
+
+    const title = `${product.name} | PG Closets Ottawa`;
+    const description = product.metaDescription ||
+      `${product.description.substring(0, 120)}... Starting from ${formatPrice(product.price)} with professional installation.`;
+
     return {
-      title: 'Product Not Found | PG Closets',
-    };
-  }
-
-  const title = `${product.name} | PG Closets Ottawa`;
-  const description = product.metaDescription ||
-    `${product.description.substring(0, 120)}... Starting from ${formatPrice(product.price)} with professional installation.`;
-
-  return {
-    title: product.metaTitle || title,
-    description,
-    openGraph: {
       title: product.metaTitle || title,
       description,
-      type: 'website',
-      locale: 'en_CA',
-    },
-  };
+      openGraph: {
+        title: product.metaTitle || title,
+        description,
+        type: 'website',
+        locale: 'en_CA',
+      },
+    };
+  } catch (error) {
+    console.error('Error generating metadata:', error);
+    return {
+      title: 'Product | PG Closets',
+      description: 'Premium closet doors and organization solutions in Ottawa',
+    };
+  }
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug } = await params;
+  try {
+    const { slug } = await params;
 
-  const product = await prisma.product.findUnique({
-    where: {
-      slug,
-      status: 'active',
-    },
-    include: {
-      images: {
-        orderBy: { position: 'asc' },
+    const product = await prisma.product.findUnique({
+      where: {
+        slug,
+        status: 'active',
       },
-      variants: {
-        orderBy: { createdAt: 'asc' },
-      },
-      reviews: {
-        where: { status: 'approved' },
-        include: {
-          user: {
-            select: {
-              name: true,
+      include: {
+        images: {
+          orderBy: { position: 'asc' },
+        },
+        variants: {
+          orderBy: { createdAt: 'asc' },
+        },
+        reviews: {
+          where: { status: 'approved' },
+          include: {
+            user: {
+              select: {
+                name: true,
+              },
             },
           },
+          orderBy: { createdAt: 'desc' },
         },
-        orderBy: { createdAt: 'desc' },
       },
-    },
-  });
+    });
 
-  if (!product) {
-    notFound();
-  }
+    if (!product) {
+      notFound();
+    }
 
   // Calculate average rating
   const averageRating = product.reviews.length > 0
@@ -87,7 +96,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     : 0;
 
   // Get related products
-  const relatedProducts = await prisma.product.findMany({
+  const relatedProductsRaw = await prisma.product.findMany({
     where: {
       status: 'active',
       category: product.category,
@@ -98,13 +107,44 @@ export default async function ProductPage({ params }: ProductPageProps) {
         orderBy: { position: 'asc' },
         take: 1,
       },
+      variants: {
+        orderBy: { createdAt: 'asc' },
+        take: 1,
+      },
     },
     take: 4,
   });
 
-  // Format product data for component
+  // Map related products to expected interface
+  const relatedProducts = relatedProductsRaw.map(p => ({
+    id: p.id,
+    title: p.name,
+    description: p.description,
+    thumbnail: p.images[0]?.url || null,
+    images: p.images.map(img => img.url),
+    variants: p.variants.map(v => ({
+      price: v.price,
+    })),
+    collection: {
+      title: p.category,
+      handle: p.category.toLowerCase().replace(/\s+/g, '-'),
+    },
+  }));
+
+  // Format product data for component - map Prisma fields to component interface
   const productData = {
-    ...product,
+    id: product.id,
+    title: product.name, // Map 'name' from Prisma to 'title' expected by component
+    description: product.description,
+    thumbnail: product.images[0]?.url || null, // Map first image as thumbnail
+    images: product.images.map(img => img.url), // Extract image URLs
+    variants: product.variants.map(v => ({
+      price: v.price,
+    })),
+    collection: {
+      title: product.category,
+      handle: product.category.toLowerCase().replace(/\s+/g, '-'),
+    },
     averageRating,
     reviewCount: product.reviews.length,
     // Determine current price (sale price or regular price)
@@ -142,20 +182,25 @@ export default async function ProductPage({ params }: ProductPageProps) {
     '@graph': [productSchema, breadcrumbSchema]
   };
 
-  return (
-    <StandardLayout>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(graphSchema),
-        }}
-      />
-      <EnhancedProductDetailPage
-        product={productData}
-        relatedProducts={relatedProducts}
-      />
-    </StandardLayout>
-  );
+    return (
+      <StandardLayout>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(graphSchema),
+          }}
+        />
+        <EnhancedProductDetailPage
+          product={productData}
+          relatedProducts={relatedProducts}
+        />
+      </StandardLayout>
+    );
+  } catch (error) {
+    console.error('Error loading product page:', error);
+    // Re-throw to trigger Next.js error boundary
+    throw new Error(`Failed to load product: ${error instanceof Error ? error.message : 'Unknown error'}`);
+  }
 }
 
 // Generate static paths for known products

@@ -16,6 +16,9 @@ import Link from "next/link";
 import { FileUpload } from "../../../components/ui/file-upload";
 import { useState } from "react";
 
+// Force dynamic rendering for authenticated pages
+export const dynamic = 'force-dynamic';
+
 export default function ProfilePage() {
   const [_profilePicture, setProfilePicture] = useState<File | null>(null);
 

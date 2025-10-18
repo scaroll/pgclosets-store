@@ -243,7 +243,5 @@ export const config = {
     "/api/delete",
     // API routes for CSRF and security headers
     "/api/:path*",
-    // All pages for security headers
-    "/((?!_next/static|_next/image|favicon.ico).*)",
   ],
 }

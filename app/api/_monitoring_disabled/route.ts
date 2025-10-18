@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
-// Use Edge Runtime for fastest response
-export const runtime = 'edge';
+// Temporarily disabled edge runtime due to Next.js 15 build issues
+// export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 interface MonitoringMetrics {

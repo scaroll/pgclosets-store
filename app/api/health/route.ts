@@ -8,8 +8,8 @@
 
 import { type NextRequest, NextResponse } from "next/server";
 
-// Edge Runtime compatible - removed Node.js process APIs
-export const runtime = "edge";
+// Temporarily disabled edge runtime due to Next.js 15 build issues
+// export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 interface HealthCheckResult {

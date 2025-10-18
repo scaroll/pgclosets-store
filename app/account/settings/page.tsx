@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "../../../components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card"
 import { Input } from "../../../components/ui/input"
@@ -6,6 +8,9 @@ import { Switch } from "../../../components/ui/switch"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../components/ui/select"
 import { Settings, Bell, Shield, Globe, ArrowLeft, Trash2 } from "lucide-react"
 import Link from "next/link"
+
+// Force dynamic rendering for authenticated pages
+export const dynamic = 'force-dynamic';
 
 export default function SettingsPage() {
   return (

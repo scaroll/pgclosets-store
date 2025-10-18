@@ -7,7 +7,8 @@ const nextConfig = {
   reactStrictMode: true,
 
   // Production-ready output configuration
-  output: 'standalone',
+  // Temporarily disabled standalone mode due to middleware copy issues
+  // output: 'standalone',
   poweredByHeader: false,
   compress: true,
   productionBrowserSourceMaps: false,

@@ -6,8 +6,8 @@
 import { ImageResponse } from 'next/og'
 import { BUSINESS_INFO } from '../lib/business-config'
 
-// Image metadata
-export const runtime = 'edge'
+// Temporarily disabled edge runtime due to Next.js 15 build issues
+// export const runtime = 'edge'
 export const alt = 'PG Closets - Premium Closet Doors & Storage Solutions in Ottawa'
 export const size = {
   width: 1200,
