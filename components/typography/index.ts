@@ -10,18 +10,18 @@ export {
   SectionHeadline,
   FeatureCallout,
   AnimatedHeadline,
-} from './Headline';
+} from './Headline'
 
 // Body Text System
 export {
   Text,
   Lead,
-  Caption,
+  Caption as BodyCaption,
   Label,
   LinkText,
   ReadingContainer,
   Prose,
-} from './Text';
+} from './Text'
 
 // Navigation & UI Text
 export {
@@ -34,7 +34,7 @@ export {
   BadgeText,
   MenuItemText,
   TabText,
-} from './NavigationText';
+} from './NavigationText'
 
 // Product Copy System
 export {
@@ -45,25 +45,10 @@ export {
   FeatureGrid,
   ProductStatement,
   ComparisonTable,
-} from '../product/ProductCopy';
+} from '../product/ProductCopy'
 
-// Legacy Typography (for backward compatibility)
-export {
-  Display,
-  Heading,
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  Body,
-  Caption as LegacyCaption,
-  Overline,
-  Blockquote,
-  Pullquote,
-  Code,
-  Pre,
-  ReadingContainer as LegacyReadingContainer,
-  Typography,
-} from '../ui/Typography';
+// Legacy Typography from ui/Typography (no Text - already exported above)
+export { Display, Heading, TextLink, Blockquote } from '../ui/Typography'
+
+// Additional legacy components from typography.tsx
+export { H1, H2, H3, H4, H5, H6, Body, BodySmall, BodyLarge, Caption, Overline } from './typography'
