@@ -24,14 +24,6 @@ interface ConfiguratorData {
   base_price_cad?: number;
 }
 
-interface EstimatorConfig {
-  size_factor: Array<{ max_area_m2: number; factor: number }>;
-  base_model: Record<string, number>;
-  panel_factor: Record<string, number>;
-  finish_factor: Record<string, number>;
-  range_margin: number;
-}
-
 export interface Product {
   id: string;
   title: string;
@@ -78,8 +70,6 @@ export const QuickConfigureCard = ({ product }: QuickConfigureCardProps) => {
   const [height, setHeight] = useState<number>(configData?.size?.opening_min_height_mm ?? 2032);
   const [panels, setPanels] = useState<string>(configData?.options?.panel_options?.[0] ?? '1');
   const [finish, setFinish] = useState<string>(configData?.options?.finish_options?.[0] ?? 'matte_white');
-  const [calculating, setCalculating] = useState(false);
-  const [estimate, setEstimate] = useState<{ low: number; high: number } | null>(null);
 
   // Safe defaults for min/max
   const minWidth = configData?.size?.opening_min_width_mm ?? 600;
@@ -95,44 +85,6 @@ export const QuickConfigureCard = ({ product }: QuickConfigureCardProps) => {
     'mirror',
     'steel_frame',
   ];
-
-  const handleCalculateEstimate = async () => {
-    setCalculating(true);
-    try {
-      const response = await fetch('/estimator.config.json');
-      const cfg = (await response.json()) as EstimatorConfig;
-      const type = product.title.toLowerCase().includes('bifold') ? 'bifold'
-        : product.title.toLowerCase().includes('pivot') ? 'pivot'
-        : product.title.toLowerCase().includes('barn') ? 'barn'
-        : product.title.toLowerCase().includes('bypass') ? 'bypass'
-        : product.title.toLowerCase().includes('divider') ? 'divider' : 'bypass';
-      const area = (width / 1000) * (height / 1000);
-  const sizeFactorEntry = cfg.size_factor.find((entry) => area <= entry.max_area_m2) ?? cfg.size_factor[cfg.size_factor.length - 1];
-  const sizeFactor = sizeFactorEntry?.factor ?? 1;
-  const base = cfg.base_model[type] ?? cfg.base_model.bypass ?? 0;
-      const panelFactor = cfg.panel_factor[panels] || 1.0;
-      const finishFactor = cfg.finish_factor[finish] || 1.0;
-      const basePrice = base * sizeFactor * panelFactor * finishFactor;
-      const low = Math.round(basePrice * (1 - cfg.range_margin));
-      const high = Math.round(basePrice * (1 + cfg.range_margin));
-      setEstimate({ low, high });
-      if (typeof window !== 'undefined') {
-        const dataLayer = (window as unknown as { dataLayer?: Array<Record<string, unknown>> }).dataLayer;
-        if (dataLayer) {
-          dataLayer.push({
-          event: 'quick_config_estimate',
-          product_id: product.id,
-          product_title: product.title,
-          estimate: { low, high, width, height, panels, finish, type },
-          });
-        }
-      }
-    } catch (error) {
-      console.error('Estimate calculation failed:', error);
-    } finally {
-      setCalculating(false);
-    }
-  };
 
   const imageContent = (
     <div className="aspect-square relative overflow-hidden bg-gray-100">
@@ -179,6 +131,27 @@ export const QuickConfigureCard = ({ product }: QuickConfigureCardProps) => {
     );
   }
 
+  // Helper to build instant estimate URL with current form values
+  const buildEstimateUrl = () => {
+    // Determine category from product title
+    const titleLower = product.title.toLowerCase();
+    let category = 'closet-doors';
+    if (titleLower.includes('barn')) category = 'barn-doors';
+    else if (titleLower.includes('bypass')) category = 'bypass-doors';
+    else if (titleLower.includes('bifold')) category = 'bifold-doors';
+    else if (titleLower.includes('pivot')) category = 'pivot-doors';
+    else if (titleLower.includes('divider')) category = 'room-dividers';
+
+    const params = new URLSearchParams({
+      category,
+      width: width.toString(),
+      height: height.toString(),
+      panels: panels,
+      finish: finish,
+    });
+    return `/instant-estimate?${params.toString()}`;
+  };
+
   return (
     <Card data-slug={safeSlug ?? 'missing'} className="overflow-hidden hover:shadow-xl transition-shadow">
       {/* Product Image */}
@@ -203,7 +176,7 @@ export const QuickConfigureCard = ({ product }: QuickConfigureCardProps) => {
         )}
 
         {/* Quick Configure Form */}
-  <form onSubmit={(e) => { e.preventDefault(); void handleCalculateEstimate(); }} className="space-y-4">
+  <div className="space-y-4">
           <div className="grid grid-cols-2 gap-3">
             <div>
               <Label htmlFor={`width-${product.id}`} className="text-xs">
@@ -274,14 +247,14 @@ export const QuickConfigureCard = ({ product }: QuickConfigureCardProps) => {
           </div>
 
           <div className="flex gap-2">
-            <Button
-              type="submit"
-              className="flex-1 bg-teal-600 hover:bg-teal-700"
-              disabled={calculating}
-            >
-              <Calculator className="w-4 h-4 mr-2" />
-              {calculating ? 'Calculating...' : 'Instant Estimate'}
-            </Button>
+            <Link href={buildEstimateUrl()} className="flex-1">
+              <Button
+                className="w-full bg-teal-600 hover:bg-teal-700"
+              >
+                <Calculator className="w-4 h-4 mr-2" />
+                Quick Configure
+              </Button>
+            </Link>
             {safeSlug ? (
               <Link href={href}>
                 <Button type="button" variant="outline" className="px-3">
@@ -294,21 +267,7 @@ export const QuickConfigureCard = ({ product }: QuickConfigureCardProps) => {
               </Button>
             )}
           </div>
-
-          {estimate && (
-            <div className="bg-teal-50 border border-teal-200 rounded-lg p-4 text-center">
-              <p className="text-sm font-medium text-gray-700 mb-1">
-                Estimated Installed Price
-              </p>
-              <p className="text-2xl font-bold text-teal-900">
-                ${estimate.low.toLocaleString()} – ${estimate.high.toLocaleString()}
-              </p>
-              <p className="text-xs text-gray-600 mt-2">
-                Includes measure, delivery & installation
-              </p>
-            </div>
-          )}
-        </form>
+        </div>
       </div>
     </Card>
   );

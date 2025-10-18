@@ -525,11 +525,43 @@ body {
    Accessibility
    ============================================ */
 
-/* Focus styles */
+/* Focus styles - Enhanced for keyboard navigation */
 *:focus-visible {
   outline: 2px solid var(--focus-color);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
+}
+
+/* Enhanced focus styles for interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--focus-shadow);
+  transition: box-shadow var(--duration-fast) var(--ease-out);
+}
+
+/* Focus styles for cards and interactive containers */
+.card:focus-visible,
+.card-interactive:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px var(--focus-shadow), var(--shadow-lg);
+}
+
+/* Ensure focus is never hidden */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
 }
 
 /* Skip to content link */

@@ -135,7 +135,7 @@ export default function ProfilePage() {
                     <Input
                       id="phone"
                       type="tel"
-                      defaultValue="+1 (416) 555-0123"
+                      defaultValue="+1 (613) 701-6393"
                       className="pl-10 bg-muted/50"
                     />
                   </div>

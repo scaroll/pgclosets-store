@@ -9,6 +9,7 @@ import Script from 'next/script'
 import { StructuredData } from '@/components/StructuredData'
 import { BUSINESS_INFO } from '@/lib/business-config'
 import Analytics from '@/app/components/Analytics'
+import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/seo/comprehensive-schema'
 
 // Font optimization with preloading and display swap
 const inter = Inter({
@@ -123,6 +124,14 @@ export default function RootLayout({
 }) {
   const shouldInjectToolbar = process.env.NODE_ENV === 'development'
 
+  // Generate sitewide schemas
+  const organizationSchema = generateOrganizationSchema()
+  const websiteSchema = generateWebSiteSchema()
+  const graphSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, websiteSchema]
+  }
+
   return (
     <html lang="en" className={`scroll-smooth ${playfair.variable} ${inter.variable}`}>
       <head>
@@ -154,8 +163,11 @@ export default function RootLayout({
           `
         }} />
 
-        {/* Global Structured Data for SEO - Schema.org JSON-LD */}
-        <StructuredData type="full" />
+        {/* Global Structured Data for SEO - Organization and Website schemas */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }}
+        />
       </head>
       <body className="antialiased font-sans-body">
         {/* Skip to main content link for keyboard navigation */}
@@ -166,7 +178,7 @@ export default function RootLayout({
         <ScrollProgress />
         <Navigation />
 
-        <main id="main-content" className="min-h-screen" tabIndex={-1}>
+        <main id="main-content" className="min-h-screen" tabIndex={-1} role="main">
           {children}
         </main>
 

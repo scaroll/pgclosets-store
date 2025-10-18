@@ -150,7 +150,7 @@ export default function NeighborhoodPage({ params }: Props) {
                 Why {neighborhood.name} Residents Choose Us
               </h2>
               <p className="text-xl text-gray-600">
-                Trusted local experts with {neighborhood.population} satisfied customers
+                Trusted local experts serving {neighborhood.population} residents
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

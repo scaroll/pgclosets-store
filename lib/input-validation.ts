@@ -92,7 +92,7 @@ export function sanitizeEmail(email: string): string {
 
 /**
  * Validate phone number format
- * Accepts various formats: (613) 555-1234, 613-555-1234, 6135551234
+ * Accepts various formats: (613) 701-6393, 613-701-6393, 6137016393
  */
 export function validatePhoneNumber(phone: string): boolean {
   if (typeof phone !== 'string') return false;

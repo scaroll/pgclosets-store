@@ -132,7 +132,7 @@ export default function ContactForm({
               const formatted = formatPhoneNumber(e.target.value);
               setValue('phone', formatted);
             }}
-            placeholder="613-555-1234"
+            placeholder="613-701-6393"
             className={errors.phone ? 'border-red-500' : ''}
           />
           {errors.phone && (

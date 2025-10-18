@@ -196,8 +196,8 @@ export const OrderConfirmationEmail = (props: OrderEmailData) => {
                   support@pgclosets.com
                 </Link>{' '}
                 or call{' '}
-                <Link href="tel:+16135551234" style={link}>
-                  (613) 555-1234
+                <Link href="tel:+16137016393" style={link}>
+                  (613) 701-6393
                 </Link>
               </Text>
             </Section>

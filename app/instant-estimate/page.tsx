@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import { Suspense } from "react";
 import StandardLayout from "@/components/layout/StandardLayout";
-
-// Dynamically import heavy component for better initial load
-const InstantEstimateStandalone = dynamic(
-  () => import("@/components/configurator/InstantEstimateStandalone").then(mod => ({ default: mod.InstantEstimateStandalone })),
-  {
-    loading: () => (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
-      </div>
-    )
-  }
-);
+import { InstantEstimateStandalone } from "@/components/configurator/InstantEstimateStandalone";
 
 export const metadata: Metadata = {
   title: "Instant Estimate | PG Closets Ottawa",
@@ -32,7 +21,13 @@ export default function InstantEstimatePage() {
             </p>
           </div>
 
-          <InstantEstimateStandalone />
+          <Suspense fallback={
+            <div className="flex items-center justify-center min-h-[400px]">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
+            </div>
+          }>
+            <InstantEstimateStandalone />
+          </Suspense>
         </div>
       </div>
     </StandardLayout>

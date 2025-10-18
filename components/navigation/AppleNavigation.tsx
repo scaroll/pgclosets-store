@@ -212,12 +212,12 @@ export function AppleNavigation() {
             <div className="flex items-center justify-between h-10 text-xs sm:text-sm">
               <div className="flex items-center gap-4">
                 <a
-                  href="tel:+16135551234"
+                  href="tel:+16137016393"
                   className="flex items-center gap-2 hover:text-amber-400 transition-colors"
                   aria-label="Call us"
                 >
                   <Phone className="w-3 h-3" />
-                  <span className="hidden sm:inline">(613) 555-1234</span>
+                  <span className="hidden sm:inline">(613) 701-6393</span>
                 </a>
                 <a
                   href="mailto:info@pgclosets.com"
@@ -601,11 +601,11 @@ function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
               {/* Contact Info */}
               <div className="mt-8 pt-8 border-t border-gray-200 space-y-3">
                 <a
-                  href="tel:+16135551234"
+                  href="tel:+16137016393"
                   className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
                 >
                   <Phone className="w-5 h-5" />
-                  <span>(613) 555-1234</span>
+                  <span>(613) 701-6393</span>
                 </a>
                 <a
                   href="mailto:info@pgclosets.com"

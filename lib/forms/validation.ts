@@ -65,7 +65,7 @@ export const errorMessages = {
     required: "Email address is required",
   },
   phone: {
-    invalid: "Please enter a valid phone number (e.g., 613-555-0123 or (613) 555-0123)",
+    invalid: "Please enter a valid phone number (e.g., 613-701-6393 or (613) 701-6393)",
     required: "Phone number is required",
   },
   postalCode: {

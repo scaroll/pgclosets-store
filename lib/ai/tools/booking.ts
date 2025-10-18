@@ -192,7 +192,7 @@ export const bookAppointmentTool = tool({
       nextSteps: [
         'You will receive a confirmation email shortly',
         'A reminder will be sent 24 hours before your appointment',
-        'If you need to reschedule, please call us at (613) 555-1234',
+        'If you need to reschedule, please call us at (613) 701-6393',
       ],
     };
   },

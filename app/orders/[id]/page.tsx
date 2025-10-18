@@ -111,7 +111,7 @@ const mockOrder: Order = {
     province: "ON",
     postalCode: "K1A 0B1",
     country: "Canada",
-    phone: "(613) 555-0123",
+    phone: "(613) 701-6393",
     email: "john.doe@example.com"
   },
   installationDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
@@ -505,11 +505,11 @@ export default function OrderDetailsPage() {
                 </p>
                 <div className="space-y-2 text-sm">
                   <a
-                    href="tel:6135551234"
+                    href="tel:6137016393"
                     className="flex items-center gap-2 text-blue-600 hover:text-blue-700"
                   >
                     <Phone className="w-4 h-4" />
-                    (613) 555-1234
+                    (613) 701-6393
                   </a>
                   <a
                     href="mailto:support@pgclosets.com"

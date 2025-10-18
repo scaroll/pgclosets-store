@@ -4,6 +4,7 @@ import StandardLayout from '@/components/layout/StandardLayout';
 import { EnhancedProductDetailPage } from '@/components/product/EnhancedProductDetailPage';
 import { Metadata } from 'next';
 import { BUSINESS_INFO } from '@/lib/business-config';
+import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/seo/comprehensive-schema';
 
 interface ProductPageProps {
   params: Promise<{
@@ -112,51 +113,33 @@ export default async function ProductPage({ params }: ProductPageProps) {
     isOnSale: !!product.salePrice,
   };
 
-  // Structured Data for SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
+  // Generate comprehensive structured data
+  const productUrl = `${BUSINESS_INFO.urls.main}/products/${product.slug}`;
+
+  const productSchema = generateProductSchema({
     name: product.name,
     description: product.description,
     sku: product.sku || `PGC-${product.slug.toUpperCase()}`,
-    brand: {
-      "@type": "Brand",
-      name: "Renin",
-    },
-    manufacturer: {
-      "@type": "Organization",
-      name: "Renin Corp",
-      url: "https://www.renin.com",
-    },
-    offers: {
-      "@type": "Offer",
-      price: (product.salePrice || product.price) / 100,
-      priceCurrency: "CAD",
-      availability: product.inventory > 0
-        ? "https://schema.org/InStock"
-        : "https://schema.org/OutOfStock",
-      priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split("T")[0],
-      itemCondition: "https://schema.org/NewCondition",
-      seller: {
-        "@type": "Organization",
-        name: BUSINESS_INFO.name,
-        url: BUSINESS_INFO.urls.main,
-        email: BUSINESS_INFO.email,
-      },
-    },
-    image: product.images.map(img => img.url),
+    price: product.price,
+    salePrice: product.salePrice,
+    images: product.images.map(img => img.url),
     category: product.category,
-    ...(averageRating > 0 && {
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: averageRating.toFixed(1),
-        reviewCount: product.reviews.length,
-        bestRating: "5",
-        worstRating: "1",
-      },
-    }),
+    availability: product.inventory > 0 ? 'InStock' : 'OutOfStock',
+    rating: averageRating > 0 ? averageRating : undefined,
+    reviewCount: product.reviews.length > 0 ? product.reviews.length : undefined,
+    url: productUrl
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: BUSINESS_INFO.urls.main },
+    { name: 'Products', url: `${BUSINESS_INFO.urls.main}/products` },
+    { name: product.category, url: `${BUSINESS_INFO.urls.main}/products?category=${product.category}` },
+    { name: product.name, url: productUrl }
+  ]);
+
+  const graphSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [productSchema, breadcrumbSchema]
   };
 
   return (
@@ -164,7 +147,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
+          __html: JSON.stringify(graphSchema),
         }}
       />
       <EnhancedProductDetailPage
@@ -177,14 +160,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 // Generate static paths for known products
 export async function generateStaticParams() {
-  const products = await prisma.product.findMany({
-    where: { status: 'active' },
-    select: { slug: true },
-  });
-
-  return products.map((product) => ({
-    slug: product.slug,
-  }));
+  // Return empty array to skip static generation during build
+  // Products will be generated on-demand
+  return [];
 }
 
 // Enable ISR: Revalidate every hour

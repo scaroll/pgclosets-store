@@ -231,11 +231,11 @@ export function EnhancedMobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
           {/* Contact Info */}
           <div className="space-y-2 text-xs text-gray-600">
             <a
-              href="tel:+16135551234"
+              href="tel:+16137016393"
               className="flex items-center gap-2 hover:text-black transition-colors"
             >
               <Phone className="w-4 h-4" />
-              (613) 555-1234
+              (613) 701-6393
             </a>
             <a
               href="mailto:info@pgclosets.com"

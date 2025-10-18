@@ -215,7 +215,7 @@ export default function AIBookingAssistant({
 
     // Transfer to human
     if (lowerMessage.includes('speak') || lowerMessage.includes('human') || lowerMessage.includes('call')) {
-      return "I understand you'd prefer to speak with someone. Please call us at (613) 555-1234, or I can help you complete the booking online. How would you like to proceed?";
+      return "I understand you'd prefer to speak with someone. Please call us at (613) 701-6393, or I can help you complete the booking online. How would you like to proceed?";
     }
 
     // Default response for unclear input
@@ -277,7 +277,7 @@ export default function AIBookingAssistant({
           className="text-white hover:bg-white/20"
           asChild
         >
-          <a href="tel:+16135551234">
+          <a href="tel:+16137016393">
             <Phone className="w-4 h-4 mr-2" />
             Call Instead
           </a>

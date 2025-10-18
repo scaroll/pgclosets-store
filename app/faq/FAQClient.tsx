@@ -3,11 +3,12 @@
 import StandardLayout from "@/components/layout/StandardLayout"
 import Link from "next/link"
 import { useState } from "react"
-import { FAQSchema } from "@/components/seo/FAQSchema"
 import Heading from "@/components/ui/Heading-new"
 import Text from "@/components/ui/Text-new"
 import { Button } from "@/components/ui/button"
 import Card from "@/components/ui/Card-new"
+import { generateFAQPageSchema, generateBreadcrumbSchema } from "@/lib/seo/comprehensive-schema"
+import { BUSINESS_INFO } from "@/lib/business-config"
 
 interface FAQItem {
   id: string
@@ -195,9 +196,27 @@ export default function FAQClient() {
     ? faqItems
     : faqItems.filter(item => item.category === activeCategory)
 
+  // Generate structured data
+  const faqSchema = generateFAQPageSchema(
+    faqItems.map(item => ({ question: item.question, answer: item.answer }))
+  )
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: BUSINESS_INFO.urls.main },
+    { name: 'FAQ', url: `${BUSINESS_INFO.urls.main}/faq` }
+  ])
+
+  const graphSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [faqSchema, breadcrumbSchema]
+  }
+
   return (
     <>
-      <FAQSchema faqs={faqItems.map(item => ({ question: item.question, answer: item.answer }))} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }}
+      />
       <StandardLayout>
       {/* Breadcrumb Navigation */}
       <div className="pt-20 pb-4 bg-gray-50">

@@ -1,36 +1,26 @@
-'use client'
-
-/**
- * Global Error Handler
- *
- * This file handles catastrophic errors that occur outside the root layout.
- * Must include its own <html> and <body> tags as it replaces the root layout.
- *
- * Note: This file MUST NOT import the OnceUI providers or any client components
- * that depend on SSR context, as it needs to work during static generation.
- */
+'use client';
 
 export default function GlobalError({
-  error,
+  error: _error,
   reset,
 }: {
-  error: Error & { digest?: string }
-  reset: () => void
+  error: Error & { digest?: string };
+  reset: () => void;
 }) {
   return (
-    <html lang="en">
+    <html>
       <body>
         <div className="min-h-screen flex items-center justify-center bg-white">
-          <div className="text-center px-6">
-            <h1 className="text-4xl font-bold mb-4">
-              Something went wrong
-            </h1>
+          <div className="text-center px-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Something went wrong!
+            </h2>
             <p className="text-gray-600 mb-8">
-              {error.message || 'An unexpected error occurred'}
+              A critical error occurred. Please try refreshing the page.
             </p>
             <button
               onClick={reset}
-              className="bg-blue-600 text-white px-8 py-3 font-semibold hover:bg-blue-700 transition-colors uppercase tracking-wide rounded"
+              className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
             >
               Try again
             </button>
@@ -38,5 +28,5 @@ export default function GlobalError({
         </div>
       </body>
     </html>
-  )
+  );
 }

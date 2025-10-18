@@ -33,7 +33,7 @@ const leadSchema = z.object({
     .string()
     .regex(
       /^\+?1?\s*\(?(\d{3})\)?[-.\s]?(\d{3})[-.\s]?(\d{4})$/,
-      'Please provide a valid phone number (e.g., 613-555-1234)'
+      'Please provide a valid phone number (e.g., 613-701-6393)'
     ),
   location: z.string().min(2, 'Location is required').max(200, 'Location too long'),
   serviceType: z.enum(['measure', 'quote', 'general'], {

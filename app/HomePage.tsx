@@ -17,7 +17,9 @@ import { ConversionCTA } from "@/components/conversion/ConversionCTA"
 import { ElevatedHero } from "@/components/home/ElevatedHero"
 import { FeaturedProducts } from "@/components/home/FeaturedProducts"
 import { TestimonialsCarousel } from "@/components/ui/testimonials-carousel"
+import { TrustBar } from "@/components/home/TrustBar"
 import { ArrowRight, Check, Shield, Award, Clock } from "lucide-react"
+import { generateLocalBusinessSchema } from "@/lib/seo/comprehensive-schema"
 
 // Sample testimonials data
 const testimonials = [
@@ -51,13 +53,25 @@ const testimonials = [
 ]
 
 export default function HomePage() {
+  // Generate LocalBusiness schema for homepage
+  const localBusinessSchema = generateLocalBusinessSchema()
+
   return (
     <StandardLayout>
+      {/* LocalBusiness Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+
       {/* Elevated Hero Section - Apple-inspired design with 3D effects */}
       <ElevatedHero
         videoUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Renin%20Closet%20Doors%20Overview-kpsJMjKcOGc9Rg5Zv39EVupOi0Gv1i.mp4"
         fallbackImage="/images/elegant-barn-door-closet.png"
       />
+
+      {/* Trust Bar - Above the Fold Trust Elements */}
+      <TrustBar />
 
       {/* Featured Section - Replacing OnceUI with Tailwind */}
       <Section variant="light" spacing="xl">

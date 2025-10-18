@@ -183,8 +183,8 @@ export const BookingConfirmationEmail = (props: BookingEmailData) => {
               </Text>
               <Text style={rescheduleText}>
                 Call us at{' '}
-                <Link href="tel:+16135551234" style={link}>
-                  (613) 555-1234
+                <Link href="tel:+16137016393" style={link}>
+                  (613) 701-6393
                 </Link>{' '}
                 or email{' '}
                 <Link href="mailto:bookings@pgclosets.com" style={link}>
@@ -204,8 +204,8 @@ export const BookingConfirmationEmail = (props: BookingEmailData) => {
                   info@pgclosets.com
                 </Link>{' '}
                 | Phone:{' '}
-                <Link href="tel:+16135551234" style={link}>
-                  (613) 555-1234
+                <Link href="tel:+16137016393" style={link}>
+                  (613) 701-6393
                 </Link>
               </Text>
             </Section>

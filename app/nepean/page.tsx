@@ -223,7 +223,7 @@ export default function NepeanPage() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Transform Your Nepean Home Today</h2>
           <p className="text-xl text-blue-100 mb-8">
-            Join thousands of satisfied Nepean homeowners who chose PG Closets
+            Join 380+ satisfied Nepean homeowners who chose PG Closets
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

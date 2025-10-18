@@ -289,8 +289,8 @@ export default function BookingConfirmation({ bookingData }: BookingConfirmation
       <div className="text-center space-y-4">
         <p className="text-gray-600">
           Need to make changes? Call us at{' '}
-          <a href="tel:+16135551234" className="font-semibold text-blue-600 hover:underline">
-            (613) 555-1234
+          <a href="tel:+16137016393" className="font-semibold text-blue-600 hover:underline">
+            (613) 701-6393
           </a>
         </p>
 

@@ -164,11 +164,11 @@ export function EnhancedFooter() {
               {/* Contact Quick Links */}
               <div className="space-y-2 pt-4 border-t border-slate-800">
                 <a
-                  href="tel:+16135551234"
+                  href="tel:+16137016393"
                   className="flex items-center gap-2 text-sm text-slate-300 hover:text-white transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  (613) 555-1234
+                  (613) 701-6393
                 </a>
                 <a
                   href="mailto:info@pgclosets.com"

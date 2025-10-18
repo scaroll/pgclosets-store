@@ -164,7 +164,7 @@ export function BookMeasureForm() {
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="(613) 555-1234"
+                  placeholder="(613) 701-6393"
                   required
                 />
               </div>

@@ -1,21 +1,12 @@
 "use client"
 
-import { useState } from "react"
-import dynamic from "next/dynamic"
 import Link from "next/link"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Calculator } from "lucide-react"
 import { trackCTAClick } from "@/lib/analytics/events"
-import { getSmartDefaultProduct, getDefaultConfiguratorData } from "@/lib/estimator-defaults"
 import { DOOR_TYPES, formatPrice } from "@/lib/door-types"
-
-// Dynamic import - wizard only loads when Quick Configure clicked
-const InstantEstimatorWizard = dynamic(
-  () => import("@/components/configurator/InstantEstimatorWizard").then(mod => ({ default: mod.InstantEstimatorWizard })),
-  { ssr: false }
-)
 
 const FEATURED_SLUGS = [
   "renin-barn-doors",
@@ -42,26 +33,27 @@ const categories = FEATURED_SLUGS.map((slug) => {
   fromPrice: string
 }>
 
+// Default dimensions for different door types (common sizes)
+const DEFAULT_DIMENSIONS: Record<string, { width: number; height: number; panels: string }> = {
+  'renin-barn-doors': { width: 72, height: 84, panels: '1' },
+  'renin-bypass-doors': { width: 72, height: 84, panels: '2' },
+  'renin-bifold-doors': { width: 48, height: 80, panels: '2' },
+  'renin-pivot-doors': { width: 36, height: 84, panels: '1' },
+  'renin-closet-doors': { width: 60, height: 80, panels: '2' },
+  'renin-room-dividers': { width: 96, height: 96, panels: '3' },
+}
+
 export function CategoryTiles() {
-  const [showEstimator, setShowEstimator] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-
-  const handleQuickConfigure = (categorySlug: string, categoryName: string) => {
-    setSelectedCategory(categorySlug)
-    setShowEstimator(true)
-    trackCTAClick({
-      location: 'category_tile',
-      label: 'Quick Configure',
-      product_name: categoryName,
+  const buildEstimateUrl = (categorySlug: string) => {
+    const defaults = DEFAULT_DIMENSIONS[categorySlug] || { width: 72, height: 84, panels: '2' }
+    const params = new URLSearchParams({
+      category: categorySlug.replace('renin-', ''),
+      width: defaults.width.toString(),
+      height: defaults.height.toString(),
+      panels: defaults.panels,
     })
+    return `/instant-estimate?${params.toString()}`
   }
-
-  const defaultProduct = selectedCategory
-    ? getSmartDefaultProduct({
-        entryPoint: 'category_tile',
-        lastViewedCategory: selectedCategory
-      })
-    : getSmartDefaultProduct()
 
   return (
     <>
@@ -106,40 +98,29 @@ export function CategoryTiles() {
                   </Link>
                 </div>
 
-                {/* Quick Configure CTA - Opens wizard with smart default */}
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full group/btn hover:bg-teal-600 hover:text-white hover:border-teal-600"
-                  onClick={() => handleQuickConfigure(category.slug, category.name)}
-                >
-                  <Calculator className="w-4 h-4 mr-2" />
-                  Quick Configure
-                  <ArrowRight className="w-4 h-4 ml-auto opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all" />
-                </Button>
+                {/* Quick Configure CTA - Links to instant estimator with pre-filled params */}
+                <Link href={buildEstimateUrl(category.slug)} className="w-full">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full group/btn hover:bg-teal-600 hover:text-white hover:border-teal-600"
+                    onClick={() => trackCTAClick({
+                      location: 'category_tile',
+                      label: 'Quick Configure',
+                      product_name: category.name,
+                    })}
+                  >
+                    <Calculator className="w-4 h-4 mr-2" />
+                    Quick Configure
+                    <ArrowRight className="w-4 h-4 ml-auto opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all" />
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           ))}
         </div>
       </div>
     </section>
-
-    {/* Estimator Wizard - Opens with context-aware default product */}
-    {showEstimator && (
-      <InstantEstimatorWizard
-        isOpen={showEstimator}
-        onClose={() => {
-          setShowEstimator(false)
-          setSelectedCategory(null)
-        }}
-        initialProduct={{
-          id: defaultProduct.slug,
-          title: defaultProduct.title,
-          configuratorData: getDefaultConfiguratorData(defaultProduct.slug)
-        }}
-        entryPoint="category_tile"
-      />
-    )}
     </>
   )
 }

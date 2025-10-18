@@ -1,18 +1,10 @@
-import { getProducts } from '@/lib/actions/commerce';
-import type { Product } from '@/types/commerce';
 import { unstable_noStore as noStore } from 'next/cache';
 import Link from 'next/link';
-import Image from 'next/image';
 import StandardLayout from '@/components/layout/StandardLayout';
 import type { Metadata } from 'next';
-
-// Format price helper
-function formatPrice(price: number, currency: string = 'CAD'): string {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency,
-  }).format(price);
-}
+import FilteredProductsClient from './FilteredProductsClient';
+import type { SimpleProduct } from '@/lib/products/filters';
+import simpleProductsData from '@/data/simple-products.json';
 
 export const metadata: Metadata = {
   title: 'Barn Doors Ottawa | Renin Sliding Barn Doors | PG Closets',
@@ -29,49 +21,13 @@ export const metadata: Metadata = {
   },
 };
 
-const ProductCard = ({ product }: { product: Product }) => (
-  <div className="bg-white shadow-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 border border-gray-100">
-    <Link href={`/products/${product.handle}`} className="block">
-      <div className="relative aspect-square bg-gray-50 overflow-hidden">
-        <Image
-          src={product.thumbnail || '/placeholder.svg'}
-          alt={product.title}
-          fill
-          className="object-cover hover:scale-105 transition-transform duration-300"
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-        />
-        <div className="absolute top-2 left-2 bg-slate-900 text-white px-3 py-1 text-xs font-light tracking-widest uppercase">
-          Renin
-        </div>
-      </div>
-    </Link>
-    <div className="p-6">
-      <h3 className="text-xl font-light text-slate-900 mb-2 tracking-wide">{product.title}</h3>
-      <p className="text-slate-600 text-sm mb-4 line-clamp-2 font-light">{product.description}</p>
-      <div className="text-3xl font-extralight text-slate-900 mb-6 tracking-tight">
-        {formatPrice(product.variants[0]?.price || 0)}
-      </div>
-      <div className="flex gap-2">
-        <Link
-          href={`/products/${product.handle}`}
-          className="flex-1 bg-slate-900 text-white py-3 font-light hover:bg-slate-800 transition-all duration-500 hover:shadow-xl text-sm uppercase tracking-widest text-center"
-        >
-          View Details
-        </Link>
-        <Link
-          href="/request-work"
-          className="px-4 py-3 border border-slate-300 text-slate-700 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 text-sm uppercase tracking-widest font-light"
-        >
-          Get Quote
-        </Link>
-      </div>
-    </div>
-  </div>
-);
-
 export default async function BarnDoorsPage() {
   noStore();
-  const products = await getProducts({ collection: 'Barn Doors' });
+
+  // Filter products from simple-products.json for Barn Doors category
+  const barnDoorProducts = (simpleProductsData as SimpleProduct[]).filter(
+    product => product.category === 'Renin Barn Doors'
+  );
 
   return (
     <StandardLayout>
@@ -153,25 +109,21 @@ export default async function BarnDoorsPage() {
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* Products Section with Filters */}
       <section className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="text-4xl lg:text-5xl font-extralight tracking-tight text-slate-900 mb-4">
-              Premium Barn Door Collection
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto font-light tracking-wide">
-              Discover our curated selection of Renin barn doors, designed for style and built for durability
-            </p>
-          </div>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl lg:text-5xl font-extralight tracking-tight text-slate-900 mb-4">
+            Premium Barn Door Collection
+          </h2>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto font-light tracking-wide">
+            Discover our curated selection of Renin barn doors, designed for style and built for durability
+          </p>
+        </div>
 
-          {products.length > 0 ? (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {products.map(product => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          ) : (
+        {barnDoorProducts.length > 0 ? (
+          <FilteredProductsClient products={barnDoorProducts} />
+        ) : (
+          <div className="max-w-7xl mx-auto px-4">
             <div className="text-center py-12">
               <p className="text-slate-600 text-lg font-light">
                 Our barn door collection is being updated. Please contact us for current availability.
@@ -183,8 +135,8 @@ export default async function BarnDoorsPage() {
                 Contact for Availability
               </Link>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </section>
 
       {/* CTA Section */}

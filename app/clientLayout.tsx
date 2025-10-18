@@ -28,11 +28,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       {/* Skip Navigation Link for Accessibility */}
       <SkipNavigation />
 
-      <main id="main-content" role="main" tabIndex={-1}>
-        <ErrorBoundary>
-          {children}
-        </ErrorBoundary>
-      </main>
+      <ErrorBoundary>
+        {children}
+      </ErrorBoundary>
 
       {/* Cart removed - quote-based business model */}
     </div>

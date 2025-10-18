@@ -398,7 +398,7 @@ export default function VisualizerPage() {
                 <div className="text-center mb-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-4">Popular Design Combinations</h2>
                   <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Get inspired by our most popular door and room combinations, loved by thousands of customers.
+                    Get inspired by our most popular door and room combinations, loved by hundreds of customers.
                   </p>
                 </div>
 
@@ -522,7 +522,7 @@ export default function VisualizerPage() {
               Ready to Transform Your Space?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Join thousands of satisfied customers who have designed their perfect doors with our visualizer.
+              Join 1,700+ satisfied customers who have designed their perfect doors with our visualizer.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

@@ -114,9 +114,9 @@ export default function ServicePage({
                     variant="outline"
                     asChild
                   >
-                    <Link href="tel:+16135551234">
+                    <Link href="tel:+16137016393">
                       <Phone className="mr-2 w-5 h-5" />
-                      Call (613) 555-1234
+                      Call (613) 701-6393
                     </Link>
                   </Button>
                 </div>
@@ -467,8 +467,8 @@ export default function ServicePage({
 
             <p className="mt-8 text-blue-100">
               Or call us directly at{' '}
-              <a href="tel:+16135551234" className="font-semibold text-white underline">
-                (613) 555-1234
+              <a href="tel:+16137016393" className="font-semibold text-white underline">
+                (613) 701-6393
               </a>
             </p>
           </div>

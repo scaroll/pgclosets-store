@@ -245,8 +245,13 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
 
       {/* Product Search/Filter */}
       <div className="max-w-md mx-auto">
+        <label htmlFor="product-select" className="sr-only">
+          Select a product to add to your quote
+        </label>
         <select
+          id="product-select"
           className="w-full p-3 border border-gray-300 rounded-lg"
+          aria-label="Select a Renin product to add to your quote"
           onChange={(e) => {
             if (e.target.value) {
               const product = reninProducts.find(p => p.id === e.target.value);
@@ -286,54 +291,62 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor={`width-${product.id}`} className="block text-sm font-medium text-gray-700 mb-1">
                     Width (inches)
                   </label>
                   <input
+                    id={`width-${product.id}`}
                     type="number"
                     min="12"
                     max="120"
                     value={product.width}
                     onChange={(e) => updateProduct(product.id, { width: parseInt(e.target.value) || 30 })}
                     className="w-full p-2 border border-gray-300 rounded"
+                    aria-label={`Width in inches for ${product.productName}`}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor={`height-${product.id}`} className="block text-sm font-medium text-gray-700 mb-1">
                     Height (inches)
                   </label>
                   <input
+                    id={`height-${product.id}`}
                     type="number"
                     min="60"
                     max="120"
                     value={product.height}
                     onChange={(e) => updateProduct(product.id, { height: parseInt(e.target.value) || 80 })}
                     className="w-full p-2 border border-gray-300 rounded"
+                    aria-label={`Height in inches for ${product.productName}`}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor={`quantity-${product.id}`} className="block text-sm font-medium text-gray-700 mb-1">
                     Quantity
                   </label>
                   <input
+                    id={`quantity-${product.id}`}
                     type="number"
                     min="1"
                     max="50"
                     value={product.quantity}
                     onChange={(e) => updateProduct(product.id, { quantity: parseInt(e.target.value) || 1 })}
                     className="w-full p-2 border border-gray-300 rounded"
+                    aria-label={`Quantity for ${product.productName}`}
                   />
                 </div>
 
                 <div className="flex items-end">
-                  <label className="flex items-center">
+                  <label htmlFor={`installation-${product.id}`} className="flex items-center">
                     <input
+                      id={`installation-${product.id}`}
                       type="checkbox"
                       checked={product.includeInstallation}
                       onChange={(e) => updateProduct(product.id, { includeInstallation: e.target.checked })}
                       className="mr-2"
+                      aria-label={`Include installation for ${product.productName}`}
                     />
                     <span className="text-sm">Include Installation</span>
                   </label>
@@ -392,51 +405,58 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
       <div className="max-w-2xl mx-auto space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="first-name" className="block text-sm font-medium text-gray-700 mb-1">
               First Name *
             </label>
             <input
+              id="first-name"
               type="text"
               required
               value={customer.firstName}
               onChange={(e) => setCustomer({...customer, firstName: e.target.value})}
               className="w-full p-3 border border-gray-300 rounded-lg"
+              aria-required="true"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 mb-1">
               Last Name *
             </label>
             <input
+              id="last-name"
               type="text"
               required
               value={customer.lastName}
               onChange={(e) => setCustomer({...customer, lastName: e.target.value})}
               className="w-full p-3 border border-gray-300 rounded-lg"
+              aria-required="true"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
             Email Address *
           </label>
           <input
+            id="email"
             type="email"
             required
             value={customer.email}
             onChange={(e) => setCustomer({...customer, email: e.target.value})}
             className="w-full p-3 border border-gray-300 rounded-lg"
+            aria-required="true"
           />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
               Phone Number
             </label>
             <input
+              id="phone"
               type="tel"
               value={customer.phone}
               onChange={(e) => setCustomer({...customer, phone: e.target.value})}
@@ -446,10 +466,11 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="postal-code" className="block text-sm font-medium text-gray-700 mb-1">
               Ottawa Postal Code *
             </label>
             <input
+              id="postal-code"
               type="text"
               required
               value={customer.postalCode}
@@ -457,15 +478,17 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
               className="w-full p-3 border border-gray-300 rounded-lg"
               placeholder="K1A 0A6"
               pattern="[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d"
+              aria-required="true"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="customer-type" className="block text-sm font-medium text-gray-700 mb-1">
             Customer Type
           </label>
           <select
+            id="customer-type"
             value={customer.customerType}
             onChange={(e) => setCustomer({...customer, customerType: e.target.value as any})}
             className="w-full p-3 border border-gray-300 rounded-lg"
@@ -503,10 +526,11 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
       <div className="max-w-2xl mx-auto space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="project-type" className="block text-sm font-medium text-gray-700 mb-1">
               Project Type
             </label>
             <select
+              id="project-type"
               value={projectDetails.projectType}
               onChange={(e) => setProjectDetails({...projectDetails, projectType: e.target.value as any})}
               className="w-full p-3 border border-gray-300 rounded-lg"
@@ -518,10 +542,11 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 mb-1">
               Timeline
             </label>
             <select
+              id="timeline"
               value={projectDetails.timeline}
               onChange={(e) => setProjectDetails({...projectDetails, timeline: e.target.value as any})}
               className="w-full p-3 border border-gray-300 rounded-lg"
@@ -535,10 +560,11 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="contact-method" className="block text-sm font-medium text-gray-700 mb-1">
             Preferred Contact Method
           </label>
           <select
+            id="contact-method"
             value={preferences.preferredContactMethod}
             onChange={(e) => setPreferences({...preferences, preferredContactMethod: e.target.value as any})}
             className="w-full p-3 border border-gray-300 rounded-lg"
@@ -550,22 +576,25 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
         </div>
 
         <div>
-          <label className="flex items-center">
+          <label htmlFor="financing-option" className="flex items-center">
             <input
+              id="financing-option"
               type="checkbox"
               checked={preferences.includeFinancing}
               onChange={(e) => setPreferences({...preferences, includeFinancing: e.target.checked})}
               className="mr-2"
+              aria-label="Include financing options in quote"
             />
             <span className="text-sm">Include financing options (available for orders over $1,000)</span>
           </label>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="hear-about-us" className="block text-sm font-medium text-gray-700 mb-1">
             How did you hear about us?
           </label>
           <input
+            id="hear-about-us"
             type="text"
             value={preferences.hearAboutUs}
             onChange={(e) => setPreferences({...preferences, hearAboutUs: e.target.value})}
@@ -575,10 +604,11 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="additional-notes" className="block text-sm font-medium text-gray-700 mb-1">
             Additional Notes
           </label>
           <textarea
+            id="additional-notes"
             rows={4}
             value={projectDetails.additionalNotes}
             onChange={(e) => setProjectDetails({...projectDetails, additionalNotes: e.target.value})}
@@ -606,7 +636,11 @@ export function ReninQuoteForm({ selectedProductId, className = "" }: ReninQuote
       </div>
 
       {submitError && (
-        <div className="text-red-600 text-center bg-red-50 border border-red-200 rounded-lg p-3">
+        <div
+          className="text-red-600 text-center bg-red-50 border border-red-200 rounded-lg p-3"
+          role="alert"
+          aria-live="polite"
+        >
           {submitError}
         </div>
       )}

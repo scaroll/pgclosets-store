@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { X } from "lucide-react";
+import { X, SlidersHorizontal } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -17,15 +17,17 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 // Filter types and interfaces
 export interface FilterValues {
-  styles: string[];
   priceRange: [number, number];
-  doorTypes: string[];
-  colors: string[];
+  finishes: string[];
+  widthRange: [number, number];
+  heightRange: [number, number];
+  features: string[];
 }
 
 export interface FilterProps {
@@ -37,6 +39,18 @@ export interface FilterProps {
   minPrice?: number;
   /** Maximum price for the price range slider */
   maxPrice?: number;
+  /** Minimum width */
+  minWidth?: number;
+  /** Maximum width */
+  maxWidth?: number;
+  /** Minimum height */
+  minHeight?: number;
+  /** Maximum height */
+  maxHeight?: number;
+  /** Available finish options from products */
+  availableFinishes?: Array<{ id: string; name: string; color: string }>;
+  /** Available features from products */
+  availableFeatures?: string[];
   /** Custom className for the filter container */
   className?: string;
   /** Show filters in mobile sheet mode */
@@ -47,34 +61,6 @@ export interface FilterProps {
   onClose?: () => void;
 }
 
-// Filter options configuration
-const FILTER_OPTIONS = {
-  styles: [
-    { id: "modern", label: "Modern" },
-    { id: "traditional", label: "Traditional" },
-    { id: "transitional", label: "Transitional" },
-    { id: "contemporary", label: "Contemporary" },
-    { id: "rustic", label: "Rustic" },
-  ],
-  doorTypes: [
-    { id: "sliding", label: "Sliding" },
-    { id: "bi-fold", label: "Bi-fold" },
-    { id: "french", label: "French" },
-    { id: "pocket", label: "Pocket" },
-    { id: "hinged", label: "Hinged" },
-  ],
-  colors: [
-    { id: "white", label: "White" },
-    { id: "black", label: "Black" },
-    { id: "natural-wood", label: "Natural Wood" },
-    { id: "espresso", label: "Espresso" },
-    { id: "gray", label: "Gray" },
-    { id: "walnut", label: "Walnut" },
-    { id: "oak", label: "Oak" },
-    { id: "mahogany", label: "Mahogany" },
-  ],
-} as const;
-
 /**
  * ProductFilters Component
  *
@@ -82,6 +68,9 @@ const FILTER_OPTIONS = {
  * - Accordion-based filter categories
  * - Multi-select checkboxes for categorical filters
  * - Price range slider
+ * - Size range filters (width/height)
+ * - Finish/color selection with color swatches
+ * - Feature toggles
  * - Active filter count badge
  * - Clear all filters functionality
  * - Mobile responsive with Sheet drawer
@@ -89,17 +78,20 @@ const FILTER_OPTIONS = {
  * @example
  * ```tsx
  * const [filters, setFilters] = useState<FilterValues>({
- *   styles: [],
- *   priceRange: [0, 10000],
- *   doorTypes: [],
- *   colors: [],
+ *   priceRange: [0, 100000],
+ *   finishes: [],
+ *   widthRange: [30, 48],
+ *   heightRange: [80, 96],
+ *   features: [],
  * });
  *
  * <ProductFilters
  *   filters={filters}
  *   onFilterChange={setFilters}
  *   minPrice={0}
- *   maxPrice={10000}
+ *   maxPrice={100000}
+ *   availableFinishes={finishes}
+ *   availableFeatures={features}
  * />
  * ```
  */
@@ -107,7 +99,13 @@ export function ProductFilters({
   filters,
   onFilterChange,
   minPrice = 0,
-  maxPrice = 10000,
+  maxPrice = 100000,
+  minWidth = 24,
+  maxWidth = 96,
+  minHeight = 60,
+  maxHeight = 120,
+  availableFinishes = [],
+  availableFeatures = [],
   className,
   isMobileSheet = false,
   isOpen = false,
@@ -116,19 +114,26 @@ export function ProductFilters({
   // Calculate active filter count
   const activeFilterCount = React.useMemo(() => {
     let count = 0;
-    count += filters.styles.length;
-    count += filters.doorTypes.length;
-    count += filters.colors.length;
+    count += filters.finishes.length;
+    count += filters.features.length;
     // Count price range as active if it's not the full range
     if (filters.priceRange[0] !== minPrice || filters.priceRange[1] !== maxPrice) {
       count += 1;
     }
+    // Count width range as active if it's not the full range
+    if (filters.widthRange[0] !== minWidth || filters.widthRange[1] !== maxWidth) {
+      count += 1;
+    }
+    // Count height range as active if it's not the full range
+    if (filters.heightRange[0] !== minHeight || filters.heightRange[1] !== maxHeight) {
+      count += 1;
+    }
     return count;
-  }, [filters, minPrice, maxPrice]);
+  }, [filters, minPrice, maxPrice, minWidth, maxWidth, minHeight, maxHeight]);
 
   // Handle checkbox toggle
   const handleCheckboxChange = (
-    category: keyof Pick<FilterValues, "styles" | "doorTypes" | "colors">,
+    category: keyof Pick<FilterValues, "finishes" | "features">,
     value: string,
     checked: boolean
   ) => {
@@ -151,18 +156,44 @@ export function ProductFilters({
     });
   };
 
+  // Handle width range change
+  const handleWidthChange = (value: number[]) => {
+    onFilterChange({
+      ...filters,
+      widthRange: [value[0], value[1]],
+    });
+  };
+
+  // Handle height range change
+  const handleHeightChange = (value: number[]) => {
+    onFilterChange({
+      ...filters,
+      heightRange: [value[0], value[1]],
+    });
+  };
+
   // Clear all filters
   const handleClearAll = () => {
     onFilterChange({
-      styles: [],
       priceRange: [minPrice, maxPrice],
-      doorTypes: [],
-      colors: [],
+      finishes: [],
+      widthRange: [minWidth, maxWidth],
+      heightRange: [minHeight, maxHeight],
+      features: [],
     });
   };
 
   // Check if filters are empty
   const hasActiveFilters = activeFilterCount > 0;
+
+  // Format price for display
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('en-CA', {
+      style: 'currency',
+      currency: 'CAD',
+      minimumFractionDigits: 0,
+    }).format(price / 100);
+  };
 
   // Filter content component (reused for both desktop and mobile)
   const FilterContent = () => (
@@ -170,6 +201,7 @@ export function ProductFilters({
       {/* Header with active count and clear button */}
       <div className="flex items-center justify-between pb-4 border-b">
         <div className="flex items-center gap-2">
+          <SlidersHorizontal className="h-4 w-4" />
           <h3 className="text-lg font-semibold">Filters</h3>
           {hasActiveFilters && (
             <span className="inline-flex items-center justify-center h-5 min-w-5 px-1.5 text-xs font-medium text-white bg-black rounded-full">
@@ -191,42 +223,7 @@ export function ProductFilters({
       </div>
 
       {/* Filter Accordion */}
-      <Accordion type="multiple" defaultValue={["style", "price", "door-type", "color"]}>
-        {/* Style Filter */}
-        <AccordionItem value="style">
-          <AccordionTrigger>
-            <div className="flex items-center justify-between w-full pr-4">
-              <span>Style</span>
-              {filters.styles.length > 0 && (
-                <span className="text-xs text-muted-foreground">
-                  ({filters.styles.length})
-                </span>
-              )}
-            </div>
-          </AccordionTrigger>
-          <AccordionContent>
-            <div className="space-y-3">
-              {FILTER_OPTIONS.styles.map((option) => (
-                <div key={option.id} className="flex items-center space-x-2">
-                  <Checkbox
-                    id={`style-${option.id}`}
-                    checked={filters.styles.includes(option.id)}
-                    onCheckedChange={(checked) =>
-                      handleCheckboxChange("styles", option.id, checked as boolean)
-                    }
-                  />
-                  <Label
-                    htmlFor={`style-${option.id}`}
-                    className="text-sm font-normal cursor-pointer"
-                  >
-                    {option.label}
-                  </Label>
-                </div>
-              ))}
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-
+      <Accordion type="multiple" defaultValue={["price", "finish", "size", "features"]}>
         {/* Price Range Filter */}
         <AccordionItem value="price">
           <AccordionTrigger>
@@ -234,7 +231,7 @@ export function ProductFilters({
               <span>Price Range</span>
               {(filters.priceRange[0] !== minPrice || filters.priceRange[1] !== maxPrice) && (
                 <span className="text-xs text-muted-foreground">
-                  ${filters.priceRange[0].toLocaleString()} - ${filters.priceRange[1].toLocaleString()}
+                  {formatPrice(filters.priceRange[0])} - {formatPrice(filters.priceRange[1])}
                 </span>
               )}
             </div>
@@ -244,88 +241,146 @@ export function ProductFilters({
               <Slider
                 min={minPrice}
                 max={maxPrice}
-                step={100}
+                step={1000}
                 value={filters.priceRange}
                 onValueChange={handlePriceChange}
                 className="w-full"
               />
               <div className="flex items-center justify-between text-sm text-muted-foreground">
-                <span>${filters.priceRange[0].toLocaleString()}</span>
-                <span>${filters.priceRange[1].toLocaleString()}</span>
+                <span>{formatPrice(filters.priceRange[0])}</span>
+                <span>{formatPrice(filters.priceRange[1])}</span>
               </div>
             </div>
           </AccordionContent>
         </AccordionItem>
 
-        {/* Door Type Filter */}
-        <AccordionItem value="door-type">
+        {/* Finish/Color Filter */}
+        {availableFinishes.length > 0 && (
+          <AccordionItem value="finish">
+            <AccordionTrigger>
+              <div className="flex items-center justify-between w-full pr-4">
+                <span>Finish/Color</span>
+                {filters.finishes.length > 0 && (
+                  <span className="text-xs text-muted-foreground">
+                    ({filters.finishes.length})
+                  </span>
+                )}
+              </div>
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-3">
+                {availableFinishes.map((finish) => (
+                  <div key={finish.id} className="flex items-center space-x-2">
+                    <Checkbox
+                      id={`finish-${finish.id}`}
+                      checked={filters.finishes.includes(finish.id)}
+                      onCheckedChange={(checked) =>
+                        handleCheckboxChange("finishes", finish.id, checked as boolean)
+                      }
+                    />
+                    <Label
+                      htmlFor={`finish-${finish.id}`}
+                      className="text-sm font-normal cursor-pointer flex items-center gap-2"
+                    >
+                      <div
+                        className="w-5 h-5 rounded-full border border-slate-200 shadow-sm"
+                        style={{ backgroundColor: finish.color }}
+                      />
+                      {finish.name}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        )}
+
+        {/* Size Range Filter */}
+        <AccordionItem value="size">
           <AccordionTrigger>
             <div className="flex items-center justify-between w-full pr-4">
-              <span>Door Type</span>
-              {filters.doorTypes.length > 0 && (
-                <span className="text-xs text-muted-foreground">
-                  ({filters.doorTypes.length})
-                </span>
+              <span>Size Range</span>
+              {(filters.widthRange[0] !== minWidth || filters.widthRange[1] !== maxWidth ||
+                filters.heightRange[0] !== minHeight || filters.heightRange[1] !== maxHeight) && (
+                <span className="text-xs text-muted-foreground">Custom</span>
               )}
             </div>
           </AccordionTrigger>
           <AccordionContent>
-            <div className="space-y-3">
-              {FILTER_OPTIONS.doorTypes.map((option) => (
-                <div key={option.id} className="flex items-center space-x-2">
-                  <Checkbox
-                    id={`door-${option.id}`}
-                    checked={filters.doorTypes.includes(option.id)}
-                    onCheckedChange={(checked) =>
-                      handleCheckboxChange("doorTypes", option.id, checked as boolean)
-                    }
-                  />
-                  <Label
-                    htmlFor={`door-${option.id}`}
-                    className="text-sm font-normal cursor-pointer"
-                  >
-                    {option.label}
-                  </Label>
+            <div className="space-y-6 px-1">
+              {/* Width Range */}
+              <div className="space-y-3">
+                <Label className="text-xs font-medium">Width (inches)</Label>
+                <Slider
+                  min={minWidth}
+                  max={maxWidth}
+                  step={1}
+                  value={filters.widthRange}
+                  onValueChange={handleWidthChange}
+                  className="w-full"
+                />
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <span>{filters.widthRange[0]}"</span>
+                  <span>{filters.widthRange[1]}"</span>
                 </div>
-              ))}
+              </div>
+
+              {/* Height Range */}
+              <div className="space-y-3">
+                <Label className="text-xs font-medium">Height (inches)</Label>
+                <Slider
+                  min={minHeight}
+                  max={maxHeight}
+                  step={1}
+                  value={filters.heightRange}
+                  onValueChange={handleHeightChange}
+                  className="w-full"
+                />
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <span>{filters.heightRange[0]}"</span>
+                  <span>{filters.heightRange[1]}"</span>
+                </div>
+              </div>
             </div>
           </AccordionContent>
         </AccordionItem>
 
-        {/* Color/Finish Filter */}
-        <AccordionItem value="color">
-          <AccordionTrigger>
-            <div className="flex items-center justify-between w-full pr-4">
-              <span>Color/Finish</span>
-              {filters.colors.length > 0 && (
-                <span className="text-xs text-muted-foreground">
-                  ({filters.colors.length})
-                </span>
-              )}
-            </div>
-          </AccordionTrigger>
-          <AccordionContent>
-            <div className="space-y-3">
-              {FILTER_OPTIONS.colors.map((option) => (
-                <div key={option.id} className="flex items-center space-x-2">
-                  <Checkbox
-                    id={`color-${option.id}`}
-                    checked={filters.colors.includes(option.id)}
-                    onCheckedChange={(checked) =>
-                      handleCheckboxChange("colors", option.id, checked as boolean)
-                    }
-                  />
-                  <Label
-                    htmlFor={`color-${option.id}`}
-                    className="text-sm font-normal cursor-pointer"
-                  >
-                    {option.label}
-                  </Label>
-                </div>
-              ))}
-            </div>
-          </AccordionContent>
-        </AccordionItem>
+        {/* Features Filter */}
+        {availableFeatures.length > 0 && (
+          <AccordionItem value="features">
+            <AccordionTrigger>
+              <div className="flex items-center justify-between w-full pr-4">
+                <span>Features</span>
+                {filters.features.length > 0 && (
+                  <span className="text-xs text-muted-foreground">
+                    ({filters.features.length})
+                  </span>
+                )}
+              </div>
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-3">
+                {availableFeatures.map((feature) => (
+                  <div key={feature} className="flex items-center space-x-2">
+                    <Checkbox
+                      id={`feature-${feature}`}
+                      checked={filters.features.includes(feature)}
+                      onCheckedChange={(checked) =>
+                        handleCheckboxChange("features", feature, checked as boolean)
+                      }
+                    />
+                    <Label
+                      htmlFor={`feature-${feature}`}
+                      className="text-sm font-normal cursor-pointer"
+                    >
+                      {feature}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        )}
       </Accordion>
     </div>
   );
@@ -349,6 +404,3 @@ export function ProductFilters({
   // Desktop View
   return <FilterContent />;
 }
-
-// Export filter options for external use
-export { FILTER_OPTIONS };

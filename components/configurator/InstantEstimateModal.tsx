@@ -21,17 +21,23 @@ interface InstantEstimateModalProps {
     title: string;
     configuratorData: ProductConfiguratorData | any;
   };
+  prefilledParams?: {
+    width?: number;
+    height?: number;
+    panels?: string;
+    finish?: string;
+  } | null;
 }
 
-export function InstantEstimateModal({ isOpen, onClose, initialProduct }: InstantEstimateModalProps) {
+export function InstantEstimateModal({ isOpen, onClose, initialProduct, prefilledParams }: InstantEstimateModalProps) {
   const [step, setStep] = useState(1);
   const [state, setState] = useState<ConfiguratorState>({
-    width: null,
-    height: null,
+    width: prefilledParams?.width || null,
+    height: prefilledParams?.height || null,
     widthUnit: 'in',
     heightUnit: 'in',
-    panels: null,
-    finish: null,
+    panels: prefilledParams?.panels ? parseInt(prefilledParams.panels) : null,
+    finish: prefilledParams?.finish || null,
     addons: []
   });
   const [result, setResult] = useState<EstimateResult | null>(null);
@@ -99,10 +105,13 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
             value={state.width || ''}
             onChange={(e) => setState({ ...state, width: parseFloat(e.target.value) || null })}
           />
+          <Label htmlFor="width-unit" className="sr-only">Width unit</Label>
           <select
+            id="width-unit"
             className="border rounded px-3"
             value={state.widthUnit}
             onChange={(e) => setState({ ...state, widthUnit: e.target.value as 'in' | 'mm' })}
+            aria-label="Width unit of measurement"
           >
             <option value="in">inches</option>
             <option value="mm">mm</option>
@@ -120,10 +129,13 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
             value={state.height || ''}
             onChange={(e) => setState({ ...state, height: parseFloat(e.target.value) || null })}
           />
+          <Label htmlFor="height-unit" className="sr-only">Height unit</Label>
           <select
+            id="height-unit"
             className="border rounded px-3"
             value={state.heightUnit}
             onChange={(e) => setState({ ...state, heightUnit: e.target.value as 'in' | 'mm' })}
+            aria-label="Height unit of measurement"
           >
             <option value="in">inches</option>
             <option value="mm">mm</option>
@@ -136,7 +148,11 @@ export function InstantEstimateModal({ isOpen, onClose, initialProduct }: Instan
       </p>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded p-3 text-sm text-red-800">
+        <div
+          className="bg-red-50 border border-red-200 rounded p-3 text-sm text-red-800"
+          role="alert"
+          aria-live="polite"
+        >
           {error}
         </div>
       )}

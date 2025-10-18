@@ -11,10 +11,10 @@ export default function AddressesPage() {
       type: "Home",
       name: "John Smith",
       address: "123 Main Street",
-      city: "Toronto",
+      city: "Ottawa",
       province: "ON",
-      postal: "M5V 3A8",
-      phone: "+1 (416) 555-0123",
+      postal: "K1A 0B1",
+      phone: "+1 (613) 701-6393",
       isDefault: true,
     },
     {

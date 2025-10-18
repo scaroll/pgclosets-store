@@ -23,7 +23,7 @@ export interface PremiumPhoneInputProps
  * Features:
  * - Auto-formatting as user types
  * - Country code support
- * - North American format: (613) 555-0123
+ * - North American format: (613) 701-6393
  * - Validation with visual feedback
  * - All PremiumInput features
  *
@@ -107,7 +107,7 @@ export const PremiumPhoneInput = React.forwardRef<HTMLInputElement, PremiumPhone
         value={displayValue}
         onChange={handleChange}
         leftIcon={phoneIcon}
-        placeholder="(613) 555-0123"
+        placeholder="(613) 701-6393"
         inputMode="tel"
         autoComplete="tel"
         {...props}
