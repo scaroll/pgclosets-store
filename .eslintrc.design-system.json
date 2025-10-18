@@ -1,0 +1,68 @@
+{
+  "rules": {
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,6}/]",
+        "message": "Raw hex colors are not allowed. Use design tokens from /design-tokens/tokens.json or import from @/components/ui-kit"
+      },
+      {
+        "selector": "CallExpression[callee.name='rgb']",
+        "message": "rgb() is not allowed. Use design tokens or CSS variables"
+      },
+      {
+        "selector": "CallExpression[callee.name='rgba']",
+        "message": "rgba() is not allowed. Use design tokens or CSS variables with opacity utilities"
+      },
+      {
+        "selector": "CallExpression[callee.name='hsl']",
+        "message": "hsl() is not allowed. Use design tokens or CSS variables"
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["**/styles/design-system.css"],
+            "message": "Import from app/globals-unified.css instead. The old design-system.css is deprecated."
+          },
+          {
+            "group": ["**/lib/design-system/variables.css"],
+            "message": "Import from app/globals-unified.css instead. The old variables.css is deprecated."
+          }
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.tsx", "*.jsx"],
+      "rules": {
+        "react/forbid-component-props": [
+          "warn",
+          {
+            "forbid": [
+              {
+                "propName": "style",
+                "allowedFor": [],
+                "message": "Inline styles are discouraged. Use design system utility classes or UI kit components from @/components/ui-kit"
+              }
+            ]
+          }
+        ],
+        "react/forbid-dom-props": [
+          "warn",
+          {
+            "forbid": [
+              {
+                "propName": "style",
+                "message": "Inline styles are discouraged. Use Tailwind utilities following design tokens"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

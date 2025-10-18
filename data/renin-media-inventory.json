@@ -1,0 +1,1683 @@
+{
+  "harvestDate": "2025-10-05T01:18:34.529Z",
+  "projectPath": "/Users/spencercarroll/pgclosets-store-main",
+  "summary": {
+    "totalImages": 85,
+    "totalProducts": 67,
+    "totalDatabases": 6,
+    "totalComponents": 8
+  },
+  "images": {
+    "arcat": [
+      {
+        "filename": "renin_155701_Bifold_Closet_Door_Euro_1_Lite.jpg",
+        "path": "/public/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite.jpg",
+        "size": 130355,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg",
+        "path": "/public/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg",
+        "size": 130355,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155701_hd.jpg",
+        "path": "/public/images/arcat/renin_155701_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155701_hd.jpg",
+        "size": 130355,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design.jpg",
+        "path": "/public/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design.jpg",
+        "size": 316679,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design_v2.jpg",
+        "path": "/public/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design_v2.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design_v2.jpg",
+        "size": 316679,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155706_hd.jpg",
+        "path": "/public/images/arcat/renin_155706_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155706_hd.jpg",
+        "size": 316679,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg",
+        "path": "/public/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg",
+        "size": 29276,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg",
+        "path": "/public/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg",
+        "size": 29276,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155725_hd.jpg",
+        "path": "/public/images/arcat/renin_155725_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155725_hd.jpg",
+        "size": 29276,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155731_Bifold_Closet_Door_Euro_3_Lite.jpg",
+        "path": "/public/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite.jpg",
+        "size": 137528,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155731_Bifold_Closet_Door_Euro_3_Lite_v2.jpg",
+        "path": "/public/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite_v2.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite_v2.jpg",
+        "size": 137528,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155731_hd.jpg",
+        "path": "/public/images/arcat/renin_155731_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155731_hd.jpg",
+        "size": 137528,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg",
+        "path": "/public/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg",
+        "size": 34155,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg",
+        "path": "/public/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg",
+        "size": 34155,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_155732_hd.jpg",
+        "path": "/public/images/arcat/renin_155732_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_155732_hd.jpg",
+        "size": 34155,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg",
+        "path": "/public/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg",
+        "size": 172279,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg",
+        "path": "/public/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg",
+        "size": 42451,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176729_Continental_Hall_3_Lite.jpg",
+        "path": "/public/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg",
+        "size": 231329,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176732_Continental_Dunmore_K_Lite.jpg",
+        "path": "/public/images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg",
+        "size": 289436,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176732_hd.jpg",
+        "path": "/public/images/arcat/renin_176732_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_176732_hd.jpg",
+        "size": 289436,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176733_Continental_Pavilion_5_Lite.jpg",
+        "path": "/public/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg",
+        "size": 232303,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176733_hd.jpg",
+        "path": "/public/images/arcat/renin_176733_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_176733_hd.jpg",
+        "size": 232303,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176736_hd.jpg",
+        "path": "/public/images/arcat/renin_176736_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_176736_hd.jpg",
+        "size": 195389,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176737_Heritage_Salinas_Z_Design.jpg",
+        "path": "/public/images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg",
+        "size": 240208,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176737_hd.jpg",
+        "path": "/public/images/arcat/renin_176737_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_176737_hd.jpg",
+        "size": 240208,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_192853_hd.jpg",
+        "path": "/public/images/arcat/renin_192853_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_192853_hd.jpg",
+        "size": 153919,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_192856_hd.jpg",
+        "path": "/public/images/arcat/renin_192856_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_192856_hd.jpg",
+        "size": 175571,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_192857_hd.jpg",
+        "path": "/public/images/arcat/renin_192857_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_192857_hd.jpg",
+        "size": 132639,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_192859_hd.jpg",
+        "path": "/public/images/arcat/renin_192859_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_192859_hd.jpg",
+        "size": 192118,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_192861_Heritage_Herringbone_Chevron_Design.jpg",
+        "path": "/public/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg",
+        "size": 231246,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_192861_hd.jpg",
+        "path": "/public/images/arcat/renin_192861_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_192861_hd.jpg",
+        "size": 231246,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_199063_hd.jpg",
+        "path": "/public/images/arcat/renin_199063_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_199063_hd.jpg",
+        "size": 394411,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_199064_hd.jpg",
+        "path": "/public/images/arcat/renin_199064_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_199064_hd.jpg",
+        "size": 29571,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_199065_hd.jpg",
+        "path": "/public/images/arcat/renin_199065_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_199065_hd.jpg",
+        "size": 298743,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_199077_Handles_Pulls_Cairns.jpg",
+        "path": "/public/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg",
+        "size": 283516,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg",
+        "path": "/public/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg",
+        "size": 137157,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_205717_hd.jpg",
+        "path": "/public/images/arcat/renin_205717_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_205717_hd.jpg",
+        "size": 348616,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_205718_hd.jpg",
+        "path": "/public/images/arcat/renin_205718_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_205718_hd.jpg",
+        "size": 225675,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_205720_hd.jpg",
+        "path": "/public/images/arcat/renin_205720_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_205720_hd.jpg",
+        "size": 237069,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_205721_hd.jpg",
+        "path": "/public/images/arcat/renin_205721_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_205721_hd.jpg",
+        "size": 225413,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_205723_hd.jpg",
+        "path": "/public/images/arcat/renin_205723_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/arcat/renin_205723_hd.jpg",
+        "size": 314216,
+        "extension": ".jpg",
+        "category": "public"
+      }
+    ],
+    "public": [
+      {
+        "filename": "renin-ashbury-bifold-insert.png",
+        "path": "/public/images/renin-ashbury-bifold-insert.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-ashbury-bifold-insert.png",
+        "size": 11265,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-ashbury-steel-frame.png",
+        "path": "/public/images/renin-ashbury-steel-frame.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-ashbury-steel-frame.png",
+        "size": 752242,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-closet-doors-thumbnail.png",
+        "path": "/public/images/renin-closet-doors-thumbnail.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-closet-doors-thumbnail.png",
+        "size": 960213,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-crochet-pivot-design.png",
+        "path": "/public/images/renin-crochet-pivot-design.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-crochet-pivot-design.png",
+        "size": 11265,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-euro-1-lite-bifold.png",
+        "path": "/public/images/renin-euro-1-lite-bifold.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-euro-1-lite-bifold.png",
+        "size": 11265,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-euro-1-lite-bypass.png",
+        "path": "/public/images/renin-euro-1-lite-bypass.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-euro-1-lite-bypass.png",
+        "size": 626699,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-euro-1-lite-pivot-door.png",
+        "path": "/public/images/renin-euro-1-lite-pivot-door.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-euro-1-lite-pivot-door.png",
+        "size": 759892,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-euro-1-lite-pivot.png",
+        "path": "/public/images/renin-euro-1-lite-pivot.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-euro-1-lite-pivot.png",
+        "size": 11265,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-euro-3-lite-bifold.png",
+        "path": "/public/images/renin-euro-3-lite-bifold.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-euro-3-lite-bifold.png",
+        "size": 11265,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-euro-3-lite-bypass.png",
+        "path": "/public/images/renin-euro-3-lite-bypass.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-euro-3-lite-bypass.png",
+        "size": 919916,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-euro-3-lite-pivot-door.png",
+        "path": "/public/images/renin-euro-3-lite-pivot-door.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-euro-3-lite-pivot-door.png",
+        "size": 925760,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-euro-3-lite-pivot.png",
+        "path": "/public/images/renin-euro-3-lite-pivot.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-euro-3-lite-pivot.png",
+        "size": 11265,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-euro-5-lite-bypass.png",
+        "path": "/public/images/renin-euro-5-lite-bypass.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-euro-5-lite-bypass.png",
+        "size": 901295,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-galloway-4-panel-steel.png",
+        "path": "/public/images/renin-galloway-4-panel-steel.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-galloway-4-panel-steel.png",
+        "size": 11265,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-georgian-6-panel-steel.png",
+        "path": "/public/images/renin-georgian-6-panel-steel.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-georgian-6-panel-steel.png",
+        "size": 11265,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-georgian-bifold-insert.png",
+        "path": "/public/images/renin-georgian-bifold-insert.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-georgian-bifold-insert.png",
+        "size": 11265,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-harmony-mirror-bypass.png",
+        "path": "/public/images/renin-harmony-mirror-bypass.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-harmony-mirror-bypass.png",
+        "size": 612573,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-lace-pattern-bypass.png",
+        "path": "/public/images/renin-lace-pattern-bypass.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-lace-pattern-bypass.png",
+        "size": 1546417,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-parsons-bifold-insert.png",
+        "path": "/public/images/renin-parsons-bifold-insert.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-parsons-bifold-insert.png",
+        "size": 11265,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-parsons-flush-steel.png",
+        "path": "/public/images/renin-parsons-flush-steel.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-parsons-flush-steel.png",
+        "size": 695424,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-pivot-door.png",
+        "path": "/public/images/renin-pivot-door.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-pivot-door.png",
+        "size": 1071385,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-provincial-8-lite-pivot.png",
+        "path": "/public/images/renin-provincial-8-lite-pivot.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-provincial-8-lite-pivot.png",
+        "size": 11265,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-provincial-pivot-door.png",
+        "path": "/public/images/renin-provincial-pivot-door.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-provincial-pivot-door.png",
+        "size": 1170396,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-savona-arched-steel.png",
+        "path": "/public/images/renin-savona-arched-steel.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-savona-arched-steel.png",
+        "size": 594334,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-trident-geometric-bypass.png",
+        "path": "/public/images/renin-trident-geometric-bypass.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-trident-geometric-bypass.png",
+        "size": 810546,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin-twilight-frosted-bypass.png",
+        "path": "/public/images/renin-twilight-frosted-bypass.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin-twilight-frosted-bypass.png",
+        "size": 1045962,
+        "extension": ".png",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176732_hd.jpg",
+        "path": "/public/images/renin_176732_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_176732_hd.jpg",
+        "size": 232303,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176733_hd.jpg",
+        "path": "/public/images/renin_176733_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_176733_hd.jpg",
+        "size": 289436,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176736_hd.jpg",
+        "path": "/public/images/renin_176736_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_176736_hd.jpg",
+        "size": 195389,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_176737_hd.jpg",
+        "path": "/public/images/renin_176737_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_176737_hd.jpg",
+        "size": 240208,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_192853_hd.jpg",
+        "path": "/public/images/renin_192853_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_192853_hd.jpg",
+        "size": 153919,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_192856_hd.jpg",
+        "path": "/public/images/renin_192856_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_192856_hd.jpg",
+        "size": 175571,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_192857_hd.jpg",
+        "path": "/public/images/renin_192857_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_192857_hd.jpg",
+        "size": 132639,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_192859_hd.jpg",
+        "path": "/public/images/renin_192859_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_192859_hd.jpg",
+        "size": 192118,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_192861_hd.jpg",
+        "path": "/public/images/renin_192861_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_192861_hd.jpg",
+        "size": 231246,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_199063_hd.jpg",
+        "path": "/public/images/renin_199063_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_199063_hd.jpg",
+        "size": 394411,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_199065_hd.jpg",
+        "path": "/public/images/renin_199065_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_199065_hd.jpg",
+        "size": 298743,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_205717_hd.jpg",
+        "path": "/public/images/renin_205717_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_205717_hd.jpg",
+        "size": 348616,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_205718_hd.jpg",
+        "path": "/public/images/renin_205718_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_205718_hd.jpg",
+        "size": 225675,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_205720_hd.jpg",
+        "path": "/public/images/renin_205720_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_205720_hd.jpg",
+        "size": 237069,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_205721_hd.jpg",
+        "path": "/public/images/renin_205721_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_205721_hd.jpg",
+        "size": 225413,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_205722_hd.jpg",
+        "path": "/public/images/renin_205722_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_205722_hd.jpg",
+        "size": 371007,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin_205723_hd.jpg",
+        "path": "/public/images/renin_205723_hd.jpg",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/images/renin_205723_hd.jpg",
+        "size": 314216,
+        "extension": ".jpg",
+        "category": "public"
+      },
+      {
+        "filename": "renin-closet-doors-thumbnail.png",
+        "path": "/public/renin-closet-doors-thumbnail.png",
+        "fullPath": "/Users/spencercarroll/pgclosets-store-main/public/renin-closet-doors-thumbnail.png",
+        "size": 298743,
+        "extension": ".png",
+        "category": "public"
+      }
+    ],
+    "placeholder": []
+  },
+  "databases": [
+    {
+      "path": "data/renin-products-database.json",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/data/renin-products-database.json",
+      "productCount": 6,
+      "size": 7066,
+      "hasImages": true
+    },
+    {
+      "path": "data/enhanced-renin-database.json",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/data/enhanced-renin-database.json",
+      "productCount": 18,
+      "size": 17586,
+      "hasImages": true
+    },
+    {
+      "path": "lib/renin-products-database.json",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/lib/renin-products-database.json",
+      "productCount": 6,
+      "size": 7066,
+      "hasImages": true
+    },
+    {
+      "path": "lib/enhanced-renin-database.json",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/lib/enhanced-renin-database.json",
+      "productCount": 13,
+      "size": 11931,
+      "hasImages": true
+    },
+    {
+      "path": "renin-products-database.json",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/renin-products-database.json",
+      "productCount": 6,
+      "size": 7066,
+      "hasImages": true
+    },
+    {
+      "path": "enhanced-renin-database.json",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/enhanced-renin-database.json",
+      "productCount": 18,
+      "size": 17586,
+      "hasImages": true
+    }
+  ],
+  "components": [
+    {
+      "path": "data/renin-products.ts",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/data/renin-products.ts",
+      "size": 33188,
+      "type": "TypeScript Product Data"
+    },
+    {
+      "path": "lib/renin-products.ts",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/lib/renin-products.ts",
+      "size": 12643,
+      "type": "TypeScript Product Data"
+    },
+    {
+      "path": "lib/enhanced-renin-products.ts",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/lib/enhanced-renin-products.ts",
+      "size": 2556,
+      "type": "TypeScript Product Data"
+    },
+    {
+      "path": "enhanced-renin-products.ts",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/enhanced-renin-products.ts",
+      "size": 2556,
+      "type": "TypeScript Product Data"
+    },
+    {
+      "path": "renin-products.ts",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/renin-products.ts",
+      "size": 33188,
+      "type": "TypeScript Product Data"
+    },
+    {
+      "path": "components/gallery/renin-product-gallery.tsx",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/components/gallery/renin-product-gallery.tsx",
+      "size": 25539,
+      "type": "React Component"
+    },
+    {
+      "path": "components/visualizer/renin-door-visualizer.tsx",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/components/visualizer/renin-door-visualizer.tsx",
+      "size": 25908,
+      "type": "React Component"
+    },
+    {
+      "path": "components/quote/renin-quote-form.tsx",
+      "fullPath": "/Users/spencercarroll/pgclosets-store-main/components/quote/renin-quote-form.tsx",
+      "size": 24035,
+      "type": "React Component"
+    }
+  ],
+  "cdn": {
+    "homeDepot": [
+      {
+        "productId": 1,
+        "url": "https://images.homedepot.ca/productimages/p_1001054571.jpg"
+      },
+      {
+        "productId": 2,
+        "url": "https://images.homedepot.ca/productimages/p_1001054572.jpg"
+      },
+      {
+        "productId": 3,
+        "url": "https://images.homedepot.ca/productimages/p_1001054573.jpg"
+      },
+      {
+        "productId": 4,
+        "url": "https://images.homedepot.ca/productimages/p_1001054574.jpg"
+      },
+      {
+        "productId": 5,
+        "url": "https://images.homedepot.ca/productimages/p_1001054575.jpg"
+      },
+      {
+        "productId": 6,
+        "url": "https://images.homedepot.ca/productimages/p_1001054576.jpg"
+      },
+      {
+        "productId": 7,
+        "url": "https://images.homedepot.ca/productimages/p_1001054577.jpg"
+      },
+      {
+        "productId": 8,
+        "url": "https://images.homedepot.ca/productimages/p_1001054578.jpg"
+      },
+      {
+        "productId": 9,
+        "url": "https://images.homedepot.ca/productimages/p_1001054579.jpg"
+      },
+      {
+        "productId": 10,
+        "url": "https://images.homedepot.ca/productimages/p_1001054580.jpg"
+      },
+      {
+        "productId": 11,
+        "url": "https://images.homedepot.ca/productimages/p_1001054581.jpg"
+      },
+      {
+        "productId": 12,
+        "url": "https://images.homedepot.ca/productimages/p_1001054582.jpg"
+      },
+      {
+        "productId": 13,
+        "url": "https://images.homedepot.ca/productimages/p_1001054583.jpg"
+      },
+      {
+        "productId": 14,
+        "url": "https://images.homedepot.ca/productimages/p_1001054584.jpg"
+      },
+      {
+        "productId": 15,
+        "url": "https://images.homedepot.ca/productimages/p_1001054585.jpg"
+      },
+      {
+        "productId": 16,
+        "url": "https://images.homedepot.ca/productimages/p_1001054586.jpg"
+      },
+      {
+        "productId": 17,
+        "url": "https://images.homedepot.ca/productimages/p_1001054587.jpg"
+      },
+      {
+        "productId": 18,
+        "url": "https://images.homedepot.ca/productimages/p_1001054588.jpg"
+      },
+      {
+        "productId": 1,
+        "url": "https://images.homedepot.ca/productimages/p_1001054571.jpg"
+      },
+      {
+        "productId": 2,
+        "url": "https://images.homedepot.ca/productimages/p_1001054572.jpg"
+      },
+      {
+        "productId": 3,
+        "url": "https://images.homedepot.ca/productimages/p_1001054573.jpg"
+      },
+      {
+        "productId": 4,
+        "url": "https://images.homedepot.ca/productimages/p_1001054574.jpg"
+      },
+      {
+        "productId": 5,
+        "url": "https://images.homedepot.ca/productimages/p_1001054575.jpg"
+      },
+      {
+        "productId": 6,
+        "url": "https://images.homedepot.ca/productimages/p_1001054576.jpg"
+      },
+      {
+        "productId": 7,
+        "url": "https://images.homedepot.ca/productimages/p_1001054577.jpg"
+      },
+      {
+        "productId": 8,
+        "url": "https://images.homedepot.ca/productimages/p_1001054578.jpg"
+      },
+      {
+        "productId": 9,
+        "url": "https://images.homedepot.ca/productimages/p_1001054579.jpg"
+      },
+      {
+        "productId": 10,
+        "url": "https://images.homedepot.ca/productimages/p_1001054580.jpg"
+      },
+      {
+        "productId": 11,
+        "url": "https://images.homedepot.ca/productimages/p_1001054581.jpg"
+      },
+      {
+        "productId": 12,
+        "url": "https://images.homedepot.ca/productimages/p_1001054582.jpg"
+      },
+      {
+        "productId": 13,
+        "url": "https://images.homedepot.ca/productimages/p_1001054583.jpg"
+      },
+      {
+        "productId": 1,
+        "url": "https://images.homedepot.ca/productimages/p_1001054571.jpg"
+      },
+      {
+        "productId": 2,
+        "url": "https://images.homedepot.ca/productimages/p_1001054572.jpg"
+      },
+      {
+        "productId": 3,
+        "url": "https://images.homedepot.ca/productimages/p_1001054573.jpg"
+      },
+      {
+        "productId": 4,
+        "url": "https://images.homedepot.ca/productimages/p_1001054574.jpg"
+      },
+      {
+        "productId": 5,
+        "url": "https://images.homedepot.ca/productimages/p_1001054575.jpg"
+      },
+      {
+        "productId": 6,
+        "url": "https://images.homedepot.ca/productimages/p_1001054576.jpg"
+      },
+      {
+        "productId": 7,
+        "url": "https://images.homedepot.ca/productimages/p_1001054577.jpg"
+      },
+      {
+        "productId": 8,
+        "url": "https://images.homedepot.ca/productimages/p_1001054578.jpg"
+      },
+      {
+        "productId": 9,
+        "url": "https://images.homedepot.ca/productimages/p_1001054579.jpg"
+      },
+      {
+        "productId": 10,
+        "url": "https://images.homedepot.ca/productimages/p_1001054580.jpg"
+      },
+      {
+        "productId": 11,
+        "url": "https://images.homedepot.ca/productimages/p_1001054581.jpg"
+      },
+      {
+        "productId": 12,
+        "url": "https://images.homedepot.ca/productimages/p_1001054582.jpg"
+      },
+      {
+        "productId": 13,
+        "url": "https://images.homedepot.ca/productimages/p_1001054583.jpg"
+      },
+      {
+        "productId": 14,
+        "url": "https://images.homedepot.ca/productimages/p_1001054584.jpg"
+      },
+      {
+        "productId": 15,
+        "url": "https://images.homedepot.ca/productimages/p_1001054585.jpg"
+      },
+      {
+        "productId": 16,
+        "url": "https://images.homedepot.ca/productimages/p_1001054586.jpg"
+      },
+      {
+        "productId": 17,
+        "url": "https://images.homedepot.ca/productimages/p_1001054587.jpg"
+      },
+      {
+        "productId": 18,
+        "url": "https://images.homedepot.ca/productimages/p_1001054588.jpg"
+      }
+    ],
+    "external": []
+  },
+  "products": [
+    {
+      "id": "barn-gatsby-chevron",
+      "name": "Gatsby Chevron Barn Door",
+      "slug": "gatsby-chevron-barn-door",
+      "category": "barn",
+      "images": [
+        "/renin_images/barn_doors/gatsby_chevron_main.jpg",
+        "/renin_images/barn_doors/gatsby_chevron_detail.jpg",
+        "/renin_images/barn_doors/gatsby_chevron_installed.jpg"
+      ]
+    },
+    {
+      "id": "barn-sherwood-invisiglide",
+      "name": "Sherwood InvisiGlide Barn Door",
+      "slug": "sherwood-invisiglide-barn-door",
+      "category": "barn",
+      "images": [
+        "/renin_images/barn_doors/sherwood_invisiglide_main.jpg",
+        "/renin_images/barn_doors/sherwood_invisiglide_detail.jpg"
+      ]
+    },
+    {
+      "id": "bypass-harmony-1-lite",
+      "name": "Harmony 1-Lite Bypass Door",
+      "slug": "harmony-1-lite-bypass-door",
+      "category": "bypass",
+      "images": [
+        "/renin_images/bypass_doors/harmony_1_lite_main.jpg",
+        "/renin_images/bypass_doors/harmony_1_lite_detail.jpg"
+      ]
+    },
+    {
+      "id": "bifold-euro-3-lite",
+      "name": "Euro 3-Lite Bifold Door",
+      "slug": "euro-3-lite-bifold-door",
+      "category": "bifold",
+      "images": [
+        "/renin_images/bifold_doors/euro_3_lite_main.jpg",
+        "/renin_images/bifold_doors/euro_3_lite_detail.jpg"
+      ]
+    },
+    {
+      "id": "pivot-provincial-8-lite",
+      "name": "Provincial 8-Lite Pivot Door",
+      "slug": "provincial-8-lite-pivot-door",
+      "category": "pivot",
+      "images": [
+        "/renin_images/pivot_doors/provincial_8_lite_main.jpg",
+        "/renin_images/pivot_doors/provincial_8_lite_detail.jpg"
+      ]
+    },
+    {
+      "id": "hardware-soft-close-track",
+      "name": "Soft-Close Track System",
+      "slug": "soft-close-track-system",
+      "category": "hardware",
+      "images": [
+        "/renin_images/hardware/soft_close_track_main.jpg",
+        "/renin_images/hardware/soft_close_track_detail.jpg"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Euro 1-Lite",
+      "slug": "euro-1-lite",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg",
+        "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg",
+        "/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite.jpg",
+        "/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Euro 3-Lite",
+      "slug": "euro-3-lite",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg",
+        "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg",
+        "/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite.jpg",
+        "/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite_v2.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Heritage Barn Door",
+      "slug": "heritage-barn-door",
+      "category": "barn",
+      "images": [
+        "/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg",
+        "/images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Continental Barn Door",
+      "slug": "continental-barn-door",
+      "category": "barn",
+      "images": [
+        "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg",
+        "/images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg",
+        "/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Harmony Bifold",
+      "slug": "harmony-bifold",
+      "category": "bifold",
+      "images": [
+        "/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg",
+        "/images/arcat/renin_199064_hd.jpg",
+        "/images/arcat/renin_199063_hd.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Twilight Sliding Door",
+      "slug": "twilight-sliding-door",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design.jpg",
+        "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design_v2.jpg",
+        "/images/arcat/renin_205718_hd.jpg"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "InvisiGlide Hardware Kit",
+      "slug": "invisiglide-hardware-kit",
+      "category": "hardware",
+      "images": [
+        "/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg",
+        "/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Vienna Mirror 30x42",
+      "slug": "vienna-mirror-30x42",
+      "category": "mirrors",
+      "images": [
+        "/images/arcat/renin_205720_hd.jpg",
+        "/images/arcat/renin_205721_hd.jpg"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Steel Frame Bifold",
+      "slug": "steel-frame-bifold",
+      "category": "bifold",
+      "images": [
+        "/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg",
+        "/images/arcat/renin_199065_hd.jpg",
+        "/images/arcat/renin_199064_hd.jpg"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Provincial Pivot Door",
+      "slug": "provincial-pivot-door",
+      "category": "pivot",
+      "images": [
+        "/images/arcat/renin_205720_hd.jpg",
+        "/images/arcat/renin_205721_hd.jpg",
+        "/images/arcat/renin_205717_hd.jpg"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Crochet Pivot Door",
+      "slug": "crochet-pivot-door",
+      "category": "pivot",
+      "images": [
+        "/images/arcat/renin_205720_hd.jpg",
+        "/images/arcat/renin_205723_hd.jpg",
+        "/images/arcat/renin_205718_hd.jpg"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Euro 5-Lite Sliding",
+      "slug": "euro-5-lite-sliding",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg",
+        "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg",
+        "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Industrial Barn Hardware",
+      "slug": "industrial-barn-hardware",
+      "category": "hardware",
+      "images": [
+        "/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg",
+        "/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg",
+        "/images/arcat/renin_192853_hd.jpg"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Georgian Bifold",
+      "slug": "georgian-bifold",
+      "category": "bifold",
+      "images": [
+        "/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Ashbury Bypass",
+      "slug": "ashbury-bypass",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Parsons Flush Panel",
+      "slug": "parsons-flush-panel",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design.jpg",
+        "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design_v2.jpg"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Cairns Handle Set",
+      "slug": "cairns-handle-set",
+      "category": "hardware",
+      "images": [
+        "/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Tear Drop Privacy Latch",
+      "slug": "tear-drop-privacy-latch",
+      "category": "hardware",
+      "images": [
+        "/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg"
+      ]
+    },
+    {
+      "id": "barn-gatsby-chevron",
+      "name": "Gatsby Chevron Barn Door",
+      "slug": "gatsby-chevron-barn-door",
+      "category": "barn",
+      "images": [
+        "/renin_images/barn_doors/gatsby_chevron_main.jpg",
+        "/renin_images/barn_doors/gatsby_chevron_detail.jpg",
+        "/renin_images/barn_doors/gatsby_chevron_installed.jpg"
+      ]
+    },
+    {
+      "id": "barn-sherwood-invisiglide",
+      "name": "Sherwood InvisiGlide Barn Door",
+      "slug": "sherwood-invisiglide-barn-door",
+      "category": "barn",
+      "images": [
+        "/renin_images/barn_doors/sherwood_invisiglide_main.jpg",
+        "/renin_images/barn_doors/sherwood_invisiglide_detail.jpg"
+      ]
+    },
+    {
+      "id": "bypass-harmony-1-lite",
+      "name": "Harmony 1-Lite Bypass Door",
+      "slug": "harmony-1-lite-bypass-door",
+      "category": "bypass",
+      "images": [
+        "/renin_images/bypass_doors/harmony_1_lite_main.jpg",
+        "/renin_images/bypass_doors/harmony_1_lite_detail.jpg"
+      ]
+    },
+    {
+      "id": "bifold-euro-3-lite",
+      "name": "Euro 3-Lite Bifold Door",
+      "slug": "euro-3-lite-bifold-door",
+      "category": "bifold",
+      "images": [
+        "/renin_images/bifold_doors/euro_3_lite_main.jpg",
+        "/renin_images/bifold_doors/euro_3_lite_detail.jpg"
+      ]
+    },
+    {
+      "id": "pivot-provincial-8-lite",
+      "name": "Provincial 8-Lite Pivot Door",
+      "slug": "provincial-8-lite-pivot-door",
+      "category": "pivot",
+      "images": [
+        "/renin_images/pivot_doors/provincial_8_lite_main.jpg",
+        "/renin_images/pivot_doors/provincial_8_lite_detail.jpg"
+      ]
+    },
+    {
+      "id": "hardware-soft-close-track",
+      "name": "Soft-Close Track System",
+      "slug": "soft-close-track-system",
+      "category": "hardware",
+      "images": [
+        "/renin_images/hardware/soft_close_track_main.jpg",
+        "/renin_images/hardware/soft_close_track_detail.jpg"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Euro 1-Lite",
+      "slug": "euro-1-lite",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg",
+        "/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Euro 3-Lite",
+      "slug": "euro-3-lite",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg",
+        "/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite_v2.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Heritage Barn Door",
+      "slug": "heritage-barn-door",
+      "category": "barn",
+      "images": [
+        "/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg",
+        "/images/arcat/renin_192859_hd.jpg"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Continental Barn Door",
+      "slug": "continental-barn-door",
+      "category": "barn",
+      "images": [
+        "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg",
+        "/images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Harmony Bifold",
+      "slug": "harmony-bifold",
+      "category": "bifold",
+      "images": [
+        "/images/arcat/renin_199064_hd.jpg",
+        "/images/arcat/renin_199063_hd.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Twilight Sliding Door",
+      "slug": "twilight-sliding-door",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_205717_hd.jpg",
+        "/images/arcat/renin_205718_hd.jpg"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "InvisiGlide Hardware Kit",
+      "slug": "invisiglide-hardware-kit",
+      "category": "hardware",
+      "images": [
+        "/images/arcat/renin_192853_hd.jpg",
+        "/images/arcat/renin_192856_hd.jpg"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Vienna Mirror 30x42",
+      "slug": "vienna-mirror-30x42",
+      "category": "mirrors",
+      "images": [
+        "/images/arcat/renin_199064_hd.jpg",
+        "/images/arcat/renin_199065_hd.jpg"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Steel Frame Bifold",
+      "slug": "steel-frame-bifold",
+      "category": "bifold",
+      "images": [
+        "/images/arcat/renin_199065_hd.jpg",
+        "/images/arcat/renin_199064_hd.jpg"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Provincial Pivot Door",
+      "slug": "provincial-pivot-door",
+      "category": "pivot",
+      "images": [
+        "/images/arcat/renin_205720_hd.jpg",
+        "/images/arcat/renin_205721_hd.jpg"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Crochet Pivot Door",
+      "slug": "crochet-pivot-door",
+      "category": "pivot",
+      "images": [
+        "/images/arcat/renin_205721_hd.jpg",
+        "/images/arcat/renin_205723_hd.jpg"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Euro 5-Lite Sliding",
+      "slug": "euro-5-lite-sliding",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg",
+        "/images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Industrial Barn Hardware",
+      "slug": "industrial-barn-hardware",
+      "category": "hardware",
+      "images": [
+        "/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg",
+        "/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg"
+      ]
+    },
+    {
+      "id": "barn-gatsby-chevron",
+      "name": "Gatsby Chevron Barn Door",
+      "slug": "gatsby-chevron-barn-door",
+      "category": "barn",
+      "images": [
+        "/renin_images/barn_doors/gatsby_chevron_main.jpg",
+        "/renin_images/barn_doors/gatsby_chevron_detail.jpg",
+        "/renin_images/barn_doors/gatsby_chevron_installed.jpg"
+      ]
+    },
+    {
+      "id": "barn-sherwood-invisiglide",
+      "name": "Sherwood InvisiGlide Barn Door",
+      "slug": "sherwood-invisiglide-barn-door",
+      "category": "barn",
+      "images": [
+        "/renin_images/barn_doors/sherwood_invisiglide_main.jpg",
+        "/renin_images/barn_doors/sherwood_invisiglide_detail.jpg"
+      ]
+    },
+    {
+      "id": "bypass-harmony-1-lite",
+      "name": "Harmony 1-Lite Bypass Door",
+      "slug": "harmony-1-lite-bypass-door",
+      "category": "bypass",
+      "images": [
+        "/renin_images/bypass_doors/harmony_1_lite_main.jpg",
+        "/renin_images/bypass_doors/harmony_1_lite_detail.jpg"
+      ]
+    },
+    {
+      "id": "bifold-euro-3-lite",
+      "name": "Euro 3-Lite Bifold Door",
+      "slug": "euro-3-lite-bifold-door",
+      "category": "bifold",
+      "images": [
+        "/renin_images/bifold_doors/euro_3_lite_main.jpg",
+        "/renin_images/bifold_doors/euro_3_lite_detail.jpg"
+      ]
+    },
+    {
+      "id": "pivot-provincial-8-lite",
+      "name": "Provincial 8-Lite Pivot Door",
+      "slug": "provincial-8-lite-pivot-door",
+      "category": "pivot",
+      "images": [
+        "/renin_images/pivot_doors/provincial_8_lite_main.jpg",
+        "/renin_images/pivot_doors/provincial_8_lite_detail.jpg"
+      ]
+    },
+    {
+      "id": "hardware-soft-close-track",
+      "name": "Soft-Close Track System",
+      "slug": "soft-close-track-system",
+      "category": "hardware",
+      "images": [
+        "/renin_images/hardware/soft_close_track_main.jpg",
+        "/renin_images/hardware/soft_close_track_detail.jpg"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Euro 1-Lite",
+      "slug": "euro-1-lite",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg",
+        "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg",
+        "/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite.jpg",
+        "/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Euro 3-Lite",
+      "slug": "euro-3-lite",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg",
+        "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg",
+        "/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite.jpg",
+        "/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite_v2.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Heritage Barn Door",
+      "slug": "heritage-barn-door",
+      "category": "barn",
+      "images": [
+        "/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg",
+        "/images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Continental Barn Door",
+      "slug": "continental-barn-door",
+      "category": "barn",
+      "images": [
+        "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg",
+        "/images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg",
+        "/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Harmony Bifold",
+      "slug": "harmony-bifold",
+      "category": "bifold",
+      "images": [
+        "/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg",
+        "/images/arcat/renin_199064_hd.jpg",
+        "/images/arcat/renin_199063_hd.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Twilight Sliding Door",
+      "slug": "twilight-sliding-door",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design.jpg",
+        "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design_v2.jpg",
+        "/images/arcat/renin_205718_hd.jpg"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "InvisiGlide Hardware Kit",
+      "slug": "invisiglide-hardware-kit",
+      "category": "hardware",
+      "images": [
+        "/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg",
+        "/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Vienna Mirror 30x42",
+      "slug": "vienna-mirror-30x42",
+      "category": "mirrors",
+      "images": [
+        "/images/arcat/renin_205720_hd.jpg",
+        "/images/arcat/renin_205721_hd.jpg"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Steel Frame Bifold",
+      "slug": "steel-frame-bifold",
+      "category": "bifold",
+      "images": [
+        "/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg",
+        "/images/arcat/renin_199065_hd.jpg",
+        "/images/arcat/renin_199064_hd.jpg"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Provincial Pivot Door",
+      "slug": "provincial-pivot-door",
+      "category": "pivot",
+      "images": [
+        "/images/arcat/renin_205720_hd.jpg",
+        "/images/arcat/renin_205721_hd.jpg",
+        "/images/arcat/renin_205717_hd.jpg"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Crochet Pivot Door",
+      "slug": "crochet-pivot-door",
+      "category": "pivot",
+      "images": [
+        "/images/arcat/renin_205720_hd.jpg",
+        "/images/arcat/renin_205723_hd.jpg",
+        "/images/arcat/renin_205718_hd.jpg"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Euro 5-Lite Sliding",
+      "slug": "euro-5-lite-sliding",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg",
+        "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg",
+        "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Industrial Barn Hardware",
+      "slug": "industrial-barn-hardware",
+      "category": "hardware",
+      "images": [
+        "/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg",
+        "/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg",
+        "/images/arcat/renin_192853_hd.jpg"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Georgian Bifold",
+      "slug": "georgian-bifold",
+      "category": "bifold",
+      "images": [
+        "/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Ashbury Bypass",
+      "slug": "ashbury-bypass",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Parsons Flush Panel",
+      "slug": "parsons-flush-panel",
+      "category": "sliding",
+      "images": [
+        "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design.jpg",
+        "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design_v2.jpg"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Cairns Handle Set",
+      "slug": "cairns-handle-set",
+      "category": "hardware",
+      "images": [
+        "/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Tear Drop Privacy Latch",
+      "slug": "tear-drop-privacy-latch",
+      "category": "hardware",
+      "images": [
+        "/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg"
+      ]
+    }
+  ]
+}

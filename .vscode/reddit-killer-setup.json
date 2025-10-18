@@ -1,0 +1,398 @@
+{
+  // ======================================================
+  // REDDIT-INSPIRED KILLER VS CODE SETUP 🔥
+  // Based on top developer recommendations from r/vscode
+  // ======================================================
+
+  // ===== PERFORMANCE BEAST MODE =====
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.cache": true,
+    "**/coverage": true,
+    "**/.nyc_output": true,
+    "**/.vscode/ipch": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/.git": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/build": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/.hg/store/**": true,
+    "**/.next/**": true,
+    "**/dist/**": true,
+    "**/build/**": true
+  },
+
+  // ===== EDITOR GODMODE =====
+  "editor.fontSize": 14,
+  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.lineHeight": 1.6,
+  "editor.letterSpacing": 0.5,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+  "editor.mouseWheelScrollSensitivity": 2,
+  "editor.fastScrollSensitivity": 5,
+
+  // ===== PRODUCTIVITY HACKS =====
+  "editor.linkedEditing": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairsHorizontal": "active",
+  "editor.guides.highlightActiveIndentation": true,
+  "editor.guides.indentation": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.maxLineCount": 5,
+
+  // ===== INTELLISENSE POWERHOUSE =====
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "on",
+    "strings": "on"
+  },
+  "editor.quickSuggestionsDelay": 0,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.tabCompletion": "on",
+  "editor.wordBasedSuggestions": "allDocuments",
+  "editor.suggest.preview": true,
+  "editor.suggest.showStatusBar": true,
+  "editor.suggest.maxVisibleSuggestions": 15,
+  "editor.suggest.insertMode": "replace",
+  "editor.suggest.filteredTypes": {
+    "keyword": false
+  },
+
+  // ===== AUTO-COMPLETION MAGIC =====
+  "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.showToolbar": "onHover",
+  "editor.parameterHints.enabled": true,
+  "editor.parameterHints.cycle": true,
+  "editor.hover.enabled": true,
+  "editor.hover.delay": 300,
+  "editor.hover.sticky": true,
+
+  // ===== FORMATTING & LINTING AUTOMATION =====
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit",
+    "source.removeUnusedImports": "explicit",
+    "source.sortImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // ===== MINIMAP OPTIMIZATION =====
+  "editor.minimap.enabled": true,
+  "editor.minimap.maxColumn": 120,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.side": "right",
+  "editor.minimap.size": "proportional",
+
+  // ===== WORKBENCH TWEAKS =====
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.tree.indent": 20,
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.startupEditor": "none",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.closeEmptyGroups": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.commandPalette.history": 50,
+  "workbench.quickOpen.closeOnFocusOut": false,
+
+  // ===== EXPLORER ENHANCEMENTS =====
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.compactFolders": false,
+  "explorer.sortOrder": "type",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
+    ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*",
+    "readme.*": "authors, backers.md, changelog*, citation*, code_of_conduct.md, codeowners, contributing.md, contributors, copying, credits, governance.md, history.md, license*, maintainers, readme*, security.md, sponsors.md",
+    ".env": "*.env, .env.*, env.d.ts"
+  },
+
+  // ===== TERMINAL BEAST MODE =====
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code', monospace",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.persistentSessionReviveProcess": "onExit",
+  "terminal.integrated.suggest.enabled": true,
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.rightClickBehavior": "paste",
+
+  // ===== GIT INTEGRATION =====
+  "git.enableSmartCommit": true,
+  "git.suggestSmartCommit": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableCommitSigning": false,
+  "git.decorations.enabled": true,
+  "git.timeline.showAuthor": true,
+  "scm.diffDecorations": "all",
+  "scm.diffDecorationsGutterVisibility": "always",
+
+  // ===== LANGUAGE SPECIFIC SETTINGS =====
+
+  // TypeScript Power
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.includeCompletionsForModuleExports": true,
+  "typescript.suggest.includeCompletionsWithSnippetText": true,
+  "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
+  "typescript.preferences.quoteStyle": "double",
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+
+  // JavaScript Excellence
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.suggest.autoImports": true,
+  "javascript.suggest.includeCompletionsForModuleExports": true,
+  "javascript.preferences.quoteStyle": "double",
+
+  // JSON Intelligence
+  "json.schemas": [],
+  "json.format.enable": true,
+  "json.validate.enable": true,
+
+  // ===== EXTENSIONS OPTIMIZATION =====
+
+  // Prettier Configuration
+  "prettier.semi": true,
+  "prettier.singleQuote": false,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "es5",
+  "prettier.printWidth": 100,
+  "prettier.useTabs": false,
+  "prettier.bracketSpacing": true,
+  "prettier.arrowParens": "avoid",
+  "prettier.endOfLine": "lf",
+
+  // ESLint Power
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+
+  // Error Lens (Reddit favorite)
+  "errorLens.enabled": true,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "errorLens.followCursor": "allLines",
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.messageTemplate": "$message",
+  "errorLens.messageMaxChars": 200,
+  "errorLens.severity": {
+    "error": "error",
+    "warning": "warning",
+    "info": "info",
+    "hint": "hint"
+  },
+
+  // Auto Rename Tag
+  "auto-rename-tag.activationOnLanguage": [
+    "html",
+    "xml",
+    "php",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // Tailwind CSS
+  "tailwindCSS.includeLanguages": {
+    "typescript": "typescript",
+    "javascript": "javascript",
+    "typescriptreact": "typescriptreact",
+    "javascriptreact": "javascriptreact"
+  },
+  "tailwindCSS.validate": true,
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.colorDecorators": true,
+  "tailwindCSS.showPixelEquivalents": true,
+
+  // ===== DEBUGGING ENHANCEMENTS =====
+  "debug.allowBreakpointsEverywhere": true,
+  "debug.showInlineBreakpointCandidates": true,
+  "debug.showBreakpointsInOverviewRuler": true,
+  "debug.inlineValues": "on",
+  "debug.toolBarLocation": "docked",
+  "debug.console.fontSize": 13,
+  "debug.console.lineHeight": 1.5,
+
+  // ===== SECURITY & TRUST =====
+  "security.workspace.trust.enabled": false,
+  "security.workspace.trust.banner": "never",
+  "security.workspace.trust.startupPrompt": "never",
+
+  // ===== TELEMETRY & PRIVACY =====
+  "telemetry.telemetryLevel": "off",
+  "redhat.telemetry.enabled": false,
+
+  // ===== ZEN MODE (Focus Mode) =====
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.hideTabs": false,
+  "zenMode.centerLayout": true,
+  "zenMode.fullScreen": false,
+  "zenMode.restore": true,
+
+  // ===== BREADCRUMBS =====
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "on",
+  "breadcrumbs.symbolPath": "on",
+  "breadcrumbs.symbolSortOrder": "position",
+  "breadcrumbs.icons": true,
+
+  // ===== PROBLEMS PANEL =====
+  "problems.decorations.enabled": true,
+  "problems.showCurrentInStatus": true,
+
+  // ===== TIMELINE =====
+  "timeline.excludeSources": [],
+  "timeline.pageOnScroll": true,
+
+  // ===== ADVANCED EDITOR FEATURES =====
+  "editor.renderWhitespace": "boundary",
+  "editor.renderControlCharacters": true,
+  "editor.renderLineHighlight": "all",
+  "editor.occurrencesHighlight": "singleFile",
+  "editor.selectionHighlight": true,
+  "editor.wordHighlight": true,
+  "editor.find.addExtraSpaceOnTop": true,
+  "editor.find.autoFindInSelection": "multiline",
+  "editor.gotoLocation.multipleReferences": "peek",
+  "editor.gotoLocation.multipleDefinitions": "peek",
+  "editor.gotoLocation.multipleDeclarations": "peek",
+  "editor.gotoLocation.multipleImplementations": "peek",
+  "editor.gotoLocation.multipleTypeDefinitions": "peek",
+
+  // ===== REDDIT PERFORMANCE HACKS =====
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1,
+    "ms-python.python": 1,
+    "continue.continue": 1,
+    "google.geminicodeassist": 1
+  },
+  "editor.semanticHighlighting.enabled": true,
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true
+  },
+
+  // ===== EMMET POWER =====
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showExpandedAbbreviation": "always",
+  "emmet.showSuggestionsAsSnippets": true,
+
+  // ===== FILE ASSOCIATIONS =====
+  "files.associations": {
+    "*.json": "jsonc",
+    "*.jsx": "javascriptreact",
+    "*.tsx": "typescriptreact",
+    ".env*": "properties",
+    "*.md": "markdown"
+  },
+
+  // ===== DIFF EDITOR =====
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": true,
+  "diffEditor.wordWrap": "inherit",
+
+  // ===== MERGE CONFLICTS =====
+  "merge-conflict.autoNavigateNextConflict.enabled": true,
+
+  // ===== AUTO SAVE =====
+  "files.autoSave": "onFocusChange",
+  "files.autoSaveDelay": 1000,
+
+  // ===== REDDIT FAVORITE SHORTCUTS =====
+  // These are configured in keybindings.json but listed here for reference:
+  // Ctrl+D - Select next occurrence
+  // Ctrl+Shift+L - Select all occurrences
+  // Alt+Click - Multiple cursors
+  // Ctrl+Shift+K - Delete line
+  // Alt+Up/Down - Move line up/down
+  // Shift+Alt+Up/Down - Copy line up/down
+  // Ctrl+/ - Toggle line comment
+  // Shift+Alt+A - Toggle block comment
+  // Ctrl+B - Toggle sidebar
+  // Ctrl+J - Toggle panel
+  // Ctrl+` - Toggle terminal
+  // Ctrl+Shift+` - New terminal
+  // F2 - Rename symbol
+  // F12 - Go to definition
+  // Shift+F12 - Go to references
+  // Ctrl+T - Show all symbols
+  // Ctrl+Shift+O - Go to symbol in file
+
+  // ===== ADVANCED SEARCH =====
+  "search.smartCase": true,
+  "search.globalFindClipboard": true,
+  "search.maintainFileSearchCache": true,
+  "search.collapseResults": "auto",
+  "search.useIgnoreFiles": true,
+  "search.useGlobalIgnoreFiles": true,
+  "search.quickOpen.includeSymbols": true,
+
+  // ===== OUTLINE =====
+  "outline.collapseItems": "alwaysCollapse",
+  "outline.icons": true,
+  "outline.problems.enabled": true,
+  "outline.problems.colors": true,
+  "outline.problems.badges": true,
+
+  // ===== REDDIT COMMUNITY FAVORITES =====
+  // Based on most upvoted configurations from r/vscode
+
+  // Performance boost for large projects
+  "typescript.disableAutomaticTypeAcquisition": false,
+  "typescript.preferences.includeAllCommitsForImports": true,
+  "typescript.suggest.completeFunctionCalls": true,
+
+  // Better import organization
+  "typescript.preferences.organizeImports": {
+    "includePackageJsonAutoImports": "auto"
+  }
+}

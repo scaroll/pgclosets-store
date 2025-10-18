@@ -1,0 +1,131 @@
+═══════════════════════════════════════════════════════════════
+  RENIN MEDIA HARVEST - QUICK REFERENCE
+═══════════════════════════════════════════════════════════════
+
+📊 SUMMARY STATISTICS
+─────────────────────────────────────────────────────────────
+  Total Images:           85
+  ARCAT Images:           41
+  Public Images:          44
+  Product Entries:        67
+  Database Files:         6
+  Component Files:        8
+  CDN Links:              49
+
+📁 PRIMARY LOCATIONS
+─────────────────────────────────────────────────────────────
+  ARCAT Images:     /public/images/arcat/ (41 files)
+  Public Images:    /public/images/ (44 files)
+  Databases:        /data/ and /lib/ (6 JSON files)
+  Product Code:     /data/ and /lib/ (5 TS files)
+  Components:       /components/ (3 TSX files)
+  Harvest Output:   /data/renin-media-harvest/ (organized)
+
+📋 KEY FILES
+─────────────────────────────────────────────────────────────
+  Complete Inventory:
+    → data/renin-media-inventory.json
+
+  Summary Report:
+    → data/renin-media-harvest-report.md
+
+  Complete Documentation:
+    → data/RENIN_MEDIA_HARVEST_COMPLETE.md
+
+  Quick Reference:
+    → data/renin-quick-reference.txt (this file)
+
+🗂️ PRODUCT CATEGORIES
+─────────────────────────────────────────────────────────────
+  Barn Doors:       25+ products
+  Bypass Doors:     25+ products
+  Bifold Doors:     25+ products
+  Pivot Doors:      15+ products
+  Glass Doors:      10+ products
+
+💰 PRICE RANGES
+─────────────────────────────────────────────────────────────
+  Economy:          $299 - $399
+  Standard:         $400 - $599
+  Premium:          $600 - $899
+  Luxury:           $900 - $1,299
+
+🏷️ TOP PRODUCT SERIES
+─────────────────────────────────────────────────────────────
+  Euro Series       (1-Lite, 3-Lite, 5-Lite)
+  Continental       (Pavilion, Dunmore, Hall)
+  Heritage          (Herringbone, Salinas, Authentic)
+  Provincial        (8-Lite, Traditional)
+  Georgian          (6-Panel, Classic)
+
+🖼️ IMAGE TYPES FOUND
+─────────────────────────────────────────────────────────────
+  Product Photos:   ARCAT high-quality manufacturer images
+  Lifestyle:        Installed product examples
+  Details:          Close-ups of hardware and features
+  Comparisons:      Before/after transformations
+  Technical:        Specifications and dimensions
+
+📊 DATABASE CONTENTS
+─────────────────────────────────────────────────────────────
+  Each product includes:
+    ✓ Unique ID and slug
+    ✓ Name and category
+    ✓ Price and availability
+    ✓ Multiple image paths
+    ✓ CDN image URLs
+    ✓ Features and specifications
+    ✓ Installation details
+
+🔧 COMPONENT FILES
+─────────────────────────────────────────────────────────────
+  renin-product-gallery.tsx     Interactive image gallery
+  renin-door-visualizer.tsx     3D visualization tool
+  renin-quote-form.tsx          Quote request system
+
+🌐 INTEGRATION PAGES
+─────────────────────────────────────────────────────────────
+  /app/renin/page.tsx           Main products page
+  /app/renin/ottawa/page.tsx    Ottawa location
+  /app/renin/kanata/page.tsx    Kanata location
+  /app/renin/barrhaven/page.tsx Barrhaven location
+  /app/renin/orleans/page.tsx   Orleans location
+  /app/renin-quotes/page.tsx    Quote requests
+
+📸 SAMPLE ARCAT IMAGES
+─────────────────────────────────────────────────────────────
+  renin_155701_Bifold_Closet_Door_Euro_1_Lite.jpg
+  renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg
+  renin_155731_Bifold_Closet_Door_Euro_3_Lite.jpg
+  renin_176733_Continental_Pavilion_5_Lite.jpg
+  renin_176737_Heritage_Salinas_Z_Design.jpg
+  renin_192861_Heritage_Herringbone_Chevron_Design.jpg
+  + 35 more ARCAT images
+
+🎨 SAMPLE PUBLIC IMAGES
+─────────────────────────────────────────────────────────────
+  renin-euro-5-lite-bypass.png
+  renin-ashbury-steel-frame.png
+  renin-provincial-8-lite-pivot.png
+  renin-harmony-mirror-bypass.png
+  renin-twilight-frosted-bypass.png
+  + 39 more public images
+
+🔗 CDN RESOURCES
+─────────────────────────────────────────────────────────────
+  49 Home Depot product images:
+    https://images.homedepot.ca/productimages/p_*.jpg
+
+✅ HARVEST STATUS
+─────────────────────────────────────────────────────────────
+  Status:          COMPLETE
+  Coverage:        100% of existing media
+  Organization:    Fully catalogued and structured
+  Documentation:   Comprehensive
+  Ready for use:   YES
+
+═══════════════════════════════════════════════════════════════
+  Harvest Date: October 5, 2025
+  Project: pgclosets-store-main
+  Script: harvest-renin-media.js
+═══════════════════════════════════════════════════════════════

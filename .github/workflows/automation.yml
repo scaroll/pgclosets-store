@@ -1,0 +1,288 @@
+name: PG Closets AI-Powered Content Automation
+
+on:
+  schedule:
+    # Run every Sunday at 2 AM UTC (9 PM EST Saturday)
+    - cron: '0 2 * * 0'
+  workflow_dispatch:
+    inputs:
+      harvest_only:
+        description: 'Run image harvesting only'
+        required: false
+        default: 'false'
+      optimize_only:
+        description: 'Run image optimization only'
+        required: false
+        default: 'false'
+
+env:
+  NODE_VERSION: '18'
+  HARVEST_RATE_LIMIT_MS: 2000
+  HARVEST_MAX_CONCURRENT: 3
+  IMAGE_QUALITY_WEBP: 80
+  IMAGE_QUALITY_AVIF: 75
+
+jobs:
+  content-automation:
+    runs-on: ubuntu-latest
+    name: Automated Content Pipeline
+    
+    steps:
+      - name: 🛒 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: |
+          npm ci --legacy-peer-deps
+          npm install sharp jimp imagemin imagemin-webp imagemin-avif-webp --save-dev
+
+      - name: 🏗️ Create Output Directories
+        run: |
+          mkdir -p public/images/harvested/{barn-doors,closet-doors,hardware,track-systems,handles,accessories}
+          mkdir -p public/images/optimized/{barn-doors,closet-doors,hardware,track-systems,handles,accessories}
+          mkdir -p analytics/reports
+          mkdir -p scripts/logs
+
+      - name: 🎯 Image Harvesting
+        if: ${{ github.event.inputs.harvest_only == 'true' || github.event.inputs.optimize_only != 'true' }}
+        run: |
+          echo "🚀 Starting Shopify image harvesting..."
+          node scripts/automation/shopify-harvest.js 2>&1 | tee scripts/logs/harvest-$(date +%Y%m%d-%H%M%S).log
+          
+          # Check harvest results
+          if [ -f "public/images/harvested/harvest-data.json" ]; then
+            echo "✅ Harvest completed successfully"
+            echo "📊 Harvest summary:"
+            cat public/images/harvested/harvest-report.md | head -20
+          else
+            echo "⚠️ Harvest may have failed - no data file found"
+          fi
+
+      - name: 🖼️ Image Optimization
+        if: ${{ github.event.inputs.optimize_only == 'true' || github.event.inputs.harvest_only != 'true' }}
+        run: |
+          echo "🎨 Starting image optimization pipeline..."
+          
+          # Create optimization script inline for GitHub Actions
+          cat > scripts/optimize-images-inline.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          const sharp = require('sharp');
+          
+          const SIZES = [150, 300, 600, 1200, 1920];
+          const FORMATS = ['webp', 'avif', 'jpeg'];
+          const INPUT_DIR = './public/images/harvested';
+          const OUTPUT_DIR = './public/images/optimized';
+          
+          async function optimizeImage(inputPath, category, filename) {
+            const baseName = path.parse(filename).name;
+            
+            for (const size of SIZES) {
+              for (const format of FORMATS) {
+                const outputPath = path.join(OUTPUT_DIR, category, `${baseName}-${size}w.${format}`);
+                
+                try {
+                  await sharp(inputPath)
+                    .resize(size, null, { withoutEnlargement: true })
+                    .toFormat(format, {
+                      quality: format === 'jpeg' ? 85 : format === 'webp' ? 80 : 75
+                    })
+                    .toFile(outputPath);
+                    
+                  console.log(`✅ Generated: ${outputPath}`);
+                } catch (error) {
+                  console.warn(`❌ Failed ${outputPath}:`, error.message);
+                }
+              }
+            }
+          }
+          
+          async function processDirectory(category) {
+            const inputDir = path.join(INPUT_DIR, category);
+            if (!fs.existsSync(inputDir)) return;
+            
+            const files = fs.readdirSync(inputDir).filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f));
+            console.log(`📁 Processing ${files.length} images in ${category}...`);
+            
+            for (const file of files) {
+              await optimizeImage(path.join(inputDir, file), category, file);
+            }
+          }
+          
+          async function main() {
+            const categories = ['barn-doors', 'closet-doors', 'hardware', 'track-systems', 'handles', 'accessories'];
+            
+            for (const category of categories) {
+              await processDirectory(category);
+            }
+            
+            console.log('🎉 Image optimization complete!');
+          }
+          
+          main().catch(console.error);
+          EOF
+          
+          node scripts/optimize-images-inline.js 2>&1 | tee scripts/logs/optimize-$(date +%Y%m%d-%H%M%S).log
+
+      - name: 📊 Generate Analytics
+        run: |
+          echo "📈 Generating automation analytics..."
+          
+          # Create analytics script
+          cat > scripts/generate-analytics.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          
+          function generateAnalytics() {
+            const harvestFile = './public/images/harvested/harvest-data.json';
+            const optimizedDir = './public/images/optimized';
+            
+            let harvestData = { harvested: [], stats: {} };
+            if (fs.existsSync(harvestFile)) {
+              harvestData = JSON.parse(fs.readFileSync(harvestFile, 'utf8'));
+            }
+            
+            // Count optimized images
+            const categories = ['barn-doors', 'closet-doors', 'hardware', 'track-systems', 'handles', 'accessories'];
+            const optimizedStats = {};
+            let totalOptimized = 0;
+            
+            categories.forEach(cat => {
+              const catDir = path.join(optimizedDir, cat);
+              if (fs.existsSync(catDir)) {
+                const count = fs.readdirSync(catDir).length;
+                optimizedStats[cat] = count;
+                totalOptimized += count;
+              }
+            });
+            
+            const analytics = {
+              generated_at: new Date().toISOString(),
+              harvest: harvestData.stats,
+              optimization: {
+                total_optimized_images: totalOptimized,
+                by_category: optimizedStats
+              },
+              performance: {
+                last_run_date: new Date().toISOString(),
+                automation_version: "2.0",
+                status: "success"
+              }
+            };
+            
+            // Save analytics
+            const analyticsFile = './analytics/reports/automation-analytics.json';
+            fs.writeFileSync(analyticsFile, JSON.stringify(analytics, null, 2));
+            
+            console.log('📊 Analytics generated:', analyticsFile);
+            console.log('📈 Summary:', JSON.stringify(analytics, null, 2));
+          }
+          
+          generateAnalytics();
+          EOF
+          
+          node scripts/generate-analytics.js
+
+      - name: 🚀 Deploy to Vercel
+        if: ${{ github.event.inputs.harvest_only != 'true' && github.event.inputs.optimize_only != 'true' }}
+        run: |
+          echo "🚀 Deploying updated content to production..."
+          
+          # Install Vercel CLI
+          npm install -g vercel@latest
+          
+          # Deploy to production
+          echo "🔑 Authenticating with Vercel..."
+          vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_ORG_ID }}
+          
+          echo "📦 Building and deploying..."
+          vercel --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: 📝 Commit Updated Content
+        run: |
+          # Configure git
+          git config --global user.name "PG Closets Automation"
+          git config --global user.email "automation@pgclosets.com"
+          
+          # Add all generated content
+          git add public/images/ analytics/ scripts/logs/ || true
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "📭 No changes to commit"
+          else
+            echo "📝 Committing automation updates..."
+            
+            # Create commit message with stats
+            HARVEST_COUNT=$(find public/images/harvested -name "*.jpg" -o -name "*.png" -o -name "*.webp" 2>/dev/null | wc -l || echo "0")
+            OPTIMIZED_COUNT=$(find public/images/optimized -name "*" -type f 2>/dev/null | wc -l || echo "0")
+            
+            git commit -m "🤖 Automated content update
+            
+            📸 Images harvested: ${HARVEST_COUNT}
+            🎨 Images optimized: ${OPTIMIZED_COUNT}
+            📅 Run date: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+            
+            🚀 Generated with PG Closets AI Automation Pipeline
+            
+            Co-Authored-By: PG Closets Automation <automation@pgclosets.com>"
+            
+            echo "✅ Changes committed successfully"
+          fi
+
+      - name: 📊 Upload Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: automation-artifacts-${{ github.run_number }}
+          path: |
+            scripts/logs/
+            analytics/reports/
+            public/images/harvested/harvest-report.md
+          retention-days: 30
+
+      - name: 📋 Automation Summary
+        if: always()
+        run: |
+          echo "🎉 PG Closets Automation Pipeline Complete!"
+          echo ""
+          echo "📊 Final Summary:"
+          echo "================"
+          
+          # Count final results
+          HARVEST_COUNT=$(find public/images/harvested -name "*.jpg" -o -name "*.png" -o -name "*.webp" 2>/dev/null | wc -l || echo "0")
+          OPTIMIZED_COUNT=$(find public/images/optimized -name "*" -type f 2>/dev/null | wc -l || echo "0")
+          
+          echo "📸 Total images harvested: ${HARVEST_COUNT}"
+          echo "🎨 Total optimized variants: ${OPTIMIZED_COUNT}"
+          echo "📅 Automation completed: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          echo ""
+          echo "🌐 Live site: https://www.pgclosets.com"
+          echo "📈 Analytics: Available in repository artifacts"
+          echo ""
+          echo "🚀 Next scheduled run: Sunday 2 AM UTC"
+
+  notify-completion:
+    needs: content-automation
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: 📬 Automation Complete
+        run: |
+          echo "🎯 PG Closets automation pipeline has completed!"
+          echo "Status: ${{ needs.content-automation.result }}"
+          echo "Check the live site: https://www.pgclosets.com"

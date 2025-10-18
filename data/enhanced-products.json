@@ -1,0 +1,856 @@
+[
+  {
+    "id": "renin-bypass-ashbury-2panel",
+    "slug": "ashbury-2-panel-design-steel-frame-bypass-door",
+    "title": "Ashbury 2 Panel Design in Steel Frame Bypass Door",
+    "description": "Modern steel-framed bypass doors with a clean 2-panel design. Perfect for contemporary closets with maximum accessibility.",
+    "price": 129900,
+    "image": "https://www.renin.com/cdn/shop/files/BY002_Ashbury_2_Panel_Design_in_Steel_Frame_wBH101_Classic_Square_Matte_Black_Horiz_0078_d6a6a53e-bda8-41ce-ae1f-2f3f76de28c0.jpg?v=1729097035&width=2048",
+    "category": "Renin Bypass Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1200,
+        "opening_max_width_mm": 3600,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2800
+      },
+      "options": {
+        "panel_options": ["2", "3", "4"],
+        "finish_options": ["matte_white", "matte_black", "steel_frame", "mirror"]
+      },
+      "base_price_cad": 1299,
+      "installed_price_from_cad": 1299,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-bypass-colonial-elegance",
+    "slug": "colonial-elegance-bypass-door",
+    "title": "Colonial Elegance Bypass Closet Door",
+    "description": "Traditional colonial-style bypass doors with raised panels. Timeless design for classic home interiors.",
+    "price": 139900,
+    "image": "https://www.renin.com/cdn/shop/files/BY003_Colonial_White_Horiz_0045.jpg?v=1729097103&width=2048",
+    "category": "Renin Bypass Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1200,
+        "opening_max_width_mm": 3600,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2800
+      },
+      "options": {
+        "panel_options": ["2", "3", "4"],
+        "finish_options": ["matte_white", "primed", "wood_grain"]
+      },
+      "base_price_cad": 1399,
+      "installed_price_from_cad": 1399,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-bypass-mirror-sliding",
+    "slug": "mirror-bypass-sliding-doors",
+    "title": "Full Mirror Bypass Sliding Doors",
+    "description": "Full-length mirror bypass doors that visually expand your space while providing functional storage access.",
+    "price": 159900,
+    "image": "https://www.renin.com/cdn/shop/files/BY004_Mirror_Bypass_Horiz_0089.jpg?v=1729097188&width=2048",
+    "category": "Renin Bypass Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1200,
+        "opening_max_width_mm": 3600,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2800
+      },
+      "options": {
+        "panel_options": ["2", "3", "4"],
+        "finish_options": ["mirror", "bronze_mirror", "smoke_mirror"]
+      },
+      "base_price_cad": 1599,
+      "installed_price_from_cad": 1599,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-bypass-frosted-glass",
+    "slug": "frosted-glass-bypass-doors",
+    "title": "Frosted Glass Bypass Closet Doors",
+    "description": "Contemporary frosted glass panels in aluminum frames. Provides privacy while allowing light transmission.",
+    "price": 179900,
+    "image": "https://www.renin.com/cdn/shop/files/BY005_Frosted_Glass_Aluminum_Frame_0056.jpg?v=1729097235&width=2048",
+    "category": "Renin Bypass Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1200,
+        "opening_max_width_mm": 3600,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2800
+      },
+      "options": {
+        "panel_options": ["2", "3", "4"],
+        "finish_options": ["frosted_glass", "clear_glass", "pattern_glass"]
+      },
+      "base_price_cad": 1799,
+      "installed_price_from_cad": 1799,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-bypass-louver",
+    "slug": "louver-bypass-closet-doors",
+    "title": "Louver Bypass Ventilated Doors",
+    "description": "Classic louver design provides excellent ventilation for closets. Ideal for laundry rooms and utility spaces.",
+    "price": 119900,
+    "image": "https://www.renin.com/cdn/shop/files/BY006_Louver_White_0034.jpg?v=1729097291&width=2048",
+    "category": "Renin Bypass Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1200,
+        "opening_max_width_mm": 3600,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2800
+      },
+      "options": {
+        "panel_options": ["2", "3", "4"],
+        "finish_options": ["matte_white", "primed", "natural_wood"]
+      },
+      "base_price_cad": 1199,
+      "installed_price_from_cad": 1199,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-pivot-modern-flush",
+    "slug": "modern-flush-pivot-door",
+    "title": "Modern Flush Pivot Door",
+    "description": "Minimalist flush design pivot door for walk-in closets. Clean lines with concealed hinges.",
+    "price": 109900,
+    "image": "https://www.renin.com/cdn/shop/files/PV001_Modern_Flush_White_0023.jpg?v=1729100345&width=2048",
+    "category": "Renin Pivot Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 1200,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["matte_white", "matte_black", "wood_veneer", "primed"]
+      },
+      "base_price_cad": 1099,
+      "installed_price_from_cad": 1099,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-pivot-glass-panel",
+    "slug": "glass-panel-pivot-door",
+    "title": "Glass Panel Pivot Door",
+    "description": "Elegant pivot door with tempered glass panel insert. Perfect for modern walk-in closets.",
+    "price": 139900,
+    "image": "https://www.renin.com/cdn/shop/files/PV002_Glass_Panel_Black_Frame_0045.jpg?v=1729100389&width=2048",
+    "category": "Renin Pivot Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 1200,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["clear_glass", "frosted_glass", "smoke_glass", "pattern_glass"]
+      },
+      "base_price_cad": 1399,
+      "installed_price_from_cad": 1399,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-pivot-shaker-style",
+    "slug": "shaker-style-pivot-door",
+    "title": "Shaker Style Pivot Door",
+    "description": "Traditional shaker-style pivot door with recessed panels. Timeless design for classic interiors.",
+    "price": 119900,
+    "image": "https://www.renin.com/cdn/shop/files/PV003_Shaker_White_0067.jpg?v=1729100412&width=2048",
+    "category": "Renin Pivot Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 1200,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["matte_white", "primed", "wood_stain"]
+      },
+      "base_price_cad": 1199,
+      "installed_price_from_cad": 1199,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-divider-barn-double",
+    "slug": "double-barn-door-room-divider",
+    "title": "Double Barn Door Room Divider System",
+    "description": "Large-scale double barn door system for dividing open concept spaces. Includes premium soft-close hardware.",
+    "price": 179900,
+    "image": "https://www.renin.com/cdn/shop/files/RD001_Savannah_Rustic_Grey_wBH300_BHDM_Satin_Black_Horiz_0016.jpg?v=1729100839&width=2048",
+    "category": "Renin Room Dividers",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1800,
+        "opening_max_width_mm": 4800,
+        "opening_min_height_mm": 2000,
+        "opening_max_height_mm": 3000
+      },
+      "options": {
+        "panel_options": ["2"],
+        "finish_options": ["rustic_grey", "barn_wood", "matte_black", "natural_oak"]
+      },
+      "base_price_cad": 1799,
+      "installed_price_from_cad": 1799,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-divider-glass-partition",
+    "slug": "glass-partition-room-divider",
+    "title": "Glass Partition Sliding Room Divider",
+    "description": "Floor-to-ceiling glass partition system with aluminum frames. Maintains visual connection while dividing spaces.",
+    "price": 229900,
+    "image": "https://www.renin.com/cdn/shop/files/RD002_Glass_Partition_Black_Frame_0034.jpg?v=1729100867&width=2048",
+    "category": "Renin Room Dividers",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1800,
+        "opening_max_width_mm": 4800,
+        "opening_min_height_mm": 2000,
+        "opening_max_height_mm": 3000
+      },
+      "options": {
+        "panel_options": ["2", "3", "4"],
+        "finish_options": ["clear_glass", "frosted_glass", "smoke_glass"]
+      },
+      "base_price_cad": 2299,
+      "installed_price_from_cad": 2299,
+      "lead_time_weeks": 4
+    }
+  },
+  {
+    "id": "renin-divider-accordion",
+    "slug": "accordion-folding-room-divider",
+    "title": "Accordion Folding Room Divider",
+    "description": "Space-saving accordion-style room divider. Folds completely to one side when not in use.",
+    "price": 199900,
+    "image": "https://www.renin.com/cdn/shop/files/RD003_Accordion_Wood_Tone_0089.jpg?v=1729100891&width=2048",
+    "category": "Renin Room Dividers",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1800,
+        "opening_max_width_mm": 4800,
+        "opening_min_height_mm": 2000,
+        "opening_max_height_mm": 3000
+      },
+      "options": {
+        "panel_options": ["4", "6", "8"],
+        "finish_options": ["wood_tone", "matte_white", "fabric_insert"]
+      },
+      "base_price_cad": 1999,
+      "installed_price_from_cad": 1999,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-mirror-full-length",
+    "slug": "full-length-standing-mirror",
+    "title": "Full-Length Standing Mirror",
+    "description": "Premium full-length mirror with adjustable tilt. Solid wood frame with anti-tip hardware.",
+    "price": 29900,
+    "image": "https://www.renin.com/cdn/shop/files/MI001_Standing_Mirror_Vert_0099.jpg?v=1729100048&width=2048",
+    "category": "Mirrors",
+    "configurator_data": null
+  },
+  {
+    "id": "renin-mirror-wall-mounted",
+    "slug": "wall-mounted-dressing-mirror",
+    "title": "Wall-Mounted Dressing Mirror",
+    "description": "Large wall-mounted mirror perfect for walk-in closets and dressing areas. Includes mounting hardware.",
+    "price": 39900,
+    "image": "https://www.renin.com/cdn/shop/files/MI002_Wall_Mirror_Black_Frame_0067.jpg?v=1729100072&width=2048",
+    "category": "Mirrors",
+    "configurator_data": null
+  },
+  {
+    "id": "renin-mirror-sliding-panel",
+    "slug": "sliding-mirror-panel",
+    "title": "Sliding Mirror Panel System",
+    "description": "Sliding mirror panel that conceals storage. Functions as both mirror and door.",
+    "price": 59900,
+    "image": "https://www.renin.com/cdn/shop/files/MI003_Sliding_Mirror_Panel_0045.jpg?v=1729100096&width=2048",
+    "category": "Mirrors",
+    "configurator_data": null
+  },
+  {
+    "id": "renin-hardware-soft-close",
+    "slug": "soft-close-barn-door-hardware",
+    "title": "Soft-Close Barn Door Hardware Kit",
+    "description": "Premium soft-close mechanism for barn doors. Prevents slamming and ensures smooth operation.",
+    "price": 19900,
+    "image": "https://www.renin.com/cdn/shop/files/HW001_Soft_Close_Kit_0023.jpg?v=1729099123&width=2048",
+    "category": "Hardware",
+    "configurator_data": null
+  },
+  {
+    "id": "renin-hardware-track-system",
+    "slug": "heavy-duty-track-system",
+    "title": "Heavy-Duty Track System",
+    "description": "Industrial-grade track system for barn doors up to 300 lbs. Available in multiple finishes.",
+    "price": 29900,
+    "image": "https://www.renin.com/cdn/shop/files/HW002_Track_System_Black_0056.jpg?v=1729099145&width=2048",
+    "category": "Hardware",
+    "configurator_data": null
+  },
+  {
+    "id": "renin-hardware-handle-set",
+    "slug": "modern-handle-set",
+    "title": "Modern Handle Set",
+    "description": "Contemporary handle set for sliding doors. Available in matte black, brushed nickel, and brass.",
+    "price": 7900,
+    "image": "https://www.renin.com/cdn/shop/files/HW003_Handle_Set_0078.jpg?v=1729099167&width=2048",
+    "category": "Hardware",
+    "configurator_data": null
+  },
+  {
+    "id": "renin-hardware-floor-guide",
+    "slug": "adjustable-floor-guide",
+    "title": "Adjustable Floor Guide",
+    "description": "Adjustable floor guide for bypass and barn doors. Keeps doors aligned and prevents swaying.",
+    "price": 4900,
+    "image": "https://www.renin.com/cdn/shop/files/HW004_Floor_Guide_0089.jpg?v=1729099189&width=2048",
+    "category": "Hardware",
+    "configurator_data": null
+  },
+  {
+    "id": "renin-bifold-premium-louver",
+    "slug": "premium-louver-bifold-doors",
+    "title": "Premium Louver Bifold Doors",
+    "description": "Plantation-style louver bifold doors. Excellent ventilation with classic aesthetics.",
+    "price": 89900,
+    "image": "https://www.renin.com/cdn/shop/files/BF004_Louver_Premium_White_0023.jpg?v=1729096712&width=2048",
+    "category": "Renin Bifold Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 1800,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["2", "4"],
+        "finish_options": ["matte_white", "primed", "natural_wood"]
+      },
+      "base_price_cad": 899,
+      "installed_price_from_cad": 899,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-bifold-mirror-closet",
+    "slug": "mirror-bifold-closet-doors",
+    "title": "Mirror Bifold Closet Doors",
+    "description": "Full mirror bifold doors that maximize light and visually expand your space.",
+    "price": 99900,
+    "image": "https://www.renin.com/cdn/shop/files/BF005_Mirror_Bifold_0045.jpg?v=1729096735&width=2048",
+    "category": "Renin Bifold Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 1800,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["2", "4"],
+        "finish_options": ["mirror", "bronze_mirror"]
+      },
+      "base_price_cad": 999,
+      "installed_price_from_cad": 999,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-bifold-frosted-insert",
+    "slug": "frosted-glass-insert-bifold",
+    "title": "Frosted Glass Insert Bifold Doors",
+    "description": "Contemporary bifold doors with frosted glass inserts. Provides privacy while maintaining light flow.",
+    "price": 109900,
+    "image": "https://www.renin.com/cdn/shop/files/BF006_Frosted_Insert_0067.jpg?v=1729096758&width=2048",
+    "category": "Renin Bifold Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 1800,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["2", "4"],
+        "finish_options": ["frosted_glass", "pattern_glass", "clear_glass"]
+      },
+      "base_price_cad": 1099,
+      "installed_price_from_cad": 1099,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-barn-industrial-metal",
+    "slug": "industrial-metal-barn-door",
+    "title": "Industrial Metal Barn Door",
+    "description": "Heavy-duty metal barn door with industrial aesthetic. Perfect for loft-style interiors.",
+    "price": 119900,
+    "image": "https://www.renin.com/cdn/shop/files/BD007_Industrial_Metal_0089.jpg?v=1729095512&width=2048",
+    "category": "Renin Barn Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 750,
+        "opening_max_width_mm": 1200,
+        "opening_min_height_mm": 2000,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["raw_steel", "matte_black", "gunmetal"]
+      },
+      "base_price_cad": 1199,
+      "installed_price_from_cad": 1199,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-barn-chevron-pattern",
+    "slug": "chevron-pattern-barn-door",
+    "title": "Chevron Pattern Barn Door",
+    "description": "Striking chevron wood pattern barn door. Handcrafted design adds visual interest to any space.",
+    "price": 109900,
+    "image": "https://www.renin.com/cdn/shop/files/BD008_Chevron_Pattern_0023.jpg?v=1729095535&width=2048",
+    "category": "Renin Barn Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 750,
+        "opening_max_width_mm": 1200,
+        "opening_min_height_mm": 2000,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["natural_oak", "walnut", "grey_wash", "ebony"]
+      },
+      "base_price_cad": 1099,
+      "installed_price_from_cad": 1099,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-barn-modern-slab",
+    "slug": "modern-slab-barn-door",
+    "title": "Modern Slab Barn Door",
+    "description": "Minimalist solid slab barn door. Clean, contemporary design for modern homes.",
+    "price": 79900,
+    "image": "https://www.renin.com/cdn/shop/files/BD009_Modern_Slab_White_0045.jpg?v=1729095558&width=2048",
+    "category": "Renin Barn Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 750,
+        "opening_max_width_mm": 1200,
+        "opening_min_height_mm": 2000,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["matte_white", "matte_black", "wood_veneer"]
+      },
+      "base_price_cad": 799,
+      "installed_price_from_cad": 799,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-barn-glass-panel",
+    "slug": "glass-panel-barn-door",
+    "title": "Glass Panel Barn Door with Grid",
+    "description": "Contemporary barn door with divided glass panels. Allows light flow while maintaining privacy.",
+    "price": 139900,
+    "image": "https://www.renin.com/cdn/shop/files/BD010_Glass_Grid_Black_0067.jpg?v=1729095581&width=2048",
+    "category": "Renin Barn Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 750,
+        "opening_max_width_mm": 1200,
+        "opening_min_height_mm": 2000,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["clear_glass", "frosted_glass", "rain_glass"]
+      },
+      "base_price_cad": 1399,
+      "installed_price_from_cad": 1399,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-closet-shaker-panel",
+    "slug": "shaker-panel-closet-door",
+    "title": "Shaker Panel Closet Door",
+    "description": "Classic shaker-style closet door with recessed panels. Timeless design for traditional homes.",
+    "price": 59900,
+    "image": "https://www.renin.com/cdn/shop/files/CL001_Shaker_White_0034.jpg?v=1729098234&width=2048",
+    "category": "Renin Closet Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 900,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["matte_white", "primed", "wood_stain"]
+      },
+      "base_price_cad": 599,
+      "installed_price_from_cad": 599,
+      "lead_time_weeks": 1
+    }
+  },
+  {
+    "id": "renin-closet-flush-modern",
+    "slug": "flush-modern-closet-door",
+    "title": "Flush Modern Closet Door",
+    "description": "Smooth flush surface door for contemporary interiors. Clean lines with no raised panels.",
+    "price": 49900,
+    "image": "https://www.renin.com/cdn/shop/files/CL002_Flush_Modern_0056.jpg?v=1729098256&width=2048",
+    "category": "Renin Closet Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 900,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["matte_white", "matte_black", "primed"]
+      },
+      "base_price_cad": 499,
+      "installed_price_from_cad": 499,
+      "lead_time_weeks": 1
+    }
+  },
+  {
+    "id": "renin-closet-colonial-raised",
+    "slug": "colonial-raised-panel-door",
+    "title": "Colonial Raised Panel Door",
+    "description": "Traditional colonial door with raised panels. Elegant detailing for classic home styles.",
+    "price": 69900,
+    "image": "https://www.renin.com/cdn/shop/files/CL003_Colonial_White_0078.jpg?v=1729098278&width=2048",
+    "category": "Renin Closet Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 900,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["matte_white", "primed", "oak_stain"]
+      },
+      "base_price_cad": 699,
+      "installed_price_from_cad": 699,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-closet-french-glass",
+    "slug": "french-glass-closet-door",
+    "title": "French Glass Closet Door",
+    "description": "Elegant French-style door with divided glass panels. Brightens closet interiors with natural light.",
+    "price": 89900,
+    "image": "https://www.renin.com/cdn/shop/files/CL004_French_Glass_0089.jpg?v=1729098301&width=2048",
+    "category": "Renin Closet Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 900,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["clear_glass", "frosted_glass", "beveled_glass"]
+      },
+      "base_price_cad": 899,
+      "installed_price_from_cad": 899,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-closet-louver-full",
+    "slug": "full-louver-closet-door",
+    "title": "Full Louver Closet Door",
+    "description": "Full-height louver door for maximum ventilation. Ideal for laundry and utility closets.",
+    "price": 79900,
+    "image": "https://www.renin.com/cdn/shop/files/CL005_Full_Louver_0023.jpg?v=1729098323&width=2048",
+    "category": "Renin Closet Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 900,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["matte_white", "natural_pine", "primed"]
+      },
+      "base_price_cad": 799,
+      "installed_price_from_cad": 799,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-bypass-contemporary-grid",
+    "slug": "contemporary-grid-bypass-doors",
+    "title": "Contemporary Grid Pattern Bypass Doors",
+    "description": "Modern bypass doors with geometric grid pattern. Adds architectural interest to closet openings.",
+    "price": 149900,
+    "image": "https://www.renin.com/cdn/shop/files/BY007_Grid_Pattern_0045.jpg?v=1729097314&width=2048",
+    "category": "Renin Bypass Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1200,
+        "opening_max_width_mm": 3600,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2800
+      },
+      "options": {
+        "panel_options": ["2", "3", "4"],
+        "finish_options": ["matte_white", "matte_black", "grey_wash"]
+      },
+      "base_price_cad": 1499,
+      "installed_price_from_cad": 1499,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-bypass-panel-combo",
+    "slug": "panel-mirror-combo-bypass",
+    "title": "Panel & Mirror Combo Bypass Doors",
+    "description": "Unique combination of solid panels and mirror inserts. Functional and space-enhancing design.",
+    "price": 169900,
+    "image": "https://www.renin.com/cdn/shop/files/BY008_Panel_Mirror_Combo_0067.jpg?v=1729097337&width=2048",
+    "category": "Renin Bypass Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1200,
+        "opening_max_width_mm": 3600,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2800
+      },
+      "options": {
+        "panel_options": ["2", "3", "4"],
+        "finish_options": ["white_mirror", "black_mirror", "wood_mirror"]
+      },
+      "base_price_cad": 1699,
+      "installed_price_from_cad": 1699,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-bifold-panel-louver",
+    "slug": "panel-louver-combo-bifold",
+    "title": "Panel & Louver Combo Bifold",
+    "description": "Combination of solid panels and louver sections. Provides privacy with ventilation.",
+    "price": 94900,
+    "image": "https://www.renin.com/cdn/shop/files/BF007_Panel_Louver_0089.jpg?v=1729096781&width=2048",
+    "category": "Renin Bifold Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 1800,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["2", "4"],
+        "finish_options": ["matte_white", "primed", "pine"]
+      },
+      "base_price_cad": 949,
+      "installed_price_from_cad": 949,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-bifold-colonial-style",
+    "slug": "colonial-style-bifold-doors",
+    "title": "Colonial Style Bifold Doors",
+    "description": "Traditional colonial bifold with raised panels. Classic elegance for bedroom closets.",
+    "price": 84900,
+    "image": "https://www.renin.com/cdn/shop/files/BF008_Colonial_Bifold_0023.jpg?v=1729096804&width=2048",
+    "category": "Renin Bifold Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 1800,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["2", "4"],
+        "finish_options": ["matte_white", "primed", "oak"]
+      },
+      "base_price_cad": 849,
+      "installed_price_from_cad": 849,
+      "lead_time_weeks": 2
+    }
+  },
+  {
+    "id": "renin-pivot-double-door",
+    "slug": "double-pivot-door-system",
+    "title": "Double Pivot Door System",
+    "description": "French-style double pivot doors for wide walk-in closet entrances. Creates grand entrance.",
+    "price": 219900,
+    "image": "https://www.renin.com/cdn/shop/files/PV004_Double_Pivot_0045.jpg?v=1729100435&width=2048",
+    "category": "Renin Pivot Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1200,
+        "opening_max_width_mm": 2400,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["2"],
+        "finish_options": ["matte_white", "matte_black", "french_oak"]
+      },
+      "base_price_cad": 2199,
+      "installed_price_from_cad": 2199,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-pivot-industrial",
+    "slug": "industrial-pivot-door",
+    "title": "Industrial Style Pivot Door",
+    "description": "Metal frame pivot door with industrial aesthetic. Perfect for loft-style walk-in closets.",
+    "price": 159900,
+    "image": "https://www.renin.com/cdn/shop/files/PV005_Industrial_Pivot_0067.jpg?v=1729100458&width=2048",
+    "category": "Renin Pivot Doors",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 600,
+        "opening_max_width_mm": 1200,
+        "opening_min_height_mm": 1800,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["black_steel", "raw_metal", "gunmetal"]
+      },
+      "base_price_cad": 1599,
+      "installed_price_from_cad": 1599,
+      "lead_time_weeks": 3
+    }
+  },
+  {
+    "id": "renin-divider-japanese-shoji",
+    "slug": "japanese-shoji-room-divider",
+    "title": "Japanese Shoji Screen Room Divider",
+    "description": "Traditional Japanese-inspired sliding panels with rice paper inserts. Diffuses light beautifully.",
+    "price": 189900,
+    "image": "https://www.renin.com/cdn/shop/files/RD004_Shoji_Screen_0023.jpg?v=1729100914&width=2048",
+    "category": "Renin Room Dividers",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 1800,
+        "opening_max_width_mm": 4800,
+        "opening_min_height_mm": 2000,
+        "opening_max_height_mm": 3000
+      },
+      "options": {
+        "panel_options": ["3", "4", "5"],
+        "finish_options": ["natural_wood", "ebony", "white_wash"]
+      },
+      "base_price_cad": 1899,
+      "installed_price_from_cad": 1899,
+      "lead_time_weeks": 4
+    }
+  },
+  {
+    "id": "renin-divider-bookcase",
+    "slug": "bookcase-room-divider",
+    "title": "Rotating Bookcase Room Divider",
+    "description": "Functional rotating bookcase that serves as room divider. Storage and division in one.",
+    "price": 269900,
+    "image": "https://www.renin.com/cdn/shop/files/RD005_Bookcase_Divider_0045.jpg?v=1729100937&width=2048",
+    "category": "Renin Room Dividers",
+    "configurator_data": {
+      "size": {
+        "opening_min_width_mm": 900,
+        "opening_max_width_mm": 1800,
+        "opening_min_height_mm": 2000,
+        "opening_max_height_mm": 2400
+      },
+      "options": {
+        "panel_options": ["1"],
+        "finish_options": ["walnut", "white_oak", "matte_black"]
+      },
+      "base_price_cad": 2699,
+      "installed_price_from_cad": 2699,
+      "lead_time_weeks": 4
+    }
+  },
+  {
+    "id": "renin-hardware-bypass-kit",
+    "slug": "complete-bypass-hardware-kit",
+    "title": "Complete Bypass Hardware Kit",
+    "description": "Everything needed for bypass door installation. Includes tracks, rollers, guides, and hardware.",
+    "price": 24900,
+    "image": "https://www.renin.com/cdn/shop/files/HW005_Bypass_Kit_0023.jpg?v=1729099212&width=2048",
+    "category": "Hardware",
+    "configurator_data": null
+  },
+  {
+    "id": "renin-hardware-bifold-kit",
+    "slug": "bifold-hardware-kit",
+    "title": "Bifold Hardware Kit",
+    "description": "Complete hardware kit for bifold door installation. Includes pivots, guides, and track.",
+    "price": 14900,
+    "image": "https://www.renin.com/cdn/shop/files/HW006_Bifold_Kit_0045.jpg?v=1729099234&width=2048",
+    "category": "Hardware",
+    "configurator_data": null
+  },
+  {
+    "id": "renin-mirror-led-vanity",
+    "slug": "led-vanity-mirror",
+    "title": "LED Vanity Mirror",
+    "description": "Illuminated vanity mirror with adjustable LED lighting. Perfect for dressing areas.",
+    "price": 79900,
+    "image": "https://www.renin.com/cdn/shop/files/MI004_LED_Vanity_0067.jpg?v=1729100119&width=2048",
+    "category": "Mirrors",
+    "configurator_data": null
+  },
+  {
+    "id": "renin-mirror-tri-fold",
+    "slug": "tri-fold-dressing-mirror",
+    "title": "Tri-Fold Dressing Mirror",
+    "description": "Three-panel mirror system for complete viewing angles. Essential for walk-in closets.",
+    "price": 99900,
+    "image": "https://www.renin.com/cdn/shop/files/MI005_Tri_Fold_0089.jpg?v=1729100142&width=2048",
+    "category": "Mirrors",
+    "configurator_data": null
+  }
+]

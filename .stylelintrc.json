@@ -1,0 +1,62 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-no-unsupported-browser-features"],
+  "rules": {
+    "color-hex-length": "long",
+    "color-named": "never",
+    "color-no-hex": [
+      true,
+      {
+        "message": "Use design tokens instead of raw hex colors. Import from /design-tokens/tokens.json or use CSS variables from globals-unified.css"
+      }
+    ],
+    "declaration-property-value-disallowed-list": {
+      "/^color/": [
+        "/^#/",
+        "/rgb/",
+        "/hsl/"
+      ],
+      "/^background/": [
+        "/^#/",
+        "/rgb/",
+        "/hsl/"
+      ],
+      "/^border/": [
+        "/^#/",
+        "/rgb/",
+        "/hsl/"
+      ]
+    },
+    "selector-class-pattern": [
+      "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$|^(btn|card|heading|body|input|label|caption)(-[a-z0-9]+)*$",
+      {
+        "message": "Use design system class names (btn-*, card-*, heading-*, etc.) or kebab-case"
+      }
+    ],
+    "function-disallowed-list": [
+      "rgb",
+      "rgba",
+      "hsl",
+      "hsla"
+    ],
+    "no-unknown-animations": true,
+    "keyframes-name-pattern": "^(fade|slide|scale|shimmer)(-[a-z]+)*$",
+    "custom-property-pattern": "^pg-",
+    "declaration-no-important": [
+      true,
+      {
+        "severity": "warning",
+        "message": "Avoid !important. Use design system utilities or increase specificity."
+      }
+    ]
+  },
+  "ignoreFiles": [
+    "node_modules/**",
+    "build/**",
+    "dist/**",
+    ".next/**",
+    "styles/legacy/**",
+    "lib/design-system/variables.css",
+    "styles/design-system.css"
+  ]
+}

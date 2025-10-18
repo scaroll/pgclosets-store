@@ -1,0 +1,65 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build outputs
+.next
+out
+dist
+build
+coverage
+
+# Deployment
+deploy
+deployment-backup
+
+# Cache
+.turbo
+.cache
+.parcel-cache
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment files
+.env*
+!.env.example
+
+# Generated files
+.next/
+public/sw.js
+public/service-worker.js
+lib/generated/**
+*.tsbuildinfo
+
+# Data files
+data/
+*.csv
+*.json.gz
+
+# Reports
+reports/
+*.report.html
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test
+__snapshots__
+
+# Legacy
+legacy/

@@ -1,0 +1,100 @@
+{
+  "name": "pgclosets-store",
+  "scope": "peoples-group",
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install --legacy-peer-deps",
+  "devCommand": "npm run dev",
+  "regions": ["iad1"],
+  "public": true,
+  "git": {
+    "deploymentEnabled": {
+      "master": true,
+      "preview": true
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/refresh-sitemap",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/reindex",
+      "schedule": "0 3 * * 0"
+    },
+    {
+      "path": "/api/cron/warm-cache",
+      "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/ai-content-update",
+      "schedule": "0 4 * * 1,4"
+    }
+  ],
+  "functions": {
+    "app/api/**": {
+      "maxDuration": 30
+    },
+    "app/api/cron/**": {
+      "maxDuration": 60
+    },
+    "app/api/chat/**": {
+      "maxDuration": 45
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.paddle.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://www.pgclosets.com https://cdn.renin.com https://www.renin.com https://renin.com https://images.unsplash.com https://hebbkx1anhila5yf.public.blob.vercel-storage.com https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://api.paddle.com; frame-src https://cdn.paddle.com; object-src 'none'; base-uri 'self'; form-action 'self'"
+        }
+      ]
+    },
+    {
+      "source": "/api/webhooks/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "POST, GET, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization, X-Jobber-Signature, X-Paddle-Signature"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/api/robots"
+    }
+  ]
+}

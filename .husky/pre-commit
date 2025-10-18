@@ -1,0 +1,42 @@
+#!/bin/sh
+# Pre-commit hook for PG Closets
+# Ensures code quality before commits
+
+echo "🔍 Running pre-commit checks..."
+
+# Run lint-staged for automatic fixes
+npm run pre-commit
+
+# Check for console.logs (warning only)
+if git diff --cached --name-only | grep -E '\.(ts|tsx|js|jsx)$' | xargs grep -n 'console\.log' 2>/dev/null; then
+  echo "⚠️  Warning: console.log statements found. Consider removing them."
+  echo "   To commit anyway, use: git commit --no-verify"
+fi
+
+# Check for TODO/FIXME comments in staged files
+if git diff --cached --name-only | grep -E '\.(ts|tsx|js|jsx)$' | xargs grep -n 'TODO\|FIXME' 2>/dev/null; then
+  echo "📝 Note: TODO/FIXME comments found in staged files"
+fi
+
+# Check for large files (>500KB)
+MAX_SIZE=512000 # 500KB in bytes
+for file in $(git diff --cached --name-only); do
+  if [ -f "$file" ]; then
+    size=$(wc -c < "$file")
+    if [ "$size" -gt "$MAX_SIZE" ]; then
+      echo "❌ Error: $file is larger than 500KB ($size bytes)"
+      echo "   Large files should not be committed directly"
+      exit 1
+    fi
+  fi
+done
+
+# Check for sensitive data patterns
+if git diff --cached | grep -iE '(password|secret|api[_-]?key|token|private[_-]?key).*=.*["\x27][^"\x27]{8,}["\x27]' 2>/dev/null; then
+  echo "🔒 Warning: Potential sensitive data detected!"
+  echo "   Please review your changes carefully"
+  echo "   To commit anyway, use: git commit --no-verify"
+  exit 1
+fi
+
+echo "✅ Pre-commit checks passed!"

@@ -1,0 +1,26 @@
+
+> pg-closets-website@0.1.0 build
+> next build
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/spencercarroll/pnpm-lock.yaml as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/spencercarroll/pgclosets-store-main/package-lock.json
+
+   ▲ Next.js 15.5.4
+   - Environments: .env.local, .env
+   - Experiments (use with caution):
+     · serverActions
+     · optimizePackageImports
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 9.6s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+unhandledRejection ReferenceError: self is not defined
+    at Object.<anonymous> (.next/server/vendor.js:1:1) {
+  type: 'ReferenceError'
+}

@@ -1,0 +1,455 @@
+[
+  // ======================================================
+  // REDDIT KILLER KEYBINDINGS 🔥
+  // Based on most upvoted shortcuts from r/vscode
+  // ======================================================
+
+  // ===== MULTI-CURSOR MAGIC =====
+  {
+    "key": "cmd+d",
+    "command": "editor.action.addSelectionToNextFindMatch"
+  },
+  {
+    "key": "cmd+shift+l",
+    "command": "editor.action.selectHighlights"
+  },
+  {
+    "key": "cmd+alt+up",
+    "command": "editor.action.insertCursorAbove"
+  },
+  {
+    "key": "cmd+alt+down",
+    "command": "editor.action.insertCursorBelow"
+  },
+
+  // ===== LINE MANIPULATION =====
+  {
+    "key": "shift+alt+down",
+    "command": "editor.action.copyLinesDownAction"
+  },
+  {
+    "key": "shift+alt+up",
+    "command": "editor.action.copyLinesUpAction"
+  },
+  {
+    "key": "alt+down",
+    "command": "editor.action.moveLinesDownAction"
+  },
+  {
+    "key": "alt+up",
+    "command": "editor.action.moveLinesUpAction"
+  },
+  {
+    "key": "cmd+shift+k",
+    "command": "editor.action.deleteLines"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "editor.action.insertLineAfter"
+  },
+  {
+    "key": "cmd+shift+enter",
+    "command": "editor.action.insertLineBefore"
+  },
+
+  // ===== SELECTION SUPERPOWERS =====
+  {
+    "key": "cmd+l",
+    "command": "expandLineSelection"
+  },
+  {
+    "key": "cmd+shift+right",
+    "command": "cursorWordEndRightSelect"
+  },
+  {
+    "key": "cmd+shift+left",
+    "command": "cursorWordStartLeftSelect"
+  },
+  {
+    "key": "shift+alt+right",
+    "command": "editor.action.smartSelect.expand"
+  },
+  {
+    "key": "shift+alt+left",
+    "command": "editor.action.smartSelect.shrink"
+  },
+
+  // ===== COMMENTING SHORTCUTS =====
+  {
+    "key": "cmd+/",
+    "command": "editor.action.commentLine"
+  },
+  {
+    "key": "shift+alt+a",
+    "command": "editor.action.blockComment"
+  },
+
+  // ===== NAVIGATION WIZARDRY =====
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "cmd+shift+o",
+    "command": "workbench.action.gotoSymbol"
+  },
+  {
+    "key": "cmd+shift+t",
+    "command": "workbench.action.reopenClosedEditor"
+  },
+  {
+    "key": "f12",
+    "command": "editor.action.revealDefinition"
+  },
+  {
+    "key": "shift+f12",
+    "command": "editor.action.goToReferences"
+  },
+  {
+    "key": "alt+f12",
+    "command": "editor.action.peekDefinition"
+  },
+  {
+    "key": "cmd+f12",
+    "command": "editor.action.goToImplementation"
+  },
+
+  // ===== PANEL & SIDEBAR TOGGLES =====
+  {
+    "key": "cmd+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+shift+e",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "cmd+shift+f",
+    "command": "workbench.view.search"
+  },
+  {
+    "key": "cmd+shift+g",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "cmd+shift+d",
+    "command": "workbench.view.debug"
+  },
+  {
+    "key": "cmd+shift+x",
+    "command": "workbench.view.extensions"
+  },
+
+  // ===== TERMINAL POWER =====
+  {
+    "key": "cmd+`",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "cmd+shift+`",
+    "command": "workbench.action.terminal.new"
+  },
+  {
+    "key": "cmd+shift+c",
+    "command": "workbench.action.terminal.openNativeConsole"
+  },
+  {
+    "key": "cmd+k",
+    "command": "workbench.action.terminal.clear",
+    "when": "terminalFocus"
+  },
+
+  // ===== FORMATTING & REFACTORING =====
+  {
+    "key": "shift+alt+f",
+    "command": "editor.action.formatDocument"
+  },
+  {
+    "key": "cmd+k cmd+f",
+    "command": "editor.action.formatSelection"
+  },
+  {
+    "key": "f2",
+    "command": "editor.action.rename"
+  },
+  {
+    "key": "cmd+.",
+    "command": "editor.action.quickFix"
+  },
+  {
+    "key": "shift+alt+o",
+    "command": "editor.action.organizeImports"
+  },
+
+  // ===== SEARCH & REPLACE MAGIC =====
+  {
+    "key": "cmd+f",
+    "command": "actions.find"
+  },
+  {
+    "key": "cmd+h",
+    "command": "editor.action.startFindReplaceAction"
+  },
+  {
+    "key": "cmd+shift+f",
+    "command": "workbench.view.search"
+  },
+  {
+    "key": "cmd+shift+h",
+    "command": "workbench.action.replaceInFiles"
+  },
+  {
+    "key": "f3",
+    "command": "editor.action.nextMatchFindAction"
+  },
+  {
+    "key": "shift+f3",
+    "command": "editor.action.previousMatchFindAction"
+  },
+
+  // ===== FOLDING & UNFOLDING =====
+  {
+    "key": "cmd+shift+[",
+    "command": "editor.fold"
+  },
+  {
+    "key": "cmd+shift+]",
+    "command": "editor.unfold"
+  },
+  {
+    "key": "cmd+k cmd+0",
+    "command": "editor.foldAll"
+  },
+  {
+    "key": "cmd+k cmd+j",
+    "command": "editor.unfoldAll"
+  },
+  {
+    "key": "cmd+k cmd+1",
+    "command": "editor.foldLevel1"
+  },
+  {
+    "key": "cmd+k cmd+2",
+    "command": "editor.foldLevel2"
+  },
+
+  // ===== ZEN MODE & FOCUS =====
+  {
+    "key": "cmd+k z",
+    "command": "workbench.action.toggleZenMode"
+  },
+  {
+    "key": "cmd+k v",
+    "command": "workbench.action.splitEditor"
+  },
+  {
+    "key": "cmd+k cmd+w",
+    "command": "workbench.action.closeAllEditors"
+  },
+
+  // ===== REDDIT FAVORITES =====
+
+  // Duplicate selection (Reddit gold)
+  {
+    "key": "cmd+shift+d",
+    "command": "editor.action.duplicateSelection"
+  },
+
+  // Join lines (very popular)
+  {
+    "key": "cmd+j",
+    "command": "editor.action.joinLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // Toggle word wrap
+  {
+    "key": "alt+z",
+    "command": "editor.action.toggleWordWrap"
+  },
+
+  // Transform to uppercase/lowercase
+  {
+    "key": "cmd+k cmd+u",
+    "command": "editor.action.transformToUppercase"
+  },
+  {
+    "key": "cmd+k cmd+l",
+    "command": "editor.action.transformToLowercase"
+  },
+
+  // Sort lines ascending
+  {
+    "key": "cmd+k cmd+s",
+    "command": "editor.action.sortLinesAscending"
+  },
+
+  // Insert line above/below without moving cursor
+  {
+    "key": "cmd+shift+o",
+    "command": "editor.action.insertLineAfter",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // Bracket matching
+  {
+    "key": "cmd+shift+\\",
+    "command": "editor.action.jumpToBracket"
+  },
+
+  // Select all occurrences of current word
+  {
+    "key": "cmd+f2",
+    "command": "editor.action.changeAll"
+  },
+
+  // Copy line up/down (without selection)
+  {
+    "key": "shift+alt+up",
+    "command": "editor.action.copyLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+down",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // Indent/outdent
+  {
+    "key": "cmd+]",
+    "command": "editor.action.indentLines"
+  },
+  {
+    "key": "cmd+[",
+    "command": "editor.action.outdentLines"
+  },
+
+  // Toggle between editor groups
+  {
+    "key": "cmd+1",
+    "command": "workbench.action.focusFirstEditorGroup"
+  },
+  {
+    "key": "cmd+2",
+    "command": "workbench.action.focusSecondEditorGroup"
+  },
+  {
+    "key": "cmd+3",
+    "command": "workbench.action.focusThirdEditorGroup"
+  },
+
+  // ===== AI ASSISTANT SHORTCUTS =====
+
+  // Continue (Codex) shortcuts
+  {
+    "key": "cmd+k cmd+c",
+    "command": "continue.continueGUIView.focus",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+k cmd+i",
+    "command": "continue.acceptVerticalDiffBlock",
+    "when": "editorTextFocus"
+  },
+
+  // Gemini shortcuts
+  {
+    "key": "cmd+g cmd+c",
+    "command": "gemini.chat",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+g cmd+i",
+    "command": "gemini.inlineCompletion",
+    "when": "editorTextFocus"
+  },
+
+  // ===== PRODUCTIVITY HACKS =====
+
+  // Quick file creation
+  {
+    "key": "cmd+alt+n",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "cmd+alt+shift+n",
+    "command": "explorer.newFolder"
+  },
+
+  // Reveal in finder/explorer
+  {
+    "key": "cmd+alt+r",
+    "command": "revealFileInOS"
+  },
+
+  // Copy relative path
+  {
+    "key": "cmd+alt+c",
+    "command": "copyRelativeFilePath"
+  },
+
+  // Toggle minimap
+  {
+    "key": "cmd+k cmd+m",
+    "command": "editor.action.toggleMinimap"
+  },
+
+  // Close other editors
+  {
+    "key": "cmd+alt+t",
+    "command": "workbench.action.closeOtherEditors"
+  },
+
+  // ===== GIT SHORTCUTS =====
+
+  // Git shortcuts for efficiency
+  {
+    "key": "cmd+shift+g g",
+    "command": "git.openChange"
+  },
+  {
+    "key": "cmd+shift+g c",
+    "command": "git.commit"
+  },
+  {
+    "key": "cmd+shift+g p",
+    "command": "git.push"
+  },
+  {
+    "key": "cmd+shift+g s",
+    "command": "git.sync"
+  },
+
+  // ===== DEBUGGING SHORTCUTS =====
+
+  // Debug shortcuts
+  {
+    "key": "f5",
+    "command": "workbench.action.debug.start"
+  },
+  {
+    "key": "shift+f5",
+    "command": "workbench.action.debug.stop"
+  },
+  {
+    "key": "f9",
+    "command": "editor.debug.action.toggleBreakpoint"
+  },
+  {
+    "key": "f10",
+    "command": "workbench.action.debug.stepOver"
+  },
+  {
+    "key": "f11",
+    "command": "workbench.action.debug.stepInto"
+  },
+  {
+    "key": "shift+f11",
+    "command": "workbench.action.debug.stepOut"
+  }
+]

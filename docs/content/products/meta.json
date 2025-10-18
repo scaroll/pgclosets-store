@@ -1,0 +1,10 @@
+{
+  "title": "Products",
+  "order": 2,
+  "pages": {
+    "renin-overview": 1,
+    "closet-systems": 2,
+    "barn-doors": 3,
+    "hardware": 4
+  }
+}

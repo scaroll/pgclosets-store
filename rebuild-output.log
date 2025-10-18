@@ -1,0 +1,939 @@
+
+> pg-closets-website@0.1.0 build
+> next build
+
+ ⚠ You are using a non-standard "NODE_ENV" value in your environment. This creates inconsistencies in the project and is strongly advised against. Read more: https://nextjs.org/docs/messages/non-standard-node-env
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/spencercarroll/pnpm-lock.yaml as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/spencercarroll/pgclosets-store-main/package-lock.json
+
+   ▲ Next.js 15.5.4
+   - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/InlineCode.module.scss
+Setting up new context...
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Fade.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Pulse.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/NavIcon.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/StatusIndicator.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Spinner.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/MasonryGrid.module.scss
+JIT TOTAL: 119.88ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Accordion.module.scss
+JIT TOTAL: 0.443ms
+
+
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/AutoScroll.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/AvatarGroup.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Arrow.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Avatar.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Button.module.scss
+JIT TOTAL: 1.711ms
+
+
+
+
+
+
+
+
+
+
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Card.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Chip.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Background.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Badge.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/SharedInteractiveStyles.module.scss
+JIT TOTAL: 1.675ms
+
+
+
+
+
+
+
+
+
+
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/CursorCard.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/ContextMenu.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/DropdownWrapper.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/CompareImage.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Carousel.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Dialog.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/IconButton.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/DatePicker.module.scss
+JIT TOTAL: 2.513ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/List.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Mask.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Icon.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/NumberInput.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Scroller.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/ScrollToTop.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/OTPInput.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/RevealFx.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/HoloFx.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Option.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/LogoCloud.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Skeleton.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Input.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/GlitchFx.module.scss
+JIT TOTAL: 3.826ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Table.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Tag.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/StyleOverlay.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/StylePanel.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Switch.module.scss
+JIT TOTAL: 1.747ms
+
+
+
+
+
+
+
+
+
+
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Toast.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/TiltFx.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/UserMenu.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Toaster.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/ToggleButton.module.scss
+JIT TOTAL: 2.32ms
+
+
+
+
+
+
+
+
+
+
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/InlineCode.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Fade.module.scss
+JIT TOTAL: 0.641ms
+
+
+
+
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Pulse.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/NavIcon.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/StatusIndicator.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Spinner.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/MasonryGrid.module.scss
+JIT TOTAL: 1.728ms
+
+
+
+
+
+
+
+
+
+
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/navigation/MegaMenu.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/navigation/HeadingLink.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/media/MediaUpload.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/code/CodeBlock.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/navigation/Kbar.module.scss
+JIT TOTAL: 1.419ms
+
+
+
+
+
+
+
+
+
+
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:55983) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/app/globals-unified.css
+Setting up new context...
+Finding changed files: 18.095ms
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/styles/apple-typography.css
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/styles/apple-colors.css
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/styles/apple-polish.css
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/styles/apple-spacing.css
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/styles/apple-glass.css
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/styles/mobile-performance.css
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/styles/mobile-touch.css
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/styles/mobile-enhancements.css
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/css/styles.css
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/css/tokens.css
+JIT TOTAL: 168.111ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+Reading changed files: 826.399ms
+Sorting candidates: 25.301ms
+Generate rules: 304.374ms
+Build stylesheet: 4.958ms
+Potential classes:  39594
+Active contexts:  1
+
+
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/InlineCode.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Fade.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Pulse.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/NavIcon.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/StatusIndicator.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Spinner.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/MasonryGrid.module.scss
+JIT TOTAL: 2.203ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Accordion.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/AutoScroll.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Arrow.module.scss
+JIT TOTAL: 1.012ms
+
+
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Card.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/AvatarGroup.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Avatar.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Badge.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/SharedInteractiveStyles.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Button.module.scss
+JIT TOTAL: 2.409ms
+
+
+
+
+
+
+
+
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/CursorCard.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/DropdownWrapper.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/ContextMenu.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/CompareImage.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Carousel.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Chip.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Background.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Dialog.module.scss
+JIT TOTAL: 3.095ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/DatePicker.module.scss
+JIT TOTAL: 0.678ms
+
+
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Icon.module.scss
+JIT TOTAL: 0.488ms
+
+
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/HoloFx.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/IconButton.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Input.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/GlitchFx.module.scss
+JIT TOTAL: 1.725ms
+
+
+
+
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/List.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/LogoCloud.module.scss
+JIT TOTAL: 0.74ms
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Mask.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/NumberInput.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/OTPInput.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Option.module.scss
+JIT TOTAL: 1.498ms
+
+
+
+
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/ScrollToTop.module.scss
+JIT TOTAL: 0.51ms
+
+
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Scroller.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Skeleton.module.scss
+JIT TOTAL: 0.848ms
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/RevealFx.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/StylePanel.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Switch.module.scss
+JIT TOTAL: 1.313ms
+
+
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/StyleOverlay.module.scss
+JIT TOTAL: 0.418ms
+
+
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Toast.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/TiltFx.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Tag.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Toaster.module.scss
+JIT TOTAL: 2.76ms
+
+
+
+
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/UserMenu.module.scss
+JIT TOTAL: 0.462ms
+
+
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/ToggleButton.module.scss
+JIT TOTAL: 0.439ms
+
+
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/components/Table.module.scss
+JIT TOTAL: 0.385ms
+
+
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/code/CodeDiff.css
+JIT TOTAL: 0.696ms
+
+
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/code/CodeHighlight.css
+JIT TOTAL: 0.536ms
+
+
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/code/LineNumber.css
+JIT TOTAL: 0.573ms
+
+
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/navigation/MegaMenu.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/navigation/HeadingLink.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/media/MediaUpload.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/code/CodeBlock.module.scss
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/node_modules/@once-ui-system/core/dist/modules/navigation/Kbar.module.scss
+JIT TOTAL: 2.589ms
+
+
+
+
+
+
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/styles/tokens.css
+
+
+Source path: /Users/spencercarroll/pgclosets-store-main/styles/typography.css
+JIT TOTAL: 2.028ms
+
+
+
+
+(node:56179) Warning: Label 'JIT TOTAL' already exists for console.time()
+(node:56179) Warning: No such label 'JIT TOTAL' for console.timeEnd()
+ ✓ Compiled successfully in 31.3s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+ ⚠ Using edge runtime on a page currently disables static generation for that page
+   Generating static pages (0/226) ...
+Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at x (.next/server/chunks/65611.js:6:1351)
+Error occurred prerendering page "/404". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at x (.next/server/chunks/65611.js:6:1351)
+Export encountered an error on /_error: /404, exiting the build.
+ ⨯ Next.js build worker exited with code: 1 and signal: null

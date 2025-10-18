@@ -1,0 +1,148 @@
+"use client"
+
+import { useState, Suspense, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
+import { getProducts } from "@/lib/actions/commerce"
+import type { Product } from "@/types/commerce"
+import dynamic from "next/dynamic"
+
+// Dynamically import components for better performance
+const SearchFilters = dynamic(() =>
+  import("@/components/search/SearchFilters").then(mod => ({ default: mod.SearchFilters })),
+  { ssr: false }
+)
+const SearchResults = dynamic(() =>
+  import("@/components/search/SearchResults").then(mod => ({ default: mod.SearchResults })),
+  { ssr: false }
+)
+const SearchHeader = dynamic(() =>
+  import("@/components/search/SearchHeader").then(mod => ({ default: mod.SearchHeader })),
+  { ssr: false }
+)
+const SearchBreadcrumb = dynamic(() =>
+  import("@/components/search/SearchBreadcrumb").then(mod => ({ default: mod.SearchBreadcrumb })),
+  { ssr: false }
+)
+
+function SearchContent() {
+  const searchParams = useSearchParams()
+  const [products, setProducts] = useState<Product[]>([])
+  const [searchQuery, setSearchQuery] = useState(searchParams?.get("q") || "")
+  const [selectedCategory, setSelectedCategory] = useState("All Categories")
+  const [priceRange, setPriceRange] = useState([0, 500000])
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([])
+  const [sortBy, setSortBy] = useState("relevance")
+  const [viewMode, setViewMode] = useState("grid")
+  const [showFilters, setShowFilters] = useState(false)
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const params: { query: string; collection?: string } = { query: searchQuery }
+      if (selectedCategory !== 'All Categories') {
+        params.collection = selectedCategory
+      }
+      const fetchedProducts = await getProducts(params)
+      setProducts(fetchedProducts)
+    }
+    fetchProducts()
+  }, [searchQuery, selectedCategory])
+
+  const handleSearch = () => {
+    // Trigger search when filters change
+  }
+
+  const filteredResults = products.filter((product) => {
+    const firstVariant = product.variants[0]
+    const minPrice = priceRange[0] ?? 0
+    const maxPrice = priceRange[1] ?? 500000
+    const matchesPrice = firstVariant ?
+      (firstVariant.price || 0) >= minPrice && (firstVariant.price || 0) <= maxPrice :
+      true
+    const matchesFeatures = selectedFeatures.length === 0 ||
+      (product.tags &&
+        selectedFeatures.some((feature) =>
+          product.tags?.some((productTag) =>
+            productTag.toLowerCase().includes(feature.toLowerCase())
+          )
+        ))
+
+    return matchesPrice && matchesFeatures
+  })
+
+  const sortedResults = [...filteredResults].sort((a, b) => {
+    switch (sortBy) {
+      case "price-low":
+        return (a.variants[0]?.price || 0) - (b.variants[0]?.price || 0)
+      case "price-high":
+        return (b.variants[0]?.price || 0) - (a.variants[0]?.price || 0)
+      case "rating":
+        return 0 // No rating data yet
+      case "newest":
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      default:
+        return 0
+    }
+  })
+
+  return (
+    <div className="min-h-screen bg-background">
+      <SearchHeader
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+
+      <SearchBreadcrumb
+        searchQuery={searchQuery}
+        resultsCount={sortedResults.length}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex gap-8">
+          {/* Filters Sidebar */}
+          <div className={`w-80 space-y-6 ${showFilters ? "block" : "hidden lg:block"}`}>
+            <SearchFilters
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+              priceRange={priceRange}
+              setPriceRange={setPriceRange}
+              selectedFeatures={selectedFeatures}
+              setSelectedFeatures={setSelectedFeatures}
+              sortBy={sortBy}
+              setSortBy={setSortBy}
+              showFilters={showFilters}
+              setShowFilters={setShowFilters}
+              onSearch={handleSearch}
+            />
+          </div>
+
+          {/* Main Content */}
+          <div className="flex-1">
+            <SearchResults
+              viewMode={viewMode}
+              setViewMode={setViewMode}
+              filteredResults={sortedResults}
+              resultsCount={sortedResults.length}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4" />
+          <p className="text-muted-foreground">Loading search...</p>
+        </div>
+      </div>
+    }>
+      <SearchContent />
+    </Suspense>
+  )
+}

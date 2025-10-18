@@ -1,0 +1,141 @@
+
+> pg-closets-website@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.4
+   - Environments: .env.local, .env
+   - Experiments (use with caution):
+     · serverActions
+     · optimizePackageImports
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 6.4s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+ ⚠ Using edge runtime on a page currently disables static generation for that page
+   Generating static pages (0/156) ...
+   Generating static pages (39/156) 
+   Generating static pages (78/156) 
+   Generating static pages (117/156) 
+Failed to load dynamic font for ✓ . Error: [Error: Failed to download dynamic font. Status: 400]
+ ✓ Generating static pages (156/156)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                                        Size  First Load JS  Revalidate  Expire
+┌ ○ /                                                           8.28 kB         173 kB
+├ ○ /_not-found                                                   212 B         102 kB
+├ ○ /about                                                      3.45 kB         168 kB
+├ ○ /account                                                    1.09 kB         163 kB
+├ ○ /account/addresses                                            181 B         105 kB
+├ ○ /account/orders                                               212 B         102 kB
+├ ○ /account/payment-methods                                      181 B         105 kB
+├ ○ /account/profile                                             3.3 kB         127 kB
+├ ○ /account/settings                                           5.15 kB         143 kB
+├ ○ /admin/blob-audit                                           5.64 kB         119 kB
+├ ○ /admin/product-images                                       5.41 kB         137 kB
+├ ○ /admin/product-mapping                                      4.46 kB         142 kB
+├ ○ /admin/products                                             13.9 kB         162 kB
+├ ƒ /api/auth/login                                               212 B         102 kB
+├ ƒ /api/auth/logout                                              212 B         102 kB
+├ ƒ /api/auth/session                                             212 B         102 kB
+├ ƒ /api/bookings/measurement                                     212 B         102 kB
+├ ƒ /api/delete                                                   212 B         102 kB
+├ ƒ /api/errors                                                   212 B         102 kB
+├ ƒ /api/health                                                   212 B         102 kB
+├ ƒ /api/list                                                     212 B         102 kB
+├ ƒ /api/monitoring                                               212 B         102 kB
+├ ƒ /api/products                                                 212 B         102 kB
+├ ƒ /api/products/[handle]                                        212 B         102 kB
+├ ƒ /api/quotes/quick                                             212 B         102 kB
+├ ƒ /api/quotes/renin                                             212 B         102 kB
+├ ƒ /api/simple-checkout                                          212 B         102 kB
+├ ƒ /api/status                                                   212 B         102 kB
+├ ƒ /api/upload                                                   212 B         102 kB
+├ ƒ /api/webhooks/paddle                                          212 B         102 kB
+├ ○ /barrhaven                                                   1.1 kB         163 kB
+├ ○ /blob-contents                                              5.23 kB         119 kB
+├ ○ /blog                                                       1.09 kB         163 kB
+├ ● /blog/[slug]                                                  179 B         111 kB
+├   ├ /blog/choosing-right-closet-doors-ottawa-homes
+├   ├ /blog/barn-doors-vs-traditional-doors-ottawa
+├   └ /blog/renin-doors-official-dealer-ottawa
+├ ○ /book-measurement                                           5.89 kB         113 kB
+├ ○ /cart                                                       5.39 kB         173 kB
+├ ○ /checkout                                                    1.1 kB         163 kB
+├ ○ /checkout/confirmation                                        179 B         111 kB
+├ ○ /contact                                                    3.67 kB         168 kB
+├ ○ /faq                                                        6.08 kB         170 kB
+├ ○ /files                                                      2.68 kB         123 kB
+├ ○ /forgot-password                                            1.71 kB         120 kB
+├ ○ /gallery                                                     2.4 kB         125 kB
+├ ○ /installation-ottawa                                        1.09 kB         163 kB
+├ ○ /kanata                                                      1.1 kB         163 kB
+├ ○ /legal/privacy                                               1.1 kB         163 kB
+├ ○ /legal/terms                                                 1.1 kB         163 kB
+├ ○ /manifest.webmanifest                                         212 B         102 kB
+├ ○ /navigation-demo                                            5.06 kB         117 kB
+├ ○ /nepean                                                      1.1 kB         163 kB
+├ ○ /offline                                                    3.38 kB         115 kB
+├ ○ /opengraph-image                                              212 B         102 kB
+├ ○ /orleans                                                     1.1 kB         163 kB
+├ ○ /ottawa                                                      1.1 kB         163 kB
+├ ○ /privacy-policy                                              1.1 kB         163 kB
+├ ƒ /products                                                   5.69 kB         167 kB
+├ ● /products/[slug]                                            6.48 kB         176 kB          1h      1y
+├   ├ /products/ashbury-2-panel-design-steel-frame-bypass-door                                  1h      1y
+├   ├ /products/tear-drop-latch                                                                 1h      1y
+├   ├ /products/cairns-door-handle                                                              1h      1y
+├   └ [+30 more paths]
+├ ƒ /products/barn-doors                                        1.09 kB         163 kB
+├ ○ /products/catalog                                           14.4 kB         190 kB
+├ ƒ /products/closet-systems                                    1.09 kB         163 kB
+├ ƒ /products/hardware                                          1.09 kB         163 kB
+├ ƒ /products/interior-doors                                    1.09 kB         163 kB
+├ ƒ /products/room-dividers                                     1.09 kB         163 kB
+├ ƒ /products/search                                            15.3 kB         185 kB
+├ ○ /quote                                                       7.7 kB         128 kB
+├ ○ /register                                                   2.44 kB         121 kB
+├ ○ /renin                                                       1.1 kB         163 kB
+├ ○ /renin-quotes                                               6.51 kB         120 kB
+├ ○ /renin/barrhaven                                             1.1 kB         163 kB
+├ ○ /renin/kanata                                                1.1 kB         163 kB
+├ ○ /renin/orleans                                               1.1 kB         163 kB
+├ ○ /renin/ottawa                                                1.1 kB         163 kB
+├ ○ /request-work                                               5.49 kB         170 kB
+├ ○ /return-policy                                                181 B         105 kB
+├ ○ /robots.txt                                                   212 B         102 kB
+├ ○ /search                                                     48.9 kB         156 kB
+├ ○ /services                                                   1.09 kB         163 kB
+├ ○ /shipping-policy                                            1.09 kB         163 kB
+├ ○ /simple-cart                                                5.02 kB         122 kB
+├ ○ /simple-products                                            3.08 kB         127 kB
+├ ● /simple-products/[slug]                                     3.03 kB         120 kB
+├   ├ /simple-products/euro-1-lite-bypass
+├   ├ /simple-products/euro-3-lite-bypass
+├   ├ /simple-products/euro-5-lite-bypass
+├   └ [+30 more paths]
+├ ○ /sitemap.xml                                                  212 B         102 kB
+├ ○ /storage-check                                              4.51 kB         118 kB
+├ ○ /store                                                      3.14 kB         177 kB
+├ ƒ /store/products                                             2.76 kB         176 kB
+├ ƒ /store/products/[slug]                                      11.1 kB         185 kB
+├ ○ /terms-of-service                                             181 B         105 kB
+├ ○ /twitter-image                                                212 B         102 kB
+├ ○ /upload                                                     8.02 kB         165 kB
+├ ○ /visualizer                                                 14.6 kB         191 kB
+├ ○ /why-pg                                                     1.09 kB         163 kB
+└ ○ /wishlist                                                    1.1 kB         163 kB
++ First Load JS shared by all                                    102 kB
+  ├ chunks/1255-b00d55424d42ab78.js                             45.3 kB
+  ├ chunks/4bd1b696-182b6b13bdad92e3.js                         54.2 kB
+  └ other shared chunks (total)                                 2.29 kB
+
+
+ƒ Middleware                                                      40 kB
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

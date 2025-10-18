@@ -1,0 +1,272 @@
+import type { Metadata } from 'next'
+import './globals.css'
+import '@/styles/apple-glass.css'
+import { Inter, Playfair_Display } from 'next/font/google'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import ScrollProgress from '@/components/ScrollProgress'
+import Script from 'next/script'
+import { StructuredData } from '@/components/StructuredData'
+import { BUSINESS_INFO } from '@/lib/business-config'
+import Analytics from '@/app/components/Analytics'
+import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/seo/comprehensive-schema'
+
+// Font optimization with preloading and display swap
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans-body',
+  display: 'swap',
+  preload: true,
+  weight: ['400', '500', '600'],
+  adjustFontFallback: true,
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-serif-display',
+  display: 'swap',
+  preload: true,
+  weight: ['400', '600', '700'],
+  adjustFontFallback: true,
+})
+
+export const metadata: Metadata = {
+  metadataBase: new URL(BUSINESS_INFO.urls.main),
+  alternates: {
+    canonical: '/',
+  },
+  title: {
+    default: `${BUSINESS_INFO.name} | Custom Closets & Storage Solutions in Ottawa`,
+    template: `%s | ${BUSINESS_INFO.name}`
+  },
+  description: 'Premium custom closets, pantries & storage solutions in Ottawa. Professional design & installation by local experts. Renin authorized dealer.',
+  keywords: [
+    // Primary keywords
+    'custom closets Ottawa',
+    'closet design Ottawa',
+    'storage solutions Ottawa',
+    // Secondary keywords
+    'pantry organization Ottawa',
+    'garage storage Ottawa',
+    'closet installation Ottawa',
+    'home organization Ottawa',
+    'custom storage NCR',
+    // Long-tail keywords
+    'Renin closet doors Ottawa',
+    'custom pantry shelving Ottawa',
+    'walk-in closet design Ottawa',
+    'closet organization systems',
+    // Additional context
+    'closet renovation Ottawa',
+    'storage specialists Ottawa',
+    'custom cabinetry Ottawa',
+    'home improvement Ottawa',
+  ],
+  authors: [{ name: BUSINESS_INFO.name, url: BUSINESS_INFO.urls.main }],
+  creator: BUSINESS_INFO.name,
+  publisher: BUSINESS_INFO.name,
+  openGraph: {
+    type: 'website',
+    locale: 'en_CA',
+    url: BUSINESS_INFO.urls.main,
+    siteName: `${BUSINESS_INFO.name} - Custom Storage Solutions Ottawa`,
+    title: `${BUSINESS_INFO.name} | Premium Custom Closets & Storage in Ottawa`,
+    description: 'Transform your space with premium custom closets and storage solutions. Professional design & installation in Ottawa. Renin authorized dealer.',
+    images: [
+      {
+        url: BUSINESS_INFO.urls.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${BUSINESS_INFO.name} - Premium Custom Storage Solutions Ottawa`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${BUSINESS_INFO.name} | Custom Closets & Storage Ottawa`,
+    description: 'Premium custom closets and storage solutions in Ottawa. Professional design & installation.',
+    images: [BUSINESS_INFO.urls.ogImage],
+    creator: '@pgclosets',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  // Performance optimization metadata
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    'geo.region': `CA-${BUSINESS_INFO.address.province}`,
+    'geo.placename': BUSINESS_INFO.address.city,
+    'geo.position': `${BUSINESS_INFO.coordinates.latitude};${BUSINESS_INFO.coordinates.longitude}`,
+    ICBM: `${BUSINESS_INFO.coordinates.latitude}, ${BUSINESS_INFO.coordinates.longitude}`,
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    other: {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION || '',
+    },
+  },
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const shouldInjectToolbar = process.env.NODE_ENV === 'development'
+
+  // Generate sitewide schemas
+  const organizationSchema = generateOrganizationSchema()
+  const websiteSchema = generateWebSiteSchema()
+  const graphSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, websiteSchema]
+  }
+
+  return (
+    <html lang="en" className={`scroll-smooth ${playfair.variable} ${inter.variable}`}>
+      <head>
+        {/* Critical Resource Hints - Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.renin.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" />
+
+        {/* Preload critical assets - Hero image */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/elegant-barn-door-closet.png"
+          type="image/png"
+          // @ts-ignore - Next.js supports this
+          fetchpriority="high"
+        />
+
+        {/* Inline critical CSS for above-the-fold content */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            /* Critical CSS - Inlined for immediate rendering */
+            body{margin:0;padding:0;background:#F9FAFB}
+            .dark body{background:#1a1a1a}
+            *{box-sizing:border-box}
+            @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+          `
+        }} />
+
+        {/* Global Structured Data for SEO - Organization and Website schemas */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }}
+        />
+      </head>
+      <body className="antialiased font-sans-body">
+        {/* Skip to main content link for keyboard navigation */}
+        <a href="#main-content" className="skip-to-content sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-md">
+          Skip to main content
+        </a>
+
+        <ScrollProgress />
+        <Navigation />
+
+        <main id="main-content" className="min-h-screen" tabIndex={-1} role="main">
+          {children}
+        </main>
+
+        <Footer />
+
+        {/* Analytics Component - Handles GA and Vercel Analytics */}
+        <Analytics />
+
+        {/* Google Analytics */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                  page_title: document.title,
+                  page_location: window.location.href,
+                  custom_map: {
+                    'custom_dimension_1': 'service_area',
+                    'custom_dimension_2': 'product_category'
+                  }
+                });
+
+                // Track local business events
+                gtag('event', 'page_view', {
+                  'service_area': '${BUSINESS_INFO.address.city}',
+                  'business_type': 'local_business',
+                  'product_focus': 'custom_closets_storage'
+                });
+              `}
+            </Script>
+          </>
+        )}
+
+        {/* Google My Business integration */}
+        <Script id="gmb-integration" strategy="afterInteractive">
+          {`
+            // Google My Business click tracking
+            function trackGMBClick(action) {
+              if (typeof gtag !== 'undefined') {
+                gtag('event', 'gmb_interaction', {
+                  'event_category': 'Local Business',
+                  'event_label': action,
+                  'service_area': '${BUSINESS_INFO.address.city}'
+                });
+              }
+            }
+            window.trackGMBClick = trackGMBClick;
+          `}
+        </Script>
+
+        {/* Web Vitals tracking - load after page interactive */}
+        <Script
+          id="web-vitals"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if('PerformanceObserver' in window){
+                const observer=new PerformanceObserver(list=>{
+                  list.getEntries().forEach(entry=>{
+                    if(entry.name==='first-contentful-paint'){
+                      console.log('FCP:',entry.startTime);
+                    }
+                    if(entry.entryType==='largest-contentful-paint'){
+                      console.log('LCP:',entry.startTime);
+                    }
+                  });
+                });
+                observer.observe({entryTypes:['paint','largest-contentful-paint']});
+              }
+            `
+          }}
+        />
+
+        {shouldInjectToolbar && (
+          <Script
+            id="vercel-toolbar"
+            src="https://vercel.live/toolbar"
+            strategy="afterInteractive"
+          />
+        )}
+      </body>
+    </html>
+  )
+}

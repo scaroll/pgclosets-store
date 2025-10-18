@@ -1,0 +1,736 @@
+[
+  {
+    "id": "bypass-modern-minimalist",
+    "slug": "modern-minimalist-bypass-closet-door",
+    "name": "Modern Minimalist Bypass Closet Door",
+    "brand": "PG Closets",
+    "tagline": "Clean lines. Maximum light. Pure sophistication.",
+    "description": "Transform your Ottawa bedroom with our Modern Minimalist Bypass Door system. Featuring ultra-slim aluminum frames and frosted glass panels, this contemporary design maximizes natural light while maintaining privacy. The whisper-quiet soft-close mechanism ensures smooth, effortless operation for years to come. Engineered for Canadian homes with superior weather sealing and precision-machined hardware. Each panel is crafted with tempered safety glass and powder-coated aluminum that resists corrosion in all seasons. Perfect for condos, townhomes, and modern residential spaces across Ottawa, Kanata, and Barrhaven. Installation takes just 4-6 hours with our professional team, and every system includes our industry-leading 10-year warranty on all mechanical components.",
+    "features": [
+      "Ultra-slim 1.5\" aluminum frame profile for maximum glass visibility",
+      "German-engineered soft-close mechanism with adjustable speed control",
+      "Tempered frosted glass panels for enhanced privacy and light diffusion",
+      "Dual-roller precision track system supporting up to 90 kg per panel",
+      "Integrated floor guide prevents swaying and ensures smooth travel",
+      "Powder-coated finish in Matte Black or Brushed Nickel",
+      "Tool-free height adjustment (±15mm) for uneven floors"
+    ],
+    "specifications": {
+      "Frame Material": "6063-T5 Aluminum Alloy",
+      "Glass Type": "6mm Tempered Frosted Safety Glass",
+      "Track System": "Dual-Roller Top-Hung with Adjustable Soft-Close",
+      "Weight Capacity": "90 kg per panel",
+      "Finish Options": "Matte Black, Brushed Nickel",
+      "Warranty": "10 years mechanical, 5 years finish",
+      "Installation Time": "4-6 hours professional installation",
+      "Made In": "Assembled in Canada with imported components"
+    },
+    "attributes": {
+      "type": "bypass",
+      "style": "frosted",
+      "frame": "aluminum",
+      "finish": "matte-black",
+      "glazing": "frosted"
+    },
+    "media": [
+      {
+        "url": "/images/products/bypass-modern-minimalist-hero.jpg",
+        "alt": "Modern minimalist bypass closet door with frosted glass and matte black frame in contemporary Ottawa bedroom",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/bypass-modern-minimalist-detail.jpg",
+        "alt": "Close-up of ultra-slim aluminum frame profile and soft-close mechanism",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "url": "/images/products/bypass-modern-minimalist-lifestyle.jpg",
+        "alt": "Modern bypass doors installed in bright Kanata master bedroom with natural light",
+        "role": "lifestyle",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/bypass-modern-minimalist-installation.jpg",
+        "alt": "Professional installation showing dual-roller track system and floor guide",
+        "role": "gallery",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "variants": [
+      {
+        "sku": "BYPASS-MIN-60x80",
+        "size": {
+          "widthInches": 60,
+          "heightInches": 80
+        },
+        "priceCAD": 649,
+        "availability": "InStock",
+        "leadTimeDays": 7,
+        "installAddonCAD": 350,
+        "options": {
+          "softClose": true,
+          "trackSystem": "Dual-Roller Premium",
+          "hardware": "Adjustable Floor Guide"
+        }
+      },
+      {
+        "sku": "BYPASS-MIN-72x80",
+        "size": {
+          "widthInches": 72,
+          "heightInches": 80
+        },
+        "priceCAD": 729,
+        "availability": "InStock",
+        "leadTimeDays": 7,
+        "installAddonCAD": 375,
+        "options": {
+          "softClose": true,
+          "trackSystem": "Dual-Roller Premium",
+          "hardware": "Adjustable Floor Guide"
+        }
+      },
+      {
+        "sku": "BYPASS-MIN-96x84",
+        "size": {
+          "widthInches": 96,
+          "heightInches": 84
+        },
+        "priceCAD": 849,
+        "availability": "InStock",
+        "leadTimeDays": 10,
+        "installAddonCAD": 425,
+        "options": {
+          "softClose": true,
+          "trackSystem": "Dual-Roller Premium",
+          "hardware": "Adjustable Floor Guide"
+        }
+      }
+    ],
+    "badges": ["Best Seller", "Canadian Made", "10-Year Warranty"],
+    "compliance": ["CSA B44.1/ASME A17.1", "WDMA I.S.1A", "Tempered Glass ANSI Z97.1"],
+    "relatedProductIds": ["bypass-traditional-mirror", "bifold-shaker-white", "barn-contemporary-steel"],
+    "seo": {
+      "title": "Modern Bypass Closet Doors Ottawa | Frosted Glass | PG Closets",
+      "description": "Premium bypass closet doors with ultra-slim frames and frosted glass. Soft-close, Canadian-made, 10-year warranty. Professional installation in Ottawa, Kanata, Barrhaven. From $649 CAD.",
+      "keywords": ["bypass closet doors Ottawa", "frosted glass closet doors", "modern closet doors Kanata", "soft-close bypass doors", "minimalist closet doors Canada"],
+      "ogImage": "/images/products/bypass-modern-minimalist-og.jpg"
+    },
+    "createdAt": "2025-09-15T10:00:00Z",
+    "updatedAt": "2025-10-06T12:00:00Z"
+  },
+  {
+    "id": "bypass-traditional-mirror",
+    "slug": "traditional-mirror-bypass-closet-door",
+    "name": "Traditional Mirror Bypass Closet Door",
+    "brand": "PG Closets",
+    "tagline": "Classic elegance meets modern functionality.",
+    "description": "Elevate your Ottawa home with our Traditional Mirror Bypass Door system, combining timeless style with contemporary performance. Full-length bevelled mirrors visually expand your space while the robust steel frame ensures decades of reliable service. Our precision-engineered roller system operates silently on a heavy-duty track, perfect for high-traffic master bedrooms and walk-in closets. Each mirror panel features safety backing that prevents shattering, and the frame's baked enamel finish resists fingerprints and daily wear. Designed specifically for Canadian homes with reinforced construction that withstands temperature fluctuations from -30°C to +40°C. Professional installation includes precise levelling and secure mounting to any wall type. Popular across Orleans, Nepean, and Stittsville for bedrooms, dressing rooms, and luxury closet renovations.",
+    "features": [
+      "Full-length 4mm bevelled edge mirrors with safety backing",
+      "Heavy-duty steel frame in Bright White or Champagne finish",
+      "Commercial-grade ball-bearing roller system rated for 100,000 cycles",
+      "Shatter-resistant safety backing prevents mirror breakage",
+      "Baked enamel finish resists fingerprints and moisture",
+      "Reinforced construction for Canadian temperature extremes",
+      "Adjustable bottom track accommodates floor variations up to 20mm"
+    ],
+    "specifications": {
+      "Frame Material": "Cold-Rolled Steel with Baked Enamel",
+      "Glass Type": "4mm Bevelled Mirror with Safety Backing",
+      "Track System": "Ball-Bearing Roller with Bottom Guide",
+      "Weight Capacity": "110 kg per panel",
+      "Finish Options": "Bright White, Champagne",
+      "Warranty": "15 years mirror backing, 10 years mechanical",
+      "Installation Time": "5-7 hours professional installation",
+      "Made In": "Canada"
+    },
+    "attributes": {
+      "type": "bypass",
+      "style": "mirror",
+      "frame": "steel",
+      "finish": "bright-white",
+      "glazing": "mirror"
+    },
+    "media": [
+      {
+        "url": "/images/products/bypass-mirror-traditional-hero.jpg",
+        "alt": "Traditional mirror bypass closet doors with white steel frame in elegant Ottawa master bedroom",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/bypass-mirror-traditional-detail.jpg",
+        "alt": "Close-up of bevelled edge mirror and ball-bearing roller mechanism",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "url": "/images/products/bypass-mirror-traditional-lifestyle.jpg",
+        "alt": "Full-length mirror bypass doors reflecting natural light in Nepean walk-in closet",
+        "role": "lifestyle",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/bypass-mirror-traditional-room.jpg",
+        "alt": "Mirror bypass doors installed in spacious Stittsville bedroom with expanded visual space",
+        "role": "gallery",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "BYPASS-MIR-60x80",
+        "size": {
+          "widthInches": 60,
+          "heightInches": 80
+        },
+        "priceCAD": 549,
+        "availability": "InStock",
+        "leadTimeDays": 5,
+        "installAddonCAD": 325,
+        "options": {
+          "softClose": false,
+          "trackSystem": "Ball-Bearing Standard",
+          "hardware": "Bottom Track Guide"
+        }
+      },
+      {
+        "sku": "BYPASS-MIR-72x80",
+        "size": {
+          "widthInches": 72,
+          "heightInches": 80
+        },
+        "priceCAD": 619,
+        "availability": "InStock",
+        "leadTimeDays": 5,
+        "installAddonCAD": 350,
+        "options": {
+          "softClose": false,
+          "trackSystem": "Ball-Bearing Standard",
+          "hardware": "Bottom Track Guide"
+        }
+      },
+      {
+        "sku": "BYPASS-MIR-96x84",
+        "size": {
+          "widthInches": 96,
+          "heightInches": 84
+        },
+        "priceCAD": 749,
+        "availability": "InStock",
+        "leadTimeDays": 7,
+        "installAddonCAD": 400,
+        "options": {
+          "softClose": false,
+          "trackSystem": "Ball-Bearing Standard",
+          "hardware": "Bottom Track Guide"
+        }
+      }
+    ],
+    "badges": ["Canadian Made", "15-Year Warranty", "Most Popular"],
+    "compliance": ["CSA C22.2", "ANSI Z97.1 Safety Glazing", "CPSC 16 CFR 1201"],
+    "relatedProductIds": ["bypass-modern-minimalist", "bifold-louvered-white", "pivot-frosted-glass"],
+    "seo": {
+      "title": "Mirror Bypass Closet Doors Ottawa | Traditional Steel Frame | PG Closets",
+      "description": "Classic mirror bypass doors with bevelled edges and steel frames. Canadian-made, safety-backed, 15-year warranty. Professional installation Ottawa, Orleans, Nepean. From $549 CAD.",
+      "keywords": ["mirror closet doors Ottawa", "bypass mirror doors", "traditional closet doors Orleans", "bevelled mirror doors", "steel frame closet doors Canada"],
+      "ogImage": "/images/products/bypass-mirror-traditional-og.jpg"
+    },
+    "createdAt": "2025-09-15T10:00:00Z",
+    "updatedAt": "2025-10-06T12:00:00Z"
+  },
+  {
+    "id": "bifold-shaker-white",
+    "slug": "shaker-style-bifold-closet-door",
+    "name": "Shaker Style Bifold Closet Door",
+    "brand": "PG Closets",
+    "tagline": "Timeless design. Space-saving brilliance.",
+    "description": "Discover the perfect blend of traditional craftsmanship and modern efficiency with our Shaker Style Bifold Door. Handcrafted from solid Canadian maple with classic raised panel design, these doors deliver authentic heritage styling while maximizing usable closet space. The bifold mechanism requires just 12 inches of swing clearance, ideal for Ottawa bedrooms where every square foot matters. Our precision-milled panels maintain tight tolerances for gap-free closure, and the mortise-and-tenon joinery ensures structural integrity that lasts generations. Each door arrives factory-primed and ready for your choice of paint or stain to match any décor. The smooth-gliding piano hinge system operates silently with magnetic catches for secure closure. Perfect for reach-in closets, pantries, and laundry rooms across Gloucester, Barrhaven, and throughout the Ottawa region. Professional installation includes proper alignment, floor clearance adjustment, and final finishing touches.",
+    "features": [
+      "Solid Canadian maple construction with raised Shaker panel design",
+      "Mortise-and-tenon joinery for superior structural integrity",
+      "Continuous piano hinge system for smooth, quiet operation",
+      "Factory-primed ready for custom paint or stain finish",
+      "Magnetic catch hardware ensures secure closure",
+      "Requires only 12\" swing clearance - ideal for tight spaces",
+      "Precision-milled for gap-free fit and professional appearance"
+    ],
+    "specifications": {
+      "Frame Material": "Solid Canadian Maple",
+      "Glass Type": "None",
+      "Track System": "Continuous Piano Hinge with Top Pivot",
+      "Weight Capacity": "25 kg per panel set",
+      "Finish Options": "Factory-Primed (Paint/Stain Ready)",
+      "Warranty": "Lifetime wood, 5 years hardware",
+      "Installation Time": "3-4 hours professional installation",
+      "Made In": "Canada"
+    },
+    "attributes": {
+      "type": "bifold",
+      "style": "panel-raised",
+      "frame": "wood",
+      "finish": "off-white",
+      "glazing": "none"
+    },
+    "media": [
+      {
+        "url": "/images/products/bifold-shaker-white-hero.jpg",
+        "alt": "Shaker style bifold closet doors in solid maple with raised panel design in Ottawa home",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/bifold-shaker-white-detail.jpg",
+        "alt": "Close-up of mortise-and-tenon joinery and raised Shaker panel detail",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "url": "/images/products/bifold-shaker-white-open.jpg",
+        "alt": "Bifold doors shown in open position demonstrating minimal swing clearance needed",
+        "role": "gallery",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "url": "/images/products/bifold-shaker-white-lifestyle.jpg",
+        "alt": "Shaker bifold doors installed in Barrhaven bedroom closet with organized interior",
+        "role": "lifestyle",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "BIFOLD-SHAK-24x80",
+        "size": {
+          "widthInches": 24,
+          "heightInches": 80
+        },
+        "priceCAD": 399,
+        "availability": "InStock",
+        "leadTimeDays": 10,
+        "installAddonCAD": 225,
+        "options": {
+          "softClose": false,
+          "trackSystem": "Piano Hinge Standard",
+          "hardware": "Magnetic Catch Included"
+        }
+      },
+      {
+        "sku": "BIFOLD-SHAK-30x80",
+        "size": {
+          "widthInches": 30,
+          "heightInches": 80
+        },
+        "priceCAD": 449,
+        "availability": "InStock",
+        "leadTimeDays": 10,
+        "installAddonCAD": 250,
+        "options": {
+          "softClose": false,
+          "trackSystem": "Piano Hinge Standard",
+          "hardware": "Magnetic Catch Included"
+        }
+      },
+      {
+        "sku": "BIFOLD-SHAK-36x84",
+        "size": {
+          "widthInches": 36,
+          "heightInches": 84
+        },
+        "priceCAD": 529,
+        "availability": "InStock",
+        "leadTimeDays": 12,
+        "installAddonCAD": 275,
+        "options": {
+          "softClose": false,
+          "trackSystem": "Piano Hinge Standard",
+          "hardware": "Magnetic Catch Included"
+        }
+      }
+    ],
+    "badges": ["Canadian Maple", "Lifetime Warranty", "Heritage Craftsmanship"],
+    "compliance": ["WDMA I.S.1A", "CSA O86 Wood Design", "CARB Phase 2 Compliant"],
+    "relatedProductIds": ["bifold-louvered-white", "pivot-frosted-glass", "bypass-modern-minimalist"],
+    "seo": {
+      "title": "Shaker Bifold Closet Doors Ottawa | Solid Maple | PG Closets",
+      "description": "Handcrafted Shaker bifold doors in solid Canadian maple. Raised panel design, lifetime warranty. Professional installation Ottawa, Barrhaven, Gloucester. From $399 CAD.",
+      "keywords": ["Shaker bifold doors Ottawa", "solid maple closet doors", "raised panel bifold", "Canadian maple doors", "traditional bifold doors Barrhaven"],
+      "ogImage": "/images/products/bifold-shaker-white-og.jpg"
+    },
+    "createdAt": "2025-09-15T10:00:00Z",
+    "updatedAt": "2025-10-06T12:00:00Z"
+  },
+  {
+    "id": "pivot-frosted-glass",
+    "slug": "contemporary-pivot-door-frosted-glass",
+    "name": "Contemporary Pivot Door - Frosted Glass",
+    "brand": "PG Closets",
+    "tagline": "Architectural statement. Effortless elegance.",
+    "description": "Make a bold architectural statement with our Contemporary Pivot Door featuring full-height frosted glass and minimal aluminum framing. The innovative pivot mechanism creates a floating appearance while providing smooth, balanced operation that feels effortless regardless of door size. Engineered for modern Ottawa homes, this system features concealed floor and header pivots that support up to 135 kg with precision ball bearings for silent, decade-long performance. The extra-wide frosted glass panel floods rooms with diffused natural light while maintaining privacy - perfect for walk-in closets, master bathrooms, and home offices. Our aerospace-grade aluminum frame resists warping in Canadian temperature extremes, and the optional soft-close dampening prevents slamming. Each installation includes custom threshold options for barrier-free accessibility. Popular in modern condos and contemporary homes across Kanata, Westboro, and downtown Ottawa. Transform any space with this stunning pivot door that combines Italian design sensibility with Canadian engineering excellence.",
+    "features": [
+      "Full-height frosted glass panel with minimal frame design",
+      "Concealed floor and header pivot system supports up to 135 kg",
+      "Precision ball-bearing mechanism rated for 200,000 cycles",
+      "Optional integrated soft-close dampening prevents door slamming",
+      "Aerospace-grade 6061-T6 aluminum resists warping and corrosion",
+      "Barrier-free threshold option for accessibility compliance",
+      "Custom pivot placement allows left or right swing configuration"
+    ],
+    "specifications": {
+      "Frame Material": "6061-T6 Aluminum Alloy",
+      "Glass Type": "8mm Tempered Frosted Safety Glass",
+      "Track System": "Concealed Floor/Header Pivot with Ball Bearings",
+      "Weight Capacity": "135 kg maximum door weight",
+      "Finish Options": "Brushed Nickel, Matte Black, Polished Chrome",
+      "Warranty": "15 years pivot mechanism, 10 years finish",
+      "Installation Time": "6-8 hours professional installation",
+      "Made In": "Imported components, assembled in Canada"
+    },
+    "attributes": {
+      "type": "pivot",
+      "style": "frosted",
+      "frame": "aluminum",
+      "finish": "brushed-nickel",
+      "glazing": "frosted"
+    },
+    "media": [
+      {
+        "url": "/images/products/pivot-frosted-contemporary-hero.jpg",
+        "alt": "Contemporary pivot door with full-height frosted glass in modern Kanata home office",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/pivot-frosted-contemporary-detail.jpg",
+        "alt": "Close-up of concealed floor pivot mechanism with precision ball bearings",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "url": "/images/products/pivot-frosted-contemporary-open.jpg",
+        "alt": "Pivot door in open position showing floating appearance and minimal hardware",
+        "role": "gallery",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "url": "/images/products/pivot-frosted-contemporary-lifestyle.jpg",
+        "alt": "Frosted glass pivot door installed in Ottawa master bathroom with natural light",
+        "role": "lifestyle",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "PIVOT-FROST-36x84",
+        "size": {
+          "widthInches": 36,
+          "heightInches": 84
+        },
+        "priceCAD": 849,
+        "availability": "InStock",
+        "leadTimeDays": 14,
+        "installAddonCAD": 450,
+        "options": {
+          "softClose": true,
+          "trackSystem": "Concealed Ball-Bearing Pivot",
+          "hardware": "Barrier-Free Threshold Available"
+        }
+      },
+      {
+        "sku": "PIVOT-FROST-42x90",
+        "size": {
+          "widthInches": 42,
+          "heightInches": 90
+        },
+        "priceCAD": 949,
+        "availability": "PreOrder",
+        "leadTimeDays": 21,
+        "installAddonCAD": 500,
+        "options": {
+          "softClose": true,
+          "trackSystem": "Concealed Ball-Bearing Pivot",
+          "hardware": "Barrier-Free Threshold Available"
+        }
+      }
+    ],
+    "badges": ["Architectural Grade", "15-Year Warranty", "Accessibility Ready"],
+    "compliance": ["ADA/AODA Accessibility", "ANSI A156.14 Pivot Standards", "Tempered Glass ASTM C1048"],
+    "relatedProductIds": ["barn-contemporary-steel", "bypass-modern-minimalist", "room-divider-accordion"],
+    "seo": {
+      "title": "Contemporary Pivot Doors Ottawa | Frosted Glass | PG Closets",
+      "description": "Architectural pivot doors with full-height frosted glass. Soft-close, accessibility-ready, 15-year warranty. Professional installation Kanata, Ottawa. From $849 CAD.",
+      "keywords": ["pivot doors Ottawa", "frosted glass pivot door", "contemporary doors Kanata", "architectural pivot doors", "modern pivot doors Canada"],
+      "ogImage": "/images/products/pivot-frosted-contemporary-og.jpg"
+    },
+    "createdAt": "2025-09-20T10:00:00Z",
+    "updatedAt": "2025-10-06T12:00:00Z"
+  },
+  {
+    "id": "barn-contemporary-steel",
+    "slug": "contemporary-barn-sliding-door-steel",
+    "name": "Contemporary Barn Sliding Door - Steel",
+    "brand": "PG Closets",
+    "tagline": "Industrial chic meets refined elegance.",
+    "description": "Bring modern industrial style to your Ottawa home with our Contemporary Barn Sliding Door. Featuring a powder-coated steel frame with clear or frosted glass inserts, this sliding barn door system delivers both stunning visual impact and practical space-saving functionality. The commercial-grade roller track system operates silently on precision ball bearings, while the soft-close mechanism prevents slamming and protects your walls. Each door is handcrafted with welded steel construction that's built to last decades, not years. The exposed hardware becomes a design feature with your choice of Matte Black, Oil-Rubbed Bronze, or Brushed Stainless finish. Perfect for walk-in closets, pantries, home offices, and room dividers across Orleans, Kanata, and throughout Ottawa. Installation includes professional mounting to studs or blocking, precise levelling, and complete hardware assembly. This barn door system works equally well in loft-style condos, renovated heritage homes, and new contemporary builds - adding character and functionality to any space.",
+    "features": [
+      "Welded steel frame construction with powder-coated finish",
+      "Commercial-grade roller system with precision ball bearings",
+      "Integrated soft-close dampening for the final 6 inches of travel",
+      "Clear or frosted tempered glass insert options",
+      "Exposed premium hardware in three finish options",
+      "Wall-mount track supports doors up to 180 kg",
+      "Includes floor guide to prevent door swing and wall damage"
+    ],
+    "specifications": {
+      "Frame Material": "Welded Steel with Powder Coat Finish",
+      "Glass Type": "6mm Tempered Clear or Frosted Safety Glass",
+      "Track System": "Wall-Mount Ball-Bearing with Soft-Close",
+      "Weight Capacity": "180 kg maximum door weight",
+      "Finish Options": "Matte Black, Oil-Rubbed Bronze, Brushed Stainless",
+      "Warranty": "Lifetime frame, 10 years hardware",
+      "Installation Time": "5-7 hours professional installation",
+      "Made In": "Manufactured in Ontario, Canada"
+    },
+    "attributes": {
+      "type": "barn-sliding",
+      "style": "panel-flat",
+      "frame": "steel",
+      "finish": "matte-black",
+      "glazing": "clear"
+    },
+    "media": [
+      {
+        "url": "/images/products/barn-steel-contemporary-hero.jpg",
+        "alt": "Contemporary steel barn sliding door with matte black finish in modern Ottawa loft",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/barn-steel-contemporary-detail.jpg",
+        "alt": "Close-up of commercial-grade roller hardware and soft-close mechanism",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "url": "/images/products/barn-steel-contemporary-track.jpg",
+        "alt": "Wall-mounted track system showing precision ball-bearing rollers",
+        "role": "gallery",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "url": "/images/products/barn-steel-contemporary-lifestyle.jpg",
+        "alt": "Barn door installed as room divider in Kanata home office with industrial decor",
+        "role": "lifestyle",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "BARN-STEEL-36x84",
+        "size": {
+          "widthInches": 36,
+          "heightInches": 84
+        },
+        "priceCAD": 749,
+        "availability": "InStock",
+        "leadTimeDays": 12,
+        "installAddonCAD": 425,
+        "options": {
+          "softClose": true,
+          "trackSystem": "Wall-Mount Commercial",
+          "hardware": "Floor Guide Included"
+        }
+      },
+      {
+        "sku": "BARN-STEEL-42x90",
+        "size": {
+          "widthInches": 42,
+          "heightInches": 90
+        },
+        "priceCAD": 849,
+        "availability": "InStock",
+        "leadTimeDays": 12,
+        "installAddonCAD": 475,
+        "options": {
+          "softClose": true,
+          "trackSystem": "Wall-Mount Commercial",
+          "hardware": "Floor Guide Included"
+        }
+      },
+      {
+        "sku": "BARN-STEEL-48x96",
+        "size": {
+          "widthInches": 48,
+          "heightInches": 96
+        },
+        "priceCAD": 949,
+        "availability": "PreOrder",
+        "leadTimeDays": 18,
+        "installAddonCAD": 525,
+        "options": {
+          "softClose": true,
+          "trackSystem": "Wall-Mount Commercial",
+          "hardware": "Floor Guide Included"
+        }
+      }
+    ],
+    "badges": ["Ontario Made", "Lifetime Frame Warranty", "Commercial Grade"],
+    "compliance": ["CSA B651 Accessibility", "ASTM F2200 Track Standards", "Tempered Glass ANSI Z97.1"],
+    "relatedProductIds": ["pivot-frosted-glass", "room-divider-accordion", "bypass-modern-minimalist"],
+    "seo": {
+      "title": "Barn Sliding Doors Ottawa | Steel Frame | Industrial Style | PG Closets",
+      "description": "Contemporary barn doors with welded steel frames. Soft-close, Ontario-made, lifetime warranty. Professional installation Ottawa, Kanata, Orleans. From $749 CAD.",
+      "keywords": ["barn doors Ottawa", "sliding barn door steel", "industrial barn door Kanata", "contemporary sliding doors", "barn door hardware Ontario"],
+      "ogImage": "/images/products/barn-steel-contemporary-og.jpg"
+    },
+    "createdAt": "2025-09-20T10:00:00Z",
+    "updatedAt": "2025-10-06T12:00:00Z"
+  },
+  {
+    "id": "room-divider-accordion",
+    "slug": "accordion-room-divider-translucent",
+    "name": "Accordion Room Divider - Translucent Panels",
+    "brand": "PG Closets",
+    "tagline": "Flexible spaces. Infinite possibilities.",
+    "description": "Reimagine your Ottawa living space with our Accordion Room Divider system. Featuring translucent acrylic panels that allow light to flow while creating visual separation, this versatile solution transforms open-concept areas into flexible, multi-functional zones. The patented folding mechanism stacks panels compactly against the wall when not in use, requiring just 8 inches of clearance. Perfect for basement apartments, home offices, studio spaces, and creating temporary guest rooms across Ottawa, Nepean, and Gloucester. Each panel features reinforced aluminum framing with UV-resistant acrylic that won't yellow or crack over time. The ceiling-mounted track system installs without floor rails, making it ideal for radiant heating and maintaining a seamless floor transition. Operates smoothly with one hand, includes magnetic panel locks for secure positioning, and acoustically dampens sound by up to 28 dB. Professional installation ensures proper header support and precise alignment. Available in translucent white or smoked grey to complement any interior design.",
+    "features": [
+      "Translucent acrylic panels allow natural light transmission",
+      "Patented accordion folding mechanism stacks in 8\" clearance",
+      "Ceiling-mounted track eliminates floor rails - radiant heating safe",
+      "Sound dampening properties reduce noise by up to 28 dB (NRC 0.28)",
+      "UV-resistant acrylic panels won't yellow or crack over time",
+      "Magnetic panel locks secure divider in any position",
+      "Reinforced aluminum framing supports panels up to 10 feet tall"
+    ],
+    "specifications": {
+      "Frame Material": "Extruded Aluminum",
+      "Glass Type": "UV-Resistant Translucent Acrylic (Not Glass)",
+      "Track System": "Ceiling-Mount Multi-Panel Accordion",
+      "Weight Capacity": "Panel system supports up to 50 kg total",
+      "Finish Options": "Translucent White, Smoked Grey",
+      "Warranty": "10 years panels, 7 years mechanism",
+      "Installation Time": "4-6 hours professional installation",
+      "Made In": "Imported components, assembled in Canada"
+    },
+    "attributes": {
+      "type": "room-dividers",
+      "style": "panel-flat",
+      "frame": "aluminum",
+      "finish": "acrylic",
+      "glazing": "clear"
+    },
+    "media": [
+      {
+        "url": "/images/products/room-divider-accordion-hero.jpg",
+        "alt": "Accordion room divider with translucent panels creating flexible space in Ottawa basement",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/room-divider-accordion-stacked.jpg",
+        "alt": "Accordion panels folded and stacked compactly against wall showing 8-inch clearance",
+        "role": "gallery",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "url": "/images/products/room-divider-accordion-detail.jpg",
+        "alt": "Close-up of ceiling-mounted track system and magnetic panel locks",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "url": "/images/products/room-divider-accordion-lifestyle.jpg",
+        "alt": "Room divider separating home office from living area in Nepean condo with natural light",
+        "role": "lifestyle",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "DIVIDER-ACCR-96x96",
+        "size": {
+          "widthInches": 96,
+          "heightInches": 96
+        },
+        "priceCAD": 649,
+        "availability": "InStock",
+        "leadTimeDays": 10,
+        "installAddonCAD": 375,
+        "options": {
+          "softClose": false,
+          "trackSystem": "Ceiling-Mount Accordion",
+          "hardware": "Magnetic Panel Locks"
+        }
+      },
+      {
+        "sku": "DIVIDER-ACCR-120x96",
+        "size": {
+          "widthInches": 120,
+          "heightInches": 96
+        },
+        "priceCAD": 749,
+        "availability": "InStock",
+        "leadTimeDays": 12,
+        "installAddonCAD": 425,
+        "options": {
+          "softClose": false,
+          "trackSystem": "Ceiling-Mount Accordion",
+          "hardware": "Magnetic Panel Locks"
+        }
+      },
+      {
+        "sku": "DIVIDER-ACCR-144x108",
+        "size": {
+          "widthInches": 144,
+          "heightInches": 108
+        },
+        "priceCAD": 899,
+        "availability": "PreOrder",
+        "leadTimeDays": 18,
+        "installAddonCAD": 500,
+        "options": {
+          "softClose": false,
+          "trackSystem": "Ceiling-Mount Accordion",
+          "hardware": "Magnetic Panel Locks"
+        }
+      }
+    ],
+    "badges": ["Space Saver", "Sound Dampening", "Radiant Heat Safe"],
+    "compliance": ["ASTM E90 Sound Transmission", "UL94 V-0 Fire Rating", "GREENGUARD Indoor Air Quality"],
+    "relatedProductIds": ["barn-contemporary-steel", "pivot-frosted-glass", "bypass-modern-minimalist"],
+    "seo": {
+      "title": "Accordion Room Dividers Ottawa | Translucent Panels | PG Closets",
+      "description": "Flexible accordion room dividers with light-transmitting panels. Sound dampening, radiant heat safe, 10-year warranty. Professional installation Ottawa, Nepean. From $649 CAD.",
+      "keywords": ["room dividers Ottawa", "accordion walls", "flexible partitions Nepean", "translucent room divider", "basement dividers Canada"],
+      "ogImage": "/images/products/room-divider-accordion-og.jpg"
+    },
+    "createdAt": "2025-09-25T10:00:00Z",
+    "updatedAt": "2025-10-06T12:00:00Z"
+  }
+]

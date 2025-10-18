@@ -1,0 +1,535 @@
+/**
+ * PG CLOSETS PREMIUM INTERACTION DESIGN SYSTEM
+ * CSS Animation System
+ *
+ * Features:
+ * - Custom @keyframes for signature animations
+ * - CSS custom properties for timing/easing
+ * - Dark mode interaction adjustments
+ * - Print stylesheet (disable animations)
+ * - Respects prefers-reduced-motion
+ *
+ * Performance:
+ * - GPU-accelerated transforms only
+ * - Will-change hints for optimized rendering
+ * - <16ms per frame target
+ */
+
+/* ========================================
+   CSS CUSTOM PROPERTIES
+   ======================================== */
+
+:root {
+  /* Timing (milliseconds as unitless for calc) */
+  --timing-instant: 0ms;
+  --timing-fast: 150ms;
+  --timing-normal: 250ms;
+  --timing-slow: 350ms;
+  --timing-slower: 500ms;
+  --timing-slowest: 750ms;
+  --timing-delightful: 1000ms;
+
+  /* Easing curves */
+  --easing-gentle: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --easing-confident: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-playful: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --easing-elegant: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --easing-instant: cubic-bezier(0, 0, 0, 1);
+  --easing-premium: cubic-bezier(0.23, 1, 0.32, 1);
+
+  /* Transforms */
+  --transform-lift-sm: -2px;
+  --transform-lift-md: -4px;
+  --transform-lift-lg: -8px;
+  --transform-scale-sm: 1.02;
+  --transform-scale-md: 1.05;
+  --transform-scale-lg: 1.1;
+  --transform-press-light: 0.98;
+  --transform-press-medium: 0.95;
+
+  /* Copper accent */
+  --copper-accent: #B87333;
+  --copper-50: #FDF8F3;
+  --copper-100: #F9EFE5;
+  --copper-500: #B87333;
+  --copper-600: #A35E28;
+  --copper-700: #8A4D1F;
+
+  /* Shadows */
+  --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 8px 16px -2px rgba(0, 0, 0, 0.12);
+  --shadow-lifted: 0 12px 24px -4px rgba(0, 0, 0, 0.15);
+  --shadow-dramatic: 0 20px 40px -8px rgba(0, 0, 0, 0.20);
+  --shadow-copper-glow: 0 4px 16px -2px rgba(184, 115, 51, 0.3);
+  --shadow-copper-glow-large: 0 8px 32px -4px rgba(184, 115, 51, 0.4);
+}
+
+/* ========================================
+   PREFERS REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   PREMIUM BUTTON ANIMATIONS
+   ======================================== */
+
+@keyframes button-press {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(var(--transform-press-light));
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes button-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes button-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--timing-fast) var(--easing-gentle),
+              box-shadow var(--timing-fast) var(--easing-gentle);
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.btn-premium:hover {
+  transform: translateY(var(--transform-lift-sm)) scale(var(--transform-scale-sm));
+  box-shadow: var(--shadow-lifted);
+}
+
+.btn-premium:active {
+  animation: button-press var(--timing-fast) var(--easing-confident);
+}
+
+/* ========================================
+   CARD ANIMATIONS
+   ======================================== */
+
+@keyframes card-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes card-glow-pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.card-luxury {
+  position: relative;
+  transition: transform var(--timing-normal) var(--easing-elegant),
+              box-shadow var(--timing-normal) var(--easing-elegant);
+  will-change: transform;
+}
+
+.card-luxury:hover {
+  transform: translateY(var(--transform-lift-md)) scale(var(--transform-scale-sm));
+  box-shadow: var(--shadow-lifted), var(--shadow-copper-glow);
+}
+
+.card-luxury-image {
+  overflow: hidden;
+  transition: transform var(--timing-slower) var(--easing-elegant);
+}
+
+.card-luxury:hover .card-luxury-image {
+  transform: scale(var(--transform-scale-md));
+}
+
+/* ========================================
+   SCROLL REVEAL ANIMATIONS
+   ======================================== */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reveal-fade-up {
+  animation: fade-in-up var(--timing-slower) var(--easing-premium);
+}
+
+.reveal-fade-down {
+  animation: fade-in-down var(--timing-slower) var(--easing-premium);
+}
+
+.reveal-fade-left {
+  animation: fade-in-left var(--timing-slower) var(--easing-premium);
+}
+
+.reveal-fade-right {
+  animation: fade-in-right var(--timing-slower) var(--easing-premium);
+}
+
+.reveal-scale {
+  animation: scale-in var(--timing-slow) var(--easing-elegant);
+}
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+
+@keyframes loading-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes spinner-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-pulse {
+  animation: loading-pulse var(--timing-delightful) var(--easing-gentle) infinite;
+}
+
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: loading-shimmer 2s var(--easing-gentle) infinite;
+}
+
+.spinner {
+  animation: spinner-rotate 1s linear infinite;
+}
+
+/* ========================================
+   SUCCESS ANIMATIONS
+   ======================================== */
+
+@keyframes success-bounce {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes success-checkmark {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.success-animation {
+  animation: success-bounce var(--timing-slow) var(--easing-playful);
+}
+
+/* ========================================
+   MAGNETIC EFFECTS
+   ======================================== */
+
+.magnetic-element {
+  transition: transform var(--timing-fast) var(--easing-confident);
+  will-change: transform;
+}
+
+/* ========================================
+   COPPER GLOW EFFECTS
+   ======================================== */
+
+@keyframes copper-glow-pulse {
+  0%, 100% {
+    box-shadow: var(--shadow-copper-glow);
+  }
+  50% {
+    box-shadow: var(--shadow-copper-glow-large);
+  }
+}
+
+.copper-glow {
+  box-shadow: var(--shadow-copper-glow);
+}
+
+.copper-glow-animate {
+  animation: copper-glow-pulse 2s var(--easing-gentle) infinite;
+}
+
+.copper-glow-hover {
+  transition: box-shadow var(--timing-normal) var(--easing-gentle);
+}
+
+.copper-glow-hover:hover {
+  box-shadow: var(--shadow-copper-glow-large);
+}
+
+/* ========================================
+   ACCENT LINE REVEALS
+   ======================================== */
+
+@keyframes accent-line-expand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.accent-line {
+  position: relative;
+}
+
+.accent-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(to right, var(--copper-500), var(--copper-600));
+  transition: width var(--timing-slow) var(--easing-premium);
+}
+
+.accent-line:hover::after {
+  width: 100%;
+}
+
+/* ========================================
+   DARK MODE ADJUSTMENTS
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 8px 16px -2px rgba(0, 0, 0, 0.4);
+    --shadow-lifted: 0 12px 24px -4px rgba(0, 0, 0, 0.5);
+    --shadow-dramatic: 0 20px 40px -8px rgba(0, 0, 0, 0.6);
+  }
+
+  .card-luxury:hover {
+    box-shadow: var(--shadow-lifted), var(--shadow-copper-glow-large);
+  }
+}
+
+/* ========================================
+   PRINT STYLES (Disable Animations)
+   ======================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  .btn-premium:hover,
+  .card-luxury:hover {
+    transform: none !important;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY UTILITIES
+   ======================================== */
+
+.focus-visible-copper:focus-visible {
+  outline: 2px solid var(--copper-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.focus-ring-copper {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2;
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+.gpu-accelerate {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+.will-change-transform-opacity {
+  will-change: transform, opacity;
+}
+
+/* Clean up will-change after animation */
+.animate-complete {
+  will-change: auto;
+}
+
+/* ========================================
+   GRADIENT BACKGROUNDS
+   ======================================== */
+
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+.bg-gradient-conic {
+  background: conic-gradient(var(--tw-gradient-stops));
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.transition-luxury {
+  transition-property: transform, opacity, box-shadow;
+  transition-timing-function: var(--easing-elegant);
+  transition-duration: var(--timing-normal);
+}
+
+.transition-premium {
+  transition-property: all;
+  transition-timing-function: var(--easing-premium);
+  transition-duration: var(--timing-slower);
+}
+
+.transition-instant {
+  transition-duration: var(--timing-instant);
+}
+
+.transition-fast {
+  transition-duration: var(--timing-fast);
+}
+
+.transition-normal {
+  transition-duration: var(--timing-normal);
+}
+
+.transition-slow {
+  transition-duration: var(--timing-slow);
+}
+
+.transition-slower {
+  transition-duration: var(--timing-slower);
+}

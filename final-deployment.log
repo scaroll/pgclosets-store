@@ -1,0 +1,18 @@
+Vercel CLI 48.2.0
+WARN! Did you mean to deploy the subdirectory "deploy"? Use `vc --cwd deploy` instead.
+Retrieving project…
+Deploying peoples-group/pgclosets-store
+Uploading [--------------------] (0.0B/824.1KB)
+Uploading [=====---------------] (216.2KB/824.1KB)
+Uploading [==========----------] (420.1KB/824.1KB)
+Uploading [===============-----] (628.9KB/824.1KB)
+Uploading [====================] (824.1KB/824.1KB)
+Inspect: https://vercel.com/peoples-group/pgclosets-store/5A8gxwLDPAy1mvTAmmcNPL9eimy3 [13s]
+Production: https://pgclosets-store-nqes750o2-peoples-group.vercel.app [13s]
+https://pgclosets-store-nqes750o2-peoples-group.vercel.appQueued
+Building
+Completing
+
+Common next commands:
+- `vercel inspect pgclosets-store-nqes750o2-peoples-group.vercel.app --logs`
+- `vercel redeploy pgclosets-store-nqes750o2-peoples-group.vercel.app`

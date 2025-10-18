@@ -1,0 +1,154 @@
+{
+  "timestamp": "2025-08-26T19:08:49.027Z",
+  "url": "https://www.pgclosets.com",
+  "summary": {
+    "totalImages": 4,
+    "brokenImages": 8,
+    "missingAltText": 0,
+    "slowLoadingImages": 0,
+    "httpErrors": 0,
+    "consoleErrors": [
+      {
+        "type": "error",
+        "message": "Failed to load resource: the server responded with a status of 400 ()",
+        "timestamp": "2025-08-26T19:08:50.983Z"
+      },
+      {
+        "type": "error",
+        "message": "Failed to load resource: the server responded with a status of 400 ()",
+        "timestamp": "2025-08-26T19:08:50.984Z"
+      },
+      {
+        "type": "error",
+        "message": "Failed to load resource: the server responded with a status of 400 ()",
+        "timestamp": "2025-08-26T19:08:51.056Z"
+      },
+      {
+        "type": "error",
+        "message": "Failed to load resource: the server responded with a status of 400 ()",
+        "timestamp": "2025-08-26T19:08:51.057Z"
+      },
+      {
+        "type": "error",
+        "message": "Failed to load resource: the server responded with a status of 404 ()",
+        "timestamp": "2025-08-26T19:08:51.080Z"
+      }
+    ]
+  },
+  "issues": [
+    {
+      "type": "BROKEN_IMAGE",
+      "severity": "HIGH",
+      "url": "https://www.pgclosets.com/_next/image?url=%2Fimages%2Farcat%2Frenin_176732_hd.jpg&w=3840&q=75",
+      "message": "Image failed to load properly",
+      "details": {
+        "complete": true,
+        "naturalWidth": 0,
+        "naturalHeight": 0
+      }
+    },
+    {
+      "type": "BROKEN_IMAGE",
+      "severity": "HIGH",
+      "url": "https://www.pgclosets.com/_next/image?url=%2Fimages%2Farcat%2Frenin_205750_hd.jpg&w=3840&q=75",
+      "message": "Image failed to load properly",
+      "details": {
+        "complete": true,
+        "naturalWidth": 0,
+        "naturalHeight": 0
+      }
+    },
+    {
+      "type": "BROKEN_IMAGE",
+      "severity": "HIGH",
+      "url": "https://www.pgclosets.com/_next/image?url=%2Fimages%2Farcat%2Frenin_205729_hd.jpg&w=3840&q=75",
+      "message": "Image failed to load properly",
+      "details": {
+        "complete": true,
+        "naturalWidth": 0,
+        "naturalHeight": 0
+      }
+    },
+    {
+      "type": "BROKEN_IMAGE",
+      "severity": "HIGH",
+      "url": "https://www.pgclosets.com/_next/image?url=%2Fimages%2Farcat%2Frenin_199063_hd.jpg&w=3840&q=75",
+      "message": "Image failed to load properly",
+      "details": {
+        "complete": true,
+        "naturalWidth": 0,
+        "naturalHeight": 0
+      }
+    },
+    {
+      "type": "LAZY_LOADING",
+      "severity": "MEDIUM",
+      "message": "2 images below fold not using lazy loading"
+    },
+    {
+      "type": "BROKEN_IMAGE",
+      "severity": "HIGH",
+      "url": "https://www.pgclosets.com/_next/image?url=%2Fimages%2Farcat%2Frenin_176732_hd.jpg&w=3840&q=75",
+      "message": "Image failed to load properly",
+      "details": {
+        "complete": true,
+        "naturalWidth": 0,
+        "naturalHeight": 0
+      }
+    },
+    {
+      "type": "BROKEN_IMAGE",
+      "severity": "HIGH",
+      "url": "https://www.pgclosets.com/_next/image?url=%2Fimages%2Farcat%2Frenin_205750_hd.jpg&w=3840&q=75",
+      "message": "Image failed to load properly",
+      "details": {
+        "complete": true,
+        "naturalWidth": 0,
+        "naturalHeight": 0
+      }
+    },
+    {
+      "type": "BROKEN_IMAGE",
+      "severity": "HIGH",
+      "url": "https://www.pgclosets.com/_next/image?url=%2Fimages%2Farcat%2Frenin_205729_hd.jpg&w=3840&q=75",
+      "message": "Image failed to load properly",
+      "details": {
+        "complete": true,
+        "naturalWidth": 0,
+        "naturalHeight": 0
+      }
+    },
+    {
+      "type": "BROKEN_IMAGE",
+      "severity": "HIGH",
+      "url": "https://www.pgclosets.com/_next/image?url=%2Fimages%2Farcat%2Frenin_199063_hd.jpg&w=3840&q=75",
+      "message": "Image failed to load properly",
+      "details": {
+        "complete": true,
+        "naturalWidth": 0,
+        "naturalHeight": 0
+      }
+    }
+  ],
+  "recommendations": [],
+  "performanceMetrics": {
+    "domContentLoaded": null,
+    "loadComplete": null,
+    "imageCount": 2,
+    "imageMetrics": [
+      {
+        "url": "https://www.pgclosets.com/_next/image?url=%2Fimages%2Farcat%2Frenin_205729_hd.jpg&w=384&q=75",
+        "duration": 43.30000000074506,
+        "size": 384,
+        "startTime": 205.59999999962747
+      },
+      {
+        "url": "https://www.pgclosets.com/_next/image?url=%2Fimages%2Farcat%2Frenin_199063_hd.jpg&w=384&q=75",
+        "duration": 43.40000000037253,
+        "size": 384,
+        "startTime": 205.59999999962747
+      }
+    ]
+  },
+  "accessibilityIssues": []
+}

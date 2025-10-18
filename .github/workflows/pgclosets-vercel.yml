@@ -1,0 +1,92 @@
+name: PG Closets – Deploy to Vercel (Production)
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  # Identifiers (no secrets)
+  VERCEL_PROJECT_ID: prj_ySW3kS1J66EbmuWRC6q6QN3gww6w
+  VERCEL_TEAM_ID: team_Xzht85INUsoW05STx9DMMyLX
+  PRODUCTION_DOMAIN: pgclosets.com
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci --legacy-peer-deps
+
+      # --- Pre-deployment validation checks ---
+      - name: Validate repository state
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Running pre-deployment validation checks…"
+
+          # Must exist
+          test -f package.json
+          test -d public
+
+          # Ensure Next.js build script exists
+          jq -re '.scripts.build' package.json >/dev/null
+
+          # Ensure required files are present (or staged for restore)
+          # Expecting production templates committed under templates/prod/
+          test -f templates/prod/.vercel/project.json
+          test -f templates/prod/public/robots.txt
+          test -f templates/prod/public/sitemap.xml
+
+          echo "Validation OK."
+
+      # --- Restore essential production config files ---
+      - name: Restore production configs
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Restoring production config files…"
+          mkdir -p .vercel
+          cp -f templates/prod/.vercel/project.json .vercel/project.json
+          cp -f templates/prod/public/robots.txt public/robots.txt
+          # Ensure sitemap points to production URLs
+          cp -f templates/prod/public/sitemap.xml public/sitemap.xml
+
+          # Optional: sanity checks
+          grep -q "$PRODUCTION_DOMAIN" public/robots.txt
+          grep -q "$PRODUCTION_DOMAIN" public/sitemap.xml
+          echo "Config restore OK."
+
+      # --- Build Next.js (verify success) ---
+      - name: Build
+        run: npm run build
+
+      # --- Deploy using Vercel CLI (production) ---
+      - name: Deploy to Vercel (prod)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ env.VERCEL_TEAM_ID }}
+          VERCEL_PROJECT_ID: ${{ env.VERCEL_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          npx --yes vercel@latest pull --yes --environment=production \
+            --token "$VERCEL_TOKEN" \
+            --scope "$VERCEL_ORG_ID"
+
+          # --prod ensures production URL; --confirm skips prompts
+          npx --yes vercel@latest deploy --prod --confirm \
+            --token "$VERCEL_TOKEN" \
+            --scope "$VERCEL_ORG_ID"

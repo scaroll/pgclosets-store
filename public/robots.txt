@@ -1,0 +1,80 @@
+User-agent: *
+Allow: /
+
+# High-value pages for SEO
+Allow: /ottawa
+Allow: /kanata
+Allow: /barrhaven
+Allow: /orleans
+Allow: /nepean
+Allow: /products
+Allow: /services
+Allow: /about
+Allow: /contact
+Allow: /request-work
+Allow: /gallery
+Allow: /why-pg
+
+# Product categories
+Allow: /products/barn-doors
+Allow: /products/bifold-doors
+Allow: /products/bypass-doors
+Allow: /products/pivot-doors
+Allow: /products/hardware
+Allow: /products/mirrors
+
+# Renin specific pages
+Allow: /renin
+Allow: /renin/ottawa
+Allow: /renin/kanata
+Allow: /renin/orleans
+Allow: /renin/barrhaven
+
+# Block admin and sensitive areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /account/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /upload/
+Disallow: /blob-contents/
+Disallow: /files/
+Disallow: /storage-check/
+Disallow: /simple-cart/
+Disallow: /simple-products/
+Disallow: /visualizer/
+Disallow: /book-measurement/
+
+# Block dynamic utility pages
+Disallow: /*?*
+Disallow: /search?
+Disallow: /_next/
+Disallow: /.well-known/
+
+# Allow Google specific bots full access
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Block unwanted crawlers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Crawl delay for general bots
+Crawl-delay: 1
+
+# Sitemap locations
+Sitemap: https://www.pgclosets.com/sitemap.xml
+Sitemap: https://www.pgclosets.com/sitemap-products.xml
+Sitemap: https://www.pgclosets.com/sitemap-locations.xml
+
+# Host directive
+Host: https://www.pgclosets.com

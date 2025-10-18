@@ -1,0 +1,29 @@
+{
+  "recommendations": [
+    // AI & Code Generation
+    "continue.continue",
+    "google.geminicodeassist",
+
+    // TypeScript & Next.js
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+
+    // Essential Development
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-eslint",
+    "usernamehw.errorlens",
+
+    // Git & Version Control
+    "eamodio.gitlens",
+
+    // Productivity
+    "ms-vscode.vscode-json",
+    "redhat.vscode-yaml",
+    "ms-vscode.vscode-css-peek"
+  ],
+  "unwantedRecommendations": [
+    "ms-python.python",
+    "ms-dotnettools.csharp",
+    "ms-vscode.powershell"
+  ]
+}

@@ -1,0 +1,152 @@
+[
+  // Codex & Continue Shortcuts
+  {
+    "key": "cmd+k cmd+c",
+    "command": "continue.continueGUIView.focus",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+k cmd+i",
+    "command": "continue.acceptVerticalDiffBlock",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+k cmd+o",
+    "command": "continue.optimizeCode",
+    "when": "editorHasSelection"
+  },
+  {
+    "key": "cmd+k cmd+e",
+    "command": "continue.explainCode",
+    "when": "editorHasSelection"
+  },
+  {
+    "key": "cmd+k cmd+t",
+    "command": "continue.generateTests",
+    "when": "editorHasSelection"
+  },
+  {
+    "key": "cmd+k cmd+r",
+    "command": "continue.refactorCode",
+    "when": "editorHasSelection"
+  },
+  {
+    "key": "cmd+k cmd+d",
+    "command": "continue.documentCode",
+    "when": "editorHasSelection"
+  },
+
+  // Gemini Shortcuts
+  {
+    "key": "cmd+g cmd+c",
+    "command": "gemini.chat",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+g cmd+i",
+    "command": "gemini.inlineCompletion",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+g cmd+o",
+    "command": "gemini.optimize",
+    "when": "editorHasSelection"
+  },
+
+  // Enhanced AI Suggestions
+  {
+    "key": "cmd+.",
+    "command": "editor.action.quickFix",
+    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "tab",
+    "command": "editor.action.inlineSuggest.commit",
+    "when": "inlineSuggestionVisible && !editorTabMovesFocus"
+  },
+  {
+    "key": "cmd+right",
+    "command": "editor.action.inlineSuggest.acceptNextWord",
+    "when": "inlineSuggestionVisible && !editorReadonly"
+  },
+
+  // Code Navigation Enhancement
+  {
+    "key": "cmd+shift+o",
+    "command": "workbench.action.gotoSymbol"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "cmd+p",
+    "command": "workbench.action.quickOpenNavigateNext",
+    "when": "inQuickOpen"
+  },
+
+  // Terminal Integration
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "cmd+shift+c",
+    "command": "workbench.action.terminal.openNativeConsole"
+  },
+
+  // Panel Management
+  {
+    "key": "cmd+shift+e",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "cmd+shift+f",
+    "command": "workbench.view.search"
+  },
+  {
+    "key": "cmd+shift+g",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "cmd+shift+d",
+    "command": "workbench.view.debug"
+  },
+
+  // AI-Enhanced Editing
+  {
+    "key": "cmd+shift+up",
+    "command": "editor.action.insertLineBefore"
+  },
+  {
+    "key": "cmd+shift+down",
+    "command": "editor.action.insertLineAfter"
+  },
+  {
+    "key": "alt+up",
+    "command": "editor.action.moveLinesUpAction"
+  },
+  {
+    "key": "alt+down",
+    "command": "editor.action.moveLinesDownAction"
+  },
+
+  // Multi-cursor for AI Enhancement
+  {
+    "key": "cmd+alt+up",
+    "command": "editor.action.insertCursorAbove"
+  },
+  {
+    "key": "cmd+alt+down",
+    "command": "editor.action.insertCursorBelow"
+  },
+  {
+    "key": "cmd+d",
+    "command": "editor.action.addSelectionToNextFindMatch"
+  }
+]
