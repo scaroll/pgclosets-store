@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Heading from '@/components/ui/Heading-new'
 import Text from '@/components/ui/Text-new'
@@ -14,9 +15,22 @@ export const metadata: Metadata = {
 export default function ConsultationPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      {/* Hero Section */}
-      <Section variant="dark" spacing="lg" className="bg-pg-primary text-white">
-        <div className="max-w-3xl mx-auto text-center">
+      {/* Hero Section with Image */}
+      <Section variant="dark" spacing="lg" className="bg-pg-primary text-white relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="/images/professional-closet-consultation.png"
+            alt="Professional closet design consultation"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-pg-primary/80 to-pg-primary/90" />
+
+        {/* Content */}
+        <div className="max-w-3xl mx-auto text-center relative z-10">
           <Heading level={1} className="text-white mb-6">
             Expert Design Consultation
           </Heading>
@@ -37,7 +51,7 @@ export default function ConsultationPage() {
         <Heading level={2} className="text-center mb-12">
           What's Included
         </Heading>
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
           {[
             {
               icon: <MessageSquare className="h-12 w-12 text-pg-accent" />,
@@ -63,6 +77,28 @@ export default function ConsultationPage() {
               <Text variant="secondary">{item.description}</Text>
             </div>
           ))}
+        </div>
+
+        {/* Process Images */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+            <Image
+              src="/images/team-consultation-meeting.png"
+              alt="Design team meeting with client during consultation"
+              fill
+              className="object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+            <Image
+              src="/images/team-design-planning.png"
+              alt="Professional design planning and space assessment"
+              fill
+              className="object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
       </Section>
 

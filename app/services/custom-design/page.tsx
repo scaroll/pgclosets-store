@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import StandardLayout from "@/components/layout/StandardLayout";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -12,17 +13,31 @@ export const metadata: Metadata = {
 export default function CustomDesignPage() {
   return (
     <StandardLayout>
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
+      {/* Hero Section with Background Image */}
+      <div className="relative bg-gradient-to-b from-slate-900 to-slate-800 text-white py-20 mb-12">
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="/images/custom-closet-design-process.png"
+            alt="Custom closet design process"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 to-slate-800/90" />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Custom Design Services
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto">
             Transform your vision into reality with personalized design consultation
             and professional 3D renderings
           </p>
         </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 pb-12">
 
         {/* Process Steps */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -98,6 +113,31 @@ export default function CustomDesignPage() {
             <div className="flex items-start gap-3">
               <span className="text-green-600 mt-1">✓</span>
               <span>Post-installation support</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Design Process Visuals */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-8 text-center">See the Transformation</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="/images/before-after-walk-in-renovation.png"
+                alt="Before and after walk-in closet renovation"
+                fill
+                className="object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="/images/custom-closet-lighting-system.png"
+                alt="Custom closet lighting design"
+                fill
+                className="object-cover"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>

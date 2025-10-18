@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import StandardLayout from '@/components/layout/StandardLayout';
 import { LocationStats } from '@/components/locations/LocationStats';
 import { ServiceMap } from '@/components/locations/ServiceMap';
@@ -277,6 +278,49 @@ export default function LocationPage({ params }: LocationPageProps) {
         serviceAreas={location.serviceAreas}
         coordinates={location.coordinates}
       />
+
+      {/* Ottawa Showroom Section - Only for Ottawa location */}
+      {location.slug === 'ottawa' && (
+        <section className="py-16 bg-white border-t">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2
+                className="text-3xl md:text-4xl font-light tracking-tight mb-4"
+                style={{
+                  fontFamily: typography.fonts.display,
+                  color: colors.brand.charcoal
+                }}
+              >
+                Visit Our Ottawa Showroom
+              </h2>
+              <p className="text-lg text-gray-600">
+                Experience our products in person at our Ottawa location
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/ottawa-showroom-exterior.png"
+                  alt="PG Closets Ottawa showroom exterior"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/ottawa-showroom-interior.png"
+                  alt="PG Closets Ottawa showroom interior"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Testimonials */}
       <section className="py-16 bg-white">

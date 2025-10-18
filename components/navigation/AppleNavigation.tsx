@@ -35,27 +35,28 @@ const NAVIGATION_ITEMS = [
     hasMegaMenu: true,
     megaMenuItems: [
       {
-        category: "Closet Systems",
+        category: "Door Types",
         items: [
-          { label: "Walk-In Closets", href: "/products/walk-in-closets" },
-          { label: "Reach-In Closets", href: "/products/reach-in-closets" },
-          { label: "Custom Wardrobes", href: "/products/custom-wardrobes" },
+          { label: "Barn Doors", href: "/products?category=barn-doors" },
+          { label: "Bifold Doors", href: "/products?category=bifold-doors" },
+          { label: "Bypass Doors", href: "/products?category=bypass-doors" },
+          { label: "Pivot Doors", href: "/products?category=pivot-doors" },
         ],
       },
       {
-        category: "Storage Solutions",
+        category: "Hardware & Accessories",
         items: [
-          { label: "Pantry Systems", href: "/products/pantry-systems" },
-          { label: "Garage Storage", href: "/products/garage-storage" },
-          { label: "Home Office", href: "/products/home-office" },
+          { label: "Hardware", href: "/products?category=hardware" },
+          { label: "Handles & Pulls", href: "/products?category=handles" },
+          { label: "Track Systems", href: "/products?category=tracks" },
         ],
       },
       {
-        category: "Features",
+        category: "Browse All",
         items: [
-          { label: "Accessories", href: "/products/accessories" },
-          { label: "Finishes & Materials", href: "/products/finishes" },
-          { label: "Doors & Hardware", href: "/products/doors" },
+          { label: "View All Products", href: "/products" },
+          { label: "Custom Solutions", href: "/products?category=custom" },
+          { label: "Popular Picks", href: "/products?filter=popular" },
         ],
       },
     ],
@@ -68,15 +69,15 @@ const NAVIGATION_ITEMS = [
       {
         category: "Our Services",
         items: [
-          { label: "Design Consultation", href: "/services/design-consultation" },
-          { label: "Custom Installation", href: "/services/installation" },
-          { label: "Space Planning", href: "/services/space-planning" },
+          { label: "Free Consultation", href: "/services/consultation" },
+          { label: "Custom Design", href: "/services/custom-design" },
+          { label: "Professional Installation", href: "/services/installation" },
         ],
       },
       {
-        category: "Support",
+        category: "Support & Warranty",
         items: [
-          { label: "Warranty", href: "/services/warranty" },
+          { label: "Warranty & Support", href: "/services/warranty" },
           { label: "Maintenance", href: "/services/maintenance" },
           { label: "FAQ", href: "/services/faq" },
         ],
@@ -243,7 +244,7 @@ export function AppleNavigation() {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-2 sm:gap-3 group z-10"
+              className="flex items-center gap-3 sm:gap-4 group z-10"
               aria-label="PG Closets - Home"
             >
               <motion.div
@@ -252,17 +253,17 @@ export function AppleNavigation() {
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 <PGLogo
-                  width={40}
-                  height={40}
+                  width={56}
+                  height={56}
                   withWordmark={false}
-                  className="text-black"
+                  className="text-black sm:w-16 sm:h-16"
                 />
               </motion.div>
               <div className="flex flex-col">
-                <span className="text-base sm:text-lg font-bold tracking-[0.2em] text-black">
+                <span className="text-lg sm:text-xl font-bold tracking-[0.2em] text-black">
                   PG CLOSETS
                 </span>
-                <span className="hidden sm:block text-[10px] text-gray-500 font-medium tracking-[0.15em]">
+                <span className="hidden sm:block text-xs text-gray-500 font-medium tracking-[0.15em]">
                   OTTAWA
                 </span>
               </div>
@@ -309,9 +310,11 @@ export function AppleNavigation() {
                   )}
 
                   {/* Mega Menu Dropdown */}
-                  {item.hasMegaMenu && activeMegaMenu === item.label && (
-                    <MegaMenuDropdown items={item.megaMenuItems} />
-                  )}
+                  <AnimatePresence>
+                    {item.hasMegaMenu && activeMegaMenu === item.label && (
+                      <MegaMenuDropdown items={item.megaMenuItems} />
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
             </nav>
@@ -499,9 +502,9 @@ function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
           >
             {/* Header */}
             <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <PGLogo width={32} height={32} withWordmark={false} />
-                <span className="text-lg font-bold tracking-wider">
+              <div className="flex items-center gap-3">
+                <PGLogo width={40} height={40} withWordmark={false} />
+                <span className="text-xl font-bold tracking-wider">
                   PG CLOSETS
                 </span>
               </div>
