@@ -50,6 +50,8 @@ const nextConfig = {
     // Apple device sizes + standard breakpoints
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Quality settings for different formats
+    qualities: [75, 85, 90, 95],
     // One year cache for optimized images
     minimumCacheTTL: 31536000,
     // Security for SVGs
@@ -155,7 +157,6 @@ const nextConfig = {
     // Tree shaking and optimization
     config.optimization = {
       ...config.optimization,
-      usedExports: true,
       sideEffects: false,
     }
 

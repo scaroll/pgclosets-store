@@ -15,7 +15,7 @@ export const products: Product[] = [
     description: 'The Ashbury bypass door\'s raised 2-panel square top design offers universal appeal and reliable operation. The closet door\'s prefinished, flush, hardboard inserts are encased in a Bright White narrow steel frame with an integrated ergonomic handle.',
     price: 299.00,
     category: 'Bypass Doors',
-    image: 'https://www.renin.com/wp-content/uploads/2021/01/BY0108_Ashbury-Bypass-Door_Lifestyle-Open-1365x2048.jpg',
+    image: '/images/products/bypass-door-main.jpg',
     specs: [
       { label: 'Frame Finish', value: 'Bright White' },
       { label: 'Insert Type', value: 'White Pre-finished 2 Panel Board' },
@@ -99,7 +99,7 @@ export const products: Product[] = [
     description: 'The stylish sophistication of our Euro 1-lite sliding bifold closet doors with contemporary frosted glass inserts can clearly be attributed to their Italian design heritage. Each of the doors two panels feature full-height frosted glass inserts and solid engineered wood framing prefinished in Off-White and completed with a round knob pull in Satin Nickel finish. Bifold closet doors fold into each other to provide you up to 95% access to your closet with minimal floor clearance and without taking up space within your room. Incorporating a trackless floor design, these folding closet doors\' Free-Glide top roll system makes them the smoothest and easiest opening and closing action we offer in a bifold door.',
     price: 409.00,
     category: 'Bifold Doors',
-    image: 'https://www.renin.com/wp-content/uploads/2020/11/EU3010_Euro_1-Lite-Bifold_Off-White_Lifestyle-1-1368x1536.jpg',
+    image: '/images/products/bifold-door-main.jpg',
     specs: [
         { label: 'Frame Finish', value: 'Off-White' },
         { label: 'Insert Type', value: 'Tempered frosted glass' },
@@ -173,7 +173,7 @@ export const products: Product[] = [
     description: 'Our Euro 3-lite sliding bifold closet doors showcase a stack window design with contemporary frosted glass inserts that protect privacy while adding light. Each of the bifold doors two panels feature three vertical, frosted glass inserts. Our Free-Glide top roll system makes this the smoothest and easiest opening and closing action we offer in a bifold door. Bifold closet doors fold into each other to provide you up to 95% access to your closet with minimal floor clearance and without taking up space within your room. Their solid engineered wood framing is prefinished in Off-White and completed with a round closet door knob pull in Satin Nickel finish.',
     price: 409.00,
     category: 'Bifold Doors',
-    image: 'https://www.renin.com/wp-content/uploads/2020/12/EU3080_Euro-3-Lite-Bifold_Off-White_Lifestyle-2-1536x1536.jpg',
+    image: '/images/products/bifold-door-main.jpg',
     specs: [
         { label: 'Frame Finish', value: 'Off-White' },
         { label: 'Insert Type', value: 'Tempered frosted glass' },
@@ -207,7 +207,7 @@ export const products: Product[] = [
     description: 'Featuring five frosted glass inserts and Iron Age finished framing, these Italian-designed 5-lite sliding bypass closet doors add light and openness to any room without sacrificing privacy. The sliding closet doors are constructed of solid engineered wood with a smooth wood grain look. Whether you install them on a closet, in a hallway or between rooms, these doors can scale to the task with two panels for smaller openings or four panels for more expansive ones.',
     price: 519.00,
     category: 'Bypass Doors',
-    image: 'https://www.renin.com/wp-content/uploads/2020/11/EU2470_Euro-5-Lite-Bypass_Iron-Age_Lifestyle-1365x2048.jpg',
+    image: '/images/products/bypass-door-main.jpg',
     specs: [
         { label: 'Width', value: '47 - 48"' },
         { label: 'Height', value: '80 1/4 - 80 7/8"' },
@@ -238,7 +238,7 @@ export const products: Product[] = [
     description: 'Adding a traditional accent to any room, the Georgian bifold closet door features a raised 6-panel square top design, prefinished in white wood grain texture and encased in a Bright White narrow steel frame. An attached metal pull operates the door\'s rolling pivot system to reveal an additional 4 inches for more complete access to your closet or space. Spanning openings with two panels or four, the steel bifold doors\' Easy-Roll bifold closet door hardware offers smooth travel and the low-profile bottom track makes for quick installation and easy cleaning.',
     price: 289.00,
     category: 'Bifold Doors',
-    image: 'https://www.renin.com/wp-content/uploads/2020/11/BI0221_16_Georgian_Wood-Grain-Textured_Single_Closed_Lifestyle-1465x2048.jpg',
+    image: '/images/products/bifold-door-main.jpg',
     specs: [
         { label: 'Width', value: '23 3/4 - 24"' },
         { label: 'Height', value: '80 3/8 - 80 7/8"' },
@@ -266,7 +266,7 @@ export const products: Product[] = [
     description: 'The Harmony sliding closet door features full-length mirrors with narrow framing to create a winning combination for both traditional and modern design. The high-quality engineered wood framing is prefinished in Bright White to match any interior decorating palette. The bypass door panels\' mirror inserts enhance the functionality of your space, while seeming to enlarge your room with extra depth, dimension and reflection.',
     price: 489.00,
     category: 'Bypass Doors',
-    image: 'https://www.renin.com/wp-content/uploads/2020/11/EU3210-Harmony-Closet-Doors-White-Mirror-Bypass_Beauty-1-1313x1536.jpg',
+    image: '/images/products/mirror-door-main.jpg',
     specs: [
         { label: 'Width', value: '47 - 48"' },
         { label: 'Height', value: '80 1/4 - 80 7/8"' },

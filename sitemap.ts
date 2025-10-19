@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next"
 import { BUSINESS_INFO } from "./lib/business-config"
+import { reninProducts } from "./data/renin-products"
 
 /**
  * SEO AGENT #7: Comprehensive XML Sitemap
@@ -136,7 +137,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   // Combine all pages in priority order
-  return [
+  const base = [
     homepage,
     ...collections,
     ...locations,
@@ -147,4 +148,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...secondary,
     ...legal,
   ]
+
+  // Add product detail pages (Renin)
+  const productPages = (reninProducts as any[]).map((p) => ({
+    url: `${baseUrl}/products/${p.id}`,
+    lastModified: currentDate,
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }))
+
+  return [...base, ...productPages]
 }

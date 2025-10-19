@@ -70,6 +70,15 @@
       ]
     },
     {
+      "source": "/404",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
       "source": "/api/webhooks/(.*)",
       "headers": [
         {
@@ -95,6 +104,13 @@
     {
       "source": "/robots.txt",
       "destination": "/api/robots"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/images/:path*",
+      "destination": "/assets/:path*?v=2",
+      "permanent": true
     }
   ]
 }

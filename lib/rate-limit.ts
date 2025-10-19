@@ -1,54 +1,31 @@
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 
-// Create Redis client
-const redis = new Redis({
-  url: process.env.REDIS_URL!,
-  token: process.env.REDIS_TOKEN!,
-});
+const hasRedis = Boolean(process.env.REDIS_URL && process.env.REDIS_TOKEN)
+const redis = hasRedis
+  ? new Redis({ url: process.env.REDIS_URL!, token: process.env.REDIS_TOKEN! })
+  : undefined
 
-// Different rate limiters for different endpoints
-export const chatRateLimiter = new Ratelimit({
-  redis,
-  limiter: Ratelimit.slidingWindow(10, '1 m'), // 10 requests per minute
-  analytics: true,
-  prefix: 'ratelimit:chat',
-});
+function createLimiter(
+  prefix: string,
+  window: Parameters<typeof Ratelimit.slidingWindow>[1],
+  points: Parameters<typeof Ratelimit.slidingWindow>[0],
+) {
+  if (!redis) return undefined
+  return new Ratelimit({
+    redis,
+    limiter: Ratelimit.slidingWindow(points, window),
+    analytics: true,
+    prefix,
+  })
+}
 
-export const aiRecommendationsRateLimiter = new Ratelimit({
-  redis,
-  limiter: Ratelimit.slidingWindow(5, '1 m'), // 5 requests per minute
-  analytics: true,
-  prefix: 'ratelimit:ai-recommendations',
-});
-
-export const authRateLimiter = new Ratelimit({
-  redis,
-  limiter: Ratelimit.slidingWindow(5, '5 m'), // 5 requests per 5 minutes
-  analytics: true,
-  prefix: 'ratelimit:auth',
-});
-
-export const checkoutRateLimiter = new Ratelimit({
-  redis,
-  limiter: Ratelimit.slidingWindow(3, '1 m'), // 3 requests per minute
-  analytics: true,
-  prefix: 'ratelimit:checkout',
-});
-
-export const generalRateLimiter = new Ratelimit({
-  redis,
-  limiter: Ratelimit.slidingWindow(20, '1 m'), // 20 requests per minute
-  analytics: true,
-  prefix: 'ratelimit:general',
-});
-
-export const bookingRateLimiter = new Ratelimit({
-  redis,
-  limiter: Ratelimit.slidingWindow(5, '1 m'), // 5 requests per minute
-  analytics: true,
-  prefix: 'ratelimit:booking',
-});
+export const chatRateLimiter = createLimiter('ratelimit:chat', '1 m', 10)
+export const aiRecommendationsRateLimiter = createLimiter('ratelimit:ai-recommendations', '1 m', 5)
+export const authRateLimiter = createLimiter('ratelimit:auth', '5 m', 5)
+export const checkoutRateLimiter = createLimiter('ratelimit:checkout', '1 m', 3)
+export const generalRateLimiter = createLimiter('ratelimit:general', '1 m', 20)
+export const bookingRateLimiter = createLimiter('ratelimit:booking', '1 m', 5)
 
 // Helper function to get client identifier
 export function getClientIdentifier(req: Request): string {
@@ -60,15 +37,13 @@ export function getClientIdentifier(req: Request): string {
 // Helper function to check rate limit
 export async function checkRateLimit(
   identifier: string,
-  limiter: Ratelimit
+  limiter: Ratelimit | undefined,
 ): Promise<{ allowed: boolean; remaining: number; reset: number }> {
-  const { success, limit, remaining, reset } = await limiter.limit(identifier);
-
-  return {
-    allowed: success,
-    remaining,
-    reset,
-  };
+  if (!limiter) {
+    return { allowed: true, remaining: 999999, reset: Date.now() + 60_000 }
+  }
+  const { success, remaining, reset } = await limiter.limit(identifier)
+  return { allowed: success, remaining, reset }
 }
 
 // Specific rate limit checkers for common use cases

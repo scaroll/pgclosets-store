@@ -1,15 +1,8 @@
-import { createOpenAI } from '@ai-sdk/openai';
-import { generateObject } from 'ai';
+import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { ProductRecommendationSchema } from '@/lib/ai/schemas';
-import { NextResponse } from 'next/server';
 
-// Allow up to 15 seconds for AI generation
-export const maxDuration = 15;
-
-const openai = createOpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+export const maxDuration = 1;
 
 // Request schema with extended context
 const RecommendationRequestSchema = z.object({
@@ -126,95 +119,12 @@ function buildContextPrompt(request: RecommendationRequest): string {
   return parts.join('\n');
 }
 
-export async function POST(req: Request) {
-  try {
-    // Parse and validate request
-    const body = await req.json();
-    const validatedRequest = RecommendationRequestSchema.parse(body);
-
-    // Build context prompt
-    const systemPrompt = buildContextPrompt(validatedRequest);
-
-    // Generate structured recommendations using AI
-    const { object } = await generateObject({
-      model: openai('gpt-4-turbo'),
-      schema: RecommendationsResponseSchema,
-      prompt: `Generate ${validatedRequest.maxRecommendations} product recommendations based on the context provided. Each recommendation should include a realistic product from PG Closets' catalog with appropriate pricing ($200-$3000 range for doors, $50-$500 for hardware).`,
-      system: systemPrompt,
-    });
-
-    // Post-process recommendations with similarity scoring
-    const processedRecommendations = object.recommendations.map((rec) => {
-      let adjustedScore = rec.matchScore;
-
-      // Adjust score based on browsing history similarity
-      if (validatedRequest.browsingHistory?.length) {
-        const historyCategories = validatedRequest.browsingHistory.map(h => h.category);
-        if (historyCategories.includes(rec.category)) {
-          adjustedScore = Math.min(1, adjustedScore + 0.1);
-        }
-      }
-
-      // Adjust score based on current product similarity
-      if (validatedRequest.currentProduct?.features && rec.features) {
-        const similarity = calculateSimilarityScore(
-          validatedRequest.currentProduct.features,
-          rec.features
-        );
-        adjustedScore = Math.min(1, adjustedScore + similarity * 0.15);
-      }
-
-      // Budget fit adjustment
-      if (validatedRequest.budget) {
-        const { min, max } = validatedRequest.budget;
-        if (rec.price < min || rec.price > max) {
-          adjustedScore = Math.max(0, adjustedScore - 0.2);
-        }
-      }
-
-      return {
-        ...rec,
-        matchScore: Math.round(adjustedScore * 100) / 100, // Round to 2 decimals
-      };
-    });
-
-    // Sort by match score descending
-    processedRecommendations.sort((a, b) => b.matchScore - a.matchScore);
-
-    return NextResponse.json({
-      success: true,
-      recommendations: processedRecommendations,
-      reasoning: object.reasoning,
-      metadata: {
-        requestId: crypto.randomUUID(),
-        generatedAt: new Date().toISOString(),
-        count: processedRecommendations.length,
-      },
-    });
-
-  } catch (error) {
-    console.error('AI recommendations error:', error);
-
-    // Validation errors
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Invalid request data',
-          details: error.errors,
-        },
-        { status: 400 }
-      );
-    }
-
-    // AI generation errors
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Failed to generate recommendations',
-        message: error instanceof Error ? error.message : 'Unknown error',
-      },
-      { status: 500 }
-    );
-  }
+export async function POST(_req: Request) {
+  return NextResponse.json(
+    {
+      success: false,
+      error: 'AI recommendations are temporarily disabled',
+    },
+    { status: 503 },
+  )
 }

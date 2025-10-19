@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import fs from 'node:fs'
 import Link from 'next/link'
 import { notFound } from "next/navigation"
 import { reninProducts } from "../../../data/renin-products"
@@ -24,10 +25,23 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!p) return { title: "Product Not Found | PG Closets" }
   const title = `${p.name} | PG Closets Ottawa`
   const description = `Premium ${p.category} door in Ottawa. ${p.features.join(", ")}. From $${p.price} CAD with professional installation.`
+  const image = p.image && !p.image.startsWith('/api/placeholder') ? p.image : undefined
   return {
     title,
     description,
-    openGraph: { title, description, type: "website", locale: "en_CA" },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      locale: "en_CA",
+      images: image ? [{ url: image } ] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: image ? [image] : undefined,
+    },
   }
 }
 
@@ -36,6 +50,26 @@ export default function PDP({ params }: { params: { slug: string } }) {
   if (!p) return notFound()
 
   const priceText = `From $${p.price.toLocaleString()} CAD`
+  const publicPath = (rel: string) => rel.replace(/^\/+/, '')
+  const exists = (rel: string) => {
+    try {
+      return fs.existsSync(process.cwd() + '/public/' + publicPath(rel))
+    } catch {
+      return false
+    }
+  }
+  const fallbackByCategory: Record<string, string> = {
+    'Barn Door': '/images/products/barn-door-main.jpg',
+    'Bifold': '/images/products/bifold-door-main.jpg',
+    'Bypass': '/images/products/bypass-door-main.jpg',
+    'Pivot': '/images/products/pivot-door-main.jpg',
+    'Hardware': '/images/products/hardware-main.jpg',
+    'Mirror': '/images/products/mirror-door-main.jpg',
+  }
+  const primaryImage =
+    p.image && !p.image.startsWith('/api/placeholder') && exists(p.image)
+      ? p.image
+      : fallbackByCategory[p.category] || '/images/products/door-main.jpg'
   const related = (reninProducts as ReninProduct[])
     .filter((product) => product.category === p.category && product.id !== p.id)
     .slice(0, 3)
@@ -49,10 +83,7 @@ export default function PDP({ params }: { params: { slug: string } }) {
           {/* Image block with exact specifications: white card, sky border, 16px radius, min-height requirements */}
           <div className="card-apple p-0 overflow-hidden min-h-[320px] lg:min-h-[480px]">
             <Image
-              src={
-                p.image ||
-                `/placeholder.svg?height=900&width=1200&query=${encodeURIComponent(p.name + " closet door") || "/placeholder.svg"}`
-              }
+              src={primaryImage}
               alt={`${p.name} - PG Closets Ottawa`}
               width={1200}
               height={900}
@@ -134,8 +165,9 @@ export default function PDP({ params }: { params: { slug: string } }) {
                   <div className="h-40 overflow-hidden">
                     <Image
                       src={
-                        r.image ||
-                        `/placeholder.svg?height=160&width=240&query=${encodeURIComponent(r.name + " closet door") || "/placeholder.svg"}`
+                        r.image && !r.image.startsWith('/api/placeholder') && exists(r.image)
+                          ? r.image
+                          : fallbackByCategory[r.category] || '/images/products/door-main.jpg'
                       }
                       alt={`${r.name} - PG Closets Ottawa`}
                       width={240}
