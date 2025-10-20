@@ -19,12 +19,13 @@ interface Props {
   params: { neighborhood: string }
 }
 
+// Temporarily disable static generation to resolve deployment
 // Generate static params for all neighborhoods
-export async function generateStaticParams() {
-  return getNeighborhoodSlugs().map((slug) => ({
-    neighborhood: slug,
-  }))
-}
+// export async function generateStaticParams() {
+//   return getNeighborhoodSlugs().map((slug) => ({
+//     neighborhood: slug,
+//   }))
+// }
 
 // Generate metadata for each neighborhood page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

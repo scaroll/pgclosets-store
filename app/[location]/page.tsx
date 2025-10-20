@@ -16,13 +16,14 @@ interface LocationPageProps {
   };
 }
 
+// Temporarily disable static generation to resolve deployment
 // Generate static params for all locations
-export async function generateStaticParams() {
-  const slugs = getAllLocationSlugs();
-  return slugs.map((slug) => ({
-    location: slug,
-  }));
-}
+// export async function generateStaticParams() {
+//   const slugs = getAllLocationSlugs();
+//   return slugs.map((slug) => ({
+//     location: slug,
+//   }));
+// }
 
 // Generate metadata for each location
 export async function generateMetadata({ params }: LocationPageProps): Promise<Metadata> {

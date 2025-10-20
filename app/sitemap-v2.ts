@@ -118,50 +118,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Location Pages - High Priority for Local SEO
+  // Location Pages - Temporarily disabled to resolve deployment conflicts
+  // These are handled by dynamic routing [location]
   const locationPages: MetadataRoute.Sitemap = [
-    {
-      url: `${CANONICAL_URL}/locations/ottawa`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${CANONICAL_URL}/locations/kanata`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      // url: `${CANONICAL_URL}/locations/barrhaven`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${CANONICAL_URL}/locations/nepean`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${CANONICAL_URL}/locations/orleans`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${CANONICAL_URL}/locations/stittsville`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${CANONICAL_URL}/locations/gloucester`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
+    // {
+    //   url: `${CANONICAL_URL}/locations/ottawa`,
+    //   lastModified,
+    //   changeFrequency: 'monthly',
+    //   priority: 0.9,
+    // },
+    // Temporarily disabled all location pages to resolve Vercel deployment issues
   ]
 
   // Legal Pages - Low Priority
