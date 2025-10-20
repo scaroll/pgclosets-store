@@ -1,5 +1,4 @@
-"use client";
-
+import { cookies } from 'next/headers';
 import { Button } from "../../../components/ui/button";
 import {
   Card,
@@ -14,16 +13,15 @@ import { Textarea } from "../../../components/ui/textarea";
 import { User, Mail, Phone, Calendar, MapPin, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { FileUpload } from "../../../components/ui/file-upload";
-import { useState } from "react";
 
 // Force dynamic rendering for authenticated pages
 export const dynamic = 'force-dynamic';
 
-export default function ProfilePage() {
-  const [_profilePicture, setProfilePicture] = useState<File | null>(null);
+export default async function ProfilePage() {
+  // Read cookies to force dynamic rendering
+  const theme = (await cookies()).get('theme')?.value || 'light';
 
   const handleProfilePictureSelect = async (file: File): Promise<void> => {
-    setProfilePicture(file);
     console.log("[v0] Profile picture selected:", file.name);
   };
 

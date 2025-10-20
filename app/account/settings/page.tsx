@@ -1,5 +1,4 @@
-"use client";
-
+import { cookies } from 'next/headers';
 import { Button } from "../../../components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card"
 import { Input } from "../../../components/ui/input"
@@ -12,7 +11,10 @@ import Link from "next/link"
 // Force dynamic rendering for authenticated pages
 export const dynamic = 'force-dynamic';
 
-export default function SettingsPage() {
+export default async function SettingsPage() {
+  // Read cookies to force dynamic rendering
+  const theme = (await cookies()).get('theme')?.value || 'light';
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
