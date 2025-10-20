@@ -133,7 +133,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${CANONICAL_URL}/locations/barrhaven`,
+      // url: `${CANONICAL_URL}/locations/barrhaven`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
