@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, X, Phone } from 'lucide-react';
+import { Send, Bot, User, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
@@ -25,6 +25,7 @@ interface AIBookingAssistantProps {
 
 // Natural language processing for date/time
 const parseNaturalDate = (input: string): Date | null => {
+  if (!input) return null;
   const lowerInput = input.toLowerCase();
   const today = new Date();
 
@@ -56,6 +57,7 @@ const parseNaturalDate = (input: string): Date | null => {
 
 // Parse time from natural language
 const parseNaturalTime = (input: string): string | null => {
+  if (!input) return null;
   const lowerInput = input.toLowerCase();
 
   // Handle morning/afternoon/evening preferences
@@ -147,7 +149,7 @@ export default function AIBookingAssistant({
 
       if (parsedTime) {
         updates.timeSlot = parsedTime;
-        const [hours, minutes] = parsedTime.split(':');
+        const [hours, minutes] = (parsedTime || '').split(':');
         const hour = parseInt(hours);
         const period = hour >= 12 ? 'PM' : 'AM';
         const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;

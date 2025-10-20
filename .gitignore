@@ -29,3 +29,7 @@ test-results/
 *.tsbuildinfo
 next-env.d.ts
 /lib/generated/prisma
+# Codex CLI local config and secrets
+.codex/
+.env
+*.env

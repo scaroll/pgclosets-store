@@ -83,15 +83,15 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <Heading level={2} className="text-4xl md:text-5xl lg:text-6xl text-black mb-4">
+            <Heading level={2} className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl text-black mb-4">
               Crafted for Ottawa
             </Heading>
-            <Text size="lg" className="text-lg md:text-xl text-black/70 max-w-2xl mx-auto">
+            <Text size="lg" className="text-base xs:text-lg md:text-xl text-black/70 max-w-2xl mx-auto">
               Premium closet solutions designed to elevate your home
             </Text>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-full">
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4 xs:gap-6 w-full">
             {[
               {
                 title: "Premium Quality",
@@ -127,12 +127,12 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex flex-col items-center gap-4 p-6 border border-gray-300 rounded-apple-lg text-center hover:border-black/30 hover:shadow-apple-md transition-all duration-500 group h-full bg-white">
+                  <div className="flex flex-col items-center gap-3 xs:gap-4 p-4 xs:p-6 border border-gray-300 rounded-apple-lg text-center hover:border-black/30 hover:shadow-apple-md transition-all duration-500 group h-full bg-white">
                     <div className={`${feature.color} mb-2 group-hover:scale-110 transition-transform duration-500`}>
-                      <IconComponent className="h-10 w-10" />
+                      <IconComponent className="h-8 w-8 xs:h-10 xs:w-10" />
                     </div>
-                    <Heading level={3} className="text-xl text-black mb-2">{feature.title}</Heading>
-                    <Text className="text-black/70">{feature.description}</Text>
+                    <Heading level={3} className="text-lg xs:text-xl text-black mb-2">{feature.title}</Heading>
+                    <Text className="text-sm xs:text-base text-black/70">{feature.description}</Text>
                   </div>
                 </motion.div>
               )
@@ -154,12 +154,12 @@ export default function HomePage() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 xs:mb-12"
         >
-          <Heading level={2} className="text-4xl md:text-5xl lg:text-6xl text-black mb-4">
+          <Heading level={2} className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl text-black mb-4">
             What Our Clients Say
           </Heading>
-          <Text size="lg" className="text-lg md:text-xl text-black/70 max-w-2xl mx-auto">
+          <Text size="lg" className="text-base xs:text-lg md:text-xl text-black/70 max-w-2xl mx-auto">
             Join hundreds of satisfied Ottawa homeowners
           </Text>
         </motion.div>
@@ -256,32 +256,37 @@ export default function HomePage() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <Heading level={2} className="text-4xl md:text-5xl lg:text-6xl mb-6">
+          <Heading level={2} className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 xs:mb-6">
             Start Your Project Today
           </Heading>
-          <Text size="lg" className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto">
+          <Text size="lg" className="text-base xs:text-lg md:text-xl text-white/80 mb-8 xs:mb-12 max-w-2xl mx-auto">
             Join 500+ satisfied Ottawa homeowners. Free quote, no obligation.
           </Text>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 xs:gap-4 justify-center">
             <Link href="/instant-estimate" aria-label="Get an instant closet estimate">
               <Button
                 variant="primary"
                 size="lg"
-                className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[240px] min-h-[48px] group"
+                className="bg-white text-black border-2 border-white hover:bg-transparent hover:text-white min-w-[200px] xs:min-w-[240px] min-h-[44px] xs:min-h-[48px] group text-sm xs:text-base"
                 onClick={() => trackCTAClick({ location: 'footer', label: 'Get Instant Estimate' })}
               >
-                <span className="relative z-10">Get Instant Estimate</span>
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <span className="relative z-10 flex items-center gap-2 justify-center">
+                  <span className="text-xs xs:text-sm">Get Instant</span>
+                  <span className="text-sm xs:text-base font-bold">Estimate</span>
+                  <ArrowRight className="h-4 w-4 xs:h-5 xs:w-5 transition-transform group-hover:translate-x-1" />
+                </span>
               </Button>
             </Link>
             <a href={getPhoneHref()} aria-label="Call PG Closets for a free consultation">
               <Button
                 variant="secondary"
                 size="lg"
-                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black min-w-[240px] min-h-[48px]"
+                className="bg-transparent text-white border-2 border-white/60 hover:bg-white hover:text-black min-w-[200px] xs:min-w-[240px] min-h-[44px] xs:min-h-[48px] text-sm xs:text-base"
                 onClick={() => trackCTAClick({ location: 'footer', label: 'Call Now' })}
               >
-                <span className="relative z-10">Call {getPhoneDisplay()}</span>
+                <span className="relative z-10 flex items-center gap-2 justify-center">
+                  <span>Call {getPhoneDisplay()}</span>
+                </span>
               </Button>
             </a>
           </div>

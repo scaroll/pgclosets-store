@@ -11,7 +11,7 @@ import { Check, AlertCircle } from 'lucide-react'
 // We avoid Radix Slot here for asChild to prevent multi-children issues in SSR
 
 interface AppleButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof MotionProps> {
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'outline' | 'link' | 'destructive'
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'outline' | 'link' | 'destructive' | 'brand-primary' | 'brand-secondary' | 'brand-outline' | 'brand-ghost'
   size?: 'sm' | 'md' | 'lg'
   icon?: ReactNode
   iconPosition?: 'left' | 'right'
@@ -142,6 +142,50 @@ const AppleButton = forwardRef<HTMLButtonElement, AppleButtonProps>(
         currentABVariant.shadow,
         currentABVariant.hoverShadow,
         'dark:from-red-500 dark:to-red-600'
+      ),
+      // Brand Primary: PG Closets navy blue
+      'brand-primary': cn(
+        'bg-gradient-to-b from-gray-900 to-black',
+        'text-white',
+        'hover:from-gray-800 hover:to-gray-900',
+        'active:from-black active:to-gray-900',
+        currentABVariant.shadow,
+        currentABVariant.hoverShadow,
+        currentABVariant.activeShadow,
+        success && 'from-green-600 to-green-700 hover:from-green-500 hover:to-green-600',
+        error && 'from-red-600 to-red-700 hover:from-red-500 hover:to-red-600'
+      ),
+      // Brand Secondary: Woodgrain theme
+      'brand-secondary': cn(
+        'bg-gradient-to-b from-woodgrain-600 to-woodgrain-700',
+        'text-white',
+        'hover:from-woodgrain-500 hover:to-woodgrain-600',
+        'active:from-woodgrain-700 active:to-woodgrain-800',
+        currentABVariant.shadow,
+        currentABVariant.hoverShadow,
+        currentABVariant.activeShadow,
+        success && 'from-green-600 to-green-700 hover:from-green-500 hover:to-green-600',
+        error && 'from-red-600 to-red-700 hover:from-red-500 hover:to-red-600'
+      ),
+      // Brand Outline: Woodgrain border
+      'brand-outline': cn(
+        'bg-transparent',
+        'border-2 border-woodgrain-600',
+        'text-woodgrain-700',
+        'hover:bg-woodgrain-50 hover:border-woodgrain-700',
+        'active:bg-woodgrain-100',
+        currentABVariant.shadow,
+        success && 'border-green-600 text-green-700 hover:bg-green-50',
+        error && 'border-red-600 text-red-700 hover:bg-red-50'
+      ),
+      // Brand Ghost: Transparent woodgrain
+      'brand-ghost': cn(
+        'bg-transparent',
+        'text-woodgrain-700',
+        'hover:bg-woodgrain-50',
+        'active:bg-woodgrain-100',
+        success && 'text-green-700 hover:bg-green-50',
+        error && 'text-red-700 hover:bg-red-50'
       )
     }
 

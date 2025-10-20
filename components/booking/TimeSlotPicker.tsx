@@ -70,7 +70,7 @@ export default function TimeSlotPicker({
     const evening: TimeSlot[] = [];
 
     availableSlots.forEach(slot => {
-      const hour = parseInt(slot.time.split(':')[0]);
+      const hour = parseInt((slot.time || '').split(':')[0]);
 
       if (hour < 12) {
         morning.push(slot);
@@ -87,7 +87,7 @@ export default function TimeSlotPicker({
   const currentPeriodSlots = timeSlotsByPeriod[selectedPeriod];
 
   const formatTimeDisplay = (time: string) => {
-    const [hours, minutes] = time.split(':');
+    const [hours, minutes] = (time || '').split(':');
     const hour = parseInt(hours);
     const period = hour >= 12 ? 'PM' : 'AM';
     const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
@@ -124,7 +124,7 @@ export default function TimeSlotPicker({
       {/* Period Selector */}
       <div className="grid grid-cols-3 gap-3 mb-6">
         <Button
-          variant={selectedPeriod === 'morning' ? 'default' : 'outline'}
+          variant={selectedPeriod === 'morning' ? 'secondary' : 'outline'}
           onClick={() => setSelectedPeriod('morning')}
           className="flex flex-col items-center py-4"
         >
@@ -136,7 +136,7 @@ export default function TimeSlotPicker({
         </Button>
 
         <Button
-          variant={selectedPeriod === 'afternoon' ? 'default' : 'outline'}
+          variant={selectedPeriod === 'afternoon' ? 'secondary' : 'outline'}
           onClick={() => setSelectedPeriod('afternoon')}
           className="flex flex-col items-center py-4"
         >
@@ -148,7 +148,7 @@ export default function TimeSlotPicker({
         </Button>
 
         <Button
-          variant={selectedPeriod === 'evening' ? 'default' : 'outline'}
+          variant={selectedPeriod === 'evening' ? 'secondary' : 'outline'}
           onClick={() => setSelectedPeriod('evening')}
           className="flex flex-col items-center py-4"
         >

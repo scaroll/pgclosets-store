@@ -199,7 +199,7 @@ export default function BookingPage() {
           {/* Main Content Area */}
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
             <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-              {steps[currentStep - 1].title}
+              {steps[currentStep - 1]?.title}
             </h2>
 
             <AnimatePresence mode="wait">

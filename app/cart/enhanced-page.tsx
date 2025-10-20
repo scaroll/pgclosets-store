@@ -14,9 +14,7 @@ import {
   Package,
   Truck,
   Shield,
-  Star,
   Tag,
-  Info,
   X
 } from "lucide-react"
 import StandardLayout from "@/components/layout/StandardLayout"
@@ -27,8 +25,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 import { toast } from "sonner"
-import { cn } from "@/lib/utils"
-import { colors, shadows, radius, spacing } from "@/lib/design-tokens"
+// import { cn } from "@/lib/utils"
+// import { colors, shadows, radius, spacing } from "@/lib/design-tokens"
 
 // Trust badges component
 const TrustBadges = () => (
@@ -134,7 +132,7 @@ const CartItem = ({ item }: { item: any }) => {
               <div className="flex flex-wrap gap-2 mb-3">
                 {Object.entries(item.selectedOptions).map(([key, value]) => (
                   <Badge key={key} variant="outline" className="text-xs">
-                    {key}: {value}
+                    {key}: {String(value)}
                   </Badge>
                 ))}
               </div>

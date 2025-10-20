@@ -51,37 +51,54 @@ export function EnhancedProductDetailPage({ product, relatedProducts }: Enhanced
     <main className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4">
         <section className="grid lg:grid-cols-2 gap-10 mb-12">
-          {/* Simple Product Gallery */}
+          {/* Enhanced Product Gallery */}
           <div className="space-y-4">
             {/* Main Image */}
-            <div className="aspect-square overflow-hidden rounded-lg bg-gray-100">
+            <div className="relative aspect-square overflow-hidden rounded-xl bg-gray-100 shadow-lg">
               <Image
                 src={galleryImages[selectedImageIndex]}
-                alt={product.title}
-                width={600}
-                height={600}
-                className="w-full h-full object-cover"
+                alt={`${product.title} - View ${selectedImageIndex + 1}`}
+                width={800}
+                height={800}
+                className="w-full h-full object-cover transition-transform duration-300"
                 priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={90}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "/placeholder.svg";
+                }}
               />
+              {/* Image counter for mobile */}
+              {galleryImages.length > 1 && (
+                <div className="absolute top-4 right-4 bg-black/60 text-white px-2 py-1 rounded-lg text-xs sm:text-sm backdrop-blur-sm">
+                  {selectedImageIndex + 1} / {galleryImages.length}
+                </div>
+              )}
             </div>
 
             {/* Thumbnail Gallery */}
             {galleryImages.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto">
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
                 {galleryImages.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => setSelectedImageIndex(index)}
-                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-colors ${
-                      selectedImageIndex === index ? "border-blue-500" : "border-transparent"
+                    className={`flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                      selectedImageIndex === index
+                        ? "border-blue-500 ring-2 ring-blue-200 scale-105"
+                        : "border-gray-200 hover:border-gray-400 hover:scale-105"
                     }`}
+                    aria-label={`View image ${index + 1} of ${galleryImages.length}`}
+                    aria-pressed={selectedImageIndex === index}
                   >
                     <Image
                       src={image}
-                      alt={`${product.title} view ${index + 1}`}
+                      alt={`${product.title} - Thumbnail ${index + 1}`}
                       width={80}
                       height={80}
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </button>
                 ))}
@@ -90,42 +107,54 @@ export function EnhancedProductDetailPage({ product, relatedProducts }: Enhanced
           </div>
 
           {/* Product Info */}
-          <div className="space-y-6">
-            <div className="space-y-2">
-              <h1 className="text-4xl lg:text-5xl font-extralight tracking-tight text-slate-900">
+          <div className="space-y-6 lg:space-y-8">
+            <div className="space-y-3 lg:space-y-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extralight tracking-tight text-slate-900 leading-tight">
                 {product.title}
               </h1>
-              <div className="text-sm text-slate-600 font-light uppercase tracking-widest">
+              <div className="text-sm sm:text-base text-slate-600 font-light uppercase tracking-widest">
                 {product.collection?.title || 'General'}
               </div>
-              <div className="text-3xl font-extralight text-slate-900 tracking-tight">
+              <div className="text-2xl sm:text-3xl font-extralight text-slate-900 tracking-tight">
                 {priceText}
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button asChild size="lg">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Button asChild size="lg" className="min-h-[48px] sm:min-h-[52px] text-sm sm:text-base font-medium">
                 <Link href="/contact">Request Installation Quote</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="min-h-[48px] sm:min-h-[52px] text-sm sm:text-base font-medium">
                 <Link href="/contact">Schedule Consultation</Link>
               </Button>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-6 pt-2">
-              <div className="bg-white shadow-lg p-6">
-                <h2 className="text-xl font-extralight text-slate-900 mb-3 tracking-wide">Overview</h2>
-                <p className="text-slate-600 font-light">
+            <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 pt-2">
+              <div className="bg-white shadow-lg rounded-lg p-4 sm:p-6">
+                <h2 className="text-lg sm:text-xl font-extralight text-slate-900 mb-3 tracking-wide">Overview</h2>
+                <p className="text-slate-600 font-light text-sm sm:text-base leading-relaxed">
                   {product.description}
                 </p>
               </div>
-              <div className="bg-white shadow-lg p-6">
-                <h2 className="text-xl font-extralight text-slate-900 mb-3 tracking-wide">What&apos;s Included</h2>
-                <ul className="text-slate-600 font-light space-y-1">
-                  <li>• Track & soft-close hardware</li>
-                  <li>• Professional installation (Ottawa)</li>
-                  <li>• Removal/disposal of old doors</li>
-                  <li>• 2-year workmanship warranty</li>
+              <div className="bg-white shadow-lg rounded-lg p-4 sm:p-6">
+                <h2 className="text-lg sm:text-xl font-extralight text-slate-900 mb-3 tracking-wide">What&apos;s Included</h2>
+                <ul className="text-slate-600 font-light space-y-2 text-sm sm:text-base">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Track & soft-close hardware</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Professional installation (Ottawa)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Removal/disposal of old doors</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>2-year workmanship warranty</span>
+                  </li>
                 </ul>
               </div>
             </div>

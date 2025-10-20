@@ -1,7 +1,7 @@
 import type { NextRequest} from 'next/server';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { checkRateLimit } from '@/lib/rate-limit';
+import { checkRateLimit, getClientIdentifier, generalRateLimiter } from '@/lib/rate-limit';
 import { sendLeadNotification } from '@/lib/email/lead-notification';
 import { v4 as uuidv4 } from 'uuid';
 import { env } from '@/lib/env-validation';
@@ -69,19 +69,41 @@ interface LeadResponse {
   leadId?: string;
 }
 
-// CORS headers configuration from validated environment
-const corsHeaders = {
-  'Access-Control-Allow-Origin': env.NEXT_PUBLIC_APP_URL,
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, x-csrf-token',
-  'Access-Control-Max-Age': '86400',
+// CORS headers configuration - more restrictive for security
+const getCorsHeaders = (origin?: string) => {
+  const allowedOrigins = [
+    env.NEXT_PUBLIC_APP_URL,
+    'https://pgclosets.ca',
+    'https://www.pgclosets.ca'
+  ].filter(Boolean);
+
+  const isAllowedOrigin = origin && allowedOrigins.includes(origin);
+
+  return {
+    'Access-Control-Allow-Origin': isAllowedOrigin ? origin : 'null',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, x-csrf-token, x-requested-with',
+    'Access-Control-Allow-Credentials': 'true',
+    'Access-Control-Max-Age': '86400',
+    'Vary': 'Origin',
+  };
 };
 
 /**
  * OPTIONS handler for CORS preflight
  */
-export async function OPTIONS() {
-  return NextResponse.json({}, { status: 200, headers: corsHeaders });
+export async function OPTIONS(request: NextRequest) {
+  const origin = request.headers.get('origin');
+  const corsHeaders = getCorsHeaders(origin || undefined);
+
+  return NextResponse.json({}, {
+    status: 200,
+    headers: {
+      ...corsHeaders,
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY',
+    }
+  });
 }
 
 /**
@@ -90,32 +112,51 @@ export async function OPTIONS() {
  */
 export async function POST(request: NextRequest): Promise<NextResponse<LeadResponse>> {
   try {
+    // Get origin for CORS
+    const origin = request.headers.get('origin');
+    const corsHeaders = getCorsHeaders(origin || undefined);
+
+    // Reject requests from unauthorized origins
+    if (origin && corsHeaders['Access-Control-Allow-Origin'] === 'null') {
+      return NextResponse.json<LeadResponse>(
+        {
+          success: false,
+          message: 'Cross-origin requests not allowed',
+        },
+        {
+          status: 403,
+          headers: {
+            'X-Content-Type-Options': 'nosniff',
+            'X-Frame-Options': 'DENY',
+          }
+        }
+      );
+    }
+
     // Extract IP address for rate limiting
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
                request.headers.get('x-real-ip') ||
                'unknown';
 
     // Rate limiting: max 3 requests per IP per hour
-    const rateLimitResult = await checkRateLimit(ip, {
-      maxRequests: 3,
-      windowMs: 60 * 60 * 1000, // 1 hour
-    });
+    const identifier = getClientIdentifier(request);
+    const rateLimitResult = await checkRateLimit(identifier, generalRateLimiter);
 
     if (!rateLimitResult.allowed) {
       console.warn(`[Lead API] Rate limit exceeded for IP: ${ip}`);
       return NextResponse.json<LeadResponse>(
         {
           success: false,
-          message: `Too many requests. Please try again in ${Math.ceil(rateLimitResult.retryAfter / 60000)} minutes.`,
+          message: `Too many requests. Please try again later.`,
         },
         {
           status: 429,
           headers: {
             ...corsHeaders,
-            'Retry-After': String(Math.ceil(rateLimitResult.retryAfter / 1000)),
+            'Retry-After': '3600',
             'X-RateLimit-Limit': '3',
             'X-RateLimit-Remaining': String(rateLimitResult.remaining),
-            'X-RateLimit-Reset': String(rateLimitResult.resetTime),
+            'X-RateLimit-Reset': String(rateLimitResult.reset),
           }
         }
       );
@@ -232,7 +273,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<LeadRespo
           ...corsHeaders,
           'X-RateLimit-Limit': '3',
           'X-RateLimit-Remaining': String(rateLimitResult.remaining - 1),
-          'X-RateLimit-Reset': String(rateLimitResult.resetTime),
+          'X-RateLimit-Reset': String(rateLimitResult.reset),
         }
       }
     );
@@ -259,6 +300,6 @@ export async function GET() {
       success: false,
       message: 'Method not allowed',
     },
-    { status: 405, headers: corsHeaders }
+    { status: 405 }
   );
 }

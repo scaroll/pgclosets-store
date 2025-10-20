@@ -247,9 +247,3 @@ export const trackTimeOnPage = (seconds: number) => {
 };
 
 // Add TypeScript global type definitions
-declare global {
-  interface Window {
-    gtag: (...args: unknown[]) => void;
-    dataLayer: unknown[];
-  }
-}

@@ -19,10 +19,7 @@ import {
   Package,
   CheckCircle,
   User,
-  MapPin,
-  Calendar,
-  Shield,
-  Info
+  Shield
 } from "lucide-react"
 import StandardLayout from "@/components/layout/StandardLayout"
 import { useEnhancedCart, type Address } from "@/hooks/use-enhanced-cart"
@@ -336,8 +333,8 @@ const DeliveryOptionsStep = ({ onNext, onBack }: { onNext: () => void; onBack: (
     setInstallationDate,
     setSpecialInstructions,
     installationDate,
-    specialInstructions,
-    items
+    specialInstructions
+    // items
   } = useEnhancedCart()
 
   const [deliveryMethod, setDeliveryMethod] = useState("standard")
@@ -696,11 +693,11 @@ const PaymentStep = ({ onNext, onBack }: { onNext: (paymentIntent: any) => void;
 const ReviewConfirmStep = ({
   paymentIntent,
   onConfirm,
-  onBack
+  // onBack
 }: {
   paymentIntent: any
   onConfirm: () => void
-  onBack: () => void
+  // onBack: () => void
 }) => {
   const {
     items,
@@ -877,7 +874,7 @@ export default function EnhancedCheckoutPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           items,
-          paymentIntentId: paymentIntent?.id,
+          paymentIntentId: (paymentIntent as any)?.id,
           // Add other order details
         })
       })
@@ -933,7 +930,7 @@ export default function EnhancedCheckoutPage() {
                 <ReviewConfirmStep
                   paymentIntent={paymentIntent}
                   onConfirm={handleComplete}
-                  onBack={() => setCurrentStep(3)}
+                  // onBack={() => setCurrentStep(3)}
                 />
               )}
             </motion.div>

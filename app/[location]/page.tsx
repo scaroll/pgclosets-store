@@ -26,7 +26,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for each location
 export async function generateMetadata({ params }: LocationPageProps): Promise<Metadata> {
-  const location = getLocation(params.location);
+  const { location: locationSlug } = await params;
+  const location = getLocation(locationSlug);
 
   if (!location) {
     return {
@@ -63,14 +64,15 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
   };
 }
 
-export default function LocationPage({ params }: LocationPageProps) {
-  const location = getLocation(params.location);
+export default async function LocationPage({ params }: LocationPageProps) {
+  const { location: locationSlug } = await params;
+  const location = getLocation(locationSlug);
 
   if (!location) {
     notFound();
   }
 
-  const nearbyLocations = getNearbyLocations(params.location);
+  const nearbyLocations = getNearbyLocations(locationSlug);
 
   // Local Business Schema
   const localBusinessSchema = {

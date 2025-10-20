@@ -38,7 +38,7 @@ export function BlobStorageViewer() {
   }
 
   useEffect(() => {
-    fetchFiles()
+    void fetchFiles()
   }, [])
 
   const getFileIcon = (pathname: string) => {
@@ -54,14 +54,14 @@ export function BlobStorageViewer() {
     const k = 1024
     const sizes = ["Bytes", "KB", "MB", "GB"]
     const i = Math.floor(Math.log(bytes) / Math.log(k))
-    return Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
+    return `${Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`
   }
 
   return (
     <Card className="w-full max-w-4xl mx-auto">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Blob Storage Contents</CardTitle>
-        <Button onClick={fetchFiles} disabled={loading} variant="outline" size="sm">
+        <Button onClick={() => void fetchFiles()} disabled={loading} variant="outline" size="sm">
           <RefreshCw className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`} />
           Refresh
         </Button>
@@ -69,7 +69,7 @@ export function BlobStorageViewer() {
       <CardContent>
         {loading && (
           <div className="text-center py-8">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto self-start" />
             <p className="mt-2 text-sm text-gray-600">Loading files...</p>
           </div>
         )}
@@ -77,7 +77,7 @@ export function BlobStorageViewer() {
         {error && (
           <div className="text-center py-8">
             <p className="text-red-600">Error: {error}</p>
-            <Button onClick={fetchFiles} className="mt-2 bg-transparent" variant="outline">
+            <Button onClick={() => void fetchFiles()} className="mt-2 bg-transparent" variant="outline">
               Try Again
             </Button>
           </div>

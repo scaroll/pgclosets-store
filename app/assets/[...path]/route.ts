@@ -34,7 +34,7 @@ export async function GET(
     const data = await fs.readFile(mapped)
     const ext = path.extname(mapped)
     const mime = mimeTypeFromExt(ext)
-    return new Response(data, {
+    return new Response(data as any, {
       status: 200,
       headers: {
         'content-type': mime,
@@ -54,9 +54,9 @@ function mapAliasIfMissing(full: string): string {
   const m = rel.match(/^images\/(.+)$/)
   if (!m) return full
   const p = m[1] // e.g., products/bypass-modern-minimalist-hero.jpg
-  const mappedRel = aliasForProductPath(p)
+  const mappedRel = aliasForProductPath(p || '')
   if (!mappedRel) return full
-  const mappedFull = path.join(pub, 'images', mappedRel)
+  const mappedFull = path.join(pub, 'images', mappedRel || '')
   return fss.existsSync(mappedFull) ? mappedFull : full
 }
 
@@ -94,7 +94,7 @@ function aliasForProductPath(p: string): string | undefined {
     open: 'open',
     detail: 'detail',
     lifestyle: 'lifestyle',
-    installation: base.startsWith('bypass') ? 'system' : (base.startsWith('bifold') ? 'installation' : 'detail'),
+    installation: base?.startsWith('bypass') ? 'system' : (base?.startsWith('bifold') ? 'installation' : 'detail'),
   }
 
   let mappedSuffix = suffixMap[suffix]

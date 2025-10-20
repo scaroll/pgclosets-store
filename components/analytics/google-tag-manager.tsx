@@ -522,8 +522,4 @@ export const setUserProperties = (userProperties: Record<string, any>) => {
 
 // Declare global types
 declare global {
-  interface Window {
-    dataLayer: unknown[]
-    gtag: (...args: unknown[]) => void
   }
-}

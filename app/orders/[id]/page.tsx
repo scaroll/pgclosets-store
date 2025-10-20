@@ -15,8 +15,7 @@ import {
   Mail,
   MapPin,
   CreditCard,
-  Clock,
-  ChevronRight
+  Clock
 } from "lucide-react"
 import StandardLayout from "@/components/layout/StandardLayout"
 import { Button } from "@/components/ui/button"

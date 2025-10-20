@@ -5,8 +5,9 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ScrollProgress from '@/components/ScrollProgress'
+import { PerformanceOptimizer } from '@/components/performance/PerformanceOptimizer'
 import Script from 'next/script'
-import { StructuredData } from '@/components/StructuredData'
+// import { StructuredData } from '@/components/StructuredData'
 import { BUSINESS_INFO } from '@/lib/business-config'
 import Analytics from '@/app/components/Analytics'
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/seo/comprehensive-schema'
@@ -135,6 +136,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${playfair.variable} ${inter.variable}`}>
       <head>
+        {/* Mobile Viewport Configuration - Critical for mobile UX */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover" />
+
         {/* Critical Resource Hints - Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -142,13 +146,29 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" />
 
-        {/* Preload critical assets - Hero image */}
+        {/* Preload critical assets - Hero image optimized */}
         <link
           rel="preload"
           as="image"
-          href="/images/elegant-barn-door-closet.png"
-          type="image/png"
+          href="/images/optimized/elegant-barn-door-closet/mobile.webp"
+          type="image/webp"
           // @ts-ignore - Next.js supports this
+          fetchpriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/optimized/elegant-barn-door-closet/tablet.webp"
+          type="image/webp"
+          media="(min-width: 768px)"
+          fetchpriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/optimized/elegant-barn-door-closet/desktop.webp"
+          type="image/webp"
+          media="(min-width: 1024px)"
           fetchpriority="high"
         />
 
@@ -156,9 +176,20 @@ export default function RootLayout({
         <style dangerouslySetInnerHTML={{
           __html: `
             /* Critical CSS - Inlined for immediate rendering */
-            body{margin:0;padding:0;background:#F9FAFB}
+            body{margin:0;padding:0;background:#F9FAFB;font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.6}
             .dark body{background:#1a1a1a}
             *{box-sizing:border-box}
+            /* Critical layout styles */
+            .min-h-screen{min-height:100vh}
+            .container{width:100%;max-width:1200px;margin:0 auto;padding:0 1rem}
+            /* Loading prevention */
+            img{max-width:100%;height:auto}
+            /* Font loading optimization */
+            .font-sans-body{font-family:Inter,system-ui,-apple-system,sans-serif}
+            .font-serif-display{font-family:Playfair Display,Georgia,serif}
+            /* Performance optimizations */
+            .will-change-transform{will-change:transform}
+            .contain-layout{contain:layout}
             @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
           `
         }} />
@@ -170,19 +201,24 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased font-sans-body">
-        {/* Skip to main content link for keyboard navigation */}
-        <a href="#main-content" className="skip-to-content sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-md">
-          Skip to main content
-        </a>
+        <PerformanceOptimizer
+          enableMonitoring={process.env.NODE_ENV === 'production'}
+          enablePreloading={true}
+          enablePrefetching={true}
+        >
+          {/* Skip to main content link for keyboard navigation */}
+          <a href="#main-content" className="skip-to-content sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-md">
+            Skip to main content
+          </a>
 
-        <ScrollProgress />
-        <Navigation />
+          <ScrollProgress />
+          <Navigation />
 
-        <main id="main-content" className="min-h-screen" tabIndex={-1} role="main">
-          {children}
-        </main>
+          <main id="main-content" className="min-h-screen contain-layout" tabIndex={-1} role="main">
+            {children}
+          </main>
 
-        <Footer />
+          <Footer />
 
         {/* Analytics Component - Handles GA and Vercel Analytics */}
         <Analytics />
@@ -266,6 +302,7 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         )}
+        </PerformanceOptimizer>
       </body>
     </html>
   )

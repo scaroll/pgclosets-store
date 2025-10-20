@@ -21,10 +21,21 @@ export function ElevatedHero({
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
   const controls = useAnimation()
+
+  // Detect touch devices
+  useEffect(() => {
+    const checkTouchDevice = () => {
+      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0)
+    }
+    checkTouchDevice()
+    window.addEventListener('touchstart', checkTouchDevice, { once: true })
+    return () => window.removeEventListener('touchstart', checkTouchDevice)
+  }, [])
 
   // Parallax scroll effects with smoother motion
   const { scrollYProgress } = useScroll({
@@ -55,8 +66,10 @@ export function ElevatedHero({
     }
   )
 
-  // Mouse tracking for 3D effects
+  // Mouse tracking for 3D effects (disabled on touch devices)
   useEffect(() => {
+    if (isTouchDevice) return // Skip mouse tracking on touch devices
+
     const handleMouseMove = (e: MouseEvent) => {
       const rect = heroRef.current?.getBoundingClientRect()
       if (rect) {
@@ -70,7 +83,7 @@ export function ElevatedHero({
 
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [mouseX, mouseY])
+  }, [mouseX, mouseY, isTouchDevice])
 
   // Floating animation loop
   useEffect(() => {
@@ -194,9 +207,9 @@ export function ElevatedHero({
               <span className="text-xs text-gray-600 font-medium">Ottawa's Premium Choice</span>
             </motion.div>
 
-            {/* Massive Headline with gradient */}
+            {/* Massive Headline with gradient - Mobile Optimized */}
             <motion.div variants={itemVariants} className="space-y-4">
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight">
+              <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.9] tracking-tight">
                 <span className="block bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
                   Transform
                 </span>
@@ -208,16 +221,16 @@ export function ElevatedHero({
                 </span>
               </h1>
 
-              <p className="text-xl sm:text-2xl text-gray-600 font-light">
+              <p className="text-lg xs:text-xl sm:text-2xl text-gray-600 font-light">
                 Where premium closet solutions meet exceptional design.
-                <span className="block text-lg mt-2 text-gray-500">
+                <span className="block text-sm xs:text-base sm:text-lg mt-2 text-gray-500">
                   Official Renin dealer serving Ottawa since 2009.
                 </span>
               </p>
             </motion.div>
 
-            {/* Magnetic CTA Buttons with enhanced hover */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
+            {/* Magnetic CTA Buttons with enhanced hover - Mobile Optimized */}
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 xs:gap-4">
               <motion.div
                 whileHover="hover"
                 initial="rest"
@@ -226,12 +239,13 @@ export function ElevatedHero({
               >
                 <Link href="/instant-estimate">
                   <Button
-                    className="group relative bg-gradient-to-r from-purple-600 to-blue-600 text-white border-0 px-8 py-6 text-base font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                    className="group relative bg-gradient-to-r from-purple-600 to-blue-600 text-white border-0 px-4 xs:px-6 sm:px-8 py-3 xs:py-4 sm:py-6 text-sm xs:text-base sm:text-base font-semibold rounded-xl xs:rounded-2xl shadow-lg xs:shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden w-full sm:w-auto min-h-[44px] xs:min-h-[48px] sm:min-h-[52px]"
                     onClick={() => trackCTAClick({ location: 'elevated-hero', label: 'Get Started' })}
                   >
-                    <span className="relative z-10 flex items-center gap-3">
-                      Get Instant Estimate
-                      <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                    <span className="relative z-10 flex items-center gap-2 xs:gap-3 justify-center">
+                      <span className="text-xs xs:text-sm sm:text-base">Get Instant</span>
+                      <span className="text-sm xs:text-base sm:text-base font-bold">Estimate</span>
+                      <ArrowRight className="w-4 xs:w-5 h-4 xs:h-5 transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600"
@@ -251,38 +265,38 @@ export function ElevatedHero({
               >
                 <Link href="/book-measure">
                   <Button
-                    className="group relative bg-white/80 backdrop-blur-sm text-gray-900 border-2 border-gray-200 px-8 py-6 text-base font-semibold rounded-2xl shadow-lg hover:shadow-xl hover:border-purple-200 transition-all duration-300"
+                    className="group relative bg-white/80 backdrop-blur-sm text-gray-900 border-2 border-gray-200 px-4 xs:px-6 sm:px-8 py-3 xs:py-4 sm:py-6 text-sm xs:text-base sm:text-base font-semibold rounded-xl xs:rounded-2xl shadow-md xs:shadow-lg hover:shadow-xl hover:border-purple-200 transition-all duration-300 w-full sm:w-auto min-h-[44px] xs:min-h-[48px] sm:min-h-[52px]"
                     onClick={() => trackCTAClick({ location: 'elevated-hero', label: 'Book Consultation' })}
                   >
-                    <span className="flex items-center gap-3">
-                      <Calendar className="w-5 h-5" />
-                      Book Free Consultation
+                    <span className="flex items-center gap-2 xs:gap-3 justify-center">
+                      <Calendar className="w-4 xs:w-5 h-4 xs:h-5" />
+                      <span className="text-xs xs:text-sm sm:text-base">Book Consultation</span>
                     </span>
                   </Button>
                 </Link>
               </motion.div>
             </motion.div>
 
-            {/* Trust indicators with icons */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-6 pt-6">
+            {/* Trust indicators with icons - Mobile Optimized */}
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 xs:gap-6 pt-6">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
-                <span className="text-sm font-medium text-gray-700">BBB A+ Rated</span>
+                <CheckCircle2 className="w-4 xs:w-5 h-4 xs:h-5 text-green-600" />
+                <span className="text-xs xs:text-sm font-medium text-gray-700">BBB A+ Rated</span>
               </div>
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-blue-600" />
-                <span className="text-sm font-medium text-gray-700">2-3 Week Installation</span>
+                <TrendingUp className="w-4 xs:w-5 h-4 xs:h-5 text-blue-600" />
+                <span className="text-xs xs:text-sm font-medium text-gray-700">2-3 Week Installation</span>
               </div>
               <div className="flex items-center gap-2">
-                <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-                <span className="text-sm font-medium text-gray-700">Lifetime Warranty</span>
+                <Star className="w-4 xs:w-5 h-4 xs:h-5 text-yellow-500 fill-yellow-500" />
+                <span className="text-xs xs:text-sm font-medium text-gray-700">Lifetime Warranty</span>
               </div>
             </motion.div>
 
-            {/* Key Metrics Grid with glassmorphism */}
+            {/* Key Metrics Grid with glassmorphism - Mobile Optimized */}
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8"
+              className="grid grid-cols-2 gap-3 xs:gap-4 pt-6 xs:pt-8"
             >
               {metrics.map((metric, index) => (
                 <motion.div
@@ -291,18 +305,18 @@ export function ElevatedHero({
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 + index * 0.1 }}
                   whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 10px 30px -10px rgba(0,0,0,0.2)"
+                    scale: isTouchDevice ? 1 : 1.05,
+                    boxShadow: isTouchDevice ? "0 4px 12px -4px rgba(0,0,0,0.15)" : "0 10px 30px -10px rgba(0,0,0,0.2)"
                   }}
-                  className="relative bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center shadow-sm hover:bg-white/80 transition-all duration-300 group"
+                  className="relative bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl xs:rounded-2xl p-4 xs:p-6 text-center shadow-sm hover:bg-white/80 transition-all duration-300 group"
                 >
-                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-2xl xs:text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
                     {metric.icon}
                   </div>
-                  <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                  <div className="text-xl xs:text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                     {metric.value}
                   </div>
-                  <div className="text-xs text-gray-600 uppercase tracking-wider font-medium">
+                  <div className="text-xs xs:text-sm text-gray-600 uppercase tracking-wider font-medium">
                     {metric.label}
                   </div>
                 </motion.div>
@@ -315,19 +329,19 @@ export function ElevatedHero({
           <motion.div
             variants={itemVariants}
             className="relative"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
+            onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
           >
             <motion.div
               className="relative"
               style={{
-                y: floatY,
-                rotateX,
-                rotateY,
-                transformPerspective: 1000,
-                transformStyle: "preserve-3d"
+                y: isTouchDevice ? 0 : floatY,
+                rotateX: isTouchDevice ? 0 : rotateX,
+                rotateY: isTouchDevice ? 0 : rotateY,
+                transformPerspective: isTouchDevice ? 0 : 1000,
+                transformStyle: isTouchDevice ? "flat" : "preserve-3d"
               }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={isTouchDevice ? {} : { scale: 1.02 }}
               transition={{
                 type: "spring",
                 stiffness: 100,

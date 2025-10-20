@@ -173,7 +173,7 @@ export default function TypographyShowcasePage() {
 
               <div>
                 <Caption className="mb-2">Caption Text (14px)</Caption>
-                <Caption color="tertiary">
+                <Caption className="text-tertiary">
                   All measurements are approximate and may vary based on your specific
                   configuration. Contact our design team for a personalized consultation.
                 </Caption>
@@ -399,22 +399,22 @@ export default function TypographyShowcasePage() {
           </Text>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
             <div className="space-y-2">
-              <Text size="lg" weight="semibold" color="inverse">
+              <Text size="lg" weight="semibold" className="text-inverse">
                 16.63:1
               </Text>
-              <Caption color="inverse">Primary Text Contrast</Caption>
+              <Caption className="text-inverse">Primary Text Contrast</Caption>
             </div>
             <div className="space-y-2">
-              <Text size="lg" weight="semibold" color="inverse">
+              <Text size="lg" weight="semibold" className="text-inverse">
                 680px
               </Text>
-              <Caption color="inverse">Optimal Reading Width</Caption>
+              <Caption className="text-inverse">Optimal Reading Width</Caption>
             </div>
             <div className="space-y-2">
-              <Text size="lg" weight="semibold" color="inverse">
+              <Text size="lg" weight="semibold" className="text-inverse">
                 ~9KB
               </Text>
-              <Caption color="inverse">Total System Size (gzipped)</Caption>
+              <Caption className="text-inverse">Total System Size (gzipped)</Caption>
             </div>
           </div>
         </div>
@@ -424,10 +424,10 @@ export default function TypographyShowcasePage() {
       <footer className="section-dense bg-stone-100 border-t border-stone-200">
         <div className="container-apple">
           <div className="text-center space-y-4">
-            <Text size="sm" color="tertiary">
+            <Text size="sm" className="text-tertiary">
               Typography System v1.0.0 · Agents 31-40 · December 2024
             </Text>
-            <Caption color="muted">
+            <Caption className="text-muted">
               Built with precision, optimized for performance, designed for everyone.
             </Caption>
           </div>

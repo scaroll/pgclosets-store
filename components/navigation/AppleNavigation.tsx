@@ -324,7 +324,7 @@ export function AppleNavigation() {
               {/* Search Button */}
               <motion.button
                 onClick={() => setIsSearchOpen(true)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors relative group"
+                className="p-3 hover:bg-gray-100 rounded-full transition-colors relative group mobile-touch-target"
                 aria-label="Search products (⌘K)"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -352,7 +352,7 @@ export function AppleNavigation() {
               {/* Mobile Menu Button */}
               <motion.button
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
-                className="lg:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
+                className="lg:hidden p-3 hover:bg-gray-100 rounded-full transition-colors mobile-touch-target safe-area-right"
                 aria-label={isMobileOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileOpen}
                 whileHover={{ scale: 1.05 }}
@@ -494,14 +494,14 @@ function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
 
           {/* Drawer */}
           <motion.div
-            className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white shadow-2xl z-50 overflow-y-auto"
+            className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white shadow-2xl z-50 overflow-y-auto safe-area-all"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
           >
             {/* Header */}
-            <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between">
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between safe-area-top">
               <div className="flex items-center gap-3">
                 <PGLogo width={40} height={40} withWordmark={false} />
                 <span className="text-xl font-bold tracking-wider">
@@ -510,7 +510,7 @@ function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
               </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                className="p-3 hover:bg-gray-100 rounded-full transition-colors mobile-touch-target"
                 aria-label="Close menu"
               >
                 <X className="w-6 h-6" />
@@ -532,7 +532,7 @@ function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                                 : item.label
                             )
                           }
-                          className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
+                          className="w-full flex items-center justify-between px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition-colors mobile-touch-target"
                         >
                           <span>{item.label}</span>
                           <ChevronDown
@@ -563,7 +563,7 @@ function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                                           <Link
                                             href={subItem.href}
                                             onClick={onClose}
-                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                                            className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors mobile-touch-target"
                                           >
                                             {subItem.label}
                                           </Link>
@@ -581,7 +581,7 @@ function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                       <Link
                         href={item.href}
                         onClick={onClose}
-                        className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
+                        className="block px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition-colors mobile-touch-target"
                       >
                         {item.label}
                       </Link>

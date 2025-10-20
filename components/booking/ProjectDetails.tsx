@@ -182,7 +182,7 @@ export default function ProjectDetails({
         <div className="space-y-3">
           <Slider
             value={[budgetValue]}
-            onValueChange={(value) => setBudgetValue(value[0])}
+            onValueChange={(value) => setBudgetValue(value?.[0] || 0)}
             min={1000}
             max={10000}
             step={250}

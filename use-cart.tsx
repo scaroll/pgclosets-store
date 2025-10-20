@@ -1,7 +1,6 @@
 "use client"
 
-import type React from "react"
-import { createContext, useContext, useReducer, useEffect } from "react"
+import { createContext, useContext, useReducer, useEffect, type ReactNode } from "react"
 import type { Product } from "@/lib/renin-products"
 
 export interface CartItem {

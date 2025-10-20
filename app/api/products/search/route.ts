@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Product, ProductSearchResult } from '@/types/product';
+import { createSecureHandler } from '@/lib/security/middleware';
+import { z } from 'zod';
+import { checkRateLimit, getClientIdentifier, generalRateLimiter } from '@/lib/rate-limit';
 
 // Sample product data for demonstration
 const SAMPLE_PRODUCTS: Product[] = [
@@ -313,16 +316,68 @@ function semanticSearch(query: string, products: Product[]): Product[] {
     .map(item => item.product);
 }
 
-export async function POST(request: NextRequest) {
+// Input validation schema
+const searchSchema = z.object({
+  query: z.string().max(100, 'Query too long').optional(),
+  filters: z.object({
+    categories: z.array(z.string()).optional(),
+    priceRange: z.object({
+      min: z.number().min(0),
+      max: z.number().max(10000)
+    }).optional(),
+    inStock: z.boolean().optional(),
+    onSale: z.boolean().optional(),
+    styles: z.array(z.string()).optional(),
+  }).optional(),
+  sort: z.object({
+    field: z.enum(['price', 'name', 'rating', 'popularity', 'featured']),
+    order: z.enum(['asc', 'desc'])
+  }).optional(),
+  page: z.coerce.number().int().min(1).max(100).optional(),
+  limit: z.coerce.number().int().min(1).max(50).optional(),
+});
+
+async function handleSearchRequest(request: NextRequest): Promise<NextResponse> {
+  // Rate limiting
+  const rateLimitResult = await checkRateLimit(getClientIdentifier(request), generalRateLimiter);
+
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json(
+      { error: 'Too many search requests. Please try again later.' },
+      {
+        status: 429,
+        headers: {
+          'Retry-After': '60',
+          'X-RateLimit-Limit': '20',
+          'X-RateLimit-Remaining': String(rateLimitResult.remaining),
+          'X-RateLimit-Reset': String(rateLimitResult.reset),
+        }
+      }
+    );
+  }
+
   try {
     const body = await request.json();
+
+    // Validate input
+    const validation = searchSchema.safeParse(body);
+    if (!validation.success) {
+      return NextResponse.json(
+        {
+          error: 'Invalid search parameters',
+          details: validation.error.errors[0]?.message
+        },
+        { status: 400 }
+      );
+    }
+
     const {
       query = '',
       filters = {},
       sort = { field: 'featured', order: 'desc' },
       page = 1,
       limit = 24
-    } = body;
+    } = validation.data;
 
     // Start with all products
     let filteredProducts = [...SAMPLE_PRODUCTS];
@@ -431,7 +486,19 @@ export async function POST(request: NextRequest) {
       facets
     };
 
-    return NextResponse.json(result);
+    // Add search metadata
+    const resultWithMeta = {
+      ...result,
+      searchMeta: {
+        query,
+        filters,
+        sort,
+        processingTimeMs: Date.now(),
+        rateLimitRemaining: rateLimitResult.remaining - 1,
+      }
+    };
+
+    return NextResponse.json(resultWithMeta);
   } catch (error) {
     console.error('Search error:', error);
     return NextResponse.json(
@@ -441,26 +508,41 @@ export async function POST(request: NextRequest) {
   }
 }
 
+// Export secure handlers
+export const POST = createSecureHandler(handleSearchRequest, {
+  enableAudit: true,
+  enableRateLimiting: true,
+  riskThreshold: 80,
+});
+
 // GET endpoint for simple queries
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-  const query = searchParams.get('q') || '';
-  const category = searchParams.get('category') || '';
-  const page = parseInt(searchParams.get('page') || '1');
-  const limit = parseInt(searchParams.get('limit') || '24');
+
+  // Validate query parameters
+  const query = searchParams.get('q')?.substring(0, 100) || '';
+  const category = searchParams.get('category')?.substring(0, 50) || '';
+  const page = Math.min(Math.max(parseInt(searchParams.get('page') || '1'), 1), 100);
+  const limit = Math.min(Math.max(parseInt(searchParams.get('limit') || '24'), 1), 50);
 
   const filters: any = {};
   if (category) {
     filters.categories = [category];
   }
 
-  return POST(new NextRequest(request.url, {
+  // Create a POST request with the query parameters
+  const postRequest = new NextRequest(request.url, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
       query,
       filters,
       page,
       limit
     })
-  }));
+  });
+
+  return handleSearchRequest(postRequest);
 }

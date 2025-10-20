@@ -1,5 +1,6 @@
-import Link from 'next/link'
 "use client"
+
+import Link from 'next/link'
 
 import { useState } from "react"
 import Image from "next/image"
@@ -260,8 +261,8 @@ export default function ClientHomePage() {
                 <div className="ml-2 text-sm text-gray-600">5.0 Google Review</div>
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "Exceptional quality and service. The Continental doors transformed our master bedroom closet
-                completely. Professional installation and great communication throughout."
+                &ldquo;Exceptional quality and service. The Continental doors transformed our master bedroom closet
+                completely. Professional installation and great communication throughout.&rdquo;
               </p>
               <div className="font-semibold text-[var(--color-primary)]">- Sarah M., Kanata</div>
             </div>
@@ -272,8 +273,8 @@ export default function ClientHomePage() {
                 <div className="ml-2 text-sm text-gray-600">5.0 Google Review</div>
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "Best investment we made in our home renovation. The Gatsby barn doors are stunning and the installation
-                was flawless. Highly recommend PG Closets!"
+                &ldquo;Best investment we made in our home renovation. The Gatsby barn doors are stunning and the installation
+                was flawless. Highly recommend PG Closets!&rdquo;
               </p>
               <div className="font-semibold text-[var(--color-primary)]">- Michael R., Orleans</div>
             </div>
@@ -284,8 +285,8 @@ export default function ClientHomePage() {
                 <div className="ml-2 text-sm text-gray-600">5.0 Google Review</div>
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "From quote to installation, everything was perfect. The Euro doors with soft-close are exactly what we
-                wanted. Professional team, fair pricing."
+                &ldquo;From quote to installation, everything was perfect. The Euro doors with soft-close are exactly what we
+                wanted. Professional team, fair pricing.&rdquo;
               </p>
               <div className="font-semibold text-[var(--color-primary)]">- Jennifer L., Nepean</div>
             </div>

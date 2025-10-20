@@ -13,7 +13,7 @@ import { Separator } from "../../components/ui/separator"
 import { useCart } from "../../lib/useCart"
 
 export default function CartPage() {
-  const { items } = useCart()
+  const { items, remove, setQty } = useCart()
   const [isCheckingOut, setIsCheckingOut] = useState(false)
 
   const getTotal = () => {
@@ -80,7 +80,7 @@ export default function CartPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      disabled
+                      onClick={() => item.qty > 1 && setQty(item.id, item.qty - 1)}
                     >
                       <Minus className="w-4 h-4" />
                     </Button>
@@ -88,19 +88,19 @@ export default function CartPage() {
                     <Input
                       type="number"
                       value={item.qty}
-                      readOnly
+                      onChange={(e) => setQty(item.id, parseInt(e.target.value) || 1)}
                       className="w-16 text-center"
-                      min="0"
+                      min="1"
                     />
 
-                    <Button variant="outline" size="sm" disabled>
+                    <Button variant="outline" size="sm" onClick={() => setQty(item.id, item.qty + 1)}>
                       <Plus className="w-4 h-4" />
                     </Button>
 
                     <Button
                       variant="outline"
                       size="sm"
-                      disabled
+                      onClick={() => remove(item.id)}
                       className="text-red-600 hover:text-red-700"
                     >
                       <Trash2 className="w-4 h-4" />

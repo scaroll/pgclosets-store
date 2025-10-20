@@ -1,0 +1,1358 @@
+[
+  {
+    "id": "renin-barn-modern-01",
+    "slug": "renin-modern-barn-door-black",
+    "name": "Renin Modern Barn Door - Matte Black",
+    "brand": "Renin",
+    "tagline": "Sleek modern design meets rustic charm",
+    "description": "The Renin Modern Barn Door combines contemporary minimalist design with the space-saving functionality of a classic barn door. Featuring a premium aluminum frame with matte black powder coating and high-quality MDF core, this door is perfect for bedrooms, offices, and pantries. The smooth-gliding hardware system ensures quiet operation while the weather-resistant construction provides durability in Canadian homes.",
+    "features": [
+      "Premium aluminum frame with matte black powder coating",
+      "MDF core with smooth paintable surface",
+      "Pre-drilled for standard barn door hardware",
+      "Weather-resistant for Canadian climates",
+      "Easy installation with included mounting hardware",
+      "Compatible with standard barn door track systems"
+    ],
+    "specifications": {
+      "frameMaterial": "Aluminum with matte black powder coating",
+      "coreMaterial": "MDF with smooth white finish",
+      "thickness": "1.75 inches",
+      "weightCapacity": "180 lbs",
+      "warranty": "5 years limited warranty",
+      "installationTime": "2-3 hours",
+      "madeIn": "Canada",
+      "certifications": "CARB Phase 2 compliant",
+      "dimensions": {
+        "width": 36,
+        "height": 84,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "barn",
+      "style": "modern",
+      "frame": "aluminum",
+      "finish": "matte-black",
+      "material": "MDF",
+      "origin": "Canada",
+      "warranty": "5 years",
+      "installationTime": "2-3 hours",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-barn-modern-01-hero.jpg",
+        "alt": "Renin modern barn door in matte black with minimalist aluminum frame",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/renin-barn-modern-01-detail.jpg",
+        "alt": "Detail of aluminum frame construction and matte black finish",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RBN-MOD-BK-3684",
+        "name": "36\" x 84\" Matte Black",
+        "priceCAD": 489,
+        "installAddonCAD": 150,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 36,
+          "height": 84,
+          "unit": "inches"
+        },
+        "weight": 65,
+        "finish": "matte-black"
+      },
+      {
+        "sku": "RBN-MOD-BK-3096",
+        "name": "30\" x 96\" Matte Black",
+        "priceCAD": 529,
+        "installAddonCAD": 150,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 30,
+          "height": 96,
+          "unit": "inches"
+        },
+        "weight": 72,
+        "finish": "matte-black"
+      }
+    ],
+    "badges": ["Best Seller", "Made in Canada", "Modern"],
+    "relatedProductIds": ["renin-barn-hardware-black", "renin-barn-modern-02"],
+    "seo": {
+      "title": "Renin Modern Barn Door - Matte Black | PG Closets Ottawa",
+      "description": "Shop Renin modern barn doors with matte black aluminum frames. Perfect for contemporary homes. Canadian-made quality with 5-year warranty.",
+      "keywords": ["renin barn door", "modern barn door", "matte black door", "space saving door", "ottawa"]
+    },
+    "category": "barn-doors",
+    "subcategory": "modern",
+    "collection": "modern",
+    "series": "renin-modern",
+    "isNew": false,
+    "isFeatured": true,
+    "isBestSeller": true,
+    "createdAt": "2024-01-15",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-barn-rustic-01",
+    "slug": "renin-rustic-barn-door-natural-wood",
+    "name": "Renin Rustic Barn Door - Natural Wood",
+    "brand": "Renin",
+    "tagline": "Authentic farmhouse charm for modern living",
+    "description": "Bring the warmth of natural wood into your home with the Renin Rustic Barn Door. Crafted from solid pine with distinctive grain patterns and character marks, this door features traditional barn door styling with modern construction techniques. The natural finish highlights the wood's authentic beauty while providing protection against daily wear.",
+    "features": [
+      "Solid pine construction with authentic grain patterns",
+      "Natural clear coat finish for durability",
+      "Traditional Z-brace design for classic barn door look",
+      "Pre-drilled for standard barn door hardware",
+      "Kiln-dried for stability in Canadian climates",
+      "Hand-crafted by Canadian artisans"
+    ],
+    "specifications": {
+      "frameMaterial": "Solid Pine",
+      "coreMaterial": "Solid Pine with natural finish",
+      "thickness": "1.75 inches",
+      "weightCapacity": "200 lbs",
+      "warranty": "3 years limited warranty",
+      "installationTime": "2-3 hours",
+      "madeIn": "Canada",
+      "certifications": "FSC Certified",
+      "dimensions": {
+        "width": 42,
+        "height": 84,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "barn",
+      "style": "rustic",
+      "frame": "solid-wood",
+      "finish": "natural-wood",
+      "material": "Solid Pine",
+      "origin": "Canada",
+      "warranty": "3 years",
+      "installationTime": "2-3 hours",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-barn-rustic-01-hero.jpg",
+        "alt": "Renin rustic barn door with natural pine wood and traditional Z-brace design",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/renin-barn-rustic-01-detail.jpg",
+        "alt": "Close-up of natural wood grain and traditional Z-brace construction",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RBN-RST-WD-4284",
+        "name": "42\" x 84\" Natural Wood",
+        "priceCAD": 679,
+        "installAddonCAD": 175,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 42,
+          "height": 84,
+          "unit": "inches"
+        },
+        "weight": 85,
+        "finish": "natural-wood"
+      },
+      {
+        "sku": "RBN-RST-WD-3696",
+        "name": "36\" x 96\" Natural Wood",
+        "priceCAD": 729,
+        "installAddonCAD": 175,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 36,
+          "height": 96,
+          "unit": "inches"
+        },
+        "weight": 92,
+        "finish": "natural-wood"
+      }
+    ],
+    "badges": ["Made in Canada", "Eco-Friendly", "Rustic"],
+    "relatedProductIds": ["renin-barn-hardware-black", "renin-barn-modern-01"],
+    "seo": {
+      "title": "Renin Rustic Barn Door - Natural Wood | PG Closets Ottawa",
+      "description": "Authentic rustic barn doors with solid pine construction. Perfect for farmhouse and rustic decor. Canadian-made with natural wood finishes.",
+      "keywords": ["renin rustic door", "farmhouse barn door", "natural wood door", "solid pine door", "ottawa"]
+    },
+    "category": "barn-doors",
+    "subcategory": "rustic",
+    "collection": "rustic",
+    "series": "renin-rustic",
+    "isNew": false,
+    "isFeatured": true,
+    "isBestSeller": false,
+    "createdAt": "2024-01-20",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-bifold-modern-01",
+    "slug": "renin-modern-bifold-door-white",
+    "name": "Renin Modern Bifold Door - White",
+    "brand": "Renin",
+    "tagline": "Space-saving elegance for contemporary closets",
+    "description": "The Renin Modern Bifold Door offers the perfect solution for tight spaces where traditional swinging doors won't work. With clean lines and a smooth white finish, these doors feature premium hardware that ensures quiet, reliable operation. Ideal for closets, laundry rooms, and pantry areas in modern Ottawa homes.",
+    "features": [
+      "MDF construction with smooth white painted finish",
+      "Premium aluminum track system with smooth operation",
+      "Soft-close mechanism prevents slamming",
+      "Adjustable hinges for perfect alignment",
+      "Bottom pivot guide for stability",
+      "Easy installation with included hardware"
+    ],
+    "specifications": {
+      "frameMaterial": "MDF with white paint finish",
+      "hardware": "Aluminum track system",
+      "thickness": "1.375 inches",
+      "panelWidth": "12 inches per panel",
+      "warranty": "5 years limited warranty",
+      "installationTime": "2 hours",
+      "madeIn": "Canada",
+      "certifications": "CARB Phase 2 compliant",
+      "dimensions": {
+        "width": 48,
+        "height": 80,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "bifold",
+      "style": "modern",
+      "frame": "engineered-wood",
+      "finish": "painted-white",
+      "material": "MDF",
+      "origin": "Canada",
+      "warranty": "5 years",
+      "installationTime": "2 hours",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-bifold-modern-01-hero.jpg",
+        "alt": "Renin modern white bifold door with smooth operation hardware",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/renin-bifold-modern-01-detail.jpg",
+        "alt": "Detail of bifold track system and smooth operation mechanism",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RBF-MOD-WT-4880",
+        "name": "48\" x 80\" White (4-panel)",
+        "priceCAD": 425,
+        "installAddonCAD": 125,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 48,
+          "height": 80,
+          "unit": "inches"
+        },
+        "weight": 45,
+        "finish": "painted-white"
+      },
+      {
+        "sku": "RBF-MOD-WT-3680",
+        "name": "36\" x 80\" White (3-panel)",
+        "priceCAD": 375,
+        "installAddonCAD": 125,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 36,
+          "height": 80,
+          "unit": "inches"
+        },
+        "weight": 38,
+        "finish": "painted-white"
+      }
+    ],
+    "badges": ["Best Seller", "Space Saving", "Modern"],
+    "relatedProductIds": ["renin-bifold-hardware", "renin-bifold-modern-02"],
+    "seo": {
+      "title": "Renin Modern Bifold Door - White | PG Closets Ottawa",
+      "description": "Space-saving bifold doors with smooth operation. Perfect for closets and tight spaces. Canadian-made quality with soft-close hardware.",
+      "keywords": ["renin bifold door", "white bifold door", "space saving door", "closet door", "ottawa"]
+    },
+    "category": "bifold-doors",
+    "subcategory": "modern",
+    "collection": "modern",
+    "series": "renin-modern",
+    "isNew": false,
+    "isFeatured": true,
+    "isBestSeller": true,
+    "createdAt": "2024-02-01",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-bypass-glass-01",
+    "slug": "renin-glass-bypass-door-frosted",
+    "name": "Renin Glass Bypass Door - Frosted",
+    "brand": "Renin",
+    "tagline": "Maximum light, ultimate privacy",
+    "description": "Transform your space with the Renin Glass Bypass Door featuring elegant frosted glass panels that diffuse natural light while maintaining privacy. The ultra-slim aluminum frames provide a contemporary look perfect for modern bathrooms, bedrooms, and office spaces. Engineered for smooth, quiet operation with premium rollers.",
+    "features": [
+      "Tempered frosted glass panels for privacy and light diffusion",
+      "Ultra-slim aluminum frames in brushed nickel finish",
+      "Top-hung bypass system with soft-close rollers",
+      "Anti-jump track design for safety",
+      "Adjustable bottom guide for stability",
+      "Easy installation with professional-grade hardware"
+    ],
+    "specifications": {
+      "frameMaterial": "Aluminum with brushed nickel finish",
+      "glassType": "6mm tempered frosted glass",
+      "trackSystem": "Top-hung bypass with soft-close",
+      "weightCapacity": "80 lbs per panel",
+      "warranty": "5 years limited warranty",
+      "installationTime": "3-4 hours",
+      "madeIn": "Canada",
+      "certifications": "Tempered glass certified",
+      "dimensions": {
+        "width": 72,
+        "height": 80,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "bypass",
+      "style": "contemporary",
+      "frame": "aluminum",
+      "finish": "brushed-nickel",
+      "glazing": "frosted",
+      "material": "Tempered Glass",
+      "origin": "Canada",
+      "warranty": "5 years",
+      "installationTime": "3-4 hours",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-bypass-glass-01-hero.jpg",
+        "alt": "Renin glass bypass door with frosted panels and brushed nickel frames",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/renin-bypass-glass-01-detail.jpg",
+        "alt": "Detail of frosted glass texture and aluminum frame construction",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RBP-GLS-FR-7280",
+        "name": "72\" x 80\" Frosted Glass",
+        "priceCAD": 895,
+        "installAddonCAD": 200,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 72,
+          "height": 80,
+          "unit": "inches"
+        },
+        "weight": 95,
+        "finish": "brushed-nickel",
+        "glazing": "frosted"
+      },
+      {
+        "sku": "RBP-GLS-FR-6080",
+        "name": "60\" x 80\" Frosted Glass",
+        "priceCAD": 795,
+        "installAddonCAD": 200,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 60,
+          "height": 80,
+          "unit": "inches"
+        },
+        "weight": 85,
+        "finish": "brushed-nickel",
+        "glazing": "frosted"
+      }
+    ],
+    "badges": ["Premium", "Contemporary", "Best Seller"],
+    "relatedProductIds": ["renin-bypass-hardware", "renin-mirror-frame-01"],
+    "seo": {
+      "title": "Renin Glass Bypass Door - Frosted | PG Closets Ottawa",
+      "description": "Elegant glass bypass doors with frosted privacy panels. Perfect for bathrooms and bedrooms. Canadian-made with premium aluminum frames.",
+      "keywords": ["renin bypass door", "glass bypass door", "frosted glass door", "sliding door", "ottawa"]
+    },
+    "category": "bypass-doors",
+    "subcategory": "glass",
+    "collection": "contemporary",
+    "series": "renin-glass",
+    "isNew": false,
+    "isFeatured": true,
+    "isBestSeller": true,
+    "createdAt": "2024-02-10",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-pivot-modern-01",
+    "slug": "renin-modern-pivot-door-black",
+    "name": "Renin Modern Pivot Door - Matte Black",
+    "brand": "Renin",
+    "tagline": "Architectural statement piece",
+    "description": "Make a bold statement with the Renin Modern Pivot Door, featuring a dramatic pivot mechanism that creates a grand entrance. The sleek matte black aluminum frame and glass panels combine contemporary design with innovative engineering. Perfect for master bedrooms, home offices, or as a stunning room divider in luxury Ottawa residences.",
+    "features": [
+      "Innovative pivot mechanism for dramatic opening effect",
+      "Matte black aluminum frame with premium finish",
+      "Tempered clear glass panels for visual openness",
+      "Floor-mounted pivot hinge for stability",
+      "Soft-close mechanism for smooth operation",
+      "Architectural-grade construction for durability"
+    ],
+    "specifications": {
+      "frameMaterial": "Aluminum with matte black powder coating",
+      "glassType": "6mm tempered clear glass",
+      "pivotSystem": "Floor-mounted with soft-close",
+      "weightCapacity": "150 lbs",
+      "warranty": "5 years limited warranty",
+      "installationTime": "4-5 hours",
+      "madeIn": "Canada",
+      "certifications": "Architectural grade certified",
+      "dimensions": {
+        "width": 36,
+        "height": 84,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "pivot",
+      "style": "modern",
+      "frame": "aluminum",
+      "finish": "matte-black",
+      "glazing": "clear",
+      "material": "Tempered Glass",
+      "origin": "Canada",
+      "warranty": "5 years",
+      "installationTime": "4-5 hours",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-pivot-modern-01-hero.jpg",
+        "alt": "Renin modern pivot door with matte black frame and clear glass panels",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/renin-pivot-modern-01-detail.jpg",
+        "alt": "Detail of pivot mechanism and aluminum frame construction",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RPI-MOD-BK-3684",
+        "name": "36\" x 84\" Matte Black",
+        "priceCAD": 1195,
+        "installAddonCAD": 275,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 36,
+          "height": 84,
+          "unit": "inches"
+        },
+        "weight": 110,
+        "finish": "matte-black",
+        "glazing": "clear"
+      },
+      {
+        "sku": "RPI-MOD-BK-4284",
+        "name": "42\" x 84\" Matte Black",
+        "priceCAD": 1295,
+        "installAddonCAD": 275,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 42,
+          "height": 84,
+          "unit": "inches"
+        },
+        "weight": 125,
+        "finish": "matte-black",
+        "glazing": "clear"
+      }
+    ],
+    "badges": ["Premium", "Architectural", "New Arrival"],
+    "relatedProductIds": ["renin-pivot-hardware", "renin-bypass-glass-01"],
+    "seo": {
+      "title": "Renin Modern Pivot Door - Matte Black | PG Closets Ottawa",
+      "description": "Architectural pivot doors with innovative design. Perfect for luxury homes and statement entrances. Canadian-made with premium hardware.",
+      "keywords": ["renin pivot door", "modern pivot door", "architectural door", "luxury door", "ottawa"]
+    },
+    "category": "pivot-doors",
+    "subcategory": "modern",
+    "collection": "architectural",
+    "series": "renin-modern",
+    "isNew": true,
+    "isFeatured": true,
+    "isBestSeller": false,
+    "createdAt": "2024-03-01",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-hardware-barn-01",
+    "slug": "renin-barn-door-hardware-kit-black",
+    "name": "Renin Barn Door Hardware Kit - Matte Black",
+    "brand": "Renin",
+    "tagline": "Premium hardware for smooth operation",
+    "description": "Complete your barn door installation with the Renin Premium Barn Door Hardware Kit. Engineered for superior performance and durability, this comprehensive kit includes everything needed for professional installation. The matte black finish complements any decor while the heavy-duty construction ensures reliable operation for years.",
+    "features": [
+      "Heavy-duty steel track rated for 200 lbs capacity",
+      "Premium nylon rollers with sealed bearings",
+      "Anti-jump design for safety and smooth operation",
+      "Complete installation hardware included",
+      "Adjustable door stops for perfect positioning",
+      "Floor guide prevents door sway"
+    ],
+    "specifications": {
+      "trackMaterial": "Steel with matte black powder coating",
+      "rollerMaterial": "Nylon with sealed bearings",
+      "weightCapacity": "200 lbs",
+      "trackLength": "6 feet standard (extendable)",
+      "warranty": "10 years limited warranty",
+      "installationTime": "1-2 hours",
+      "madeIn": "Canada",
+      "certifications": "ISO 9001 certified",
+      "includedHardware": "Track, rollers, stops, guide, mounting hardware"
+    },
+    "attributes": {
+      "type": "hardware",
+      "hardwareType": "track-system",
+      "compatibleDoors": ["barn"],
+      "material": "steel",
+      "finish": "matte-black",
+      "weightCapacity": 200,
+      "dimensions": {
+        "width": 72,
+        "height": 2,
+        "unit": "inches"
+      },
+      "origin": "Canada",
+      "warranty": "10 years",
+      "installationTime": "1-2 hours",
+      "madeInCanada": true,
+      "ecoFriendly": false,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-hardware-barn-01-hero.jpg",
+        "alt": "Renin barn door hardware kit with matte black finish and premium rollers",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/renin-hardware-barn-01-detail.jpg",
+        "alt": "Detail of premium roller construction and anti-jump design",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RHW-BRN-BK-6FT",
+        "name": "6 Foot Standard Kit",
+        "priceCAD": 195,
+        "installAddonCAD": 75,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 72,
+          "height": 2,
+          "unit": "inches"
+        },
+        "weight": 25,
+        "finish": "matte-black"
+      },
+      {
+        "sku": "RHW-BRN-BK-8FT",
+        "name": "8 Foot Extended Kit",
+        "priceCAD": 245,
+        "installAddonCAD": 85,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 96,
+          "height": 2,
+          "unit": "inches"
+        },
+        "weight": 32,
+        "finish": "matte-black"
+      }
+    ],
+    "badges": ["Essential", "Best Seller", "Premium Hardware"],
+    "relatedProductIds": ["renin-barn-modern-01", "renin-barn-rustic-01"],
+    "seo": {
+      "title": "Renin Barn Door Hardware Kit - Matte Black | PG Closets Ottawa",
+      "description": "Premium barn door hardware kits with matte black finish. Heavy-duty construction for reliable operation. Canadian-made with 10-year warranty.",
+      "keywords": ["renin hardware", "barn door hardware", "sliding door hardware", "matte black hardware", "ottawa"]
+    },
+    "category": "hardware",
+    "subcategory": "barn-door",
+    "collection": "essential",
+    "series": "renin-hardware",
+    "isNew": false,
+    "isFeatured": true,
+    "isBestSeller": true,
+    "createdAt": "2024-01-10",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-mirror-frame-01",
+    "slug": "renin-frameless-mirror-black",
+    "name": "Renin Frameless Mirror - Matte Black",
+    "brand": "Renin",
+    "tagline": "Elegant reflection, sophisticated style",
+    "description": "Enhance any space with the Renin Frameless Mirror featuring a sleek matte black aluminum frame and premium mirror glass. Perfect for bedrooms, bathrooms, entryways, or as a decorative accent in any room. The shatter-resistant construction and moisture-resistant backing make it ideal for Canadian homes.",
+    "features": [
+      "Premium mirror glass with crystal-clear reflection",
+      "Sleek matte black aluminum frame (1/2\" width)",
+      "Shatter-resistant safety backing",
+      "Moisture-resistant for bathroom use",
+      "Easy installation with included mounting hardware",
+      "Beveled edge for elegant finish"
+    ],
+    "specifications": {
+      "frameMaterial": "Aluminum with matte black powder coating",
+      "mirrorType": "Premium silver mirror with safety backing",
+      "thickness": "0.25 inches mirror + 0.5 inches frame",
+      "bevel": "0.5 inch beveled edge",
+      "warranty": "3 years limited warranty",
+      "installationTime": "30 minutes",
+      "madeIn": "Canada",
+      "certifications": "Safety glass certified",
+      "dimensions": {
+        "width": 36,
+        "height": 48,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "mirror",
+      "mirrorType": "wall-mount",
+      "frameStyle": "thin-frame",
+      "bevelEdge": true,
+      "backingType": "Moisture-resistant safety backing",
+      "style": "modern",
+      "frame": "aluminum",
+      "finish": "matte-black",
+      "material": "Mirror Glass",
+      "origin": "Canada",
+      "warranty": "3 years",
+      "installationTime": "30 minutes",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-mirror-frame-01-hero.jpg",
+        "alt": "Renin frameless mirror with matte black aluminum frame and beveled edge",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "url": "/images/products/renin-mirror-frame-01-detail.jpg",
+        "alt": "Detail of matte black frame and beveled mirror edge",
+        "role": "detail",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RMW-FRM-BK-3648",
+        "name": "36\" x 48\" Matte Black",
+        "priceCAD": 285,
+        "installAddonCAD": 50,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 36,
+          "height": 48,
+          "unit": "inches"
+        },
+        "weight": 25,
+        "finish": "matte-black"
+      },
+      {
+        "sku": "RMW-FRM-BK-3072",
+        "name": "30\" x 72\" Matte Black",
+        "priceCAD": 325,
+        "installAddonCAD": 60,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 30,
+          "height": 72,
+          "unit": "inches"
+        },
+        "weight": 32,
+        "finish": "matte-black"
+      }
+    ],
+    "badges": ["Decorative", "Modern", "Popular"],
+    "relatedProductIds": ["renin-bypass-glass-01", "renin-pivot-modern-01"],
+    "seo": {
+      "title": "Renin Frameless Mirror - Matte Black | PG Closets Ottawa",
+      "description": "Elegant frameless mirrors with matte black aluminum frames. Perfect for bedrooms and bathrooms. Canadian-made with safety backing.",
+      "keywords": ["renin mirror", "frameless mirror", "bathroom mirror", "decorative mirror", "ottawa"]
+    },
+    "category": "mirrors",
+    "subcategory": "wall-mount",
+    "collection": "modern",
+    "series": "renin-mirrors",
+    "isNew": false,
+    "isFeatured": true,
+    "isBestSeller": false,
+    "createdAt": "2024-02-20",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-barn-modern-02",
+    "slug": "renin-modern-barn-door-white",
+    "name": "Renin Modern Barn Door - White",
+    "brand": "Renin",
+    "tagline": "Clean contemporary design",
+    "description": "The Renin Modern Barn Door in pristine white offers a fresh take on contemporary design. Featuring a smooth painted MDF surface with aluminum frame trim, this door brightens any space while maintaining the space-saving benefits of barn door hardware. Perfect for creating an open, airy feel in modern Canadian homes.",
+    "features": [
+      "Smooth white painted MDF surface",
+      "Aluminum frame trim with white finish",
+      "Pre-drilled for standard barn door hardware",
+      "Moisture-resistant finish for durability",
+      "Lightweight design for easy installation",
+      "Compatible with all Renin barn door hardware"
+    ],
+    "specifications": {
+      "frameMaterial": "Aluminum with white powder coating",
+      "coreMaterial": "MDF with smooth white paint",
+      "thickness": "1.75 inches",
+      "weightCapacity": "160 lbs",
+      "warranty": "5 years limited warranty",
+      "installationTime": "2-3 hours",
+      "madeIn": "Canada",
+      "certifications": "CARB Phase 2 compliant",
+      "dimensions": {
+        "width": 36,
+        "height": 84,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "barn",
+      "style": "modern",
+      "frame": "aluminum",
+      "finish": "white",
+      "material": "MDF",
+      "origin": "Canada",
+      "warranty": "5 years",
+      "installationTime": "2-3 hours",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-barn-modern-02-hero.jpg",
+        "alt": "Renin modern barn door in white with aluminum frame trim",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RBN-MOD-WT-3684",
+        "name": "36\" x 84\" White",
+        "priceCAD": 459,
+        "installAddonCAD": 150,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 36,
+          "height": 84,
+          "unit": "inches"
+        },
+        "weight": 60,
+        "finish": "white"
+      }
+    ],
+    "badges": ["Popular", "Made in Canada", "Modern"],
+    "relatedProductIds": ["renin-barn-hardware-black", "renin-barn-modern-01"],
+    "seo": {
+      "title": "Renin Modern Barn Door - White | PG Closets Ottawa",
+      "description": "Contemporary white barn doors with aluminum frame trim. Perfect for bright, modern spaces. Canadian-made quality.",
+      "keywords": ["renin white barn door", "modern white door", "space saving door", "ottawa"]
+    },
+    "category": "barn-doors",
+    "subcategory": "modern",
+    "collection": "modern",
+    "series": "renin-modern",
+    "isNew": false,
+    "isFeatured": false,
+    "isBestSeller": true,
+    "createdAt": "2024-01-25",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-barn-rustic-02",
+    "slug": "renin-rustic-barn-door-distressed-white",
+    "name": "Renin Rustic Barn Door - Distressed White",
+    "brand": "Renin",
+    "tagline": "Farmhouse charm with weathered character",
+    "description": "Create a perfect farmhouse aesthetic with the Renin Rustic Barn Door in distressed white. Each door features hand-applied distressing techniques that create unique character marks, giving your space authentic vintage charm. The solid pine construction ensures durability while the weathered appearance adds warmth and personality to any room.",
+    "features": [
+      "Solid pine construction with hand-applied distressing",
+      "Distressed white paint with aged character",
+      "Traditional Z-brace design for authentic barn door look",
+      "Unique weathered marks on each door",
+      "Kiln-dried for Canadian climate stability",
+      "Pre-drilled for standard barn door hardware"
+    ],
+    "specifications": {
+      "frameMaterial": "Solid Pine",
+      "coreMaterial": "Solid Pine with distressed white finish",
+      "thickness": "1.75 inches",
+      "weightCapacity": "200 lbs",
+      "warranty": "3 years limited warranty",
+      "installationTime": "2-3 hours",
+      "madeIn": "Canada",
+      "certifications": "FSC Certified",
+      "dimensions": {
+        "width": 42,
+        "height": 84,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "barn",
+      "style": "farmhouse",
+      "frame": "solid-wood",
+      "finish": "painted-white",
+      "material": "Solid Pine",
+      "origin": "Canada",
+      "warranty": "3 years",
+      "installationTime": "2-3 hours",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-barn-rustic-02-hero.jpg",
+        "alt": "Renin rustic barn door with distressed white finish and traditional design",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RBN-RST-DW-4284",
+        "name": "42\" x 84\" Distressed White",
+        "priceCAD": 699,
+        "installAddonCAD": 175,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 42,
+          "height": 84,
+          "unit": "inches"
+        },
+        "weight": 85,
+        "finish": "painted-white"
+      }
+    ],
+    "badges": ["Farmhouse Style", "Made in Canada", "Rustic"],
+    "relatedProductIds": ["renin-barn-hardware-black", "renin-barn-rustic-01"],
+    "seo": {
+      "title": "Renin Rustic Barn Door - Distressed White | PG Closets Ottawa",
+      "description": "Authentic farmhouse barn doors with distressed white finish. Each door has unique character marks. Perfect for rustic decor.",
+      "keywords": ["renin farmhouse door", "distressed white barn door", "rustic door", "farmhouse decor", "ottawa"]
+    },
+    "category": "barn-doors",
+    "subcategory": "farmhouse",
+    "collection": "rustic",
+    "series": "renin-rustic",
+    "isNew": false,
+    "isFeatured": false,
+    "isBestSeller": true,
+    "createdAt": "2024-02-05",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-bifold-traditional-01",
+    "slug": "renin-traditional-bifold-door-oak",
+    "name": "Renin Traditional Bifold Door - Oak",
+    "brand": "Renin",
+    "tagline": "Classic elegance for traditional homes",
+    "description": "The Renin Traditional Bifold Door in beautiful oak finish brings timeless elegance to any space. Featuring raised panel design and premium oak veneer construction, these doors combine traditional styling with modern functionality. Perfect for closets, laundry areas, and room dividers in classic Canadian homes.",
+    "features": [
+      "Premium oak veneer with raised panel design",
+      "Traditional colonial styling with detailed moulding",
+      "Premium aluminum track system with smooth operation",
+      "Soft-close mechanism for quiet operation",
+      "Adjustable hinges for perfect alignment",
+      "Clear top coat for durability and easy cleaning"
+    ],
+    "specifications": {
+      "frameMaterial": "Engineered wood with oak veneer",
+      "hardware": "Aluminum track system",
+      "thickness": "1.375 inches",
+      "panelWidth": "12 inches per panel",
+      "warranty": "5 years limited warranty",
+      "installationTime": "2 hours",
+      "madeIn": "Canada",
+      "certifications": "CARB Phase 2 compliant",
+      "dimensions": {
+        "width": 48,
+        "height": 80,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "bifold",
+      "style": "traditional",
+      "frame": "engineered-wood",
+      "finish": "stained-oak",
+      "material": "Oak Veneer",
+      "origin": "Canada",
+      "warranty": "5 years",
+      "installationTime": "2 hours",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-bifold-traditional-01-hero.jpg",
+        "alt": "Renin traditional oak bifold door with raised panel design",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RBF-TRD-OK-4880",
+        "name": "48\" x 80\" Oak (4-panel)",
+        "priceCAD": 475,
+        "installAddonCAD": 125,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 48,
+          "height": 80,
+          "unit": "inches"
+        },
+        "weight": 48,
+        "finish": "stained-oak"
+      }
+    ],
+    "badges": ["Traditional", "Made in Canada", "Classic"],
+    "relatedProductIds": ["renin-bifold-hardware", "renin-bifold-modern-01"],
+    "seo": {
+      "title": "Renin Traditional Bifold Door - Oak | PG Closets Ottawa",
+      "description": "Classic oak bifold doors with raised panel design. Perfect for traditional homes. Canadian-made with premium hardware.",
+      "keywords": ["renin oak bifold door", "traditional bifold door", "raised panel door", "closet door", "ottawa"]
+    },
+    "category": "bifold-doors",
+    "subcategory": "traditional",
+    "collection": "traditional",
+    "series": "renin-traditional",
+    "isNew": false,
+    "isFeatured": false,
+    "isBestSeller": true,
+    "createdAt": "2024-02-15",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-bypass-wood-01",
+    "slug": "renin-wood-bypass-door-white",
+    "name": "Renin Wood Bypass Door - White",
+    "brand": "Renin",
+    "tagline": "Smooth sliding wood doors",
+    "description": "The Renin Wood Bypass Door system combines the warmth of wood with space-saving functionality. Featuring smooth white-painted panels with contemporary styling, these doors slide effortlessly on premium tracks. Perfect for bedrooms, closets, and as room dividers in modern Canadian homes where space is at a premium.",
+    "features": [
+      "MDF construction with smooth white painted finish",
+      "Contemporary flat panel design",
+      "Top-hung bypass system with premium rollers",
+      "Soft-close mechanism prevents slamming",
+      "Anti-jump track design for safety",
+      "Easy installation with included hardware"
+    ],
+    "specifications": {
+      "frameMaterial": "MDF with white paint finish",
+      "hardware": "Aluminum track system",
+      "thickness": "1.5 inches",
+      "panelWidth": "30 inches per panel",
+      "warranty": "5 years limited warranty",
+      "installationTime": "3-4 hours",
+      "madeIn": "Canada",
+      "certifications": "CARB Phase 2 compliant",
+      "dimensions": {
+        "width": 60,
+        "height": 80,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "bypass",
+      "style": "contemporary",
+      "frame": "engineered-wood",
+      "finish": "painted-white",
+      "material": "MDF",
+      "origin": "Canada",
+      "warranty": "5 years",
+      "installationTime": "3-4 hours",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-bypass-wood-01-hero.jpg",
+        "alt": "Renin wood bypass doors in white with contemporary flat panel design",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RBP-WOD-WT-6080",
+        "name": "60\" x 80\" White (2-panel)",
+        "priceCAD": 525,
+        "installAddonCAD": 175,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 60,
+          "height": 80,
+          "unit": "inches"
+        },
+        "weight": 65,
+        "finish": "painted-white"
+      }
+    ],
+    "badges": ["Space Saving", "Contemporary", "Best Seller"],
+    "relatedProductIds": ["renin-bypass-hardware", "renin-bifold-modern-01"],
+    "seo": {
+      "title": "Renin Wood Bypass Door - White | PG Closets Ottawa",
+      "description": "Contemporary white bypass doors with smooth sliding operation. Perfect for bedrooms and closets. Canadian-made quality.",
+      "keywords": ["renin bypass door", "white bypass door", "sliding wood door", "space saving door", "ottawa"]
+    },
+    "category": "bypass-doors",
+    "subcategory": "wood",
+    "collection": "contemporary",
+    "series": "renin-contemporary",
+    "isNew": false,
+    "isFeatured": true,
+    "isBestSeller": true,
+    "createdAt": "2024-02-25",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-pivot-glass-01",
+    "slug": "renin-glass-pivot-door-bronze",
+    "name": "Renin Glass Pivot Door - Bronze",
+    "brand": "Renin",
+    "tagline": "Luxury pivot door with bronze accents",
+    "description": "Experience luxury with the Renin Glass Pivot Door featuring elegant bronze-finished aluminum frames and crystal-clear glass panels. The innovative pivot mechanism creates a dramatic entrance effect while maintaining smooth, effortless operation. Perfect for master suites, home offices, and luxury spaces in upscale Ottawa residences.",
+    "features": [
+      "Premium aluminum frames with bronze finish",
+      "Tempered clear glass panels for unobstructed views",
+      "Innovative pivot mechanism for dramatic opening",
+      "Floor-mounted pivot hinge with soft-close",
+      "Architectural-grade construction",
+      "Premium hardware for smooth operation"
+    ],
+    "specifications": {
+      "frameMaterial": "Aluminum with bronze finish",
+      "glassType": "6mm tempered clear glass",
+      "pivotSystem": "Floor-mounted with soft-close",
+      "weightCapacity": "150 lbs",
+      "warranty": "5 years limited warranty",
+      "installationTime": "4-5 hours",
+      "madeIn": "Canada",
+      "certifications": "Architectural grade certified",
+      "dimensions": {
+        "width": 36,
+        "height": 84,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "pivot",
+      "style": "contemporary",
+      "frame": "aluminum",
+      "finish": "bronze",
+      "glazing": "clear",
+      "material": "Tempered Glass",
+      "origin": "Canada",
+      "warranty": "5 years",
+      "installationTime": "4-5 hours",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-pivot-glass-01-hero.jpg",
+        "alt": "Renin glass pivot door with bronze aluminum frames and clear glass panels",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RPI-GLS-BR-3684",
+        "name": "36\" x 84\" Bronze",
+        "priceCAD": 1295,
+        "installAddonCAD": 275,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 36,
+          "height": 84,
+          "unit": "inches"
+        },
+        "weight": 110,
+        "finish": "bronze",
+        "glazing": "clear"
+      }
+    ],
+    "badges": ["Luxury", "Architectural", "Premium"],
+    "relatedProductIds": ["renin-pivot-hardware", "renin-pivot-modern-01"],
+    "seo": {
+      "title": "Renin Glass Pivot Door - Bronze | PG Closets Ottawa",
+      "description": "Luxury glass pivot doors with bronze aluminum frames. Perfect for upscale homes and luxury spaces. Canadian-made quality.",
+      "keywords": ["renin pivot door", "bronze pivot door", "luxury glass door", "architectural door", "ottawa"]
+    },
+    "category": "pivot-doors",
+    "subcategory": "glass",
+    "collection": "luxury",
+    "series": "renin-luxury",
+    "isNew": true,
+    "isFeatured": true,
+    "isBestSeller": false,
+    "createdAt": "2024-03-05",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-hardware-pivot-01",
+    "slug": "renin-pivot-door-hardware-kit",
+    "name": "Renin Pivot Door Hardware Kit",
+    "brand": "Renin",
+    "tagline": "Professional pivot door mechanism",
+    "description": "Complete your pivot door installation with the Renin Professional Pivot Door Hardware Kit. Engineered for superior performance and durability, this kit includes the innovative pivot mechanism, floor plate, and all necessary hardware for installation. The heavy-duty construction ensures reliable operation for doors up to 150 lbs.",
+    "features": [
+      "Innovative pivot mechanism with soft-close",
+      "Heavy-duty floor plate with adjustable height",
+      "Complete installation hardware included",
+      "Supports doors up to 150 lbs",
+      "Smooth, quiet operation",
+      "Professional-grade construction"
+    ],
+    "specifications": {
+      "material": "Steel with premium finish",
+      "weightCapacity": "150 lbs",
+      "pivotType": "Floor-mounted with soft-close",
+      "warranty": "10 years limited warranty",
+      "installationTime": "2-3 hours",
+      "madeIn": "Canada",
+      "certifications": "ISO 9001 certified",
+      "includedHardware": "Pivot mechanism, floor plate, mounting hardware"
+    },
+    "attributes": {
+      "type": "hardware",
+      "hardwareType": "pivot-system",
+      "compatibleDoors": ["pivot"],
+      "material": "steel",
+      "finish": "brushed-nickel",
+      "weightCapacity": 150,
+      "dimensions": {
+        "width": 4,
+        "height": 8,
+        "unit": "inches"
+      },
+      "origin": "Canada",
+      "warranty": "10 years",
+      "installationTime": "2-3 hours",
+      "madeInCanada": true,
+      "ecoFriendly": false,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-hardware-pivot-01-hero.jpg",
+        "alt": "Renin pivot door hardware kit with innovative mechanism and floor plate",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RHW-PIV-NI-STND",
+        "name": "Standard Pivot Kit - Nickel",
+        "priceCAD": 345,
+        "installAddonCAD": 125,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 4,
+          "height": 8,
+          "unit": "inches"
+        },
+        "weight": 15,
+        "finish": "brushed-nickel"
+      }
+    ],
+    "badges": ["Essential Hardware", "Professional Grade", "Premium"],
+    "relatedProductIds": ["renin-pivot-modern-01", "renin-pivot-glass-01"],
+    "seo": {
+      "title": "Renin Pivot Door Hardware Kit | PG Closets Ottawa",
+      "description": "Professional pivot door hardware kits with innovative mechanisms. Perfect for custom pivot doors. Canadian-made quality.",
+      "keywords": ["renin pivot hardware", "pivot door mechanism", "door pivot kit", "professional hardware", "ottawa"]
+    },
+    "category": "hardware",
+    "subcategory": "pivot-door",
+    "collection": "essential",
+    "series": "renin-hardware",
+    "isNew": false,
+    "isFeatured": true,
+    "isBestSeller": false,
+    "createdAt": "2024-02-28",
+    "updatedAt": "2024-10-19"
+  },
+  {
+    "id": "renin-mirror-frame-02",
+    "slug": "renin-round-mirror-bronze",
+    "name": "Renin Round Mirror - Bronze",
+    "brand": "Renin",
+    "tagline": "Circular elegance for modern spaces",
+    "description": "Add sophisticated style to any room with the Renin Round Mirror featuring a elegant bronze aluminum frame. The circular design creates a focal point while the premium mirror glass provides crystal-clear reflection. Perfect for entryways, bedrooms, bathrooms, or as a decorative accent in contemporary Ottawa homes.",
+    "features": [
+      "Premium mirror glass with crystal-clear reflection",
+      "Elegant bronze aluminum frame (1/2\" width)",
+      "Circular design for modern appeal",
+      "Shatter-resistant safety backing",
+      "Moisture-resistant for bathroom use",
+      "Easy installation with included mounting hardware"
+    ],
+    "specifications": {
+      "frameMaterial": "Aluminum with bronze finish",
+      "mirrorType": "Premium silver mirror with safety backing",
+      "diameter": "36 inches",
+      "thickness": "0.25 inches mirror + 0.5 inches frame",
+      "warranty": "3 years limited warranty",
+      "installationTime": "30 minutes",
+      "madeIn": "Canada",
+      "certifications": "Safety glass certified",
+      "dimensions": {
+        "width": 36,
+        "height": 36,
+        "unit": "inches"
+      }
+    },
+    "attributes": {
+      "type": "mirror",
+      "mirrorType": "wall-mount",
+      "frameStyle": "round-frame",
+      "bevelEdge": false,
+      "backingType": "Moisture-resistant safety backing",
+      "style": "contemporary",
+      "frame": "aluminum",
+      "finish": "bronze",
+      "material": "Mirror Glass",
+      "origin": "Canada",
+      "warranty": "3 years",
+      "installationTime": "30 minutes",
+      "madeInCanada": true,
+      "ecoFriendly": true,
+      "customOptions": false
+    },
+    "media": [
+      {
+        "url": "/images/products/renin-mirror-frame-02-hero.jpg",
+        "alt": "Renin round mirror with bronze aluminum frame",
+        "role": "hero",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "variants": [
+      {
+        "sku": "RMW-ROU-BR-36",
+        "name": "36\" Diameter Bronze",
+        "priceCAD": 325,
+        "installAddonCAD": 50,
+        "availability": "InStock",
+        "dimensions": {
+          "width": 36,
+          "height": 36,
+          "unit": "inches"
+        },
+        "weight": 20,
+        "finish": "bronze"
+      }
+    ],
+    "badges": ["Decorative", "Contemporary", "Popular"],
+    "relatedProductIds": ["renin-mirror-frame-01", "renin-pivot-glass-01"],
+    "seo": {
+      "title": "Renin Round Mirror - Bronze | PG Closets Ottawa",
+      "description": "Elegant round mirrors with bronze aluminum frames. Perfect for modern decor and entryways. Canadian-made quality.",
+      "keywords": ["renin round mirror", "bronze mirror", "circular mirror", "decorative mirror", "ottawa"]
+    },
+    "category": "mirrors",
+    "subcategory": "round",
+    "collection": "contemporary",
+    "series": "renin-mirrors",
+    "isNew": false,
+    "isFeatured": true,
+    "isBestSeller": false,
+    "createdAt": "2024-02-22",
+    "updatedAt": "2024-10-19"
+  }
+]

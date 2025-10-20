@@ -8,10 +8,10 @@ import type { Config } from "tailwindcss";
 
 // Design token integration functions
 const cssVar = (name: string) => `var(--${name})`;
-const spacing = (name: string) => cssVar(`spacing-${name}`);
-const text = (name: string) => cssVar(`text-${name}`);
-const shadow = (name: string) => cssVar(`shadow-${name}`);
-const radius = (name: string) => cssVar(`radius-${name}`);
+// const spacing = (name: string) => cssVar(`spacing-${name}`);
+// const text = (name: string) => cssVar(`text-${name}`);
+// const shadow = (name: string) => cssVar(`shadow-${name}`);
+// const radius = (name: string) => cssVar(`radius-${name}`);
 
 const config: Config = {
   darkMode: ["class"],
@@ -23,12 +23,15 @@ const config: Config = {
     "*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
-    // Apple Responsive Breakpoints (override default Tailwind)
+    // Apple Responsive Breakpoints (Mobile-First Coverage)
     screens: {
-      'sm': '430px',   // Mobile (iPhone 14 Pro)
-      'md': '744px',   // Tablet (iPad Mini/Navigation breakpoint)
-      'lg': '1068px',  // Desktop (MacBook Air)
-      'xl': '1440px',  // Large Desktop (iMac)
+      'xs': '375px',   // iPhone SE - Minimum comfortable width
+      'sm': '430px',   // iPhone 14 Pro - Small mobile
+      'md': '640px',   // Large mobile/Small tablet
+      'lg': '768px',   // Tablet (iPad Mini)
+      'xl': '1024px',  // Large tablet/Small desktop
+      '2xl': '1280px', // Desktop standard
+      '3xl': '1440px', // Large desktop (iMac)
     },
     extend: {
       colors: {

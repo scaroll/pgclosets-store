@@ -22,20 +22,43 @@ export function RequestQuoteButton({
 }: RequestQuoteButtonProps) {
   const [open, setOpen] = useState(false)
 
+  const handleOpen = () => {
+    setOpen(true)
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden'
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+    // Restore body scroll
+    document.body.style.overflow = 'unset'
+  }
+
+  // Keyboard navigation support
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape' && open) {
+      handleClose()
+    }
+  }
+
   return (
     <>
       <Button
         variant={variant}
         size={size}
-        onClick={() => setOpen(true)}
-        className={`inline-flex items-center gap-2 ${className}`}
+        onClick={handleOpen}
+        onKeyDown={handleKeyDown}
+        className={`inline-flex items-center gap-2 touch-target min-h-[44px] transition-all duration-200 hover:scale-105 active:scale-95 ${className}`}
+        aria-label="Get a free quote for your closet project"
+        aria-expanded={open}
+        aria-haspopup="dialog"
       >
-        <MessageCircle className="w-4 h-4" />
-        Get Free Quote
+        <MessageCircle className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
+        <span className="font-medium">Get Free Quote</span>
       </Button>
       <LuxuryQuoteForm
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={handleClose}
         product={product}
         selectedOptions={selectedOptions}
       />

@@ -33,7 +33,7 @@ export default function BookingConfirmation({ bookingData }: BookingConfirmation
 
   const formatTime = (time: string | undefined) => {
     if (!time) return '';
-    const [hours, minutes] = time.split(':');
+    const [hours, minutes] = (time || '').split(':');
     const hour = parseInt(hours);
     const period = hour >= 12 ? 'PM' : 'AM';
     const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
@@ -60,9 +60,9 @@ export default function BookingConfirmation({ bookingData }: BookingConfirmation
   const handleDownloadCalendar = () => {
     if (!bookingData.date || !bookingData.timeSlot) return;
 
-    const [hours, minutes] = bookingData.timeSlot.split(':');
-    const startDate = new Date(bookingData.date);
-    startDate.setHours(parseInt(hours), parseInt(minutes));
+    const [hours, minutes] = (bookingData.timeSlot || '').split(':');
+    const startDate = new Date(bookingData.date || '');
+    startDate.setHours(parseInt(hours || '0'), parseInt(minutes || '0'));
 
     const endDate = new Date(startDate);
     endDate.setHours(startDate.getHours() + 2); // 2-hour appointment

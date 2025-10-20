@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+import path from 'path';
+
 const nextConfig = {
   // NEXT.JS 15 PRODUCTION-READY CONFIGURATION
   // Apple-inspired performance optimizations with security best practices
@@ -158,57 +160,95 @@ const nextConfig = {
     config.optimization = {
       ...config.optimization,
       sideEffects: false,
-    }
-
-    // Client-side bundle splitting for optimal loading
-    if (!isServer) {
-      config.optimization.splitChunks = {
+      usedExports: true,
+      splitChunks: {
         chunks: 'all',
+        minSize: 20000,
+        maxSize: 60000,
+        minChunks: 1,
+        automaticNameDelimiter: '~',
         cacheGroups: {
-          default: false,
-          vendors: false,
-          // Framework chunk (React, React DOM)
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+            reuseExistingChunk: true,
+          },
+          // Framework chunk (React, Next.js)
           framework: {
-            name: 'framework',
             chunks: 'all',
-            test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+            name: 'framework',
+            test: /[\\/]node_modules[\\/](react|react-dom|scheduler|next)[\\/]/,
             priority: 40,
             enforce: true,
           },
           // UI library chunk (Radix UI components)
           ui: {
-            name: 'ui',
             chunks: 'all',
+            name: 'ui',
             test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
             priority: 35,
             enforce: true,
           },
           // Animation chunk (Framer Motion)
           motion: {
-            name: 'motion',
             chunks: 'async',
+            name: 'motion',
             test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
             priority: 30,
             enforce: true,
           },
+          // Analytics chunk
+          analytics: {
+            chunks: 'async',
+            name: 'analytics',
+            test: /[\\/]node_modules[\\/](google-analytics|@vercel\/analytics|@vercel\/speed-insights)[\\/]/,
+            priority: 25,
+            enforce: true,
+          },
+          // Image optimization chunk
+          images: {
+            chunks: 'async',
+            name: 'images',
+            test: /[\\/]node_modules[\\/]sharp[\\/]/,
+            priority: 15,
+            enforce: true,
+          },
           // Commons chunk for shared code
           commons: {
-            name: 'commons',
             chunks: 'all',
+            name: 'commons',
             minChunks: 2,
             priority: 20,
-          },
-          // Library chunk for remaining vendor code
-          lib: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'lib',
-            chunks: 'all',
-            priority: 10,
+            enforce: true,
           },
         },
-        // Optimize chunk size for fast loading
-        maxSize: 70000,
-      }
+      },
+      runtimeChunk: {
+        name: 'runtime',
+      },
+    }
+
+    // Additional optimizations for client-side
+    if (!isServer) {
+      // Optimize module resolution
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        // Prefer ES modules over CommonJS
+        '@': path.resolve('./'),
+      };
+
+      // Pre-bundle critical dependencies
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+      };
     }
 
     return config

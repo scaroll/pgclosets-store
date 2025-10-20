@@ -109,8 +109,8 @@ export function LocalBusinessSchema({
   url,
   logo,
   description,
-  address,
-  contactPoint,
+  // address,
+  // contactPoint,
   sameAs,
 }: OrganizationSchemaProps) {
   const schema = {

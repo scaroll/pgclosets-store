@@ -1,0 +1,1006 @@
+{
+  "version": 1760909251076,
+  "optimized": [
+    {
+      "name": "weathered-wooden-door",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/weathered-wooden-door/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/weathered-wooden-door/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/weathered-wooden-door/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/weathered-wooden-door/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/weathered-wooden-door/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/weathered-wooden-door/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/weathered-wooden-door/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/weathered-wooden-door/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/weathered-wooden-door/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "urban-lace-mirror-door",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/urban-lace-mirror-door/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/urban-lace-mirror-door/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/urban-lace-mirror-door/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/urban-lace-mirror-door/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/urban-lace-mirror-door/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/urban-lace-mirror-door/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/urban-lace-mirror-door/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/urban-lace-mirror-door/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/urban-lace-mirror-door/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "smiling-woman-glasses",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/smiling-woman-glasses/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/smiling-woman-glasses/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/smiling-woman-glasses/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/smiling-woman-glasses/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/smiling-woman-glasses/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/smiling-woman-glasses/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/smiling-woman-glasses/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/smiling-woman-glasses/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/smiling-woman-glasses/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "renin-lace-pattern-bypass",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/renin-lace-pattern-bypass/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/renin-lace-pattern-bypass/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/renin-lace-pattern-bypass/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/renin-lace-pattern-bypass/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/renin-lace-pattern-bypass/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/renin-lace-pattern-bypass/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/renin-lace-pattern-bypass/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/renin-lace-pattern-bypass/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/renin-lace-pattern-bypass/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "renin-provincial-pivot-door",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/renin-provincial-pivot-door/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/renin-provincial-pivot-door/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/renin-provincial-pivot-door/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/renin-provincial-pivot-door/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/renin-provincial-pivot-door/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/renin-provincial-pivot-door/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/renin-provincial-pivot-door/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/renin-provincial-pivot-door/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/renin-provincial-pivot-door/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "modern-iron-age-door",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/modern-iron-age-door/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/modern-iron-age-door/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/modern-iron-age-door/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/modern-iron-age-door/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/modern-iron-age-door/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/modern-iron-age-door/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/modern-iron-age-door/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/modern-iron-age-door/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/modern-iron-age-door/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "mirror-door-frame",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/mirror-door-frame/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/mirror-door-frame/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/mirror-door-frame/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/mirror-door-frame/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/mirror-door-frame/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/mirror-door-frame/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/mirror-door-frame/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/mirror-door-frame/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/mirror-door-frame/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "ottawa-sparks-street-location",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/ottawa-sparks-street-location/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/ottawa-sparks-street-location/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/ottawa-sparks-street-location/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/ottawa-sparks-street-location/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/ottawa-sparks-street-location/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/ottawa-sparks-street-location/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/ottawa-sparks-street-location/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/ottawa-sparks-street-location/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/ottawa-sparks-street-location/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "lifestyle-couple-walk-in-closet",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/lifestyle-couple-walk-in-closet/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/lifestyle-couple-walk-in-closet/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/lifestyle-couple-walk-in-closet/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/lifestyle-couple-walk-in-closet/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/lifestyle-couple-walk-in-closet/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/lifestyle-couple-walk-in-closet/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/lifestyle-couple-walk-in-closet/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/lifestyle-couple-walk-in-closet/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/lifestyle-couple-walk-in-closet/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "lifestyle-master-bedroom-luxury",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/lifestyle-master-bedroom-luxury/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/lifestyle-master-bedroom-luxury/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/lifestyle-master-bedroom-luxury/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/lifestyle-master-bedroom-luxury/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/lifestyle-master-bedroom-luxury/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/lifestyle-master-bedroom-luxury/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/lifestyle-master-bedroom-luxury/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/lifestyle-master-bedroom-luxury/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/lifestyle-master-bedroom-luxury/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "installation-mounting",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/installation-mounting/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/installation-mounting/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/installation-mounting/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/installation-mounting/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/installation-mounting/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/installation-mounting/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/installation-mounting/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/installation-mounting/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/installation-mounting/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "installation-door-mounting",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/installation-door-mounting/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/installation-door-mounting/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/installation-door-mounting/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/installation-door-mounting/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/installation-door-mounting/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/installation-door-mounting/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/installation-door-mounting/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/installation-door-mounting/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/installation-door-mounting/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "lifestyle-barn-door-bedroom",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/lifestyle-barn-door-bedroom/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/lifestyle-barn-door-bedroom/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/lifestyle-barn-door-bedroom/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/lifestyle-barn-door-bedroom/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/lifestyle-barn-door-bedroom/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/lifestyle-barn-door-bedroom/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/lifestyle-barn-door-bedroom/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/lifestyle-barn-door-bedroom/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/lifestyle-barn-door-bedroom/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "guest-bedroom-closet-before",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/guest-bedroom-closet-before/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/guest-bedroom-closet-before/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/guest-bedroom-closet-before/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/guest-bedroom-closet-before/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/guest-bedroom-closet-before/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/guest-bedroom-closet-before/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/guest-bedroom-closet-before/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/guest-bedroom-closet-before/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/guest-bedroom-closet-before/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "elegant-barn-door-closet",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/elegant-barn-door-closet/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/elegant-barn-door-closet/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/elegant-barn-door-closet/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/elegant-barn-door-closet/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/elegant-barn-door-closet/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/elegant-barn-door-closet/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/elegant-barn-door-closet/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/elegant-barn-door-closet/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/elegant-barn-door-closet/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "bifold-door-installation",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/bifold-door-installation/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/bifold-door-installation/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/bifold-door-installation/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/bifold-door-installation/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/bifold-door-installation/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/bifold-door-installation/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/bifold-door-installation/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/bifold-door-installation/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/bifold-door-installation/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "blog-insights",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/blog-insights/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/blog-insights/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/blog-insights/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/blog-insights/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/blog-insights/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/blog-insights/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/blog-insights/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/blog-insights/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/blog-insights/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "barn-door-lifestyle",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/barn-door-lifestyle/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/barn-door-lifestyle/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/barn-door-lifestyle/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/barn-door-lifestyle/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/barn-door-lifestyle/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/barn-door-lifestyle/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/barn-door-lifestyle/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/barn-door-lifestyle/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/barn-door-lifestyle/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "door-detail",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/door-detail/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/door-detail/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/door-detail/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/door-detail/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/door-detail/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/door-detail/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/door-detail/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/door-detail/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/door-detail/desktop.avif"
+        }
+      ]
+    },
+    {
+      "name": "barn-door-main",
+      "sizes": [
+        {
+          "size": "tablet",
+          "format": "webp",
+          "path": "/images/optimized/barn-door-main/tablet.webp"
+        },
+        {
+          "size": "tablet",
+          "format": "jpg",
+          "path": "/images/optimized/barn-door-main/tablet.jpg"
+        },
+        {
+          "size": "tablet",
+          "format": "avif",
+          "path": "/images/optimized/barn-door-main/tablet.avif"
+        },
+        {
+          "size": "mobile",
+          "format": "webp",
+          "path": "/images/optimized/barn-door-main/mobile.webp"
+        },
+        {
+          "size": "mobile",
+          "format": "jpg",
+          "path": "/images/optimized/barn-door-main/mobile.jpg"
+        },
+        {
+          "size": "mobile",
+          "format": "avif",
+          "path": "/images/optimized/barn-door-main/mobile.avif"
+        },
+        {
+          "size": "desktop",
+          "format": "webp",
+          "path": "/images/optimized/barn-door-main/desktop.webp"
+        },
+        {
+          "size": "desktop",
+          "format": "jpg",
+          "path": "/images/optimized/barn-door-main/desktop.jpg"
+        },
+        {
+          "size": "desktop",
+          "format": "avif",
+          "path": "/images/optimized/barn-door-main/desktop.avif"
+        }
+      ]
+    }
+  ],
+  "generated": "2025-10-19T21:27:31.076Z"
+}

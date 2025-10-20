@@ -138,7 +138,7 @@ export default function HeroVideo() {
           onClick={() => {
             const video = videoRef.current
             if (video) {
-              video.play().then(() => setIsPlaying(true))
+              void video.play().then(() => setIsPlaying(true))
             }
           }}
           className="absolute inset-0 flex items-center justify-center bg-black/30 group cursor-pointer"

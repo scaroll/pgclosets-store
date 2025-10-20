@@ -90,7 +90,7 @@ function SearchContent() {
       (product.tags && product.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase())))
 
     const matchesCategory = selectedCategory === "All Categories" || product.category === selectedCategory
-    const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
+    const matchesPrice = (product.price || 0) >= priceRange[0] && (product.price || 0) <= priceRange[1]
     const matchesFeatures =
       selectedFeatures.length === 0 ||
       (product.features &&
@@ -325,14 +325,14 @@ function SearchContent() {
 
                 <div className="flex items-center space-x-2">
                   <Button
-                    variant={viewMode === "grid" ? "default" : "outline"}
+                    variant={viewMode === "grid" ? "secondary" : "outline"}
                     size="sm"
                     onClick={() => setViewMode("grid")}
                   >
                     <Grid className="w-4 h-4" />
                   </Button>
                   <Button
-                    variant={viewMode === "list" ? "default" : "outline"}
+                    variant={viewMode === "list" ? "secondary" : "outline"}
                     size="sm"
                     onClick={() => setViewMode("list")}
                   >
@@ -345,8 +345,8 @@ function SearchContent() {
             {/* Active Filters */}
             {(selectedCategory !== "All Categories" ||
               selectedFeatures.length > 0 ||
-              priceRange[0] > 0 ||
-              priceRange[1] < 5000) && (
+              (priceRange[0] || 0) > 0 ||
+              (priceRange[1] || 5000) < 5000) && (
               <div className="flex flex-wrap gap-2">
                 {selectedCategory !== "All Categories" && (
                   <Badge variant="secondary" className="flex items-center gap-2">
@@ -365,7 +365,7 @@ function SearchContent() {
                 ))}
                 {(priceRange[0] > 0 || priceRange[1] < 5000) && (
                   <Badge variant="secondary" className="flex items-center gap-2">
-                    ${priceRange[0]} - ${priceRange[1]}
+                    $${priceRange[0] || 0} - ${priceRange[1] || 5000}
                     <X className="w-3 h-3 cursor-pointer" onClick={() => setPriceRange([0, 5000])} />
                   </Badge>
                 )}
