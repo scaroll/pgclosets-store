@@ -1,15 +1,16 @@
-"use client";
-
+import { cookies } from 'next/headers'
 import { Button } from "../../../components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card"
 import { Badge } from "../../../components/ui/badge"
 import { CreditCard, Plus, Edit, Trash2, ArrowLeft, Shield, Calendar } from "lucide-react"
 import Link from "next/link"
 
-// Note: Client components ("use client") are always dynamic - no need for export const dynamic
-// Removing this export to fix build error
+// Force dynamic rendering for authenticated pages
+export const dynamic = 'force-dynamic';
 
 export default function PaymentMethodsPage() {
+  // Force dynamic by reading cookies
+  const theme = cookies().get('theme')?.value || 'light';
   const paymentMethods = [
     {
       id: 1,

@@ -1,15 +1,16 @@
-"use client";
-
 import { Button } from "../../../components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card"
 import { Badge } from "../../../components/ui/badge"
 import { MapPin, Plus, Edit, Trash2, ArrowLeft, Home, Building } from "lucide-react"
 import Link from "next/link"
+import { cookies } from 'next/headers'
 
 // Force dynamic rendering for authenticated pages
 export const dynamic = 'force-dynamic';
 
 export default function AddressesPage() {
+  // Force dynamic by reading cookies
+  const theme = cookies().get('theme')?.value || 'light';
   const addresses = [
     {
       id: 1,
