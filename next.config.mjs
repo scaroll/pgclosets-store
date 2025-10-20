@@ -387,6 +387,9 @@ const nextConfig = {
 
   // Skip trailing slash redirect for cleaner URLs
   skipTrailingSlashRedirect: true,
+
+  // Force dynamic rendering for problematic routes
+  // output: undefined, // Let Vercel handle the output mode
 }
 
 export default nextConfig
