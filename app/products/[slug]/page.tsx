@@ -122,7 +122,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 }
 
 // Generate static paths for known products
-export async function generateStaticParams() {
+// Temporarily disabled - export async function generateStaticParams() {
   // Return empty array to skip static generation during build
   // Products will be generated on-demand
   return [];

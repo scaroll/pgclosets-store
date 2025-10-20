@@ -289,7 +289,7 @@ const blogPosts = {
   },
 }
 
-export async function generateStaticParams() {
+// Temporarily disabled - export async function generateStaticParams() {
   return Object.keys(blogPosts).map((slug) => ({
     slug,
   }))

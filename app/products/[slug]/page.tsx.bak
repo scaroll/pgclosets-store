@@ -1,9 +1,11 @@
 import { notFound } from 'next/navigation';
-import { prisma } from '@/lib/db';
+import { getReninProductBySlug } from '@/lib/renin-catalog';
 import StandardLayout from '@/components/layout/StandardLayout';
-import { EnhancedProductDetailPage } from '@/components/product/EnhancedProductDetailPage';
 import { Metadata } from 'next';
 import { BUSINESS_INFO } from '@/lib/business-config';
+import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/seo/comprehensive-schema';
+import { EnhancedProductDetail } from '@/components/products/EnhancedProductDetail';
+import type { ReninProduct, ProductVariant } from '@/lib/types/renin-products';
 
 interface ProductPageProps {
   params: Promise<{
@@ -16,175 +18,114 @@ function formatPrice(price: number): string {
   return new Intl.NumberFormat('en-CA', {
     style: 'currency',
     currency: 'CAD',
-  }).format(price / 100); // Convert cents to dollars
+  }).format(price);
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const product = await prisma.product.findUnique({
-    where: { slug },
-  });
+  try {
+    const { slug } = await params;
+    const product = getReninProductBySlug(slug);
 
-  if (!product) {
+    if (!product) {
+      return {
+        title: 'Product Not Found | PG Closets',
+      };
+    }
+
+    const title = product.seo?.title || `${product.name} | PG Closets Ottawa`;
+    const lowestPrice = product.variants?.length > 0
+      ? Math.min(...product.variants.map(v => v.priceCAD))
+      : 0;
+    const description = product.seo?.description ||
+      `${product.description.substring(0, 120)}... Starting from ${formatPrice(lowestPrice)} with professional installation.`;
+
     return {
-      title: 'Product Not Found | PG Closets',
+      title,
+      description,
+      keywords: product.seo?.keywords?.join(', '),
+      openGraph: {
+        title,
+        description,
+        type: 'website',
+        locale: 'en_CA',
+        images: product.media?.map(m => ({
+          url: m.url,
+          width: m.width,
+          height: m.height,
+          alt: m.alt,
+        })) || [],
+      },
+    };
+  } catch (error) {
+    console.error('Error generating metadata:', error);
+    return {
+      title: 'Product | PG Closets',
+      description: 'Premium closet doors and organization solutions in Ottawa',
     };
   }
-
-  const title = `${product.name} | PG Closets Ottawa`;
-  const description = product.metaDescription ||
-    `${product.description.substring(0, 120)}... Starting from ${formatPrice(product.price)} with professional installation.`;
-
-  return {
-    title: product.metaTitle || title,
-    description,
-    openGraph: {
-      title: product.metaTitle || title,
-      description,
-      type: 'website',
-      locale: 'en_CA',
-    },
-  };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug } = await params;
+  try {
+    const { slug } = await params;
+    const product = getReninProductBySlug(slug);
 
-  const product = await prisma.product.findUnique({
-    where: {
-      slug,
-      status: 'active',
-    },
-    include: {
-      images: {
-        orderBy: { position: 'asc' },
-      },
-      variants: {
-        orderBy: { createdAt: 'asc' },
-      },
-      reviews: {
-        where: { status: 'approved' },
-        include: {
-          user: {
-            select: {
-              name: true,
-            },
-          },
-        },
-        orderBy: { createdAt: 'desc' },
-      },
-    },
-  });
+    if (!product) {
+      notFound();
+    }
 
-  if (!product) {
+    // Generate comprehensive structured data
+    const productUrl = `${BUSINESS_INFO.urls.main}/products/${product.slug}`;
+    const lowestPrice = product.variants?.length > 0
+      ? Math.min(...product.variants.map(v => v.priceCAD))
+      : 0;
+
+    const productSchema = generateProductSchema({
+      name: product.name,
+      description: product.description,
+      sku: product.variants?.[0]?.sku || `PGC-${product.slug.toUpperCase()}`,
+      price: lowestPrice,
+      images: product.media?.map(m => m.url) || [],
+      category: product.category,
+      availability: product.variants?.some(v => v.availability === 'InStock') ? 'InStock' : 'OutOfStock',
+      url: productUrl
+    });
+
+    const breadcrumbSchema = generateBreadcrumbSchema([
+      { name: 'Home', url: BUSINESS_INFO.urls.main },
+      { name: 'Products', url: `${BUSINESS_INFO.urls.main}/products` },
+      { name: product.category?.replace('-', ' ') || 'Products', url: `${BUSINESS_INFO.urls.main}/products?category=${product.category}` },
+      { name: product.name, url: productUrl }
+    ]);
+
+    const graphSchema = {
+      '@context': 'https://schema.org',
+      '@graph': [productSchema, breadcrumbSchema]
+    };
+
+    return (
+      <StandardLayout>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(graphSchema),
+          }}
+        />
+        <EnhancedProductDetail product={product} />
+      </StandardLayout>
+    );
+
+  } catch (error) {
+    console.error('Error loading product page:', error);
     notFound();
   }
-
-  // Calculate average rating
-  const averageRating = product.reviews.length > 0
-    ? product.reviews.reduce((sum, r) => sum + r.rating, 0) / product.reviews.length
-    : 0;
-
-  // Get related products
-  const relatedProducts = await prisma.product.findMany({
-    where: {
-      status: 'active',
-      category: product.category,
-      id: { not: product.id },
-    },
-    include: {
-      images: {
-        orderBy: { position: 'asc' },
-        take: 1,
-      },
-    },
-    take: 4,
-  });
-
-  // Format product data for component
-  const productData = {
-    ...product,
-    averageRating,
-    reviewCount: product.reviews.length,
-    // Determine current price (sale price or regular price)
-    currentPrice: product.salePrice || product.price,
-    originalPrice: product.salePrice ? product.price : product.compareAtPrice,
-    isOnSale: !!product.salePrice,
-  };
-
-  // Structured Data for SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    description: product.description,
-    sku: product.sku || `PGC-${product.slug.toUpperCase()}`,
-    brand: {
-      "@type": "Brand",
-      name: "Renin",
-    },
-    manufacturer: {
-      "@type": "Organization",
-      name: "Renin Corp",
-      url: "https://www.renin.com",
-    },
-    offers: {
-      "@type": "Offer",
-      price: (product.salePrice || product.price) / 100,
-      priceCurrency: "CAD",
-      availability: product.inventory > 0
-        ? "https://schema.org/InStock"
-        : "https://schema.org/OutOfStock",
-      priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split("T")[0],
-      itemCondition: "https://schema.org/NewCondition",
-      seller: {
-        "@type": "Organization",
-        name: BUSINESS_INFO.name,
-        url: BUSINESS_INFO.urls.main,
-        email: BUSINESS_INFO.email,
-      },
-    },
-    image: product.images.map(img => img.url),
-    category: product.category,
-    ...(averageRating > 0 && {
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: averageRating.toFixed(1),
-        reviewCount: product.reviews.length,
-        bestRating: "5",
-        worstRating: "1",
-      },
-    }),
-  };
-
-  return (
-    <StandardLayout>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
-      />
-      <EnhancedProductDetailPage
-        product={productData}
-        relatedProducts={relatedProducts}
-      />
-    </StandardLayout>
-  );
 }
 
 // Generate static paths for known products
 export async function generateStaticParams() {
-  const products = await prisma.product.findMany({
-    where: { status: 'active' },
-    select: { slug: true },
-  });
-
-  return products.map((product) => ({
-    slug: product.slug,
-  }));
+  // Return empty array to skip static generation during build
+  // Products will be generated on-demand
+  return [];
 }
 
 // Enable ISR: Revalidate every hour

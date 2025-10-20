@@ -28,7 +28,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
-export async function generateStaticParams() {
+// Temporarily disabled - export async function generateStaticParams() {
   const slugs = getServiceSlugs();
   return slugs.map((slug) => ({
     service: slug,

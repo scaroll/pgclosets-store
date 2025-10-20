@@ -18,7 +18,7 @@ interface LocationPageProps {
 
 // Temporarily disable static generation to resolve deployment
 // Generate static params for all locations
-// export async function generateStaticParams() {
+// // Temporarily disabled - export async function generateStaticParams() {
 //   const slugs = getAllLocationSlugs();
 //   return slugs.map((slug) => ({
 //     location: slug,

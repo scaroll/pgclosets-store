@@ -21,7 +21,7 @@ interface Props {
 
 // Temporarily disable static generation to resolve deployment
 // Generate static params for all neighborhoods
-// export async function generateStaticParams() {
+// // Temporarily disabled - export async function generateStaticParams() {
 //   return getNeighborhoodSlugs().map((slug) => ({
 //     neighborhood: slug,
 //   }))
