@@ -1,5 +1,5 @@
-import StandardLayout from "@/components/layout/StandardLayout"
-import { Button } from "../../components/ui/button"
+import StandardLayout from "../../../components/layout/StandardLayout"
+import { Button } from "../../../components/ui/button"
 import Link from "next/link"
 
 export const metadata = {
