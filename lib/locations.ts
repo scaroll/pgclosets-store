@@ -127,7 +127,7 @@ export const locations: Record<string, LocationData> = {
         neighborhood: 'The Glebe'
       }
     ],
-    nearby: ['kanata', 'barrhaven', 'nepean', 'orleans'],
+    nearby: ['kanata', 'nepean', 'orleans'],
     seo: {
       title: 'Closet Doors Ottawa | Premium Installation | PG Closets',
       description: 'Premium closet door installation in Ottawa. Official Renin dealer serving downtown Ottawa, Centretown, Byward Market, and surrounding areas. Free online quote and transparent pricing.',
@@ -233,90 +233,90 @@ export const locations: Record<string, LocationData> = {
     }
   },
 
-  barrhaven: {
-    slug: 'barrhaven',
-    name: 'Barrhaven',
-    region: 'South Ottawa',
-    population: '80,000+',
-    description: 'Family-oriented suburban community with a mix of established and new developments. Known for excellent schools, parks, and modern family homes.',
-    heroImage: '/images/locations/barrhaven-hero.jpg',
-    coordinates: { lat: 45.2733, lng: -75.7350 },
-    serviceAreas: [
-      'Barrhaven Centre',
-      'Half Moon Bay',
-      'Chapman Mills',
-      'Longfields',
-      'Stonebridge',
-      'Davidson Heights',
-      'Strandherd',
-      'Jockvale',
-      'Fallowfield',
-      'Riverside South'
-    ],
-    stats: {
-      homesServed: 290,
-      yearsServing: 6,
-      rating: 4.9,
-      responseTime: '24 hours'
-    },
-    testimonials: [
-      {
-        name: 'Lisa T.',
-        location: 'Half Moon Bay',
-        rating: 5,
-        text: 'Transformed our kids\' bedrooms with beautiful bifold doors. The quality is excellent and the installation was quick and professional.',
-        date: '2024-09-12'
-      },
-      {
-        name: 'James W.',
-        location: 'Chapman Mills',
-        rating: 5,
-        text: 'We upgraded all our closet doors to the Renin collection. PG Closets handled everything perfectly. Very happy with the results.',
-        date: '2024-08-30'
-      },
-      {
-        name: 'Catherine B.',
-        location: 'Longfields',
-        rating: 5,
-        text: 'Professional team that really cares about quality. Our new barn door is the focal point of our master bedroom. Highly recommend!',
-        date: '2024-09-08'
-      }
-    ],
-    projects: [
-      {
-        id: 'barrhaven-1',
-        title: 'Family Home Closet Upgrade',
-        description: 'Complete closet door refresh in Half Moon Bay',
-        beforeImage: '/images/projects/barrhaven-1-before.jpg',
-        afterImage: '/images/projects/barrhaven-1-after.jpg',
-        doorType: 'bifold',
-        neighborhood: 'Half Moon Bay'
-      },
-      {
-        id: 'barrhaven-2',
-        title: 'Master Suite Barn Door',
-        description: 'Premium barn door installation in Chapman Mills',
-        beforeImage: '/images/projects/barrhaven-2-before.jpg',
-        afterImage: '/images/projects/barrhaven-2-after.jpg',
-        doorType: 'barn',
-        neighborhood: 'Chapman Mills'
-      }
-    ],
-    nearby: ['nepean', 'ottawa'],
-    seo: {
-      title: 'Closet Doors Barrhaven | Family Home Solutions | PG Closets',
-      description: 'Premium closet door installation in Barrhaven. Serving Half Moon Bay, Chapman Mills, Longfields, and all Barrhaven communities. Expert family home solutions.',
-      keywords: [
-        'closet doors Barrhaven',
-        'barn doors Barrhaven',
-        'family home closets Barrhaven',
-        'Half Moon Bay closet doors',
-        'Chapman Mills closets',
-        'Longfields closet installation',
-        'Barrhaven home renovation'
-      ]
-    }
-  },
+  // barrhaven: {
+  //   slug: 'barrhaven',
+  //   name: 'Barrhaven',
+  //   region: 'South Ottawa',
+  //   population: '80,000+',
+  //   description: 'Family-oriented suburban community with a mix of established and new developments. Known for excellent schools, parks, and modern family homes.',
+  //   heroImage: '/images/locations/barrhaven-hero.jpg',
+  //   coordinates: { lat: 45.2733, lng: -75.7350 },
+  //   serviceAreas: [
+  //     'Barrhaven Centre',
+  //     'Half Moon Bay',
+  //     'Chapman Mills',
+  //     'Longfields',
+  //     'Stonebridge',
+  //     'Davidson Heights',
+  //     'Strandherd',
+  //     'Jockvale',
+  //     'Fallowfield',
+  //     'Riverside South'
+  //   ],
+  //   stats: {
+  //     homesServed: 290,
+  //     yearsServing: 6,
+  //     rating: 4.9,
+  //     responseTime: '24 hours'
+  //   },
+  //   testimonials: [
+  //     {
+  //       name: 'Lisa T.',
+  //       location: 'Half Moon Bay',
+  //       rating: 5,
+  //       text: 'Transformed our kids\' bedrooms with beautiful bifold doors. The quality is excellent and the installation was quick and professional.',
+  //       date: '2024-09-12'
+  //     },
+  //     {
+  //       name: 'James W.',
+  //       location: 'Chapman Mills',
+  //       rating: 5,
+  //       text: 'We upgraded all our closet doors to the Renin collection. PG Closets handled everything perfectly. Very happy with the results.',
+  //       date: '2024-08-30'
+  //     },
+  //     {
+  //       name: 'Catherine B.',
+  //       location: 'Longfields',
+  //       rating: 5,
+  //       text: 'Professional team that really cares about quality. Our new barn door is the focal point of our master bedroom. Highly recommend!',
+  //       date: '2024-09-08'
+  //     }
+  //   ],
+  //   projects: [
+  //     {
+  //       id: 'barrhaven-1',
+  //       title: 'Family Home Closet Upgrade',
+  //       description: 'Complete closet door refresh in Half Moon Bay',
+  //       beforeImage: '/images/projects/barrhaven-1-before.jpg',
+  //       afterImage: '/images/projects/barrhaven-1-after.jpg',
+  //       doorType: 'bifold',
+  //       neighborhood: 'Half Moon Bay'
+  //     },
+  //     {
+  //       id: 'barrhaven-2',
+  //       title: 'Master Suite Barn Door',
+  //       description: 'Premium barn door installation in Chapman Mills',
+  //       beforeImage: '/images/projects/barrhaven-2-before.jpg',
+  //       afterImage: '/images/projects/barrhaven-2-after.jpg',
+  //       doorType: 'barn',
+  //       neighborhood: 'Chapman Mills'
+  //     }
+  //   ],
+  //   nearby: ['nepean', 'ottawa'],
+  //   seo: {
+  //     title: 'Closet Doors Barrhaven | Family Home Solutions | PG Closets',
+  //     description: 'Premium closet door installation in Barrhaven. Serving Half Moon Bay, Chapman Mills, Longfields, and all Barrhaven communities. Expert family home solutions.',
+  //     keywords: [
+  //       'closet doors Barrhaven',
+  //       'barn doors Barrhaven',
+  //       'family home closets Barrhaven',
+  //       'Half Moon Bay closet doors',
+  //       'Chapman Mills closets',
+  //       'Longfields closet installation',
+  //       'Barrhaven home renovation'
+  //     ]
+  //   }
+  // },
 
   nepean: {
     slug: 'nepean',
@@ -387,7 +387,7 @@ export const locations: Record<string, LocationData> = {
         neighborhood: 'Merivale'
       }
     ],
-    nearby: ['kanata', 'ottawa', 'barrhaven'],
+    nearby: ['kanata', 'ottawa'],
     seo: {
       title: 'Closet Doors Nepean | Established Community Expert | PG Closets',
       description: 'Premium closet door installation in Nepean. Serving Bells Corners, Merivale, Centrepointe, and all Nepean neighborhoods. 8 years serving the community.',

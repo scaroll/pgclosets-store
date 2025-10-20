@@ -79,33 +79,33 @@ export const OTTAWA_NEIGHBORHOODS: Neighborhood[] = [
     },
     coordinates: { lat: 45.3000, lng: -75.9000 }
   },
-  {
-    slug: 'barrhaven',
-    name: 'Barrhaven',
-    displayName: 'Barrhaven & Riverside South',
-    description: 'Family-focused closet and storage solutions for Barrhaven and Riverside South. Expert in maximizing space in modern suburban homes.',
-    serviceHighlights: [
-      'Family storage specialists',
-      'Kids closet organization',
-      'Mudroom solutions',
-      'Flexible payment options'
-    ],
-    population: '90K+',
-    demographics: 'Growing families, suburban lifestyle',
-    popularAreas: ['Chapman Mills', 'Longfields', 'Half Moon Bay', 'Riverside South', 'Greenboro'],
-    keyFeatures: [
-      'Child-safe installations',
-      'Mudroom organization',
-      'Sports equipment storage',
-      'Growing family solutions'
-    ],
-    testimonial: {
-      author: 'Jennifer L., Chapman Mills',
-      text: 'Our family of five finally has an organized home. The pantry makeover changed our mornings!',
-      project: 'Pantry & Mudroom Organization'
-    },
-    coordinates: { lat: 45.2733, lng: -75.7344 }
-  },
+  // {
+  //   slug: 'barrhaven',
+  //   name: 'Barrhaven',
+  //   displayName: 'Barrhaven & Riverside South',
+  //   description: 'Family-focused closet and storage solutions for Barrhaven and Riverside South. Expert in maximizing space in modern suburban homes.',
+  //   serviceHighlights: [
+  //     'Family storage specialists',
+  //     'Kids closet organization',
+  //     'Mudroom solutions',
+  //     'Flexible payment options'
+  //   ],
+  //   population: '90K+',
+  //   demographics: 'Growing families, suburban lifestyle',
+  //   popularAreas: ['Chapman Mills', 'Longfields', 'Half Moon Bay', 'Riverside South', 'Greenboro'],
+  //   keyFeatures: [
+  //     'Child-safe installations',
+  //     'Mudroom organization',
+  //     'Sports equipment storage',
+  //     'Growing family solutions'
+  //   ],
+  //   testimonial: {
+  //     author: 'Jennifer L., Chapman Mills',
+  //     text: 'Our family of five finally has an organized home. The pantry makeover changed our mornings!',
+  //     project: 'Pantry & Mudroom Organization'
+  //   },
+  //   coordinates: { lat: 45.2733, lng: -75.7344 }
+  // },
   {
     slug: 'orleans',
     name: 'Orleans',
