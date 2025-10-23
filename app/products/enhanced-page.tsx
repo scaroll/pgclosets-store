@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -30,7 +31,8 @@ import {
   Sparkles,
   TrendingUp,
   Award,
-  MapPin
+  MapPin,
+  Check
 } from 'lucide-react';
 import productsData from '@/data/renin-products.json';
 import { OptimizedImage } from '@/components/ui/OptimizedImage';

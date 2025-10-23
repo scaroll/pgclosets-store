@@ -530,7 +530,7 @@ export default function ReninProductGallery({
                       size="sm"
                       variant="ghost"
                       onClick={() => {
-                        setSelectedImageForShare(currentImage);
+                        setSelectedImageForShare(currentImage || null);
                         setShareDialogOpen(true);
                       }}
                       className="text-white hover:bg-white/20"

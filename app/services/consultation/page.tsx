@@ -359,7 +359,7 @@ export default function ConsultationPage() {
               </ul>
               <Button
                 className={`w-full ${pkg.recommended ? 'bg-gold text-slate-900 hover:bg-gold/90' : ''}`}
-                variant={pkg.recommended ? 'default' : 'outline'}
+                variant={pkg.recommended ? 'primary' : 'outline'}
               >
                 {pkg.cta}
                 <ArrowRight className="w-4 h-4 ml-2" />

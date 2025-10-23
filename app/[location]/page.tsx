@@ -6,7 +6,7 @@ import StandardLayout from '@/components/layout/StandardLayout';
 import { LocationStats } from '@/components/locations/LocationStats';
 import { ServiceMap } from '@/components/locations/ServiceMap';
 import { LocalGallery } from '@/components/locations/LocalGallery';
-import { getLocation, getAllLocationSlugs, getNearbyLocations } from '@/lib/locations';
+import { getLocation, getNearbyLocations } from '@/lib/locations';
 import { colors, typography, radius } from '@/lib/design-tokens';
 import { Button } from '@/components/ui/button';
 

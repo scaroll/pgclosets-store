@@ -142,8 +142,8 @@ export default function AbandonedCartRecovery() {
       selectedOffer = ABANDONED_OFFERS[1] // Free shipping for mid-range
     }
 
-    if (!dismissedOffers.has(selectedOffer.id)) {
-      setCurrentOffer(selectedOffer)
+    if (selectedOffer && !dismissedOffers.has(selectedOffer.id)) {
+      setCurrentOffer(selectedOffer || null)
       setShowPopup(true)
     }
   }

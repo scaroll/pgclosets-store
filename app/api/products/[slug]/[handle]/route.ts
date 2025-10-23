@@ -2,12 +2,13 @@ import { products } from "@/app/products/products-data";
 import { NextResponse } from "next/server";
 
 export async function GET(
-  _request: Request,
-  { params }: { params: Promise<{ handle: string }> }
+  request: Request,
+  { params }: { params: { handle: string } }
 ) {
+  const { handle } = params;
+
   try {
-    const { handle } = await params;
-    // Generate handle from name for lookup (same logic as in products route)
+    // Find product by handle (name transformed to handle format)
     const product = products.find(
       (p) =>
         p.name
@@ -21,17 +22,14 @@ export async function GET(
     }
 
     // Transform to match the expected API response format
-    const formattedProduct: any = {
+    const formattedProduct = {
       id: product.id,
       title: product.name,
-      handle: product.name
-        .toLowerCase()
-        .replace(/\s+/g, "-")
-        .replace(/[^a-z0-9-]/g, ""),
+      handle: handle,
       description: product.description,
       thumbnail: product.image,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      created_at: new Date().toISOString(), // Mock date
+      updated_at: new Date().toISOString(), // Mock date
       images: [{ url: product.image, altText: product.name }],
       variants: [
         {
@@ -52,7 +50,7 @@ export async function GET(
 
     return NextResponse.json({ product: formattedProduct });
   } catch (error) {
-    console.error("[PRODUCT_GET]", error);
+    console.error("[PRODUCT_HANDLE_GET]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }

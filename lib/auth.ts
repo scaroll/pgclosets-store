@@ -12,8 +12,11 @@ const credentialsSchema = z.object({
   password: z.string().min(8),
 });
 
+// Handle missing database gracefully
+const adapter = process.env.DATABASE_URL ? PrismaAdapter(prisma) : undefined;
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  adapter: adapter,
   session: { strategy: 'jwt' },
   pages: {
     signIn: '/auth/signin',
@@ -140,7 +143,14 @@ export async function requireAdmin() {
 // JWT token signing function for custom auth
 export function signToken(payload: any): Promise<string> {
   return new Promise((resolve, reject) => {
-    const secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET;
+    let secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET;
+
+    // For development only, provide a fallback secret
+    if (!secret && process.env.NODE_ENV === 'development') {
+      secret = 'development-secret-key-change-in-production';
+      console.warn('⚠️ Using development JWT secret - set NEXTAUTH_SECRET in production');
+    }
+
     if (!secret) {
       reject(new Error('JWT secret not configured'));
       return;
@@ -161,7 +171,14 @@ export function signToken(payload: any): Promise<string> {
 // JWT token verification function
 export function verifyToken(token: string): Promise<any> {
   return new Promise((resolve, reject) => {
-    const secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET;
+    let secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET;
+
+    // For development only, provide a fallback secret
+    if (!secret && process.env.NODE_ENV === 'development') {
+      secret = 'development-secret-key-change-in-production';
+      console.warn('⚠️ Using development JWT secret - set NEXTAUTH_SECRET in production');
+    }
+
     if (!secret) {
       reject(new Error('JWT secret not configured'));
       return;

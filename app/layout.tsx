@@ -267,6 +267,14 @@ export default function RootLayout({
               <Footer />
             </footer>
 
+        {/* Premium E-commerce Features */}
+        <LimitedTimeOffer />
+        <AbandonedCartRecovery />
+        <LiveChatWidget />
+
+        {/* Accessibility Testing Component - Development only */}
+        {process.env.NODE_ENV === 'development' && <AccessibilityTesting />}
+
         {/* Analytics Component - Handles GA and Vercel Analytics */}
         <Analytics />
 
@@ -276,27 +284,8 @@ export default function RootLayout({
           expand={false}
           richColors
           closeButton
+          important
         />
-
-            {/* Premium E-commerce Features */}
-            <LimitedTimeOffer />
-            <AbandonedCartRecovery />
-            <LiveChatWidget />
-
-            {/* Accessibility Testing Component - Development only */}
-            {process.env.NODE_ENV === 'development' && <AccessibilityTesting />}
-
-          {/* Analytics Component - Handles GA and Vercel Analytics */}
-          <Analytics />
-
-          {/* Toaster for notifications */}
-          <Toaster
-            position="top-right"
-            expand={false}
-            richColors
-            closeButton
-            important
-          />
 
           {/* Google Analytics */}
           {process.env.NEXT_PUBLIC_GA_ID && (

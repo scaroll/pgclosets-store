@@ -2,14 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { User, Mail, Phone, MapPin, Package, Heart, Settings, CreditCard, Shield, Star, Clock, TrendingUp, Calendar, ChevronRight, Award, Gift, Zap, Bell, LogOut } from 'lucide-react'
+import { User, MapPin, Package, Heart, Settings, CreditCard, Shield, Star, Clock, TrendingUp, Calendar, ChevronRight, Award, Gift, Zap, Bell, LogOut } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
 
 interface DashboardStats {

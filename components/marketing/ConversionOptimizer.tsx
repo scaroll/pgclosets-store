@@ -18,7 +18,9 @@ import {
   Award,
   CheckCircle,
   ArrowRight,
-  Gift
+  Gift,
+  Calendar,
+  Eye
 } from "lucide-react"
 import { useCart } from "@/lib/useCart"
 import Link from "next/link"
@@ -74,14 +76,15 @@ const URGENCY_TIMERS: UrgencyTimer[] = [
     title: 'Free Design Consultation Offer',
     deadline: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
     message: 'Book today and get a free professional design consultation (value $250)',
-    discount: 250
+    discount: 250,
+    type: 'fixed'
   },
   {
     id: 'weekend-installation',
     title: 'Weekend Installation Slots',
     deadline: new Date(Date.now() + 48 * 60 * 60 * 1000), // 48 hours
     message: 'Limited weekend installation slots available - book now!',
-    type: 'service'
+    type: 'fixed'
   }
 ]
 

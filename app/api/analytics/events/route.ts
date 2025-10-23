@@ -19,7 +19,7 @@ interface AnalyticsEvent {
 
 export async function POST(request: NextRequest) {
   try {
-    const headersList = headers()
+    const headersList = await headers()
     const ip = headersList.get('x-forwarded-for')?.split(',')[0] || 'unknown'
     const userAgent = headersList.get('user-agent') || 'unknown'
     const country = headersList.get('x-vercel-ip-country') || 'unknown'

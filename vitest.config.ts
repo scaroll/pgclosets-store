@@ -23,6 +23,9 @@ export default defineConfig({
       'tests/e2e/**',
       'tests/smoke/**',
       'tests/visual/**',
+      'tests/accessibility/**',
+      'tests/performance/**',
+      '**/*.spec.ts', // Exclude Playwright tests
     ],
     coverage: {
       provider: 'v8',

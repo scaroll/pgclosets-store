@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { TestimonialCard } from "@/components/ui/luxury-card"
+import { LuxuryCard } from "@/components/ui/luxury-card"
 
 interface Testimonial {
   id: string
@@ -141,7 +141,7 @@ export function LuxuryTestimonials({
                       : 'opacity-0 translate-x-full'
                 }`}
               >
-                <TestimonialCard className="max-w-4xl mx-auto bg-white/10 backdrop-blur-md border-white/20">
+                <LuxuryCard className="max-w-4xl mx-auto bg-white/10 backdrop-blur-md border-white/20">
                   <div className="text-center">
                     {/* Quote */}
                     <div className="mb-8">
@@ -177,7 +177,7 @@ export function LuxuryTestimonials({
                       </div>
                     </div>
                   </div>
-                </TestimonialCard>
+                </LuxuryCard>
               </div>
             ))}
           </div>

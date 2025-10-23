@@ -14,6 +14,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { useAccessibility } from './AccessibilityProvider'
+import { cn } from '@/lib/utils'
 
 interface TestResult {
   type: 'error' | 'warning' | 'info'

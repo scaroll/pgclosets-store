@@ -19,7 +19,7 @@ interface PerformanceMetric {
 
 export async function POST(request: NextRequest) {
   try {
-    const headersList = headers()
+    const headersList = await headers()
     const ip = headersList.get('x-forwarded-for') || headersList.get('x-real-ip')
     const userAgent = headersList.get('user-agent')
 

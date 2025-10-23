@@ -189,7 +189,7 @@ export async function POST(req: NextRequest) {
     });
 
     // Send confirmation email (async, don't await)
-    sendBookingConfirmationEmail(booking).catch(console.error);
+    sendBookingConfirmationEmail(booking.guestEmail, booking).catch(console.error);
 
     return NextResponse.json({
       success: true,

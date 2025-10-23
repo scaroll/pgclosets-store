@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Package, Truck, CheckCircle, Clock, XCircle, RefreshCw, Download, Filter, Search, Calendar, Eye, ShoppingBag, Star, MessageCircle, ArrowLeft, ChevronDown, ChevronUp, MapPin, CreditCard, User, Box } from 'lucide-react'
+import { Package, Truck, CheckCircle, Clock, XCircle, RefreshCw, Download, Search, Calendar, Eye, ShoppingBag, Star, ArrowLeft, ChevronDown, ChevronUp, CreditCard, User, Box, ArrowUp } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Separator } from '@/components/ui/separator'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
@@ -599,7 +598,7 @@ export function OrderHistoryClient() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Average Order</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+              <ArrowUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">${getAverageOrderValue().toFixed(0)}</div>

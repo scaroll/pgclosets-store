@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { CreditCard, Plus, Edit, Trash2, ArrowLeft, Shield, Check, AlertTriangle, Clock, Zap, Wallet, Smartphone, Building2, CreditCard as CreditCardIcon, ChevronDown, Lock } from 'lucide-react'
+import { CreditCard, Plus, Edit, Trash2, ArrowLeft, Shield, Check, AlertTriangle, Clock, Zap, Wallet, Smartphone, Building2, CreditCard as CreditCardIcon, ChevronDown, Lock, Mail } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -189,7 +189,7 @@ export function PaymentMethodsClient() {
       // Mock API call
       const newMethod: PaymentMethod = {
         id: Date.now().toString(),
-        type: formData.type,
+        type: formData.type as 'credit_card' | 'debit_card' | 'paypal' | 'apple_pay' | 'google_pay' | 'bank_account',
         brand: getCardBrand(formData.cardNumber),
         last4: formData.cardNumber.slice(-4),
         expiryMonth: parseInt(formData.expiryMonth),
@@ -197,8 +197,8 @@ export function PaymentMethodsClient() {
         cardholderName: formData.cardholderName,
         isDefault: formData.isDefault,
         isVerified: false,
-        addedAt: new Date().toISOString().split('T')[0],
-        billingAddress: formData.billingAddress
+        addedAt: new Date().toISOString().split('T')[0] as string,
+        billingAddress: formData.billingAddress || undefined
       }
 
       if (formData.isDefault) {
@@ -858,7 +858,7 @@ export function PaymentMethodsClient() {
                 </p>
                 <div className="space-y-2">
                   <Button variant="outline" className="w-full justify-start">
-                    <MessageCircle className="h-4 w-4 mr-2" />
+                    <Mail className="h-4 w-4 mr-2" />
                     Contact Support
                   </Button>
                   <Button variant="ghost" className="w-full justify-start">

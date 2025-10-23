@@ -440,7 +440,7 @@ export default function CustomDesignPage() {
                   <span className="text-gray-600">Timeline:</span>
                   <span className="font-medium">{pkg.timeline}</span>
                 </div>
-                <Button className={`w-full ${pkg.popular ? 'bg-gold text-slate-900 hover:bg-gold/90' : ''}`} variant={pkg.popular ? 'default' : 'outline'}>
+                <Button className={`w-full ${pkg.popular ? 'bg-gold text-slate-900 hover:bg-gold/90' : ''}`} variant={pkg.popular ? 'primary' : 'outline'}>
                   Begin Custom Design
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>

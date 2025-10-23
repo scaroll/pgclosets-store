@@ -27,7 +27,8 @@ import {
   Verified,
   TrendingUp,
   Award,
-  Users
+  Users,
+  X
 } from 'lucide-react'
 
 interface ReviewPhoto {

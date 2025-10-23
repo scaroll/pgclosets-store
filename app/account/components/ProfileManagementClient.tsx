@@ -84,7 +84,7 @@ export function ProfileManagementClient({ user }: { user: User }) {
     const fetchProfileData = async () => {
       try {
         // Mock data - replace with actual API call
-        const additionalData = {
+        const additionalData: Partial<ProfileData> = {
           phone: '+1 (613) 555-0123',
           bio: 'Interior design enthusiast looking for premium storage solutions.',
           company: 'Design Studio Ottawa',
@@ -156,7 +156,7 @@ export function ProfileManagementClient({ user }: { user: User }) {
       setTempProfileData(prev => ({
         ...prev,
         [parent]: {
-          ...prev[parent as keyof ProfileData],
+          ...(prev[parent as keyof ProfileData] as any),
           [child]: value
         }
       }))
