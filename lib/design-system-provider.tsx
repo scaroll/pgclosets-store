@@ -182,6 +182,6 @@ export function useAnimation(type: keyof DesignTokens['animations'] = 'normal') 
 
   return {
     duration: tokens.animations[type],
-    className: `transition-all duration-[${tokens.animations[type]}] ease-[${tokens.animations.ease}]`,
+    className: `transition-all duration-&lsqb;${tokens.animations[type]}&rsqb; ease-&lsqb;${tokens.animations.ease}&rsqb;`,
   };
 }

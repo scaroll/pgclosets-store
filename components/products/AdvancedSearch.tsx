@@ -142,8 +142,8 @@ export function AdvancedSearch({
     })
 
     // Limit suggestions and remove duplicates
-    const uniqueSuggestions = matchedProducts.filter((suggestion, index, self) =>
-      index === self.findIndex((s) => s.name === suggestion.name)
+    const uniqueSuggestions = matchedProducts.filter((suggestion, index, array) =>
+      index === array.findIndex((s) => s.name === suggestion.name)
     ).slice(0, 8)
 
     setSuggestions(uniqueSuggestions)

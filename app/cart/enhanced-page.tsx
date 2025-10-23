@@ -102,10 +102,10 @@ const CartItem = ({ item }: { item: any }) => {
       transition={{ duration: 0.3 }}
       className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
-      <div className="p-6">
-        <div className="flex gap-6">
+      <div className="p-4 lg:p-6">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
           {/* Product Image */}
-          <div className="relative w-32 h-32 flex-shrink-0">
+          <div className="relative w-32 h-32 mx-auto lg:mx-0 flex-shrink-0">
             <Image
               src={item.image || "/placeholder.svg"}
               alt={item.name}
@@ -124,7 +124,7 @@ const CartItem = ({ item }: { item: any }) => {
           </div>
 
           {/* Product Details */}
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 text-center lg:text-left">
             <h3 className="text-lg font-medium mb-2">{item.name}</h3>
 
             {/* Selected Options */}
@@ -147,7 +147,7 @@ const CartItem = ({ item }: { item: any }) => {
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col lg:flex-row items-center justify-between lg:justify-end gap-4 mt-4 lg:mt-0">
               {/* Quantity Selector */}
               <div className="flex items-center gap-2">
                 <Button
@@ -204,7 +204,7 @@ const CartItem = ({ item }: { item: any }) => {
           </div>
 
           {/* Line Total */}
-          <div className="text-right">
+          <div className="text-center lg:text-right mt-4 lg:mt-0">
             <div className="text-2xl font-semibold">
               ${(item.price * item.quantity).toFixed(2)}
             </div>
@@ -386,9 +386,9 @@ export default function EnhancedCartPage() {
 
         <TrustBadges />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8 mt-8">
           {/* Cart Items */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="xl:col-span-2 space-y-4">
             <AnimatePresence>
               {items.map((item) => (
                 <CartItem key={`${item.productId}-${JSON.stringify(item.selectedOptions)}`} item={item} />

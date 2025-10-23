@@ -19,9 +19,11 @@
 import { useState, useEffect, useCallback, useRef } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Search, Menu, X, Phone, Mail, ChevronDown } from "lucide-react"
+import { Search, Menu, X, Phone, Mail, ChevronDown, ArrowLeft } from "lucide-react"
 import { PGLogo } from "../ui/pg-logo"
 import { cn } from "@/lib/utils"
+import { useResponsiveBreakpoints } from "@/hooks/use-responsive-breakpoints"
+import { TapArea } from "@/hooks/use-mobile-interactions"
 
 // Navigation items configuration
 const NAVIGATION_ITEMS = [
@@ -101,7 +103,10 @@ export function AppleNavigation() {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null)
+  const [mobileSubDrawer, setMobileSubDrawer] = useState<string | null>(null)
   const megaMenuTimeoutRef = useRef<NodeJS.Timeout>()
+
+  const { isMobile, isTablet, hasNotch, safeAreaInsets } = useResponsiveBreakpoints()
 
   // Enhanced scroll behavior with direction detection
   useEffect(() => {

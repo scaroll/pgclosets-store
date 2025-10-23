@@ -277,8 +277,8 @@ export class PlaywrightScraperAgent {
             url: (img as HTMLImageElement).src,
             alt: (img as HTMLImageElement).alt || name
           }))
-          .filter((img, index, self) =>
-            index === self.findIndex(t => t.url === img.url)
+          .filter((img, index, array) =>
+            index === array.findIndex(t => t.url === img.url)
           );
 
         // Extract features

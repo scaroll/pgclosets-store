@@ -33,8 +33,17 @@ import { Card, CardContent } from "@/components/ui/card"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
 
-// Initialize Stripe - use test key for development
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "pk_test_51QlHzCGvHyWCBmCf3GXBu0hfBb7sD20zGIzE4EeKWXEuPSH5c1aEyYHKcCz98qjCqz3bXqBOBHdQLCnJPhRgHrUR00rXgySm5h")
+// Initialize Stripe - use test key for development with proper error handling
+const getStripePublishableKey = () => {
+  const key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+  if (!key) {
+    console.warn('Stripe publishable key not found, using test key');
+    return "pk_test_51QlHzCGvHyWCBmCf3GXBu0hfBb7sD20zGIzE4EeKWXEuPSH5c1aEyYHKcCz98qjCqz3bXqBOBHdQLCnJPhRgHrUR00rXgySm5h";
+  }
+  return key;
+};
+
+const stripePromise = loadStripe(getStripePublishableKey());
 
 // Checkout steps
 const CHECKOUT_STEPS = [
@@ -529,38 +538,60 @@ const PaymentStep = ({ onNext, onBack }: { onNext: (paymentIntent: any) => void;
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!stripe || !elements) return
+    if (!stripe || !elements) {
+      toast.error("Stripe is not loaded. Please refresh the page.")
+      return
+    }
 
     setIsProcessing(true)
 
     try {
       // Create payment intent
       const response = await fetch("/api/checkout", {
-        method: "POST",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount: Math.round(total * 100), // Convert to cents
+          amount: total, // Send in dollars, API will convert to cents
           currency: "cad"
         })
       })
 
+      if (!response.ok) {
+        throw new Error('Failed to create payment intent')
+      }
+
       const { clientSecret } = await response.json()
 
+      if (!clientSecret) {
+        throw new Error('No client secret received')
+      }
+
       // Confirm payment
+      const cardElement = elements.getElement(CardElement)
+      if (!cardElement) {
+        throw new Error('Card element not found')
+      }
+
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
-          card: elements.getElement(CardElement)!
+          card: cardElement,
+          billing_details: {
+            // Add billing details if needed
+          }
         }
       })
 
       if (result.error) {
         toast.error(result.error.message || "Payment failed")
       } else if (result.paymentIntent?.status === "succeeded") {
+        toast.success("Payment successful!")
         onNext(result.paymentIntent)
+      } else {
+        toast.error("Payment was not successful")
       }
     } catch (error) {
-      toast.error("Payment processing failed")
-      console.error(error)
+      toast.error("Payment processing failed. Please try again.")
+      console.error('Payment error:', error)
     } finally {
       setIsProcessing(false)
     }

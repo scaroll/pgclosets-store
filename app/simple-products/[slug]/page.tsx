@@ -38,7 +38,13 @@ export default async function SimpleProductDetail({ params }: Props) {
     <div className="container mx-auto px-4 py-8">
       <div className="grid lg:grid-cols-2 gap-10">
         <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border">
-          <Image src={product.image || "/placeholder.svg"} alt={product.title} fill className="object-cover" />
+          <Image
+            src={product.image || "/placeholder.svg"}
+            alt={product.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </div>
         <div>
           <div className="text-xs uppercase tracking-wide text-muted-foreground">{product.category}</div>

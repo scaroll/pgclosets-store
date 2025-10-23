@@ -29,11 +29,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 // Temporarily disabled - export async function generateStaticParams() {
-  const slugs = getServiceSlugs();
-  return slugs.map((slug) => ({
-    service: slug,
-  }));
-}
+//   const slugs = getServiceSlugs();
+//   return slugs.map((slug) => ({
+//     service: slug,
+//   }));
+// }
 
 export async function generateMetadata({
   params

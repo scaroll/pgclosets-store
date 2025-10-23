@@ -19,8 +19,8 @@
 
 :root {
   /* Font Family Variables */
-  --font-display: var(--font-cormorant), 'Georgia', 'Times New Roman', serif;
-  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-display: var(--font-serif-display), 'Georgia', 'Times New Roman', serif;
+  --font-body: var(--font-sans-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', 'Courier New', monospace;
 
   /* Font Rendering Optimization */

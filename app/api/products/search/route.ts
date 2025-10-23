@@ -388,7 +388,7 @@ async function handleSearchRequest(request: NextRequest): Promise<NextResponse> 
     }
 
     // Apply filters
-    if (filters.categories?.length > 0) {
+    if (filters.categories && filters.categories.length > 0) {
       filteredProducts = filteredProducts.filter(p =>
         filters.categories.includes(p.category)
       );
@@ -397,7 +397,9 @@ async function handleSearchRequest(request: NextRequest): Promise<NextResponse> 
     if (filters.priceRange) {
       filteredProducts = filteredProducts.filter(p => {
         const price = p.salePrice || p.price;
-        return price >= filters.priceRange.min * 100 && price <= filters.priceRange.max * 100;
+        const minPrice = filters.priceRange.min * 100;
+        const maxPrice = filters.priceRange.max * 100;
+        return price >= minPrice && price <= maxPrice;
       });
     }
 
@@ -409,10 +411,10 @@ async function handleSearchRequest(request: NextRequest): Promise<NextResponse> 
       filteredProducts = filteredProducts.filter(p => p.salePrice !== undefined);
     }
 
-    if (filters.styles?.length > 0) {
+    if (filters.styles && filters.styles.length > 0) {
       filteredProducts = filteredProducts.filter(p => {
         const productStyle = p.specifications?.style;
-        return productStyle && filters.styles.includes(productStyle);
+        return productStyle && filters.styles.includes(String(productStyle));
       });
     }
 

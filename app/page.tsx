@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: 'PG Closets',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'PG Closets - Elevated Taste Without Pretense'
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: 'PG Closets | Elevated Taste Without Pretense',
     card: 'summary_large_image',
     description: 'Transform your Ottawa home with sophisticated closet door solutions.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   }
 }
 

@@ -75,8 +75,7 @@ export const PerformanceOptimizer: React.FC<PerformanceOptimizerProps> = ({
 
   const preloadCriticalResources = async () => {
     const criticalResources = [
-      // Critical images
-      { href: '/images/elegant-barn-door-closet.png', as: 'image', type: 'image/png' },
+      // Critical images (use optimized formats only)
       { href: '/images/optimized/elegant-barn-door-closet/mobile.webp', as: 'image', type: 'image/webp' },
 
       // Critical fonts

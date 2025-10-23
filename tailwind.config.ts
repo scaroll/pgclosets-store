@@ -23,15 +23,63 @@ const config: Config = {
     "*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
-    // Apple Responsive Breakpoints (Mobile-First Coverage)
+    // Advanced Mobile-First Breakpoint System
+    // Comprehensive coverage from small phones to large displays
     screens: {
-      'xs': '375px',   // iPhone SE - Minimum comfortable width
-      'sm': '430px',   // iPhone 14 Pro - Small mobile
-      'md': '640px',   // Large mobile/Small tablet
-      'lg': '768px',   // Tablet (iPad Mini)
-      'xl': '1024px',  // Large tablet/Small desktop
-      '2xl': '1280px', // Desktop standard
+      // Ultra-small mobile devices
+      'xs': '320px',   // iPhone SE minimum safe area
+      'xsm': '375px',  // iPhone SE/mini - Small mobile
+      'sm': '430px',   // iPhone 14 Pro/15 - Standard mobile
+      'sml': '480px',  // Large phones/Foldable
+
+      // Tablets and small laptops
+      'md': '640px',   // Small tablets (iPad Mini)
+      'lmd': '736px',  // iPad Air portrait
+      'lg': '768px',   // iPad/Small tablets
+      'lgl': '834px',  // iPad Pro 11"
+      'xl': '960px',   // Large tablets/Small laptops
+      'lxl': '1024px', // iPad Pro 12.9"/Small desktop
+
+      // Desktop displays
+      '2xl': '1280px', // Standard desktop
+      '2xlx': '1366px', // Laptop standard
       '3xl': '1440px', // Large desktop (iMac)
+      '3xlx': '1536px', // MacBook Pro
+      '4xl': '1920px', // Full HD desktop
+      '5xl': '2560px', // 4K displays
+
+      // Custom device-specific breakpoints
+      'mobile': {'max': '767px'},    // Mobile-only queries
+      'tablet': {'min': '768px', 'max': '1023px'}, // Tablet-specific
+      'desktop': {'min': '1024px'},  // Desktop and up
+
+      // Foldable phone support
+      'fold-small': {'max': '380px'}, // Small foldable screens
+      'fold-large': {'min': '381px', 'max': '480px'}, // Large foldable
+
+      // Orientation-specific
+      'portrait': {'raw': '(orientation: portrait)'},
+      'landscape': {'raw': '(orientation: landscape)'},
+
+      // Device pixel ratio optimization
+      'retina': {'raw': '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'},
+      'ultra-retina': {'raw': '(-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi)'},
+
+      // Touch device detection
+      'touch': {'raw': '(hover: none) and (pointer: coarse)'},
+      'hover': {'raw': '(hover: hover) and (pointer: fine)'},
+
+      // Reduced motion support
+      'motion-safe': {'raw': '(prefers-reduced-motion: no-preference)'},
+      'motion-reduce': {'raw': '(prefers-reduced-motion: reduce)'},
+
+      // Dark mode preference
+      'dark-preferred': {'raw': '(prefers-color-scheme: dark)'},
+      'light-preferred': {'raw': '(prefers-color-scheme: light)'},
+
+      // Data saving mode
+      'data-saver': {'raw': '(prefers-reduced-data: reduce)'},
+      'data-plenty': {'raw': '(prefers-reduced-data: no-preference)'},
     },
     extend: {
       colors: {
@@ -260,8 +308,10 @@ const config: Config = {
       fontFamily: {
         'sf-display': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'system-ui', 'sans-serif'],
         'sf-text': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Text', 'system-ui', 'sans-serif'],
-        'display': ['var(--font-cormorant)', 'Georgia', 'Times New Roman', 'serif'],
-        'body': ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+        'display': ['var(--font-serif-display)', 'Georgia', 'Times New Roman', 'serif'],
+        'body': ['var(--font-sans-body)', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+        'sans': ['var(--font-sans-body)', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+        'serif': ['var(--font-serif-display)', 'Georgia', 'Times New Roman', 'serif'],
         'mono': ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
 

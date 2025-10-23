@@ -5,7 +5,6 @@ import { Metadata } from 'next';
 import { BUSINESS_INFO } from '@/lib/business-config';
 import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/seo/comprehensive-schema';
 import { EnhancedProductDetail } from '@/components/products/EnhancedProductDetail';
-import type { ReninProduct, ProductVariant } from '@/lib/types/renin-products';
 
 interface ProductPageProps {
   params: Promise<{
@@ -86,7 +85,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       sku: product.variants?.[0]?.sku || `PGC-${product.slug.toUpperCase()}`,
       price: lowestPrice,
       images: product.media?.map(m => m.url) || [],
-      category: product.category,
+      category: product.category || 'custom-closets',
       availability: product.variants?.some(v => v.availability === 'InStock') ? 'InStock' : 'OutOfStock',
       url: productUrl
     });
@@ -111,7 +110,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             __html: JSON.stringify(graphSchema),
           }}
         />
-        <EnhancedProductDetail product={product} />
+        <EnhancedProductDetail product={product as any} />
       </StandardLayout>
     );
 
@@ -123,10 +122,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 // Generate static paths for known products
 // Temporarily disabled - export async function generateStaticParams() {
-  // Return empty array to skip static generation during build
-  // Products will be generated on-demand
-  return [];
-}
+//   // Return empty array to skip static generation during build
+//   // Products will be generated on-demand
+//   return [];
+// }
 
 // Enable ISR: Revalidate every hour
 export const revalidate = 3600;

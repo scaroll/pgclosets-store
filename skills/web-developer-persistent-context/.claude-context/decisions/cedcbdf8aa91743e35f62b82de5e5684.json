@@ -1,0 +1,13 @@
+{
+  "id": "cedcbdf8aa91743e35f62b82de5e5684",
+  "timestamp": "2025-10-22T18:09:24.409Z",
+  "type": "test",
+  "title": "Test Decision",
+  "description": "Testing the system",
+  "rationale": "Verification",
+  "files": [],
+  "tags": [
+    "test"
+  ],
+  "impact": "medium"
+}

@@ -182,7 +182,7 @@ const AppleCard = forwardRef<HTMLDivElement, AppleCardProps>(
           // Base styles
           'rounded-[20px] md:rounded-[24px]',
           'p-6 md:p-8',
-          'transition-all duration-[400ms] cubic-bezier(0.16,1,0.3,1)',
+          'transition-all duration-&lsqb;400ms&rsqb; cubic-bezier(0.16,1,0.3,1)',
           'relative',
           variantStyles[variant],
           glowStyles,

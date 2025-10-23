@@ -1,8 +1,9 @@
 // Performance Optimization Utilities
 // Bundle size optimization, lazy loading, caching, and performance monitoring
+// TEMPORARILY DISABLED FOR SERVER-SIDE COMPATIBILITY
 
-import dynamic from 'next/dynamic'
-import { memo } from 'react'
+// import dynamic from 'next/dynamic'
+// import { memo } from 'react'
 
 // Bundle Analysis Configuration
 export interface BundleAnalysis {
@@ -472,48 +473,18 @@ export const PerformanceMonitoring = {
   }
 }
 
-// Caching strategies
+// Caching strategies (client-side only)
 export const CachingStrategies = {
-  // Service Worker cache strategies
+  // Service Worker cache strategies (client-side only)
   cacheFirst: (cacheName: string, urls: string[]) => {
-    // Cache-first strategy for static assets
-    return `
-      self.addEventListener('fetch', (event) => {
-        if (${JSON.stringify(urls)}.some(url => event.request.url.includes(url))) {
-          event.respondWith(
-            caches.open('${cacheName}').then(cache => {
-              return cache.match(event.request).then(response => {
-                return response || fetch(event.request).then(fetchResponse => {
-                  cache.put(event.request, fetchResponse.clone());
-                  return fetchResponse;
-                });
-              });
-            })
-          );
-        }
-      });
-    `
+    // Cache-first strategy for static assets - disabled for server-side compatibility
+    return null
   },
 
-  // Network-first strategy for dynamic content
+  // Network-first strategy for dynamic content (client-side only)
   networkFirst: (cacheName: string, urls: string[]) => {
-    return `
-      self.addEventListener('fetch', (event) => {
-        if (${JSON.stringify(urls)}.some(url => event.request.url.includes(url))) {
-          event.respondWith(
-            fetch(event.request).then(response => {
-              const responseClone = response.clone();
-              caches.open('${cacheName}').then(cache => {
-                cache.put(event.request, responseClone);
-              });
-              return response;
-            }).catch(() => {
-              return caches.match(event.request);
-            })
-          );
-        }
-      });
-    `
+    // Network-first strategy for dynamic content - disabled for server-side compatibility
+    return null
   },
 
   // Browser caching headers

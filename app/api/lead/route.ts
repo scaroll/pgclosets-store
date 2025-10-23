@@ -280,6 +280,8 @@ export async function POST(request: NextRequest): Promise<NextResponse<LeadRespo
   } catch (error) {
     // Unexpected error handling
     console.error('[Lead API] Unexpected error:', error);
+    const origin = request.headers.get('origin');
+    const corsHeaders = getCorsHeaders(origin || undefined);
 
     return NextResponse.json<LeadResponse>(
       {

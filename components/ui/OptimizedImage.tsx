@@ -68,7 +68,7 @@ async function loadImageManifest(): Promise<ImageManifest> {
   if (imageManifest) return imageManifest
 
   try {
-    const response = await fetch('/image-manifest.json')
+    const response = await fetch('/manifest.json')
     if (response.ok) {
       imageManifest = await response.json()
       return imageManifest
@@ -153,7 +153,7 @@ export function OptimizedImage({
     onLoad?.()
   }
 
-  // Handle image error - fallback to original
+  // Handle image error - fallback to placeholder or original
   const handleError = () => {
     console.warn('[OptimizedImage] Failed to load optimized image, falling back:', src)
     setHasError(true)

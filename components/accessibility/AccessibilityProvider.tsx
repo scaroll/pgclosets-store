@@ -52,6 +52,7 @@ interface AccessibilityProviderProps {
 export function AccessibilityProvider({ children }: AccessibilityProviderProps) {
   const [settings, setSettings] = useState<AccessibilitySettings>(defaultSettings)
   const [isClient, setIsClient] = useState(false)
+  const [focusableElements, setFocusableElements] = useState<HTMLElement[]>([])
 
   useEffect(() => {
     setIsClient(true)
@@ -69,6 +70,9 @@ export function AccessibilityProvider({ children }: AccessibilityProviderProps) 
 
     // Detect system preferences
     detectSystemPreferences()
+
+    // Initialize focus management
+    initializeFocusManagement()
   }, [])
 
   useEffect(() => {

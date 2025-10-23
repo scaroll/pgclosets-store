@@ -25,7 +25,16 @@ import {
   Download,
   Phone,
   Mail,
-  MapPin
+  MapPin,
+  Users,
+  TrendingUp,
+  Sparkles,
+  ArrowRight,
+  Calculator,
+  Percent,
+  MessageCircle,
+  ThumbsUp,
+  AlertCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ReninProduct, ProductVariant } from "@/lib/types/renin-products";
@@ -43,6 +52,42 @@ export function EnhancedProductDetail({ product }: EnhancedProductDetailProps) {
   const [isZoomed, setIsZoomed] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [selectedTab, setSelectedTab] = useState("overview");
+
+  // Mock reviews data
+  const reviews = [
+    {
+      id: 1,
+      name: "Sarah Johnson",
+      rating: 5,
+      date: "2024-10-15",
+      title: "Absolutely Beautiful!",
+      content: "The quality exceeded our expectations. Installation was smooth and the final look is stunning.",
+      verified: true,
+      helpful: 23
+    },
+    {
+      id: 2,
+      name: "Michael Chen",
+      rating: 4,
+      date: "2024-10-12",
+      title: "Great Product, Excellent Service",
+      content: "Very happy with our purchase. The team was professional and the product is well-made.",
+      verified: true,
+      helpful: 18
+    },
+    {
+      id: 3,
+      name: "Emily Davis",
+      rating: 5,
+      date: "2024-10-08",
+      title: "Transformed Our Space",
+      content: "These doors completely transformed our closet space. Worth every penny!",
+      verified: true,
+      helpful: 31
+    }
+  ];
 
   // Calculate price range
   const priceRange = useMemo(() => {
@@ -120,6 +165,47 @@ export function EnhancedProductDetail({ product }: EnhancedProductDetailProps) {
   const totalPrice = selectedVariant ? selectedVariant.priceCAD * quantity : 0;
   const installationPrice = selectedVariant?.installAddonCAD || 0;
   const totalWithInstallation = totalPrice + installationPrice;
+
+  // Bulk pricing tiers
+  const bulkPricingTiers = [
+    { minQty: 1, maxQty: 4, discount: 0 },
+    { minQty: 5, maxQty: 9, discount: 5 },
+    { minQty: 10, maxQty: 24, discount: 10 },
+    { minQty: 25, maxQty: 49, discount: 15 },
+    { minQty: 50, maxQty: 999, discount: 20 }
+  ];
+
+  // Calculate bulk pricing
+  const getCurrentBulkPricing = () => {
+    const tier = bulkPricingTiers.find(t => quantity >= t.minQty && quantity <= t.maxQty);
+    return tier || bulkPricingTiers[0];
+  };
+
+  const bulkPricing = getCurrentBulkPricing();
+  const discountedPrice = totalPrice * (1 - bulkPricing.discount / 100);
+  const savings = totalPrice - discountedPrice;
+
+  // Get related products (mock data for now)
+  const relatedProducts = [
+    {
+      name: "Matching Hardware Set",
+      price: 299,
+      image: "/images/products/hardware.jpg",
+      description: "Complete hardware kit for perfect installation"
+    },
+    {
+      name: "Installation Service",
+      price: 450,
+      image: "/images/products/installation.jpg",
+      description: "Professional installation by certified technicians"
+    },
+    {
+      name: "Care & Maintenance Kit",
+      price: 89,
+      image: "/images/products/care-kit.jpg",
+      description: "Everything needed to maintain your doors"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -301,25 +387,67 @@ export function EnhancedProductDetail({ product }: EnhancedProductDetailProps) {
 
               {/* Price Display */}
               <div className="mb-4">
-                {priceRange.min === priceRange.max ? (
-                  <div className="text-3xl font-light text-gray-900">
-                    {formatPrice(priceRange.min)}
-                  </div>
-                ) : (
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-sm text-gray-500">From</span>
-                    <span className="text-3xl font-light text-gray-900">
+                <div className="flex items-baseline gap-3 mb-2">
+                  {priceRange.min === priceRange.max ? (
+                    <div className="text-3xl font-light text-gray-900">
                       {formatPrice(priceRange.min)}
-                    </span>
-                    <span className="text-lg text-gray-500">to {formatPrice(priceRange.max)}</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-sm text-gray-500">From</span>
+                      <span className="text-3xl font-light text-gray-900">
+                        {formatPrice(priceRange.min)}
+                      </span>
+                      <span className="text-lg text-gray-500">to {formatPrice(priceRange.max)}</span>
+                    </div>
+                  )}
+                  {selectedVariant && bulkPricing.discount > 0 && (
+                    <Badge className="bg-green-100 text-green-800 animate-pulse">
+                      <Percent className="w-3 h-3 mr-1" />
+                      {bulkPricing.discount}% OFF
+                    </Badge>
+                  )}
+                </div>
+
+                {/* Bulk Pricing Display */}
+                {selectedVariant && quantity > 1 && (
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-3">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium text-blue-900">Bulk Pricing Applied</span>
+                      <Badge className="bg-blue-600 text-white">
+                        {bulkPricing.discount}% Savings
+                      </Badge>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 text-sm">
+                      <div>
+                        <span className="text-gray-600">Regular:</span>
+                        <span className="ml-2 line-through text-gray-500">{formatPrice(totalPrice)}</span>
+                      </div>
+                      <div>
+                        <span className="text-gray-600">You save:</span>
+                        <span className="ml-2 font-semibold text-green-600">{formatPrice(savings)}</span>
+                      </div>
+                      <div>
+                        <span className="text-gray-600">Your price:</span>
+                        <span className="ml-2 font-bold text-blue-600">{formatPrice(discountedPrice)}</span>
+                      </div>
+                    </div>
                   </div>
                 )}
-                {product.attributes?.madeInCanada && (
-                  <Badge className="bg-red-100 text-red-800 mt-2">
-                    <MapPin className="w-3 h-3 mr-1" />
-                    Made in Canada
-                  </Badge>
-                )}
+
+                {/* Urgency Indicator */}
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="flex items-center gap-1 text-orange-600">
+                    <AlertCircle className="h-4 w-4" />
+                    <span>Limited stock - Order soon!</span>
+                  </div>
+                  {product.attributes?.madeInCanada && (
+                    <Badge className="bg-red-100 text-red-800">
+                      <MapPin className="w-3 h-3 mr-1" />
+                      Made in Canada
+                    </Badge>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -424,27 +552,93 @@ export function EnhancedProductDetail({ product }: EnhancedProductDetailProps) {
               </Card>
             )}
 
+            {/* Bulk Pricing Table */}
+            <Card className="bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
+              <CardContent className="p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-semibold text-purple-900 flex items-center gap-2">
+                    <Users className="w-5 h-5" />
+                    Trade Pricing Available
+                  </h4>
+                  <Button variant="ghost" size="sm" className="text-purple-600">
+                    <Calculator className="w-4 h-4 mr-1" />
+                    Calculate
+                  </Button>
+                </div>
+                <div className="space-y-1 text-sm">
+                  {bulkPricingTiers.map((tier, index) => (
+                    <div
+                      key={index}
+                      className={`flex justify-between p-2 rounded ${
+                        quantity >= tier.minQty && quantity <= tier.maxQty
+                          ? 'bg-purple-200 font-semibold'
+                          : 'text-gray-600'
+                      }`}
+                    >
+                      <span>
+                        {tier.minQty}-{tier.maxQty === 999 ? '+' : tier.maxQty} units
+                      </span>
+                      <span className="flex items-center gap-2">
+                        {tier.discount > 0 && (
+                          <>
+                            <span className="line-through text-gray-500">
+                              {formatPrice(selectedVariant?.priceCAD || 0)}
+                            </span>
+                            <span className="text-green-600 font-medium">
+                              {formatPrice((selectedVariant?.priceCAD || 0) * (1 - tier.discount / 100))}
+                            </span>
+                            <Badge className="bg-green-100 text-green-800 text-xs">
+                              Save {tier.discount}%
+                            </Badge>
+                          </>
+                        )}
+                        {tier.discount === 0 && (
+                          <span>{formatPrice(selectedVariant?.priceCAD || 0)}</span>
+                        )}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Action Buttons */}
-            <div className="grid grid-cols-2 gap-4">
-              <Button
-                size="lg"
-                onClick={handleAddToCart}
-                disabled={!selectedVariant || selectedVariant.availability !== 'InStock'}
-                className="min-h-[52px]"
-              >
-                Add to Quote
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                asChild
-                className="min-h-[52px]"
-              >
-                <Link href="/book">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Book Consultation
-                </Link>
-              </Button>
+            <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-4">
+                <Button
+                  size="lg"
+                  onClick={handleAddToCart}
+                  disabled={!selectedVariant || selectedVariant.availability !== 'InStock'}
+                  className="min-h-[52px] relative overflow-hidden group"
+                >
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  Get Free Quote
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  asChild
+                  className="min-h-[52px]"
+                >
+                  <Link href="/book">
+                    <Phone className="w-4 h-4 mr-2" />
+                    Book Consultation
+                  </Link>
+                </Button>
+              </div>
+
+              {/* Additional CTAs */}
+              <div className="grid grid-cols-2 gap-3">
+                <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700">
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Live Chat
+                </Button>
+                <Button variant="ghost" size="sm" className="text-green-600 hover:text-green-700">
+                  <Mail className="w-4 h-4 mr-2" />
+                  Email Quote
+                </Button>
+              </div>
             </div>
 
             {/* Trust Indicators */}
@@ -471,9 +665,10 @@ export function EnhancedProductDetail({ product }: EnhancedProductDetailProps) {
 
         {/* Product Information Tabs */}
         <Tabs defaultValue="overview" className="w-full mb-12">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="specifications">Specifications</TabsTrigger>
+            <TabsTrigger value="reviews">Reviews (127)</TabsTrigger>
             <TabsTrigger value="installation">Installation</TabsTrigger>
             <TabsTrigger value="features">Features</TabsTrigger>
           </TabsList>
@@ -501,6 +696,153 @@ export function EnhancedProductDetail({ product }: EnhancedProductDetailProps) {
                     </ul>
                   </div>
                 )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="reviews" className="mt-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <CardTitle>Customer Reviews</CardTitle>
+                    <CardDescription>
+                      See what our customers are saying about this product
+                    </CardDescription>
+                  </div>
+                  <Button
+                    onClick={() => setShowReviewForm(!showReviewForm)}
+                    className="bg-blue-600 hover:bg-blue-700"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Write a Review
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent>
+                {/* Review Summary */}
+                <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                  <div className="flex items-center gap-8">
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-gray-900 mb-1">4.9</div>
+                      <div className="flex items-center gap-1 mb-2">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star key={star} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      <p className="text-sm text-gray-600">Based on 127 reviews</p>
+                    </div>
+                    <div className="flex-1">
+                      {[5, 4, 3, 2, 1].map((rating) => (
+                        <div key={rating} className="flex items-center gap-3 mb-2">
+                          <span className="text-sm text-gray-600 w-8">{rating}★</span>
+                          <div className="flex-1 bg-gray-200 rounded-full h-2">
+                            <div
+                              className="bg-yellow-400 h-2 rounded-full"
+                              style={{
+                                width: `${rating === 5 ? 75 : rating === 4 ? 15 : rating === 3 ? 7 : rating === 2 ? 2 : 1}%`
+                              }}
+                            />
+                          </div>
+                          <span className="text-sm text-gray-600 w-8">
+                            {rating === 5 ? 95 : rating === 4 ? 19 : rating === 3 ? 9 : rating === 2 ? 2 : 1}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Review Form */}
+                {showReviewForm && (
+                  <Card className="mb-6 border-blue-200 bg-blue-50">
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold mb-4">Write Your Review</h3>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Rating</label>
+                          <div className="flex gap-2">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                              <button key={star} className="text-gray-300 hover:text-yellow-400">
+                                <Star className="w-6 h-6" />
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                          <Input placeholder="Your Name" />
+                          <Input placeholder="Email Address" />
+                        </div>
+                        <Input placeholder="Review Title" />
+                        <textarea
+                          placeholder="Write your review here..."
+                          className="w-full p-3 border border-gray-300 rounded-lg h-32 resize-none"
+                        />
+                        <div className="flex items-center gap-2">
+                          <Checkbox />
+                          <label className="text-sm text-gray-600">
+                            I agree to the terms and conditions
+                          </label>
+                        </div>
+                        <Button className="bg-blue-600 hover:bg-blue-700">
+                          Submit Review
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Reviews List */}
+                <div className="space-y-6">
+                  {reviews.map((review) => (
+                    <div key={review.id} className="border-b border-gray-200 pb-6 last:border-b-0">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                            <span className="text-sm font-medium text-gray-600">
+                              {review.name.split(' ').map(n => n[0]).join('')}
+                            </span>
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <h4 className="font-medium">{review.name}</h4>
+                              {review.verified && (
+                                <Badge className="bg-green-100 text-green-800 text-xs">
+                                  Verified Purchase
+                                </Badge>
+                              )}
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-gray-600">
+                              <div className="flex items-center">
+                                {[...Array(review.rating)].map((_, i) => (
+                                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                                ))}
+                              </div>
+                              <span>•</span>
+                              <span>{new Date(review.date).toLocaleDateString()}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <h5 className="font-medium mb-2">{review.title}</h5>
+                      <p className="text-gray-700 mb-3">{review.content}</p>
+                      <div className="flex items-center gap-4 text-sm text-gray-600">
+                        <button className="flex items-center gap-1 hover:text-blue-600">
+                          <ThumbsUp className="w-4 h-4" />
+                          Helpful ({review.helpful})
+                        </button>
+                        <button className="hover:text-blue-600">Report</button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Load More */}
+                <div className="text-center mt-6">
+                  <Button variant="outline" className="border-blue-300 text-blue-600 hover:bg-blue-50">
+                    Load More Reviews
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -655,21 +997,78 @@ export function EnhancedProductDetail({ product }: EnhancedProductDetailProps) {
         </Tabs>
 
         {/* Related Products Section */}
-        {product.relatedProductIds && product.relatedProductIds.length > 0 && (
-          <section>
-            <Separator className="mb-8" />
-            <h2 className="text-3xl font-extralight text-gray-900 mb-6 tracking-tight">
+        <section>
+          <Separator className="mb-8" />
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-3xl font-extralight text-gray-900 tracking-tight">
               Complete the Look
             </h2>
-            <div className="text-center py-8 bg-gray-100 rounded-lg">
-              <p className="text-gray-600 mb-4">Related products will be displayed here</p>
-              <Button variant="outline">
-                <Mail className="w-4 h-4 mr-2" />
-                Contact for Recommendations
-              </Button>
+            <Button variant="ghost" className="text-blue-600">
+              View All Accessories
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {relatedProducts.map((item, index) => (
+              <Card key={index} className="group hover:shadow-lg transition-shadow duration-300">
+                <div className="aspect-video relative overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <CardContent className="p-4">
+                  <h3 className="font-semibold text-lg mb-2">{item.name}</h3>
+                  <p className="text-gray-600 text-sm mb-3">{item.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xl font-bold text-gray-900">{formatPrice(item.price)}</span>
+                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                      Add to Quote
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Premium Services Banner */}
+          <div className="mt-12 p-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl text-white">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-2xl font-semibold mb-4">Professional Installation Available</h3>
+                <p className="text-lg opacity-90 mb-6">
+                  Let our certified professionals handle your installation. We'll measure, install, and ensure everything is perfect.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <div className="flex items-center gap-2">
+                    <Check className="w-5 h-5" />
+                    <span>Licensed & Insured</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-5 h-5" />
+                    <span>2-Year Warranty</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-5 h-5" />
+                    <span>Free Estimates</span>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <div className="text-center mb-6">
+                  <div className="text-4xl font-bold mb-2">Starting at</div>
+                  <div className="text-5xl font-extralight">$450</div>
+                  <p className="text-sm opacity-75 mt-2">Professional installation service</p>
+                </div>
+                <Button size="lg" className="w-full bg-white text-blue-600 hover:bg-gray-100 font-semibold">
+                  <Wrench className="w-5 h-5 mr-2" />
+                  Get Installation Quote
+                </Button>
+              </div>
             </div>
-          </section>
-        )}
+          </div>
+        </section>
       </div>
 
       {/* Image Zoom Modal */}

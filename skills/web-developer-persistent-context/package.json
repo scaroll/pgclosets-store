@@ -1,0 +1,41 @@
+{
+  "name": "web-developer-persistent-context",
+  "version": "1.0.0",
+  "description": "Advanced persistent context management system for web development work",
+  "main": "index.js",
+    "scripts": {
+    "start": "node index.js",
+    "test": "node utils/VerificationScript.js",
+    "init": "node cli/ClaudeDesktopIntegration.js start-session",
+    "status": "node cli/ClaudeDesktopIntegration.js status",
+    "backup": "node cli/ClaudeDesktopIntegration.js backup",
+    "health": "node utils/VerificationScript.js",
+    "setup": "node setup.js"
+  },
+  "keywords": [
+    "claude",
+    "context",
+    "persistence",
+    "web-development",
+    "memory",
+    "productivity"
+  ],
+  "author": "PG Closets Development Team",
+  "license": "MIT",
+  "dependencies": {
+    "crypto": "1.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anthropics/skills"
+  },
+  "skills": {
+    "name": "web-developer-persistent-context",
+    "description": "Advanced persistent context management system for web development work that never loses context between Claude Desktop sessions",
+    "category": "Productivity",
+    "version": "1.0.0"
+  }
+}

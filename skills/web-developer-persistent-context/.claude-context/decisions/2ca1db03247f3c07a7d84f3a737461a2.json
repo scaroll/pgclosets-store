@@ -1,0 +1,14 @@
+{
+  "id": "2ca1db03247f3c07a7d84f3a737461a2",
+  "timestamp": "2025-10-22T18:10:01.800Z",
+  "type": "development",
+  "title": "Added Breathing Text Animation",
+  "description": "Implemented 2s breathing animation for hero text using CSS keyframes",
+  "rationale": "To add sophisticated visual interest to headlines",
+  "files": [],
+  "tags": [
+    "development",
+    "decision"
+  ],
+  "impact": "medium"
+}

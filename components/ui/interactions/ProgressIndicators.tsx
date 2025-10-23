@@ -302,7 +302,7 @@ export function Skeleton({
 
   const animations = {
     pulse: 'animate-pulse',
-    wave: 'relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent',
+    wave: 'relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-&lsqb;shimmer_2s_infinite&rsqb; before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent',
     none: '',
   };
 

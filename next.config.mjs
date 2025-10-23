@@ -100,158 +100,41 @@ const nextConfig = {
     ],
   },
 
-  // Experimental Features for Next.js 15
+  // Experimental Features for Next.js 15 (minimal for compatibility)
   experimental: {
     // Optimize package imports for better tree-shaking
     optimizePackageImports: [
       'lucide-react',
       '@radix-ui/react-dialog',
       '@radix-ui/react-dropdown-menu',
-      '@radix-ui/react-tabs',
-      '@radix-ui/react-accordion',
-      '@radix-ui/react-checkbox',
-      '@radix-ui/react-select',
-      '@radix-ui/react-label',
-      '@radix-ui/react-navigation-menu',
-      '@radix-ui/react-popover',
-      '@radix-ui/react-progress',
-      '@radix-ui/react-radio-group',
-      '@radix-ui/react-scroll-area',
-      '@radix-ui/react-separator',
-      '@radix-ui/react-slider',
-      '@radix-ui/react-switch',
-      '@radix-ui/react-toast',
-      '@radix-ui/react-toggle',
-      '@radix-ui/react-toggle-group',
-      '@radix-ui/react-tooltip',
       'framer-motion',
       'date-fns',
-      'recharts',
-      'react-hook-form',
-      'class-variance-authority',
-      'tailwind-merge',
     ],
-
-    // Enable optimistic client cache
-    optimisticClientCache: true,
-
-    // Server Actions security
-    serverActions: {
-      allowedOrigins: process.env.NODE_ENV === 'production'
-        ? [
-            'https://pgclosets-store.vercel.app',
-            'https://www.pgclosets.com',
-            'https://pgclosets.com',
-          ]
-        : ['localhost:3000', '127.0.0.1:3000'],
-    },
   },
 
   // Webpack Configuration for Advanced Optimizations
   webpack: (config, { webpack, isServer }) => {
-    // Global compatibility
-    config.plugins.push(
-      new webpack.DefinePlugin({
-        global: 'globalThis',
-      })
-    )
+    // Fix for globalThis and Next.js 15 compatibility issues
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+      crypto: false,
+    };
 
-    // Tree shaking and optimization
-    config.optimization = {
-      ...config.optimization,
-      sideEffects: false,
-      usedExports: true,
-      splitChunks: {
-        chunks: 'all',
-        minSize: 20000,
-        maxSize: 60000,
-        minChunks: 1,
-        automaticNameDelimiter: '~',
-        cacheGroups: {
-          default: {
-            minChunks: 2,
-            priority: -20,
-            reuseExistingChunk: true,
-          },
-          vendors: {
-            test: /[\\/]node_modules[\\/]/,
-            priority: -10,
-            reuseExistingChunk: true,
-          },
-          // Framework chunk (React, Next.js)
-          framework: {
-            chunks: 'all',
-            name: 'framework',
-            test: /[\\/]node_modules[\\/](react|react-dom|scheduler|next)[\\/]/,
-            priority: 40,
-            enforce: true,
-          },
-          // UI library chunk (Radix UI components)
-          ui: {
-            chunks: 'all',
-            name: 'ui',
-            test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
-            priority: 35,
-            enforce: true,
-          },
-          // Animation chunk (Framer Motion)
-          motion: {
-            chunks: 'async',
-            name: 'motion',
-            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-            priority: 30,
-            enforce: true,
-          },
-          // Analytics chunk
-          analytics: {
-            chunks: 'async',
-            name: 'analytics',
-            test: /[\\/]node_modules[\\/](google-analytics|@vercel\/analytics|@vercel\/speed-insights)[\\/]/,
-            priority: 25,
-            enforce: true,
-          },
-          // Image optimization chunk
-          images: {
-            chunks: 'async',
-            name: 'images',
-            test: /[\\/]node_modules[\\/]sharp[\\/]/,
-            priority: 15,
-            enforce: true,
-          },
-          // Commons chunk for shared code
-          commons: {
-            chunks: 'all',
-            name: 'commons',
-            minChunks: 2,
-            priority: 20,
-            enforce: true,
-          },
-        },
-      },
-      runtimeChunk: {
-        name: 'runtime',
-      },
+  
+    // Fix Supabase client-side bundling issues
+    if (isServer) {
+      config.externals = config.externals || [];
+      config.externals.push({
+        '@supabase/supabase-js': 'commonjs @supabase/supabase-js',
+        '@opentelemetry/api': 'commonjs @opentelemetry/api',
+      });
     }
 
-    // Additional optimizations for client-side
-    if (!isServer) {
-      // Optimize module resolution
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        // Prefer ES modules over CommonJS
-        '@': path.resolve('./'),
-      };
-
-      // Pre-bundle critical dependencies
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-      };
-    }
-
-    return config
+  
+    return config;
   },
 
   // Comprehensive Security and Performance Headers

@@ -1,0 +1,41 @@
+# PG Closets - Ottawa Custom Closets & Storage Solutions
+# Robots.txt for optimal SEO and crawling
+
+User-agent: *
+Allow: /
+
+# Prioritize important pages
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://pgclosets.com/sitemap.xml
+
+# Block non-essential paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /.well-known/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /account/
+
+# Allow specific API routes for SEO
+Allow: /api/products/search
+Allow: /api/lead
+
+# Special directives for search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Image optimization for search engines
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /_next/image/
+
+# Prioritize Ottawa local SEO
+# Allow local business content to be crawled efficiently

@@ -1,0 +1,170 @@
+{
+  "version": 2,
+  "functions": {
+    "app/api/**": {
+      "maxDuration": 30,
+      "memory": 1024,
+      "concurrency": 10
+    },
+    "app/api/cron/**": {
+      "maxDuration": 60,
+      "memory": 2048,
+      "concurrency": 5
+    },
+    "app/api/chat/**": {
+      "maxDuration": 45,
+      "memory": 1536,
+      "concurrency": 8
+    },
+    "app/api/checkout/**": {
+      "maxDuration": 60,
+      "memory": 2048,
+      "concurrency": 3
+    }
+  },
+  "regions": ["iad1", "sfo1"],
+  "framework": "nextjs",
+  "buildCommand": "npm run build:production",
+  "outputDirectory": ".next",
+  "installCommand": "npm ci --legacy-peer-deps",
+  "devCommand": "npm run dev",
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "@site-url",
+    "NEXT_PUBLIC_GA_ID": "@ga-tracking-id",
+    "VERCEL_ANALYTICS_ID": "@vercel-analytics-id"
+  },
+  "build": {
+    "env": {
+      "NEXT_TELEMETRY_DISABLED": "1",
+      "NODE_ENV": "production",
+      "NEXT_BUILD_WORKERS": "4"
+    }
+  },
+  "functionsConfig": {
+    "app/api/products/search/route.ts": {
+      "maxDuration": 15,
+      "memory": 512,
+      "concurrency": 20
+    },
+    "app/api/ai/recommendations/route.ts": {
+      "maxDuration": 30,
+      "memory": 1536,
+      "concurrency": 5
+    },
+    "app/api/book/**": {
+      "maxDuration": 45,
+      "memory": 1024,
+      "concurrency": 8
+    },
+    "app/api/lead/route.ts": {
+      "maxDuration": 20,
+      "memory": 512,
+      "concurrency": 15
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-DNS-Prefetch-Control",
+          "value": "on"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://pgclosets.com"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization, X-CSRF-Token"
+        }
+      ]
+    },
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Vary",
+          "value": "Accept"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/api/robots"
+    },
+    {
+      "source": "/health",
+      "destination": "/api/health"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/images/:path*",
+      "destination": "/assets/:path*?v=2",
+      "permanent": true
+    },
+    {
+      "source": "/closets",
+      "destination": "/products",
+      "permanent": true
+    },
+    {
+      "source": "/storage",
+      "destination": "/products",
+      "permanent": true
+    }
+  ]
+}

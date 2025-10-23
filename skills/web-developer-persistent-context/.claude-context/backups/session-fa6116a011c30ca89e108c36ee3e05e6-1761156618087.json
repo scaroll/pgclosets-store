@@ -1,0 +1,89 @@
+{
+  "id": "fa6116a011c30ca89e108c36ee3e05e6",
+  "startTime": "2025-10-22T18:09:24.405Z",
+  "lastSaved": "2025-10-22T18:10:18.086Z",
+  "projectRoot": "/Users/spencercarroll/pgclosets-store-main/skills/web-developer-persistent-context",
+  "decisions": [
+    {
+      "id": "cedcbdf8aa91743e35f62b82de5e5684",
+      "timestamp": "2025-10-22T18:09:24.409Z",
+      "type": "test",
+      "title": "Test Decision",
+      "description": "Testing the system",
+      "rationale": "Verification",
+      "files": [],
+      "tags": [
+        "test"
+      ],
+      "impact": "medium"
+    },
+    {
+      "id": "50df247ba9065ee40ad65f2de581ddf8",
+      "timestamp": "2025-10-22T18:09:52.965Z",
+      "type": "session_start",
+      "title": "Started: Fancy Animation Integration",
+      "description": "Initiated development session",
+      "rationale": "User requested to start tracking context",
+      "files": [],
+      "tags": [
+        "session",
+        "start",
+        "fancy animation integration"
+      ],
+      "impact": "medium"
+    },
+    {
+      "id": "96ed2d69bedd8900af5d78535265097e",
+      "timestamp": "2025-10-22T18:09:57.931Z",
+      "type": "development",
+      "title": "Created Float Animation Component",
+      "description": "Implemented CSS-based Float component with 4s animation cycle",
+      "rationale": "To replace complex motion library with lightweight solution for better performance",
+      "files": [],
+      "tags": [
+        "development",
+        "decision"
+      ],
+      "impact": "medium"
+    },
+    {
+      "id": "2ca1db03247f3c07a7d84f3a737461a2",
+      "timestamp": "2025-10-22T18:10:01.800Z",
+      "type": "development",
+      "title": "Added Breathing Text Animation",
+      "description": "Implemented 2s breathing animation for hero text using CSS keyframes",
+      "rationale": "To add sophisticated visual interest to headlines",
+      "files": [],
+      "tags": [
+        "development",
+        "decision"
+      ],
+      "impact": "medium"
+    },
+    {
+      "id": "a0e931a806d371f0f9bcc32856d88d3c",
+      "timestamp": "2025-10-22T18:10:13.035Z",
+      "type": "session_start",
+      "title": "Started: Persistent Context Demo",
+      "description": "Initiated development session",
+      "rationale": "User requested to start tracking context",
+      "files": [],
+      "tags": [
+        "session",
+        "start",
+        "persistent context demo"
+      ],
+      "impact": "medium"
+    }
+  ],
+  "fileChanges": [],
+  "todoLists": [],
+  "progress": {},
+  "context": {},
+  "metadata": {
+    "version": "1.0.0",
+    "hostname": "MacBookPro.localdomain",
+    "platform": "darwin"
+  },
+  "lastResumed": "2025-10-22T18:10:18.085Z"
+}

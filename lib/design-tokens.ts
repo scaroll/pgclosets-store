@@ -86,8 +86,8 @@ export const colors = {
 export const typography = {
   // Font Families
   fonts: {
-    display: 'var(--font-cormorant), Georgia, Times New Roman, serif',
-    body: 'var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+    display: 'var(--font-serif-display), Georgia, Times New Roman, serif',
+    body: 'var(--font-sans-body), -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
     sf: '-apple-system, BlinkMacSystemFont, SF Pro Display, SF Pro Text, system-ui, sans-serif',
     mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
   },

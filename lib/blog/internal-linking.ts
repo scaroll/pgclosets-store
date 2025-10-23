@@ -97,8 +97,8 @@ export function generateLinkSuggestions(
   return suggestions
     .sort((a, b) => b.relevanceScore - a.relevanceScore)
     .filter(
-      (suggestion, index, self) =>
-        index === self.findIndex((s) => s.targetSlug === suggestion.targetSlug)
+      (suggestion, index, array) =>
+        index === array.findIndex((s) => s.targetSlug === suggestion.targetSlug)
     )
     .slice(0, 10);
 }

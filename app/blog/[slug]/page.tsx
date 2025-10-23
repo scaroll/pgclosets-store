@@ -290,10 +290,10 @@ const blogPosts = {
 }
 
 // Temporarily disabled - export async function generateStaticParams() {
-  return Object.keys(blogPosts).map((slug) => ({
-    slug,
-  }))
-}
+//   return Object.keys(blogPosts).map((slug) => ({
+//     slug,
+//   }))
+// }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params

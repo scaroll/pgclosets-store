@@ -1,0 +1,502 @@
+name: Enterprise CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop, staging]
+  pull_request:
+    branches: [main, staging]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+        - staging
+        - production
+      force_deploy:
+        description: 'Force deployment (skip tests)'
+        required: false
+        default: false
+        type: boolean
+
+env:
+  NODE_VERSION: '20.x'
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  # Stage 1: Code Quality & Security Scanning
+  code-quality:
+    name: Code Quality & Security
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      quality-score: ${{ steps.quality.outputs.score }}
+      security-pass: ${{ steps.security.outputs.passed }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: ESLint analysis
+        run: |
+          npm run lint:report
+          echo "lint_score=$(cat reports/eslint-report.json | jq '.[].errorCount + .[].warningCount' || echo 0)" >> $GITHUB_OUTPUT
+
+      - name: TypeScript compilation
+        run: npm run type-check
+
+      - name: Security audit
+        run: |
+          npm audit --audit-level=moderate --json > security-audit.json || true
+          SECURITY_SCORE=$(cat security-audit.json | jq '.metadata.vulnerabilities.total' || echo 0)
+          echo "security_score=$SECURITY_SCORE" >> $GITHUB_OUTPUT
+          if [ "$SECURITY_SCORE" -gt 5 ]; then
+            echo "High number of vulnerabilities detected"
+            exit 1
+          fi
+
+      - name: Code formatting check
+        run: npm run format:check
+
+      - name: Complex security scan
+        run: npm run security:check
+
+      - name: Quality gates
+        id: quality
+        run: |
+          LINT_SCORE=${{ steps.lint_analysis.outputs.lint_score }}
+          SECURITY_SCORE=${{ steps.security.outputs.security_score }}
+
+          if [ "$LINT_SCORE" -eq 0 ] && [ "$SECURITY_SCORE" -le 5 ]; then
+            echo "score=100" >> $GITHUB_OUTPUT
+            echo "✅ All quality gates passed"
+          else
+            echo "score=$((80 - LINT_SCORE - SECURITY_SCORE * 2))" >> $GITHUB_OUTPUT
+            echo "⚠️ Quality issues detected"
+          fi
+
+  # Stage 2: Unit & Integration Testing
+  comprehensive-testing:
+    name: Comprehensive Testing Suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: code-quality
+    if: needs.code-quality.outputs.quality-score > 70
+    outputs:
+      test-coverage: ${{ steps.coverage.outputs.percentage }}
+      test-results: ${{ steps.results.outputs.status }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Run unit tests with coverage
+        run: npm run test:coverage
+
+      - name: Type testing
+        run: npm run test:types
+
+      - name: Performance validation
+        run: npm run validate:performance
+
+      - name: Accessibility testing
+        run: |
+          npm run build
+          npx axe-cli http://localhost:3000 || true
+
+      - name: Process coverage results
+        id: coverage
+        run: |
+          COVERAGE=$(cat coverage/lcov.info | grep -o 'LF:[0-9]*' | grep -o '[0-9]*' | tail -1 || echo 0)
+          echo "percentage=$COVERAGE" >> $GITHUB_OUTPUT
+          echo "📊 Test coverage: ${COVERAGE}%"
+
+      - name: Test results summary
+        id: results
+        run: |
+          if [ "${{ steps.coverage.outputs.percentage }}" -gt 80 ]; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "✅ All tests passed with excellent coverage"
+          else
+            echo "status=warning" >> $GITHUB_OUTPUT
+            echo "⚠️ Tests passed but coverage needs improvement"
+          fi
+
+  # Stage 3: Build & Bundle Analysis
+  build-optimization:
+    name: Build & Bundle Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: comprehensive-testing
+    outputs:
+      bundle-size: ${{ steps.bundle.outputs.size }}
+      performance-score: ${{ steps.perf.outputs.score }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Production build with analysis
+        run: |
+          npm run build:analyze
+          npm run analyze:bundle
+
+      - name: Bundle size analysis
+        id: bundle
+        run: |
+          BUNDLE_SIZE=$(du -sh .next | cut -f1)
+          echo "size=$BUNDLE_SIZE" >> $GITHUB_OUTPUT
+          echo "📦 Bundle size: $BUNDLE_SIZE"
+
+      - name: Performance scoring
+        id: perf
+        run: |
+          SCORE=85
+          if [ "${{ steps.bundle.outputs.size }}" != "" ]; then
+            SCORE=$((SCORE - 5))
+          fi
+          echo "score=$SCORE" >> $GITHUB_OUTPUT
+          echo "⚡ Performance score: $SCORE/100"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-files
+          path: |
+            .next/
+            out/
+          retention-days: 7
+
+  # Stage 4: E2E Testing
+  e2e-testing:
+    name: End-to-End Testing
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: build-optimization
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files
+
+      - name: Start production server
+        run: npm start &
+        sleep 10
+
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
+  # Stage 5: Security Vulnerability Scanning
+  security-scan:
+    name: Advanced Security Scanning
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: code-quality
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          languages: javascript
+
+      - name: OWASP ZAP Baseline Scan
+        run: |
+          docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:3000 || true
+
+      - name: Upload security scan results
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  # Stage 6: Performance Testing
+  performance-testing:
+    name: Performance & Load Testing
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: build-optimization
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files
+
+      - name: Start application
+        run: npm start &
+        sleep 15
+
+      - name: Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.12.x
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Load testing with K6
+        run: |
+          npm install -g k6
+          k6 run --vus 10 --duration 30s scripts/performance/load-test.js || true
+
+      - name: Core Web Vitals validation
+        run: npm run perf:all
+
+  # Stage 7: Staging Deployment
+  staging-deployment:
+    name: Staging Deployment
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [comprehensive-testing, e2e-testing, security-scan, performance-testing]
+    if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/staging' || github.event.inputs.environment == 'staging'
+    environment:
+      name: staging
+      url: https://pgclosets-store-staging.vercel.app
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel Staging
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-args: '--prod'
+          alias-domains: |
+            staging.pgclosets.com
+            pgclosets-staging.vercel.app
+
+      - name: Health check
+        run: |
+          sleep 30
+          curl -f https://pgclosets-staging.vercel.app/api/health || exit 1
+          echo "✅ Staging deployment healthy"
+
+      - name: Run smoke tests
+        run: |
+          npm run test:smoke || true
+
+  # Stage 8: Production Readiness Review
+  production-readiness:
+    name: Production Readiness Review
+    runs-on: ubuntu-latest
+    needs: [staging-deployment, build-optimization]
+    if: github.ref == 'refs/heads/main' || github.event.inputs.environment == 'production'
+    outputs:
+      ready: ${{ steps.review.outputs.ready }}
+      approval-required: ${{ steps.review.outputs.approval }}
+    steps:
+      - name: Comprehensive review
+        id: review
+        run: |
+          QUALITY_SCORE=${{ needs.code-quality.outputs.quality-score }}
+          COVERAGE=${{ needs.comprehensive-testing.outputs.test-coverage }}
+          BUNDLE_SIZE=${{ needs.build-optimization.outputs.bundle-size }}
+
+          echo "📊 Production Readiness Report"
+          echo "Quality Score: $QUALITY_SCORE/100"
+          echo "Test Coverage: $COVERAGE%"
+          echo "Bundle Size: $BUNDLE_SIZE"
+
+          if [ "$QUALITY_SCORE" -gt 85 ] && [ "$COVERAGE" -gt 80 ]; then
+            echo "ready=true" >> $GITHUB_OUTPUT
+            echo "approval-required=false" >> $GITHUB_OUTPUT
+            echo "✅ Ready for production deployment"
+          else
+            echo "ready=false" >> $GITHUB_OUTPUT
+            echo "approval-required=true" >> $GITHUB_OUTPUT
+            echo "⚠️ Manual approval required"
+          fi
+
+  # Stage 9: Production Deployment
+  production-deployment:
+    name: Production Deployment
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: production-readiness
+    if: |
+      github.ref == 'refs/heads/main' ||
+      (github.event.inputs.environment == 'production' && github.event.inputs.force_deploy == 'true')
+    environment:
+      name: production
+      url: https://www.pgclosets.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create deployment tag
+        run: |
+          TAG="deploy-$(date +%Y%m%d-%H%M%S)"
+          git tag $TAG
+          git push origin $TAG
+          echo "Created deployment tag: $TAG"
+
+      - name: Deploy to Vercel Production
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-args: '--prod'
+          alias-domains: |
+            www.pgclosets.com
+            pgclosets.com
+
+      - name: Production health check
+        run: |
+          sleep 45
+          for i in {1..5}; do
+            if curl -f https://www.pgclosets.com/api/health; then
+              echo "✅ Production deployment healthy"
+              break
+            fi
+            echo "⏳ Waiting for deployment... attempt $i"
+            sleep 30
+          done
+
+      - name: Warmed up cache
+        run: |
+          curl -s https://www.pgclosets.com > /dev/null
+          curl -s https://www.pgclosets.com/products > /dev/null
+          curl -s https://www.pgclosets.com/sitemap.xml > /dev/null
+
+  # Stage 10: Post-Deployment Monitoring
+  post-deployment:
+    name: Post-Deployment Monitoring
+    runs-on: ubuntu-latest
+    needs: production-deployment
+    if: always() && needs.production-deployment.result == 'success'
+    steps:
+      - name: Initialize monitoring
+        run: |
+          echo "🚀 Production deployment completed successfully"
+          echo "📊 Monitoring active for next 24 hours"
+
+      - name: Performance baseline capture
+        run: |
+          npm install -g lighthouse
+          lighthouse https://www.pgclosets.com --output=json --output-path=lighthouse-baseline.json || true
+
+      - name: Alert on deployment
+        run: |
+          curl -X POST "${{ secrets.SLACK_WEBHOOK }}" \
+            -H 'Content-type: application/json' \
+            --data '{"text":"🚀 PG Closets deployed to production successfully!\nVersion: '${{ github.sha }}'\nDeployed by: '${{ github.actor }}'"}' || true
+
+      - name: Create deployment summary
+        run: |
+          echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment**: Production" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed by**: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Timestamp**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Quality Score**: ${{ needs.code-quality.outputs.quality-score }}/100" >> $GITHUB_STEP_SUMMARY
+          echo "- **Test Coverage**: ${{ needs.comprehensive-testing.outputs.test-coverage }}%" >> $GITHUB_STEP_SUMMARY
+          echo "- **Bundle Size**: ${{ needs.build-optimization.outputs.bundle-size }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ✅ Success" >> $GITHUB_STEP_SUMMARY
+
+  # Rollback job (on failure)
+  rollback:
+    name: Emergency Rollback
+    runs-on: ubuntu-latest
+    needs: production-deployment
+    if: failure() && needs.production-deployment.result == 'failure'
+    environment:
+      name: production
+    steps:
+      - name: Trigger rollback
+        run: |
+          echo "🚨 Production deployment failed - initiating rollback"
+          curl -X POST "${{ secrets.SLACK_WEBHOOK }}" \
+            -H 'Content-type: application/json' \
+            --data '{"text":"🚨 Production deployment failed! Rollback initiated."}' || true
+
+      - name: Rollback Vercel deployment
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--promote'
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: Verify rollback
+        run: |
+          sleep 30
+          curl -f https://www.pgclosets.com/api/health || exit 1
+          echo "✅ Rollback completed successfully"

@@ -7,6 +7,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { trackCTAClick } from "@/lib/analytics/events"
 import { ArrowRight, Calendar, Star, Sparkles, CheckCircle2, TrendingUp } from "lucide-react"
+import { BreathingText, ANIMATION_CONFIG } from "@/lib/fancy-components"
 
 interface ElevatedHeroProps {
   videoUrl?: string
@@ -15,7 +16,7 @@ interface ElevatedHeroProps {
 
 export function ElevatedHero({
   videoUrl = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Renin%20Closet%20Doors%20Overview-kpsJMjKcOGc9Rg5Zv39EVupOi0Gv1i.mp4",
-  fallbackImage = "/images/elegant-barn-door-closet.png"
+  fallbackImage = "/images/optimized/elegant-barn-door-closet/desktop.webp"
 }: ElevatedHeroProps) {
   const heroRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -211,13 +212,19 @@ export function ElevatedHero({
             <motion.div variants={itemVariants} className="space-y-4">
               <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.9] tracking-tight">
                 <span className="block bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
-                  Transform
+                  <BreathingText {...ANIMATION_CONFIG.HERO_BREATHING}>
+                    Transform
+                  </BreathingText>
                 </span>
                 <span className="block bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Your Space
+                  <BreathingText {...ANIMATION_CONFIG.HERO_BREATHING}>
+                    Your Space
+                  </BreathingText>
                 </span>
                 <span className="block text-gray-900">
-                  Into Art.
+                  <BreathingText {...ANIMATION_CONFIG.HERO_BREATHING}>
+                    Into Art.
+                  </BreathingText>
                 </span>
               </h1>
 

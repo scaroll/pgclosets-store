@@ -1,0 +1,91 @@
+{
+  "name": "web-developer-work-skill",
+  "version": "1.0.0",
+  "description": "Persistent context management system for web developers that never loses work between Claude Desktop sessions",
+  "main": "index.js",
+  "bin": {
+    "web-developer-work-skill": "./cli/CLIInterface.js",
+    "claude-work": "./scripts/claude-work"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node tests/SystemTest.js",
+    "verify": "node utils/VerificationScript.js",
+    "test:complete": "npm run test && npm run verify",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "docs": "jsdoc -c jsdoc.conf.json",
+    "build": "npm run lint && npm run test:complete",
+    "prepublishOnly": "npm run build",
+    "install:global": "npm install -g .",
+    "setup": "node scripts/setup.js",
+    "demo": "node scripts/demo.js"
+  },
+  "keywords": [
+    "claude-desktop",
+    "web-development",
+    "context-persistence",
+    "session-management",
+    "work-continuity",
+    "error-recovery",
+    "productivity",
+    "developer-tools"
+  ],
+  "author": "Claude Code Assistant",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "cli-table3": "^0.6.3",
+    "commander": "^9.4.1",
+    "crypto": "^1.0.1",
+    "chokidar": "^3.5.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "jsdoc": "^4.0.2",
+    "jest": "^29.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anthropics/skills.git",
+    "directory": "web-developer-work-skill"
+  },
+  "bugs": {
+    "url": "https://github.com/anthropics/skills/issues"
+  },
+  "homepage": "https://github.com/anthropics/skills/tree/main/web-developer-work-skill",
+  "files": [
+    "index.js",
+    "SKILL.md",
+    "README.md",
+    "core/",
+    "cli/",
+    "utils/",
+    "tests/",
+    "scripts/",
+    "docs/",
+    "package.json",
+    "LICENSE"
+  ],
+  "preferGlobal": true,
+  "claude": {
+    "skill": true,
+    "category": "development",
+    "tags": [
+      "productivity",
+      "context",
+      "persistence",
+      "session"
+    ],
+    "capabilities": [
+      "session-management",
+      "context-persistence",
+      "error-recovery",
+      "backup-restore",
+      "search-history"
+    ]
+  }
+}

@@ -25,10 +25,10 @@ function Card({ className, variant = "default", spacing = "default", href, onCli
     "rounded-xl border bg-white transition-all duration-300",
     variant === "default" && "border-gray-200 shadow-sm",
     variant === "elevated" && "border-gray-200 shadow-lg hover:transform hover:-translate-y-1 hover:shadow-xl",
-    variant === "premium" && "border-2 border-[var(--apple-blue)] bg-gradient-to-br from-white to-gray-50 shadow-md",
-    variant === "interactive" && "cursor-pointer border-gray-200 shadow-sm hover:shadow-md hover:scale-[1.02] hover:border-[var(--apple-blue)] transform-gpu",
+    variant === "premium" && "border-2 border-blue-600 bg-gradient-to-br from-white to-gray-50 shadow-md",
+    variant === "interactive" && "cursor-pointer border-gray-200 shadow-sm hover:shadow-md hover:scale-[1.02] hover:border-blue-600 transform-gpu",
     variant === "gradient" && "border-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50 shadow-md",
-    variant === "outline" && "border-2 border-[var(--apple-gray-300)] bg-transparent hover:border-[var(--apple-blue)] hover:shadow-sm",
+    variant === "outline" && "border-2 border-gray-300 bg-transparent hover:border-blue-600 hover:shadow-sm",
     spacingMap[spacing]
   );
 
@@ -68,7 +68,7 @@ function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElem
   return (
     <h3
       data-slot="card-title"
-      className={cn("text-2xl font-semibold leading-none tracking-tight text-[var(--apple-gray-900)]", className)}
+      className={cn("text-2xl font-semibold leading-none tracking-tight text-gray-900", className)}
       {...props}
     />
   )
@@ -78,7 +78,7 @@ function CardDescription({ className, ...props }: React.HTMLAttributes<HTMLParag
   return (
     <p
       data-slot="card-description"
-      className={cn("text-sm text-[var(--apple-gray-600)]", className)}
+      className={cn("text-sm text-gray-600", className)}
       {...props}
     />
   )

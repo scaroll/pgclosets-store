@@ -5,6 +5,7 @@ import Google from 'next-auth/providers/google';
 import * as bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/db';
 import { z } from 'zod';
+import jwt from 'jsonwebtoken';
 
 const credentialsSchema = z.object({
   email: z.string().email(),
@@ -134,4 +135,45 @@ export async function requireAdmin() {
     throw new Error('Forbidden: Admin access required');
   }
   return session;
+}
+
+// JWT token signing function for custom auth
+export function signToken(payload: any): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET;
+    if (!secret) {
+      reject(new Error('JWT secret not configured'));
+      return;
+    }
+
+    jwt.sign(
+      payload,
+      secret,
+      { expiresIn: '7d' },
+      (err, token) => {
+        if (err) reject(err);
+        else resolve(token!);
+      }
+    );
+  });
+}
+
+// JWT token verification function
+export function verifyToken(token: string): Promise<any> {
+  return new Promise((resolve, reject) => {
+    const secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET;
+    if (!secret) {
+      reject(new Error('JWT secret not configured'));
+      return;
+    }
+
+    jwt.verify(
+      token,
+      secret,
+      (err, decoded) => {
+        if (err) reject(err);
+        else resolve(decoded);
+      }
+    );
+  });
 }
