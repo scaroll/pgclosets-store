@@ -67,7 +67,7 @@ export default function HomePage() {
       {/* Elevated Hero Section - Apple-inspired design with 3D effects */}
       <ElevatedHero
         videoUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Renin%20Closet%20Doors%20Overview-kpsJMjKcOGc9Rg5Zv39EVupOi0Gv1i.mp4"
-        fallbackImage="/images/elegant-barn-door-closet.png"
+        fallbackImage="/images/optimized/elegant-barn-door-closet.png"
       />
 
       {/* Trust Bar - Above the Fold Trust Elements */}

@@ -23,12 +23,12 @@ import { AccessibilityProvider } from '@/components/accessibility/AccessibilityP
 import AccessibilityTesting from '@/components/accessibility/AccessibilityTesting'
 import { AccessibilityControls } from '@/components/accessibility/AccessibilityControls'
 
-// Font optimization with preloading and display swap
+// Local font optimization for reliability and performance
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans-body',
   display: 'swap',
-  preload: false,
+  preload: true, // Preload critical fonts
   weight: ['400', '500', '600', '700'],
   adjustFontFallback: true,
   fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
@@ -38,7 +38,7 @@ const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-serif-display',
   display: 'swap',
-  preload: false,
+  preload: true, // Preload display font
   weight: ['400', '700'],
   adjustFontFallback: true,
   fallback: ['Georgia', 'Times New Roman', 'serif'],
