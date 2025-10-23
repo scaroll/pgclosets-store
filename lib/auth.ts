@@ -75,7 +75,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     strategy: adapter ? 'database' : 'jwt', // Use database strategy if adapter is available
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-  secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET || 'temporary-production-secret-replace-in-production',
   pages: {
     signIn: '/auth/signin',
     error: '/auth/error',
