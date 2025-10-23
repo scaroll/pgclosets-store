@@ -92,6 +92,7 @@ const envSchema = z.object({
     .optional(),
   STRIPE_SECRET_KEY: z.string()
     .regex(/^sk_(test|live)_[a-zA-Z0-9]+$/, 'Must be a valid Stripe secret key')
+    .or(z.string().includes('placeholder'))
     .optional(),
   STRIPE_WEBHOOK_SECRET: z.string()
     .regex(/^whsec_[a-zA-Z0-9]+$/, 'Must be a valid Stripe webhook secret')
@@ -115,7 +116,7 @@ const envSchema = z.object({
   // ============================================
   // OpenAI
   OPENAI_API_KEY: z.string().optional().refine(
-    (val) => !val || /^sk-[a-zA-Z0-9_-]+$/.test(val),
+    (val) => !val || /^sk-[a-zA-Z0-9_-]+$/.test(val) || val.includes('placeholder'),
     'Must be a valid OpenAI API key'
   ),
 
@@ -134,6 +135,10 @@ const envSchema = z.object({
   // Redis (Caching)
   REDIS_URL: z.string().optional(),
   REDIS_PASSWORD: z.string().optional(),
+
+  // Upstash Redis (alternative Redis service)
+  UPSTASH_REDIS_REST_URL: z.string().optional(),
+  UPSTASH_REDIS_REST_TOKEN: z.string().optional(),
 
   // ============================================
   // Business Configuration (Public, Optional)

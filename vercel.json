@@ -1,5 +1,4 @@
 {
-  "name": "pgclosets-store",
   "scope": "peoples-group",
   "framework": "nextjs",
   "buildCommand": "npm run build",
