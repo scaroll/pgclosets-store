@@ -4,6 +4,7 @@ import '@/styles/apple-glass.css'
 import '@/styles/mobile-optimizations.css'
 import '@/styles/performance-optimizations.css'
 import { Inter, Playfair_Display } from 'next/font/google'
+import { Providers } from './providers'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ScrollProgress from '@/components/ScrollProgress'
@@ -225,12 +226,13 @@ export default function RootLayout({
           reportingEndpoint="/api/analytics/web-vitals"
         />
 
-        <AccessibilityProvider>
-          <PerformanceOptimizer
-            enableMonitoring={process.env.NODE_ENV === 'production'}
-            enablePreloading={true}
-            enablePrefetching={true}
-          >
+        <Providers>
+          <AccessibilityProvider>
+            <PerformanceOptimizer
+              enableMonitoring={process.env.NODE_ENV === 'production'}
+              enablePreloading={true}
+              enablePrefetching={true}
+            >
             {/* Enhanced skip links for keyboard navigation */}
             <nav aria-label="Skip navigation" className="fixed top-4 left-4 z-[100] space-y-2">
               <a
@@ -446,8 +448,9 @@ export default function RootLayout({
               strategy="afterInteractive"
             />
           )}
-        </PerformanceOptimizer>
-      </AccessibilityProvider>
+            </PerformanceOptimizer>
+          </AccessibilityProvider>
+        </Providers>
       </body>
     </html>
   )

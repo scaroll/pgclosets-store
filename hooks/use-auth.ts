@@ -36,6 +36,7 @@ export function useAuth() {
         credentials: "include",
       })
 
+      // Always process the response, even if it's an error
       if (response.ok) {
         const data = await response.json()
         if (data.authenticated) {
@@ -54,6 +55,7 @@ export function useAuth() {
           })
         }
       } else {
+        // Handle error responses gracefully
         setAuthState({
           user: null,
           isAuthenticated: false,
@@ -63,6 +65,7 @@ export function useAuth() {
       }
     } catch (error) {
       console.error("Session check failed:", error)
+      // Don't throw errors for failed session checks - just mark as unauthenticated
       setAuthState({
         user: null,
         isAuthenticated: false,

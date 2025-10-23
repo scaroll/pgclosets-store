@@ -12,12 +12,28 @@ const loginSchema = z.object({
 
 export async function POST(req: NextRequest) {
   try {
+    // Check if database is available
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json(
+        {
+          success: false,
+          authenticated: false,
+          error: 'Login service temporarily unavailable'
+        },
+        { status: 503 }
+      );
+    }
+
     // Rate limiting
     const identifier = getClientIdentifier(req);
     const { allowed } = await checkRateLimit(identifier, authRateLimiter);
     if (!allowed) {
       return NextResponse.json(
-        { error: 'Too many login attempts' },
+        {
+          success: false,
+          authenticated: false,
+          error: 'Too many login attempts'
+        },
         { status: 429 }
       );
     }
@@ -27,7 +43,12 @@ export async function POST(req: NextRequest) {
 
     if (!validated.success) {
       return NextResponse.json(
-        { error: 'Invalid input', details: validated.error.errors },
+        {
+          success: false,
+          authenticated: false,
+          error: 'Invalid input',
+          details: validated.error.errors
+        },
         { status: 400 }
       );
     }
@@ -48,7 +69,11 @@ export async function POST(req: NextRequest) {
 
     if (!user || !user.password) {
       return NextResponse.json(
-        { error: 'Invalid credentials' },
+        {
+          success: false,
+          authenticated: false,
+          error: 'Invalid credentials'
+        },
         { status: 401 }
       );
     }
@@ -58,7 +83,11 @@ export async function POST(req: NextRequest) {
 
     if (!isValidPassword) {
       return NextResponse.json(
-        { error: 'Invalid credentials' },
+        {
+          success: false,
+          authenticated: false,
+          error: 'Invalid credentials'
+        },
         { status: 401 }
       );
     }
@@ -73,12 +102,14 @@ export async function POST(req: NextRequest) {
     // Set HTTP-only cookie
     const response = NextResponse.json({
       success: true,
+      authenticated: true,
       user: {
         id: user.id,
         email: user.email,
         name: user.name,
         role: user.role,
       },
+      csrfToken: null, // Not used in JWT auth
       message: 'Login successful',
     });
 
@@ -93,7 +124,11 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error('[LOGIN_ERROR]', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      {
+        success: false,
+        authenticated: false,
+        error: 'Internal server error'
+      },
       { status: 500 }
     );
   }

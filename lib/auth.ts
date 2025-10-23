@@ -15,19 +15,23 @@ const credentialsSchema = z.object({
 // Handle missing database gracefully
 const adapter = process.env.DATABASE_URL ? PrismaAdapter(prisma) : undefined;
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: adapter,
-  session: { strategy: 'jwt' },
-  pages: {
-    signIn: '/auth/signin',
-    error: '/auth/error',
-  },
-  providers: [
+// Only include providers if their environment variables are configured
+const providers = [];
+
+// Only add Google provider if credentials are available
+if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
+  providers.push(
     Google({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       allowDangerousEmailAccountLinking: true,
-    }),
+    })
+  );
+}
+
+// Only add Credentials provider if database is available
+if (process.env.DATABASE_URL) {
+  providers.push(
     Credentials({
       name: 'credentials',
       credentials: {
@@ -35,29 +39,48 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        const validated = credentialsSchema.safeParse(credentials);
-        if (!validated.success) return null;
+        try {
+          const validated = credentialsSchema.safeParse(credentials);
+          if (!validated.success) return null;
 
-        const { email, password } = validated.data;
+          const { email, password } = validated.data;
 
-        const user = await prisma.user.findUnique({
-          where: { email },
-        });
+          const user = await prisma.user.findUnique({
+            where: { email },
+          });
 
-        if (!user || !user.password) return null;
+          if (!user || !user.password) return null;
 
-        const isValid = await bcrypt.compare(password, user.password);
-        if (!isValid) return null;
+          const isValid = await bcrypt.compare(password, user.password);
+          if (!isValid) return null;
 
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          role: user.role,
-        };
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            role: user.role,
+          };
+        } catch (error) {
+          console.error('Credentials provider error:', error);
+          return null;
+        }
       },
-    }),
-  ],
+    })
+  );
+}
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  adapter: adapter,
+  session: {
+    strategy: adapter ? 'database' : 'jwt', // Use database strategy if adapter is available
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET,
+  pages: {
+    signIn: '/auth/signin',
+    error: '/auth/error',
+  },
+  providers: providers,
   callbacks: {
     async jwt({ token, user, account }) {
       if (user) {

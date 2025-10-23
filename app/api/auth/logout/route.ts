@@ -4,6 +4,9 @@ export async function POST(req: NextRequest) {
   try {
     const response = NextResponse.json({
       success: true,
+      authenticated: false,
+      user: null,
+      csrfToken: null,
       message: 'Logout successful',
     });
 
@@ -19,7 +22,13 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error('[LOGOUT_ERROR]', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      {
+        success: false,
+        authenticated: false,
+        user: null,
+        csrfToken: null,
+        error: 'Internal server error'
+      },
       { status: 500 }
     );
   }

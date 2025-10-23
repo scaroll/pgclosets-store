@@ -42,8 +42,13 @@ export async function checkRateLimit(
   if (!limiter) {
     return { allowed: true, remaining: 999999, reset: Date.now() + 60_000 }
   }
-  const { success, remaining, reset } = await limiter.limit(identifier)
-  return { allowed: success, remaining, reset }
+  try {
+    const { success, remaining, reset } = await limiter.limit(identifier)
+    return { allowed: success, remaining, reset }
+  } catch (error) {
+    console.warn('Rate limit check failed, allowing request:', error)
+    return { allowed: true, remaining: 999999, reset: Date.now() + 60_000 }
+  }
 }
 
 // Specific rate limit checkers for common use cases
