@@ -135,6 +135,7 @@ const envSchema = z.object({
   // Redis (Caching)
   REDIS_URL: z.string().optional(),
   REDIS_PASSWORD: z.string().optional(),
+  REDIS_TOKEN: z.string().optional(),
 
   // Upstash Redis (alternative Redis service)
   UPSTASH_REDIS_REST_URL: z.string().optional(),

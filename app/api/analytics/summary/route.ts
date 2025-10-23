@@ -10,6 +10,33 @@ const summaryQuerySchema = z.object({
 
 export async function GET(req: NextRequest) {
   try {
+    // Test database connection first
+    try {
+      await prisma.$queryRaw`SELECT 1`;
+    } catch (dbError) {
+      console.error('[DATABASE_CONNECTION_ERROR]', dbError);
+      return NextResponse.json(
+        {
+          error: 'Database temporarily unavailable',
+          fallback: {
+            period: '7d',
+            overview: {
+              pageViews: 0,
+              uniqueVisitors: 0,
+              productViews: 0,
+              searches: 0,
+              purchases: 0,
+              conversionRate: 0,
+              revenue: 0
+            },
+            topContent: { pages: [], products: [], searches: [] },
+            trends: { dailyViews: [] }
+          }
+        },
+        { status: 503 }
+      );
+    }
+
     const session = await auth();
 
     // Only allow authenticated users

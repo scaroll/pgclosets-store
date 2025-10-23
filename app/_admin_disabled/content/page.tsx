@@ -244,17 +244,24 @@ export default async function ContentPage() {
                     </div>
 
                     <div className="flex items-center gap-2 mt-3">
-                      {post.tags.slice(0, 3).map((tag) => (
+                      {post.tags ? (post.tags.includes(',') ? post.tags.split(',').slice(0, 3).map((tag: string) => (
                         <span
-                          key={tag}
+                          key={tag.trim()}
                           className="px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded"
                         >
-                          {tag}
+                          {tag.trim()}
                         </span>
-                      ))}
-                      {post.tags.length > 3 && (
+                      )) : (
+                        <span
+                          key={post.tags}
+                          className="px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded"
+                        >
+                          {post.tags}
+                        </span>
+                      )) : null}
+                      {post.tags && post.tags.includes(',') && post.tags.split(',').length > 3 && (
                         <span className="text-xs text-gray-500">
-                          +{post.tags.length - 3} more
+                          +{post.tags.split(',').length - 3} more
                         </span>
                       )}
                     </div>

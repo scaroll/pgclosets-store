@@ -1,7 +1,7 @@
 #!/usr/bin/env npx tsx
 
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 
 const filePath = path.join(process.cwd(), 'data/simple-products.json');
 const products = JSON.parse(fs.readFileSync(filePath, 'utf-8'));

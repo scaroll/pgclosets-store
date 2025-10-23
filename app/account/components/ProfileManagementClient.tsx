@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { User, Mail, Phone, MapPin, Calendar, Save, Camera, Shield, Check, X, Edit2, UserPlus, Building, Briefcase } from 'lucide-react'
+import { User, Mail, Camera, Shield, Check, X, Edit2, Briefcase } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -156,7 +156,7 @@ export function ProfileManagementClient({ user }: { user: User }) {
       setTempProfileData(prev => ({
         ...prev,
         [parent]: {
-          ...(prev[parent as keyof ProfileData] as any),
+          ...(prev[parent as string] as any),
           [child]: value
         }
       }))

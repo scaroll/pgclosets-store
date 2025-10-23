@@ -63,7 +63,7 @@ function parsePriceString(priceStr: string | number | { min: number; max: number
   }
 
   // Handle string prices
-  const cleaned = priceStr.replace(/[$,]/g, '').trim();
+  const cleaned = (typeof priceStr === 'string') ? priceStr.replace(/[$,]/g, '').trim() : String(priceStr).replace(/[$,]/g, '').trim();
 
   if (cleaned.includes('–') || cleaned.includes('-')) {
     const [minStr, maxStr] = cleaned.split(/\s*[–-]\s*/);

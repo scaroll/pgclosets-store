@@ -18,7 +18,7 @@ import type { Browser} from 'playwright';
 import { chromium } from 'playwright';
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import sharp from 'sharp';
+import * as sharp from 'sharp';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -457,7 +457,7 @@ export class PlaywrightScraperAgent {
 
     const nameWords = name.toLowerCase().split(' ').filter(w => w.length > 3);
 
-    return [...new Set([...baseKeywords, ...nameWords])];
+    return Array.from(new Set([...baseKeywords, ...nameWords]));
   }
 
   private generateTags(name: string, category: string): string[] {

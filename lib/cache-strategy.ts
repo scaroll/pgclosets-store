@@ -62,8 +62,8 @@ export type CacheStrategy = 'stale-while-revalidate' | 'cache-first' | 'network-
 
 export const LUXURY_CACHE_CONFIG: CacheConfig = {
   redis: {
-    enabled: process.env.REDIS_URL !== undefined,
-    url: process.env.REDIS_URL,
+    enabled: process.env.REDIS_URL !== undefined || process.env.UPSTASH_REDIS_REST_URL !== undefined,
+    url: process.env.REDIS_URL || process.env.UPSTASH_REDIS_REST_URL,
     ttl: 3600, // 1 hour
     maxMemory: '256mb',
     evictionPolicy: 'allkeys-lru',
@@ -387,10 +387,32 @@ export class MultiLayerCache {
   // ============================================================================
 
   private async getFromRedis<T>(key: string): Promise<T | null> {
-    // Placeholder for Redis integration
-    // In production, use: const redis = new Redis(this.config.redis.url)
-    // return await redis.get(key)
-    return null;
+    if (!this.config.redis?.enabled || !this.config.redis?.url) {
+      return null;
+    }
+
+    try {
+      // Dynamic import to avoid build issues
+      const { default: Redis } = await import('ioredis');
+      const redis = new Redis(this.config.redis.url, {
+        connectTimeout: 5000,
+        commandTimeout: 3000,
+        retryDelayOnFailover: 100,
+        maxRetriesPerRequest: 2,
+        lazyConnect: true,
+      });
+
+      const value = await redis.get(key);
+      await redis.quit();
+
+      if (!value) return null;
+
+      return JSON.parse(value) as T;
+    } catch (error) {
+      console.warn(`Redis get failed for key ${key}:`, error instanceof Error ? error.message : 'Unknown error');
+      // Fallback to memory-only caching
+      return null;
+    }
   }
 
   private async setInRedis<T>(
@@ -399,26 +421,116 @@ export class MultiLayerCache {
     ttl: number,
     tags?: string[]
   ): Promise<void> {
-    // Placeholder for Redis integration
-    // In production, use: await redis.setex(key, ttl, JSON.stringify(value))
-    // If tags: await redis.sadd(`tag:${tag}`, key)
+    if (!this.config.redis?.enabled || !this.config.redis?.url) {
+      return;
+    }
+
+    try {
+      const { default: Redis } = await import('ioredis');
+      const redis = new Redis(this.config.redis.url, {
+        connectTimeout: 5000,
+        commandTimeout: 3000,
+        retryDelayOnFailover: 100,
+        maxRetriesPerRequest: 2,
+        lazyConnect: true,
+      });
+
+      await redis.setex(key, ttl, JSON.stringify(value));
+
+      // Handle tags if provided
+      if (tags && tags.length > 0) {
+        const tagPromises = tags.map(tag =>
+          redis.sadd(`tag:${tag}`, key).catch(err =>
+            console.warn(`Redis tag operation failed:`, err)
+          )
+        );
+        await Promise.allSettled(tagPromises);
+      }
+
+      await redis.quit();
+    } catch (error) {
+      console.warn(`Redis set failed for key ${key}:`, error instanceof Error ? error.message : 'Unknown error');
+      // Continue without Redis - memory cache will still work
+    }
   }
 
   private async deleteFromRedis(key: string): Promise<void> {
-    // Placeholder for Redis integration
-    // In production, use: await redis.del(key)
+    if (!this.config.redis?.enabled || !this.config.redis?.url) {
+      return;
+    }
+
+    try {
+      const { default: Redis } = await import('ioredis');
+      const redis = new Redis(this.config.redis.url, {
+        connectTimeout: 5000,
+        commandTimeout: 3000,
+        maxRetriesPerRequest: 1,
+        lazyConnect: true,
+      });
+
+      await redis.del(key);
+      await redis.quit();
+    } catch (error) {
+      console.warn(`Redis delete failed for key ${key}:`, error instanceof Error ? error.message : 'Unknown error');
+    }
   }
 
   private async deletePatternFromRedis(pattern: string): Promise<number> {
-    // Placeholder for Redis integration
-    // In production, use: const keys = await redis.keys(pattern)
-    // await redis.del(...keys)
-    return 0;
+    if (!this.config.redis?.enabled || !this.config.redis?.url) {
+      return 0;
+    }
+
+    try {
+      const { default: Redis } = await import('ioredis');
+      const redis = new Redis(this.config.redis.url, {
+        connectTimeout: 5000,
+        commandTimeout: 3000,
+        maxRetriesPerRequest: 1,
+        lazyConnect: true,
+      });
+
+      const keys = await redis.keys(pattern);
+      if (keys.length === 0) {
+        await redis.quit();
+        return 0;
+      }
+
+      // Delete in batches to avoid blocking
+      const batchSize = 100;
+      let deletedCount = 0;
+
+      for (let i = 0; i < keys.length; i += batchSize) {
+        const batch = keys.slice(i, i + batchSize);
+        deletedCount += await redis.del(...batch);
+      }
+
+      await redis.quit();
+      return deletedCount;
+    } catch (error) {
+      console.warn(`Redis pattern delete failed for pattern ${pattern}:`, error instanceof Error ? error.message : 'Unknown error');
+      return 0;
+    }
   }
 
   private async clearRedis(): Promise<void> {
-    // Placeholder for Redis integration
-    // In production, use: await redis.flushdb()
+    if (!this.config.redis?.enabled || !this.config.redis?.url) {
+      return;
+    }
+
+    try {
+      const { default: Redis } = await import('ioredis');
+      const redis = new Redis(this.config.redis.url, {
+        connectTimeout: 5000,
+        commandTimeout: 3000,
+        maxRetriesPerRequest: 1,
+        lazyConnect: true,
+      });
+
+      await redis.flushdb();
+      await redis.quit();
+    } catch (error) {
+      console.warn('Redis clear failed:', error instanceof Error ? error.message : 'Unknown error');
+    }
   }
 
   // ============================================================================

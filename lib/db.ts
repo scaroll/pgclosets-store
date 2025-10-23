@@ -16,6 +16,17 @@ export const prisma =
         url: process.env.DATABASE_URL,
       },
     },
+    // Enhanced connection configuration
+    transactionOptions: {
+      timeout: 10000,
+      isolationLevel: 'ReadCommitted',
+    },
+    // Connection timeout settings
+    __internal: {
+      engine: {
+        connectionTimeout: 5000,
+      },
+    },
   });
 
 if (process.env.NODE_ENV !== 'production') {
@@ -37,17 +48,28 @@ process.on('SIGTERM', async () => {
   process.exit(0);
 });
 
-// Database connection test function
-export async function testDatabaseConnection() {
-  try {
-    await prisma.$connect();
-    await prisma.$queryRaw`SELECT 1`;
-    console.log('✅ Database connection successful');
-    return true;
-  } catch (error) {
-    console.error('❌ Database connection failed:', error);
-    return false;
+// Database connection test function with retry logic
+export async function testDatabaseConnection(maxRetries = 3): Promise<boolean> {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      await prisma.$connect();
+      await prisma.$queryRaw`SELECT 1`;
+      console.log(`✅ Database connection successful (attempt ${attempt})`);
+      return true;
+    } catch (error) {
+      console.error(`❌ Database connection attempt ${attempt} failed:`, error);
+
+      if (attempt < maxRetries) {
+        const delay = Math.pow(2, attempt) * 1000; // Exponential backoff
+        console.log(`Retrying in ${delay}ms...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+      } else {
+        console.error('❌ All database connection attempts failed');
+        return false;
+      }
+    }
   }
+  return false;
 }
 
 // Database health check function

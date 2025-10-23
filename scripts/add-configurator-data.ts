@@ -7,8 +7,8 @@
  * simple-products.json and renin-products-database.json
  */
 
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 import type { ProductConfiguratorData } from '../types/configurator';
 
 // Sample configurator data generator

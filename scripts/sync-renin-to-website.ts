@@ -10,8 +10,8 @@
  * Run: npx tsx scripts/sync-renin-to-website.ts
  */
 
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 
 // Import transformed Renin products
 const transformedData = JSON.parse(

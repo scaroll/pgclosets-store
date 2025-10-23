@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { CreditCard, Plus, Edit, Trash2, ArrowLeft, Shield, Check, AlertTriangle, Clock, Zap, Wallet, Smartphone, Building2, CreditCard as CreditCardIcon, ChevronDown, Lock, Mail } from 'lucide-react'
+import { CreditCard, Plus, Edit, Trash2, ArrowLeft, Shield, Check, AlertTriangle, Zap, Wallet, Smartphone, Building2, CreditCard as CreditCardIcon, Lock, Mail } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -310,7 +310,7 @@ export function PaymentMethodsClient() {
     return 'Unknown'
   }
 
-  const getPaymentIcon = (type: string, brand?: string) => {
+  const getPaymentIcon = (type: string) => {
     switch (type) {
       case 'credit_card':
       case 'debit_card':
@@ -651,7 +651,7 @@ export function PaymentMethodsClient() {
                               "w-12 h-8 rounded flex items-center justify-center text-white",
                               method.brand ? getCardColor(method.brand) : "bg-gray-600"
                             )}>
-                              {getPaymentIcon(method.type, method.brand)}
+                              {getPaymentIcon(method.type)}
                             </div>
                             <div>
                               <div className="flex items-center space-x-2">
