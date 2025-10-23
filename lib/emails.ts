@@ -55,4 +55,3 @@ export class EmailService {
 export async function sendBookingConfirmationEmail(email: string, bookingData: any): Promise<void> {
   await EmailService.sendBookingConfirmationEmail(email, bookingData);
 }
-}
