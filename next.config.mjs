@@ -129,7 +129,6 @@ const nextConfig = {
       config.externals = config.externals || [];
       config.externals.push({
         '@supabase/supabase-js': 'commonjs @supabase/supabase-js',
-        '@opentelemetry/api': 'commonjs @opentelemetry/api',
       });
     }
 
