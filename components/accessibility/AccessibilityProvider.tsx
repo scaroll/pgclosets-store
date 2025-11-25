@@ -75,6 +75,40 @@ export function AccessibilityProvider({ children }: AccessibilityProviderProps) 
     initializeFocusManagement()
   }, [])
 
+  // Focus management initialization function
+  const initializeFocusManagement = () => {
+    if (typeof window === 'undefined') return
+
+    // Set up focus trap detection
+    const handleFocus = (e: FocusEvent) => {
+      const target = e.target as HTMLElement
+      if (target && target.closest('[data-focus-trap]')) {
+        // Already in a focus trap, managed by trap component
+        return
+      }
+    }
+
+    // Track focusable elements for skip navigation
+    const updateFocusableElements = () => {
+      const elements = document.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+      setFocusableElements(Array.from(elements))
+    }
+
+    document.addEventListener('focusin', handleFocus)
+    updateFocusableElements()
+
+    // Update on DOM changes
+    const observer = new MutationObserver(updateFocusableElements)
+    observer.observe(document.body, { childList: true, subtree: true })
+
+    return () => {
+      document.removeEventListener('focusin', handleFocus)
+      observer.disconnect()
+    }
+  }
+
   useEffect(() => {
     if (!isClient) return
 

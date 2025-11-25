@@ -208,10 +208,10 @@ export function PerformanceUtilities() {
   }, [])
 
   const preloadCriticalResources = () => {
-    // Preload critical images
+    // Preload critical images from correct paths
     const criticalImages = [
-      '/images/elegant-barn-door-closet.webp',
-      '/images/luxury-modern-walk-in-closet.webp'
+      '/optimized-images/elegant-barn-door-closet.webp',
+      '/optimized-images/luxury-modern-walk-in-closet.webp'
     ]
 
     criticalImages.forEach(src => {
@@ -224,21 +224,9 @@ export function PerformanceUtilities() {
   }
 
   const optimizeFontLoading = () => {
-    // Add font display swap optimization
-    const style = document.createElement('style')
-    style.textContent = `
-      @font-face {
-        font-family: 'Inter';
-        font-display: swap;
-        src: url('/fonts/inter-regular.woff2') format('woff2');
-      }
-      @font-face {
-        font-family: 'Playfair Display';
-        font-display: swap;
-        src: url('/fonts/playfair-regular.woff2') format('woff2');
-      }
-    `
-    document.head.appendChild(style)
+    // Fonts are loaded via next/font/google in layout.tsx
+    // No additional font loading needed - Google Fonts handles optimization
+    // This function is kept for potential future custom font needs
   }
 
   const addResourceHints = () => {

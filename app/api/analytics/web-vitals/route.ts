@@ -20,10 +20,24 @@ export async function POST(request: NextRequest) {
     const allowedOrigins = [
       process.env.NEXT_PUBLIC_SITE_URL || 'https://pgclosets.com',
       'http://localhost:3000',
-      'https://pgclosets-store.vercel.app'
+      'http://localhost:3001',
+      'https://pgclosets-store.vercel.app',
+      'https://www.pgclosets.com',
+      'https://pgclosets.ca',
+      'https://www.pgclosets.ca'
     ]
 
-    if (origin && !allowedOrigins.includes(origin)) {
+    // Check if origin is allowed (also allow Vercel preview deployments)
+    const isAllowedOrigin = (origin: string | null): boolean => {
+      if (!origin) return true // Allow requests without origin header (same-site)
+      if (allowedOrigins.includes(origin)) return true
+      // Allow Vercel preview deployments
+      if (origin.includes('vercel.app') && origin.includes('pgclosets')) return true
+      if (origin.includes('peoples-group.vercel.app')) return true
+      return false
+    }
+
+    if (!isAllowedOrigin(origin)) {
       return NextResponse.json(
         { error: 'Unauthorized origin' },
         { status: 403 }

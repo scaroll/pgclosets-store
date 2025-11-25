@@ -226,13 +226,13 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: `
               default-src 'self';
-              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://js.stripe.com https://checkout.stripe.com https://vitals.vercel-insights.com;
+              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://js.stripe.com https://checkout.stripe.com https://vitals.vercel-insights.com https://vercel.live https://*.vercel.live;
               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-              img-src 'self' data: blob: https: https://www.pgclosets.com https://cdn.renin.com https://www.renin.com https://renin.com https://images.unsplash.com https://hebbkx1anhila5yf.public.blob.vercel-storage.com https://www.google-analytics.com https://www.googletagmanager.com;
+              img-src 'self' data: blob: https: https://www.pgclosets.com https://cdn.renin.com https://www.renin.com https://renin.com https://images.unsplash.com https://hebbkx1anhila5yf.public.blob.vercel-storage.com https://*.vercel-storage.com https://www.google-analytics.com https://www.googletagmanager.com;
               font-src 'self' data: https://fonts.gstatic.com;
-              connect-src 'self' https://api.stripe.com https://checkout.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com;
-              frame-src 'self' https://js.stripe.com https://checkout.stripe.com;
-              media-src 'self' blob:;
+              connect-src 'self' https://api.stripe.com https://checkout.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://vercel.live wss://vercel.live https://*.vercel.live wss://*.vercel.live;
+              frame-src 'self' https://js.stripe.com https://checkout.stripe.com https://vercel.live https://*.vercel.live;
+              media-src 'self' blob: https: https://hebbkx1anhila5yf.public.blob.vercel-storage.com https://*.vercel-storage.com;
               object-src 'none';
               base-uri 'self';
               form-action 'self';

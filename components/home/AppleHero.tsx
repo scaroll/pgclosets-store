@@ -88,7 +88,7 @@ export function AppleHero({
             {!isVideoLoaded && (
               <Image
                 src={posterImage}
-                alt=""
+                alt="Premium closet door showcase - elegant barn door style closet solution for modern homes"
                 fill
                 className="object-cover"
                 priority
@@ -99,7 +99,7 @@ export function AppleHero({
         ) : (
           <Image
             src={posterImage}
-            alt=""
+            alt="Premium closet door showcase - elegant barn door style closet solution for modern homes"
             fill
             className="object-cover"
             priority

@@ -5,17 +5,6 @@ export async function middleware(req: NextRequest) {
   const { pathname, search } = req.nextUrl
   const startTime = Date.now()
 
-  // Bypass cached 404s for public images by rewriting to dynamic assets handler
-  if (pathname.startsWith('/images/')) {
-    const rest = pathname.replace(/^\/images\//, '')
-    const url = req.nextUrl.clone()
-    url.pathname = `/assets/${rest}`
-    const sp = new URLSearchParams(search)
-    sp.set('v', '2')
-    url.search = `?${sp.toString()}`
-    return NextResponse.rewrite(url)
-  }
-
   // Protect admin routes with basic security
   if (
     pathname.startsWith('/admin') &&
@@ -51,7 +40,6 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    '/images/:path*',
     '/admin/:path*',
     /*
      * Match all request paths except for the ones starting with:
@@ -60,6 +48,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|public).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|public|images).*)',
   ],
 }

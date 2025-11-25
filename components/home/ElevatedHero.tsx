@@ -16,7 +16,7 @@ interface ElevatedHeroProps {
 
 export function ElevatedHero({
   videoUrl = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Renin%20Closet%20Doors%20Overview-kpsJMjKcOGc9Rg5Zv39EVupOi0Gv1i.mp4",
-  fallbackImage = "/images/optimized/elegant-barn-door-closet/desktop.webp"
+  fallbackImage = "/optimized-images/elegant-barn-door-closet.webp"
 }: ElevatedHeroProps) {
   const heroRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
