@@ -210,8 +210,24 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
 export function useCart() {
   const context = useContext(CartContext)
+
+  // Return safe defaults during SSR or when not within provider
   if (!context) {
-    throw new Error("useCart must be used within a CartProvider")
+    // Return no-op functions and empty state for SSR
+    return {
+      state: { items: [], isOpen: false },
+      dispatch: () => {},
+      addItem: () => {},
+      removeItem: () => {},
+      updateQuantity: () => {},
+      clearCart: () => {},
+      toggleCart: () => {},
+      openCart: () => {},
+      closeCart: () => {},
+      getTotalItems: () => 0,
+      getTotalPrice: () => 0,
+    }
   }
+
   return context
 }

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { headers } from 'next/headers';
-import { prisma } from '@/lib/db';
+import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
 
 const trackEventSchema = z.object({

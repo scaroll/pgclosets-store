@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcryptjs from 'bcryptjs';
-import { prisma } from '@/lib/db';
+import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
 import { authRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit';
-import { signToken } from '@/lib/auth';
+import jwt from 'jsonwebtoken';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -93,11 +93,16 @@ export async function POST(req: NextRequest) {
     }
 
     // Create JWT token
-    const token = await signToken({
-      userId: user.id,
-      email: user.email,
-      role: user.role,
-    });
+    const secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET || 'fallback-secret';
+    const token = jwt.sign(
+      {
+        userId: user.id,
+        email: user.email,
+        role: user.role,
+      },
+      secret,
+      { expiresIn: '7d' }
+    );
 
     // Set HTTP-only cookie
     const response = NextResponse.json({

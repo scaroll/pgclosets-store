@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@/lib/auth';
+import { auth } from '@/auth';
 import jwt from 'jsonwebtoken';
 
 export async function GET(req: NextRequest) {
