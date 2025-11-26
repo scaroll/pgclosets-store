@@ -1,9 +1,17 @@
-export { ProductGrid } from './ProductGrid'
-export { ProductQuickView } from './ProductQuickView'
-export { ProductFilters, FILTER_OPTIONS } from './ProductFilters'
-export { ProductCard } from './ProductCard'
-export { ProductCardSkeleton } from './ProductCardSkeleton'
+// Product Card Components
+export {
+  ProductCard,
+  ProductCardCompact,
+  ProductCardFeatured,
+  ProductCardHorizontal,
+} from './product-card'
 
-export type { ProductGridProps } from './ProductGrid'
-export type { ProductQuickViewProps } from './ProductQuickView'
-export type { FilterValues, FilterProps } from './ProductFilters'
+// Product Gallery Components
+export { ProductGallery } from './product-gallery'
+
+// Product Variant Components
+export {
+  ProductVariantSelector,
+  ProductColorSelector,
+  ProductSizeSelector,
+} from './product-variants'

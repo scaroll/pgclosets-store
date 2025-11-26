@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcryptjs from 'bcryptjs';
-import { prisma } from '@/lib/db';
+import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
-import { authRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit';
 
 const registerSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -13,16 +12,6 @@ const registerSchema = z.object({
 
 export async function POST(req: NextRequest) {
   try {
-    // Rate limiting
-    const identifier = getClientIdentifier(req);
-    const { allowed } = await checkRateLimit(identifier, authRateLimiter);
-    if (!allowed) {
-      return NextResponse.json(
-        { error: 'Too many registration attempts' },
-        { status: 429 }
-      );
-    }
-
     const body = await req.json();
     const validated = registerSchema.safeParse(body);
 
