@@ -19,7 +19,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
 
-    --primary: 211 100% 50%;  /* Apple Blue #0071E3 */
+    --primary: 211 100% 50%; /* Apple Blue #0071E3 */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
@@ -36,9 +36,9 @@
 
     --border: 0 0% 89%;
     --input: 0 0% 89%;
-    --ring: 211 100% 50%;  /* Apple Blue focus ring */
+    --ring: 211 100% 50%; /* Apple Blue focus ring */
 
-    --radius: 0.75rem;  /* 12px - Apple's preferred radius */
+    --radius: 1rem; /* 16px - Modern Apple-like radius */
 
     /* Apple Spacing System */
     --spacing-xs: 0.25rem;
@@ -82,7 +82,7 @@
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 211 100% 63%;  /* Brighter Apple Blue #0A84FF for dark mode */
+    --primary: 211 100% 63%; /* Brighter Apple Blue #0A84FF for dark mode */
     --primary-foreground: 0 0% 0%;
 
     --secondary: 0 0% 14%;
@@ -99,7 +99,7 @@
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 211 100% 63%;  /* Brighter blue focus ring for dark mode */
+    --ring: 211 100% 63%; /* Brighter blue focus ring for dark mode */
   }
 }
 
@@ -110,7 +110,9 @@
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
