@@ -21,6 +21,7 @@ const footerLinks = {
     { name: "FAQ", href: "/faq" },
   ],
   support: [
+    { name: "Request Quote", href: "/quote" },
     { name: "Shipping Info", href: "/shipping" },
     { name: "Returns", href: "/returns" },
     { name: "Warranty", href: "/warranty" },

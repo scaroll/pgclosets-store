@@ -1,21 +1,31 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { Star, Heart, Truck, Shield, ChevronRight, Package } from 'lucide-react'
+import { Star, Truck, Shield, ChevronRight, Package, FileText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/src/components/ui/tabs'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ProductGallery } from '@/components/products/product-gallery'
 import { ProductVariants } from '@/components/products/product-variants'
 import { QuantitySelector } from '@/components/products/quantity-selector'
 import { AddToCartButton } from '@/components/products/add-to-cart-button'
 import { ProductReviews, StarRating } from '@/components/products/product-reviews'
 import { RelatedProducts } from '@/components/products/related-products'
+import { StockNotification } from '@/components/products/stock-notification'
+import { ProductSchema } from '@/components/seo/ProductSchema'
 import { getProduct, formatPrice } from '@/lib/products'
+import { SITE_CONFIG } from '@/lib/constants'
+import simpleProducts from '@/data/simple-products.json'
 
 interface ProductPageProps {
   params: {
     slug: string
   }
+}
+
+export async function generateStaticParams() {
+  return simpleProducts.map((product) => ({
+    slug: product.slug,
+  }))
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
@@ -28,17 +38,57 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     }
   }
 
+  const productUrl = `${SITE_CONFIG.url}/products/${params.slug}`
+  const description = product.shortDesc || product.description.substring(0, 160)
+  const currentPrice = product.salePrice || product.price
+  const imageUrl = product.images[0] || `${SITE_CONFIG.url}/og-image.jpg`
+
   return {
     title: `${product.name} - PG Closets`,
-    description: product.shortDesc || product.description.substring(0, 160),
+    description,
+    keywords: [
+      product.name,
+      product.category.name,
+      'custom closets',
+      'storage solutions',
+      'organization',
+      ...(product.features || []),
+    ],
+    alternates: {
+      canonical: productUrl,
+    },
     openGraph: {
-      title: product.name,
-      description: product.shortDesc || product.description.substring(0, 160),
+      title: `${product.name} - PG Closets`,
+      description,
+      url: productUrl,
+      siteName: SITE_CONFIG.name,
       images: product.images.map((img) => ({
-        url: img,
+        url: img.startsWith('http') ? img : `${SITE_CONFIG.url}${img}`,
         alt: product.name,
+        width: 1200,
+        height: 1200,
       })),
       type: 'website',
+      locale: 'en_US',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} - PG Closets`,
+      description,
+      images: [imageUrl.startsWith('http') ? imageUrl : `${SITE_CONFIG.url}${imageUrl}`],
+      creator: '@pgclosets',
+      site: '@pgclosets',
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   }
 }
@@ -66,8 +116,74 @@ export default async function ProductPage({ params }: ProductPageProps) {
       ? (product.specifications as Record<string, string>)
       : {}
 
+  // Generate Breadcrumb Schema (JSON-LD)
+  const breadcrumbItems = [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: SITE_CONFIG.url,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: product.category.name,
+      item: `${SITE_CONFIG.url}/products?category=${product.category.slug}`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: product.name,
+      item: `${SITE_CONFIG.url}/products/${params.slug}`,
+    },
+  ]
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems,
+  }
+
   return (
     <main className="min-h-screen bg-background">
+      {/* Product Schema JSON-LD */}
+      <ProductSchema
+        product={{
+          id: product.id,
+          name: product.name,
+          description: product.description,
+          price: currentPrice,
+          currency: 'CAD',
+          brand: 'Renin',
+          image: product.images,
+          category: product.category.name,
+          sku: product.sku,
+          availability: product.inStock ? 'InStock' : 'OutOfStock',
+          rating:
+            product.reviewCount > 0
+              ? {
+                  value: product.averageRating,
+                  count: product.reviewCount,
+                }
+              : undefined,
+          reviews: product.reviews.map((review) => ({
+            author: review.author,
+            rating: review.rating,
+            comment: review.comment,
+            date: review.date,
+          })),
+          features: product.features,
+        }}
+      />
+
+      {/* Breadcrumb Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumbs */}
         <nav className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
@@ -99,7 +215,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Product Gallery */}
           <ProductGallery
-            images={product.images.length > 0 ? product.images : ['/placeholder.jpg']}
+            images={product.images}
             name={product.name}
           />
 
@@ -184,16 +300,58 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <QuantitySelector max={product.stockCount || 99} />
             </div>
 
-            {/* Add to Cart */}
-            <AddToCartButton
-              product={{
-                id: product.id,
-                name: product.name,
-                price: currentPrice,
-                image: product.images[0],
-              }}
-              disabled={!product.inStock}
-            />
+            {/* Action Buttons */}
+            {product.inStock ? (
+              <div className="flex flex-col sm:flex-row gap-3">
+                <AddToCartButton
+                  product={{
+                    id: product.id,
+                    name: product.name,
+                    price: currentPrice,
+                    image: product.images[0],
+                  }}
+                  disabled={!product.inStock}
+                />
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="flex-1 sm:flex-none"
+                >
+                  <Link
+                    href={`/request-quote?product=${params.slug}&name=${encodeURIComponent(product.name)}&price=${currentPrice}`}
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <FileText className="w-5 h-5" />
+                    Request Quote
+                  </Link>
+                </Button>
+              </div>
+            ) : (
+              <>
+                {/* Stock Notification for Out of Stock Products */}
+                <StockNotification
+                  productId={product.id}
+                  productName={product.name}
+                />
+
+                {/* Still show Request Quote button for out of stock items */}
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="w-full"
+                >
+                  <Link
+                    href={`/request-quote?product=${params.slug}&name=${encodeURIComponent(product.name)}&price=${currentPrice}`}
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <FileText className="w-5 h-5" />
+                    Request Quote (Out of Stock)
+                  </Link>
+                </Button>
+              </>
+            )}
 
             {/* Trust Badges */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t">

@@ -12,17 +12,23 @@ interface ProductGalleryProps {
 }
 
 export function ProductGallery({ images, name }: ProductGalleryProps) {
+  // Ensure we have valid images array
+  const validImages = images && images.length > 0 ? images : ['/placeholder.jpg']
+  const hasMultipleImages = validImages.length > 1
+
   const [selectedImage, setSelectedImage] = useState(0)
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
   const [isZoomed, setIsZoomed] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   const nextImage = () => {
-    setSelectedImage((prev) => (prev + 1) % images.length)
+    if (!hasMultipleImages) return
+    setSelectedImage((prev) => (prev + 1) % validImages.length)
   }
 
   const prevImage = () => {
-    setSelectedImage((prev) => (prev - 1 + images.length) % images.length)
+    if (!hasMultipleImages) return
+    setSelectedImage((prev) => (prev - 1 + validImages.length) % validImages.length)
   }
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -34,6 +40,9 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
   }
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    // Only enable swipe gestures if there are multiple images
+    if (!hasMultipleImages) return
+
     const touch = e.touches[0]
     const startX = touch.clientX
 
@@ -70,7 +79,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
           onTouchStart={handleTouchStart}
         >
           <Image
-            src={images[selectedImage]}
+            src={validImages[selectedImage]}
             alt={`${name} - Image ${selectedImage + 1}`}
             fill
             className={cn(
@@ -94,7 +103,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
           </div>
 
           {/* Navigation Arrows for Desktop */}
-          {images.length > 1 && (
+          {hasMultipleImages && (
             <>
               <button
                 onClick={(e) => {
@@ -120,17 +129,17 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
           )}
 
           {/* Image Counter */}
-          {images.length > 1 && (
+          {hasMultipleImages && (
             <div className="absolute bottom-4 right-4 px-3 py-1 bg-black/50 backdrop-blur-sm text-white text-sm rounded-full">
-              {selectedImage + 1} / {images.length}
+              {selectedImage + 1} / {validImages.length}
             </div>
           )}
         </div>
 
         {/* Thumbnails */}
-        {images.length > 1 && (
+        {hasMultipleImages && (
           <div className="grid grid-cols-4 gap-4">
-            {images.map((image, index) => (
+            {validImages.map((image, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedImage(index)}
@@ -167,7 +176,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
           </button>
 
           {/* Navigation Arrows */}
-          {images.length > 1 && (
+          {hasMultipleImages && (
             <>
               <button
                 onClick={prevImage}
@@ -189,7 +198,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
           {/* Main Image */}
           <div className="relative w-full max-w-5xl aspect-square">
             <Image
-              src={images[selectedImage]}
+              src={validImages[selectedImage]}
               alt={`${name} - Image ${selectedImage + 1}`}
               fill
               className="object-contain"
@@ -198,9 +207,9 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
           </div>
 
           {/* Image Counter */}
-          {images.length > 1 && (
+          {hasMultipleImages && (
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full">
-              {selectedImage + 1} / {images.length}
+              {selectedImage + 1} / {validImages.length}
             </div>
           )}
         </div>

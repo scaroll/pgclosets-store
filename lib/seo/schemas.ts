@@ -106,7 +106,7 @@ export function getProductSchema(product: {
   price?: number
   currency?: string
   brand?: string
-  image?: string
+  image?: string | string[]
   category?: string
   sku?: string
   availability?: 'InStock' | 'OutOfStock' | 'PreOrder'
@@ -114,6 +114,13 @@ export function getProductSchema(product: {
     value: number
     count: number
   }
+  reviews?: Array<{
+    author: string
+    rating: number
+    comment: string
+    date: string
+  }>
+  features?: string[]
 }) {
   const schema: any = {
     '@context': 'https://schema.org',
@@ -131,10 +138,12 @@ export function getProductSchema(product: {
     },
   }
 
+  // Handle single image or array of images
   if (product.image) {
-    schema.image = product.image.startsWith('http')
-      ? product.image
-      : `${BUSINESS_INFO.urls.main}${product.image}`
+    const images = Array.isArray(product.image) ? product.image : [product.image]
+    schema.image = images.map((img) =>
+      img.startsWith('http') ? img : `${BUSINESS_INFO.urls.main}${img}`
+    )
   }
 
   if (product.sku) {
@@ -146,11 +155,19 @@ export function getProductSchema(product: {
   }
 
   if (product.price) {
+    // Calculate priceValidUntil (1 year from now)
+    const priceValidUntil = new Date(
+      new Date().setFullYear(new Date().getFullYear() + 1)
+    )
+      .toISOString()
+      .split('T')[0]
+
     schema.offers = {
       '@type': 'Offer',
       url: `${BUSINESS_INFO.urls.main}/products/${product.id}`,
       priceCurrency: product.currency || 'CAD',
       price: product.price,
+      priceValidUntil,
       availability: `https://schema.org/${product.availability || 'InStock'}`,
       seller: {
         '@type': 'Organization',
@@ -159,12 +176,42 @@ export function getProductSchema(product: {
     }
   }
 
-  if (product.rating) {
+  if (product.rating && product.rating.count > 0) {
     schema.aggregateRating = {
       '@type': 'AggregateRating',
       ratingValue: product.rating.value,
       reviewCount: product.rating.count,
+      bestRating: 5,
+      worstRating: 1,
     }
+  }
+
+  // Add individual reviews if available
+  if (product.reviews && product.reviews.length > 0) {
+    schema.review = product.reviews.map((review) => ({
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: review.author,
+      },
+      datePublished: review.date,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: review.rating,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      reviewBody: review.comment,
+    }))
+  }
+
+  // Add features as additionalProperty
+  if (product.features && product.features.length > 0) {
+    schema.additionalProperty = product.features.map((feature) => ({
+      '@type': 'PropertyValue',
+      name: 'Feature',
+      value: feature,
+    }))
   }
 
   return schema

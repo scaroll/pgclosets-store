@@ -9,7 +9,9 @@ import { ProductCard } from '@/components/products/product-card'
 import { ProductFilters } from '@/components/products/product-filters'
 import { ProductSort } from '@/components/products/product-sort'
 import { Pagination } from '@/components/shared/pagination'
+import { Breadcrumbs } from '@/components/seo'
 import { getCategoryData, isValidCategory, getAllCategorySlugs } from '@/lib/data/categories'
+import { simpleProducts } from '@/data/simple-products'
 
 interface CategoryPageProps {
   params: {
@@ -22,6 +24,103 @@ interface CategoryPageProps {
     maxPrice?: string
     inStock?: string
     limit?: string
+  }
+}
+
+// ============================================================================
+// Helper Functions
+// ============================================================================
+
+/**
+ * Map category slug to display name
+ */
+function getCategoryNameFromSlug(slug: string): string {
+  const categoryMap: Record<string, string> = {
+    'barn-doors': 'Barn Doors',
+    'bifold-doors': 'Bifold Doors',
+    'bypass-doors': 'Bypass Doors',
+    'glass-doors': 'Glass Doors',
+    'hardware': 'Hardware',
+  }
+  return categoryMap[slug] || slug
+}
+
+/**
+ * Get products from JSON data fallback
+ */
+function getCategoryProductsFromJSON(
+  categorySlug: string,
+  searchParams: CategoryPageProps['searchParams']
+) {
+  const categoryName = getCategoryNameFromSlug(categorySlug)
+  const page = parseInt(searchParams.page || '1')
+  const limit = parseInt(searchParams.limit || '24')
+  const skip = (page - 1) * limit
+
+  // Filter products by category
+  let filteredProducts = simpleProducts.filter(
+    product => product.category === categoryName
+  )
+
+  // Apply price filter
+  if (searchParams.minPrice || searchParams.maxPrice) {
+    const minPrice = searchParams.minPrice ? parseInt(searchParams.minPrice) : 0
+    const maxPrice = searchParams.maxPrice ? parseInt(searchParams.maxPrice) : Infinity
+
+    filteredProducts = filteredProducts.filter(product => {
+      const productPrice = product.price
+      return productPrice >= minPrice && productPrice <= maxPrice
+    })
+  }
+
+  // Apply sorting
+  const sortedProducts = [...filteredProducts]
+  switch (searchParams.sort) {
+    case 'newest':
+      // JSON data doesn't have createdAt, keep original order
+      break
+    case 'price-asc':
+      sortedProducts.sort((a, b) => a.price - b.price)
+      break
+    case 'price-desc':
+      sortedProducts.sort((a, b) => b.price - a.price)
+      break
+    case 'name-asc':
+      sortedProducts.sort((a, b) => a.name.localeCompare(b.name))
+      break
+    case 'name-desc':
+      sortedProducts.sort((a, b) => b.name.localeCompare(a.name))
+      break
+  }
+
+  // Apply pagination
+  const paginatedProducts = sortedProducts.slice(skip, skip + limit)
+
+  // Transform to expected format
+  const items = paginatedProducts.map(product => ({
+    id: product.id,
+    name: product.name,
+    slug: product.id, // Using id as slug for JSON products
+    description: product.description,
+    price: product.price * 100, // Convert to cents
+    salePrice: undefined,
+    images: [product.image],
+    inStock: true, // Assume in stock for JSON data
+    featured: false,
+    bestseller: false,
+    category: { name: product.category },
+  }))
+
+  return {
+    items,
+    total: filteredProducts.length,
+    page,
+    totalPages: Math.ceil(filteredProducts.length / limit),
+    category: {
+      id: categorySlug,
+      name: categoryName,
+      slug: categorySlug,
+    },
   }
 }
 
@@ -80,98 +179,105 @@ async function getCategoryProducts(
   categorySlug: string,
   searchParams: CategoryPageProps['searchParams']
 ) {
-  const page = parseInt(searchParams.page || '1')
-  const limit = parseInt(searchParams.limit || '24')
-  const skip = (page - 1) * limit
+  // Try database first, fall back to JSON data if unavailable
+  try {
+    const page = parseInt(searchParams.page || '1')
+    const limit = parseInt(searchParams.limit || '24')
+    const skip = (page - 1) * limit
 
-  // Build where clause
-  const where: any = {
-    category: {
-      slug: categorySlug
+    // Build where clause
+    const where: any = {
+      category: {
+        slug: categorySlug
+      }
     }
-  }
 
-  // Price range filter
-  if (searchParams.minPrice || searchParams.maxPrice) {
-    where.price = {}
-    if (searchParams.minPrice) {
-      where.price.gte = parseInt(searchParams.minPrice) * 100 // Convert to cents
+    // Price range filter
+    if (searchParams.minPrice || searchParams.maxPrice) {
+      where.price = {}
+      if (searchParams.minPrice) {
+        where.price.gte = parseInt(searchParams.minPrice) * 100 // Convert to cents
+      }
+      if (searchParams.maxPrice) {
+        where.price.lte = parseInt(searchParams.maxPrice) * 100 // Convert to cents
+      }
     }
-    if (searchParams.maxPrice) {
-      where.price.lte = parseInt(searchParams.maxPrice) * 100 // Convert to cents
+
+    // Stock filter
+    if (searchParams.inStock === 'true') {
+      where.inStock = true
     }
-  }
 
-  // Stock filter
-  if (searchParams.inStock === 'true') {
-    where.inStock = true
-  }
+    // Build orderBy clause
+    let orderBy: any = { featured: 'desc' } // Default: featured
 
-  // Build orderBy clause
-  let orderBy: any = { featured: 'desc' } // Default: featured
+    switch (searchParams.sort) {
+      case 'newest':
+        orderBy = { createdAt: 'desc' }
+        break
+      case 'price-asc':
+        orderBy = { price: 'asc' }
+        break
+      case 'price-desc':
+        orderBy = { price: 'desc' }
+        break
+      case 'name-asc':
+        orderBy = { name: 'asc' }
+        break
+      case 'name-desc':
+        orderBy = { name: 'desc' }
+        break
+    }
 
-  switch (searchParams.sort) {
-    case 'newest':
-      orderBy = { createdAt: 'desc' }
-      break
-    case 'price-asc':
-      orderBy = { price: 'asc' }
-      break
-    case 'price-desc':
-      orderBy = { price: 'desc' }
-      break
-    case 'name-asc':
-      orderBy = { name: 'asc' }
-      break
-    case 'name-desc':
-      orderBy = { name: 'desc' }
-      break
-  }
-
-  const [products, total, category] = await Promise.all([
-    prisma.product.findMany({
-      where,
-      orderBy,
-      skip,
-      take: limit,
-      include: {
-        category: {
-          select: {
-            name: true,
-            slug: true,
+    const [products, total, category] = await Promise.all([
+      prisma.product.findMany({
+        where,
+        orderBy,
+        skip,
+        take: limit,
+        include: {
+          category: {
+            select: {
+              name: true,
+              slug: true,
+            },
           },
         },
-      },
-    }),
-    prisma.product.count({ where }),
-    prisma.category.findUnique({
-      where: { slug: categorySlug },
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-      },
-    }),
-  ])
+      }),
+      prisma.product.count({ where }),
+      prisma.category.findUnique({
+        where: { slug: categorySlug },
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+        },
+      }),
+    ])
 
-  return {
-    items: products.map((product) => ({
-      id: product.id,
-      name: product.name,
-      slug: product.slug,
-      description: product.shortDesc || undefined,
-      price: Number(product.price),
-      salePrice: product.salePrice ? Number(product.salePrice) : undefined,
-      images: product.images,
-      inStock: product.inStock,
-      featured: product.featured,
-      bestseller: product.bestseller,
-      category: product.category ? { name: product.category.name } : undefined,
-    })),
-    total,
-    page,
-    totalPages: Math.ceil(total / limit),
-    category,
+    return {
+      items: products.map((product) => ({
+        id: product.id,
+        name: product.name,
+        slug: product.slug,
+        description: product.shortDesc || undefined,
+        price: Number(product.price),
+        salePrice: product.salePrice ? Number(product.salePrice) : undefined,
+        images: product.images,
+        inStock: product.inStock,
+        featured: product.featured,
+        bestseller: product.bestseller,
+        category: product.category ? { name: product.category.name } : undefined,
+      })),
+      total,
+      page,
+      totalPages: Math.ceil(total / limit),
+      category,
+    }
+  } catch (error) {
+    // Database unavailable, use JSON data fallback
+    console.warn('Database unavailable, using JSON data fallback:', error)
+    return getCategoryProductsFromJSON(categorySlug, searchParams)
   }
 }
 
@@ -255,25 +361,15 @@ function CategoryHero({ categoryData }: { categoryData: NonNullable<ReturnType<t
       {/* Content */}
       <div className="relative h-full container mx-auto px-4 flex flex-col justify-end pb-12">
         {/* Breadcrumbs */}
-        <nav className="mb-6" aria-label="Breadcrumb">
-          <ol className="flex items-center gap-2 text-sm text-white/90">
-            <li>
-              <Link href="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-            </li>
-            <li>/</li>
-            <li>
-              <Link href="/collections" className="hover:text-white transition-colors">
-                Collections
-              </Link>
-            </li>
-            <li>/</li>
-            <li className="text-white font-medium">
-              {categoryData.name}
-            </li>
-          </ol>
-        </nav>
+        <div className="mb-6">
+          <Breadcrumbs
+            items={[
+              { name: 'Collections', url: '/collections' },
+              { name: categoryData.name, url: `/collections/${categoryData.slug}` }
+            ]}
+            className="[&_a]:text-white/90 [&_a]:hover:text-white [&_span]:text-white [&_.text-gray-400]:text-white/60"
+          />
+        </div>
 
         {/* Title and Description */}
         <div className="max-w-3xl">

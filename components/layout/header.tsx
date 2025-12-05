@@ -188,6 +188,15 @@ export function Header() {
 
             {/* Right Side Icons */}
             <div className="flex items-center space-x-2">
+              {/* Get Quote Button - Desktop */}
+              <Link href="/request-quote" className="hidden lg:block">
+                <Button
+                  className="bg-apple-blue-600 dark:bg-apple-blue-dark text-white hover:opacity-90 transition-all duration-300 px-6 py-2 font-medium"
+                >
+                  Get Quote
+                </Button>
+              </Link>
+
               {/* Search Button */}
               <Button
                 variant="ghost"
@@ -283,6 +292,17 @@ export function Header() {
                           className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-apple-blue-600 dark:focus:ring-apple-blue-dark"
                         />
                       </div>
+                    </div>
+
+                    {/* Get Quote Button - Mobile */}
+                    <div className="mb-6">
+                      <Link href="/request-quote" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Button
+                          className="w-full bg-apple-blue-600 dark:bg-apple-blue-dark text-white hover:opacity-90 transition-all duration-300 py-3 font-medium text-base"
+                        >
+                          Get Quote
+                        </Button>
+                      </Link>
                     </div>
 
                     {/* Mobile Navigation */}

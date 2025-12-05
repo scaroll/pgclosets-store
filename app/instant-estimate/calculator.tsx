@@ -8,7 +8,8 @@ import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Progress } from '@/components/ui/progress'
 import { useEstimatorStore, type DoorType, type SizeType, type Material, type Hardware } from './store'
-import { ChevronLeft, ChevronRight, DollarSign, Check } from 'lucide-react'
+import { ChevronLeft, ChevronRight, DollarSign, Check, AlertCircle } from 'lucide-react'
+import { Alert, AlertDescription } from '@/components/ui/alert'
 
 export function InstantEstimateCalculator() {
   const {
@@ -38,13 +39,37 @@ export function InstantEstimateCalculator() {
     nextStep,
     prevStep,
     calculateEstimate,
+    getPriceBreakdown,
     reset,
   } = useEstimatorStore()
 
   const [submitted, setSubmitted] = useState(false)
 
   const estimate = calculateEstimate()
+  const breakdown = getPriceBreakdown()
   const progress = (step / 6) * 100
+
+  // Dimension validation
+  const getDimensionWarning = () => {
+    if (sizeType === 'custom' && customWidth && customHeight) {
+      const width = parseFloat(customWidth)
+      const height = parseFloat(customHeight)
+
+      if (!isNaN(width) && !isNaN(height)) {
+        if (width < 18 || height < 60) {
+          return 'Door dimensions seem unusually small. Please verify your measurements.'
+        }
+        if (width > 120 || height > 120) {
+          return 'Large doors may require special handling and additional costs. Our team will contact you about this.'
+        }
+        const sqFt = (width * height) / 144
+        if (sqFt > 40) {
+          return 'This is a large door that may require reinforced hardware and installation.'
+        }
+      }
+    }
+    return null
+  }
 
   const canProceed = () => {
     switch (step) {
@@ -226,27 +251,44 @@ export function InstantEstimateCalculator() {
             </RadioGroup>
 
             {sizeType === 'custom' && (
-              <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t">
-                <div className="space-y-2">
-                  <Label htmlFor="width">Width (inches)</Label>
-                  <Input
-                    id="width"
-                    type="number"
-                    placeholder="e.g., 48"
-                    value={customWidth}
-                    onChange={(e) => setCustomWidth(e.target.value)}
-                  />
+              <>
+                <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t">
+                  <div className="space-y-2">
+                    <Label htmlFor="width">Width (inches)</Label>
+                    <Input
+                      id="width"
+                      type="number"
+                      placeholder="e.g., 48"
+                      value={customWidth}
+                      onChange={(e) => setCustomWidth(e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="height">Height (inches)</Label>
+                    <Input
+                      id="height"
+                      type="number"
+                      placeholder="e.g., 84"
+                      value={customHeight}
+                      onChange={(e) => setCustomHeight(e.target.value)}
+                    />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="height">Height (inches)</Label>
-                  <Input
-                    id="height"
-                    type="number"
-                    placeholder="e.g., 84"
-                    value={customHeight}
-                    onChange={(e) => setCustomHeight(e.target.value)}
-                  />
-                </div>
+                {getDimensionWarning() && (
+                  <Alert className="mt-4">
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertDescription>{getDimensionWarning()}</AlertDescription>
+                  </Alert>
+                )}
+              </>
+            )}
+
+            {doorType && sizeType && (
+              <div className="mt-6 p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Current Estimate:</p>
+                <p className="text-2xl font-bold text-primary">
+                  ${estimate.min.toLocaleString()} - ${estimate.max.toLocaleString()}
+                </p>
               </div>
             )}
           </div>
@@ -292,6 +334,15 @@ export function InstantEstimateCalculator() {
                 </Label>
               ))}
             </RadioGroup>
+
+            {doorType && sizeType && material && (
+              <div className="mt-6 p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Current Estimate:</p>
+                <p className="text-2xl font-bold text-primary">
+                  ${estimate.min.toLocaleString()} - ${estimate.max.toLocaleString()}
+                </p>
+              </div>
+            )}
           </div>
         )}
 
@@ -333,6 +384,15 @@ export function InstantEstimateCalculator() {
                 </Label>
               ))}
             </RadioGroup>
+
+            {doorType && sizeType && material && hardware && (
+              <div className="mt-6 p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Current Estimate:</p>
+                <p className="text-2xl font-bold text-primary">
+                  ${estimate.min.toLocaleString()} - ${estimate.max.toLocaleString()}
+                </p>
+              </div>
+            )}
           </div>
         )}
 
@@ -386,15 +446,38 @@ export function InstantEstimateCalculator() {
             </RadioGroup>
 
             <div className="mt-8 p-4 bg-primary/10 rounded-lg border-2 border-primary">
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-4">
                 <DollarSign className="h-5 w-5 text-primary" />
-                <h4 className="font-semibold text-lg">Your Estimated Price</h4>
+                <h4 className="font-semibold text-lg">Price Breakdown</h4>
               </div>
-              <p className="text-3xl font-bold text-primary">
-                ${estimate.min.toLocaleString()} - ${estimate.max.toLocaleString()}
-              </p>
-              <p className="text-sm text-muted-foreground mt-2">
-                This is an estimated range. Final price may vary based on specific requirements.
+
+              <div className="space-y-3 mb-4">
+                {breakdown.map((item, index) => (
+                  <div key={index} className="flex justify-between items-start">
+                    <div className="flex-1">
+                      <p className="font-medium text-sm">{item.label}</p>
+                      {item.description && (
+                        <p className="text-xs text-muted-foreground">{item.description}</p>
+                      )}
+                    </div>
+                    <p className="text-sm font-semibold text-primary ml-4">
+                      ${item.min.toLocaleString()} - ${item.max.toLocaleString()}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-3 border-t border-primary/20">
+                <div className="flex justify-between items-center">
+                  <p className="font-semibold">Total Estimate:</p>
+                  <p className="text-2xl font-bold text-primary">
+                    ${estimate.min.toLocaleString()} - ${estimate.max.toLocaleString()}
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-xs text-muted-foreground mt-3">
+                This is an estimated range. Final price may vary based on specific requirements and site conditions.
               </p>
             </div>
           </div>
@@ -411,10 +494,23 @@ export function InstantEstimateCalculator() {
             </div>
 
             <div className="p-4 bg-muted rounded-lg mb-6">
-              <p className="text-sm text-muted-foreground mb-1">Your Estimated Price:</p>
-              <p className="text-2xl font-bold text-primary">
-                ${estimate.min.toLocaleString()} - ${estimate.max.toLocaleString()}
-              </p>
+              <p className="text-sm font-semibold mb-3">Your Configuration:</p>
+              <div className="space-y-2 mb-4">
+                {breakdown.map((item, index) => (
+                  <div key={index} className="flex justify-between items-center text-sm">
+                    <span className="text-muted-foreground">{item.label}</span>
+                    <span className="font-medium">
+                      ${item.min.toLocaleString()} - ${item.max.toLocaleString()}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="pt-3 border-t flex justify-between items-center">
+                <p className="text-sm font-semibold">Estimated Total:</p>
+                <p className="text-2xl font-bold text-primary">
+                  ${estimate.min.toLocaleString()} - ${estimate.max.toLocaleString()}
+                </p>
+              </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">

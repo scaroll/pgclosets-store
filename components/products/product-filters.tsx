@@ -23,7 +23,7 @@ export function ProductFilters({ categories = [], className }: ProductFiltersPro
 
   const [isOpen, setIsOpen] = useState(false)
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000])
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 2000])
   const [inStockOnly, setInStockOnly] = useState(false)
   const [expandedSections, setExpandedSections] = useState({
     categories: true,
@@ -43,7 +43,7 @@ export function ProductFilters({ categories = [], className }: ProductFiltersPro
     if (minPrice || maxPrice) {
       setPriceRange([
         minPrice ? parseInt(minPrice) : 0,
-        maxPrice ? parseInt(maxPrice) : 10000,
+        maxPrice ? parseInt(maxPrice) : 2000,
       ])
     }
 
@@ -87,7 +87,7 @@ export function ProductFilters({ categories = [], className }: ProductFiltersPro
     setPriceRange([min, max])
     updateFilters({
       minPrice: min > 0 ? min.toString() : null,
-      maxPrice: max < 10000 ? max.toString() : null,
+      maxPrice: max < 2000 ? max.toString() : null,
     })
   }
 
@@ -101,7 +101,7 @@ export function ProductFilters({ categories = [], className }: ProductFiltersPro
 
   const clearFilters = () => {
     setSelectedCategories([])
-    setPriceRange([0, 10000])
+    setPriceRange([0, 2000])
     setInStockOnly(false)
     router.push(pathname)
   }
@@ -109,7 +109,7 @@ export function ProductFilters({ categories = [], className }: ProductFiltersPro
   const hasActiveFilters =
     selectedCategories.length > 0 ||
     priceRange[0] > 0 ||
-    priceRange[1] < 10000 ||
+    priceRange[1] < 2000 ||
     inStockOnly
 
   const FilterContent = () => (
@@ -131,7 +131,7 @@ export function ProductFilters({ categories = [], className }: ProductFiltersPro
       {hasActiveFilters && (
         <div className="flex items-center justify-between">
           <span className="text-sm text-apple-gray-600 dark:text-apple-dark-text-secondary">
-            {selectedCategories.length + (priceRange[0] > 0 || priceRange[1] < 10000 ? 1 : 0) + (inStockOnly ? 1 : 0)} filters active
+            {selectedCategories.length + (priceRange[0] > 0 || priceRange[1] < 2000 ? 1 : 0) + (inStockOnly ? 1 : 0)} filters active
           </span>
           <button
             onClick={clearFilters}
@@ -208,7 +208,7 @@ export function ProductFilters({ categories = [], className }: ProductFiltersPro
             <div className="flex items-center gap-4">
               <div className="flex-1">
                 <label className="text-xs text-apple-gray-600 dark:text-apple-dark-text-secondary mb-1 block">
-                  Min
+                  Min ($)
                 </label>
                 <input
                   type="number"
@@ -221,28 +221,48 @@ export function ProductFilters({ categories = [], className }: ProductFiltersPro
               </div>
               <div className="flex-1">
                 <label className="text-xs text-apple-gray-600 dark:text-apple-dark-text-secondary mb-1 block">
-                  Max
+                  Max ($)
                 </label>
                 <input
                   type="number"
                   min={priceRange[0]}
-                  max="10000"
+                  max="2000"
                   value={priceRange[1]}
-                  onChange={(e) => handlePriceChange(priceRange[0], parseInt(e.target.value) || 10000)}
+                  onChange={(e) => handlePriceChange(priceRange[0], parseInt(e.target.value) || 2000)}
                   className="w-full px-3 py-2 border border-gray-300 dark:border-apple-dark-border rounded-apple bg-white dark:bg-apple-dark-bg-tertiary text-sm"
                 />
               </div>
             </div>
 
-            <input
-              type="range"
-              min="0"
-              max="10000"
-              step="100"
-              value={priceRange[1]}
-              onChange={(e) => handlePriceChange(priceRange[0], parseInt(e.target.value))}
-              className="w-full"
-            />
+            <div className="space-y-2">
+              <label className="text-xs text-apple-gray-600 dark:text-apple-dark-text-secondary">
+                Min Price: ${priceRange[0]}
+              </label>
+              <input
+                type="range"
+                min="0"
+                max={priceRange[1]}
+                step="50"
+                value={priceRange[0]}
+                onChange={(e) => handlePriceChange(parseInt(e.target.value), priceRange[1])}
+                className="w-full accent-apple-blue-500"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs text-apple-gray-600 dark:text-apple-dark-text-secondary">
+                Max Price: ${priceRange[1]}
+              </label>
+              <input
+                type="range"
+                min={priceRange[0]}
+                max="2000"
+                step="50"
+                value={priceRange[1]}
+                onChange={(e) => handlePriceChange(priceRange[0], parseInt(e.target.value))}
+                className="w-full accent-apple-blue-500"
+              />
+            </div>
           </div>
         )}
       </div>
@@ -292,7 +312,7 @@ export function ProductFilters({ categories = [], className }: ProductFiltersPro
         Filters
         {hasActiveFilters && (
           <span className="ml-1 px-2 py-0.5 bg-white text-apple-blue-500 rounded-full text-xs font-bold">
-            {selectedCategories.length + (priceRange[0] > 0 || priceRange[1] < 10000 ? 1 : 0) + (inStockOnly ? 1 : 0)}
+            {selectedCategories.length + (priceRange[0] > 0 || priceRange[1] < 2000 ? 1 : 0) + (inStockOnly ? 1 : 0)}
           </span>
         )}
       </button>
