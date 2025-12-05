@@ -8,7 +8,7 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://pgclosets.com/sitemap.xml
+Sitemap: https://www.pgclosets.com/sitemap.xml
 
 # Block non-essential paths
 Disallow: /api/
@@ -36,6 +36,65 @@ Crawl-delay: 1
 User-agent: Googlebot-Image
 Allow: /images/
 Allow: /_next/image/
+
+# ================================
+# AI Crawler Configuration
+# ================================
+
+# OpenAI Crawlers
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 2
+
+# Anthropic Crawlers
+User-agent: ClaudeBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 2
+
+# Google AI Crawlers
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 2
+
+User-agent: Googlebot-GenAI
+Allow: /
+Crawl-delay: 2
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 2
+
+# Microsoft/Bing AI
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+Crawl-delay: 2
+
+# Apple AI (AppleBot-Extended for Apple Intelligence)
+User-agent: Applebot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Applebot-Extended
+Allow: /
+Crawl-delay: 2
+
+# AI Policy files
+# See /llms.txt for LLM-specific guidance
+# See /ai.txt for AI agent policies
 
 # Prioritize Ottawa local SEO
 # Allow local business content to be crawled efficiently

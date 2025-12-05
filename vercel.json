@@ -29,6 +29,22 @@
     {
       "path": "/api/cron/ai-content-update",
       "schedule": "0 4 * * 1,4"
+    },
+    {
+      "path": "/api/cron/index-now",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/cron/sitemap-ping",
+      "schedule": "0 3 * * 1"
+    },
+    {
+      "path": "/api/cron/uptime-check",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/cron/ssl-monitor",
+      "schedule": "0 */12 * * *"
     }
   ],
   "functions": {
