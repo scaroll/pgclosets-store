@@ -63,7 +63,14 @@
     "deploy:prod": "vercel --prod --yes",
     "alias:prod": "bash scripts/ops/release-prod.sh alias-only",
     "verify:prod": "node scripts/ops/verify-deploy.mjs",
-    "release:prod": "bash scripts/ops/release-prod.sh"
+    "release:prod": "bash scripts/ops/release-prod.sh",
+    "pm2:start": "pm2 start ecosystem.config.js",
+    "pm2:stop": "pm2 stop all",
+    "pm2:restart": "pm2 restart all",
+    "pm2:logs": "pm2 logs",
+    "pm2:status": "pm2 status",
+    "pm2:delete": "pm2 delete all",
+    "email:dev": "email dev --dir emails --port 3001"
   },
   "dependencies": {
     "@adyen/adyen-web": "^6.23.0",

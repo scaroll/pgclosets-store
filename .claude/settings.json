@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/settings.schema.json",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "name": "skill-activator",
+        "command": "npx ts-node .claude/hooks/skill-activator.ts",
+        "timeout": 5000,
+        "enabled": true
+      }
+    ],
+    "PostToolUse": [
+      {
+        "name": "file-edit-tracker",
+        "command": "npx ts-node .claude/hooks/file-edit-tracker.ts",
+        "timeout": 2000,
+        "enabled": true,
+        "tools": ["Edit", "Write", "MultiEdit", "NotebookEdit"]
+      }
+    ],
+    "Stop": [
+      {
+        "name": "build-checker",
+        "command": "npx ts-node .claude/hooks/build-checker.ts",
+        "timeout": 60000,
+        "enabled": true
+      },
+      {
+        "name": "error-handling-reminder",
+        "command": "npx ts-node .claude/hooks/error-handling-reminder.ts",
+        "timeout": 5000,
+        "enabled": true
+      }
+    ]
+  },
+  "skills": {
+    "autoLoad": ["quote-system-developer"],
+    "suggestOnMatch": true
+  },
+  "devDocs": {
+    "activeDirectory": "dev/active",
+    "templateDirectory": ".claude/templates"
+  }
+}

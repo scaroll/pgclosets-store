@@ -1,0 +1,178 @@
+{
+  "$schema": "./skill-rules.schema.json",
+  "version": "1.0.0",
+  "skills": {
+    "quote-system-developer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "description": "Quote-based sales system development guidelines",
+      "promptTriggers": {
+        "keywords": ["quote", "quotes", "quoting", "quote builder", "quote status", "quote lifecycle", "pricing", "deposit"],
+        "intentPatterns": [
+          "(create|add|fix|update).*?(quote|pricing|deposit)",
+          "(how to|best practice).*?(quote|pricing)",
+          "(implement|build).*?(quote|order|checkout)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "app/quote-builder/**/*",
+          "app/api/quotes/**/*",
+          "types/quote.ts",
+          "stores/quote-builder-store.ts"
+        ],
+        "contentPatterns": ["QuoteStatus", "QuoteConfig", "quote-builder"]
+      }
+    },
+    "frontend-dev-guidelines": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "description": "React 19, Next.js 15, TailwindCSS, shadcn/ui patterns",
+      "promptTriggers": {
+        "keywords": ["frontend", "react", "component", "ui", "tailwind", "shadcn", "form", "layout", "page"],
+        "intentPatterns": [
+          "(create|add|fix).*?(component|page|form|layout)",
+          "(style|design|ui).*?(button|card|modal|dialog)",
+          "(how to|best practice).*?(react|nextjs|component)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "app/**/*.tsx",
+          "components/**/*.tsx",
+          "app/**/*.ts"
+        ],
+        "contentPatterns": ["'use client'", "export default function", "className="]
+      }
+    },
+    "backend-dev-guidelines": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "description": "API routes, Prisma, authentication patterns",
+      "promptTriggers": {
+        "keywords": ["api", "backend", "route", "endpoint", "prisma", "database", "authentication", "auth"],
+        "intentPatterns": [
+          "(create|add|fix).*?(api|route|endpoint)",
+          "(how to|best practice).*?(prisma|database|auth)",
+          "(implement|build).*?(webhook|payment|email)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "app/api/**/*.ts",
+          "lib/**/*.ts",
+          "prisma/**/*"
+        ],
+        "contentPatterns": ["NextRequest", "NextResponse", "prisma\\.", "getServerSession"]
+      }
+    },
+    "admin-dashboard-developer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "description": "Admin portal and dashboard patterns",
+      "promptTriggers": {
+        "keywords": ["admin", "dashboard", "reports", "analytics", "calendar", "management"],
+        "intentPatterns": [
+          "(create|add|fix).*?(admin|dashboard|report)",
+          "(how to|build).*?(admin|management|analytics)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "app/(admin)/**/*"
+        ],
+        "contentPatterns": ["AdminSidebar", "CardTitle", "getReportData"]
+      }
+    },
+    "email-notification-developer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "description": "React Email templates and notification system",
+      "promptTriggers": {
+        "keywords": ["email", "notification", "template", "resend", "transactional"],
+        "intentPatterns": [
+          "(create|add|send).*?(email|notification)",
+          "(how to|build).*?(email|template)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "emails/**/*.tsx",
+          "lib/email/**/*.ts"
+        ],
+        "contentPatterns": ["@react-email", "resend", "sendEmail"]
+      }
+    },
+    "payment-integration-developer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "description": "Stripe payment integration patterns",
+      "promptTriggers": {
+        "keywords": ["stripe", "payment", "checkout", "webhook", "deposit", "refund"],
+        "intentPatterns": [
+          "(create|add|fix).*?(payment|stripe|checkout)",
+          "(how to|implement).*?(payment|stripe|webhook)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "app/api/webhooks/stripe/**/*",
+          "app/api/quotes/*/payment/**/*"
+        ],
+        "contentPatterns": ["stripe", "Stripe", "checkout.session"]
+      }
+    },
+    "database-operations": {
+      "type": "guardrail",
+      "enforcement": "warn",
+      "priority": "critical",
+      "description": "Database schema and migration safety",
+      "promptTriggers": {
+        "keywords": ["schema", "migration", "prisma", "database", "model", "relation"],
+        "intentPatterns": [
+          "(change|modify|update).*?(schema|model|database)",
+          "(add|remove|rename).*?(column|field|table)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "prisma/schema.prisma",
+          "prisma/migrations/**/*"
+        ],
+        "contentPatterns": ["model ", "@relation", "@@index"]
+      }
+    },
+    "testing-developer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "description": "Testing patterns and best practices",
+      "promptTriggers": {
+        "keywords": ["test", "testing", "jest", "vitest", "coverage", "mock"],
+        "intentPatterns": [
+          "(write|add|create).*?(test|spec)",
+          "(how to|best practice).*?(test|mock)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "**/*.spec.ts"
+        ],
+        "contentPatterns": ["describe\\(", "it\\(", "expect\\(", "test\\("]
+      }
+    }
+  },
+  "globalSettings": {
+    "maxActiveSkills": 3,
+    "logActivations": true,
+    "cacheTimeout": 300
+  }
+}
