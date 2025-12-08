@@ -108,6 +108,13 @@ model User {
   reviews       Review[]
   appointments  Appointment[]
   addresses     Address[]
+  // Quote relations
+  quotes            Quote[]           @relation("CustomerQuotes")
+  assignedQuotes    Quote[]           @relation("AssignedQuotes")
+  statusChanges     QuoteStatusLog[]  @relation("StatusChanges")
+  sentMessages      QuoteMessage[]    @relation("SentMessages")
+  authoredNotes     QuoteNote[]       @relation("AuthoredNotes")
+  techAppointments  QuoteAppointment[] @relation("TechAppointments")
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 }
@@ -220,4 +227,272 @@ enum AppointmentStatus {
   CONFIRMED
   COMPLETED
   CANCELLED
+}
+
+// ==================== QUOTE SYSTEM ====================
+
+model Quote {
+  id                String          @id @default(cuid())
+  quoteNumber       String          @unique
+  status            QuoteStatus     @default(DRAFT)
+
+  // Customer
+  customerId        String?
+  customer          User?           @relation("CustomerQuotes", fields: [customerId], references: [id])
+  customerName      String
+  customerEmail     String
+  customerPhone     String
+
+  // Property
+  propertyAddress   Json?
+  propertyType      String?
+  propertyNotes     String?         @db.Text
+
+  // Configurations
+  configurations    QuoteConfig[]
+
+  // Pricing
+  subtotal          Decimal         @db.Decimal(10, 2)
+  installationFee   Decimal         @default(0) @db.Decimal(10, 2)
+  travelFee         Decimal         @default(0) @db.Decimal(10, 2)
+  discount          Decimal         @default(0) @db.Decimal(10, 2)
+  discountReason    String?
+  taxRate           Decimal         @default(0.13) @db.Decimal(5, 4)
+  tax               Decimal         @db.Decimal(10, 2)
+  total             Decimal         @db.Decimal(10, 2)
+
+  // Terms
+  depositPercent    Int             @default(50)
+  depositAmount     Decimal?        @db.Decimal(10, 2)
+  paymentTerms      String?
+  validUntil        DateTime?
+
+  // Assignment
+  assignedRepId     String?
+  assignedRep       User?           @relation("AssignedQuotes", fields: [assignedRepId], references: [id])
+
+  // Documents
+  formalQuotePdf    String?
+  contractPdf       String?
+  signedAt          DateTime?
+  signatureData     String?         @db.Text
+
+  // Relationships
+  appointments      QuoteAppointment[]
+  payments          QuotePayment[]
+  messages          QuoteMessage[]
+  notes             QuoteNote[]
+  statusHistory     QuoteStatusLog[]
+
+  // Timestamps
+  submittedAt       DateTime?
+  reviewedAt        DateTime?
+  quotedAt          DateTime?
+  approvedAt        DateTime?
+  completedAt       DateTime?
+  cancelledAt       DateTime?
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  @@index([status])
+  @@index([customerEmail])
+  @@index([assignedRepId])
+  @@index([quoteNumber])
+}
+
+model QuoteConfig {
+  id              String    @id @default(cuid())
+  quoteId         String
+  quote           Quote     @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  roomName        String
+  openingType     String
+
+  // Door Configuration
+  productId       String?
+  series          String
+  doorType        String
+  widthInches     Decimal   @db.Decimal(6, 2)
+  heightInches    Decimal   @db.Decimal(6, 2)
+  panelCount      Int
+  finish          String
+  hardware        String
+  handles         String
+  softClose       Boolean   @default(false)
+  mirror          Boolean   @default(false)
+  customOptions   Json?
+
+  // Pricing
+  unitPrice       Decimal   @db.Decimal(10, 2)
+  quantity        Int       @default(1)
+  lineTotal       Decimal   @db.Decimal(10, 2)
+
+  // Notes & Photos
+  notes           String?   @db.Text
+  photos          String[]
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([quoteId])
+}
+
+model QuoteStatusLog {
+  id          String       @id @default(cuid())
+  quoteId     String
+  quote       Quote        @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  fromStatus  QuoteStatus?
+  toStatus    QuoteStatus
+  changedById String?
+  changedBy   User?        @relation("StatusChanges", fields: [changedById], references: [id])
+  reason      String?
+  createdAt   DateTime     @default(now())
+
+  @@index([quoteId])
+}
+
+model QuoteMessage {
+  id          String    @id @default(cuid())
+  quoteId     String
+  quote       Quote     @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  senderId    String
+  sender      User      @relation("SentMessages", fields: [senderId], references: [id])
+  message     String    @db.Text
+  attachments String[]
+  isInternal  Boolean   @default(false)
+  readAt      DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([quoteId])
+}
+
+model QuoteNote {
+  id        String   @id @default(cuid())
+  quoteId   String
+  quote     Quote    @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User     @relation("AuthoredNotes", fields: [authorId], references: [id])
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+
+  @@index([quoteId])
+}
+
+model QuotePayment {
+  id              String              @id @default(cuid())
+  quoteId         String
+  quote           Quote               @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  type            QuotePaymentType
+  amount          Decimal             @db.Decimal(10, 2)
+  method          String              // stripe, etransfer, cash, cheque
+  status          QuotePaymentStatus  @default(PENDING)
+
+  stripePaymentId String?
+  invoiceNumber   String?
+  invoicePdf      String?
+
+  dueDate         DateTime?
+  paidAt          DateTime?
+
+  notes           String?
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+
+  @@index([quoteId])
+  @@index([status])
+}
+
+model QuoteAppointment {
+  id              String                    @id @default(cuid())
+  quoteId         String
+  quote           Quote                     @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  type            QuoteAppointmentType
+  status          QuoteAppointmentStatus    @default(SCHEDULED)
+
+  scheduledDate   DateTime
+  scheduledTime   String                    // "09:00-11:00"
+  duration        Int                       // minutes
+
+  assignedTechId  String?
+  assignedTech    User?                     @relation("TechAppointments", fields: [assignedTechId], references: [id])
+
+  address         Json
+  notes           String?                   @db.Text
+  customerNotes   String?                   @db.Text
+
+  completedAt     DateTime?
+  completionNotes String?                   @db.Text
+  photos          String[]
+  signature       String?                   @db.Text
+
+  createdAt       DateTime                  @default(now())
+  updatedAt       DateTime                  @updatedAt
+
+  @@index([quoteId])
+  @@index([scheduledDate])
+  @@index([assignedTechId])
+}
+
+model ServiceZone {
+  id              String    @id @default(cuid())
+  name            String    // "Ottawa Central", "Orleans", etc.
+  postalCodes     String[]
+  laborRate       Decimal   @db.Decimal(10, 2)
+  travelFee       Decimal   @db.Decimal(10, 2)
+  minOrderValue   Decimal   @db.Decimal(10, 2)
+  active          Boolean   @default(true)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// ==================== QUOTE ENUMS ====================
+
+enum QuoteStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  MEASUREMENT_SCHEDULED
+  MEASUREMENT_COMPLETED
+  QUOTED
+  REVISION_REQUESTED
+  APPROVED
+  DEPOSIT_PAID
+  IN_PRODUCTION
+  READY_FOR_INSTALL
+  INSTALLATION_SCHEDULED
+  INSTALLED
+  COMPLETED
+  EXPIRED
+  CANCELLED
+}
+
+enum QuotePaymentType {
+  DEPOSIT
+  PROGRESS
+  FINAL
+  REFUND
+}
+
+enum QuotePaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum QuoteAppointmentType {
+  MEASUREMENT
+  INSTALLATION
+  FOLLOW_UP
+}
+
+enum QuoteAppointmentStatus {
+  SCHEDULED
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  NO_SHOW
 }
