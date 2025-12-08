@@ -45,3 +45,4 @@ logs/
 # Claude Code
 .claude/logs/
 dev/active/
+_backup_orphaned_files/
