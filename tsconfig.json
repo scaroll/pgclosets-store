@@ -56,19 +56,14 @@
     "declaration": true,
     "declarationMap": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "global.d.ts"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "global.d.ts"],
   "exclude": [
     "node_modules",
     ".next",
     "dist",
     "build",
     "coverage",
+    "_backup_orphaned_files",
     "**/*.test.ts",
     "**/*.spec.ts"
   ],
