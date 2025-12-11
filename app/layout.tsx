@@ -12,11 +12,24 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.pgclosets.com'),
   title: {
-    default: 'PG Closets | Premium Closet Doors & Storage Solutions | Ottawa',
-    template: '%s | PG Closets',
+    default: 'PG Closets | Premium Closet Doors Ottawa | Official Renin Dealer',
+    template: '%s | PG Closets Ottawa',
   },
-  description: 'Transform your home with premium closet doors and storage solutions. Official Renin dealer serving Ottawa with expert installation and lifetime warranty.',
-  keywords: ['closet doors', 'barn doors', 'bifold doors', 'Ottawa', 'Renin dealer', 'custom closets', 'storage solutions', 'bypass doors', 'pivot doors', 'sliding doors', 'closet organizers', 'home organization'],
+  description:
+    "Ottawa's premier closet door specialists. Official Renin dealer offering barn doors, bypass doors, bifold doors & professional installation. Free consultations.",
+  keywords: [
+    'closet doors Ottawa',
+    'barn doors Ottawa',
+    'Renin dealer Ottawa',
+    'bypass closet doors',
+    'bifold doors Ottawa',
+    'closet door installation Ottawa',
+    'sliding closet doors',
+    'custom closet doors Ontario',
+    'Ottawa closet solutions',
+    'Kanata closet doors',
+    'Barrhaven closet doors',
+  ],
   authors: [{ name: 'PG Closets' }],
   creator: 'PG Closets',
   publisher: 'PG Closets',
@@ -41,8 +54,9 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     url: 'https://www.pgclosets.com',
     siteName: 'PG Closets',
-    title: 'PG Closets | Premium Closet Doors & Storage Solutions',
-    description: 'Transform your home with premium closet doors. Official Renin dealer in Ottawa.',
+    title: 'PG Closets | Premium Closet Doors Ottawa | Official Renin Dealer',
+    description:
+      "Ottawa's premier closet door specialists. Official Renin dealer offering barn doors, bypass doors, bifold doors & professional installation.",
     images: [
       {
         url: '/og-image.jpg',
@@ -81,13 +95,14 @@ export default function RootLayout({
       <body
         className="font-sans antialiased"
         style={{
-          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+          fontFamily:
+            '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
         }}
       >
         {/* Skip to main content for accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
         >
           Skip to main content
         </a>

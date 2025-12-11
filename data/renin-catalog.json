@@ -1,0 +1,620 @@
+{
+  "categories": [
+    {
+      "id": "barn-doors",
+      "name": "Barn Doors",
+      "slug": "barn-doors",
+      "description": "Modern sliding barn doors that make a statement",
+      "image": "/images/collections/barn-doors.jpg"
+    },
+    {
+      "id": "bypass-doors",
+      "name": "Bypass & Sliding Doors",
+      "slug": "bypass-doors",
+      "description": "Space-saving sliding door systems for closets",
+      "image": "/images/collections/bypass-doors.jpg"
+    },
+    {
+      "id": "bifold-doors",
+      "name": "Bifold Doors",
+      "slug": "bifold-doors",
+      "description": "Space-saving folding doors for closets and tight spaces",
+      "image": "/images/collections/bifold-doors.jpg"
+    },
+    {
+      "id": "sliding-doors",
+      "name": "Sliding Doors",
+      "slug": "sliding-doors",
+      "description": "Smooth-operating closet sliding doors",
+      "image": "/images/collections/sliding-doors.jpg"
+    },
+    {
+      "id": "mirrors",
+      "name": "Mirrors & Decorative",
+      "slug": "mirrors",
+      "description": "Premium mirrors and decorative door solutions",
+      "image": "/images/collections/mirrors.jpg"
+    },
+    {
+      "id": "hardware",
+      "name": "Hardware & Accessories",
+      "slug": "hardware",
+      "description": "Premium tracks, handles, and mounting hardware",
+      "image": "/images/collections/hardware.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": "continental-6-panel",
+      "slug": "continental-6-panel-barn-door",
+      "name": "Continental 6-Panel",
+      "collection": "Continental Series",
+      "category": "barn-doors",
+      "price": 599,
+      "priceRange": { "min": 599, "max": 799 },
+      "sizes": ["30x84", "32x84", "36x84", "42x84"],
+      "finishes": ["Bright White", "Coffee Bean", "Sandstone"],
+      "features": [
+        "Pre-finished surface",
+        "Soft-close hardware included",
+        "Full installation kit"
+      ],
+      "description": "Classic 6-panel design with modern functionality. Pre-finished in your choice of three designer colors.",
+      "shortDescription": "Classic 6-panel barn door with soft-close hardware",
+      "images": ["/images/products/barn-doors/continental-6-panel.jpg"],
+      "inStock": true,
+      "featured": true,
+      "bestseller": true
+    },
+    {
+      "id": "gatsby-barn-door",
+      "slug": "gatsby-barn-door",
+      "name": "Gatsby",
+      "collection": "Heritage Series",
+      "category": "barn-doors",
+      "price": 799,
+      "priceRange": { "min": 799, "max": 999 },
+      "sizes": ["36x84", "42x84"],
+      "finishes": ["Iron Age", "Sandstone"],
+      "features": [
+        "Art deco inspired design",
+        "Premium bent strap hardware",
+        "Engineered wood construction"
+      ],
+      "description": "Art deco inspired barn door with premium bent strap hardware. A statement piece for any room.",
+      "shortDescription": "Art deco inspired design with premium hardware",
+      "images": ["/images/products/barn-doors/gatsby.jpg"],
+      "inStock": true,
+      "featured": true,
+      "bestseller": false
+    },
+    {
+      "id": "tribeca-6-lite",
+      "slug": "tribeca-6-lite-barn-door",
+      "name": "Tribeca 6-Lite",
+      "collection": "Industrial Series",
+      "category": "barn-doors",
+      "price": 899,
+      "priceRange": { "min": 899, "max": 1099 },
+      "sizes": ["36x84", "42x84"],
+      "finishes": ["Matte Black Frame", "Bronze Frame"],
+      "features": [
+        "Industrial loft grid design",
+        "Frosted tempered glass",
+        "Steel-look frame"
+      ],
+      "description": "Industrial loft-style barn door with frosted tempered glass panels and steel-look frame.",
+      "shortDescription": "Industrial design with frosted tempered glass",
+      "images": ["/images/products/barn-doors/tribeca-6-lite.jpg"],
+      "inStock": true,
+      "featured": true,
+      "bestseller": false
+    },
+    {
+      "id": "tribeca-8-lite",
+      "slug": "tribeca-8-lite-barn-door",
+      "name": "Tribeca 8-Lite",
+      "collection": "Industrial Series",
+      "category": "barn-doors",
+      "price": 999,
+      "priceRange": { "min": 999, "max": 1199 },
+      "sizes": ["36x84", "42x84"],
+      "finishes": ["Matte Black Frame", "Bronze Frame"],
+      "features": [
+        "Extended 8-lite grid design",
+        "Frosted tempered glass",
+        "Steel-look frame"
+      ],
+      "description": "Extended industrial design with 8 frosted glass panels for maximum light transmission.",
+      "shortDescription": "Extended 8-lite industrial design",
+      "images": ["/images/products/barn-doors/tribeca-8-lite.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "sierra-k-design",
+      "slug": "sierra-k-design-barn-door",
+      "name": "Sierra K-Design",
+      "collection": "Natural Wood Series",
+      "category": "barn-doors",
+      "price": 499,
+      "priceRange": { "min": 499, "max": 699 },
+      "sizes": ["30x84", "32x84", "36x84"],
+      "finishes": ["Paintable Pine"],
+      "features": [
+        "Traditional K-pattern",
+        "Natural pine construction",
+        "Ready to paint or stain"
+      ],
+      "description": "Classic K-pattern barn door in natural pine, ready for your custom finish.",
+      "shortDescription": "Traditional K-pattern in natural pine",
+      "images": ["/images/products/barn-doors/sierra-k-design.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": true
+    },
+    {
+      "id": "herringbone",
+      "slug": "herringbone-barn-door",
+      "name": "Herringbone",
+      "collection": "Coastal Series",
+      "category": "barn-doors",
+      "price": 649,
+      "priceRange": { "min": 649, "max": 849 },
+      "sizes": ["30x84", "36x84"],
+      "finishes": ["Whitewash", "Driftwood Gray"],
+      "features": [
+        "Chevron plank pattern",
+        "Coastal-inspired design",
+        "Pre-finished surface"
+      ],
+      "description": "Coastal-inspired herringbone pattern barn door with a relaxed, beachy aesthetic.",
+      "shortDescription": "Coastal chevron plank pattern design",
+      "images": ["/images/products/barn-doors/herringbone.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "brownstone-double-x",
+      "slug": "brownstone-double-x-barn-door",
+      "name": "Brownstone Double-X",
+      "collection": "Brownstone Series",
+      "category": "barn-doors",
+      "price": 699,
+      "priceRange": { "min": 699, "max": 899 },
+      "sizes": ["36x84", "42x84"],
+      "finishes": ["Contemporary Wood Grain"],
+      "features": [
+        "Traditional double-X pattern",
+        "No priming needed",
+        "Permanent factory finish"
+      ],
+      "description": "Traditional double-X pattern barn door with permanent factory finish. Cannot be painted or refinished.",
+      "shortDescription": "Traditional double-X with permanent finish",
+      "images": ["/images/products/barn-doors/brownstone-double-x.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "harmony-mirror-bypass",
+      "slug": "harmony-mirror-bypass",
+      "name": "Harmony Mirror Bypass",
+      "collection": "Harmony Series",
+      "category": "bypass-doors",
+      "price": 459,
+      "priceRange": { "min": 459, "max": 689 },
+      "sizes": ["48x80", "60x80", "72x80", "96x80"],
+      "finishes": ["Bright White Frame"],
+      "features": [
+        "Full-length mirrors",
+        "Smooth bypass operation",
+        "Space-enlarging effect"
+      ],
+      "description": "Full-length mirrored bypass doors that make any room feel larger and brighter.",
+      "shortDescription": "Full-length mirror bypass doors",
+      "images": ["/images/products/bypass-doors/harmony-mirror.jpg"],
+      "inStock": true,
+      "featured": true,
+      "bestseller": true
+    },
+    {
+      "id": "euro-1-lite-bypass",
+      "slug": "euro-1-lite-bypass",
+      "name": "Euro 1-Lite Bypass",
+      "collection": "Euro Series",
+      "category": "bypass-doors",
+      "price": 529,
+      "priceRange": { "min": 529, "max": 759 },
+      "sizes": ["48x80", "60x80", "72x80"],
+      "finishes": ["Off-White", "White"],
+      "features": [
+        "Frosted glass panel",
+        "Contemporary European styling",
+        "Soft-close mechanism"
+      ],
+      "description": "Contemporary European-style bypass doors with single frosted glass panel.",
+      "shortDescription": "Contemporary European styling with frosted glass",
+      "images": ["/images/products/bypass-doors/euro-1-lite.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "euro-3-lite-bypass",
+      "slug": "euro-3-lite-bypass",
+      "name": "Euro 3-Lite Bypass",
+      "collection": "Euro Series",
+      "category": "bypass-doors",
+      "price": 599,
+      "priceRange": { "min": 599, "max": 829 },
+      "sizes": ["48x80", "60x80", "72x80"],
+      "finishes": ["Off-White", "White"],
+      "features": [
+        "Three frosted glass panels",
+        "Contemporary European styling",
+        "Soft-close mechanism"
+      ],
+      "description": "Contemporary European-style bypass doors with three frosted glass panels for modern elegance.",
+      "shortDescription": "Three-panel frosted glass European design",
+      "images": ["/images/products/bypass-doors/euro-3-lite.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "lace-multi-x-bypass",
+      "slug": "lace-multi-x-bypass",
+      "name": "Lace Multi-X",
+      "collection": "Coastal Series",
+      "category": "bypass-doors",
+      "price": 489,
+      "priceRange": { "min": 489, "max": 719 },
+      "sizes": ["48x80", "60x80", "72x80"],
+      "finishes": ["White", "Gray"],
+      "features": [
+        "Decorative X-pattern with mirror",
+        "Coastal/bohemian design",
+        "Smooth bypass operation"
+      ],
+      "description": "Decorative X-pattern bypass doors with mirror panels for a coastal bohemian aesthetic.",
+      "shortDescription": "Decorative X-pattern with mirror",
+      "images": ["/images/products/bypass-doors/lace-multi-x.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "georgian-sliding",
+      "slug": "georgian-sliding-doors",
+      "name": "Georgian Sliding",
+      "collection": "Georgian Series",
+      "category": "sliding-doors",
+      "price": 399,
+      "priceRange": { "min": 399, "max": 599 },
+      "sizes": ["48x80", "60x80", "72x80"],
+      "finishes": ["Bright White"],
+      "features": [
+        "Traditional 6-panel design",
+        "Classic colonial styling",
+        "Smooth sliding mechanism"
+      ],
+      "description": "Classic colonial 6-panel sliding doors for a traditional, timeless look.",
+      "shortDescription": "Traditional 6-panel colonial style",
+      "images": ["/images/products/sliding-doors/georgian.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "twilight-sliding",
+      "slug": "twilight-sliding-doors",
+      "name": "Twilight Sliding",
+      "collection": "Twilight Series",
+      "category": "sliding-doors",
+      "price": 449,
+      "priceRange": { "min": 449, "max": 649 },
+      "sizes": ["48x80", "60x80", "72x80"],
+      "finishes": ["White", "Espresso"],
+      "features": [
+        "Modern linear design",
+        "Clean contemporary lines",
+        "Smooth sliding operation"
+      ],
+      "description": "Modern linear sliding doors with clean contemporary lines for a minimalist aesthetic.",
+      "shortDescription": "Modern linear contemporary design",
+      "images": ["/images/products/sliding-doors/twilight.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "traditional-6-panel-bifold",
+      "slug": "traditional-6-panel-bifold",
+      "name": "Traditional 6-Panel Bifold",
+      "collection": "Classic Series",
+      "category": "bifold-doors",
+      "price": 189,
+      "priceRange": { "min": 189, "max": 349 },
+      "sizes": ["24x80", "30x80", "32x80", "36x80"],
+      "finishes": ["Primed White", "Pre-finished White"],
+      "features": [
+        "Classic raised panel design",
+        "Solid core construction",
+        "Top and bottom pivots included"
+      ],
+      "description": "Classic raised 6-panel bifold door with solid core construction for durability.",
+      "shortDescription": "Classic raised panel bifold door",
+      "images": ["/images/products/bifold-doors/traditional-6-panel.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": true
+    },
+    {
+      "id": "louver-bifold",
+      "slug": "louver-bifold-doors",
+      "name": "Louver Bifold",
+      "collection": "Classic Series",
+      "category": "bifold-doors",
+      "price": 229,
+      "priceRange": { "min": 229, "max": 389 },
+      "sizes": ["24x80", "30x80", "32x80", "36x80"],
+      "finishes": ["Primed White", "Natural Pine"],
+      "features": [
+        "Ventilation louvers",
+        "Ideal for utility closets",
+        "Airflow design"
+      ],
+      "description": "Louvered bifold door ideal for utility closets where airflow is needed.",
+      "shortDescription": "Ventilated louver design",
+      "images": ["/images/products/bifold-doors/louver.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "continental-bifold",
+      "slug": "continental-bifold-doors",
+      "name": "Continental Bifold",
+      "collection": "Continental Series",
+      "category": "bifold-doors",
+      "price": 299,
+      "priceRange": { "min": 299, "max": 459 },
+      "sizes": ["24x80", "30x80", "36x80"],
+      "finishes": ["Bright White", "Coffee Bean", "Sandstone"],
+      "features": [
+        "Modern panel design",
+        "Pre-finished surface",
+        "Easy installation"
+      ],
+      "description": "Modern Continental series bifold door in designer pre-finished colors.",
+      "shortDescription": "Modern Continental style bifold",
+      "images": ["/images/products/bifold-doors/continental.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "mirror-bifold",
+      "slug": "mirror-bifold-doors",
+      "name": "Mirror Bifold",
+      "collection": "Mirror Series",
+      "category": "bifold-doors",
+      "price": 349,
+      "priceRange": { "min": 349, "max": 549 },
+      "sizes": ["24x80", "30x80", "36x80"],
+      "finishes": ["White Frame", "Silver Frame"],
+      "features": [
+        "Full-length mirror panel",
+        "Bevel edge finish",
+        "Space-enhancing design"
+      ],
+      "description": "Full-length mirrored bifold door that makes spaces feel larger and brighter.",
+      "shortDescription": "Full-length mirror bifold",
+      "images": ["/images/products/bifold-doors/mirror.jpg"],
+      "inStock": true,
+      "featured": true,
+      "bestseller": false
+    },
+    {
+      "id": "led-lighted-mirror",
+      "slug": "led-lighted-mirror",
+      "name": "LED Lighted Mirror",
+      "collection": "Smart Series",
+      "category": "mirrors",
+      "price": 449,
+      "priceRange": { "min": 449, "max": 699 },
+      "sizes": ["24x36", "30x40", "36x48"],
+      "finishes": ["Silver Frame"],
+      "features": [
+        "Integrated LED lighting",
+        "Touch dimmer control",
+        "Energy efficient"
+      ],
+      "description": "Modern LED-lighted mirror with touch dimmer control for perfect illumination.",
+      "shortDescription": "LED illuminated mirror with touch control",
+      "images": ["/images/products/mirrors/led-lighted.jpg"],
+      "inStock": true,
+      "featured": true,
+      "bestseller": false
+    },
+    {
+      "id": "beveled-wall-mirror",
+      "slug": "beveled-wall-mirror",
+      "name": "Beveled Wall Mirror",
+      "collection": "Classic Series",
+      "category": "mirrors",
+      "price": 149,
+      "priceRange": { "min": 149, "max": 349 },
+      "sizes": ["24x30", "24x36", "30x40"],
+      "finishes": ["Frameless"],
+      "features": [
+        "Beveled edge design",
+        "Frameless aesthetic",
+        "Easy mounting"
+      ],
+      "description": "Classic frameless beveled wall mirror for timeless elegance.",
+      "shortDescription": "Classic beveled edge wall mirror",
+      "images": ["/images/products/mirrors/beveled-wall.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "full-length-mirror-door",
+      "slug": "full-length-mirror-door",
+      "name": "Full Length Mirror Door",
+      "collection": "Mirror Series",
+      "category": "mirrors",
+      "price": 299,
+      "priceRange": { "min": 299, "max": 449 },
+      "sizes": ["14x54", "18x68"],
+      "finishes": ["White Frame", "Black Frame"],
+      "features": [
+        "Over-door mounting",
+        "Full-length reflection",
+        "Space-saving design"
+      ],
+      "description": "Full-length over-door mirror for convenient dressing room functionality.",
+      "shortDescription": "Full-length over-door mirror",
+      "images": ["/images/products/mirrors/full-length-door.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "soft-close-track-kit",
+      "slug": "soft-close-track-kit",
+      "name": "Soft-Close Track Kit",
+      "collection": "Hardware",
+      "category": "hardware",
+      "price": 149,
+      "priceRange": { "min": 149, "max": 249 },
+      "sizes": ["60\"", "72\"", "96\"", "120\""],
+      "finishes": ["Matte Black", "Brushed Nickel", "Oil-Rubbed Bronze"],
+      "features": [
+        "Easy Glide technology",
+        "Smooth, quiet operation",
+        "Anti-jump design"
+      ],
+      "description": "Premium soft-close barn door track kit with Easy Glide technology for smooth, quiet operation.",
+      "shortDescription": "Premium soft-close track system",
+      "images": ["/images/products/hardware/soft-close-track.jpg"],
+      "inStock": true,
+      "featured": true,
+      "bestseller": true
+    },
+    {
+      "id": "bent-strap-hardware",
+      "slug": "bent-strap-hardware-set",
+      "name": "Bent Strap Hardware Set",
+      "collection": "Rustic Hardware",
+      "category": "hardware",
+      "price": 129,
+      "priceRange": { "min": 129, "max": 129 },
+      "sizes": ["Standard"],
+      "finishes": ["Rustic Matte Black", "Antique Bronze"],
+      "features": [
+        "Traditional bent strap design",
+        "Heavy-duty construction",
+        "Complete mounting kit"
+      ],
+      "description": "Traditional bent strap barn door hardware with rustic appeal and heavy-duty construction.",
+      "shortDescription": "Traditional bent strap hardware",
+      "images": ["/images/products/hardware/bent-strap.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "straight-strap-hardware",
+      "slug": "straight-strap-hardware-set",
+      "name": "Straight Strap Hardware Set",
+      "collection": "Modern Hardware",
+      "category": "hardware",
+      "price": 119,
+      "priceRange": { "min": 119, "max": 119 },
+      "sizes": ["Standard"],
+      "finishes": ["Matte Black", "Brushed Stainless"],
+      "features": [
+        "Modern straight design",
+        "Clean minimalist aesthetic",
+        "Complete mounting kit"
+      ],
+      "description": "Modern straight strap barn door hardware for a clean, minimalist look.",
+      "shortDescription": "Modern straight strap hardware",
+      "images": ["/images/products/hardware/straight-strap.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "bypass-track-system",
+      "slug": "bypass-track-system",
+      "name": "Bypass Track System",
+      "collection": "Hardware",
+      "category": "hardware",
+      "price": 179,
+      "priceRange": { "min": 179, "max": 249 },
+      "sizes": ["60\"", "72\"", "96\""],
+      "finishes": ["Matte Black", "Brushed Nickel"],
+      "features": [
+        "Dual track design",
+        "Smooth bypass operation",
+        "Heavy-duty construction"
+      ],
+      "description": "Professional dual-track bypass system for smooth door operation.",
+      "shortDescription": "Dual-track bypass system",
+      "images": ["/images/products/hardware/bypass-track.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "floor-guide-kit",
+      "slug": "adjustable-floor-guide",
+      "name": "Adjustable Floor Guide",
+      "collection": "Hardware",
+      "category": "hardware",
+      "price": 29,
+      "priceRange": { "min": 29, "max": 29 },
+      "sizes": ["Standard"],
+      "finishes": ["Black", "Silver"],
+      "features": [
+        "Wall-mounted option",
+        "Adjustable positioning",
+        "Universal fit"
+      ],
+      "description": "Adjustable floor guide for barn doors with wall-mount or floor-mount options.",
+      "shortDescription": "Adjustable floor guide",
+      "images": ["/images/products/hardware/floor-guide.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    },
+    {
+      "id": "handle-set-modern",
+      "slug": "modern-handle-set",
+      "name": "Modern Handle Set",
+      "collection": "Handles",
+      "category": "hardware",
+      "price": 49,
+      "priceRange": { "min": 49, "max": 79 },
+      "sizes": ["8\"", "12\""],
+      "finishes": ["Matte Black", "Brushed Nickel", "Chrome"],
+      "features": [
+        "Modern bar design",
+        "Easy grip surface",
+        "Universal mounting"
+      ],
+      "description": "Modern bar-style handle set for barn doors in various finishes.",
+      "shortDescription": "Modern bar handle set",
+      "images": ["/images/products/hardware/modern-handle.jpg"],
+      "inStock": true,
+      "featured": false,
+      "bestseller": false
+    }
+  ]
+}
