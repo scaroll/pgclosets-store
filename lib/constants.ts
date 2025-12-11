@@ -14,7 +14,6 @@ export const SITE_CONFIG = {
   },
   contact: {
     email: 'info@pgclosets.com',
-    phone: '(555) 123-4567',
   },
 } as const
 
@@ -95,7 +94,7 @@ export const FOOTER_LINKS = {
     { title: 'FAQ', href: '/faq' },
     { title: 'Shipping', href: '/shipping' },
     { title: 'Returns', href: '/returns' },
-    { title: 'Warranty', href: '/warranty' },
+    { title: 'Installation', href: '/installation' },
   ],
   legal: [
     { title: 'Privacy Policy', href: '/privacy' },

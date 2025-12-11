@@ -10,9 +10,9 @@ import { CTASection } from '@/components/shared/cta-section'
 import { BentoGrid, BentoGridItem } from '@/components/shared/bento-grid'
 
 export const metadata: Metadata = {
-  title: 'Home - PG Closets',
+  title: 'PG Closets | Premium Closet Doors Ottawa | Official Renin Dealer',
   description:
-    'Transform your space with premium closet solutions. Expert installation, lifetime warranty, and free consultation in Ottawa.',
+    "Ottawa's premier closet door specialists. Official Renin dealer offering barn doors, bypass doors, bifold doors & professional installation. Free consultations.",
 }
 
 export default function HomePage() {
@@ -158,12 +158,12 @@ export default function HomePage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
                   />
                 </svg>
               }
-              title="Lifetime Warranty"
-              description="All our products come with a comprehensive lifetime warranty for your peace of mind."
+              title="Official Renin Dealer"
+              description="Authorized dealer with access to the complete Renin product catalog and expert product knowledge."
             />
             <FeatureCard
               icon={
@@ -317,7 +317,7 @@ export default function HomePage() {
               name="Emily Robertson"
               location="Westboro, Ottawa"
               rating={5}
-              quote="Exceptional service and craftsmanship. The glass barn doors added such an elegant touch to our home. Worth every penny and the lifetime warranty gives us peace of mind."
+              quote="Exceptional service and craftsmanship. The glass barn doors added such an elegant touch to our home. Worth every penny and the quality is outstanding."
               date="Sep 2024"
             />
           </div>
@@ -328,10 +328,10 @@ export default function HomePage() {
       <CTASection
         title="Ready to Transform Your Space?"
         description="Schedule your free consultation and get a custom quote today"
-        ctaText="Get a Free Estimate"
-        ctaHref="/book-measure"
-        secondaryCtaText="Call Us Now"
-        secondaryCtaHref="tel:+16135551234"
+        ctaText="Book Free Consultation"
+        ctaHref="/book-consultation"
+        secondaryCtaText="View Products"
+        secondaryCtaHref="/products"
         backgroundImage="/optimized-images/elegant-barn-door-closet.webp"
       />
 

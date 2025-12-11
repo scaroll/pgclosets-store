@@ -5,83 +5,74 @@
 
 export const BUSINESS_INFO = {
   // Core Business Identity
-  name: "PG Closets",
-  tagline: "Official Renin Dealer",
-  fullName: "PG Closets - Official Renin Dealer",
-  
-  // Contact Information
-  phone: "(613) 701-6393",
-  email: "info@pgclosets.com",
+  name: 'PG Closets',
+  tagline: 'Official Renin Dealer',
+  fullName: 'PG Closets - Official Renin Dealer',
+
+  // Contact Information (Email only - no phone on website)
+  email: 'info@pgclosets.com',
 
   // Business Address
   address: {
-    street: "456 Sparks Street",
-    city: "Ottawa",
-    province: "ON",
-    postalCode: "K1P 5E9",
-    country: "CA",
-    full: "456 Sparks Street, Ottawa, ON K1P 5E9"
+    street: '456 Sparks Street',
+    city: 'Ottawa',
+    province: 'ON',
+    postalCode: 'K1P 5E9',
+    country: 'CA',
+    full: '456 Sparks Street, Ottawa, ON K1P 5E9',
   },
-  
+
   // Geographic Coordinates (Ottawa city center)
   coordinates: {
-    latitude: "45.4215",
-    longitude: "-75.6972"
+    latitude: '45.4215',
+    longitude: '-75.6972',
   },
-  
+
   // Service Areas (Core Ottawa regions)
-  serviceAreas: [
-    "Ottawa",
-    "Kanata", 
-    "Barrhaven",
-    "Orleans",
-    "Nepean",
-    "Gloucester",
-    "Stittsville"
-  ],
-  
+  serviceAreas: ['Ottawa', 'Kanata', 'Barrhaven', 'Orleans', 'Nepean', 'Gloucester', 'Stittsville'],
+
   // Business Hours
   hours: {
-    monday: "9:00 AM - 6:00 PM",
-    tuesday: "9:00 AM - 6:00 PM", 
-    wednesday: "9:00 AM - 6:00 PM",
-    thursday: "9:00 AM - 6:00 PM",
-    friday: "9:00 AM - 6:00 PM",
-    saturday: "10:00 AM - 4:00 PM",
-    sunday: "Closed"
+    monday: '9:00 AM - 6:00 PM',
+    tuesday: '9:00 AM - 6:00 PM',
+    wednesday: '9:00 AM - 6:00 PM',
+    thursday: '9:00 AM - 6:00 PM',
+    friday: '9:00 AM - 6:00 PM',
+    saturday: '10:00 AM - 4:00 PM',
+    sunday: 'Closed',
   },
-  
+
   // Services
   services: [
-    "Custom Closet Design",
-    "Closet Door Installation", 
-    "Storage Solutions",
-    "Pantry Organization",
-    "Renin Product Sales"
+    'Custom Closet Design',
+    'Closet Door Installation',
+    'Storage Solutions',
+    'Pantry Organization',
+    'Renin Product Sales',
   ],
-  
+
   // Brand Values
   values: [
-    "Professional Installation",
-    "Lifetime Warranty", 
-    "2-Week Delivery",
-    "Local Ottawa Service",
-    "Official Renin Partnership"
+    'Professional Installation',
+    'Official Renin Dealer',
+    '2-Week Delivery',
+    'Local Ottawa Service',
+    'Free Consultation',
   ],
-  
+
   // Website URLs
   urls: {
-    main: "https://www.pgclosets.com",
-    logo: "/logo.png",
-    ogImage: "/og-image.jpg"
+    main: 'https://www.pgclosets.com',
+    logo: '/logo.png',
+    ogImage: '/og-image.jpg',
   },
-  
+
   // Social Media (when available)
   social: {
-    facebook: "",
-    instagram: "",
-    linkedin: ""
-  }
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+  },
 } as const
 
 // Helper functions for consistent formatting
@@ -101,22 +92,22 @@ export const formatServiceAreas = (limit?: number) => {
 
 // Schema.org helpers
 export const getSchemaAddress = () => ({
-  "@type": "PostalAddress",
+  '@type': 'PostalAddress',
   streetAddress: BUSINESS_INFO.address.street,
   addressLocality: BUSINESS_INFO.address.city,
   addressRegion: BUSINESS_INFO.address.province,
   postalCode: BUSINESS_INFO.address.postalCode,
-  addressCountry: BUSINESS_INFO.address.country
+  addressCountry: BUSINESS_INFO.address.country,
 })
 
 export const getSchemaGeo = () => ({
-  "@type": "GeoCoordinates", 
+  '@type': 'GeoCoordinates',
   latitude: BUSINESS_INFO.coordinates.latitude,
-  longitude: BUSINESS_INFO.coordinates.longitude
+  longitude: BUSINESS_INFO.coordinates.longitude,
 })
 
-export const getSchemaServiceAreas = () => 
+export const getSchemaServiceAreas = () =>
   BUSINESS_INFO.serviceAreas.map(area => ({
-    "@type": "City",
-    name: area
+    '@type': 'City',
+    name: area,
   }))

@@ -24,9 +24,9 @@ export function getOrganizationSchema() {
       height: '512',
     },
     image: `${BUSINESS_INFO.urls.main}${BUSINESS_INFO.urls.ogImage}`,
-    description: 'Official Renin dealer providing premium closet doors and storage solutions in Ottawa with expert installation and lifetime warranty.',
+    description:
+      'Official Renin dealer providing premium closet doors and storage solutions in Ottawa with expert installation. Free consultations available.',
     email: BUSINESS_INFO.email,
-    telephone: BUSINESS_INFO.phone,
     address: getSchemaAddress(),
     geo: getSchemaGeo(),
     areaServed: BUSINESS_INFO.serviceAreas.map(area => ({
@@ -52,8 +52,8 @@ export function getLocalBusinessSchema() {
     '@id': `${BUSINESS_INFO.urls.main}/#localbusiness`,
     name: BUSINESS_INFO.name,
     image: `${BUSINESS_INFO.urls.main}${BUSINESS_INFO.urls.ogImage}`,
-    description: 'Ottawa\'s trusted source for premium closet doors and storage solutions. Official Renin dealer with professional installation services.',
-    telephone: BUSINESS_INFO.phone,
+    description:
+      "Ottawa's trusted source for premium closet doors and storage solutions. Official Renin dealer with professional installation services.",
     email: BUSINESS_INFO.email,
     address: getSchemaAddress(),
     geo: getSchemaGeo(),
@@ -115,7 +115,33 @@ export function getProductSchema(product: {
     count: number
   }
 }) {
-  const schema: any = {
+  interface ProductSchema {
+    '@context': string
+    '@type': string
+    '@id': string
+    name: string
+    description: string
+    brand: { '@type': string; name: string }
+    manufacturer: { '@type': string; name: string }
+    image?: string
+    sku?: string
+    category?: string
+    offers?: {
+      '@type': string
+      url: string
+      priceCurrency: string
+      price: number
+      availability: string
+      seller: { '@type': string; name: string }
+    }
+    aggregateRating?: {
+      '@type': string
+      ratingValue: number
+      reviewCount: number
+    }
+  }
+
+  const schema: ProductSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     '@id': `${BUSINESS_INFO.urls.main}/products/${product.id}/#product`,
@@ -210,13 +236,15 @@ export function getFAQSchema(faqs: Array<{ question: string; answer: string }>) 
  * Review Schema Generator
  * For product reviews
  */
-export function getReviewSchema(reviews: Array<{
-  author: string
-  rating: number
-  reviewBody: string
-  datePublished: string
-  productName?: string
-}>) {
+export function getReviewSchema(
+  reviews: Array<{
+    author: string
+    rating: number
+    reviewBody: string
+    datePublished: string
+    productName?: string
+  }>
+) {
   return reviews.map(review => ({
     '@context': 'https://schema.org',
     '@type': 'Review',
@@ -254,7 +282,20 @@ export function getWebPageSchema(page: {
   datePublished?: string
   dateModified?: string
 }) {
-  const schema: any = {
+  interface WebPageSchema {
+    '@context': string
+    '@type': string
+    '@id': string
+    url: string
+    name: string
+    description: string
+    isPartOf: { '@id': string }
+    about: { '@id': string }
+    datePublished?: string
+    dateModified?: string
+  }
+
+  const schema: WebPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${BUSINESS_INFO.urls.main}${page.url}/#webpage`,
@@ -291,7 +332,7 @@ export function getWebsiteSchema() {
     '@id': `${BUSINESS_INFO.urls.main}/#website`,
     url: BUSINESS_INFO.urls.main,
     name: BUSINESS_INFO.name,
-    description: 'Ottawa\'s premier source for closet doors and storage solutions.',
+    description: "Ottawa's premier source for closet doors and storage solutions.",
     publisher: {
       '@id': `${BUSINESS_INFO.urls.main}/#organization`,
     },
