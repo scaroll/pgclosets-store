@@ -9,6 +9,9 @@ import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
 import { GoogleAnalytics } from '@/analytics/google-analytics'
 import './globals.css'
 
+// Kit and Ace inspired typography - Using system fonts for optimal performance
+// Inter-like stack: system-ui provides Inter on modern systems
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.pgclosets.com'),
   title: {
@@ -92,13 +95,7 @@ export default function RootLayout({
         <OrganizationSchema />
         <LocalBusinessSchema />
       </head>
-      <body
-        className="font-sans antialiased"
-        style={{
-          fontFamily:
-            '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        }}
-      >
+      <body className="font-sans antialiased">
         {/* Skip to main content for accessibility */}
         <a
           href="#main-content"
