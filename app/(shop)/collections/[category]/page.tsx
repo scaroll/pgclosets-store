@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { PackageOpen } from 'lucide-react'
+import { PackageOpen, Award } from 'lucide-react'
 import { prisma } from '@/lib/prisma'
 import { ProductCard } from '@/components/products/product-card'
 import { ProductFilters } from '@/components/products/product-filters'
@@ -28,7 +28,7 @@ interface CategoryPageProps {
 // ============================================================================
 // Metadata Generation
 // ============================================================================
-export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+export function generateMetadata({ params }: CategoryPageProps): Metadata {
   const categoryData = getCategoryData(params.category)
 
   if (!categoryData) {
@@ -67,8 +67,8 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 // ============================================================================
 // Static Params Generation (for static site generation)
 // ============================================================================
-export async function generateStaticParams() {
-  return getAllCategorySlugs().map((slug) => ({
+export function generateStaticParams() {
+  return getAllCategorySlugs().map(slug => ({
     category: slug,
   }))
 }
@@ -85,20 +85,20 @@ async function getCategoryProducts(
   const skip = (page - 1) * limit
 
   // Build where clause
-  const where: any = {
+  const where: Record<string, unknown> = {
     category: {
-      slug: categorySlug
-    }
+      slug: categorySlug,
+    },
   }
 
   // Price range filter
   if (searchParams.minPrice || searchParams.maxPrice) {
     where.price = {}
     if (searchParams.minPrice) {
-      where.price.gte = parseInt(searchParams.minPrice) * 100 // Convert to cents
+      ;(where.price as Record<string, number>).gte = parseInt(searchParams.minPrice) * 100
     }
     if (searchParams.maxPrice) {
-      where.price.lte = parseInt(searchParams.maxPrice) * 100 // Convert to cents
+      ;(where.price as Record<string, number>).lte = parseInt(searchParams.maxPrice) * 100
     }
   }
 
@@ -108,7 +108,7 @@ async function getCategoryProducts(
   }
 
   // Build orderBy clause
-  let orderBy: any = { featured: 'desc' } // Default: featured
+  let orderBy: Record<string, string> = { featured: 'desc' }
 
   switch (searchParams.sort) {
     case 'newest':
@@ -155,7 +155,7 @@ async function getCategoryProducts(
   ])
 
   return {
-    items: products.map((product) => ({
+    items: products.map(product => ({
       id: product.id,
       name: product.name,
       slug: product.slug,
@@ -180,19 +180,19 @@ async function getCategoryProducts(
 // ============================================================================
 function ProductsLoading() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
       {Array.from({ length: 6 }).map((_, i) => (
         <div
           key={i}
-          className="bg-white dark:bg-apple-dark-bg-secondary rounded-apple-lg overflow-hidden border border-gray-200 dark:border-apple-dark-border animate-pulse"
+          className="animate-pulse overflow-hidden rounded border border-warm-200 bg-white"
         >
-          <div className="aspect-square bg-gray-200 dark:bg-apple-dark-bg-tertiary" />
-          <div className="p-4 space-y-3">
-            <div className="h-4 bg-gray-200 dark:bg-apple-dark-bg-tertiary rounded w-1/4" />
-            <div className="h-6 bg-gray-200 dark:bg-apple-dark-bg-tertiary rounded w-3/4" />
-            <div className="h-4 bg-gray-200 dark:bg-apple-dark-bg-tertiary rounded w-full" />
-            <div className="h-8 bg-gray-200 dark:bg-apple-dark-bg-tertiary rounded w-1/3" />
-            <div className="h-10 bg-gray-200 dark:bg-apple-dark-bg-tertiary rounded w-full" />
+          <div className="aspect-square bg-warm-100" />
+          <div className="space-y-3 p-4">
+            <div className="h-4 w-1/4 rounded bg-warm-100" />
+            <div className="h-6 w-3/4 rounded bg-warm-100" />
+            <div className="h-4 w-full rounded bg-warm-100" />
+            <div className="h-8 w-1/3 rounded bg-warm-100" />
+            <div className="h-10 w-full rounded bg-warm-100" />
           </div>
         </div>
       ))}
@@ -205,26 +205,25 @@ function ProductsLoading() {
 // ============================================================================
 function EmptyState({ categoryName }: { categoryName: string }) {
   return (
-    <div className="flex flex-col items-center justify-center py-24 px-4">
-      <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-apple-dark-bg-tertiary flex items-center justify-center mb-6">
-        <PackageOpen className="w-8 h-8 text-gray-400 dark:text-apple-dark-text-tertiary" />
+    <div className="flex flex-col items-center justify-center px-4 py-24">
+      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-warm-100">
+        <PackageOpen className="h-8 w-8 text-warm-500" />
       </div>
-      <h3 className="text-2xl font-bold text-apple-gray-900 dark:text-apple-dark-text mb-2">
-        No products found
-      </h3>
-      <p className="text-apple-gray-600 dark:text-apple-dark-text-secondary text-center max-w-md mb-6">
-        We couldn't find any {categoryName.toLowerCase()} matching your filters. Try adjusting your search criteria or browse all products.
+      <h3 className="mb-2 text-2xl font-light text-slate-900">No products found</h3>
+      <p className="mb-6 max-w-md text-center text-slate-500">
+        We couldn&apos;t find any {categoryName.toLowerCase()} matching your filters. Try adjusting
+        your search criteria or browse all products.
       </p>
       <div className="flex gap-4">
         <Link
           href={`/collections/${categoryName.toLowerCase().replace(/\s+/g, '-')}`}
-          className="px-6 py-3 bg-apple-blue-500 text-white rounded-apple font-semibold hover:bg-apple-blue-600 transition-colors"
+          className="rounded bg-bronze-500 px-6 py-3 font-medium text-white transition-colors hover:bg-bronze-600"
         >
           Clear Filters
         </Link>
         <Link
           href="/products"
-          className="px-6 py-3 border border-gray-300 dark:border-apple-dark-border rounded-apple font-semibold hover:bg-gray-50 dark:hover:bg-apple-dark-bg-tertiary transition-colors"
+          className="rounded border border-warm-300 px-6 py-3 font-medium transition-colors hover:bg-warm-50"
         >
           Browse All Products
         </Link>
@@ -236,51 +235,59 @@ function EmptyState({ categoryName }: { categoryName: string }) {
 // ============================================================================
 // Category Hero Component
 // ============================================================================
-function CategoryHero({ categoryData }: { categoryData: NonNullable<ReturnType<typeof getCategoryData>> }) {
+function CategoryHero({
+  categoryData,
+}: {
+  categoryData: NonNullable<ReturnType<typeof getCategoryData>>
+}) {
   return (
-    <div className="relative h-[400px] md:h-[500px] overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-apple-dark-bg-elevated dark:to-apple-dark-bg-secondary">
+    <div className="relative overflow-hidden bg-gradient-to-br from-warm-50 to-warm-100">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
           src={categoryData.heroImage}
           alt={categoryData.name}
           fill
-          className="object-cover opacity-20 dark:opacity-10"
+          className="object-cover opacity-10"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent dark:from-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="relative h-full container mx-auto px-4 flex flex-col justify-end pb-12">
+      <div className="container relative mx-auto px-4 py-16 lg:py-24">
         {/* Breadcrumbs */}
         <nav className="mb-6" aria-label="Breadcrumb">
-          <ol className="flex items-center gap-2 text-sm text-white/90">
+          <ol className="flex items-center gap-2 text-sm text-slate-600">
             <li>
-              <Link href="/" className="hover:text-white transition-colors">
+              <Link href="/" className="transition-colors hover:text-bronze-600">
                 Home
               </Link>
             </li>
-            <li>/</li>
+            <li className="text-slate-400">/</li>
             <li>
-              <Link href="/collections" className="hover:text-white transition-colors">
+              <Link href="/collections" className="transition-colors hover:text-bronze-600">
                 Collections
               </Link>
             </li>
-            <li>/</li>
-            <li className="text-white font-medium">
-              {categoryData.name}
-            </li>
+            <li className="text-slate-400">/</li>
+            <li className="font-medium text-slate-900">{categoryData.name}</li>
           </ol>
         </nav>
 
+        {/* Renin Badge */}
+        <div className="mb-4 inline-flex items-center gap-1.5 rounded border border-bronze-200 bg-bronze-50 px-2.5 py-1 text-xs font-medium text-bronze-600">
+          <Award className="h-3.5 w-3.5" />
+          Official Renin Collection
+        </div>
+
         {/* Title and Description */}
-        <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+        <div className="max-w-2xl">
+          <h1 className="mb-4 text-3xl font-light tracking-tight text-slate-900 lg:text-5xl">
             {categoryData.title}
           </h1>
-          <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+          <p className="text-base leading-relaxed text-slate-600 lg:text-lg">
             {categoryData.description}
           </p>
         </div>
@@ -307,10 +314,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Fetch products
   const data = await getCategoryProducts(params.category, searchParams)
 
-  // If category doesn't exist in database, show empty state
+  // If category doesn&apos;t exist in database, show empty state
   if (!data.category) {
     return (
-      <main className="min-h-screen bg-background">
+      <main className="min-h-screen bg-warm-white">
         <CategoryHero categoryData={categoryData} />
         <div className="container mx-auto px-4 py-12">
           <EmptyState categoryName={categoryData.name} />
@@ -320,7 +327,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   }
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-warm-white">
       {/* Category Hero */}
       <CategoryHero categoryData={categoryData} />
 
@@ -328,21 +335,21 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       <div className="container mx-auto px-4 py-12">
         {/* Product Count */}
         <div className="mb-8">
-          <p className="text-lg text-apple-gray-600 dark:text-apple-dark-text-secondary">
+          <p className="text-base text-slate-500">
             {data.total} {data.total === 1 ? 'product' : 'products'} available
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col gap-8 lg:flex-row">
           {/* Sidebar Filters */}
-          <aside className="w-full lg:w-64 shrink-0">
+          <aside className="w-full shrink-0 lg:w-64">
             <ProductFilters />
           </aside>
 
           {/* Products Grid */}
-          <div className="flex-1 min-w-0">
+          <div className="min-w-0 flex-1">
             {/* Sort Controls */}
-            <div className="flex items-center justify-between mb-6 pb-6 border-b border-gray-200 dark:border-apple-dark-border">
+            <div className="mb-6 flex items-center justify-between border-b border-warm-200 pb-6">
               <ProductSort showViewToggle={false} />
             </div>
 
@@ -350,8 +357,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             <Suspense fallback={<ProductsLoading />}>
               {data.items.length > 0 ? (
                 <>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
-                    {data.items.map((product) => (
+                  <div className="mb-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                    {data.items.map(product => (
                       <ProductCard key={product.id} product={product} />
                     ))}
                   </div>

@@ -1,6 +1,6 @@
 /**
  * Category data for collections pages
- * Contains metadata, descriptions, and hero images for each category
+ * Renin product categories with Ottawa-focused SEO
  */
 
 export interface CategoryData {
@@ -12,63 +12,135 @@ export interface CategoryData {
   metaTitle: string
   metaDescription: string
   keywords: string[]
+  featured?: boolean
 }
 
 export const CATEGORY_DATA: Record<string, CategoryData> = {
   'barn-doors': {
     slug: 'barn-doors',
     name: 'Barn Doors',
-    title: 'Barn Doors',
-    description: 'Transform your space with our stunning collection of barn doors. Perfect for closets, pantries, and room dividers, our barn doors combine rustic charm with modern functionality. Available in various styles, finishes, and hardware options to match any decor.',
+    title: 'Renin Barn Doors',
+    description:
+      'Transform your Ottawa home with our stunning collection of Renin barn doors. Modern sliding designs perfect for closets, pantries, and room dividers. Available in Continental, Gatsby, and Rockport series with professional installation.',
     heroImage: '/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg',
-    metaTitle: 'Barn Doors - Sliding Barn Door Hardware & Closet Doors | PG Closets',
-    metaDescription: 'Shop premium barn doors and hardware from PG Closets. Discover rustic and modern sliding barn doors for closets, pantries, and room dividers. Custom sizes available.',
-    keywords: ['barn doors', 'sliding barn doors', 'barn door hardware', 'rustic doors', 'closet barn doors', 'interior barn doors']
-  },
-
-  'bifold-doors': {
-    slug: 'bifold-doors',
-    name: 'Bifold Doors',
-    title: 'Bifold Doors',
-    description: 'Maximize space efficiency with our premium bifold closet doors. Designed for smooth operation and long-lasting durability, our bifold doors are perfect for closets, laundry rooms, and tight spaces. Choose from a variety of styles including paneled, louvered, and contemporary glass designs.',
-    heroImage: '/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite.jpg',
-    metaTitle: 'Bifold Closet Doors - Space-Saving Folding Doors | PG Closets',
-    metaDescription: 'Browse our collection of bifold closet doors. Space-saving designs with smooth operation, available in wood, glass, and composite materials. Perfect for any closet.',
-    keywords: ['bifold doors', 'bifold closet doors', 'folding doors', 'space-saving doors', 'closet doors', 'bi-fold doors']
-  },
-
-  'glass-doors': {
-    slug: 'glass-doors',
-    name: 'Glass Doors',
-    title: 'Glass Doors',
-    description: 'Elevate your interior design with our elegant glass closet doors. Our collection features frosted, clear, and decorative glass options that add sophistication and natural light to any space. Perfect for modern homes and contemporary offices, these doors combine style with functionality.',
-    heroImage: '/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg',
-    metaTitle: 'Glass Closet Doors - Frosted & Clear Glass Door Designs | PG Closets',
-    metaDescription: 'Explore premium glass closet doors from PG Closets. Choose from frosted, clear, and decorative glass designs. Add elegance and light to your space.',
-    keywords: ['glass doors', 'glass closet doors', 'frosted glass doors', 'clear glass doors', 'contemporary doors', 'modern closet doors']
-  },
-
-  'hardware': {
-    slug: 'hardware',
-    name: 'Hardware',
-    title: 'Door Hardware & Accessories',
-    description: 'Complete your closet door installation with our premium hardware collection. From smooth-gliding tracks and rollers to stylish handles and hinges, we offer everything you need for a professional finish. All hardware is designed for durability and easy installation.',
-    heroImage: '/images/abstract-geometric-shapes.png',
-    metaTitle: 'Closet Door Hardware & Accessories - Tracks, Handles & More | PG Closets',
-    metaDescription: 'Shop quality closet door hardware and accessories. Find tracks, rollers, handles, hinges, and installation hardware for barn doors, bifold, and bypass doors.',
-    keywords: ['door hardware', 'closet hardware', 'barn door hardware', 'door tracks', 'door handles', 'sliding door hardware', 'door accessories']
+    metaTitle: 'Barn Doors Ottawa | Renin Sliding Barn Doors | PG Closets',
+    metaDescription:
+      'Shop premium Renin barn doors in Ottawa. Modern sliding barn doors for closets, pantries, and room dividers. Professional installation available. Free consultation.',
+    keywords: [
+      'barn doors Ottawa',
+      'sliding barn doors',
+      'Renin barn doors',
+      'interior barn doors',
+      'closet barn doors Ottawa',
+      'modern barn doors',
+    ],
+    featured: true,
   },
 
   'bypass-doors': {
     slug: 'bypass-doors',
     name: 'Bypass Doors',
-    title: 'Bypass Doors',
-    description: 'Discover our versatile collection of bypass sliding closet doors. These classic space-savers feature smooth-rolling mechanisms and come in various materials and finishes. Ideal for bedrooms, walk-in closets, and storage spaces where you need maximum accessibility without door swing clearance.',
+    title: 'Renin Bypass Doors',
+    description:
+      'Space-saving Renin bypass closet doors for Ottawa homes. Smooth-rolling mechanisms in Elan, Paris, and Colonial styles. Perfect for bedrooms, walk-in closets, and storage spaces where you need maximum accessibility.',
     heroImage: '/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design.jpg',
-    metaTitle: 'Bypass Closet Doors - Sliding Bypass Doors for Closets | PG Closets',
-    metaDescription: 'Shop bypass sliding closet doors from PG Closets. Space-efficient designs with smooth rolling action. Available in multiple styles and finishes.',
-    keywords: ['bypass doors', 'bypass closet doors', 'sliding closet doors', 'sliding doors', 'space-saving doors', 'mirrored bypass doors']
-  }
+    metaTitle: 'Bypass Closet Doors Ottawa | Renin Sliding Doors | PG Closets',
+    metaDescription:
+      'Shop Renin bypass sliding closet doors in Ottawa. Space-efficient designs with smooth rolling action. Multiple styles and finishes. Professional installation.',
+    keywords: [
+      'bypass doors Ottawa',
+      'bypass closet doors',
+      'sliding closet doors Ottawa',
+      'Renin bypass doors',
+      'space-saving doors',
+      'mirrored bypass doors',
+    ],
+    featured: true,
+  },
+
+  'bifold-doors': {
+    slug: 'bifold-doors',
+    name: 'Bifold Doors',
+    title: 'Renin Bifold Doors',
+    description:
+      'Classic Renin bifold closet doors for Ottawa homes. Space-efficient folding designs in Euro, Laredo, Plantation, and Cambridge series. Perfect for closets, laundry rooms, and tight spaces.',
+    heroImage: '/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite.jpg',
+    metaTitle: 'Bifold Closet Doors Ottawa | Renin Folding Doors | PG Closets',
+    metaDescription:
+      'Browse Renin bifold closet doors in Ottawa. Space-saving folding designs with smooth operation. Wood, glass, and composite options. Professional installation.',
+    keywords: [
+      'bifold doors Ottawa',
+      'bifold closet doors',
+      'folding closet doors Ottawa',
+      'Renin bifold doors',
+      'space-saving doors',
+      'louvered bifold doors',
+    ],
+    featured: true,
+  },
+
+  'sliding-doors': {
+    slug: 'sliding-doors',
+    name: 'Sliding Doors',
+    title: 'Renin Sliding Doors',
+    description:
+      'Premium Renin sliding closet door systems for Ottawa homes. Smooth-gliding tracks with contemporary designs. Available in framed and frameless options with mirror and panel configurations.',
+    heroImage: '/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg',
+    metaTitle: 'Sliding Closet Doors Ottawa | Renin Sliding Systems | PG Closets',
+    metaDescription:
+      'Shop Renin sliding closet doors in Ottawa. Contemporary sliding door systems with smooth-gliding tracks. Framed and frameless options. Professional installation.',
+    keywords: [
+      'sliding doors Ottawa',
+      'sliding closet doors',
+      'Renin sliding doors',
+      'contemporary closet doors',
+      'frameless sliding doors',
+      'modern sliding doors',
+    ],
+    featured: false,
+  },
+
+  mirrors: {
+    slug: 'mirrors',
+    name: 'Mirrors',
+    title: 'Renin Mirror Doors',
+    description:
+      'Elegant Renin mirrored closet doors for Ottawa homes. Full-length mirror options that brighten spaces and add functionality. Available in bypass, sliding, and bifold configurations.',
+    heroImage: '/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg',
+    metaTitle: 'Mirror Closet Doors Ottawa | Renin Mirrored Doors | PG Closets',
+    metaDescription:
+      'Shop Renin mirrored closet doors in Ottawa. Full-length mirror doors that brighten spaces. Bypass, sliding, and bifold options. Professional installation.',
+    keywords: [
+      'mirror doors Ottawa',
+      'mirrored closet doors',
+      'Renin mirror doors',
+      'full-length mirror doors',
+      'bypass mirror doors',
+      'bedroom mirror doors',
+    ],
+    featured: false,
+  },
+
+  hardware: {
+    slug: 'hardware',
+    name: 'Hardware',
+    title: 'Renin Door Hardware',
+    description:
+      'Premium Renin door hardware and accessories. Complete your closet door installation with smooth-gliding tracks, rollers, handles, and mounting systems. All hardware designed for durability and easy installation.',
+    heroImage: '/images/abstract-geometric-shapes.png',
+    metaTitle: 'Closet Door Hardware Ottawa | Renin Tracks & Accessories | PG Closets',
+    metaDescription:
+      'Shop Renin closet door hardware in Ottawa. Tracks, rollers, handles, and installation hardware for barn doors, bifold, and bypass doors. Professional installation.',
+    keywords: [
+      'door hardware Ottawa',
+      'closet door hardware',
+      'barn door hardware',
+      'Renin hardware',
+      'sliding door tracks',
+      'door handles Ottawa',
+    ],
+    featured: false,
+  },
 }
 
 /**
@@ -90,4 +162,18 @@ export function getAllCategorySlugs(): string[] {
  */
 export function isValidCategory(slug: string): boolean {
   return slug in CATEGORY_DATA
+}
+
+/**
+ * Get featured categories for homepage display
+ */
+export function getFeaturedCategories(): CategoryData[] {
+  return Object.values(CATEGORY_DATA).filter((cat) => cat.featured)
+}
+
+/**
+ * Get all categories for navigation
+ */
+export function getAllCategories(): CategoryData[] {
+  return Object.values(CATEGORY_DATA)
 }
