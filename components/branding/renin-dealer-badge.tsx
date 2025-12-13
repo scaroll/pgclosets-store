@@ -104,7 +104,7 @@ export function ReninPartnerSection({ className }: { className?: string }) {
           <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-slate-500">
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-bronze-400" />
-              Full Product Warranty
+              Premium Quality Products
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-bronze-400" />

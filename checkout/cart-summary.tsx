@@ -94,7 +94,7 @@ export function CartSummary({ items, subtotal, tax, installationFee, total, prov
           </svg>
           <span className="font-medium">Free shipping in Ottawa area</span>
         </div>
-        <p className="text-xs text-green-600 mt-1">Lifetime warranty included</p>
+        <p className="text-xs text-green-600 mt-1">Professional installation available</p>
       </div>
     </div>
   )

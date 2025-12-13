@@ -38,9 +38,9 @@ export default function NotFound() {
               </Link>
 
               <div className="flex items-center space-x-4 ml-6">
-                <a href="tel:6134225800" className="text-[var(--color-secondary)] font-semibold hover:text-[var(--color-primary)]">
-                  (613) 422-5800
-                </a>
+                <Link href="/book-consultation" className="bg-[var(--color-secondary)] text-white px-4 py-2 font-semibold hover:bg-[var(--color-primary)] transition-all">
+                  Book Consultation
+                </Link>
               </div>
             </nav>
           </div>
@@ -74,9 +74,9 @@ export default function NotFound() {
 
         <div className="mt-12 text-center">
           <p className="text-gray-600 mb-4">Need help finding what you&apos;re looking for?</p>
-          <a href="tel:6134225800" className="text-[var(--color-secondary)] font-semibold hover:text-[var(--color-primary)] text-lg">
-            Call us: (613) 422-5800
-          </a>
+          <Link href="/book-consultation" className="text-[var(--color-secondary)] font-semibold hover:text-[var(--color-primary)] text-lg">
+            Book a Free Consultation
+          </Link>
         </div>
       </main>
 
@@ -122,9 +122,13 @@ export default function NotFound() {
             <div>
               <h4 className="text-lg font-semibold mb-4 text-[var(--color-secondary)]">Contact</h4>
               <div className="space-y-2 text-gray-300">
-                <div>(613) 422-5800</div>
                 <div>info@pgclosets.com</div>
                 <div>Ottawa & Surrounding Areas</div>
+                <div className="mt-4">
+                  <Link href="/book-consultation" className="text-[var(--color-secondary)] hover:text-white">
+                    Book Consultation →
+                  </Link>
+                </div>
                 <div className="mt-2">Licensed & Insured</div>
               </div>
             </div>

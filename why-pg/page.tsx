@@ -7,7 +7,7 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Why Choose PG Closets | Official Renin Dealer Ottawa",
   description:
-    "Discover why PG Closets is Ottawa&apos;s preferred Renin dealer. Local expertise, transparent pricing, professional installation, and comprehensive warranty coverage.",
+    "Discover why PG Closets is Ottawa&apos;s preferred Renin dealer. Local expertise, transparent pricing, and professional installation services.",
   keywords:
     "why choose PG Closets, Renin dealer Ottawa, local door company, professional installation Ottawa, transparent pricing, Ottawa closet company",
   openGraph: {
@@ -47,7 +47,7 @@ export default function WhyPGPage() {
     { number: "500+", label: "Ottawa Homes Served", description: "Trusted by your neighbors" },
     { number: "98%", label: "Customer Satisfaction", description: "Consistently excellent reviews" },
     { number: "2 Week", label: "Average Delivery", description: "Fast turnaround times" },
-    { number: "Lifetime", label: "Product Warranty", description: "Comprehensive coverage" },
+    { number: "15+", label: "Years Experience", description: "Proven expertise" },
   ]
 
   return (
@@ -156,11 +156,11 @@ export default function WhyPGPage() {
                 <div className="space-y-3">
                   <div className="bg-white rounded-lg p-4">
                     <div className="font-medium text-pg-navy mb-1">PG Closets</div>
-                    <div className="text-sm text-pg-gray">Lifetime local support</div>
+                    <div className="text-sm text-pg-gray">Dedicated local support</div>
                   </div>
                   <div className="bg-gray-100 rounded-lg p-4">
                     <div className="font-medium text-gray-600 mb-1">Big Box</div>
-                    <div className="text-sm text-gray-500">Limited warranty period</div>
+                    <div className="text-sm text-gray-500">Generic call center</div>
                   </div>
                 </div>
               </div>

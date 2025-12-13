@@ -5,13 +5,13 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Professional Closet Door Services Ottawa | Installation & Consultation | PG Closets",
   description:
-    "Expert closet door installation, consultation, and custom solutions in Ottawa. Free in-home consultation, professional installation, lifetime warranty. Serving Ottawa, Kanata, Nepean, Orleans, Barrhaven.",
+    "Expert closet door installation, consultation, and custom solutions in Ottawa. Free consultation, professional installation. Serving Ottawa, Kanata, Nepean, Orleans, Barrhaven.",
   keywords:
     "closet door installation Ottawa, professional door installation, custom closet solutions, home consultation Ottawa, door repair services, closet renovation Ottawa",
   openGraph: {
     title: "Professional Closet Door Services Ottawa | PG Closets",
     description:
-      "Expert closet door installation and consultation services in Ottawa. Free consultation, professional installation, lifetime warranty.",
+      "Expert closet door installation and consultation services in Ottawa. Free consultation and professional installation.",
     images: [{ url: "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg", width: 1200, height: 630 }],
   },
   alternates: { canonical: "/services" },
@@ -107,7 +107,7 @@ export default function ServicesPage() {
               </span>
             </h1>
             <p className="text-xl lg:text-2xl text-gray-100 max-w-2xl mx-auto">
-              Expert installation • Custom solutions • Lifetime warranty
+              Expert installation • Custom solutions • Professional service
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -173,7 +173,7 @@ export default function ServicesPage() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Lifetime warranty
+                    Quality guaranteed
                   </li>
                   <li className="flex items-center gap-2">
                     <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
@@ -378,8 +378,7 @@ export default function ServicesPage() {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Ready to Get Started?</h2>
             <p className="text-xl text-gray-600 mb-8">
-              Transform your space with premium Renin closet doors. Free consultation, transparent pricing, lifetime
-              warranty.
+              Transform your space with premium Renin closet doors. Free consultation and transparent pricing.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -405,7 +404,7 @@ export default function ServicesPage() {
               <div className="text-gray-400">•</div>
               <div>500+ Happy Customers</div>
               <div className="text-gray-400">•</div>
-              <div>Lifetime Warranty</div>
+              <div>Official Renin Dealer</div>
             </div>
           </div>
         </div>

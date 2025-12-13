@@ -68,12 +68,11 @@ export default function AboutPage() {
                 </a>
               ))}
               <div className="flex items-center space-x-4">
-                <a href="tel:6134225800" className="text-[#1e3a8a] font-bold hover:text-[#87ceeb] transition-colors">
-                  📞 (613) 422-5800
-                </a>
-                <button className="bg-[#87ceeb] text-white px-8 py-3 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-[#87ceeb] hover:border-[#1e3a8a]">
-                  FREE QUOTE
-                </button>
+                <Link href="/book-consultation">
+                  <button className="bg-[#87ceeb] text-white px-8 py-3 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-[#87ceeb] hover:border-[#1e3a8a]">
+                    BOOK CONSULTATION
+                  </button>
+                </Link>
               </div>
             </nav>
           </div>
@@ -324,10 +323,12 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <span className="text-[#87ceeb] text-xl">📱</span>
+                  <span className="text-[#87ceeb] text-xl">📅</span>
                   <div>
-                    <div className="font-bold text-white">Phone</div>
-                    <div>(613) 422-5800</div>
+                    <div className="font-bold text-white">Consultations</div>
+                    <Link href="/book-consultation" className="text-[#87ceeb] hover:text-white transition-colors">
+                      Book Online →
+                    </Link>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -358,14 +359,14 @@ export default function AboutPage() {
                 &copy; 2025 PG Closets. All rights reserved. | Licensed & Insured | A+ BBB Rating
               </p>
               <div className="flex space-x-6 text-sm">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="/privacy" className="text-gray-400 hover:text-white transition-colors">
                   Privacy Policy
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="/terms" className="text-gray-400 hover:text-white transition-colors">
                   Terms of Service
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  Warranty
+                <a href="/contact" className="text-gray-400 hover:text-white transition-colors">
+                  Contact
                 </a>
               </div>
             </div>

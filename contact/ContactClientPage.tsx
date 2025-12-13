@@ -117,9 +117,9 @@ export default function ContactClientPage({ contactEmbedEnabled = true }: { cont
               </Link>
 
               <div className="flex items-center space-x-4 ml-6">
-                <a href="tel:6134225800" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C]">
-                  (613) 422-5800
-                </a>
+                <Link href="/book-consultation" className="bg-[#9BC4E2] text-[#1B4A9C] px-4 py-2 font-semibold hover:bg-[#1B4A9C] hover:text-white transition-all">
+                  Book Consultation
+                </Link>
               </div>
             </nav>
 
@@ -307,10 +307,14 @@ export default function ContactClientPage({ contactEmbedEnabled = true }: { cont
             <div>
               <h4 className="text-lg font-semibold mb-4 text-[#9BC4E2]">Contact</h4>
               <div className="space-y-2 text-gray-300">
-                <div>(613) 422-5800</div>
                 <div>info@pgclosets.com</div>
                 <div>Ottawa & Surrounding Areas</div>
-                {/* Added business hours section */}
+                <div className="mt-4">
+                  <Link href="/book-consultation" className="text-[#9BC4E2] hover:text-white">
+                    Book Consultation →
+                  </Link>
+                </div>
+                {/* Business hours section */}
                 <div className="mt-4 pt-4 border-t border-gray-600">
                   <div className="text-sm">
                     <div className="font-semibold text-[#9BC4E2] mb-2">Business Hours:</div>
