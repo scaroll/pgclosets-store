@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import type { Metadata } from "next"
 import Link from "next/link"
 import { ShoppingCart, ArrowLeft } from "lucide-react"
 import { useCartStore } from "@/lib/stores/cart-store"
@@ -48,7 +47,7 @@ export default function CartPage() {
             <ShoppingCart className="h-24 w-24 mx-auto text-muted-foreground mb-6" />
             <h2 className="text-2xl font-semibold mb-4">Your cart is empty</h2>
             <p className="text-muted-foreground mb-8">
-              Looks like you haven't added anything to your cart yet.
+              Looks like you haven&apos;t added anything to your cart yet.
             </p>
             <Button asChild size="lg">
               <Link href="/products">

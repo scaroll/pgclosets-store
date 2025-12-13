@@ -14,7 +14,7 @@ export default function CategoryNotFound() {
         </h1>
 
         <p className="text-lg text-apple-gray-600 dark:text-apple-dark-text-secondary mb-8">
-          Sorry, we couldn't find the category you're looking for. It may have been moved or doesn't exist.
+          Sorry, we couldn&apos;t find the category you&apos;re looking for. It may have been moved or doesn&apos;t exist.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

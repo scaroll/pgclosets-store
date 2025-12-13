@@ -82,7 +82,7 @@ export default function CollectionsPage() {
 }
 
 // Collection Card Component
-function CollectionCard({ category, index }: { category: typeof CATEGORY_DATA[keyof typeof CATEGORY_DATA], index: number }) {
+function CollectionCard({ category, index: _index }: { category: typeof CATEGORY_DATA[keyof typeof CATEGORY_DATA], index: number }) {
   return (
     <Link
       href={`/collections/${category.slug}`}

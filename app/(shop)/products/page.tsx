@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { prisma } from '@/lib/prisma'
 import { ProductCard } from '@/components/products/product-card'
 import { ProductFilters } from '@/components/products/product-filters'
@@ -167,14 +168,14 @@ function EmptyState() {
         No products found
       </h3>
       <p className="text-apple-gray-600 dark:text-apple-dark-text-secondary text-center max-w-md mb-6">
-        We couldn't find any products matching your filters. Try adjusting your search criteria.
+        We couldn&apos;t find any products matching your filters. Try adjusting your search criteria.
       </p>
-      <a
+      <Link
         href="/products"
         className="px-6 py-3 bg-apple-blue-500 text-white rounded-apple font-semibold hover:bg-apple-blue-600 transition-colors"
       >
         Clear Filters
-      </a>
+      </Link>
     </div>
   )
 }
@@ -191,9 +192,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           <nav className="text-sm mb-4" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-apple-gray-600 dark:text-apple-dark-text-secondary">
               <li>
-                <a href="/" className="hover:text-apple-blue-500">
+                <Link href="/" className="hover:text-apple-blue-500">
                   Home
-                </a>
+                </Link>
               </li>
               <li>/</li>
               <li className="text-apple-gray-900 dark:text-apple-dark-text font-medium">

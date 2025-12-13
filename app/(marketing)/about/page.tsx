@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { SectionHeader } from '@/components/shared/section-header'
 import { FeatureCard } from '@/components/shared/feature-card'
 import { StatsSection } from '@/components/shared/stats-section'
@@ -20,11 +19,11 @@ import {
 
 export const metadata: Metadata = {
   title: 'About Us - Premium Closet Solutions in Ottawa | PG Closets',
-  description: 'Discover PG Closets\' story, our commitment to excellence, and why we\'re Ottawa\'s trusted choice for premium custom closet solutions. Expert installation, lifetime warranty, and exceptional service.',
+  description: 'Discover PG Closets&apos; story, our commitment to excellence, and why we&apos;re Ottawa&apos;s trusted choice for premium custom closet solutions. Expert installation and exceptional service.',
   keywords: 'PG Closets, Ottawa closets, custom closets Ottawa, about us, premium closet solutions, closet installation Ottawa',
   openGraph: {
     title: 'About Us - PG Closets Ottawa',
-    description: 'Ottawa\'s premier destination for custom closet solutions. Expert installation, lifetime warranty, and exceptional service.',
+    description: 'Ottawa&apos;s premier destination for custom closet solutions. Expert installation and exceptional service.',
     type: 'website',
   },
 }
@@ -84,16 +83,16 @@ export default function AboutPage() {
               </div>
               <div className="space-y-4 text-lg text-muted-foreground dark:text-apple-dark-text-secondary">
                 <p>
-                  At PG Closets, we believe that exceptional storage solutions are more than just functional—they're transformative. Our journey began with a simple mission: to bring premium, custom-designed closet solutions to homeowners throughout Ottawa.
+                  At PG Closets, we believe that exceptional storage solutions are more than just functional—they&apos;re transformative. Our journey began with a simple mission: to bring premium, custom-designed closet solutions to homeowners throughout Ottawa.
                 </p>
                 <p>
-                  What started as a passion for quality craftsmanship has grown into a trusted partnership with hundreds of Ottawa families. We've helped transform bedrooms, walk-in closets, pantries, and more into beautifully organized spaces that enhance daily life.
+                  What started as a passion for quality craftsmanship has grown into a trusted partnership with hundreds of Ottawa families. We&apos;ve helped transform bedrooms, walk-in closets, pantries, and more into beautifully organized spaces that enhance daily life.
                 </p>
                 <p>
                   Every project we undertake reflects our unwavering commitment to excellence. From the initial consultation to the final installation, we approach each space with meticulous attention to detail and a dedication to exceeding expectations.
                 </p>
                 <p>
-                  Today, we're proud to be Ottawa's premier destination for custom closet solutions, backed by expert installation, premium materials, and a lifetime warranty on all our products.
+                  Today, we&apos;re proud to be Ottawa&apos;s premier destination for custom closet solutions, backed by expert installation and premium materials.
                 </p>
               </div>
             </div>
@@ -123,7 +122,7 @@ export default function AboutPage() {
             <FeatureCard
               icon={<Shield className="w-full h-full" />}
               title="Lasting Commitment"
-              description="Our lifetime warranty and ongoing support demonstrate our confidence in our products and our commitment to your long-term satisfaction."
+              description="Our ongoing support and dedication demonstrate our confidence in our products and our commitment to your long-term satisfaction."
             />
           </div>
         </div>
@@ -222,7 +221,7 @@ export default function AboutPage() {
                     </span>
                   </div>
                   <p className="text-lg text-muted-foreground dark:text-apple-dark-text-secondary">
-                    Reached 500+ satisfied customers and earned recognition as one of Ottawa's top-rated closet solution providers.
+                    Reached 500+ satisfied customers and earned recognition as one of Ottawa&apos;s top-rated closet solution providers.
                   </p>
                 </div>
               </div>
@@ -258,7 +257,7 @@ export default function AboutPage() {
                     </span>
                   </div>
                   <p className="text-lg text-muted-foreground dark:text-apple-dark-text-secondary">
-                    Serving 1000+ happy customers with expert installation, lifetime warranty, and a commitment to excellence that continues to grow.
+                    Serving 1000+ happy customers with expert installation and a commitment to excellence that continues to grow.
                   </p>
                 </div>
               </div>
@@ -283,7 +282,7 @@ export default function AboutPage() {
               </div>
               <div className="space-y-4 text-lg text-muted-foreground dark:text-apple-dark-text-secondary">
                 <p>
-                  As a locally-owned business, we're proud to serve homeowners throughout Ottawa and the surrounding areas. Our deep roots in the community mean we understand the unique needs and styles of Ottawa homes.
+                  As a locally-owned business, we&apos;re proud to serve homeowners throughout Ottawa and the surrounding areas. Our deep roots in the community mean we understand the unique needs and styles of Ottawa homes.
                 </p>
                 <p>
                   We offer free in-home consultations, professional measurements, and expert installation services across the entire Ottawa region.
@@ -350,9 +349,9 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
                 <Shield className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold tracking-tight">Lifetime Warranty</h3>
+              <h3 className="text-xl font-bold tracking-tight">Quality Guaranteed</h3>
               <p className="text-muted-foreground dark:text-apple-dark-text-secondary">
-                All products backed by comprehensive lifetime warranty for complete peace of mind.
+                All products backed by premium Renin quality for complete peace of mind.
               </p>
             </div>
 
