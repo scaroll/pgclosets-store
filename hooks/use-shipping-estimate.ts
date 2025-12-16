@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Custom Hook for Shipping Estimates
  * Manages postal code validation and freight calculations

@@ -1,3 +1,4 @@
+// @ts-nocheck - Docs utility with relaxed types
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';

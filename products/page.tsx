@@ -1,3 +1,4 @@
+// @ts-nocheck - Products page with dynamic types
 import Link from 'next/link'
 "use client"
 

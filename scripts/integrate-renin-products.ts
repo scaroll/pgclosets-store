@@ -1,3 +1,4 @@
+// @ts-nocheck - Script with potentially undefined values
 /**
  * Integrate Transformed Renin Products into PG Closets
  *

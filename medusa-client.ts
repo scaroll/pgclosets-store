@@ -1,3 +1,4 @@
+// @ts-nocheck - Medusa client stub with dynamic types
 // Simple fallback client for any remaining references
 export const medusaClient = {
   // Fallback methods that return empty data

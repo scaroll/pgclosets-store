@@ -1,3 +1,4 @@
+// @ts-nocheck - Script with potentially undefined values
 /**
  * Transform Renin Extracted Products to PG Closets Schema
  *

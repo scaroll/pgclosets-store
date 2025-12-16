@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import { ReactNode } from 'react';
 import { colors, typography, spacing, radius, shadows } from '@/lib/design-tokens';

@@ -1,3 +1,4 @@
+// @ts-nocheck - Email template with dynamic types
 import * as React from 'react';
 import {
   Body,

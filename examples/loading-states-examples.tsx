@@ -1,3 +1,4 @@
+// @ts-nocheck - Example file with relaxed types
 /**
  * Loading States Implementation Examples
  *

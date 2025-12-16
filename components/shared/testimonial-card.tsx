@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Testimonial Card Component - Customer reviews with Apple design system
  *

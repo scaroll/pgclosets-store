@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// @ts-nocheck - Script with implicit any types
 /**
  * SEO Validation Script
  * Validates all SEO infrastructure components

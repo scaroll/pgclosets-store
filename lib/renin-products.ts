@@ -45,3 +45,18 @@ export function searchProducts(query: string): Product[] {
       p.features.some((f) => f.toLowerCase().includes(lowerQuery))
   ) as Product[]
 }
+
+// Tax calculation for Ontario (13% HST)
+const TAX_RATE = 0.13
+
+export function calculateTax(subtotal: number): number {
+  return Math.round(subtotal * TAX_RATE * 100) / 100
+}
+
+export function calculateTotal(subtotal: number): { tax: number; total: number } {
+  const tax = calculateTax(subtotal)
+  return {
+    tax,
+    total: subtotal + tax
+  }
+}

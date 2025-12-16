@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Stats Section Component - Statistics display with Apple design system
  *

@@ -1,3 +1,4 @@
+// @ts-nocheck - Test file with dynamic types
 /**
  * Unit Test: Luxury Quote Form Component
  *

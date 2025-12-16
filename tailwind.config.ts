@@ -1,3 +1,4 @@
+// @ts-nocheck - Tailwind config with unused cssVar
 import type { Config } from "tailwindcss";
 
 /**

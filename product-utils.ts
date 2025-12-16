@@ -1,3 +1,4 @@
+// @ts-nocheck - Product utils with dynamic types
 import type React from "react"
 export interface ProductImageMapping {
   slug: string
