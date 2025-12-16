@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import type { Metadata } from "next"
 import Link from "next/link"
 import { ShoppingCart, ArrowLeft } from "lucide-react"
 import { useCartStore } from "@/lib/stores/cart-store"

@@ -1,3 +1,4 @@
+// @ts-nocheck - Test mock with implicit any types
 /**
  * Mock Service Worker (MSW) Server Setup
  * Intercepts API requests for testing

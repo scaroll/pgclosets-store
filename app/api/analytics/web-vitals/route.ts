@@ -12,7 +12,7 @@ interface WebVitalsData {
 
 export async function POST(request: NextRequest) {
   try {
-    const headersList = headers()
+    const headersList = await headers()
     const userAgent = headersList.get('user-agent') || ''
 
     // Only process requests from your own domain

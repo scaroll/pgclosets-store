@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { recommendationEngine, ProductSchema } from '@/lib/ai/recommendation-engine';
+import { recommendationEngine } from '@/lib/ai/recommendation-engine';
 
 export const maxDuration = 30; // Increased for AI processing
 export const dynamic = 'force-dynamic';
@@ -60,7 +60,6 @@ const RecommendationsResponseSchema = z.object({
   processingTime: z.number(),
 });
 
-type RecommendationRequest = z.infer<typeof RecommendationRequestSchema>;
 type RecommendationsResponse = z.infer<typeof RecommendationsResponseSchema>;
 
 export async function POST(req: Request) {

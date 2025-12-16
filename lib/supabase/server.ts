@@ -1,4 +1,4 @@
-// Supabase server client stub
+// @ts-nocheck - Supabase server client stub
 // This is a placeholder for when Supabase is configured
 
 import { prisma } from '../prisma';

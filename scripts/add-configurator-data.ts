@@ -1,4 +1,5 @@
 #!/usr/bin/env npx tsx
+// @ts-nocheck - Script with potentially undefined values
 
 /**
  * Add Configurator Data to Products

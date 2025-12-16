@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { SectionHeader } from '@/components/shared/section-header'
 import { FeatureCard } from '@/components/shared/feature-card'
 import { StatsSection } from '@/components/shared/stats-section'

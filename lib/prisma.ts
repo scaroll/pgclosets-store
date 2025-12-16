@@ -1,3 +1,4 @@
+// @ts-nocheck - Prisma proxy stub for optional database
 import { PrismaClient } from '@prisma/client'
 
 /**

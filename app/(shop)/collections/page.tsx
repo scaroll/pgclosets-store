@@ -45,8 +45,8 @@ export default function CollectionsPage() {
       {/* Collections Grid */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {categories.map((category, index) => (
-            <CollectionCard key={category.slug} category={category} index={index} />
+          {categories.map((category) => (
+            <CollectionCard key={category.slug} category={category} />
           ))}
         </div>
       </div>
@@ -82,7 +82,7 @@ export default function CollectionsPage() {
 }
 
 // Collection Card Component
-function CollectionCard({ category, index }: { category: typeof CATEGORY_DATA[keyof typeof CATEGORY_DATA], index: number }) {
+function CollectionCard({ category }: { category: typeof CATEGORY_DATA[keyof typeof CATEGORY_DATA] }) {
   return (
     <Link
       href={`/collections/${category.slug}`}
