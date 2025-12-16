@@ -1,23 +1,21 @@
 // @ts-nocheck
 import NextAuth from "next-auth"
-import { PrismaAdapter } from "@auth/prisma-adapter"
-import { prisma } from "@/lib/prisma"
 import Credentials from "next-auth/providers/credentials"
-import Google from "next-auth/providers/google"
-import bcrypt from "bcryptjs"
 
+// Check if auth is properly configured
+const isAuthConfigured = Boolean(
+  process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET
+)
+
+// Minimal auth config that works without database
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET || "development-secret-not-for-production",
   session: { strategy: "jwt" },
   pages: {
     signIn: "/login",
     error: "/auth/error",
   },
-  providers: [
-    Google({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
+  providers: isAuthConfigured ? [
     Credentials({
       name: "credentials",
       credentials: {
@@ -25,36 +23,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          return null
+        // Demo/placeholder auth - replace with real logic when needed
+        if (credentials?.email === "demo@pgclosets.com" && credentials?.password === "demo") {
+          return {
+            id: "1",
+            email: "demo@pgclosets.com",
+            name: "Demo User",
+            role: "USER",
+          }
         }
-
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email as string },
-        })
-
-        if (!user || !user.password) {
-          return null
-        }
-
-        const passwordMatch = await bcrypt.compare(
-          credentials.password as string,
-          user.password
-        )
-
-        if (!passwordMatch) {
-          return null
-        }
-
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          role: user.role,
-        }
+        return null
       },
     }),
-  ],
+  ] : [],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
