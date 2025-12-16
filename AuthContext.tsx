@@ -1,6 +1,6 @@
 "use client"
 import { createContext, useContext, useReducer, useEffect, type ReactNode } from "react"
-import type { User } from "@/lib/types"
+import type { User } from "@/types"
 
 interface AuthState {
   user: User | null

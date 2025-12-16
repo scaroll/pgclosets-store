@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export const metadata = {
@@ -69,20 +70,20 @@ export default function OttawaPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                variant="primary"
+                asChild
+                variant="default"
                 size="lg"
-                href="/request-work"
                 className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
               >
-                Get Free Ottawa Quote →
+                <Link href="/request-work">Get Free Ottawa Quote →</Link>
               </Button>
               <Button
+                asChild
                 variant="secondary"
                 size="lg"
-                href="/products"
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
               >
-                Browse Products
+                <Link href="/products">Browse Products</Link>
               </Button>
             </div>
           </div>
@@ -227,20 +228,20 @@ export default function OttawaPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
-              variant="primary"
+              asChild
+              variant="default"
               size="lg"
-              href="/request-work"
               className="bg-white text-blue-600 hover:bg-gray-100"
             >
-              Get Free Ottawa Quote →
+              <Link href="/request-work">Get Free Ottawa Quote →</Link>
             </Button>
             <Button
+              asChild
               variant="secondary"
               size="lg"
-              href="mailto:spencer@peoplesgrp.com"
               className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
             >
-              Email: spencer@peoplesgrp.com
+              <a href="mailto:spencer@peoplesgrp.com">Email: spencer@peoplesgrp.com</a>
             </Button>
           </div>
         </div>

@@ -13,8 +13,8 @@ interface AddToCartButtonProps {
   }
   price?: number
   className?: string
-  size?: "sm" | "md" | "lg"
-  variant?: "primary" | "secondary" | "tertiary" | "ghost" | "outline" | "link" | "destructive"
+  size?: "sm" | "default" | "lg"
+  variant?: "default" | "secondary" | "ghost" | "outline" | "link" | "destructive"
 }
 
 export default function AddToCartButton({
@@ -22,8 +22,8 @@ export default function AddToCartButton({
   customizations,
   price,
   className,
-  size = "md",
-  variant = "primary",
+  size = "default",
+  variant = "default",
 }: AddToCartButtonProps) {
   const handleRequestQuote = () => {
     const productDetails = encodeURIComponent(

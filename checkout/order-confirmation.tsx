@@ -97,7 +97,7 @@ export function OrderConfirmation({ orderId, shippingInfo }: OrderConfirmationPr
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button variant="primary" asChild>
+          <Button variant="default" asChild>
             <Link href="/store">Continue Shopping</Link>
           </Button>
           <Button variant="secondary" asChild>

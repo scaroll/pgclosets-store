@@ -71,7 +71,7 @@ export default function NepeanPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 asChild
-                variant="primary"
+                variant="default"
                 size="lg"
                 className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
               >
@@ -195,7 +195,7 @@ export default function NepeanPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               asChild
-              variant="primary"
+              variant="default"
               size="lg"
               className="bg-white text-blue-600 hover:bg-gray-100"
             >

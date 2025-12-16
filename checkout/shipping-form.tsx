@@ -252,7 +252,7 @@ export function ShippingForm({ initialData, onSubmit }: ShippingFormProps) {
         </div>
 
         <div className="flex justify-end">
-          <Button type="submit" variant="primary" size="lg">
+          <Button type="submit" variant="default" size="lg">
             Continue to Payment
           </Button>
         </div>

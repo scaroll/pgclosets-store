@@ -36,7 +36,11 @@ export interface ErrorState {
 }
 
 // Re-export commonly used types
-export * from './commerce'
+// Note: product.ts has the canonical Product types used by the application
+// commerce.ts has legacy/API types - import them explicitly if needed
 export * from './product'
 export * from './hooks'
 export * from './auth'
+
+// Re-export specific commerce types that don't conflict
+export type { Address, Order, Cart } from './commerce'

@@ -262,7 +262,7 @@ export default function BlogPage() {
             Get expert advice and professional installation from Ottawa&apos;s trusted Renin dealer
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild variant="primary" size="lg" className="bg-blue-600 text-white hover:bg-blue-700">
+            <Button asChild variant="default" size="lg" className="bg-blue-600 text-white hover:bg-blue-700">
               <Link href="/quote">Get Free Quote →</Link>
             </Button>
             <Button asChild variant="secondary" size="lg" className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">

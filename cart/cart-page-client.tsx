@@ -19,7 +19,7 @@ export function CartPageClient() {
             <p className="text-body-l text-pg-gray mb-8 max-w-md mx-auto">
               Looks like you haven't added any premium closet doors to your cart yet.
             </p>
-            <Button variant="primary" size="lg" asChild>
+            <Button variant="default" size="lg" asChild>
               <Link href="/store">Shop Closet Doors</Link>
             </Button>
           </div>
@@ -123,7 +123,7 @@ export function CartPageClient() {
               </div>
 
               <div className="space-y-3">
-                <Button variant="primary" size="lg" className="w-full" asChild>
+                <Button variant="default" size="lg" className="w-full" asChild>
                   <Link href="/checkout">Proceed to Checkout</Link>
                 </Button>
                 <Button variant="secondary" size="lg" className="w-full" asChild>
