@@ -104,6 +104,11 @@
     "lib/performance-optimizer.ts",
     "lib/generated/**",
     "public/sw.js",
-    "public/service-worker.js"
+    "public/service-worker.js",
+    "tests/**/*",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
   ]
 }

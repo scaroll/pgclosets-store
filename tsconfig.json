@@ -52,12 +52,21 @@
       "@/ui/*": ["./ui/*"]
     },
     // Source maps for debugging
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true
+    "sourceMap": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "global.d.ts"],
-  "exclude": ["node_modules", ".next", "dist", "build", "coverage"],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "dist",
+    "build",
+    "coverage",
+    "tests/**/*",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
+  ],
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
