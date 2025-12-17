@@ -25,15 +25,20 @@ const isValidPostalCode = (postalCode: string): boolean => {
 
 const isValidUrl = (url: string): boolean => {
   try {
-    new URL(url)
-    return true
+    const parsed = new URL(url)
+    // Ensure there's a proper protocol (not just //)
+    return (
+      parsed.protocol.startsWith('http') ||
+      parsed.protocol.startsWith('ftp') ||
+      parsed.protocol.startsWith('mailto')
+    )
   } catch {
     return false
   }
 }
 
 const isValidPrice = (price: number): boolean => {
-  return typeof price === 'number' && price >= 0 && !isNaN(price)
+  return typeof price === 'number' && price >= 0 && !isNaN(price) && isFinite(price)
 }
 
 const isValidQuantity = (quantity: number): boolean => {

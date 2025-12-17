@@ -1,67 +1,75 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck - AI pricing with dynamic types
-import { NextResponse } from 'next/server';
-import { z } from 'zod';
-import { dynamicPricingEngine, ProductPricingSchema, MarketDataSchema } from '@/lib/ai/dynamic-pricing';
+import { NextResponse } from 'next/server'
+import { z } from 'zod'
+import {
+  dynamicPricingEngine,
+  ProductPricingSchema,
+  MarketDataSchema,
+  type MarketData,
+} from '@/lib/ai/dynamic-pricing'
 
-export const maxDuration = 15;
+export const maxDuration = 15
 
 // Request schema
 const PricingRequestSchema = z.object({
   product: ProductPricingSchema,
   marketData: MarketDataSchema.optional(),
-  businessRules: z.object({
-    minMargin: z.number().optional(),
-    maxPriceChange: z.number().optional(),
-    priceFloor: z.number().optional(),
-    priceCeiling: z.number().optional(),
-    strategy: z.enum(['aggressive', 'balanced', 'conservative', 'premium']).optional(),
-  }).optional(),
+  businessRules: z
+    .object({
+      minMargin: z.number().optional(),
+      maxPriceChange: z.number().optional(),
+      priceFloor: z.number().optional(),
+      priceCeiling: z.number().optional(),
+      strategy: z.enum(['aggressive', 'balanced', 'conservative', 'premium']).optional(),
+    })
+    .optional(),
   batchMode: z.boolean().default(false),
   products: z.array(ProductPricingSchema).optional(),
-});
+})
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const validatedData = PricingRequestSchema.parse(body);
+    const body: unknown = await req.json()
+    const validatedData = PricingRequestSchema.parse(body)
 
-    const { product, marketData, businessRules, batchMode, products } = validatedData;
+    const { product, marketData, businessRules, batchMode, products } = validatedData
 
     // Get market data if not provided
-    const finalMarketData = marketData || await fetchMarketData();
+    const finalMarketData: MarketData = marketData || getDefaultMarketData()
 
     if (batchMode && products) {
       // Batch optimization
-      const recommendations = await dynamicPricingEngine.optimizeBatchPricing(
+      const recommendations = dynamicPricingEngine.optimizeBatchPricing(
         products,
         finalMarketData,
         businessRules
-      );
+      )
 
       // Update pricing history for all products
       products.forEach(p => {
-        dynamicPricingEngine.updatePricingHistory(p.productId, p);
-      });
+        dynamicPricingEngine.updatePricingHistory(p.productId, p)
+      })
 
       return NextResponse.json({
         success: true,
         recommendations,
         insights: products.map(p => dynamicPricingEngine.getPricingInsights(p.productId)),
         timestamp: new Date().toISOString(),
-      });
+      })
     } else {
       // Single product optimization
-      const recommendation = await dynamicPricingEngine.calculateOptimalPrice(
+      const recommendation = dynamicPricingEngine.calculateOptimalPrice(
         product,
         finalMarketData,
         businessRules
-      );
+      )
 
       // Update pricing history
-      dynamicPricingEngine.updatePricingHistory(product.productId, product);
+      dynamicPricingEngine.updatePricingHistory(product.productId, product)
 
       // Get additional insights
-      const insights = dynamicPricingEngine.getPricingInsights(product.productId);
+      const insights = dynamicPricingEngine.getPricingInsights(product.productId)
 
       return NextResponse.json({
         success: true,
@@ -69,11 +77,10 @@ export async function POST(req: Request) {
         insights,
         marketData: finalMarketData,
         timestamp: new Date().toISOString(),
-      });
+      })
     }
-
   } catch (error) {
-    console.error('Pricing API Error:', error);
+    console.error('Pricing API Error:', error)
 
     return NextResponse.json(
       {
@@ -82,14 +89,14 @@ export async function POST(req: Request) {
         details: process.env.NODE_ENV === 'development' ? String(error) : undefined,
       },
       { status: 500 }
-    );
+    )
   }
 }
 
 /**
- * Fetch market data from various sources
+ * Get default market data
  */
-async function fetchMarketData(): Promise<any> {
+function getDefaultMarketData(): MarketData {
   // In production, this would fetch from multiple APIs:
   // - Competitor pricing APIs
   // - Market trend APIs
@@ -141,5 +148,5 @@ async function fetchMarketData(): Promise<any> {
         volume: 6700,
       },
     ],
-  };
+  }
 }

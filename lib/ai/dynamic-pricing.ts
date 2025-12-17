@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck - AI pricing with dynamic types
-import { z } from 'zod';
+import { z } from 'zod'
 
 // Product pricing schema
 export const ProductPricingSchema = z.object({
@@ -10,94 +11,109 @@ export const ProductPricingSchema = z.object({
   cost: z.number(),
   category: z.string(),
   inventoryLevel: z.number(),
-  salesHistory: z.array(z.object({
-    date: z.string(),
-    quantity: z.number(),
-    price: z.number(),
-  })).optional(),
+  salesHistory: z
+    .array(
+      z.object({
+        date: z.string(),
+        quantity: z.number(),
+        price: z.number(),
+      })
+    )
+    .optional(),
   attributes: z.record(z.any()).optional(),
-});
+})
 
 // Market data schema
 export const MarketDataSchema = z.object({
-  competitorPrices: z.array(z.object({
-    competitor: z.string(),
-    price: z.number(),
-    availability: z.string(),
-    lastUpdated: z.date(),
-  })).optional(),
+  competitorPrices: z
+    .array(
+      z.object({
+        competitor: z.string(),
+        price: z.number(),
+        availability: z.string(),
+        lastUpdated: z.date(),
+      })
+    )
+    .optional(),
   marketDemand: z.number().optional(),
   seasonIndex: z.number().optional(),
-  economicIndicators: z.object({
-    inflationRate: z.number(),
-    consumerConfidence: z.number(),
-    housingMarket: z.number(),
-  }).optional(),
-  trends: z.array(z.object({
-    keyword: z.string(),
-    trend: z.number(),
-    volume: z.number(),
-  })).optional(),
-});
+  economicIndicators: z
+    .object({
+      inflationRate: z.number(),
+      consumerConfidence: z.number(),
+      housingMarket: z.number(),
+    })
+    .optional(),
+  trends: z
+    .array(
+      z.object({
+        keyword: z.string(),
+        trend: z.number(),
+        volume: z.number(),
+      })
+    )
+    .optional(),
+})
 
-export type ProductPricing = z.infer<typeof ProductPricingSchema>;
-export type MarketData = z.infer<typeof MarketDataSchema>;
+export type ProductPricing = z.infer<typeof ProductPricingSchema>
+export type MarketData = z.infer<typeof MarketDataSchema>
 
-interface PricingRecommendation {
-  productId: string;
-  currentPrice: number;
-  recommendedPrice: number;
-  priceChange: number;
-  priceChangePercent: number;
-  confidence: number;
-  reasoning: string;
+export interface PricingRecommendation {
+  productId: string
+  currentPrice: number
+  recommendedPrice: number
+  priceChange: number
+  priceChangePercent: number
+  confidence: number
+  reasoning: string
   factors: {
-    factor: string;
-    impact: number;
-    description: string;
-  }[];
+    factor: string
+    impact: number
+    description: string
+  }[]
 }
 
-interface PricingInsights {
-  productId: string;
-  avgPrice: number;
-  priceVolatility: number;
-  demandTrend: string;
-  competitorPosition: string;
-  recommendations: string[];
+export interface PricingInsights {
+  productId: string
+  avgPrice: number
+  priceVolatility: number
+  demandTrend: string
+  competitorPosition: string
+  recommendations: string[]
 }
 
 // Pricing history storage (in-memory for now)
-const pricingHistory = new Map<string, ProductPricing[]>();
+const pricingHistory = new Map<string, ProductPricing[]>()
 
 class DynamicPricingEngine {
   /**
    * Calculate optimal price for a product
    */
-  async calculateOptimalPrice(
+  calculateOptimalPrice(
     product: ProductPricing,
     marketData?: MarketData,
     businessRules?: {
-      minMargin?: number;
-      maxPriceChange?: number;
-      priceFloor?: number;
-      priceCeiling?: number;
-      strategy?: 'aggressive' | 'balanced' | 'conservative' | 'premium';
+      minMargin?: number
+      maxPriceChange?: number
+      priceFloor?: number
+      priceCeiling?: number
+      strategy?: 'aggressive' | 'balanced' | 'conservative' | 'premium'
     }
-  ): Promise<PricingRecommendation> {
+  ): PricingRecommendation {
     const {
       minMargin = 0.2,
       maxPriceChange = 0.15,
       priceFloor,
       priceCeiling,
       strategy = 'balanced',
-    } = businessRules || {};
+    } = businessRules || {}
 
     // Calculate base metrics
-    const currentMargin = (product.currentPrice - product.cost) / product.currentPrice;
+    const _currentMargin = (product.currentPrice - product.cost) / product.currentPrice
     const competitorAvg = marketData?.competitorPrices
-      ? marketData.competitorPrices.reduce((sum, c) => sum + c.price, 0) / marketData.competitorPrices.length
-      : product.currentPrice;
+      ? marketData.competitorPrices.reduce((sum, c) => sum + c.price, 0) /
+        marketData.competitorPrices.length
+      : product.currentPrice
 
     // Strategy multipliers
     const strategyMultipliers = {
@@ -105,46 +121,43 @@ class DynamicPricingEngine {
       balanced: 1.0,
       conservative: 1.05,
       premium: 1.15,
-    };
+    }
 
     // Calculate recommended price
-    let recommendedPrice = product.basePrice * strategyMultipliers[strategy];
+    let recommendedPrice = product.basePrice * strategyMultipliers[strategy]
 
     // Adjust for market demand
     if (marketData?.marketDemand) {
-      recommendedPrice *= marketData.marketDemand;
+      recommendedPrice *= marketData.marketDemand
     }
 
     // Adjust for seasonality
     if (marketData?.seasonIndex) {
-      recommendedPrice *= (1 + (marketData.seasonIndex - 1) * 0.5);
+      recommendedPrice *= 1 + (marketData.seasonIndex - 1) * 0.5
     }
 
     // Apply constraints
-    const minPrice = Math.max(
-      product.cost / (1 - minMargin),
-      priceFloor || 0
-    );
-    const maxPrice = priceCeiling || product.currentPrice * (1 + maxPriceChange);
-    const maxPriceDown = product.currentPrice * (1 - maxPriceChange);
+    const minPrice = Math.max(product.cost / (1 - minMargin), priceFloor || 0)
+    const maxPrice = priceCeiling || product.currentPrice * (1 + maxPriceChange)
+    const maxPriceDown = product.currentPrice * (1 - maxPriceChange)
 
-    recommendedPrice = Math.max(minPrice, Math.min(maxPrice, recommendedPrice));
-    recommendedPrice = Math.max(maxPriceDown, recommendedPrice);
+    recommendedPrice = Math.max(minPrice, Math.min(maxPrice, recommendedPrice))
+    recommendedPrice = Math.max(maxPriceDown, recommendedPrice)
 
     // Round to nearest cent
-    recommendedPrice = Math.round(recommendedPrice * 100) / 100;
+    recommendedPrice = Math.round(recommendedPrice * 100) / 100
 
-    const priceChange = recommendedPrice - product.currentPrice;
-    const priceChangePercent = (priceChange / product.currentPrice) * 100;
+    const priceChange = recommendedPrice - product.currentPrice
+    const priceChangePercent = (priceChange / product.currentPrice) * 100
 
-    const factors: PricingRecommendation['factors'] = [];
+    const factors: PricingRecommendation['factors'] = []
 
     if (marketData?.marketDemand && marketData.marketDemand > 1) {
       factors.push({
         factor: 'Market Demand',
         impact: (marketData.marketDemand - 1) * 100,
         description: `Demand is ${Math.round((marketData.marketDemand - 1) * 100)}% above baseline`,
-      });
+      })
     }
 
     if (marketData?.seasonIndex && marketData.seasonIndex > 1) {
@@ -152,7 +165,7 @@ class DynamicPricingEngine {
         factor: 'Seasonality',
         impact: (marketData.seasonIndex - 1) * 50,
         description: `Seasonal demand is elevated`,
-      });
+      })
     }
 
     if (competitorAvg > product.currentPrice * 1.1) {
@@ -160,7 +173,7 @@ class DynamicPricingEngine {
         factor: 'Competitor Pricing',
         impact: 5,
         description: `Competitors are priced ${Math.round((competitorAvg / product.currentPrice - 1) * 100)}% higher`,
-      });
+      })
     }
 
     return {
@@ -172,52 +185,56 @@ class DynamicPricingEngine {
       confidence: 0.85,
       reasoning: `Based on ${strategy} pricing strategy with current market conditions`,
       factors,
-    };
+    }
   }
 
   /**
    * Optimize pricing for multiple products
    */
-  async optimizeBatchPricing(
+  optimizeBatchPricing(
     products: ProductPricing[],
     marketData?: MarketData,
-    businessRules?: any
-  ): Promise<PricingRecommendation[]> {
-    const recommendations = await Promise.all(
-      products.map(product => this.calculateOptimalPrice(product, marketData, businessRules))
-    );
-    return recommendations;
+    businessRules?: {
+      minMargin?: number
+      maxPriceChange?: number
+      priceFloor?: number
+      priceCeiling?: number
+      strategy?: 'aggressive' | 'balanced' | 'conservative' | 'premium'
+    }
+  ): PricingRecommendation[] {
+    return products.map(product => this.calculateOptimalPrice(product, marketData, businessRules))
   }
 
   /**
    * Update pricing history for a product
    */
   updatePricingHistory(productId: string, product: ProductPricing): void {
-    const history = pricingHistory.get(productId) || [];
-    history.push({ ...product });
+    const history = pricingHistory.get(productId) || []
+    history.push({ ...product })
     if (history.length > 100) {
-      history.shift();
+      history.shift()
     }
-    pricingHistory.set(productId, history);
+    pricingHistory.set(productId, history)
   }
 
   /**
    * Get pricing insights for a product
    */
   getPricingInsights(productId: string): PricingInsights | null {
-    const history = pricingHistory.get(productId);
+    const history = pricingHistory.get(productId)
 
     if (!history || history.length === 0) {
-      return null;
+      return null
     }
 
-    const prices = history.map(h => h.currentPrice);
-    const avgPrice = prices.reduce((sum, p) => sum + p, 0) / prices.length;
-    const variance = prices.reduce((sum, p) => sum + Math.pow(p - avgPrice, 2), 0) / prices.length;
-    const priceVolatility = Math.sqrt(variance) / avgPrice;
+    const prices = history.map(h => h.currentPrice)
+    const avgPrice = prices.reduce((sum, p) => sum + p, 0) / prices.length
+    const variance = prices.reduce((sum, p) => sum + Math.pow(p - avgPrice, 2), 0) / prices.length
+    const priceVolatility = Math.sqrt(variance) / avgPrice
 
-    const recentPrices = prices.slice(-10);
-    const demandTrend = recentPrices[recentPrices.length - 1] > recentPrices[0] ? 'increasing' : 'stable';
+    const recentPrices = prices.slice(-10)
+    const demandTrend =
+      recentPrices[recentPrices.length - 1] > recentPrices[0] ? 'increasing' : 'stable'
 
     return {
       productId,
@@ -229,8 +246,8 @@ class DynamicPricingEngine {
         'Consider seasonal pricing adjustments',
         'Monitor competitor pricing weekly',
       ],
-    };
+    }
   }
 }
 
-export const dynamicPricingEngine = new DynamicPricingEngine();
+export const dynamicPricingEngine = new DynamicPricingEngine()
