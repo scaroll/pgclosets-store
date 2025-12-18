@@ -1,0 +1,315 @@
+{
+    "version": "1.0",
+    "description": "Skill activation triggers for Claude Code. Controls when skills automatically suggest or block actions. Adapted for PG Closets Next.js e-commerce project.",
+    "skills": {
+        "skill-developer": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Meta-skill for creating and managing Claude Code skills",
+            "promptTriggers": {
+                "keywords": [
+                    "skill system",
+                    "create skill",
+                    "add skill",
+                    "skill triggers",
+                    "skill rules",
+                    "hook system",
+                    "skill development",
+                    "skill-rules.json"
+                ],
+                "intentPatterns": [
+                    "(how do|how does|explain).*?skill",
+                    "(create|add|modify|build).*?skill",
+                    "skill.*?(work|trigger|activate|system)"
+                ]
+            }
+        },
+        "backend-dev-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Backend development patterns for Next.js API routes, Prisma, and server actions",
+            "promptTriggers": {
+                "keywords": [
+                    "backend",
+                    "API route",
+                    "server action",
+                    "route handler",
+                    "endpoint",
+                    "middleware",
+                    "validation",
+                    "Zod",
+                    "Prisma",
+                    "database",
+                    "authentication",
+                    "next-auth",
+                    "server component"
+                ],
+                "intentPatterns": [
+                    "(create|add|implement|build).*?(route|endpoint|API|server action)",
+                    "(fix|handle|debug).*?(error|exception|backend|API)",
+                    "(add|implement).*?(middleware|validation|error.*?handling)",
+                    "(organize|structure|refactor).*?(backend|service|API)",
+                    "(how to|best practice).*?(backend|route|API|server)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "app/api/**/*.ts",
+                    "app/api/**/*.tsx",
+                    "lib/**/*.ts",
+                    "services/**/*.ts",
+                    "prisma/**/*"
+                ],
+                "pathExclusions": [
+                    "**/*.test.ts",
+                    "**/*.spec.ts"
+                ],
+                "contentPatterns": [
+                    "NextRequest",
+                    "NextResponse",
+                    "prisma\\.",
+                    "export.*?(GET|POST|PUT|DELETE|PATCH)",
+                    "use server"
+                ]
+            }
+        },
+        "frontend-dev-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "React/Next.js/TypeScript best practices including Radix UI, Tailwind CSS, and component patterns",
+            "promptTriggers": {
+                "keywords": [
+                    "component",
+                    "react component",
+                    "UI",
+                    "interface",
+                    "page",
+                    "modal",
+                    "dialog",
+                    "form",
+                    "Radix",
+                    "Tailwind",
+                    "styling",
+                    "frontend",
+                    "React",
+                    "Next.js",
+                    "client component",
+                    "shadcn"
+                ],
+                "intentPatterns": [
+                    "(create|add|make|build|update|modify|edit).*?(component|UI|page|modal|dialog|form)",
+                    "(how to|best practice).*?(component|react|Next.js)",
+                    "(style|design|layout).*?(component|UI)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "app/**/*.tsx",
+                    "components/**/*.tsx",
+                    "src/components/**/*.tsx",
+                    "src/**/*.tsx"
+                ],
+                "pathExclusions": [
+                    "**/*.test.tsx",
+                    "**/*.test.ts",
+                    "**/*.spec.tsx",
+                    "**/*.spec.ts",
+                    "**/next.config.ts",
+                    "**/tailwind.config.ts"
+                ],
+                "contentPatterns": [
+                    "use client",
+                    "from '@radix-ui",
+                    "className=",
+                    "React\\.FC",
+                    "export default function"
+                ]
+            },
+            "skipConditions": {
+                "sessionSkillUsed": true,
+                "fileMarkers": [
+                    "@skip-validation"
+                ],
+                "envOverride": "SKIP_FRONTEND_GUIDELINES"
+            }
+        },
+        "route-tester": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Testing Next.js API routes with authentication via next-auth",
+            "promptTriggers": {
+                "keywords": [
+                    "test route",
+                    "test endpoint",
+                    "test API",
+                    "route testing",
+                    "API testing",
+                    "authenticated route",
+                    "next-auth testing",
+                    "session testing",
+                    "test with auth"
+                ],
+                "intentPatterns": [
+                    "(test|debug|verify).*?(route|endpoint|API)",
+                    "(how to|how do I).*?test.*?(route|endpoint|API)",
+                    "test.*?(authenticated|auth|session)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "app/api/**/*.ts",
+                    "**/*.test.ts",
+                    "**/*.spec.ts",
+                    "__tests__/**/*"
+                ],
+                "contentPatterns": [
+                    "NextRequest",
+                    "NextResponse",
+                    "getServerSession"
+                ]
+            }
+        },
+        "error-tracking": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Error tracking and performance monitoring patterns",
+            "promptTriggers": {
+                "keywords": [
+                    "error handling",
+                    "exception",
+                    "error tracking",
+                    "monitoring",
+                    "performance tracking",
+                    "error boundary",
+                    "try catch"
+                ],
+                "intentPatterns": [
+                    "(add|create|implement|setup).*?(error handling|error tracking)",
+                    "(fix|handle|catch).*?(error|exception)",
+                    "(how to|best practice).*?(error|monitoring)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/error.tsx",
+                    "**/not-found.tsx",
+                    "**/loading.tsx",
+                    "lib/errors/**/*"
+                ],
+                "contentPatterns": [
+                    "ErrorBoundary",
+                    "captureException",
+                    "try\\s*\\{",
+                    "catch\\s*\\("
+                ]
+            }
+        },
+        "nextjs-patterns": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Next.js App Router patterns including layouts, loading states, and metadata",
+            "promptTriggers": {
+                "keywords": [
+                    "Next.js",
+                    "app router",
+                    "layout",
+                    "metadata",
+                    "generateMetadata",
+                    "loading state",
+                    "suspense",
+                    "streaming",
+                    "ISR",
+                    "SSR",
+                    "SSG",
+                    "revalidate"
+                ],
+                "intentPatterns": [
+                    "(create|add|implement).*?(layout|page|route)",
+                    "(how to|best practice).*?(Next.js|app router|metadata)",
+                    "(optimize|improve).*?(SEO|performance|loading)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "app/**/layout.tsx",
+                    "app/**/page.tsx",
+                    "app/**/loading.tsx",
+                    "app/**/error.tsx",
+                    "next.config.*"
+                ],
+                "contentPatterns": [
+                    "generateMetadata",
+                    "generateStaticParams",
+                    "revalidate",
+                    "export const dynamic"
+                ]
+            }
+        },
+        "ecommerce-patterns": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "medium",
+            "description": "E-commerce patterns for products, cart, checkout, and payments",
+            "promptTriggers": {
+                "keywords": [
+                    "product",
+                    "cart",
+                    "checkout",
+                    "payment",
+                    "order",
+                    "inventory",
+                    "pricing",
+                    "Stripe",
+                    "PayPal",
+                    "e-commerce",
+                    "store"
+                ],
+                "intentPatterns": [
+                    "(create|add|implement).*?(product|cart|checkout|payment)",
+                    "(how to|best practice).*?(e-commerce|payment|checkout)",
+                    "(integrate|setup).*?(Stripe|PayPal|payment)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/products/**/*",
+                    "**/cart/**/*",
+                    "**/checkout/**/*",
+                    "**/orders/**/*",
+                    "**/payment/**/*"
+                ],
+                "contentPatterns": [
+                    "stripe",
+                    "paypal",
+                    "cart",
+                    "checkout",
+                    "addToCart"
+                ]
+            }
+        }
+    },
+    "notes": {
+        "enforcement_types": {
+            "suggest": "Skill suggestion appears but doesn't block execution",
+            "block": "Requires skill to be used before proceeding (guardrail)",
+            "warn": "Shows warning but allows proceeding"
+        },
+        "priority_levels": {
+            "critical": "Highest - Always trigger when matched",
+            "high": "Important - Trigger for most matches",
+            "medium": "Moderate - Trigger for clear matches",
+            "low": "Optional - Trigger only for explicit matches"
+        },
+        "customization": {
+            "pathPatterns": "Adjusted for Next.js App Router structure (app/, components/, lib/)",
+            "keywords": "Includes Next.js, Radix UI, Tailwind CSS, and e-commerce terms",
+            "intentPatterns": "Use regex for flexible user intent matching"
+        }
+    }
+}
