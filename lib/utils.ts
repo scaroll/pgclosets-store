@@ -24,6 +24,18 @@ export function formatPrice(price: number): string {
 }
 
 /**
+ * Format price in CAD
+ * @param price - Price in cents
+ * @returns Formatted price string
+ */
+export function formatPriceCAD(price: number): string {
+  return new Intl.NumberFormat('en-CA', {
+    style: 'currency',
+    currency: 'CAD',
+  }).format(price / 100)
+}
+
+/**
  * Capitalize first letter of string
  * @param str - String to capitalize
  * @returns Capitalized string

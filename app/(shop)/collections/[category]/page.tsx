@@ -4,12 +4,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { PackageOpen } from 'lucide-react'
-import { prisma } from '@/lib/prisma'
 import { ProductCard } from '@/components/products/product-card'
 import { ProductFilters } from '@/components/products/product-filters'
 import { ProductSort } from '@/components/products/product-sort'
 import { Pagination } from '@/components/shared/pagination'
 import { getCategoryData, isValidCategory, getAllCategorySlugs } from '@/lib/data/categories'
+import {
+  filterAndSortProducts,
+  type ProductFilters as Filters,
+  type ProductSortOptions,
+} from '@/lib/data/products'
 
 interface CategoryPageProps {
   params: {
@@ -82,96 +86,84 @@ async function getCategoryProducts(
 ) {
   const page = parseInt(searchParams.page || '1')
   const limit = parseInt(searchParams.limit || '24')
-  const skip = (page - 1) * limit
 
-  // Build where clause
-  const where: any = {
-    category: {
-      slug: categorySlug
+  // Get category data to map to proper name
+  const categoryData = getCategoryData(categorySlug)
+  if (!categoryData) {
+    return {
+      items: [],
+      total: 0,
+      page,
+      totalPages: 0,
+      category: null,
     }
   }
 
-  // Price range filter
-  if (searchParams.minPrice || searchParams.maxPrice) {
-    where.price = {}
-    if (searchParams.minPrice) {
-      where.price.gte = parseInt(searchParams.minPrice) * 100 // Convert to cents
-    }
-    if (searchParams.maxPrice) {
-      where.price.lte = parseInt(searchParams.maxPrice) * 100 // Convert to cents
-    }
+  // Build filters
+  const filters: Filters = {
+    category: categoryData.name, // Use the proper category name
   }
 
-  // Stock filter
+  if (searchParams.minPrice) {
+    filters.minPrice = parseInt(searchParams.minPrice)
+  }
+
+  if (searchParams.maxPrice) {
+    filters.maxPrice = parseInt(searchParams.maxPrice)
+  }
+
   if (searchParams.inStock === 'true') {
-    where.inStock = true
+    filters.inStock = true
   }
 
-  // Build orderBy clause
-  let orderBy: any = { featured: 'desc' } // Default: featured
+  // Build sort options
+  let sort: ProductSortOptions | undefined
 
   switch (searchParams.sort) {
     case 'newest':
-      orderBy = { createdAt: 'desc' }
+      sort = { field: 'createdAt', direction: 'desc' }
       break
     case 'price-asc':
-      orderBy = { price: 'asc' }
+      sort = { field: 'price', direction: 'asc' }
       break
     case 'price-desc':
-      orderBy = { price: 'desc' }
+      sort = { field: 'price', direction: 'desc' }
       break
     case 'name-asc':
-      orderBy = { name: 'asc' }
+      sort = { field: 'name', direction: 'asc' }
       break
     case 'name-desc':
-      orderBy = { name: 'desc' }
+      sort = { field: 'name', direction: 'desc' }
       break
+    default:
+      sort = { field: 'featured', direction: 'desc' }
   }
 
-  const [products, total, category] = await Promise.all([
-    prisma.product.findMany({
-      where,
-      orderBy,
-      skip,
-      take: limit,
-      include: {
-        category: {
-          select: {
-            name: true,
-            slug: true,
-          },
-        },
-      },
-    }),
-    prisma.product.count({ where }),
-    prisma.category.findUnique({
-      where: { slug: categorySlug },
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-      },
-    }),
-  ])
+  // Get filtered and sorted products
+  const result = filterAndSortProducts(filters, sort, { page, limit })
 
   return {
-    items: products.map((product) => ({
+    items: result.products.map((product) => ({
       id: product.id,
       name: product.name,
       slug: product.slug,
-      description: product.shortDesc || undefined,
-      price: Number(product.price),
-      salePrice: product.salePrice ? Number(product.salePrice) : undefined,
+      description: product.shortDescription,
+      price: product.price,
+      salePrice: product.salePrice,
       images: product.images,
       inStock: product.inStock,
       featured: product.featured,
       bestseller: product.bestseller,
-      category: product.category ? { name: product.category.name } : undefined,
+      category: { name: product.category },
     })),
-    total,
-    page,
-    totalPages: Math.ceil(total / limit),
-    category,
+    total: result.total,
+    page: result.page,
+    totalPages: result.totalPages,
+    category: {
+      id: categorySlug,
+      name: categoryData.name,
+      slug: categorySlug,
+    },
   }
 }
 

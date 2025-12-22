@@ -118,6 +118,76 @@ export function sanitizeObject<T extends Record<string, any>>(obj: T): T {
 }
 
 /**
+ * Sanitize an object using a preset configuration
+ */
+export function sanitizeWithPreset<T extends Record<string, any>>(
+  obj: T,
+  preset: Record<string, any>
+): T {
+  const sanitized: Record<string, any> = {};
+
+  for (const [key, value] of Object.entries(obj)) {
+    const sanitizationType = preset[key];
+
+    if (!sanitizationType) {
+      // If no preset defined for this field, use default sanitization
+      if (typeof value === 'string') {
+        sanitized[key] = sanitizeString(value);
+      } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        sanitized[key] = sanitizeObject(value);
+      } else {
+        sanitized[key] = value;
+      }
+      continue;
+    }
+
+    // Handle nested objects
+    if (typeof sanitizationType === 'object' && !Array.isArray(sanitizationType)) {
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        sanitized[key] = sanitizeWithPreset(value, sanitizationType);
+      } else {
+        sanitized[key] = value;
+      }
+      continue;
+    }
+
+    // Apply specific sanitization based on type
+    if (typeof value === 'string') {
+      switch (sanitizationType) {
+        case 'string':
+          sanitized[key] = sanitizeString(value);
+          break;
+        case 'email':
+          sanitized[key] = sanitizeEmail(value);
+          break;
+        case 'phone':
+          sanitized[key] = sanitizePhone(value);
+          break;
+        case 'url':
+          sanitized[key] = sanitizeUrl(value);
+          break;
+        case 'html':
+          sanitized[key] = sanitizeHtml(value);
+          break;
+        case 'filename':
+          sanitized[key] = sanitizeFilename(value);
+          break;
+        default:
+          sanitized[key] = sanitizeString(value);
+      }
+    } else if (sanitizationType === 'number' && typeof value === 'number') {
+      sanitized[key] = value;
+    } else if (sanitizationType === 'object' && typeof value === 'object') {
+      sanitized[key] = value;
+    } else {
+      sanitized[key] = value;
+    }
+  }
+
+  return sanitized as T;
+}
+
+/**
  * Check for SQL injection patterns
  */
 export function hasSqlInjection(input: string): boolean {
@@ -175,4 +245,21 @@ export const sanitizationPresets = {
   filename: sanitizeFilename,
   html: sanitizeHtml,
   strict: (input: string) => sanitizeString(stripHtml(input), 1000),
+
+  // Quote request sanitization preset
+  quoteRequest: {
+    customer: {
+      name: 'string',
+      email: 'email',
+      phone: 'phone',
+      province: 'string',
+    },
+    product: {
+      name: 'string',
+      category: 'string',
+      price: 'number',
+      selectedOptions: 'object',
+    },
+    notes: 'string',
+  },
 };

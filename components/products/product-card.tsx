@@ -5,9 +5,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Heart, Eye, ShoppingBag, Star } from "lucide-react"
+import { Heart, Eye, ShoppingBag, Star, FileText } from "lucide-react"
 import { Button } from "@/ui/button"
 import { Badge } from "@/ui/badge"
+import { LuxuryQuoteForm } from "@/components/ui/luxury-quote-form"
 import { cn, formatPrice } from "@/lib/utils"
 
 interface Product {
@@ -41,6 +42,7 @@ interface ProductCardProps {
 // ============================================================================
 export function ProductCard({ product, className }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false)
   const discount = product.salePrice
     ? Math.round((1 - product.salePrice / product.price) * 100)
     : 0
@@ -98,6 +100,18 @@ export function ProductCard({ product, className }: ProductCardProps) {
           >
             <ShoppingBag className="w-4 h-4 mr-2" />
             {product.inStock ? "Add to Cart" : "Unavailable"}
+          </Button>
+          <Button
+            size="icon-sm"
+            variant="secondary"
+            className="rounded-full shadow-lg"
+            onClick={(e) => {
+              e.preventDefault()
+              setQuoteModalOpen(true)
+            }}
+            title="Request Quote"
+          >
+            <FileText className="w-4 h-4" />
           </Button>
           <Button size="icon-sm" variant="secondary" className="rounded-full shadow-lg">
             <Eye className="w-4 h-4" />
@@ -171,6 +185,16 @@ export function ProductCard({ product, className }: ProductCardProps) {
           </div>
         )}
       </div>
+
+      {/* Quote Form Modal */}
+      <LuxuryQuoteForm
+        open={quoteModalOpen}
+        onClose={() => setQuoteModalOpen(false)}
+        product={{
+          name: product.name,
+          price: product.salePrice || product.price,
+        }}
+      />
     </motion.div>
   )
 }
@@ -268,6 +292,7 @@ export function ProductCardCompact({ product, className }: ProductCardProps) {
 // ============================================================================
 export function ProductCardFeatured({ product, className }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false)
   const discount = product.salePrice
     ? Math.round((1 - product.salePrice / product.price) * 100)
     : 0
@@ -414,6 +439,17 @@ export function ProductCardFeatured({ product, className }: ProductCardProps) {
               <ShoppingBag className="w-5 h-5 mr-2" />
               {product.inStock ? "Add to Cart" : "Out of Stock"}
             </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={(e) => {
+                e.preventDefault()
+                setQuoteModalOpen(true)
+              }}
+            >
+              <FileText className="w-5 h-5 mr-2" />
+              Quote
+            </Button>
             <Button size="icon-lg" variant="outline">
               <Heart className="w-5 h-5" />
             </Button>
@@ -426,6 +462,16 @@ export function ProductCardFeatured({ product, className }: ProductCardProps) {
           )}
         </div>
       </div>
+
+      {/* Quote Form Modal */}
+      <LuxuryQuoteForm
+        open={quoteModalOpen}
+        onClose={() => setQuoteModalOpen(false)}
+        product={{
+          name: product.name,
+          price: product.salePrice || product.price,
+        }}
+      />
     </motion.div>
   )
 }
@@ -435,6 +481,7 @@ export function ProductCardFeatured({ product, className }: ProductCardProps) {
 // ============================================================================
 export function ProductCardHorizontal({ product, className }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false)
   const discount = product.salePrice
     ? Math.round((1 - product.salePrice / product.price) * 100)
     : 0
@@ -566,6 +613,17 @@ export function ProductCardHorizontal({ product, className }: ProductCardProps) 
               <ShoppingBag className="w-4 h-4 mr-2" />
               {product.inStock ? "Add to Cart" : "Out of Stock"}
             </Button>
+            <Button
+              size="default"
+              variant="outline"
+              onClick={(e) => {
+                e.preventDefault()
+                setQuoteModalOpen(true)
+              }}
+            >
+              <FileText className="w-4 h-4 mr-2" />
+              Quote
+            </Button>
             <Button size="icon" variant="outline">
               <Heart className="w-4 h-4" />
             </Button>
@@ -575,6 +633,16 @@ export function ProductCardHorizontal({ product, className }: ProductCardProps) 
           </div>
         </div>
       </div>
+
+      {/* Quote Form Modal */}
+      <LuxuryQuoteForm
+        open={quoteModalOpen}
+        onClose={() => setQuoteModalOpen(false)}
+        product={{
+          name: product.name,
+          price: product.salePrice || product.price,
+        }}
+      />
     </motion.div>
   )
 }

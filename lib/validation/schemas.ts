@@ -25,17 +25,21 @@ export const contactSchema = z.object({
   message: z.string().min(10, 'Message must be at least 10 characters').max(5000),
 });
 
-// Quick quote schema
+// Quick quote schema - matches LuxuryQuoteForm submission
 export const quickQuoteSchema = z.object({
   name: z.string().min(1, 'Name is required').max(100),
   email: emailSchema,
-  phone: phoneSchema,
-  projectType: z.enum(['barn-door', 'closet-system', 'bifold', 'sliding', 'other']),
-  roomCount: z.coerce.number().min(1).max(20).optional(),
-  budget: z.enum(['under-500', '500-1000', '1000-2500', '2500-5000', 'over-5000']).optional(),
-  timeline: z.enum(['asap', '1-month', '3-months', '6-months', 'no-rush']).optional(),
-  message: z.string().max(2000).optional(),
-  address: z.string().optional(),
+  phone: phoneSchema.optional(),
+  projectType: z.string().optional(),
+  roomDimensions: z.string().optional(),
+  timeline: z.string().optional(),
+  productInterest: z.string().optional(),
+  additionalDetails: z.string().max(2000).optional(),
+  product: z.object({
+    name: z.string(),
+    price: z.number().optional(),
+  }).optional(),
+  selectedOptions: z.record(z.string()).optional(),
 });
 
 // Booking schema
@@ -138,3 +142,4 @@ export type Checkout = z.infer<typeof checkoutSchema>;
 export type Lead = z.infer<typeof leadSchema>;
 export type Search = z.infer<typeof searchSchema>;
 export type InstantEstimate = z.infer<typeof instantEstimateSchema>;
+export type QuoteRequestData = QuickQuote;

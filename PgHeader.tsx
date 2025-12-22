@@ -76,10 +76,10 @@ export default function PgHeader() {
             </Link>
 
             <Link
-              href="/request-work"
-              className="ml-6 bg-pg-button-primary text-white px-5 py-2 rounded-md hover:bg-pg-button-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
+              href="/quote"
+              className="ml-6 bg-pg-button-primary text-white px-5 py-2 rounded-md hover:bg-pg-button-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2 font-semibold"
             >
-              Schedule Consultation
+              Get a Quote
             </Link>
           </nav>
 
@@ -183,11 +183,11 @@ export default function PgHeader() {
                 {/* CTA Button */}
                 <div className="pt-4 border-t border-gray-200">
                   <Link
-                    href="/request-work"
+                    href="/quote"
                     onClick={closeMobileMenu}
-                    className="block w-full text-center bg-pg-button-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-pg-button-primary-hover transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
+                    className="block w-full text-center bg-pg-button-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-pg-button-primary-hover transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pg-sky focus:ring-offset-2"
                   >
-                    Schedule Consultation
+                    Get a Quote
                   </Link>
                 </div>
               </div>

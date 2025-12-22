@@ -1,11 +1,17 @@
 import { Suspense } from 'react'
 import type { Metadata } from 'next'
-import { prisma } from '@/lib/prisma'
 import { ProductCard } from '@/components/products/product-card'
 import { ProductFilters } from '@/components/products/product-filters'
 import { ProductSort } from '@/components/products/product-sort'
 import { Pagination } from '@/components/shared/pagination'
 import { PackageOpen } from 'lucide-react'
+import {
+  filterAndSortProducts,
+  getAllCategories,
+  getProductCountByCategory,
+  type ProductFilters as Filters,
+  type ProductSortOptions,
+} from '@/lib/data/products'
 
 export const metadata: Metadata = {
   title: 'Products - PG Closets',
@@ -27,111 +33,78 @@ interface ProductsPageProps {
 async function getProducts(searchParams: ProductsPageProps['searchParams']) {
   const page = parseInt(searchParams.page || '1')
   const limit = parseInt(searchParams.limit || '24')
-  const skip = (page - 1) * limit
 
-  // Build where clause
-  const where: any = {}
+  // Build filters
+  const filters: Filters = {}
 
-  // Category filter
   if (searchParams.category) {
-    const categories = searchParams.category.split(',')
-    where.category = {
-      slug: { in: categories }
-    }
+    filters.category = searchParams.category
   }
 
-  // Price range filter
-  if (searchParams.minPrice || searchParams.maxPrice) {
-    where.price = {}
-    if (searchParams.minPrice) {
-      where.price.gte = parseInt(searchParams.minPrice) * 100 // Convert to cents
-    }
-    if (searchParams.maxPrice) {
-      where.price.lte = parseInt(searchParams.maxPrice) * 100 // Convert to cents
-    }
+  if (searchParams.minPrice) {
+    filters.minPrice = parseInt(searchParams.minPrice)
   }
 
-  // Stock filter
+  if (searchParams.maxPrice) {
+    filters.maxPrice = parseInt(searchParams.maxPrice)
+  }
+
   if (searchParams.inStock === 'true') {
-    where.inStock = true
+    filters.inStock = true
   }
 
-  // Build orderBy clause
-  let orderBy: any = { featured: 'desc' } // Default: featured
+  // Build sort options
+  let sort: ProductSortOptions | undefined
 
   switch (searchParams.sort) {
     case 'newest':
-      orderBy = { createdAt: 'desc' }
+      sort = { field: 'createdAt', direction: 'desc' }
       break
     case 'price-asc':
-      orderBy = { price: 'asc' }
+      sort = { field: 'price', direction: 'asc' }
       break
     case 'price-desc':
-      orderBy = { price: 'desc' }
+      sort = { field: 'price', direction: 'desc' }
       break
     case 'name-asc':
-      orderBy = { name: 'asc' }
+      sort = { field: 'name', direction: 'asc' }
       break
     case 'name-desc':
-      orderBy = { name: 'desc' }
+      sort = { field: 'name', direction: 'desc' }
       break
+    default:
+      sort = { field: 'featured', direction: 'desc' }
   }
 
-  const [products, total, categories] = await Promise.all([
-    prisma.product.findMany({
-      where,
-      orderBy,
-      skip,
-      take: limit,
-      include: {
-        category: {
-          select: {
-            name: true,
-            slug: true,
-          },
-        },
-      },
-    }),
-    prisma.product.count({ where }),
-    prisma.category.findMany({
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-        _count: {
-          select: {
-            products: true,
-          },
-        },
-      },
-      orderBy: {
-        name: 'asc',
-      },
-    }),
-  ])
+  // Get filtered and sorted products
+  const result = filterAndSortProducts(filters, sort, { page, limit })
+
+  // Get categories with counts
+  const categoryCounts = getProductCountByCategory()
+  const categories = getAllCategories().map((cat) => ({
+    label: cat,
+    value: cat.toLowerCase().replace(/\s+/g, '-'),
+    count: categoryCounts[cat] || 0,
+  }))
 
   return {
-    items: products.map((product) => ({
+    items: result.products.map((product) => ({
       id: product.id,
       name: product.name,
       slug: product.slug,
-      description: product.shortDesc || undefined,
-      price: Number(product.price),
-      salePrice: product.salePrice ? Number(product.salePrice) : undefined,
+      description: product.shortDescription,
+      price: product.price,
+      salePrice: product.salePrice,
       images: product.images,
       inStock: product.inStock,
       featured: product.featured,
       bestseller: product.bestseller,
-      category: product.category ? { name: product.category.name } : undefined,
+      category: { name: product.category },
     })),
-    total,
-    page,
-    totalPages: Math.ceil(total / limit),
-    categories: categories.map((cat) => ({
-      label: cat.name,
-      value: cat.slug,
-      count: cat._count.products,
-    })),
+    total: result.total,
+    page: result.page,
+    totalPages: result.totalPages,
+    categories,
   }
 }
 

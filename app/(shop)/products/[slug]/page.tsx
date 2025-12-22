@@ -1,15 +1,20 @@
 // @ts-nocheck - Product page with Decimal type issues
+'use client'
+
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { Star, Truck, Shield, ChevronRight, Package } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Star, Truck, Shield, ChevronRight, Package, FileText } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/src/components/ui/tabs'
+import { Button } from '@/components/ui/button'
 import { ProductGallery } from '@/components/products/product-gallery'
 import { ProductVariants } from '@/components/products/product-variants'
 import { QuantitySelector } from '@/components/products/quantity-selector'
 import { AddToCartButton } from '@/components/products/add-to-cart-button'
 import { ProductReviews, StarRating } from '@/components/products/product-reviews'
 import { RelatedProducts } from '@/components/products/related-products'
+import { LuxuryQuoteForm } from '@/components/ui/luxury-quote-form'
 import { getProduct, formatPrice } from '@/lib/products'
 
 interface ProductPageProps {
@@ -18,33 +23,30 @@ interface ProductPageProps {
   }
 }
 
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = await getProduct(params.slug)
+export default function ProductPage({ params }: ProductPageProps) {
+  const [product, setProduct] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false)
+  const [selectedVariant, setSelectedVariant] = useState<any>(null)
 
-  if (!product) {
-    return {
-      title: 'Product Not Found - PG Closets',
-      description: 'The product you are looking for could not be found.',
+  useEffect(() => {
+    async function loadProduct() {
+      const productData = await getProduct(params.slug)
+      setProduct(productData)
+      setLoading(false)
     }
-  }
+    loadProduct()
+  }, [params.slug])
 
-  return {
-    title: `${product.name} - PG Closets`,
-    description: product.shortDesc || product.description.substring(0, 160),
-    openGraph: {
-      title: product.name,
-      description: product.shortDesc || product.description.substring(0, 160),
-      images: product.images.map((img) => ({
-        url: img,
-        alt: product.name,
-      })),
-      type: 'website',
-    },
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-background">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center">Loading...</div>
+        </div>
+      </main>
+    )
   }
-}
-
-export default async function ProductPage({ params }: ProductPageProps) {
-  const product = await getProduct(params.slug)
 
   if (!product) {
     notFound()
@@ -173,7 +175,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             {/* Variants */}
             {product.variants.length > 0 && (
-              <ProductVariants variants={product.variants} />
+              <ProductVariants
+                variants={product.variants}
+                onVariantChange={setSelectedVariant}
+              />
             )}
 
             {/* Quantity */}
@@ -194,6 +199,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
               }}
               disabled={!product.inStock}
             />
+
+            {/* Request Quote Button */}
+            <Button
+              variant="outline"
+              size="lg"
+              className="w-full"
+              onClick={() => setQuoteModalOpen(true)}
+            >
+              <FileText className="w-5 h-5 mr-2" />
+              Request a Quote
+            </Button>
 
             {/* Trust Badges */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t">
@@ -375,6 +391,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
         {/* Related Products */}
         <RelatedProducts categoryId={product.categoryId} currentProductId={product.id} />
       </div>
+
+      {/* Quote Form Modal */}
+      <LuxuryQuoteForm
+        open={quoteModalOpen}
+        onClose={() => setQuoteModalOpen(false)}
+        product={{
+          name: product.name,
+          price: Number(currentPrice),
+        }}
+        selectedOptions={selectedVariant?.attributes || {}}
+      />
     </main>
   )
 }
