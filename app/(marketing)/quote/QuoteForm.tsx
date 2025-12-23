@@ -1,4 +1,3 @@
-// @ts-nocheck - Quote form page component
 'use client'
 
 import { useState } from 'react'
@@ -160,13 +159,13 @@ export function QuoteForm() {
                 Tell Us About Your Project
               </h2>
               <p className="text-lg text-muted-foreground dark:text-apple-dark-text-secondary">
-                Fill out the form below and we'll provide you with a customized quote tailored to your needs
+                Fill out the form below and we&apos;ll provide you with a customized quote tailored to your needs
               </p>
             </div>
 
             <Card className="bg-card dark:bg-apple-dark-bg-secondary shadow-xl">
               <CardContent className="p-8 md:p-10">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={(e) => { void handleSubmit(e) }} className="space-y-6">
                   {/* Contact Information */}
                   <div className="space-y-6">
                     <h3 className="text-xl font-bold flex items-center gap-2">
@@ -424,7 +423,7 @@ export function QuoteForm() {
                     <div>
                       <h3 className="text-xl">24-Hour Response Time</h3>
                       <p className="text-sm font-normal text-muted-foreground mt-1">
-                        We'll review your request and contact you within one business day to discuss your project.
+                        We&apos;ll review your request and contact you within one business day to discuss your project.
                       </p>
                     </div>
                   </CardTitle>
@@ -440,7 +439,7 @@ export function QuoteForm() {
                     <div>
                       <h3 className="text-xl">Free In-Home Consultation</h3>
                       <p className="text-sm font-normal text-muted-foreground mt-1">
-                        We'll visit your space, take measurements, and discuss design options at no charge.
+                        We&apos;ll visit your space, take measurements, and discuss design options at no charge.
                       </p>
                     </div>
                   </CardTitle>

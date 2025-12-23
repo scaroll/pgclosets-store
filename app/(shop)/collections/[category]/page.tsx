@@ -32,7 +32,7 @@ interface CategoryPageProps {
 // ============================================================================
 // Metadata Generation
 // ============================================================================
-export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+export function generateMetadata({ params }: CategoryPageProps): Metadata {
   const categoryData = getCategoryData(params.category)
 
   if (!categoryData) {
@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 // ============================================================================
 // Static Params Generation (for static site generation)
 // ============================================================================
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return getAllCategorySlugs().map((slug) => ({
     category: slug,
   }))
@@ -80,7 +80,7 @@ export async function generateStaticParams() {
 // ============================================================================
 // Data Fetching
 // ============================================================================
-async function getCategoryProducts(
+function getCategoryProducts(
   categorySlug: string,
   searchParams: CategoryPageProps['searchParams']
 ) {
@@ -205,7 +205,7 @@ function EmptyState({ categoryName }: { categoryName: string }) {
         No products found
       </h3>
       <p className="text-apple-gray-600 dark:text-apple-dark-text-secondary text-center max-w-md mb-6">
-        We couldn't find any {categoryName.toLowerCase()} matching your filters. Try adjusting your search criteria or browse all products.
+        We couldn&apos;t find any {categoryName.toLowerCase()} matching your filters. Try adjusting your search criteria or browse all products.
       </p>
       <div className="flex gap-4">
         <Link
@@ -297,7 +297,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   }
 
   // Fetch products
-  const data = await getCategoryProducts(params.category, searchParams)
+  const data = getCategoryProducts(params.category, searchParams)
 
   // If category doesn't exist in database, show empty state
   if (!data.category) {

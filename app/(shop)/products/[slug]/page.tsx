@@ -35,7 +35,7 @@ export default function ProductPage({ params }: ProductPageProps) {
       setProduct(productData)
       setLoading(false)
     }
-    loadProduct()
+    void loadProduct()
   }, [params.slug])
 
   if (loading) {
