@@ -1,5 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import crypto from "crypto"
+import { prisma } from "@/lib/prisma"
+import { sendPaymentFailedEmail } from "@/lib/emails"
 
 // Paddle webhook signature verification
 function verifyPaddleWebhook(body: string, signature: string, publicKey: string): boolean {
@@ -47,7 +49,32 @@ export async function POST(request: NextRequest) {
           email: data.email,
           reason: data.reason,
         })
-        // TODO: Handle failed payment
+
+        try {
+          const failedOrder = await prisma.order.findFirst({
+            where: {
+              OR: [
+                { orderNumber: data.order_id },
+                { paymentIntentId: data.order_id },
+                { id: data.order_id },
+              ],
+            },
+          })
+
+          if (failedOrder) {
+            await prisma.order.update({
+              where: { id: failedOrder.id },
+              data: { paymentStatus: "FAILED" },
+            })
+
+            await sendPaymentFailedEmail(failedOrder.email, failedOrder.orderNumber, data.reason)
+            console.log("[v0] Order payment status updated to FAILED and email sent for order:", failedOrder.orderNumber)
+          } else {
+            console.warn("[v0] Order not found for payment_failed event. OrderId:", data.order_id)
+          }
+        } catch (error) {
+          console.error("[v0] Error handling payment_failed event:", error)
+        }
         break
 
       case "subscription_created":

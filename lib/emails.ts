@@ -206,3 +206,29 @@ export async function sendContactNotification(data: {
     replyTo: data.email,
   });
 }
+
+/**
+ * Send payment failed email
+ */
+export async function sendPaymentFailedEmail(
+  email: string,
+  orderNumber: string,
+  reason?: string
+): Promise<boolean> {
+  const html = `
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h1 style="color: #1d1d1f;">Payment Failed</h1>
+      <p>We were unable to process your payment for order <strong>${orderNumber}</strong>.</p>
+      ${reason ? `<p><strong>Reason:</strong> ${reason}</p>` : ''}
+      <p>Please update your payment method or try again.</p>
+      <p>If you have any questions, please contact our support team.</p>
+      <p>Best regards,<br>The PG Closets Team</p>
+    </div>
+  `;
+
+  return sendEmail({
+    to: email,
+    subject: `Payment Failed for Order #${orderNumber}`,
+    html,
+  });
+}
