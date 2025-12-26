@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_INFO } from "@/lib/business-config"
 import { useState } from "react"
+import { useToast } from "@/hooks/use-toast"
 
 const footerLinks = {
   shop: [
@@ -36,16 +37,42 @@ const footerLinks = {
 export function Footer() {
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const { toast } = useToast()
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // TODO: Implement newsletter subscription
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    try {
+      const response = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      })
 
-    setEmail("")
-    setIsSubmitting(false)
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to subscribe")
+      }
+
+      toast({
+        title: "Subscribed!",
+        description: data.message || "You have successfully subscribed to our newsletter.",
+      })
+
+      setEmail("")
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Something went wrong. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (

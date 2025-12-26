@@ -1,4 +1,3 @@
-// @ts-nocheck - Newsletter with async function issues
 import type { NextRequest} from 'next/server';
 import { NextResponse } from 'next/server';
 import { subscribeToNewsletter } from '@/lib/email/newsletter';
@@ -38,7 +37,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             'Retry-After': '3600',
             'X-RateLimit-Limit': '20',
             'X-RateLimit-Remaining': String(rateLimitResult.remaining),
-            'X-RateLimit-Reset': String(rateLimitResult.reset),
+            'X-RateLimit-Reset': String(rateLimitResult.resetTime),
           }
         }
       );
@@ -81,8 +80,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // Subscribe to newsletter
     const result = await subscribeToNewsletter({
       email: email.toLowerCase().trim(), // Normalize email
-      firstName: firstName?.trim(),
-      lastName: lastName?.trim(),
+      name: [firstName, lastName].filter(Boolean).join(' ').trim() || undefined,
       source: 'website'
     });
 
@@ -100,7 +98,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
           'X-XSS-Protection': '1; mode=block',
           'X-RateLimit-Limit': '20',
           'X-RateLimit-Remaining': String(rateLimitResult.remaining - 1),
-          'X-RateLimit-Reset': String(rateLimitResult.reset),
+          'X-RateLimit-Reset': String(rateLimitResult.resetTime),
         }
       }
     );
