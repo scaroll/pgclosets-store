@@ -64,6 +64,33 @@ export async function sendBookingConfirmation(data: BookingEmailData): Promise<b
 }
 
 /**
+ * Send booking cancellation email to customer
+ */
+export async function sendBookingCancellation(data: BookingEmailData): Promise<boolean> {
+  const html = `
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h1 style="color: #1d1d1f;">Booking Cancelled</h1>
+      <p>Hi ${data.name},</p>
+      <p>Your booking with PG Closets has been cancelled. Here were the appointment details:</p>
+      <div style="background: #f5f5f7; padding: 20px; border-radius: 12px; margin: 20px 0;">
+        <p><strong>Date:</strong> ${data.date}</p>
+        <p><strong>Time:</strong> ${data.time}</p>
+        <p><strong>Type:</strong> ${data.type}</p>
+        ${data.address ? `<p><strong>Address:</strong> ${data.address}</p>` : ''}
+      </div>
+      <p>If you did not request this cancellation or would like to reschedule, please contact us at (613) 555-0123 or reply to this email.</p>
+      <p>Best regards,<br>The PG Closets Team</p>
+    </div>
+  `;
+
+  return sendEmail({
+    to: data.email,
+    subject: 'Your PG Closets Appointment Cancellation',
+    html,
+  });
+}
+
+/**
  * Send booking confirmation email to customer
  */
 export async function sendBookingConfirmationEmail(data: BookingEmailData): Promise<boolean> {
