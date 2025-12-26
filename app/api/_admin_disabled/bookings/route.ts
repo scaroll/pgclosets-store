@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
+import { sendBookingCancellationEmail } from '@/lib/emails';
 
 const prisma = new PrismaClient();
 
@@ -90,13 +91,24 @@ export async function PATCH(request: NextRequest) {
         ...(internalNotes && { internalNotes }),
         ...(assignedTo && { assignedTo }),
         updatedAt: new Date()
+      },
+      include: {
+        user: true
       }
     });
 
-    // TODO: Send email notification if status changed to cancelled
-    if (status === 'cancelled') {
-      // Send cancellation email to customer
-      console.log('TODO: Send cancellation email for booking:', bookingId);
+    // Send email notification if status changed to cancelled
+    if (status === 'cancelled' && booking.user?.email) {
+      await sendBookingCancellationEmail({
+        name: booking.user.name || 'Customer',
+        email: booking.user.email,
+        phone: booking.user.phone || '',
+        date: booking.date.toLocaleDateString(),
+        time: booking.timeStart.toLocaleTimeString(), // Assuming timeStart exists on booking
+        type: booking.service || 'Service', // Assuming service exists on booking
+        address: booking.address, // Assuming address exists on booking
+        notes: booking.notes // Assuming notes exists on booking
+      });
     }
 
     return NextResponse.json({
@@ -134,11 +146,25 @@ export async function DELETE(request: NextRequest) {
       data: {
         status: 'cancelled',
         updatedAt: new Date()
+      },
+      include: {
+        user: true
       }
     });
 
-    // TODO: Send cancellation email
-    console.log('TODO: Send cancellation email for booking:', bookingId);
+    // Send cancellation email
+    if (booking.user?.email) {
+      await sendBookingCancellationEmail({
+        name: booking.user.name || 'Customer',
+        email: booking.user.email,
+        phone: booking.user.phone || '',
+        date: booking.date.toLocaleDateString(),
+        time: booking.timeStart.toLocaleTimeString(),
+        type: booking.service || 'Service',
+        address: booking.address,
+        notes: booking.notes
+      });
+    }
 
     return NextResponse.json({
       success: true,
