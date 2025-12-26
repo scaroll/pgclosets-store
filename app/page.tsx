@@ -2,13 +2,16 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { VideoHero } from '@/components/home/hero'
-import { ProductCard } from '@/components/products/product-card'
 import { SectionHeader } from '@/components/shared/section-header'
 import { FeatureCard } from '@/components/shared/feature-card'
-import { TestimonialCard } from '@/components/shared/testimonial-card'
-import { CTASection } from '@/components/shared/cta-section'
-import { BentoGrid, BentoGridItem } from '@/components/shared/bento-grid'
+
+const ProductCard = dynamic(() => import('@/components/products/product-card').then(mod => mod.ProductCard))
+const TestimonialCard = dynamic(() => import('@/components/shared/testimonial-card').then(mod => mod.TestimonialCard))
+const CTASection = dynamic(() => import('@/components/shared/cta-section').then(mod => mod.CTASection))
+const BentoGrid = dynamic(() => import('@/components/shared/bento-grid').then(mod => mod.BentoGrid))
+const BentoGridItem = dynamic(() => import('@/components/shared/bento-grid').then(mod => mod.BentoGridItem))
 
 export const metadata: Metadata = {
   title: 'Home - PG Closets',

@@ -7,6 +7,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { OrganizationSchema } from '@/components/seo/OrganizationSchema'
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
 import { GoogleAnalytics } from '@/analytics/google-analytics'
+import ErrorBoundary from '@/components/error/ErrorBoundary'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -75,6 +76,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <link rel="preload" href="/optimized-images/elegant-barn-door-closet.webp" as="image" />
         <OrganizationSchema />
         <LocalBusinessSchema />
       </head>
@@ -84,6 +86,16 @@ export default function RootLayout({
           fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
         }}
       >
+        <noscript>
+          <div className="p-4 bg-yellow-50 border-2 border-yellow-200 text-center">
+            <h1 className="text-xl font-bold mb-2">JavaScript Required</h1>
+            <p className="mb-2">
+              For the best experience, please enable JavaScript.
+              You can still contact us:
+            </p>
+            <a href="tel:+16137016393" className="font-bold underline text-primary">(613) 701-6393</a>
+          </div>
+        </noscript>
         {/* Skip to main content for accessibility */}
         <a
           href="#main-content"
@@ -100,11 +112,13 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <div className="relative flex min-h-screen flex-col">
-              <Header />
-              <main id="main-content" className="flex-1">
-                {children}
-              </main>
-              <Footer />
+              <ErrorBoundary>
+                <Header />
+                <main id="main-content" className="flex-1">
+                  {children}
+                </main>
+                <Footer />
+              </ErrorBoundary>
             </div>
             <Toaster />
           </ThemeProvider>

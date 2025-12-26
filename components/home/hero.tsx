@@ -53,10 +53,22 @@ export function VideoHero({
           playsInline
           poster={posterSrc}
           onCanPlay={() => setIsVideoLoaded(true)}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover motion-reduce:hidden"
         >
+           {/* Mobile optimized video source could go here if we had one.
+               For now we use the main source but rely on poster for immediate visual.
+               We could add a media query if we had a smaller file.
+           */}
           <source src={videoSrc} type="video/mp4" />
         </video>
+        <div className="hidden motion-reduce:block w-full h-full">
+            <Image
+                src={posterSrc}
+                alt={headline}
+                fill
+                className="object-cover"
+            />
+        </div>
       </motion.div>
 
       {/* Gradient Overlay */}

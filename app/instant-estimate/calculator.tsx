@@ -9,6 +9,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Progress } from '@/components/ui/progress'
 import { useEstimatorStore, type DoorType, type SizeType, type Material, type Hardware } from './store'
 import { ChevronLeft, ChevronRight, DollarSign, Check } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics/events'
 
 export function InstantEstimateCalculator() {
   const {
@@ -85,10 +86,20 @@ export function InstantEstimateCalculator() {
       phone,
       message,
     })
+    trackEvent('estimator_submit', {
+      doorType: doorType || '',
+      sizeType: sizeType || '',
+      material: material || '',
+      hardware: hardware || '',
+      installation: installation ? 'yes' : 'no',
+      estimateMin: estimate.min,
+      estimateMax: estimate.max
+    });
     setSubmitted(true)
   }
 
   const handleReset = () => {
+    trackEvent('estimator_reset');
     reset()
     setSubmitted(false)
   }
@@ -153,7 +164,7 @@ export function InstantEstimateCalculator() {
               className="grid grid-cols-1 gap-4"
             >
               {[
-                { value: 'barn', label: 'Barn Door', price: '$399 - $899', desc: 'Classic sliding barn door style' },
+                { value: 'barn', label: 'Barn Door', price: '$399 - $899', desc: 'Classic sliding barn door style', popular: true },
                 { value: 'bifold', label: 'Bifold Door', price: '$299 - $599', desc: 'Space-saving folding design' },
                 { value: 'bypass', label: 'Bypass Door', price: '$349 - $699', desc: 'Smooth sliding door system' },
                 { value: 'glass', label: 'Glass Door', price: '$499 - $999', desc: 'Modern glass panels' },
@@ -168,7 +179,10 @@ export function InstantEstimateCalculator() {
                   <RadioGroupItem value={option.value} id={option.value} />
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold">{option.label}</span>
+                      <div className="flex items-center gap-2">
+                         <span className="font-semibold">{option.label}</span>
+                         {option.popular && <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full font-medium">Most Popular</span>}
+                      </div>
                       <span className="text-sm text-primary font-medium">{option.price}</span>
                     </div>
                     <p className="text-sm text-muted-foreground mt-1">{option.desc}</p>
@@ -202,7 +216,10 @@ export function InstantEstimateCalculator() {
               >
                 <RadioGroupItem value="standard" id="standard" />
                 <div className="flex-1">
-                  <span className="font-semibold">Standard Sizes</span>
+                  <div className="flex items-center gap-2">
+                     <span className="font-semibold">Standard Sizes</span>
+                     <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full font-medium">Most Popular</span>
+                  </div>
                   <p className="text-sm text-muted-foreground mt-1">
                     Common sizes: 30&quot;, 36&quot;, 42&quot; width
                   </p>
@@ -418,6 +435,19 @@ export function InstantEstimateCalculator() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+               {/* Honeypot field for spam protection */}
+               <div className="hidden" aria-hidden="true">
+                  <label htmlFor="website-honeypot">Website</label>
+                  <input
+                    type="text"
+                    id="website-honeypot"
+                    name="website-honeypot"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    onChange={(e) => { if (e.target.value) setSubmitted(true); /* Trap bots by pretending success if they fill this */ }}
+                  />
+               </div>
+
               <div className="space-y-2">
                 <Label htmlFor="name">Full Name *</Label>
                 <Input
@@ -480,7 +510,10 @@ export function InstantEstimateCalculator() {
 
         {step < 6 ? (
           <Button
-            onClick={nextStep}
+            onClick={() => {
+                trackEvent(`estimator_step_${step}_next`);
+                nextStep();
+            }}
             disabled={!canProceed()}
             className="gap-2"
           >
