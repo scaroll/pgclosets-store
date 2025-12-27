@@ -2,6 +2,7 @@
 'use client'
 
 import { LuxuryQuoteForm } from '@/components/ui/luxury-quote-form'
+import { useCartStore } from '@/lib/stores/cart-store'
 import { cn, formatPrice } from '@/lib/utils'
 import { Badge } from '@/ui/badge'
 import { Button } from '@/ui/button'

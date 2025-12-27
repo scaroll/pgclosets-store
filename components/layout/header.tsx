@@ -23,6 +23,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 // import { useCart } from "@/hooks/use-cart" // Deprecated
+import { CartSheet } from '@/components/cart/cart-sheet'
+import { useCartStore } from '@/lib/stores/cart-store'
 
 // Product categories for mega menu
 const productCategories = [
