@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
-import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+// import { ArrowRight } from 'lucide-react'
 
 export const BentoGrid = ({
   className,
@@ -63,7 +63,22 @@ export const BentoGridItem = ({
         <div className="mb-2 mt-2 font-sans text-2xl font-bold text-neutral-100">{title}</div>
         <div className="font-sans text-sm font-normal text-neutral-300">{description}</div>
         <div className="mt-4 flex items-center text-sm font-semibold text-white opacity-0 transition-opacity duration-300 group-hover/bento:opacity-100">
-          Shop Collection <ArrowRight className="ml-2 h-4 w-4" />
+          Shop Collection{' '}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="ml-2 h-4 w-4"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
         </div>
       </div>
     </Link>

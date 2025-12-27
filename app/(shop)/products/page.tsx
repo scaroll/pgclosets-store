@@ -11,6 +11,7 @@ import {
 } from '@/lib/data/products'
 import { PackageOpen } from 'lucide-react'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Suspense } from 'react'
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 }
 
 interface ProductsPageProps {
-  searchParams: {
+  searchParams: Promise<{
     category?: string
     sort?: string
     page?: string
@@ -27,10 +28,10 @@ interface ProductsPageProps {
     maxPrice?: string
     inStock?: string
     limit?: string
-  }
+  }>
 }
 
-async function getProducts(searchParams: ProductsPageProps['searchParams']) {
+function getProducts(searchParams: Awaited<ProductsPageProps['searchParams']>) {
   const page = parseInt(searchParams.page || '1')
   const limit = parseInt(searchParams.limit || '24')
 
@@ -140,20 +141,22 @@ function EmptyState() {
         No products found
       </h3>
       <p className="mb-6 max-w-md text-center text-apple-gray-600 dark:text-apple-dark-text-secondary">
-        We couldn't find any products matching your filters. Try adjusting your search criteria.
+        We couldn&apos;t find any products matching your filters. Try adjusting your search
+        criteria.
       </p>
-      <a
+      <Link
         href="/products"
         className="rounded-apple bg-apple-blue-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-apple-blue-600"
       >
         Clear Filters
-      </a>
+      </Link>
     </div>
   )
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const data = await getProducts(searchParams)
+  const resolvedSearchParams = await searchParams
+  const data = getProducts(resolvedSearchParams)
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background">
@@ -164,9 +167,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           <nav className="mb-4 text-sm" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-apple-gray-600 dark:text-apple-dark-text-secondary">
               <li>
-                <a href="/" className="hover:text-apple-blue-500">
+                <Link href="/" className="hover:text-apple-blue-500">
                   Home
-                </a>
+                </Link>
               </li>
               <li>/</li>
               <li className="font-medium text-apple-gray-900 dark:text-apple-dark-text">
@@ -213,7 +216,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                   <Pagination
                     currentPage={data.page}
                     totalPages={data.totalPages}
-                    itemsPerPage={parseInt(searchParams.limit || '24')}
+                    itemsPerPage={parseInt(resolvedSearchParams.limit || '24')}
                   />
                 </>
               ) : (

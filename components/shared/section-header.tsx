@@ -20,40 +20,39 @@
  * />
  */
 
-import * as React from 'react';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import Link from 'next/link'
+// import { ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils'
 
 export interface SectionHeaderProps {
   /**
    * Small eyebrow text displayed above the title
    */
-  eyebrow?: string;
+  eyebrow?: string
   /**
    * Main heading text
    */
-  title: string;
+  title: string
   /**
    * Supporting description text
    */
-  description?: string;
+  description?: string
   /**
    * Optional CTA button text
    */
-  ctaText?: string;
+  ctaText?: string
   /**
    * Optional CTA link href
    */
-  ctaHref?: string;
+  ctaHref?: string
   /**
    * Text alignment - centered or left-aligned
    */
-  align?: 'left' | 'center';
+  align?: 'left' | 'center'
   /**
    * Additional CSS classes
    */
-  className?: string;
+  className?: string
 }
 
 /**
@@ -77,29 +76,41 @@ export function SectionHeader({
       )}
     >
       {eyebrow && (
-        <p className="text-apple-13 font-semibold text-primary uppercase tracking-wider">
+        <p className="text-apple-13 font-semibold uppercase tracking-wider text-primary">
           {eyebrow}
         </p>
       )}
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-        {title}
-      </h2>
+      <h2 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">{title}</h2>
       {description && (
-        <p className="text-lg md:text-xl text-muted-foreground dark:text-apple-dark-text-secondary">
+        <p className="text-lg text-muted-foreground dark:text-apple-dark-text-secondary md:text-xl">
           {description}
         </p>
       )}
       {ctaText && ctaHref && (
         <Link
           href={ctaHref}
-          className="inline-flex items-center mt-6 text-primary font-semibold hover:underline transition-all duration-200 group"
+          className="group mt-6 inline-flex items-center font-semibold text-primary transition-all duration-200 hover:underline"
         >
           {ctaText}
-          <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+          <svg
+            className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
         </Link>
       )}
     </div>
-  );
+  )
 }
 
-SectionHeader.displayName = 'SectionHeader';
+SectionHeader.displayName = 'SectionHeader'

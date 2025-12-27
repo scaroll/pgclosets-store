@@ -36,9 +36,12 @@ const nextConfig = {
   // Advanced Compiler Optimizations
   compiler: {
     // Remove console logs in production (keep errors/warnings)
-    removeConsole: process.env.NODE_ENV === 'production' ? {
-      exclude: ['error', 'warn'],
-    } : false,
+    removeConsole:
+      process.env.NODE_ENV === 'production'
+        ? {
+            exclude: ['error', 'warn'],
+          }
+        : false,
     // Remove React development properties
     reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
@@ -98,6 +101,7 @@ const nextConfig = {
     ],
   },
 
+  /*
   // Experimental Features for Next.js 15
   experimental: {
     // Optimize package imports for better tree-shaking
@@ -135,16 +139,19 @@ const nextConfig = {
 
     // Server Actions security
     serverActions: {
-      allowedOrigins: process.env.NODE_ENV === 'production'
-        ? [
-            'https://pgclosets-store.vercel.app',
-            'https://www.pgclosets.com',
-            'https://pgclosets.com',
-          ]
-        : ['localhost:3000', '127.0.0.1:3000'],
+      allowedOrigins:
+        process.env.NODE_ENV === 'production'
+          ? [
+              'https://pgclosets-store.vercel.app',
+              'https://www.pgclosets.com',
+              'https://pgclosets.com',
+            ]
+          : ['localhost:3000', '127.0.0.1:3000'],
     },
   },
+  */
 
+  /*
   // Webpack Configuration for Advanced Optimizations
   webpack: (config, { webpack, isServer }) => {
     // Global compatibility
@@ -213,6 +220,7 @@ const nextConfig = {
 
     return config
   },
+  */
 
   // Comprehensive Security and Performance Headers
   async headers() {
@@ -238,7 +246,9 @@ const nextConfig = {
               form-action 'self';
               frame-ancestors 'self';
               upgrade-insecure-requests;
-            `.replace(/\s{2,}/g, ' ').trim(),
+            `
+              .replace(/\s{2,}/g, ' ')
+              .trim(),
           },
           {
             key: 'X-DNS-Prefetch-Control',
@@ -262,7 +272,8 @@ const nextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), payment=*, usb=(), interest-cohort=()',
+            value:
+              'camera=(), microphone=(), geolocation=(), payment=*, usb=(), interest-cohort=()',
           },
           {
             key: 'Strict-Transport-Security',
@@ -275,7 +286,8 @@ const nextConfig = {
           },
           {
             key: 'Link',
-            value: '<https://fonts.googleapis.com>; rel=dns-prefetch, <https://fonts.gstatic.com>; rel=dns-prefetch, <https://images.unsplash.com>; rel=dns-prefetch',
+            value:
+              '<https://fonts.googleapis.com>; rel=dns-prefetch, <https://fonts.gstatic.com>; rel=dns-prefetch, <https://images.unsplash.com>; rel=dns-prefetch',
           },
         ],
       },

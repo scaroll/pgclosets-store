@@ -1,68 +1,42 @@
-// @ts-nocheck
-import { prisma } from '@/lib/prisma'
+import { getProductsByCategory } from '@/lib/data/products'
 import { ProductCard } from './product-card'
 
 interface RelatedProductsProps {
-  categoryId: string
+  category: string
   currentProductId: string
   limit?: number
 }
 
-export async function RelatedProducts({
-  categoryId,
-  currentProductId,
-  limit = 4,
-}: RelatedProductsProps) {
-  const products = await prisma.product.findMany({
-    where: {
-      categoryId,
-      id: { not: currentProductId },
-      inStock: true,
-    },
-    select: {
-      id: true,
-      name: true,
-      slug: true,
-      description: true,
-      shortDesc: true,
-      price: true,
-      salePrice: true,
-      images: true,
-      category: {
-        select: {
-          name: true,
-        },
-      },
-    },
-    take: limit,
-    orderBy: {
-      createdAt: 'desc',
-    },
-  })
+export function RelatedProducts({ category, currentProductId, limit = 4 }: RelatedProductsProps) {
+  // Get products by category from the JSON-based data layer
+  const allRelatedProducts = getProductsByCategory(category)
+
+  // Filter out the current product and limit the results
+  const products = allRelatedProducts
+    .filter(product => product.id !== currentProductId)
+    .slice(0, limit)
 
   if (products.length === 0) {
     return null
   }
 
   return (
-    <section className="mt-16 pt-16 border-t">
+    <section className="mt-16 border-t pt-16">
       <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-2">You May Also Like</h2>
-        <p className="text-muted-foreground">
-          Similar products from our collection
-        </p>
+        <h2 className="mb-2 text-3xl font-bold">You May Also Like</h2>
+        <p className="text-muted-foreground">Similar products from our collection</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {products.map(product => (
           <ProductCard
             key={product.id}
-            id={product.slug}
+            id={product.id} // The ProductCard expects an ID as a string, but the slug is used for links
             name={product.name}
-            description={product.shortDesc || product.description}
-            price={Number(product.salePrice || product.price)}
+            description={product.shortDescription}
+            price={product.price}
             image={product.images[0] || '/placeholder.jpg'}
-            category={product.category.name}
+            category={product.category}
             href={`/products/${product.slug}`}
           />
         ))}
