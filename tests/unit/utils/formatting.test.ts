@@ -3,7 +3,7 @@
  * Tests for price, date, and string formatting functions
  */
 
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 // Utility functions to test (these should exist in your codebase)
 const formatPrice = (price: number, currency = 'USD'): string => {
@@ -18,6 +18,7 @@ const formatDate = (date: string | Date): string => {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC',
   }).format(new Date(date))
 }
 

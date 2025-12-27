@@ -29,9 +29,9 @@ async function runAccessibilityAudit() {
 
   for (const { path, name } of urls) {
     try {
-      console.log(`\n📱 Testing ${name}: http://localhost:3001${path}`);
+      console.log(`\n📱 Testing ${name}: http://localhost:3000${path}`);
 
-      await page.goto(`http://localhost:3001${path}`, {
+      await page.goto(`http://localhost:3000${path}`, {
         waitUntil: 'networkidle',
         timeout: 15000
       });

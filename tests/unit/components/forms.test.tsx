@@ -1,10 +1,10 @@
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { AppleCheckbox, AppleRadioGroup, AppleToggle } from '@/components/ui/forms/AppleCheckbox'
+import { AppleSelect } from '@/components/ui/forms/AppleSelect'
 import { FloatingInput } from '@/components/ui/forms/FloatingInput'
 import { FloatingTextArea } from '@/components/ui/forms/FloatingTextArea'
-import { AppleSelect } from '@/components/ui/forms/AppleSelect'
-import { AppleCheckbox, AppleRadioGroup, AppleToggle } from '@/components/ui/forms/AppleCheckbox'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { describe, expect, it, vi } from 'vitest'
 
 describe('Form Components', () => {
   describe('FloatingInput', () => {
@@ -14,34 +14,18 @@ describe('Form Components', () => {
     })
 
     it('shows error message', () => {
-      render(
-        <FloatingInput
-          label="Email"
-          error="Invalid email address"
-        />
-      )
+      render(<FloatingInput label="Email" error="Invalid email address" />)
       expect(screen.getByText('Invalid email address')).toBeInTheDocument()
     })
 
     it('shows success message', () => {
-      render(
-        <FloatingInput
-          label="Email"
-          success="Email is available"
-        />
-      )
+      render(<FloatingInput label="Email" success="Email is available" />)
       expect(screen.getByText('Email is available')).toBeInTheDocument()
     })
 
     it('toggles password visibility', async () => {
-      render(
-        <FloatingInput
-          label="Password"
-          type="password"
-          showPasswordToggle
-        />
-      )
-      const input = screen.getByRole('textbox', { hidden: true })
+      render(<FloatingInput label="Password" type="password" showPasswordToggle />)
+      const input = screen.getByLabelText('Password')
       expect(input).toHaveAttribute('type', 'password')
 
       const toggleButton = screen.getByRole('button')
@@ -52,12 +36,7 @@ describe('Form Components', () => {
 
     it('calls onChange handler', async () => {
       const handleChange = vi.fn()
-      render(
-        <FloatingInput
-          label="Name"
-          onChange={handleChange}
-        />
-      )
+      render(<FloatingInput label="Name" onChange={handleChange} />)
 
       const input = screen.getByRole('textbox')
       await userEvent.type(input, 'John')
@@ -78,24 +57,12 @@ describe('Form Components', () => {
     })
 
     it('shows character counter', () => {
-      render(
-        <FloatingTextArea
-          label="Message"
-          maxLength={100}
-          defaultValue="Hello"
-        />
-      )
+      render(<FloatingTextArea label="Message" maxLength={100} defaultValue="Hello" />)
       expect(screen.getByText(/5\/100/)).toBeInTheDocument()
     })
 
     it('auto-resizes on input', async () => {
-      render(
-        <FloatingTextArea
-          label="Message"
-          autoResize
-          minRows={2}
-        />
-      )
+      render(<FloatingTextArea label="Message" autoResize minRows={2} />)
 
       const textarea = screen.getByRole('textbox')
       const initialHeight = textarea.style.height
@@ -132,13 +99,7 @@ describe('Form Components', () => {
 
     it('selects option on click', async () => {
       const handleChange = vi.fn()
-      render(
-        <AppleSelect
-          label="Select"
-          options={options}
-          onChange={handleChange}
-        />
-      )
+      render(<AppleSelect label="Select" options={options} onChange={handleChange} />)
 
       const trigger = screen.getByRole('combobox')
       await userEvent.click(trigger)
@@ -150,13 +111,7 @@ describe('Form Components', () => {
     })
 
     it('filters options when searchable', async () => {
-      render(
-        <AppleSelect
-          label="Select"
-          options={options}
-          searchable
-        />
-      )
+      render(<AppleSelect label="Select" options={options} searchable />)
 
       const trigger = screen.getByRole('combobox')
       await userEvent.click(trigger)
@@ -177,12 +132,7 @@ describe('Form Components', () => {
 
     it('toggles on click', async () => {
       const handleChange = vi.fn()
-      render(
-        <AppleCheckbox
-          label="Subscribe"
-          onCheckedChange={handleChange}
-        />
-      )
+      render(<AppleCheckbox label="Subscribe" onCheckedChange={handleChange} />)
 
       const checkbox = screen.getByRole('checkbox')
       await userEvent.click(checkbox)
@@ -191,12 +141,7 @@ describe('Form Components', () => {
     })
 
     it('shows description', () => {
-      render(
-        <AppleCheckbox
-          label="Newsletter"
-          description="Weekly updates"
-        />
-      )
+      render(<AppleCheckbox label="Newsletter" description="Weekly updates" />)
       expect(screen.getByText('Weekly updates')).toBeInTheDocument()
     })
   })
@@ -208,25 +153,14 @@ describe('Form Components', () => {
     ]
 
     it('renders all options', () => {
-      render(
-        <AppleRadioGroup
-          label="Contact Method"
-          options={options}
-        />
-      )
+      render(<AppleRadioGroup label="Contact Method" options={options} />)
       expect(screen.getByText('Email')).toBeInTheDocument()
       expect(screen.getByText('Phone')).toBeInTheDocument()
     })
 
     it('selects option on click', async () => {
       const handleChange = vi.fn()
-      render(
-        <AppleRadioGroup
-          label="Contact"
-          options={options}
-          onValueChange={handleChange}
-        />
-      )
+      render(<AppleRadioGroup label="Contact" options={options} onValueChange={handleChange} />)
 
       const emailOption = screen.getByText('Email')
       await userEvent.click(emailOption)
@@ -243,12 +177,7 @@ describe('Form Components', () => {
 
     it('toggles on click', async () => {
       const handleChange = vi.fn()
-      render(
-        <AppleToggle
-          label="Notifications"
-          onCheckedChange={handleChange}
-        />
-      )
+      render(<AppleToggle label="Notifications" onCheckedChange={handleChange} />)
 
       const toggle = screen.getByRole('switch')
       await userEvent.click(toggle)
@@ -257,9 +186,7 @@ describe('Form Components', () => {
     })
 
     it('renders different sizes', () => {
-      const { rerender } = render(
-        <AppleToggle label="Toggle" size="sm" />
-      )
+      const { rerender } = render(<AppleToggle label="Toggle" size="sm" />)
       expect(screen.getByRole('switch')).toHaveClass('w-9')
 
       rerender(<AppleToggle label="Toggle" size="lg" />)
@@ -294,12 +221,7 @@ describe('Accessibility', () => {
   })
 
   it('announces errors to screen readers', () => {
-    render(
-      <FloatingInput
-        label="Email"
-        error="Invalid email"
-      />
-    )
+    render(<FloatingInput label="Email" error="Invalid email" />)
     expect(screen.getByText('Invalid email')).toBeInTheDocument()
   })
 

@@ -3,7 +3,7 @@
  * Tests for input validation functions
  */
 
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 // Validation utility functions
 const isValidEmail = (email: string): boolean => {
@@ -25,15 +25,15 @@ const isValidPostalCode = (postalCode: string): boolean => {
 
 const isValidUrl = (url: string): boolean => {
   try {
-    new URL(url)
-    return true
+    const parsed = new URL(url)
+    return ['http:', 'https:', 'ftp:', 'mailto:'].includes(parsed.protocol)
   } catch {
     return false
   }
 }
 
 const isValidPrice = (price: number): boolean => {
-  return typeof price === 'number' && price >= 0 && !isNaN(price)
+  return Number.isFinite(price) && price >= 0
 }
 
 const isValidQuantity = (quantity: number): boolean => {

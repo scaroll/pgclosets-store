@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { RateLimiter } from '@/lib/auth'
+import { RateLimiter } from '@/lib/rate-limit'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Mock @vercel/kv
 vi.mock('@vercel/kv', () => ({
@@ -182,9 +182,9 @@ describe('RateLimiter', () => {
       const windowMs = 60000
 
       // Make 10 concurrent requests
-      const promises = Array(10).fill(null).map(() =>
-        RateLimiter.check(identifier, maxRequests, windowMs)
-      )
+      const promises = Array(10)
+        .fill(null)
+        .map(() => RateLimiter.check(identifier, maxRequests, windowMs))
 
       const results = await Promise.all(promises)
 
@@ -300,11 +300,15 @@ describe('RateLimiter', () => {
         await RateLimiter.check(`temp-user-${i}`, maxRequests, windowMs)
       }
 
-      // Cleanup should be scheduled
-      // In a real scenario, expired entries would be cleaned up periodically
+      // Advance time to expire entries
+      vi.useFakeTimers()
+      vi.setSystemTime(Date.now() + windowMs + 1000)
 
       // Verify cleanup method exists and works
       RateLimiter.cleanup()
+
+      // Reset real time
+      vi.useRealTimers()
 
       // After cleanup, memory should be cleared
       const status = await RateLimiter.status('temp-user-1', maxRequests, windowMs)

@@ -3,7 +3,7 @@
 
 import fs from 'node:fs/promises'
 
-const SITEMAP_URL = 'https://www.pgclosets.com/sitemap.xml'
+const SITEMAP_URL = 'http://localhost:3000/sitemap.xml'
 const MAX_URLS = 50
 
 /**
@@ -105,7 +105,7 @@ async function main() {
   lines.push('# Visual/HTML Audit Report')
   lines.push('')
   lines.push(`Date: ${new Date().toISOString()}`)
-  lines.push(`Target: https://www.pgclosets.com (sampled ${results.length} pages from sitemap)`) 
+  lines.push(`Target: https://www.pgclosets.com (sampled ${results.length} pages from sitemap)`)
   lines.push('')
   const totalIssues = results.reduce((a, r) => a + (r.issues?.length || 0), 0)
   lines.push(`Summary: ${results.filter(r => r.status === 200).length}/${results.length} pages returned 200; Total issues flagged: ${totalIssues}.`)

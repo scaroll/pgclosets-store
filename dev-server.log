@@ -2,1231 +2,590 @@
 > pg-closets-website@0.1.0 dev
 > next dev
 
-   ▲ Next.js 15.5.4
+   ▲ Next.js 15.5.9
    - Local:        http://localhost:3000
-   - Network:      http://192.168.0.169:3000
-   - Environments: .env.local, .env.development, .env
+   - Network:      http://192.168.0.171:3000
    - Experiments (use with caution):
      · serverActions
      · optimizePackageImports
 
  ✓ Starting...
- ✓ Ready in 1450ms
- ✓ Compiled /middleware in 178ms (226 modules)
+ ✓ Ready in 1778ms
  ○ Compiling / ...
 
-
-Source path: /Users/spencercarroll/pgclosets-store-main/styles/mobile-performance.css
-Setting up new context...
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/styles/mobile-touch.css
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/styles/mobile-enhancements.css
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Setting up new context...
-Finding changed files: 16.378ms
-JIT TOTAL: 141.584ms
-
-
-
-
-
-
-(node:90761) Warning: Label 'JIT TOTAL' already exists for console.time()
-(Use `node --trace-warnings ...` to show where the warning was created)
-(node:90761) Warning: Label 'JIT TOTAL' already exists for console.time()
-(node:90761) Warning: Label 'JIT TOTAL' already exists for console.time()
-(node:90761) Warning: No such label 'JIT TOTAL' for console.timeEnd()
-(node:90761) Warning: No such label 'JIT TOTAL' for console.timeEnd()
-Reading changed files: 568.374ms
-Sorting candidates: 17.134ms
-Generate rules: 203.794ms
-Build stylesheet: 3.926ms
-Potential classes:  28668
-Active contexts:  2
-
-
-(node:90761) Warning: No such label 'JIT TOTAL' for console.timeEnd()
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/styles/products-optimization.css
-JIT TOTAL: 1.015ms
-
-
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/styles/performance.css
-JIT TOTAL: 0.491ms
-
-
- ✓ Compiled / in 3.5s (1441 modules)
-Image with src "/images/elegant-barn-door-closet.png" is using quality "90" which is not configured in images.qualities. This config will be required starting in Next.js 16.
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-Image with src "/images/before-after-closet-transformation.png" is using quality "90" which is not configured in images.qualities. This config will be required starting in Next.js 16.
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
- GET / 200 in 3936ms
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 9.663ms
-Reading changed files: 0.004ms
-Sorting candidates: 0.003ms
-Generate rules: 0.032ms
-Build stylesheet: 0.002ms
-Potential classes:  1
-Active contexts:  2
-JIT TOTAL: 28.328ms
-
-
- ✓ Compiled in 548ms (593 modules)
+warn - The class `ease-[cubic-bezier(0.4,0,0.2,1)]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `ease-&lsqb;cubic-bezier(0.4,0,0.2,1)&rsqb;` to silence this warning.
+ ✓ Compiled / in 2.6s (1589 modules)
+ GET / 200 in 3389ms
  ○ Compiling /about ...
- ✓ Compiled /about in 562ms (1385 modules)
- GET /about 200 in 845ms
- ✓ Compiled /contact in 359ms (1534 modules)
- GET /contact 200 in 737ms
- ✓ Compiled /products in 323ms (1580 modules)
- GET /products 200 in 815ms
- ✓ Compiled /store in 414ms (1683 modules)
-Image with src "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg" is using quality "85" which is not configured in images.qualities. This config will be required starting in Next.js 16.
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-Image with src "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg" is using quality "85" which is not configured in images.qualities. This config will be required starting in Next.js 16.
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-Image with src "/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg" is using quality "85" which is not configured in images.qualities. This config will be required starting in Next.js 16.
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-Image with src "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg" is using quality "85" which is not configured in images.qualities. This config will be required starting in Next.js 16.
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-Image with src "/images/arcat/renin_199064_hd.jpg" is using quality "85" which is not configured in images.qualities. This config will be required starting in Next.js 16.
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-Image with src "/images/arcat/renin_205717_hd.jpg" is using quality "85" which is not configured in images.qualities. This config will be required starting in Next.js 16.
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
- GET /store 200 in 828ms
- ○ Compiling /cart ...
- ✓ Compiled /cart in 543ms (1720 modules)
- GET /cart 200 in 808ms
- ✓ Compiled /quote in 356ms (1750 modules)
- GET /quote 200 in 570ms
- ✓ Compiled /services in 299ms (1755 modules)
- GET /services 200 in 699ms
- ✓ Compiled /faq in 336ms (1766 modules)
- GET /faq 200 in 582ms
- ✓ Compiled /gallery in 370ms (1785 modules)
- GET /gallery 200 in 589ms
- ✓ Compiled /products/barn-doors in 352ms (1787 modules)
- GET /products/barn-doors 200 in 661ms
- ✓ Compiled /products/interior-doors in 375ms (1789 modules)
- GET /products/interior-doors 200 in 723ms
- ✓ Compiled /products/hardware in 409ms (1791 modules)
- GET /products/hardware 200 in 751ms
- ✓ Compiled /products/closet-systems in 419ms (1793 modules)
- GET /products/closet-systems 200 in 866ms
- ✓ Compiled /products/room-dividers in 445ms (1795 modules)
- GET /products/room-dividers 200 in 937ms
- ○ Compiling /products/catalog ...
- ✓ Compiled /products/catalog in 4.1s (1962 modules)
-Image with src "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
-Image with src "/images/arcat/renin_192857_Brownstone_Stone_K_Design.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
-Image with src "/images/arcat/renin_192859_Heritage_Gladstone_2_Lite_Angled_Plank_Design.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
-Image with src "/images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
-Image with src "/images/arcat/renin_192856_Continental_Metal_Works_3_Panel_Metal_Inserts.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
-Image with src "/images/arcat/renin_192853_Heritage_Authentic_Cross_Brace_Design.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
-Image with src "/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
-Image with src "/images/arcat/renin_176736_Easy_Build_Stone_K_Design.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
-Image with src "/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
-Image with src "/images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
-Image with src "/api/placeholder/400/300" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
- GET /products/catalog 200 in 4528ms
- ○ Compiling /products/search ...
- ✓ Compiled /products/search in 674ms (2021 modules)
- ⨯ TypeError: Cannot read properties of undefined (reading 'query')
-    at getProducts (lib/actions/commerce.ts:37:16)
-    at AdvancedSearchPage (app/products/search/page.tsx:15:37)
-  35 |
-  36 |     // Filter by search query
-> 37 |     if (params.query) {
-     |                ^
-  38 |       const searchTerm = params.query.toLowerCase();
-  39 |       filteredProducts = filteredProducts.filter(
-  40 |         (product) => {
-  digest: '3180406912'
-}
- GET /products/search 200 in 909ms
- ○ Compiling /products/[slug] ...
- ✓ Compiled /products/[slug] in 615ms (2053 modules)
- GET /products/euro-1-lite-bypass 200 in 1473ms
- GET /products/euro-3-lite-bypass 200 in 76ms
- GET /products/ashbury-2-panel-design-steel-frame-bypass-door 200 in 182ms
- ○ Compiling /ottawa ...
- ✓ Compiled /ottawa in 623ms (2058 modules)
- GET /ottawa 200 in 985ms
- ○ Compiling /kanata ...
- ✓ Compiled /kanata in 545ms (2060 modules)
- GET /kanata 200 in 825ms
- ○ Compiling /orleans ...
- ✓ Compiled /orleans in 583ms (2062 modules)
- GET /orleans 200 in 843ms
- ○ Compiling /barrhaven ...
- ✓ Compiled /barrhaven in 603ms (2064 modules)
- GET /barrhaven 200 in 983ms
- ○ Compiling /nepean ...
- ✓ Compiled /nepean in 712ms (2066 modules)
- GET /nepean 200 in 913ms
- ○ Compiling /renin ...
- ✓ Compiled /renin in 731ms (2068 modules)
- GET /renin 200 in 998ms
- ○ Compiling /renin/ottawa ...
- ✓ Compiled /renin/ottawa in 664ms (2070 modules)
- GET /renin/ottawa 200 in 901ms
- ○ Compiling /renin/kanata ...
- ✓ Compiled /renin/kanata in 729ms (2072 modules)
- GET /renin/kanata 200 in 1021ms
- ○ Compiling /installation-ottawa ...
- ✓ Compiled /installation-ottawa in 745ms (2074 modules)
- GET /installation-ottawa 200 in 896ms
- ○ Compiling /renin-quotes ...
- ✓ Compiled /renin-quotes in 861ms (2085 modules)
- GET /renin-quotes 200 in 1001ms
- ○ Compiling /legal/privacy ...
- ✓ Compiled /legal/privacy in 809ms (2087 modules)
- GET /legal/privacy 200 in 952ms
- ○ Compiling /legal/terms ...
- ✓ Compiled /legal/terms in 822ms (2089 modules)
- GET /legal/terms 200 in 1015ms
- ○ Compiling /privacy-policy ...
- ✓ Compiled /privacy-policy in 1139ms (2102 modules)
- GET /privacy-policy 200 in 1353ms
- ○ Compiling /return-policy ...
- ✓ Compiled /return-policy in 839ms (2110 modules)
- GET /return-policy 200 in 1483ms
- ○ Compiling /shipping-policy ...
- ✓ Compiled /shipping-policy in 893ms (2117 modules)
- GET /shipping-policy 200 in 1089ms
- ○ Compiling /terms-of-service ...
- ✓ Compiled /terms-of-service in 868ms (2124 modules)
- GET /terms-of-service 200 in 1012ms
- ○ Compiling /offline ...
- ✓ Compiled /offline in 918ms (2131 modules)
- GET /offline 200 in 1038ms
- ○ Compiling /blog ...
- ✓ Compiled /blog in 943ms (2133 modules)
- GET /blog 200 in 1498ms
- ○ Compiling /account ...
- ✓ Compiled /account in 1070ms (2143 modules)
- GET /account 200 in 1437ms
- ○ Compiling /wishlist ...
- ✓ Compiled /wishlist in 1200ms (2145 modules)
- GET /wishlist 200 in 1355ms
- ○ Compiling /api/health ...
- ✓ Compiled /api/health in 670ms (1301 modules)
- GET /api/health 200 in 773ms
- ○ Compiling /api/status ...
- ✓ Compiled /api/status in 3.6s (2254 modules)
- GET /api/status 503 in 4722ms
- ○ Compiling /api/products ...
- ✓ Compiled /api/products in 932ms (2256 modules)
- GET /api/products 200 in 974ms
- ✓ Compiled /api/monitoring in 397ms (1304 modules)
- GET /api/monitoring 200 in 483ms
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 42.885ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.002ms
-Generate rules: 0.075ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  2
-JIT TOTAL: 78.851ms
-
-
- ✓ Compiled in 661ms (1806 modules)
- ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...
-   ▲ Next.js 15.5.4
-   - Local:        http://localhost:3000
-   - Network:      http://192.168.0.169:3000
-   - Environments: .env.local, .env.development, .env
-   - Experiments (use with caution):
-     · serverActions
-     · optimizePackageImports
-
- ✓ Starting...
- ✓ Ready in 2.5s
- ✓ Compiled /middleware in 408ms (226 modules)
- ○ Compiling /products/search ...
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Setting up new context...
-Finding changed files: 12.42ms
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/styles/mobile-performance.css
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/styles/mobile-touch.css
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/styles/mobile-enhancements.css
-JIT TOTAL: 113.358ms
-
-
-
-
-
-
-(node:92690) Warning: Label 'JIT TOTAL' already exists for console.time()
-(Use `node --trace-warnings ...` to show where the warning was created)
-(node:92690) Warning: Label 'JIT TOTAL' already exists for console.time()
-(node:92690) Warning: Label 'JIT TOTAL' already exists for console.time()
-(node:92690) Warning: No such label 'JIT TOTAL' for console.timeEnd()
-(node:92690) Warning: No such label 'JIT TOTAL' for console.timeEnd()
-Reading changed files: 573.986ms
-Sorting candidates: 17.912ms
-Generate rules: 212.724ms
-Build stylesheet: 4.195ms
-Potential classes:  28667
-Active contexts:  1
-
-
-(node:92690) Warning: No such label 'JIT TOTAL' for console.timeEnd()
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/styles/products-optimization.css
-JIT TOTAL: 0.652ms
-
-
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/styles/performance.css
-JIT TOTAL: 0.541ms
-
-
- ✓ Compiled /products/search in 4.3s (1541 modules)
- ⨯ TypeError: Cannot read properties of undefined (reading 'length')
-    at SearchResults (components/search/SearchResults.tsx:60:24)
+ ✓ Compiled /about in 1570ms (1594 modules)
+ GET /about 200 in 1325ms
+ ✓ Compiled /contact in 203ms (1617 modules)
+ GET /contact 200 in 521ms
+ ✓ Compiled /products in 231ms (1652 modules)
+Error: Route "/products" used `searchParams.page`. `searchParams` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at getProducts (app/(shop)/products/page.tsx:34:38)
+    at ProductsPage (app/(shop)/products/page.tsx:156:22)
+  32 |
+  33 | async function getProducts(searchParams: ProductsPageProps['searchParams']) {
+> 34 |   const page = parseInt(searchParams.page || '1')
+     |                                      ^
+  35 |   const limit = parseInt(searchParams.limit || '24')
+  36 |
+  37 |   // Build filters
+Error: Route "/products" used `searchParams.limit`. `searchParams` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at getProducts (app/(shop)/products/page.tsx:35:39)
+    at ProductsPage (app/(shop)/products/page.tsx:156:22)
+  33 | async function getProducts(searchParams: ProductsPageProps['searchParams']) {
+  34 |   const page = parseInt(searchParams.page || '1')
+> 35 |   const limit = parseInt(searchParams.limit || '24')
+     |                                       ^
+  36 |
+  37 |   // Build filters
+  38 |   const filters: Filters = {}
+Error: Route "/products" used `searchParams.category`. `searchParams` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at getProducts (app/(shop)/products/page.tsx:40:20)
+    at ProductsPage (app/(shop)/products/page.tsx:156:22)
+  38 |   const filters: Filters = {}
+  39 |
+> 40 |   if (searchParams.category) {
+     |                    ^
+  41 |     filters.category = searchParams.category
+  42 |   }
+  43 |
+Error: Route "/products" used `searchParams.minPrice`. `searchParams` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at getProducts (app/(shop)/products/page.tsx:44:20)
+    at ProductsPage (app/(shop)/products/page.tsx:156:22)
+  42 |   }
+  43 |
+> 44 |   if (searchParams.minPrice) {
+     |                    ^
+  45 |     filters.minPrice = parseInt(searchParams.minPrice)
+  46 |   }
+  47 |
+Error: Route "/products" used `searchParams.maxPrice`. `searchParams` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at getProducts (app/(shop)/products/page.tsx:48:20)
+    at ProductsPage (app/(shop)/products/page.tsx:156:22)
+  46 |   }
+  47 |
+> 48 |   if (searchParams.maxPrice) {
+     |                    ^
+  49 |     filters.maxPrice = parseInt(searchParams.maxPrice)
+  50 |   }
+  51 |
+Error: Route "/products" used `searchParams.inStock`. `searchParams` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at getProducts (app/(shop)/products/page.tsx:52:20)
+    at ProductsPage (app/(shop)/products/page.tsx:156:22)
+  50 |   }
+  51 |
+> 52 |   if (searchParams.inStock === 'true') {
+     |                    ^
+  53 |     filters.inStock = true
+  54 |   }
+  55 |
+Error: Route "/products" used `searchParams.sort`. `searchParams` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at getProducts (app/(shop)/products/page.tsx:59:24)
+    at ProductsPage (app/(shop)/products/page.tsx:156:22)
+  57 |   let sort: ProductSortOptions | undefined
   58 |
-  59 |       {/* Results Grid/List */}
-> 60 |       {filteredResults.length === 0 ? (
+> 59 |   switch (searchParams.sort) {
      |                        ^
-  61 |         <div className="text-center py-12">
-  62 |           <div className="mx-auto w-24 h-24 bg-muted rounded-full flex items-center justify-center mb-4">
-  63 |             <Home className="h-12 w-12 text-muted-foreground" /> {
-  digest: '4262752875'
-}
- GET /products/search 200 in 4953ms
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.371ms
-Reading changed files: 0.004ms
-Sorting candidates: 0.003ms
-Generate rules: 0.032ms
-Build stylesheet: 0.002ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 30.533ms
-
-
- ✓ Compiled in 737ms (628 modules)
- ○ Compiling /products ...
- ✓ Compiled /products in 1119ms (1487 modules)
- GET /products 200 in 1547ms
- ✓ Compiled /store in 419ms (1586 modules)
- GET /store 200 in 741ms
- ✓ Compiled /cart in 297ms (1621 modules)
- GET /cart 200 in 557ms
- ✓ Compiled /quote in 302ms (1645 modules)
- GET /quote 200 in 500ms
- ○ Compiling / ...
- ✓ Compiled / in 617ms (1693 modules)
- GET / 200 in 906ms
- ✓ Compiled /products/barn-doors in 293ms (1698 modules)
- GET /products/barn-doors 200 in 617ms
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 60.351ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.002ms
-Generate rules: 0.055ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 93.859ms
-
-
- ✓ Compiled in 787ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 14.573ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.003ms
-Generate rules: 0.029ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 35.553ms
-
-
- ✓ Compiled in 236ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 39.1ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.008ms
-Generate rules: 0.111ms
-Build stylesheet: 0.002ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 68.57ms
-
-
- ✓ Compiled in 316ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 13.102ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.034ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 31.366ms
-
-
- ✓ Compiled in 158ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.978ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.002ms
-Generate rules: 0.027ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 32.559ms
-
-
- ✓ Compiled in 154ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 20.925ms
-Reading changed files: 0.005ms
-Sorting candidates: 0.002ms
-Generate rules: 0.087ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 51.906ms
-
-
- ✓ Compiled in 360ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 24.698ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.002ms
-Generate rules: 0.043ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 45.245ms
-
-
- ✓ Compiled in 239ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 34.057ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.003ms
-Generate rules: 0.032ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 55.983ms
-
-
- ✓ Compiled in 260ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 19.48ms
-Reading changed files: 0.005ms
-Sorting candidates: 0.003ms
-Generate rules: 0.237ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 54.855ms
-
-
- ✓ Compiled in 387ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 29.793ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.002ms
-Generate rules: 0.088ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 78.502ms
-
-
- ✓ Compiled in 471ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 22.759ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.003ms
-Generate rules: 0.041ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 55.031ms
-
-
- ✓ Compiled in 298ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 9.186ms
-Reading changed files: 0.004ms
-Sorting candidates: 0.002ms
-Generate rules: 0.256ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 33.914ms
-
-
- ✓ Compiled in 183ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 17.39ms
-Reading changed files: 18.144ms
-Sorting candidates: 0.202ms
-Generate rules: 4.306ms
-Build stylesheet: 0.001ms
-Potential classes:  419
-Active contexts:  1
-JIT TOTAL: 101.195ms
-
-
- ✓ Compiled in 685ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.908ms
-Reading changed files: 2.168ms
-Sorting candidates: 0.048ms
-Generate rules: 0.271ms
-Build stylesheet: 0.001ms
-Potential classes:  135
-Active contexts:  1
-JIT TOTAL: 37.603ms
-
-
- ✓ Compiled in 175ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 18.225ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.003ms
-Generate rules: 0.089ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 44.236ms
-
-
- ✓ Compiled in 379ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 32.319ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.003ms
-Generate rules: 0.034ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 54.138ms
-
-
- ✓ Compiled in 247ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 45.501ms
-Reading changed files: 0.015ms
-Sorting candidates: 0.006ms
-Generate rules: 0.121ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 71.576ms
-
-
- ✓ Compiled in 336ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 12.594ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.03ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 30.315ms
-
-
- ✓ Compiled in 147ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.414ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.039ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 30.926ms
-
-
- ✓ Compiled in 140ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 12.805ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.026ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 29.088ms
-
-
- ✓ Compiled in 136ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 9.716ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.002ms
-Generate rules: 0.026ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 25.396ms
-
-
- ✓ Compiled in 121ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 9.042ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.027ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 27.434ms
-
-
- ✓ Compiled in 127ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 9.254ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.002ms
-Generate rules: 0.025ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 24.753ms
-
-
- ✓ Compiled in 133ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 12.796ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.004ms
-Generate rules: 0.06ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 29.244ms
-
-
- ✓ Compiled in 124ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.524ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.003ms
-Generate rules: 0.034ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 27.425ms
-
-
- ✓ Compiled in 122ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.783ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.034ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 29.178ms
-
-
- ✓ Compiled in 124ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 21.209ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.003ms
-Generate rules: 0.09ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 57.21ms
-
-
- ✓ Compiled in 310ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 10.933ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.003ms
-Generate rules: 0.074ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 36.045ms
-
-
- ✓ Compiled in 243ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.075ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.003ms
-Generate rules: 0.042ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 27.431ms
-
-
- ✓ Compiled in 141ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 10.696ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.097ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 44.618ms
-
-
- ✓ Compiled in 285ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 9.41ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.002ms
-Generate rules: 0.028ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 25.386ms
-
-
- ✓ Compiled in 131ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 35.051ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.03ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 53.627ms
-
-
- ✓ Compiled in 234ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 15.491ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.002ms
-Generate rules: 0.028ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 37.768ms
-
-
- ✓ Compiled in 224ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 50.4ms
-Reading changed files: 4.869ms
-Sorting candidates: 0.014ms
-Generate rules: 0.365ms
-Build stylesheet: 0.001ms
-Potential classes:  27
-Active contexts:  1
-JIT TOTAL: 96.489ms
-
-
- ✓ Compiled in 398ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 9.175ms
-Reading changed files: 1.745ms
-Sorting candidates: 0.011ms
-Generate rules: 0.085ms
-Build stylesheet: 0.01ms
-Potential classes:  24
-Active contexts:  1
-JIT TOTAL: 30.697ms
-
-
- ✓ Compiled in 155ms (723 modules)
- ✓ Compiled in 130ms (933 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 43.27ms
-Reading changed files: 3.908ms
-Sorting candidates: 0.072ms
-Generate rules: 1.93ms
-Build stylesheet: 0.003ms
-Potential classes:  226
-Active contexts:  1
-JIT TOTAL: 73.011ms
-
-
- ✓ Compiled in 232ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 9.416ms
-Reading changed files: 1.867ms
-Sorting candidates: 0.055ms
-Generate rules: 0.659ms
-Build stylesheet: 0.001ms
-Potential classes:  180
-Active contexts:  1
-JIT TOTAL: 28.989ms
-
-
- ✓ Compiled in 168ms (949 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.316ms
-Reading changed files: 1.622ms
-Sorting candidates: 0.01ms
-Generate rules: 0.088ms
-Build stylesheet: 0.001ms
-Potential classes:  18
-Active contexts:  1
-JIT TOTAL: 29.089ms
-
-
- ✓ Compiled in 132ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.817ms
-Reading changed files: 2.635ms
-Sorting candidates: 0.054ms
-Generate rules: 0.417ms
-Build stylesheet: 0.001ms
-Potential classes:  140
-Active contexts:  1
-JIT TOTAL: 37.107ms
-
-
- ✓ Compiled in 205ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 13.423ms
-Reading changed files: 5.768ms
-Sorting candidates: 0.056ms
-Generate rules: 0.602ms
-Build stylesheet: 0.001ms
-Potential classes:  173
-Active contexts:  1
-JIT TOTAL: 36.633ms
-
-
- ✓ Compiled in 141ms (723 modules)
- ✓ Compiled in 72ms (933 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 16.138ms
-Reading changed files: 3.072ms
-Sorting candidates: 0.078ms
-Generate rules: 0.781ms
-Build stylesheet: 0.001ms
-Potential classes:  244
-Active contexts:  1
-JIT TOTAL: 36.136ms
-
-
- ✓ Compiled in 157ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.005ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.002ms
-Generate rules: 0.03ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 27.66ms
-
-
- ✓ Compiled in 206ms (949 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 20.137ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.005ms
-Generate rules: 0.057ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 44.128ms
-
-
- ✓ Compiled in 284ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 26.758ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.028ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 44.613ms
-
-
- ✓ Compiled in 160ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 14.111ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.118ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 33.889ms
-
-
- ✓ Compiled in 159ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 23.847ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.032ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 40.904ms
-
-
- ✓ Compiled in 148ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 21.95ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.006ms
-Generate rules: 0.094ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 61.086ms
-
-
- ✓ Compiled in 356ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 17.916ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.072ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 49.362ms
-
-
- ✓ Compiled in 339ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 41.617ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.038ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 63.296ms
-
-
- ✓ Compiled in 302ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 13.425ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.003ms
-Generate rules: 0.032ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 36.785ms
-
-
- ✓ Compiled in 164ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 7.884ms
-Reading changed files: 0.002ms
-Sorting candidates: 0.002ms
-Generate rules: 0.025ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 25.111ms
-
-
- ✓ Compiled in 162ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 8.911ms
-Reading changed files: 3.48ms
-Sorting candidates: 0.091ms
-Generate rules: 0.586ms
-Build stylesheet: 0.001ms
-Potential classes:  179
-Active contexts:  1
-JIT TOTAL: 31.439ms
-
-
- ✓ Compiled in 150ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 28.317ms
-Reading changed files: 4.053ms
-Sorting candidates: 0.08ms
-Generate rules: 0.627ms
-Build stylesheet: 0.001ms
-Potential classes:  86
-Active contexts:  1
-JIT TOTAL: 62.553ms
-
-
- ✓ Compiled in 612ms (933 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 28.159ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.007ms
-Generate rules: 0.081ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 87.443ms
-
-
- ✓ Compiled in 292ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 41.576ms
-Reading changed files: 21.489ms
-Sorting candidates: 0.301ms
-Generate rules: 4.437ms
-Build stylesheet: 0.002ms
-Potential classes:  539
-Active contexts:  1
-JIT TOTAL: 92.185ms
-
-
- ✓ Compiled in 329ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.185ms
-Reading changed files: 13.196ms
-Sorting candidates: 0.758ms
-Generate rules: 2.415ms
-Build stylesheet: 0.001ms
-Potential classes:  1552
-Active contexts:  1
-JIT TOTAL: 48.277ms
-
-
- ✓ Compiled in 156ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 48.885ms
-Reading changed files: 11.833ms
-Sorting candidates: 0.295ms
-Generate rules: 2.351ms
-Build stylesheet: 0.001ms
-Potential classes:  842
-Active contexts:  1
-JIT TOTAL: 87.066ms
-
-
- ✓ Compiled in 215ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 19.698ms
-Reading changed files: 62.044ms
-Sorting candidates: 0.361ms
-Generate rules: 3.586ms
-Build stylesheet: 0.002ms
-Potential classes:  685
-Active contexts:  1
-JIT TOTAL: 118.777ms
-
-
- ✓ Compiled in 659ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 16.391ms
-Reading changed files: 17.275ms
-Sorting candidates: 1.186ms
-Generate rules: 3.883ms
-Build stylesheet: 0.002ms
-Potential classes:  1320
-Active contexts:  1
-JIT TOTAL: 56.584ms
-
-
- ✓ Compiled in 177ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 11.042ms
-Reading changed files: 8.025ms
-Sorting candidates: 0.24ms
-Generate rules: 2.301ms
-Build stylesheet: 0.001ms
-Potential classes:  697
-Active contexts:  1
-JIT TOTAL: 37.669ms
-
-
- ✓ Compiled in 165ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 13.874ms
-Reading changed files: 3.68ms
-Sorting candidates: 0.138ms
-Generate rules: 1.299ms
-Build stylesheet: 0.001ms
-Potential classes:  335
-Active contexts:  1
-JIT TOTAL: 36.134ms
-
-
- ✓ Compiled in 143ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 17.707ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.002ms
-Generate rules: 0.036ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 39.9ms
-
-
- ✓ Compiled in 153ms (723 modules)
-
-
-Source path: /Users/spencercarroll/pgclosets-store-main/app/globals.css
-Finding changed files: 21.352ms
-Reading changed files: 0.003ms
-Sorting candidates: 0.003ms
-Generate rules: 0.176ms
-Build stylesheet: 0.001ms
-Potential classes:  1
-Active contexts:  1
-JIT TOTAL: 59.82ms
-
-
- ✓ Compiled in 371ms (723 modules)
+  60 |     case 'newest':
+  61 |       sort = { field: 'createdAt', direction: 'desc' }
+  62 |       break
+Error: Route "/products" used `searchParams.limit`. `searchParams` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProductsPage (app/(shop)/products/page.tsx:216:57)
+  214 |                     currentPage={data.page}
+  215 |                     totalPages={data.totalPages}
+> 216 |                     itemsPerPage={parseInt(searchParams.limit || '24')}
+      |                                                         ^
+  217 |                   />
+  218 |                 </>
+  219 |               ) : (
+ GET /products 200 in 789ms
+ ✓ Compiled /[slug] in 356ms (1666 modules)
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /store 200 in 1105ms
+ ○ Compiling /cart ...
+ ✓ Compiled /cart in 1281ms (1703 modules)
+ GET /cart 200 in 1720ms
+ ✓ Compiled /quote in 296ms (1730 modules)
+ GET /quote 200 in 680ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /services 200 in 82ms
+ ✓ Compiled /faq in 272ms (1747 modules)
+ GET /faq 200 in 543ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /gallery 404 in 93ms
+ ✓ Compiled /products/[slug] in 340ms (1798 modules)
+Error: Route "/products/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProductPage (app/(shop)/products/[slug]/page.tsx:39:14)
+  37 |     }
+  38 |     void loadProduct()
+> 39 |   }, [params.slug])
+     |              ^
+  40 |
+  41 |   if (loading) {
+  42 |     return (
+ GET /products/barn-doors 200 in 949ms
+Error: Route "/products/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProductPage (app/(shop)/products/[slug]/page.tsx:39:14)
+  37 |     }
+  38 |     void loadProduct()
+> 39 |   }, [params.slug])
+     |              ^
+  40 |
+  41 |   if (loading) {
+  42 |     return (
+ GET /products/interior-doors 200 in 74ms
+Error: Route "/products/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProductPage (app/(shop)/products/[slug]/page.tsx:39:14)
+  37 |     }
+  38 |     void loadProduct()
+> 39 |   }, [params.slug])
+     |              ^
+  40 |
+  41 |   if (loading) {
+  42 |     return (
+ GET /products/hardware 200 in 68ms
+Error: Route "/products/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProductPage (app/(shop)/products/[slug]/page.tsx:39:14)
+  37 |     }
+  38 |     void loadProduct()
+> 39 |   }, [params.slug])
+     |              ^
+  40 |
+  41 |   if (loading) {
+  42 |     return (
+ GET /products/closet-systems 200 in 70ms
+Error: Route "/products/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProductPage (app/(shop)/products/[slug]/page.tsx:39:14)
+  37 |     }
+  38 |     void loadProduct()
+> 39 |   }, [params.slug])
+     |              ^
+  40 |
+  41 |   if (loading) {
+  42 |     return (
+ GET /products/room-dividers 200 in 71ms
+Error: Route "/products/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProductPage (app/(shop)/products/[slug]/page.tsx:39:14)
+  37 |     }
+  38 |     void loadProduct()
+> 39 |   }, [params.slug])
+     |              ^
+  40 |
+  41 |   if (loading) {
+  42 |     return (
+ GET /products/catalog 200 in 67ms
+Error: Route "/products/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProductPage (app/(shop)/products/[slug]/page.tsx:39:14)
+  37 |     }
+  38 |     void loadProduct()
+> 39 |   }, [params.slug])
+     |              ^
+  40 |
+  41 |   if (loading) {
+  42 |     return (
+ GET /products/search 200 in 67ms
+Error: Route "/products/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProductPage (app/(shop)/products/[slug]/page.tsx:39:14)
+  37 |     }
+  38 |     void loadProduct()
+> 39 |   }, [params.slug])
+     |              ^
+  40 |
+  41 |   if (loading) {
+  42 |     return (
+ GET /products/euro-1-lite-bypass 200 in 74ms
+Error: Route "/products/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProductPage (app/(shop)/products/[slug]/page.tsx:39:14)
+  37 |     }
+  38 |     void loadProduct()
+> 39 |   }, [params.slug])
+     |              ^
+  40 |
+  41 |   if (loading) {
+  42 |     return (
+ GET /products/euro-3-lite-bypass 200 in 68ms
+Error: Route "/products/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProductPage (app/(shop)/products/[slug]/page.tsx:39:14)
+  37 |     }
+  38 |     void loadProduct()
+> 39 |   }, [params.slug])
+     |              ^
+  40 |
+  41 |   if (loading) {
+  42 |     return (
+ GET /products/ashbury-2-panel-design-steel-frame-bypass-door 200 in 69ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /ottawa 200 in 82ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /kanata 200 in 77ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /orleans 200 in 72ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /barrhaven 200 in 67ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /nepean 200 in 76ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /renin 404 in 80ms
+ ✓ Compiled /_not-found in 320ms (1803 modules)
+ GET /renin/ottawa 404 in 566ms
+ GET /renin/kanata 404 in 58ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /installation-ottawa 404 in 88ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /renin-quotes 404 in 124ms
+ GET /legal/privacy 404 in 60ms
+ GET /legal/terms 404 in 64ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /privacy-policy 200 in 75ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /return-policy 200 in 74ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /shipping-policy 200 in 105ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /terms-of-service 200 in 75ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /offline 404 in 83ms
+ ✓ Compiled /blog in 312ms (1816 modules)
+ GET /blog 200 in 601ms
+ ✓ Compiled /middleware in 114ms (158 modules)
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /account 404 in 287ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /wishlist 404 in 83ms
+ ✓ Compiled /api/health in 304ms (1833 modules)
+ GET /api/health 200 in 3651ms
+ ✓ Compiled /api/status in 334ms (1838 modules)
+ GET /api/status 200 in 389ms
+ ✓ Compiled /api/products in 328ms (1841 modules)
+ GET /api/products 200 in 369ms
+ GET /api/monitoring 404 in 260ms
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at StaticPage (app/(marketing)/[slug]/page.tsx:35:37)
+  33 |
+  34 | export default function StaticPage({ params }: PageProps) {
+> 35 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  36 |
+  37 |   if (!page) {
+  38 |     notFound()
+Error: Route "/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(marketing)/[slug]/page.tsx:19:37)
+  17 |
+  18 | export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+> 19 |   const page = getStaticPage(params.slug)
+     |                                     ^
+  20 |
+  21 |   if (!page) {
+  22 |     return {}
+ GET /store 200 in 130ms
+ ✓ Compiled in 657ms (1855 modules)

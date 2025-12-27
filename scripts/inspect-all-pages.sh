@@ -3,7 +3,7 @@
 # Vercel Deployment Page Inspection Script
 # Tests all pages for HTTP status, load time, and content verification
 
-PREVIEW_URL="https://pgclosets-store-main-bsobssaee-peoples-group.vercel.app"
+PREVIEW_URL="http://localhost:3000"
 PRODUCTION_URL="https://www.pgclosets.com"
 REPORT_FILE="PAGE_INSPECTION_REPORT.md"
 

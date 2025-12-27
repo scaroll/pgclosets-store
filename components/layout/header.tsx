@@ -1,12 +1,11 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Search, ShoppingBag, User, ChevronDown } from "lucide-react"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Button } from "@/ui/button"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,55 +13,56 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import { cn } from "@/lib/utils"
-import { useCart } from "@/hooks/use-cart"
+} from '@/components/ui/dropdown-menu'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { cn } from '@/lib/utils'
+import { Button } from '@/ui/button'
+import { AnimatePresence, motion } from 'framer-motion'
+import { ChevronDown, Menu, Search, ShoppingBag, User, X } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+// import { useCart } from "@/hooks/use-cart" // Deprecated
 
 // Product categories for mega menu
 const productCategories = [
   {
-    name: "Walk-In Closets",
-    href: "/products/walk-in-closets",
-    description: "Custom luxury walk-in closet systems",
+    name: 'Walk-In Closets',
+    href: '/products/walk-in-closets',
+    description: 'Custom luxury walk-in closet systems',
   },
   {
-    name: "Reach-In Closets",
-    href: "/products/reach-in-closets",
-    description: "Space-efficient closet solutions",
+    name: 'Reach-In Closets',
+    href: '/products/reach-in-closets',
+    description: 'Space-efficient closet solutions',
   },
   {
-    name: "Wardrobe Systems",
-    href: "/products/wardrobes",
-    description: "Freestanding wardrobe collections",
+    name: 'Wardrobe Systems',
+    href: '/products/wardrobes',
+    description: 'Freestanding wardrobe collections',
   },
   {
-    name: "Storage Solutions",
-    href: "/products/storage",
-    description: "Organizational accessories and add-ons",
+    name: 'Storage Solutions',
+    href: '/products/storage',
+    description: 'Organizational accessories and add-ons',
   },
   {
-    name: "Hardware & Finishes",
-    href: "/products/hardware",
-    description: "Premium handles, pulls, and finishes",
+    name: 'Hardware & Finishes',
+    href: '/products/hardware',
+    description: 'Premium handles, pulls, and finishes',
   },
   {
-    name: "Custom Projects",
-    href: "/products/custom",
-    description: "Bespoke closet design services",
+    name: 'Custom Projects',
+    href: '/products/custom',
+    description: 'Bespoke closet design services',
   },
 ]
 
 const navigation = [
-  { name: "Products", href: "/products", hasDropdown: true },
-  { name: "Collections", href: "/collections" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: 'Products', href: '/products', hasDropdown: true },
+  { name: 'Collections', href: '/collections' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 export function Header() {
@@ -70,9 +70,12 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
   const pathname = usePathname()
-  const { getTotalItems } = useCart()
-  const cartItemCount = getTotalItems()
+  const cartItemCount = useCartStore(state => state.totalItems())
+  const openCart = useCartStore(state => state.openCart)
+  // const { getTotalItems } = useCart()
+  // const cartItemCount = getTotalItems()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,8 +83,8 @@ export function Header() {
       setIsScrolled(scrolled)
     }
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   // Close mobile menu on route change
@@ -93,10 +96,10 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
+          'ease-[cubic-bezier(0.4,0,0.2,1)] fixed left-0 right-0 top-0 z-50 transition-all duration-300',
           isScrolled
-            ? "bg-background/80 backdrop-blur-xl border-b shadow-sm py-3"
-            : "bg-transparent py-4"
+            ? 'border-b bg-background/80 py-3 shadow-sm backdrop-blur-xl'
+            : 'bg-transparent py-4'
         )}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,44 +117,38 @@ export function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
-              {navigation.map((item) => (
+            <nav className="hidden items-center space-x-1 lg:flex">
+              {navigation.map(item => (
                 <div key={item.name} className="relative">
                   {item.hasDropdown ? (
-                    <DropdownMenu
-                      open={isProductsMenuOpen}
-                      onOpenChange={setIsProductsMenuOpen}
-                    >
+                    <DropdownMenu open={isProductsMenuOpen} onOpenChange={setIsProductsMenuOpen}>
                       <DropdownMenuTrigger asChild>
                         <Button
                           variant="ghost"
                           className={cn(
-                            "text-sm font-medium transition-all duration-300 hover:opacity-70 px-4 py-2",
-                            pathname.startsWith(item.href) && "text-apple-blue-600 dark:text-apple-blue-dark"
+                            'px-4 py-2 text-sm font-medium transition-all duration-300 hover:opacity-70',
+                            pathname.startsWith(item.href) &&
+                              'text-apple-blue-600 dark:text-apple-blue-dark'
                           )}
                         >
                           {item.name}
                           <ChevronDown
                             className={cn(
-                              "ml-1 h-4 w-4 transition-transform duration-300",
-                              isProductsMenuOpen && "rotate-180"
+                              'ml-1 h-4 w-4 transition-transform duration-300',
+                              isProductsMenuOpen && 'rotate-180'
                             )}
                           />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent
-                        align="start"
-                        className="w-[600px] p-4"
-                        sideOffset={8}
-                      >
+                      <DropdownMenuContent align="start" className="w-[600px] p-4" sideOffset={8}>
                         <div className="grid grid-cols-2 gap-4">
-                          {productCategories.map((category) => (
+                          {productCategories.map(category => (
                             <Link
                               key={category.name}
                               href={category.href}
-                              className="group block p-3 rounded-lg transition-all duration-300 hover:bg-accent"
+                              className="group block rounded-lg p-3 transition-all duration-300 hover:bg-accent"
                             >
-                              <div className="font-medium text-sm mb-1 group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-dark transition-colors duration-300">
+                              <div className="mb-1 text-sm font-medium transition-colors duration-300 group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-dark">
                                 {category.name}
                               </div>
                               <div className="text-xs text-muted-foreground">
@@ -174,8 +171,8 @@ export function Header() {
                       <Button
                         variant="ghost"
                         className={cn(
-                          "text-sm font-medium transition-all duration-300 hover:opacity-70 px-4 py-2",
-                          pathname === item.href && "text-apple-blue-600 dark:text-apple-blue-dark"
+                          'px-4 py-2 text-sm font-medium transition-all duration-300 hover:opacity-70',
+                          pathname === item.href && 'text-apple-blue-600 dark:text-apple-blue-dark'
                         )}
                       >
                         {item.name}
@@ -200,25 +197,24 @@ export function Header() {
               </Button>
 
               {/* Cart Button */}
-              <Link href="/cart">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="relative transition-all duration-300 hover:opacity-70"
-                  aria-label={`Shopping cart with ${cartItemCount} items`}
-                >
-                  <ShoppingBag className="h-5 w-5" />
-                  {cartItemCount > 0 && (
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="absolute -top-1 -right-1 bg-apple-blue-600 dark:bg-apple-blue-dark text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium"
-                    >
-                      {cartItemCount}
-                    </motion.span>
-                  )}
-                </Button>
-              </Link>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="relative transition-all duration-300 hover:opacity-70"
+                aria-label={`Shopping cart with ${cartItemCount} items`}
+                onClick={openCart}
+              >
+                <ShoppingBag className="h-5 w-5" />
+                {cartItemCount > 0 && (
+                  <motion.span
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-apple-blue-600 text-xs font-medium text-white dark:bg-apple-blue-dark"
+                  >
+                    {cartItemCount}
+                  </motion.span>
+                )}
+              </Button>
 
               {/* User Menu */}
               <DropdownMenu>
@@ -258,29 +254,22 @@ export function Header() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="lg:hidden transition-all duration-300 hover:opacity-70"
+                    className="transition-all duration-300 lg:hidden hover:opacity-70"
                     aria-label="Menu"
                   >
-                    {isMobileMenuOpen ? (
-                      <X className="h-6 w-6" />
-                    ) : (
-                      <Menu className="h-6 w-6" />
-                    )}
+                    {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                   </Button>
                 </SheetTrigger>
-                <SheetContent
-                  side="right"
-                  className="w-full sm:w-[400px] overflow-y-auto"
-                >
-                  <div className="flex flex-col h-full">
+                <SheetContent side="right" className="w-full overflow-y-auto sm:w-[400px]">
+                  <div className="flex h-full flex-col">
                     {/* Mobile Search */}
                     <div className="mb-6 mt-4">
                       <div className="relative">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                         <input
                           type="search"
                           placeholder="Search products..."
-                          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-apple-blue-600 dark:focus:ring-apple-blue-dark"
+                          className="w-full rounded-lg border py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-apple-blue-600 dark:focus:ring-apple-blue-dark"
                         />
                       </div>
                     </div>
@@ -288,7 +277,7 @@ export function Header() {
                     {/* Mobile Navigation */}
                     <nav className="flex-1">
                       <Accordion type="single" collapsible className="w-full">
-                        {navigation.map((item) => (
+                        {navigation.map(item => (
                           <div key={item.name}>
                             {item.hasDropdown ? (
                               <AccordionItem value={item.name}>
@@ -297,14 +286,14 @@ export function Header() {
                                 </AccordionTrigger>
                                 <AccordionContent>
                                   <div className="flex flex-col space-y-3 pl-4">
-                                    {productCategories.map((category) => (
+                                    {productCategories.map(category => (
                                       <Link
                                         key={category.name}
                                         href={category.href}
                                         className="group py-2"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                       >
-                                        <div className="font-medium text-sm mb-1 group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-dark transition-colors duration-300">
+                                        <div className="mb-1 text-sm font-medium transition-colors duration-300 group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-dark">
                                           {category.name}
                                         </div>
                                         <div className="text-xs text-muted-foreground">
@@ -314,7 +303,7 @@ export function Header() {
                                     ))}
                                     <Link
                                       href="/products"
-                                      className="text-sm font-medium text-apple-blue-600 dark:text-apple-blue-dark hover:underline pt-2 border-t"
+                                      className="border-t pt-2 text-sm font-medium text-apple-blue-600 dark:text-apple-blue-dark hover:underline"
                                       onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                       View All Products →
@@ -326,8 +315,9 @@ export function Header() {
                               <Link
                                 href={item.href}
                                 className={cn(
-                                  "block py-4 border-b text-base font-medium transition-colors duration-300 hover:text-apple-blue-600 dark:hover:text-apple-blue-dark",
-                                  pathname === item.href && "text-apple-blue-600 dark:text-apple-blue-dark"
+                                  'block border-b py-4 text-base font-medium transition-colors duration-300 hover:text-apple-blue-600 dark:hover:text-apple-blue-dark',
+                                  pathname === item.href &&
+                                    'text-apple-blue-600 dark:text-apple-blue-dark'
                                 )}
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
@@ -339,24 +329,24 @@ export function Header() {
                       </Accordion>
 
                       {/* Mobile Account Links */}
-                      <div className="mt-8 pt-8 border-t space-y-4">
+                      <div className="mt-8 space-y-4 border-t pt-8">
                         <Link
                           href="/account/profile"
-                          className="block text-sm font-medium hover:text-apple-blue-600 dark:hover:text-apple-blue-dark transition-colors duration-300"
+                          className="block text-sm font-medium transition-colors duration-300 hover:text-apple-blue-600 dark:hover:text-apple-blue-dark"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           My Account
                         </Link>
                         <Link
                           href="/account/orders"
-                          className="block text-sm font-medium hover:text-apple-blue-600 dark:hover:text-apple-blue-dark transition-colors duration-300"
+                          className="block text-sm font-medium transition-colors duration-300 hover:text-apple-blue-600 dark:hover:text-apple-blue-dark"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           Orders
                         </Link>
                         <Link
                           href="/account/wishlist"
-                          className="block text-sm font-medium hover:text-apple-blue-600 dark:hover:text-apple-blue-dark transition-colors duration-300"
+                          className="block text-sm font-medium transition-colors duration-300 hover:text-apple-blue-600 dark:hover:text-apple-blue-dark"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           Wishlist
@@ -365,7 +355,7 @@ export function Header() {
                     </nav>
 
                     {/* Mobile Footer */}
-                    <div className="pt-6 border-t mt-auto">
+                    <div className="mt-auto border-t pt-6">
                       <Button
                         variant="outline"
                         className="w-full"
@@ -396,28 +386,28 @@ export function Header() {
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -100, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="bg-background border-b shadow-lg"
-              onClick={(e) => e.stopPropagation()}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="border-b bg-background shadow-lg"
+              onClick={e => e.stopPropagation()}
             >
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="max-w-2xl mx-auto">
+              <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-2xl">
                   <div className="relative">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
+                    <Search className="absolute left-4 top-1/2 h-6 w-6 -translate-y-1/2 text-muted-foreground" />
                     <input
                       type="search"
                       placeholder="Search for products, collections, or inspiration..."
-                      className="w-full pl-14 pr-12 py-4 text-lg border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-apple-blue-600 dark:focus:ring-apple-blue-dark focus:border-transparent"
+                      className="w-full rounded-xl border-2 py-4 pl-14 pr-12 text-lg focus:border-transparent focus:outline-none focus:ring-2 focus:ring-apple-blue-600 dark:focus:ring-apple-blue-dark"
                       autoFocus
                     />
                     <button
                       onClick={() => setIsSearchOpen(false)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors duration-300"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors duration-300 hover:text-foreground"
                     >
                       <X className="h-6 w-6" />
                     </button>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-4 text-center">
+                  <p className="mt-4 text-center text-sm text-muted-foreground">
                     Press ESC to close
                   </p>
                 </div>
@@ -428,7 +418,9 @@ export function Header() {
       </AnimatePresence>
 
       {/* Spacer to prevent content from hiding under fixed header */}
-      <div className={cn("h-16 transition-all duration-300", isScrolled ? "h-14" : "h-16")} />
+      <div className={cn('h-16 transition-all duration-300', isScrolled ? 'h-14' : 'h-16')} />
+
+      <CartSheet />
     </>
   )
 }

@@ -1,10 +1,7 @@
-import { Suspense } from 'react'
-import type { Metadata } from 'next'
 import { ProductCard } from '@/components/products/product-card'
 import { ProductFilters } from '@/components/products/product-filters'
 import { ProductSort } from '@/components/products/product-sort'
 import { Pagination } from '@/components/shared/pagination'
-import { PackageOpen } from 'lucide-react'
 import {
   filterAndSortProducts,
   getAllCategories,
@@ -12,6 +9,9 @@ import {
   type ProductFilters as Filters,
   type ProductSortOptions,
 } from '@/lib/data/products'
+import { PackageOpen } from 'lucide-react'
+import type { Metadata } from 'next'
+import { Suspense } from 'react'
 
 export const metadata: Metadata = {
   title: 'Products - PG Closets',
@@ -81,14 +81,14 @@ async function getProducts(searchParams: ProductsPageProps['searchParams']) {
 
   // Get categories with counts
   const categoryCounts = getProductCountByCategory()
-  const categories = getAllCategories().map((cat) => ({
+  const categories = getAllCategories().map(cat => ({
     label: cat,
     value: cat.toLowerCase().replace(/\s+/g, '-'),
     count: categoryCounts[cat] || 0,
   }))
 
   return {
-    items: result.products.map((product) => ({
+    items: result.products.map(product => ({
       id: product.id,
       name: product.name,
       slug: product.slug,
@@ -110,19 +110,19 @@ async function getProducts(searchParams: ProductsPageProps['searchParams']) {
 
 function ProductsLoading() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
       {Array.from({ length: 6 }).map((_, i) => (
         <div
           key={i}
-          className="bg-white dark:bg-apple-dark-bg-secondary rounded-apple-lg overflow-hidden border border-gray-200 dark:border-apple-dark-border animate-pulse"
+          className="animate-pulse overflow-hidden rounded-apple-lg border border-gray-200 bg-white dark:border-apple-dark-border dark:bg-apple-dark-bg-secondary"
         >
           <div className="aspect-square bg-gray-200 dark:bg-apple-dark-bg-tertiary" />
-          <div className="p-4 space-y-3">
-            <div className="h-4 bg-gray-200 dark:bg-apple-dark-bg-tertiary rounded w-1/4" />
-            <div className="h-6 bg-gray-200 dark:bg-apple-dark-bg-tertiary rounded w-3/4" />
-            <div className="h-4 bg-gray-200 dark:bg-apple-dark-bg-tertiary rounded w-full" />
-            <div className="h-8 bg-gray-200 dark:bg-apple-dark-bg-tertiary rounded w-1/3" />
-            <div className="h-10 bg-gray-200 dark:bg-apple-dark-bg-tertiary rounded w-full" />
+          <div className="space-y-3 p-4">
+            <div className="h-4 w-1/4 rounded bg-gray-200 dark:bg-apple-dark-bg-tertiary" />
+            <div className="h-6 w-3/4 rounded bg-gray-200 dark:bg-apple-dark-bg-tertiary" />
+            <div className="h-4 w-full rounded bg-gray-200 dark:bg-apple-dark-bg-tertiary" />
+            <div className="h-8 w-1/3 rounded bg-gray-200 dark:bg-apple-dark-bg-tertiary" />
+            <div className="h-10 w-full rounded bg-gray-200 dark:bg-apple-dark-bg-tertiary" />
           </div>
         </div>
       ))}
@@ -132,19 +132,19 @@ function ProductsLoading() {
 
 function EmptyState() {
   return (
-    <div className="flex flex-col items-center justify-center py-24 px-4">
-      <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-apple-dark-bg-tertiary flex items-center justify-center mb-6">
-        <PackageOpen className="w-8 h-8 text-gray-400 dark:text-apple-dark-text-tertiary" />
+    <div className="flex flex-col items-center justify-center px-4 py-24">
+      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100 dark:bg-apple-dark-bg-tertiary">
+        <PackageOpen className="h-8 w-8 text-gray-400 dark:text-apple-dark-text-tertiary" />
       </div>
-      <h3 className="text-2xl font-bold text-apple-gray-900 dark:text-apple-dark-text mb-2">
+      <h3 className="mb-2 text-2xl font-bold text-apple-gray-900 dark:text-apple-dark-text">
         No products found
       </h3>
-      <p className="text-apple-gray-600 dark:text-apple-dark-text-secondary text-center max-w-md mb-6">
+      <p className="mb-6 max-w-md text-center text-apple-gray-600 dark:text-apple-dark-text-secondary">
         We couldn't find any products matching your filters. Try adjusting your search criteria.
       </p>
       <a
         href="/products"
-        className="px-6 py-3 bg-apple-blue-500 text-white rounded-apple font-semibold hover:bg-apple-blue-600 transition-colors"
+        className="rounded-apple bg-apple-blue-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-apple-blue-600"
       >
         Clear Filters
       </a>
@@ -156,12 +156,12 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const data = await getProducts(searchParams)
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen overflow-x-hidden bg-background">
       {/* Page Header */}
-      <div className="bg-gray-50 dark:bg-apple-dark-bg-elevated py-12">
+      <div className="bg-gray-50 py-12 dark:bg-apple-dark-bg-elevated">
         <div className="container mx-auto px-4">
           {/* Breadcrumbs */}
-          <nav className="text-sm mb-4" aria-label="Breadcrumb">
+          <nav className="mb-4 text-sm" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-apple-gray-600 dark:text-apple-dark-text-secondary">
               <li>
                 <a href="/" className="hover:text-apple-blue-500">
@@ -169,13 +169,13 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                 </a>
               </li>
               <li>/</li>
-              <li className="text-apple-gray-900 dark:text-apple-dark-text font-medium">
+              <li className="font-medium text-apple-gray-900 dark:text-apple-dark-text">
                 Products
               </li>
             </ol>
           </nav>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-apple-gray-900 dark:text-apple-dark-text mb-2">
+          <h1 className="mb-2 text-4xl font-bold text-apple-gray-900 dark:text-apple-dark-text md:text-5xl">
             All Products
           </h1>
           <p className="text-lg text-apple-gray-600 dark:text-apple-dark-text-secondary">
@@ -186,16 +186,16 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col gap-8 lg:flex-row">
           {/* Sidebar Filters */}
-          <aside className="w-full lg:w-64 shrink-0">
+          <aside className="w-full shrink-0 lg:w-64">
             <ProductFilters categories={data.categories} />
           </aside>
 
           {/* Products Grid */}
-          <div className="flex-1 min-w-0">
+          <div className="min-w-0 flex-1">
             {/* Sort Controls */}
-            <div className="flex items-center justify-between mb-6 pb-6 border-b border-gray-200 dark:border-apple-dark-border">
+            <div className="mb-6 flex items-center justify-between border-b border-gray-200 pb-6 dark:border-apple-dark-border">
               <ProductSort showViewToggle={false} />
             </div>
 
@@ -203,8 +203,8 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             <Suspense fallback={<ProductsLoading />}>
               {data.items.length > 0 ? (
                 <>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
-                    {data.items.map((product) => (
+                  <div className="mb-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                    {data.items.map(product => (
                       <ProductCard key={product.id} product={product} />
                     ))}
                   </div>
