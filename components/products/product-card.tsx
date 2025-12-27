@@ -44,7 +44,26 @@ interface ProductCardProps {
 export function ProductCard({ product, className }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [quoteModalOpen, setQuoteModalOpen] = useState(false)
+  const [isAdding, setIsAdding] = useState(false)
+  const { addItem, openCart } = useCartStore()
+
   const discount = product.salePrice ? Math.round((1 - product.salePrice / product.price) * 100) : 0
+
+  const handleAddToCart = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsAdding(true)
+    await new Promise(resolve => setTimeout(resolve, 500))
+    addItem({
+      productId: product.id,
+      name: product.name,
+      price: product.salePrice || product.price,
+      image: product.images[0],
+      quantity: 1,
+    })
+    setIsAdding(false)
+    openCart()
+  }
 
   return (
     <motion.div
