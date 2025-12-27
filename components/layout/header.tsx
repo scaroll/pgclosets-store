@@ -70,7 +70,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
+
   const pathname = usePathname()
   const cartItemCount = useCartStore(state => state.totalItems())
   const openCart = useCartStore(state => state.openCart)
