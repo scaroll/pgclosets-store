@@ -1,52 +1,36 @@
-// @ts-nocheck - Product page with Decimal type issues
-'use client'
-
-import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { Star, Truck, Shield, ChevronRight, Package, FileText } from 'lucide-react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/src/components/ui/tabs'
-import { Button } from '@/components/ui/button'
+import { AddToCartButton } from '@/components/products/add-to-cart-button'
 import { ProductGallery } from '@/components/products/product-gallery'
 import { ProductVariants } from '@/components/products/product-variants'
 import { QuantitySelector } from '@/components/products/quantity-selector'
-import { AddToCartButton } from '@/components/products/add-to-cart-button'
-import { ProductReviews, StarRating } from '@/components/products/product-reviews'
 import { RelatedProducts } from '@/components/products/related-products'
-import { LuxuryQuoteForm } from '@/components/ui/luxury-quote-form'
-import { getProduct, formatPrice } from '@/lib/products'
+import { LuxuryQuoteFormServer } from '@/components/ui/luxury-quote-form-server'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { formatProductPrice, getProductBySlug } from '@/lib/data/products'
+import { ChevronRight, Package, Shield, Star, Truck } from 'lucide-react'
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     slug: string
+  }>
+}
+
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const product = getProductBySlug(slug)
+  if (!product) return { title: 'Product Not Found' }
+
+  return {
+    title: `${product.name} - PG Closets`,
+    description: product.description,
   }
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const [product, setProduct] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
-  const [quoteModalOpen, setQuoteModalOpen] = useState(false)
-  const [selectedVariant, setSelectedVariant] = useState<any>(null)
-
-  useEffect(() => {
-    async function loadProduct() {
-      const productData = await getProduct(params.slug)
-      setProduct(productData)
-      setLoading(false)
-    }
-    void loadProduct()
-  }, [params.slug])
-
-  if (loading) {
-    return (
-      <main className="min-h-screen bg-background">
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center">Loading...</div>
-        </div>
-      </main>
-    )
-  }
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { slug } = await params
+  const product = getProductBySlug(slug)
 
   if (!product) {
     notFound()
@@ -56,49 +40,33 @@ export default function ProductPage({ params }: ProductPageProps) {
   const hasDiscount = !!product.salePrice
   const discountPercentage = hasDiscount
     ? Math.round(
-        ((Number(product.price) - Number(product.salePrice)) /
-          Number(product.price)) *
-          100
+        ((Number(product.price) - Number(product.salePrice)) / Number(product.price)) * 100
       )
     : 0
 
   // Parse specifications if they exist
-  const specifications =
-    typeof product.specifications === 'object' && product.specifications !== null
-      ? (product.specifications as Record<string, string>)
-      : {}
+  const specifications = product.specifications || {}
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background text-apple-gray-900 dark:text-apple-dark-text">
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumbs */}
         <nav className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
-          <Link href="/" className="hover:text-foreground transition-colors">
+          <Link href="/" className="transition-colors hover:text-foreground">
             Home
           </Link>
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="h-4 w-4" />
           <Link
-            href={`/products?category=${product.category.slug}`}
-            className="hover:text-foreground transition-colors"
+            href={`/products?category=${product.category.toLowerCase().replace(/\s+/g, '-')}`}
+            className="transition-colors hover:text-foreground"
           >
-            {product.category.name}
+            {product.category}
           </Link>
-          {product.category.parent && (
-            <>
-              <ChevronRight className="w-4 h-4" />
-              <Link
-                href={`/products?category=${product.category.parent.slug}`}
-                className="hover:text-foreground transition-colors"
-              >
-                {product.category.parent.name}
-              </Link>
-            </>
-          )}
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-foreground font-medium">{product.name}</span>
+          <ChevronRight className="h-4 w-4" />
+          <span className="font-medium text-foreground">{product.name}</span>
         </nav>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid gap-12 lg:grid-cols-2">
           {/* Product Gallery */}
           <ProductGallery
             images={product.images.length > 0 ? product.images : ['/placeholder.jpg']}
@@ -109,32 +77,17 @@ export default function ProductPage({ params }: ProductPageProps) {
           <div className="space-y-6">
             {/* Title */}
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-3">{product.name}</h1>
-
-              {/* Rating */}
-              {product.reviewCount > 0 && (
-                <div className="flex items-center gap-3 mb-4">
-                  <StarRating rating={product.averageRating} showNumber />
-                  <Link
-                    href="#reviews"
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {product.reviewCount} {product.reviewCount === 1 ? 'review' : 'reviews'}
-                  </Link>
-                </div>
-              )}
+              <h1 className="mb-3 text-3xl font-bold md:text-4xl">{product.name}</h1>
 
               {/* Price */}
               <div className="flex items-center gap-4">
-                <div className="text-3xl font-bold">
-                  {formatPrice(currentPrice)}
-                </div>
+                <div className="text-3xl font-bold">{formatProductPrice(currentPrice)}</div>
                 {hasDiscount && (
                   <>
                     <div className="text-xl text-muted-foreground line-through">
-                      {formatPrice(product.price)}
+                      {formatProductPrice(product.price)}
                     </div>
-                    <div className="px-3 py-1 bg-red-100 text-red-600 dark:bg-red-900/20 dark:text-red-400 text-sm font-semibold rounded-full">
+                    <div className="rounded-full bg-red-100 px-3 py-1 text-sm font-semibold text-red-600 dark:bg-red-900/20 dark:text-red-400">
                       Save {discountPercentage}%
                     </div>
                   </>
@@ -143,9 +96,9 @@ export default function ProductPage({ params }: ProductPageProps) {
             </div>
 
             {/* Short Description */}
-            {product.shortDesc && (
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {product.shortDesc}
+            {product.shortDescription && (
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                {product.shortDescription}
               </p>
             )}
 
@@ -153,19 +106,14 @@ export default function ProductPage({ params }: ProductPageProps) {
             <div className="flex items-center gap-2">
               {product.inStock ? (
                 <>
-                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  <div className="h-2 w-2 rounded-full bg-green-500" />
                   <span className="text-sm font-medium text-green-600 dark:text-green-400">
                     In Stock
-                    {product.stockCount > 0 && product.stockCount < 10 && (
-                      <span className="ml-1 text-muted-foreground">
-                        (Only {product.stockCount} left)
-                      </span>
-                    )}
                   </span>
                 </>
               ) : (
                 <>
-                  <div className="w-2 h-2 rounded-full bg-red-500" />
+                  <div className="h-2 w-2 rounded-full bg-red-500" />
                   <span className="text-sm font-medium text-red-600 dark:text-red-400">
                     Out of Stock
                   </span>
@@ -174,94 +122,80 @@ export default function ProductPage({ params }: ProductPageProps) {
             </div>
 
             {/* Variants */}
-            {product.variants.length > 0 && (
+            {product.variants && product.variants.length > 0 && (
               <ProductVariants
-                variants={product.variants}
-                onVariantChange={setSelectedVariant}
+                variants={product.variants.map(v => ({
+                  ...v,
+                  price: v.priceCAD * 100, // Convert to cents for compatibility
+                }))}
               />
             )}
 
             {/* Quantity */}
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+              <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                 Quantity
-              </label>
-              <QuantitySelector max={product.stockCount || 99} />
+              </span>
+              <QuantitySelector max={99} />
             </div>
 
-            {/* Add to Cart */}
-            <AddToCartButton
-              product={{
-                id: product.id,
-                name: product.name,
-                price: currentPrice,
-                image: product.images[0],
-              }}
-              disabled={!product.inStock}
-            />
+            {/* Actions */}
+            <div className="flex flex-col gap-3">
+              <AddToCartButton
+                product={{
+                  id: product.id,
+                  name: product.name,
+                  price: currentPrice,
+                  image: product.images[0] || '/placeholder.jpg',
+                  slug: product.slug,
+                }}
+                disabled={!product.inStock}
+              />
 
-            {/* Request Quote Button */}
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full"
-              onClick={() => setQuoteModalOpen(true)}
-            >
-              <FileText className="w-5 h-5 mr-2" />
-              Request a Quote
-            </Button>
+              <LuxuryQuoteFormServer
+                product={{
+                  name: product.name,
+                  price: currentPrice / 100,
+                }}
+              />
+            </div>
 
             {/* Trust Badges */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t">
+            <div className="grid grid-cols-1 gap-4 border-t border-gray-100 pt-6 dark:border-apple-dark-border sm:grid-cols-2">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Truck className="w-5 h-5 text-primary" />
+                <div className="dark:bg-apple-blue-900/10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-50">
+                  <Truck className="h-5 w-5 text-apple-blue-600" />
                 </div>
                 <div>
-                  <div className="font-medium text-sm">Free Shipping</div>
+                  <div className="text-sm font-medium">Free Shipping</div>
                   <div className="text-xs text-muted-foreground">On orders over $500</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Shield className="w-5 h-5 text-primary" />
+                <div className="dark:bg-apple-blue-900/10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-50">
+                  <Shield className="h-5 w-5 text-apple-blue-600" />
                 </div>
                 <div>
-                  <div className="font-medium text-sm">Lifetime Warranty</div>
+                  <div className="text-sm font-medium">Lifetime Warranty</div>
                   <div className="text-xs text-muted-foreground">On all products</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Package className="w-5 h-5 text-primary" />
+                <div className="dark:bg-apple-blue-900/10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-50">
+                  <Package className="h-5 w-5 text-apple-blue-600" />
                 </div>
                 <div>
-                  <div className="font-medium text-sm">Easy Returns</div>
+                  <div className="text-sm font-medium">Easy Returns</div>
                   <div className="text-xs text-muted-foreground">30-day return policy</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Star className="w-5 h-5 text-primary" />
+                <div className="dark:bg-apple-blue-900/10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-50">
+                  <Star className="h-5 w-5 text-apple-blue-600" />
                 </div>
                 <div>
-                  <div className="font-medium text-sm">Quality Assured</div>
+                  <div className="text-sm font-medium">Quality Assured</div>
                   <div className="text-xs text-muted-foreground">Premium materials</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Delivery Estimate */}
-            <div className="p-4 bg-muted/50 rounded-lg">
-              <div className="flex items-start gap-3">
-                <Truck className="w-5 h-5 text-primary mt-0.5" />
-                <div>
-                  <div className="font-medium mb-1">Estimated Delivery</div>
-                  <div className="text-sm text-muted-foreground">
-                    Standard shipping: 3-5 business days
-                    <br />
-                    Express shipping: 1-2 business days
-                  </div>
                 </div>
               </div>
             </div>
@@ -270,56 +204,51 @@ export default function ProductPage({ params }: ProductPageProps) {
 
         {/* Product Tabs */}
         <Tabs defaultValue="description" className="mt-16">
-          <TabsList>
-            <TabsTrigger value="description">Description</TabsTrigger>
-            <TabsTrigger value="specs">Specifications</TabsTrigger>
-            <TabsTrigger value="reviews">
-              Reviews ({product.reviewCount})
+          <TabsList className="h-auto w-full justify-start gap-8 rounded-none border-b bg-transparent p-0">
+            <TabsTrigger
+              value="description"
+              className="rounded-none border-b-2 border-transparent px-0 py-4 text-base font-medium data-[state=active]:border-apple-blue-600 data-[state=active]:bg-transparent"
+            >
+              Description
             </TabsTrigger>
-            <TabsTrigger value="installation">Installation</TabsTrigger>
+            <TabsTrigger
+              value="specs"
+              className="rounded-none border-b-2 border-transparent px-0 py-4 text-base font-medium data-[state=active]:border-apple-blue-600 data-[state=active]:bg-transparent"
+            >
+              Specifications
+            </TabsTrigger>
+            <TabsTrigger
+              value="installation"
+              className="rounded-none border-b-2 border-transparent px-0 py-4 text-base font-medium data-[state=active]:border-apple-blue-600 data-[state=active]:bg-transparent"
+            >
+              Installation
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="description" className="mt-8">
-            <div className="prose prose-lg max-w-none dark:prose-invert">
-              <h3 className="text-2xl font-bold mb-4">Product Description</h3>
-              <div className="text-muted-foreground leading-relaxed whitespace-pre-wrap">
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <h3 className="mb-4 text-2xl font-bold">Product Description</h3>
+              <div className="whitespace-pre-wrap leading-relaxed text-muted-foreground">
                 {product.description}
               </div>
-
-              {product.features.length > 0 && (
-                <div className="mt-8">
-                  <h3 className="text-2xl font-bold mb-4">Key Features</h3>
-                  <ul className="space-y-2">
-                    {product.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <Star className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
           </TabsContent>
 
           <TabsContent value="specs" className="mt-8">
             <div className="max-w-3xl">
-              <h3 className="text-2xl font-bold mb-6">Specifications</h3>
+              <h3 className="mb-6 text-2xl font-bold">Specifications</h3>
 
               {Object.keys(specifications).length > 0 ? (
-                <div className="border rounded-lg overflow-hidden">
+                <div className="overflow-hidden rounded-xl border dark:border-apple-dark-border">
                   <table className="w-full">
-                    <tbody className="divide-y">
+                    <tbody className="divide-y dark:divide-apple-dark-border">
                       {Object.entries(specifications).map(([key, value], index) => (
-                        <tr
-                          key={key}
-                          className={index % 2 === 0 ? 'bg-muted/30' : 'bg-background'}
-                        >
-                          <td className="px-6 py-4 font-medium text-sm w-1/3">
-                            {key}
+                        <tr key={key} className={index % 2 === 0 ? 'bg-muted/30' : 'bg-background'}>
+                          <td className="w-1/3 px-6 py-4 text-sm font-medium">
+                            {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
                           </td>
                           <td className="px-6 py-4 text-muted-foreground">
-                            {value}
+                            {typeof value === 'object' ? JSON.stringify(value) : String(value)}
                           </td>
                         </tr>
                       ))}
@@ -327,61 +256,44 @@ export default function ProductPage({ params }: ProductPageProps) {
                   </table>
                 </div>
               ) : (
-                <div className="text-center py-12 text-muted-foreground">
+                <div className="py-12 text-center text-muted-foreground">
                   <p>No specifications available for this product.</p>
                 </div>
               )}
             </div>
           </TabsContent>
 
-          <TabsContent value="reviews" id="reviews" className="mt-8">
-            <ProductReviews
-              reviews={product.reviews}
-              averageRating={product.averageRating}
-              totalReviews={product.reviewCount}
-            />
-          </TabsContent>
-
           <TabsContent value="installation" className="mt-8">
-            <div className="prose prose-lg max-w-none dark:prose-invert">
-              <h3 className="text-2xl font-bold mb-4">Installation Guide</h3>
-              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 mb-6">
-                <h4 className="text-lg font-semibold mb-2 text-blue-900 dark:text-blue-100">
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <h3 className="mb-4 text-2xl font-bold">Installation Guide</h3>
+              <div className="dark:bg-apple-blue-900/10 dark:border-apple-blue-900/20 mb-6 rounded-xl border border-blue-100 bg-blue-50 p-6">
+                <h4 className="text-apple-blue-900 dark:text-apple-blue-100 mb-2 text-lg font-semibold">
                   Professional Installation Recommended
                 </h4>
-                <p className="text-blue-800 dark:text-blue-200 mb-0">
+                <p className="text-apple-blue-800 dark:text-apple-blue-200 mb-0">
                   For best results, we recommend professional installation by our certified
                   installers. Contact us to schedule an appointment.
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="grid gap-8 md:grid-cols-2">
                 <div>
-                  <h4 className="text-xl font-semibold mb-3">What&apos;s Included</h4>
-                  <ul className="space-y-2">
+                  <h4 className="mb-3 text-xl font-semibold">What&apos;s Included</h4>
+                  <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
                     <li>All necessary hardware and fasteners</li>
                     <li>Detailed installation instructions</li>
-                    <li>Customer support hotline</li>
+                    <li>Customer support helpline</li>
                   </ul>
                 </div>
 
                 <div>
-                  <h4 className="text-xl font-semibold mb-3">Tools Required</h4>
-                  <ul className="space-y-2">
-                    <li>Power drill</li>
-                    <li>Level</li>
+                  <h4 className="mb-3 text-xl font-semibold">Tools Required</h4>
+                  <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
+                    <li>Power drill & level</li>
                     <li>Measuring tape</li>
                     <li>Stud finder</li>
                     <li>Safety glasses</li>
                   </ul>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-3">Installation Time</h4>
-                  <p className="text-muted-foreground">
-                    Estimated time: 2-4 hours for experienced DIYers.
-                    Professional installation typically takes 1-2 hours.
-                  </p>
                 </div>
               </div>
             </div>
@@ -389,19 +301,10 @@ export default function ProductPage({ params }: ProductPageProps) {
         </Tabs>
 
         {/* Related Products */}
-        <RelatedProducts categoryId={product.categoryId} currentProductId={product.id} />
+        <section className="mt-24">
+          <RelatedProducts category={product.category} currentProductId={product.id} />
+        </section>
       </div>
-
-      {/* Quote Form Modal */}
-      <LuxuryQuoteForm
-        open={quoteModalOpen}
-        onClose={() => setQuoteModalOpen(false)}
-        product={{
-          name: product.name,
-          price: Number(currentPrice),
-        }}
-        selectedOptions={selectedVariant?.attributes || {}}
-      />
     </main>
   )
 }
