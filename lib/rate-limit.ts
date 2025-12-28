@@ -79,7 +79,7 @@ export const generalRateLimiter = createLimiter({
 // Helper function to get client identifier
 export function getClientIdentifier(req: Request): string {
   const forwarded = req.headers.get('x-forwarded-for')
-  const ip = forwarded ? forwarded.split(',')[0].trim() : 'unknown'
+  const ip = forwarded ? forwarded.split(',')[0]!.trim() : 'unknown'
   return ip
 }
 
@@ -89,7 +89,7 @@ export async function checkRateLimit(
   limiter: Ratelimit
 ): Promise<{ allowed: boolean; remaining: number; reset: number }> {
   try {
-    const { success, limit, remaining, reset } = await limiter.limit(identifier)
+    const { success, remaining, reset } = await limiter.limit(identifier)
 
     return {
       allowed: success,

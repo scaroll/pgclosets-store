@@ -3,7 +3,6 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 const PROTECTED_ADMIN_ROUTES = ['/admin']
-const PUBLIC_ROUTES = ['/api/health', '/api/auth']
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl

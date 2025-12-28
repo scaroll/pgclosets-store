@@ -42,7 +42,7 @@ export const useCartStore = create<CartState>()(
         if (existingItemIndex > -1) {
           // Update quantity
           const newItems = [...currentItems]
-          newItems[existingItemIndex].quantity += item.quantity
+          newItems[existingItemIndex]!.quantity += item.quantity
           set({ items: newItems, isOpen: true })
         } else {
           // Add new item
