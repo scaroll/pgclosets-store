@@ -124,9 +124,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
             {/* Variants */}
             {product.variants && product.variants.length > 0 && (
               <ProductVariants
-                variants={product.variants.map(v => ({
+                variants={product.variants.map((v, i) => ({
                   ...v,
+                  id: v.sku || `v-${i}`,
                   price: v.priceCAD * 100, // Convert to cents for compatibility
+                  inStock: v.availability === 'in-stock',
                 }))}
               />
             )}
@@ -147,7 +149,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   name: product.name,
                   price: currentPrice,
                   image: product.images[0] || '/placeholder.jpg',
-                  slug: product.slug,
                 }}
                 disabled={!product.inStock}
               />

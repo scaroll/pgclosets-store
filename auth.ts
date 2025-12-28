@@ -1,54 +1,69 @@
-// @ts-nocheck
+import { prisma } from '@/lib/db/client'
+import { PrismaAdapter } from '@auth/prisma-adapter'
+import * as bcrypt from 'bcryptjs'
 import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
+import Google from 'next-auth/providers/google'
+import { z } from 'zod'
 
-// Check if auth is properly configured
-const isAuthConfigured = Boolean(process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET)
+const credentialsSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+})
 
-// Minimal auth config that works without database
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  secret:
-    process.env.NEXTAUTH_SECRET ||
-    process.env.AUTH_SECRET ||
-    'development-secret-not-for-production',
+  adapter: PrismaAdapter(prisma),
   session: { strategy: 'jwt' },
   pages: {
-    signIn: '/login',
+    signIn: '/auth/signin',
     error: '/auth/error',
   },
-  providers: isAuthConfigured
-    ? [
-        Credentials({
-          name: 'credentials',
-          credentials: {
-            email: { label: 'Email', type: 'email' },
-            password: { label: 'Password', type: 'password' },
-          },
-          async authorize(credentials) {
-            // Demo/placeholder auth - replace with real logic when needed
-            if (credentials?.email === 'demo@pgclosets.com' && credentials?.password === 'demo') {
-              return {
-                id: '1',
-                email: 'demo@pgclosets.com',
-                name: 'Demo User',
-                role: 'USER',
-              }
-            }
-            return null
-          },
-        }),
-      ]
-    : [],
+  providers: [
+    Google({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    Credentials({
+      name: 'credentials',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
+      },
+      async authorize(credentials) {
+        const validated = credentialsSchema.safeParse(credentials)
+        if (!validated.success) return null
+
+        const { email, password } = validated.data
+
+        const user = await prisma.user.findUnique({
+          where: { email },
+        })
+
+        if (!user || !user.password) return null
+
+        const isValid = await bcrypt.compare(password, user.password)
+        if (!isValid) return null
+
+        return {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          role: user.role,
+        }
+      },
+    }),
+  ],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        token.id = user.id
         token.role = user.role
       }
       return token
     },
     async session({ session, token }) {
-      if (session.user) {
-        session.user.id = token.sub!
+      if (token) {
+        session.user.id = token.id as string
         session.user.role = token.role as string
       }
       return session

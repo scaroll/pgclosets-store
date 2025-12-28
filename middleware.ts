@@ -1,15 +1,34 @@
-// @ts-nocheck - Middleware with auth type issues
-import { NextResponse } from "next/server"
-import type { NextRequest } from "next/server"
+import { auth } from '@/auth'
+import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 
-// Simple middleware that allows all requests through
-// Auth protection can be added later when auth is configured
-export function middleware(request: NextRequest) {
-  // For now, just allow all requests
-  return NextResponse.next()
+const PROTECTED_ADMIN_ROUTES = ['/admin']
+const PUBLIC_ROUTES = ['/api/health', '/api/auth']
+
+export async function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl
+
+  // Security headers
+  const headers = new Headers(req.headers)
+  headers.set('X-Frame-Options', 'DENY')
+  headers.set('X-Content-Type-Options', 'nosniff')
+  headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+  headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
+
+  // Check if route is protected
+  const isAdminRoute = PROTECTED_ADMIN_ROUTES.some(route => pathname.startsWith(route))
+
+  if (isAdminRoute) {
+    const session = await auth()
+
+    if (!session || session.user.role !== 'admin') {
+      return NextResponse.redirect(new URL('/auth/signin', req.url))
+    }
+  }
+
+  return NextResponse.next({ headers })
 }
 
 export const config = {
-  // Only run middleware on specific paths if needed
-  matcher: ["/admin/:path*", "/account/:path*"],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 }

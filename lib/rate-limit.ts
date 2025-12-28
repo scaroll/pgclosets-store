@@ -1,189 +1,98 @@
-// @ts-nocheck - Rate limiter with dynamic types
-import { NextRequest } from 'next/server'
+import { Ratelimit } from '@upstash/ratelimit'
+import { Redis } from '@upstash/redis'
 
-interface RateLimiter {
-  maxRequests: number
-  windowMs: number
+// Determine if we have valid Upstash credentials
+const redisUrl = process.env.REDIS_URL || ''
+const isUpstash = redisUrl.startsWith('https://')
+
+// Create Redis client or mock
+let redis: any
+
+if (isUpstash) {
+  redis = new Redis({
+    url: process.env.REDIS_URL!,
+    token: process.env.REDIS_TOKEN!,
+  })
+} else {
+  console.warn(
+    '⚠️  REDIS_URL is not an Upstash HTTPS URL. Rate limiting will be disabled (allowing all requests).'
+  )
+  // Mock Redis for local dev
+  redis = {
+    incr: async () => 1,
+    expire: async () => 1,
+    eval: async () => [1, 1, 1, 1], // Mock Lua script response
+  }
 }
 
-interface RateLimitEntry {
-  count: number
-  resetTime: number
+// Helper to create limiter (graceful fallback)
+const createLimiter = (options: any) => {
+  if (!isUpstash) {
+    // Return a mock limiter that always allows
+    return {
+      limit: async () => ({ success: true, limit: 100, remaining: 99, reset: 0 }),
+    } as any as Ratelimit
+  }
+  return new Ratelimit({
+    ...options,
+    redis,
+  })
 }
 
-// In-memory store for rate limiting (use Redis in production)
-const rateLimitStore = new Map<string, RateLimitEntry>()
+// Different rate limiters for different endpoints
+export const chatRateLimiter = createLimiter({
+  limiter: Ratelimit.slidingWindow(10, '1 m'), // 10 requests per minute
+  analytics: true,
+  prefix: 'ratelimit:chat',
+})
 
-/**
- * Rate limiter for authentication routes
- */
-export const authRateLimiter: RateLimiter = {
-  maxRequests: 5, // 5 attempts
-  windowMs: 15 * 60 * 1000, // 15 minutes
-}
+export const aiRecommendationsRateLimiter = createLimiter({
+  limiter: Ratelimit.slidingWindow(5, '1 m'), // 5 requests per minute
+  analytics: true,
+  prefix: 'ratelimit:ai-recommendations',
+})
 
-/**
- * Rate limiter for API routes
- */
-export const apiRateLimiter: RateLimiter = {
-  maxRequests: 100,
-  windowMs: 60 * 1000, // 1 minute
-}
+export const authRateLimiter = createLimiter({
+  limiter: Ratelimit.slidingWindow(5, '5 m'), // 5 requests per 5 minutes
+  analytics: true,
+  prefix: 'ratelimit:auth',
+})
 
-/**
- * Rate limiter for general routes
- */
-export const generalRateLimiter: RateLimiter = {
-  maxRequests: 60,
-  windowMs: 60 * 1000, // 1 minute
-}
+export const checkoutRateLimiter = createLimiter({
+  limiter: Ratelimit.slidingWindow(3, '1 m'), // 3 requests per minute
+  analytics: true,
+  prefix: 'ratelimit:checkout',
+})
 
-/**
- * Rate limiter for booking routes
- */
-export const bookingRateLimiter: RateLimiter = {
-  maxRequests: 10,
-  windowMs: 60 * 1000, // 1 minute
-}
+export const generalRateLimiter = createLimiter({
+  limiter: Ratelimit.slidingWindow(20, '1 m'), // 20 requests per minute
+  analytics: true,
+  prefix: 'ratelimit:general',
+})
 
-/**
- * Get client identifier from request
- */
-export function getClientIdentifier(req: NextRequest): string {
-  // Try to get IP from various headers
+// Helper function to get client identifier
+export function getClientIdentifier(req: Request): string {
   const forwarded = req.headers.get('x-forwarded-for')
-  const realIp = req.headers.get('x-real-ip')
-  const ip = forwarded?.split(',')[0].trim() || realIp || req.ip || 'unknown'
-
+  const ip = forwarded ? forwarded.split(',')[0].trim() : 'unknown'
   return ip
 }
 
-/**
- * Check if the request is rate limited
- */
+// Helper function to check rate limit
 export async function checkRateLimit(
   identifier: string,
-  limiter: RateLimiter
-): Promise<{ allowed: boolean; remaining: number; resetTime: number }> {
-  const now = Date.now()
-  const key = `${identifier}:${limiter.maxRequests}:${limiter.windowMs}`
-
-  const entry = rateLimitStore.get(key)
-
-  // Clean up expired entries periodically
-  if (Math.random() < 0.01) {
-    cleanupExpiredEntries()
-  }
-
-  if (limiter.maxRequests <= 0) {
-    return {
-      allowed: false,
-      remaining: 0,
-      resetTime: now + limiter.windowMs,
-    }
-  }
-
-  if (!entry || now > entry.resetTime) {
-    // No entry or expired - create new one
-    const newEntry: RateLimitEntry = {
-      count: 1,
-      resetTime: now + limiter.windowMs,
-    }
-    rateLimitStore.set(key, newEntry)
+  limiter: Ratelimit
+): Promise<{ allowed: boolean; remaining: number; reset: number }> {
+  try {
+    const { success, limit, remaining, reset } = await limiter.limit(identifier)
 
     return {
-      allowed: true,
-      remaining: limiter.maxRequests - 1,
-      resetTime: newEntry.resetTime,
+      allowed: success,
+      remaining,
+      reset,
     }
-  }
-
-  // Check if limit exceeded
-  if (entry.count >= limiter.maxRequests) {
-    return {
-      allowed: false,
-      remaining: 0,
-      resetTime: entry.resetTime,
-    }
-  }
-
-  // Increment counter
-  entry.count += 1
-  rateLimitStore.set(key, entry)
-
-  return {
-    allowed: true,
-    remaining: limiter.maxRequests - entry.count,
-    resetTime: entry.resetTime,
-  }
-}
-
-/**
- * Clean up expired rate limit entries
- */
-/**
- * Clean up expired rate limit entries
- */
-export function cleanupExpiredEntries(): void {
-  const now = Date.now()
-  for (const [key, entry] of rateLimitStore.entries()) {
-    if (now > entry.resetTime) {
-      rateLimitStore.delete(key)
-    }
-  }
-}
-
-/**
- * Get rate limit status without incrementing
- */
-export async function getRateLimitStatus(
-  identifier: string,
-  limiter: RateLimiter
-): Promise<{ count: number; remaining: number; resetTime: number | null }> {
-  const now = Date.now()
-  const key = `${identifier}:${limiter.maxRequests}:${limiter.windowMs}`
-  const entry = rateLimitStore.get(key)
-
-  if (!entry || now > entry.resetTime) {
-    return {
-      count: 0,
-      remaining: limiter.maxRequests,
-      resetTime: null,
-    }
-  }
-
-  return {
-    count: entry.count,
-    remaining: Math.max(0, limiter.maxRequests - entry.count),
-    resetTime: entry.resetTime,
-  }
-}
-
-/**
- * Wrapper for tests using static method style
- */
-export const RateLimiter = {
-  check: async (identifier: string, maxRequests = 100, windowMs = 60000) => {
-    return checkRateLimit(identifier, { maxRequests, windowMs })
-  },
-  reset: async (identifier: string) => {
-    return resetRateLimit(identifier)
-  },
-  cleanup: () => {
-    cleanupExpiredEntries()
-  },
-  status: async (identifier: string, maxRequests = 100, windowMs = 60000) => {
-    return getRateLimitStatus(identifier, { maxRequests, windowMs })
-  },
-}
-
-/**
- * Reset rate limit for a specific identifier
- */
-export function resetRateLimit(identifier: string): void {
-  for (const key of rateLimitStore.keys()) {
-    if (key.startsWith(identifier)) {
-      rateLimitStore.delete(key)
-    }
+  } catch (error) {
+    console.error('Rate limit error:', error)
+    // Fail open
+    return { allowed: true, remaining: 1, reset: 0 }
   }
 }

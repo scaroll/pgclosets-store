@@ -96,19 +96,23 @@ async function generateGeminiContent(prompt: string, systemPrompt: string): Prom
 }
 
 export async function generateMultiDimensionalContent(
-  prompt: string
+  prompt: string,
+  systemPrompt: string = MULTI_DIMENSIONAL_SYSTEM_PROMPT
 ): Promise<MultiDimensionalResponse> {
   try {
-    const fullContent = await generateGeminiContent(prompt, MULTI_DIMENSIONAL_SYSTEM_PROMPT)
+    const fullContent = await generateGeminiContent(prompt, systemPrompt)
 
     // Parse the response
     const analysisMatch = fullContent.match(/---INTERNAL_ANALYSIS---([\s\S]*?)---FINAL_RESPONSE---/)
     const finalResponseMatch = fullContent.split('---FINAL_RESPONSE---')
 
-    const analysis = analysisMatch
+    const analysis = analysisMatch?.[1]
       ? analysisMatch[1].trim()
       : `Analysis parsing failed. Raw output:\n${fullContent}`
-    const finalResponse = finalResponseMatch.length > 1 ? finalResponseMatch[1].trim() : fullContent
+    const finalResponse =
+      finalResponseMatch && finalResponseMatch.length > 1
+        ? finalResponseMatch[1].trim()
+        : fullContent
 
     return {
       analysis,

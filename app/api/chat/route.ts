@@ -1,15 +1,17 @@
-import { createOpenAI } from '@ai-sdk/openai';
-import { streamText } from 'ai';
+import { checkAvailabilityTool, createBookingTool } from '@/lib/ai/tools/booking'
+import { productSearchTool } from '@/lib/ai/tools/product-search'
+import { createOpenAI } from '@ai-sdk/openai'
+import { streamText } from 'ai'
 
 // Allow streaming responses up to 30 seconds
-export const maxDuration = 30;
+export const maxDuration = 30
 
 const openai = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-});
+})
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
+  const { messages } = await req.json()
 
   const result = await streamText({
     model: openai('gpt-4-turbo'),
@@ -34,6 +36,7 @@ INTERACTION STYLE:
 - Provide specific, actionable advice
 - Guide customers toward the best solution for their needs and budget
 - Always mention the free consultation and measurement service
+- Use the available tools to find products and check availability when asked.
 
 PRODUCT SPECIALTIES:
 - Barn Doors: Modern aesthetic, space-saving, customizable hardware finishes
@@ -57,7 +60,12 @@ VALUE PROPOSITIONS:
 
 Always prioritize customer satisfaction and guide them toward scheduling a free consultation for personalized recommendations.`,
     messages,
-  });
+    tools: {
+      searchProducts: productSearchTool,
+      checkAvailability: checkAvailabilityTool,
+      createBooking: createBookingTool,
+    },
+  })
 
-  return result.toTextStreamResponse();
+  return result.toTextStreamResponse()
 }

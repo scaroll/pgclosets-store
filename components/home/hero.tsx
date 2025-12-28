@@ -1,12 +1,20 @@
 'use client'
 
+interface HeroProps {
+  headline?: string
+  subheadline?: string
+  videoSrc?: string
+  posterSrc?: string
+  title?: string
+}
+
 export function VideoHero({
   headline,
   subheadline,
   videoSrc: _videoSrc = '/videos/hero-closet.mp4',
   posterSrc: _posterSrc = '/images/hero-poster.jpg',
   title: _title = 'Transform Your Space',
-}) {
+}: HeroProps) {
   return (
     <section className="relative flex h-96 items-center justify-center bg-gray-800 text-white">
       <div className="text-center">

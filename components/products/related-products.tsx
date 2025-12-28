@@ -31,13 +31,15 @@ export function RelatedProducts({ category, currentProductId, limit = 4 }: Relat
         {products.map(product => (
           <ProductCard
             key={product.id}
-            id={product.id} // The ProductCard expects an ID as a string, but the slug is used for links
-            name={product.name}
-            description={product.shortDescription}
-            price={product.price}
-            image={product.images[0] || '/placeholder.jpg'}
-            category={product.category}
-            href={`/products/${product.slug}`}
+            product={{
+              id: product.id,
+              title: product.name, // Mapping name to title for ProductCard
+              slug: product.slug,
+              handle: null,
+              price: product.price,
+              image: product.images[0] || '/placeholder.jpg',
+              description: product.shortDescription,
+            }}
           />
         ))}
       </div>
