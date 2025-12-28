@@ -60,3 +60,24 @@ export const createOrderSchema = z.object({
   shippingAddressId: z.string().cuid(),
   billingAddressId: z.string().cuid(),
 })
+
+// Quote request schemas
+export const quoteRequestSchema = z.object({
+  name: z.string().min(2).max(100),
+  email: z.string().email(),
+  phone: z.string().optional(),
+  projectType: z.string().optional(),
+  roomDimensions: z.string().optional(),
+  timeline: z.string().optional(),
+  productInterest: z.string().optional(),
+  product: z
+    .object({
+      name: z.string(),
+      price: z.number().optional(),
+    })
+    .optional(),
+  selectedOptions: z.record(z.string(), z.any()).optional(),
+  additionalDetails: z.string().optional(),
+})
+
+export type QuoteRequestData = z.infer<typeof quoteRequestSchema>

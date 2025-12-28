@@ -64,6 +64,12 @@ export const checkoutRateLimiter = createLimiter({
   prefix: 'ratelimit:checkout',
 })
 
+export const bookingRateLimiter = createLimiter({
+  limiter: Ratelimit.slidingWindow(5, '1 m'), // 5 requests per minute
+  analytics: true,
+  prefix: 'ratelimit:booking',
+})
+
 export const generalRateLimiter = createLimiter({
   limiter: Ratelimit.slidingWindow(20, '1 m'), // 20 requests per minute
   analytics: true,
