@@ -59,7 +59,7 @@ describe('RateLimiter', () => {
       expect(blockedResult.remaining).toBe(0)
     })
 
-    it('should reset rate limit after window expires', () => {
+    it('should reset rate limit after window expires', async () => {
       const identifier = 'test-user-3'
       const maxRequests = 2
       const windowMs = 100 // Very short window for testing
@@ -155,7 +155,7 @@ describe('RateLimiter', () => {
   })
 
   describe('Cleanup functionality', () => {
-    it('should clean up expired entries from memory store', () => {
+    it('should clean up expired entries from memory store', async () => {
       const identifier = 'test-user-9'
       const maxRequests = 5
       const windowMs = 100 // Short window

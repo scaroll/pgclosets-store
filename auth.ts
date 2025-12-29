@@ -12,7 +12,7 @@ const credentialsSchema = z.object({
 })
 
 const config: NextAuthConfig = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma) as any,
   session: { strategy: 'jwt' },
   pages: {
     signIn: '/auth/signin',

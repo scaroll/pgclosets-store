@@ -31,7 +31,7 @@ if (isUpstash) {
   redis = {
     incr: () => Promise.resolve(1),
     expire: () => Promise.resolve(1),
-    eval: () => Promise.resolve([1, 1, 1, 1]), // Mock Lua script response
+    eval: () => Promise.resolve([1, 1, 1, 1] as [number, number, number, number]), // Mock Lua script response
   }
 }
 
