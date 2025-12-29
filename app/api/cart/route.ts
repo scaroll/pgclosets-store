@@ -2,7 +2,7 @@ import { auth } from '@/auth'
 import { prisma } from '@/lib/db/client'
 import { checkRateLimit, generalRateLimiter, getClientIdentifier } from '@/lib/rate-limit'
 import { addToCartSchema } from '@/lib/validation/schemas'
-import { NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {
   try {
@@ -53,7 +53,9 @@ export async function POST(req: NextRequest) {
     }
 
     const session = await auth()
-    const body = await req.json()
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const body = (await req.json()) as z.infer<typeof addToCartSchema>
 
     const validated = addToCartSchema.safeParse(body)
     if (!validated.success) {
@@ -63,84 +65,77 @@ export async function POST(req: NextRequest) {
     const { productId, variantId, quantity } = validated.data
 
     // Get or create cart
-    let cart
+    let cartId: string
+    let isNewSession = false
+    let sessionId: string | undefined
+
     if (session?.user?.id) {
-      cart = await prisma.cart.upsert({
+      // Authenticated user
+      const cart = await prisma.cart.upsert({
         where: { userId: session.user.id },
         create: { userId: session.user.id },
         update: {},
+        select: { id: true },
       })
+      cartId = cart.id
     } else {
-      const sessionId = req.cookies.get('cart_session')?.value || crypto.randomUUID()
-      cart = await prisma.cart.upsert({
+      // Guest user
+      const existingSessionId = req.cookies.get('cart_session')?.value
+      sessionId = existingSessionId || crypto.randomUUID()
+      isNewSession = !existingSessionId
+
+      const cart = await prisma.cart.upsert({
         where: { sessionId },
         create: { sessionId, expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) },
         update: {},
+        select: { id: true },
       })
-
-      // Set cookie for guest cart
-      const response = NextResponse.json({ success: true })
-      response.cookies.set('cart_session', sessionId, { maxAge: 30 * 24 * 60 * 60 })
-
-      // We need to return the response here to set the cookie, but we also need to add the item
-      // So we'll continue execution but we need to remember to return response with cookie ONLY if we created a new session
-      // Actually, standard pattern is to return at the end.
-      // But adding cookie requires returning a NextResponse object created earlier or modifying it.
+      cartId = cart.id
     }
 
-    // Since step 1183 code returns `NextResponse.json({ success: true })` at the end
-    // I need to make sure the cookie is set if it was a guest cart.
-    // The plan code block implementation:
-    /*
-      // Set cookie for guest cart
-      const response = NextResponse.json({ success: true });
-      response.cookies.set('cart_session', sessionId, { maxAge: 30 * 24 * 60 * 60 });
-    */
-    // Wait, the plan code creates `response` inside the `else` block but doesn't return it immediately.
-    // It continues to `// Add or update cart item`.
-    // And then `return NextResponse.json({ success: true });` at the end.
-    // This implies the plan code has a bug: it sets cookie on a response object that is discarded?
-    // Or maybe it returns it? "response" variable scope is block scoped.
-    // I will fix this logic.
+    // Check if product exists
+    const product = await prisma.product.findUnique({
+      where: { id: productId },
+    })
 
-    // Correct Logic:
-    let sessionId = req.cookies.get('cart_session')?.value
-    let isNewSession = false
-
-    if (!session?.user?.id && !sessionId) {
-      sessionId = crypto.randomUUID()
-      isNewSession = true
+    if (!product) {
+      return NextResponse.json({ error: 'Product not found' }, { status: 404 })
     }
 
-    // ... DB operations ...
-    // If guest, upsert with sessionId.
+    // Add or update cart item
+    // Note: Prisma's unique constraint with nullable fields doesn't allow null in the where clause
+    // We need to find existing cart item manually when variantId is null
+    const existingItem = await prisma.cartItem.findFirst({
+      where: {
+        cartId,
+        productId,
+        variantId: variantId ?? null,
+      },
+    })
 
-    // Return:
-    const finalResponse = NextResponse.json({ success: true })
+    const cartItem = existingItem
+      ? await prisma.cartItem.update({
+          where: { id: existingItem.id },
+          data: { quantity: { increment: quantity } },
+        })
+      : await prisma.cartItem.create({
+          data: {
+            cartId,
+            productId,
+            variantId: variantId ?? null,
+            quantity,
+          },
+        })
+
+    // Create response with cookie for new guest sessions
+    const response = NextResponse.json({ success: true, item: cartItem })
     if (isNewSession && sessionId) {
-      finalResponse.cookies.set('cart_session', sessionId, { maxAge: 30 * 24 * 60 * 60 })
+      response.cookies.set('cart_session', sessionId, { maxAge: 30 * 24 * 60 * 60, httpOnly: true })
     }
-    return finalResponse
+
+    return response
   } catch (error) {
-    // ...
+    console.error('[Cart API] Error:', error)
+    return NextResponse.json({ error: 'Failed to add to cart' }, { status: 500 })
   }
 }
-// Wait, I will copy the plan code but FIX this subtle bug.
-// The plan code:
-/*
-    } else {
-      const sessionId = req.cookies.get('cart_session')?.value || crypto.randomUUID();
-      cart = await prisma.cart.upsert({...});
-
-      // Set cookie for guest cart
-      const response = NextResponse.json({ success: true });
-      response.cookies.set('cart_session', sessionId, { maxAge: 30 * 24 * 60 * 60 });
-    }
-
-    // Add cart item...
-
-    return NextResponse.json({ success: true });
-*/
-// The plan code returns a FRESH response at the end, ignoring the `response` created in the else block.
-// Meaning the cookie is NEVER returned to the client.
-// I WILL FIX THIS.

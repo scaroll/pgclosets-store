@@ -15,6 +15,8 @@ export interface CartItem {
 interface CartState {
   items: CartItem[]
   isOpen: boolean
+  total: number
+  itemCount: number
   addItem: (item: Omit<CartItem, 'id'>) => void
   removeItem: (itemId: string) => void
   updateQuantity: (itemId: string, quantity: number) => void
@@ -31,6 +33,8 @@ export const useCartStore = create<CartState>()(
     (set, get) => ({
       items: [],
       isOpen: false,
+      total: 0,
+      itemCount: 0,
 
       addItem: item => {
         const currentItems = get().items
@@ -42,7 +46,10 @@ export const useCartStore = create<CartState>()(
         if (existingItemIndex > -1) {
           // Update quantity
           const newItems = [...currentItems]
-          newItems[existingItemIndex]!.quantity += item.quantity
+          const existingItem = newItems[existingItemIndex]
+          if (existingItem) {
+            existingItem.quantity += item.quantity
+          }
           set({ items: newItems, isOpen: true })
         } else {
           // Add new item
@@ -51,10 +58,13 @@ export const useCartStore = create<CartState>()(
             isOpen: true,
           })
         }
+        // Update computed values
+        set({ total: get().totalPrice(), itemCount: get().totalItems() })
       },
 
       removeItem: itemId => {
         set({ items: get().items.filter(i => i.id !== itemId) })
+        set({ total: get().totalPrice(), itemCount: get().totalItems() })
       },
 
       updateQuantity: (itemId, quantity) => {
@@ -65,9 +75,10 @@ export const useCartStore = create<CartState>()(
         set({
           items: get().items.map(i => (i.id === itemId ? { ...i, quantity } : i)),
         })
+        set({ total: get().totalPrice(), itemCount: get().totalItems() })
       },
 
-      clearCart: () => set({ items: [] }),
+      clearCart: () => set({ items: [], total: 0, itemCount: 0 }),
 
       openCart: () => set({ isOpen: true }),
       closeCart: () => set({ isOpen: false }),
@@ -79,7 +90,7 @@ export const useCartStore = create<CartState>()(
     {
       name: 'pg-closets-cart',
       storage: createJSONStorage(() => localStorage),
-      // Don't persist isOpen state
+      // Don't persist isOpen state or computed values
       partialize: state => ({ items: state.items }),
     }
   )

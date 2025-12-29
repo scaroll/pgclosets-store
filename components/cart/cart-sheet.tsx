@@ -5,7 +5,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { useCartStore } from '@/lib/stores/cart-store'
-import { formatPrice } from '@/lib/utils'
+import { formatPrice } from '../../lib/utils'
 import { Minus, Plus, ShoppingBag } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -118,7 +118,7 @@ export function CartSheet() {
             <div className="space-y-1 text-center">
               <h3 className="text-xl font-semibold">Your cart is empty</h3>
               <p className="text-muted-foreground">
-                Looks like adding some luxury items to your closet wouldn't hurt.
+                Looks like adding some luxury items to your closet wouldn&apos;t hurt.
               </p>
             </div>
             <SheetTrigger asChild>

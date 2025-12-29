@@ -110,7 +110,7 @@ export async function generateMultiDimensionalContent(
       ? analysisMatch[1].trim()
       : `Analysis parsing failed. Raw output:\n${fullContent}`
     const finalResponse =
-      finalResponseMatch && finalResponseMatch.length > 1
+      finalResponseMatch && finalResponseMatch.length > 1 && finalResponseMatch[1]
         ? finalResponseMatch[1].trim()
         : fullContent
 

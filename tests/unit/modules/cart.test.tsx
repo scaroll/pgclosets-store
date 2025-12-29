@@ -31,11 +31,11 @@ describe('CartStore', () => {
       })
     })
 
-    expect(result.current.items).toHaveLength(1)
-    expect(result.current.items[0].name).toBe('Product 1')
-    expect(result.current.totalItems()).toBe(1)
-    expect(result.current.totalPrice()).toBe(100)
-    expect(result.current.isOpen).toBe(true) // Should open cart on add
+    expect(result.current?.items).toHaveLength(1)
+    expect(result.current?.items[0]?.name).toBe('Product 1')
+    expect(result.current?.totalItems()).toBe(1)
+    expect(result.current?.totalPrice()).toBe(100)
+    expect(result.current?.isOpen).toBe(true) // Should open cart on add
   })
 
   it('should stack existing items', () => {
@@ -59,17 +59,17 @@ describe('CartStore', () => {
       })
     })
 
-    expect(result.current.items).toHaveLength(1)
-    expect(result.current.items[0].quantity).toBe(3)
-    expect(result.current.totalItems()).toBe(3)
-    expect(result.current.totalPrice()).toBe(300)
+    expect(result.current?.items).toHaveLength(1)
+    expect(result.current?.items[0]?.quantity).toBe(3)
+    expect(result.current?.totalItems()).toBe(3)
+    expect(result.current?.totalPrice()).toBe(300)
   })
 
   it('should separate different variants', () => {
     const { result } = renderHook(() => useCartStore())
 
     act(() => {
-      result.current.addItem({
+      result.current?.addItem({
         productId: 'p1',
         variantId: 'v1',
         name: 'Product 1',
@@ -79,7 +79,7 @@ describe('CartStore', () => {
     })
 
     act(() => {
-      result.current.addItem({
+      result.current?.addItem({
         productId: 'p1',
         variantId: 'v2',
         name: 'Product 1',
@@ -88,14 +88,14 @@ describe('CartStore', () => {
       })
     })
 
-    expect(result.current.items).toHaveLength(2)
+    expect(result.current?.items).toHaveLength(2)
   })
 
   it('should remove items', () => {
     const { result } = renderHook(() => useCartStore())
 
     act(() => {
-      result.current.addItem({
+      result.current?.addItem({
         productId: 'p1',
         name: 'Product 1',
         price: 100,
@@ -103,20 +103,20 @@ describe('CartStore', () => {
       })
     })
 
-    const itemId = result.current.items[0].id
+    const itemId = result.current?.items?.[0]?.id
 
     act(() => {
-      result.current.removeItem(itemId)
+      result.current?.removeItem(itemId as string)
     })
 
-    expect(result.current.items).toEqual([])
+    expect(result.current?.items).toEqual([])
   })
 
   it('should update quantity', () => {
     const { result } = renderHook(() => useCartStore())
 
     act(() => {
-      result.current.addItem({
+      result.current?.addItem({
         productId: 'p1',
         name: 'Product 1',
         price: 100,
@@ -124,21 +124,21 @@ describe('CartStore', () => {
       })
     })
 
-    const itemId = result.current.items[0].id
+    const itemId = result.current?.items?.[0]?.id
 
     act(() => {
-      result.current.updateQuantity(itemId, 5)
+      result.current?.updateQuantity(itemId as string, 5)
     })
 
-    expect(result.current.items[0].quantity).toBe(5)
-    expect(result.current.totalItems()).toBe(5)
+    expect(result.current?.items[0]?.quantity).toBe(5)
+    expect(result.current?.totalItems()).toBe(5)
   })
 
   it('should remove item if quantity updated to 0', () => {
     const { result } = renderHook(() => useCartStore())
 
     act(() => {
-      result.current.addItem({
+      result.current?.addItem({
         productId: 'p1',
         name: 'Product 1',
         price: 100,
@@ -146,12 +146,12 @@ describe('CartStore', () => {
       })
     })
 
-    const itemId = result.current.items[0].id
+    const itemId = result.current?.items?.[0]?.id
 
     act(() => {
-      result.current.updateQuantity(itemId, 0)
+      result.current?.updateQuantity(itemId as string, 0)
     })
 
-    expect(result.current.items).toEqual([])
+    expect(result.current?.items).toEqual([])
   })
 })

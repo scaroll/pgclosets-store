@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import Image from "next/image"
-import { useCartStore } from "@/lib/stores/cart-store"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import * as React from 'react'
+import Image from 'next/image'
+import { useCartStore } from '@/lib/stores/cart-store'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
 
 interface OrderSummaryProps {
   discount?: number
@@ -26,23 +26,34 @@ export function OrderSummary({ discount = 0 }: OrderSummaryProps) {
       <CardContent className="space-y-4">
         {/* Cart Items Preview */}
         <div className="space-y-3">
-          {items.map((item) => (
+          {items.map(item => (
             <div key={item.id} className="flex gap-3">
-              <div className="relative h-16 w-16 rounded-md overflow-hidden bg-gray-100 flex-shrink-0">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+              <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md bg-gray-100">
+                {item.image ? (
+                  <Image src={item.image} alt={item.name} fill className="object-cover" />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-gray-200">
+                    <svg
+                      className="h-8 w-8 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                      />
+                    </svg>
+                  </div>
+                )}
+                <div className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                   {item.quantity}
                 </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <h4 className="text-sm font-medium line-clamp-2">
-                  {item.name}
-                </h4>
+              <div className="min-w-0 flex-1">
+                <h4 className="line-clamp-2 text-sm font-medium">{item.name}</h4>
                 <p className="text-sm text-muted-foreground">
                   ${item.price.toFixed(2)} × {item.quantity}
                 </p>
@@ -65,15 +76,13 @@ export function OrderSummary({ discount = 0 }: OrderSummaryProps) {
           {discount > 0 && (
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">Discount</span>
-              <span className="font-medium text-green-600">
-                -${discount.toFixed(2)}
-              </span>
+              <span className="font-medium text-green-600">-${discount.toFixed(2)}</span>
             </div>
           )}
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Shipping</span>
             <span className="font-medium">
-              {shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}
+              {shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}
             </span>
           </div>
           <div className="flex justify-between text-sm">

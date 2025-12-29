@@ -37,3 +37,8 @@ next-env.d.ts
 
 dev-server.log
 dev-server.pid
+public/renin/assets/js/*.min.js
+public/renin/assets/css/*.css
+public/renin/assets/**
+public/renin/**/*.html
+public/renin/wp-content/**

@@ -25,10 +25,10 @@ export function VideoHero({
   )
 }
 
-export function ImageHero({ headline }) {
+export function ImageHero({ headline }: { headline?: string }) {
   return <div>ImageHero: {headline}</div>
 }
 
-export function SplitHero({ headline }) {
+export function SplitHero({ headline }: { headline?: string }) {
   return <div>SplitHero: {headline}</div>
 }

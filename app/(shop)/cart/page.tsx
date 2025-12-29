@@ -1,18 +1,20 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import Link from "next/link"
-import { ShoppingCart, ArrowLeft } from "lucide-react"
-import { useCartStore } from "@/lib/stores/cart-store"
-import { CartItems } from "@/components/cart/cart-items"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
+import * as React from 'react'
+import Link from 'next/link'
+import { ShoppingCart, ArrowLeft } from 'lucide-react'
+import { useCartStore } from '@/lib/stores/cart-store'
+import { CartItems } from '@/components/cart/cart-items'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Separator } from '@/components/ui/separator'
 
 export default function CartPage() {
-  const { items, total, itemCount } = useCartStore()
-  const [promoCode, setPromoCode] = React.useState("")
+  const { items, totalPrice, totalItems } = useCartStore()
+  const total = totalPrice()
+  const itemCount = totalItems()
+  const [promoCode, setPromoCode] = React.useState('')
   const [discount, setDiscount] = React.useState(0)
 
   const subtotal = total
@@ -21,9 +23,9 @@ export default function CartPage() {
   const finalTotal = subtotal + shipping + tax - discount
 
   const applyPromoCode = () => {
-    if (promoCode.toUpperCase() === "SAVE10") {
+    if (promoCode.toUpperCase() === 'SAVE10') {
       setDiscount(subtotal * 0.1)
-    } else if (promoCode.toUpperCase() === "SAVE20") {
+    } else if (promoCode.toUpperCase() === 'SAVE20') {
       setDiscount(subtotal * 0.2)
     } else {
       setDiscount(0)
@@ -34,20 +36,20 @@ export default function CartPage() {
     <main className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-12">
         <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Shopping Cart</h1>
+          <h1 className="mb-4 text-4xl font-bold md:text-5xl">Shopping Cart</h1>
           <p className="text-muted-foreground">
             {itemCount > 0
-              ? `You have ${itemCount} ${itemCount === 1 ? "item" : "items"} in your cart`
-              : "Your cart is empty"}
+              ? `You have ${itemCount} ${itemCount === 1 ? 'item' : 'items'} in your cart`
+              : 'Your cart is empty'}
           </p>
         </div>
 
         {items.length === 0 ? (
-          <div className="text-center py-16">
-            <ShoppingCart className="h-24 w-24 mx-auto text-muted-foreground mb-6" />
-            <h2 className="text-2xl font-semibold mb-4">Your cart is empty</h2>
-            <p className="text-muted-foreground mb-8">
-              Looks like you haven't added anything to your cart yet.
+          <div className="py-16 text-center">
+            <ShoppingCart className="mx-auto mb-6 h-24 w-24 text-muted-foreground" />
+            <h2 className="mb-4 text-2xl font-semibold">Your cart is empty</h2>
+            <p className="mb-8 text-muted-foreground">
+              Looks like you haven&apos;t added anything to your cart yet.
             </p>
             <Button asChild size="lg">
               <Link href="/products">
@@ -57,7 +59,7 @@ export default function CartPage() {
             </Button>
           </div>
         ) : (
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 lg:grid-cols-3">
             {/* Cart Items */}
             <div className="lg:col-span-2">
               <Card>
@@ -86,10 +88,7 @@ export default function CartPage() {
                 <CardContent className="space-y-4">
                   {/* Promo Code */}
                   <div className="space-y-2">
-                    <label
-                      htmlFor="promo"
-                      className="text-sm font-medium leading-none"
-                    >
+                    <label htmlFor="promo" className="text-sm font-medium leading-none">
                       Promo Code
                     </label>
                     <div className="flex gap-2">
@@ -97,9 +96,9 @@ export default function CartPage() {
                         id="promo"
                         placeholder="Enter code"
                         value={promoCode}
-                        onChange={(e) => setPromoCode(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
+                        onChange={e => setPromoCode(e.target.value)}
+                        onKeyDown={e => {
+                          if (e.key === 'Enter') {
                             applyPromoCode()
                           }
                         }}
@@ -109,9 +108,7 @@ export default function CartPage() {
                       </Button>
                     </div>
                     {discount > 0 && (
-                      <p className="text-sm text-green-600 font-medium">
-                        Promo code applied!
-                      </p>
+                      <p className="text-sm font-medium text-green-600">Promo code applied!</p>
                     )}
                   </div>
 
@@ -126,21 +123,17 @@ export default function CartPage() {
                     {discount > 0 && (
                       <div className="flex justify-between text-sm">
                         <span className="text-muted-foreground">Discount</span>
-                        <span className="font-medium text-green-600">
-                          -${discount.toFixed(2)}
-                        </span>
+                        <span className="font-medium text-green-600">-${discount.toFixed(2)}</span>
                       </div>
                     )}
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">Shipping</span>
                       <span className="font-medium">
-                        {shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}
+                        {shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}
                       </span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">
-                        Tax (8%)
-                      </span>
+                      <span className="text-muted-foreground">Tax (8%)</span>
                       <span className="font-medium">${tax.toFixed(2)}</span>
                     </div>
                     {subtotal < 100 && (
@@ -161,7 +154,7 @@ export default function CartPage() {
                     <Link href="/checkout">Proceed to Checkout</Link>
                   </Button>
 
-                  <p className="text-xs text-center text-muted-foreground">
+                  <p className="text-center text-xs text-muted-foreground">
                     Secure checkout powered by Stripe
                   </p>
                 </CardContent>

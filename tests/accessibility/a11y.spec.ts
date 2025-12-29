@@ -13,9 +13,7 @@ test.describe.configure({ mode: 'parallel' })
  * Homepage Accessibility Tests
  */
 test.describe('Homepage Accessibility', () => {
-  test('should not have any automatically detectable accessibility issues', async ({
-    page
-  }) => {
+  test('should not have any automatically detectable accessibility issues', async ({ page }) => {
     await page.goto('/')
 
     const accessibilityScanResults = await new AxeBuilder({ page })
@@ -60,12 +58,21 @@ test.describe('Homepage Accessibility', () => {
     // Get all headings
     const headings = await page.locator('h1, h2, h3, h4, h5, h6').all()
     const headingLevels = await Promise.all(
-      headings.map((h) => h.evaluate((el) => parseInt(el.tagName[1])))
+      headings.map(h =>
+        h.evaluate(el => {
+          const tag = el.tagName
+          if (tag.length < 2) return 1
+          const levelChar = tag.charAt(1)
+          return parseInt(levelChar, 10)
+        })
+      )
     )
 
     // Verify no heading levels are skipped
     for (let i = 1; i < headingLevels.length; i++) {
-      const diff = headingLevels[i] - headingLevels[i - 1]
+      const currentLevel = headingLevels[i] as number
+      const prevLevel = headingLevels[i - 1] as number
+      const diff = currentLevel - prevLevel
       expect(Math.abs(diff)).toBeLessThanOrEqual(1)
     }
   })
@@ -98,9 +105,11 @@ test.describe('Keyboard Navigation', () => {
     await page.keyboard.press('Tab')
 
     // Track all focusable elements
-    const focusableElements = await page.locator(
-      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-    ).all()
+    const focusableElements = await page
+      .locator(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+      .all()
 
     expect(focusableElements.length).toBeGreaterThan(0)
 
@@ -119,28 +128,23 @@ test.describe('Keyboard Navigation', () => {
 
     // Check that focused element has visible outline
     const focusedElement = page.locator(':focus')
-    const outline = await focusedElement.evaluate((el) => {
+    const outline = await focusedElement.evaluate(el => {
       const styles = window.getComputedStyle(el)
       return {
         outline: styles.outline,
         outlineWidth: styles.outlineWidth,
-        boxShadow: styles.boxShadow
+        boxShadow: styles.boxShadow,
       }
     })
 
     // Should have either outline or box-shadow for focus
     expect(
-      outline.outline !== 'none' ||
-      outline.outlineWidth !== '0px' ||
-      outline.boxShadow !== 'none'
+      outline.outline !== 'none' || outline.outlineWidth !== '0px' || outline.boxShadow !== 'none'
     ).toBeTruthy()
   })
 
   test('should not create keyboard traps', async ({ page }) => {
     await page.goto('/')
-
-    const initialFocused = page.locator(':focus')
-    const initialTag = await initialFocused.evaluate((el) => el?.tagName || '')
 
     // Tab forward many times
     for (let i = 0; i < 50; i++) {
@@ -157,9 +161,11 @@ test.describe('Keyboard Navigation', () => {
     await page.goto('/')
 
     // Try to open a modal (adjust selector based on your site)
-    const modalTrigger = page.locator('button:has-text("Open"), button[aria-haspopup="dialog"]').first()
+    const modalTrigger = page
+      .locator('button:has-text("Open"), button[aria-haspopup="dialog"]')
+      .first()
 
-    if (await modalTrigger.count() > 0) {
+    if ((await modalTrigger.count()) > 0) {
       await modalTrigger.click()
 
       // Wait for modal
@@ -197,18 +203,21 @@ test.describe('Color Contrast', () => {
     const buttons = await page.locator('button').all()
 
     for (const button of buttons.slice(0, 10)) {
-      const contrast = await button.evaluate((el) => {
+      const contrast = await button.evaluate(el => {
         const styles = window.getComputedStyle(el)
         const bgColor = styles.backgroundColor
         const color = styles.color
 
         // Helper to convert rgb to luminance
         const getLuminance = (rgb: string) => {
-          const [r, g, b] = rgb.match(/\d+/g)!.map(Number)
-          const [rs, gs, bs] = [r, g, b].map((c) => {
-            const val = c / 255
-            return val <= 0.03928 ? val / 12.92 : Math.pow((val + 0.055) / 1.055, 2.4)
-          })
+          const match = rgb.match(/\d+/g)
+          if (!match || match.length < 3) return 0
+          const r = Number(match[0])
+          const g = Number(match[1] as string)
+          const b = Number(match[2] as string)
+          const rs = r / 255 <= 0.03928 ? r / 255 / 12.92 : Math.pow((r / 255 + 0.055) / 1.055, 2.4)
+          const gs = g / 255 <= 0.03928 ? g / 255 / 12.92 : Math.pow((g / 255 + 0.055) / 1.055, 2.4)
+          const bs = b / 255 <= 0.03928 ? b / 255 / 12.92 : Math.pow((b / 255 + 0.055) / 1.055, 2.4)
           return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs
         }
 
@@ -237,7 +246,7 @@ test.describe('Form Accessibility', () => {
     const inputs = await page.locator('input:not([type="hidden"]), select, textarea').all()
 
     for (const input of inputs) {
-      const hasLabel = await input.evaluate((el) => {
+      const hasLabel = await input.evaluate(el => {
         // Check for associated label
         const id = el.getAttribute('id')
         if (id) {
@@ -264,7 +273,9 @@ test.describe('Form Accessibility', () => {
   test('should mark required fields with aria-required', async ({ page }) => {
     await page.goto('/')
 
-    const requiredInputs = await page.locator('input[required], select[required], textarea[required]').all()
+    const requiredInputs = await page
+      .locator('input[required], select[required], textarea[required]')
+      .all()
 
     for (const input of requiredInputs) {
       const ariaRequired = await input.getAttribute('aria-required')
@@ -278,10 +289,10 @@ test.describe('Form Accessibility', () => {
     // Find a form and try to submit with invalid data
     const form = page.locator('form').first()
 
-    if (await form.count() > 0) {
+    if ((await form.count()) > 0) {
       // Try to submit form
       const submitButton = form.locator('button[type="submit"]')
-      if (await submitButton.count() > 0) {
+      if ((await submitButton.count()) > 0) {
         await submitButton.click()
 
         // Check for error state
@@ -313,7 +324,6 @@ test.describe('Image Accessibility', () => {
 
     for (const image of images) {
       const alt = await image.getAttribute('alt')
-      const role = await image.getAttribute('role')
 
       // Images should have alt attribute (can be empty for decorative)
       expect(alt !== null).toBeTruthy()
@@ -322,9 +332,9 @@ test.describe('Image Accessibility', () => {
       if (alt === '') {
         // Empty alt is valid for decorative images
         expect(true).toBe(true)
-      } else {
+      } else if (alt) {
         // Non-empty alt should be descriptive
-        expect(alt!.length).toBeGreaterThan(0)
+        expect(alt.length).toBeGreaterThan(0)
       }
     }
   })
@@ -341,7 +351,7 @@ test.describe('Image Accessibility', () => {
       /^img$/i,
       /^screenshot$/i,
       /^untitled$/i,
-      /^image_?\d+$/i
+      /^image_?\d+$/i,
     ]
 
     for (const image of images) {
@@ -407,9 +417,9 @@ test.describe('Touch Targets', () => {
   test('should have minimum 44x44px touch targets', async ({ page }) => {
     await page.goto('/')
 
-    const interactiveElements = await page.locator(
-      'button, a[href], input, select, textarea, [role="button"], [role="link"]'
-    ).all()
+    const interactiveElements = await page
+      .locator('button, a[href], input, select, textarea, [role="button"], [role="link"]')
+      .all()
 
     for (const element of interactiveElements.slice(0, 20)) {
       const boundingBox = await element.boundingBox()
@@ -434,16 +444,14 @@ test.describe('Motion and Animation', () => {
     const animatedElements = await page.locator('[class*="animate"]').all()
 
     for (const element of animatedElements) {
-      const animationDuration = await element.evaluate((el) => {
+      const animationDuration = await element.evaluate(el => {
         const styles = window.getComputedStyle(el)
         return styles.animationDuration
       })
 
       // Animation should be instant or very short
       expect(
-        animationDuration === '0s' ||
-        animationDuration === '0.01ms' ||
-        animationDuration === '0ms'
+        animationDuration === '0s' || animationDuration === '0.01ms' || animationDuration === '0ms'
       ).toBeTruthy()
     }
   })

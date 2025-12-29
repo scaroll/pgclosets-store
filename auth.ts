@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/db/client'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import * as bcrypt from 'bcryptjs'
-import NextAuth from 'next-auth'
+import NextAuth, { type NextAuthConfig } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import Google from 'next-auth/providers/google'
 import { z } from 'zod'
@@ -11,7 +11,7 @@ const credentialsSchema = z.object({
   password: z.string().min(8),
 })
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+const config: NextAuthConfig = {
   adapter: PrismaAdapter(prisma),
   session: { strategy: 'jwt' },
   pages: {
@@ -54,14 +54,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    jwt({ token, user }) {
       if (user) {
         token.id = user.id
         token.role = user.role
       }
       return token
     },
-    async session({ session, token }) {
+    session({ session, token }) {
       if (token) {
         session.user.id = token.id as string
         session.user.role = token.role as string
@@ -69,4 +69,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return session
     },
   },
-})
+}
+
+export const { handlers, auth, signIn, signOut } = NextAuth(config)

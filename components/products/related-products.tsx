@@ -33,12 +33,10 @@ export function RelatedProducts({ category, currentProductId, limit = 4 }: Relat
             key={product.id}
             product={{
               id: product.id,
-              title: product.name, // Mapping name to title for ProductCard
+              name: product.name,
               slug: product.slug,
-              handle: null,
               price: product.price,
-              image: product.images[0] || '/placeholder.jpg',
-              description: product.shortDescription,
+              images: product.images,
             }}
           />
         ))}

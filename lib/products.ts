@@ -1,40 +1,14 @@
-import { prisma } from './prisma'
+import { prisma } from './db/client'
 
 export async function getProduct(slug: string) {
   const product = await prisma.product.findUnique({
     where: { slug },
     include: {
-      category: {
-        select: {
-          id: true,
-          name: true,
-          slug: true,
-          parentId: true,
-          parent: {
-            select: {
-              name: true,
-              slug: true,
-            },
-          },
-        },
+      images: {
+        orderBy: { position: 'asc' },
       },
       variants: {
-        orderBy: {
-          name: 'asc',
-        },
-      },
-      reviews: {
-        include: {
-          user: {
-            select: {
-              name: true,
-              image: true,
-            },
-          },
-        },
-        orderBy: {
-          createdAt: 'desc',
-        },
+        orderBy: { name: 'asc' },
       },
     },
   })
@@ -43,46 +17,27 @@ export async function getProduct(slug: string) {
     return null
   }
 
-  // Calculate average rating
-  const averageRating =
-    product.reviews.length > 0
-      ? product.reviews.reduce((sum, review) => sum + review.rating, 0) /
-        product.reviews.length
-      : 0
-
-  return {
-    ...product,
-    averageRating,
-    reviewCount: product.reviews.length,
-  }
+  return product
 }
 
 export async function getProducts(options?: {
-  categoryId?: string
+  category?: string
   featured?: boolean
-  bestseller?: boolean
   limit?: number
   skip?: number
 }) {
-  const { categoryId, featured, bestseller, limit, skip } = options || {}
+  const { category, featured, limit, skip } = options || {}
 
   const products = await prisma.product.findMany({
     where: {
-      ...(categoryId && { categoryId }),
+      ...(category && { category }),
       ...(featured !== undefined && { featured }),
-      ...(bestseller !== undefined && { bestseller }),
-      inStock: true,
+      status: 'active',
     },
     include: {
-      category: {
-        select: {
-          name: true,
-        },
-      },
-      reviews: {
-        select: {
-          rating: true,
-        },
+      images: {
+        take: 1,
+        orderBy: { position: 'asc' },
       },
     },
     take: limit,
@@ -92,33 +47,7 @@ export async function getProducts(options?: {
     },
   })
 
-  return products.map((product) => ({
-    ...product,
-    averageRating:
-      product.reviews.length > 0
-        ? product.reviews.reduce((sum, review) => sum + review.rating, 0) /
-          product.reviews.length
-        : 0,
-    reviewCount: product.reviews.length,
-  }))
-}
-
-export async function getCategories() {
-  return await prisma.category.findMany({
-    where: {
-      parentId: null,
-    },
-    include: {
-      children: {
-        orderBy: {
-          sortOrder: 'asc',
-        },
-      },
-    },
-    orderBy: {
-      sortOrder: 'asc',
-    },
-  })
+  return products
 }
 
 export function formatPrice(price: number | string): string {
@@ -126,5 +55,5 @@ export function formatPrice(price: number | string): string {
   return new Intl.NumberFormat('en-CA', {
     style: 'currency',
     currency: 'CAD',
-  }).format(numPrice)
+  }).format(numPrice / 100) // Price is stored in cents
 }

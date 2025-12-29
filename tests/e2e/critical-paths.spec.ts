@@ -23,11 +23,16 @@ test.describe('Critical User Paths - Quote Request', () => {
     await page.fill('input[name="phone"], input[type="tel"]', '613-555-0123')
 
     // Select project type
-    await page.selectOption('select[name="projectType"], select[id*="project"]', 'closet-renovation')
+    await page.selectOption(
+      'select[name="projectType"], select[id*="project"]',
+      'closet-renovation'
+    )
 
     // Fill project description
-    await page.fill('textarea[name="projectDescription"], textarea[id*="description"]',
-      'I need custom closet doors for my master bedroom. Looking for modern sliding doors.')
+    await page.fill(
+      'textarea[name="projectDescription"], textarea[id*="description"]',
+      'I need custom closet doors for my master bedroom. Looking for modern sliding doors.'
+    )
 
     // Select budget range
     await page.selectOption('select[name="budgetRange"], select[id*="budget"]', '$1000-$2500')
@@ -36,7 +41,9 @@ test.describe('Critical User Paths - Quote Request', () => {
     await page.selectOption('select[name="timeline"], select[id*="timeline"]', 'Within 3 months')
 
     // Step 4: Submit form
-    const submitButton = page.locator('button[type="submit"]:has-text("Submit"), button:has-text("Get Quote")')
+    const submitButton = page.locator(
+      'button[type="submit"]:has-text("Submit"), button:has-text("Get Quote")'
+    )
     await submitButton.click()
 
     // Step 5: Verify success
@@ -82,7 +89,9 @@ test.describe('Critical User Paths - Product Browsing', () => {
     await page.waitForSelector('img, [data-testid="product-card"]', { timeout: 10000 })
 
     // Step 4: Click on first product
-    const firstProduct = page.locator('[data-testid="product-card"], article, .product-item').first()
+    const firstProduct = page
+      .locator('[data-testid="product-card"], article, .product-item')
+      .first()
     if (await firstProduct.isVisible()) {
       await firstProduct.click()
 
@@ -120,7 +129,7 @@ test.describe('Critical User Paths - Product Browsing', () => {
         await categoryFilter.click()
         await page.click('text=/sliding doors/i')
       } else {
-        await categoryFilter.selectOption({ label: /sliding/i })
+        await categoryFilter.selectOption({ label: 'Sliding' })
       }
 
       // Verify filter applied
@@ -235,7 +244,9 @@ test.describe('Critical User Paths - Performance', () => {
 
     // First contentful paint should happen quickly
     const performanceTimings = await page.evaluate(() => {
-      const perfEntries = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming
+      const perfEntries = performance.getEntriesByType(
+        'navigation'
+      )[0] as PerformanceNavigationTiming
       return {
         responseStart: perfEntries.responseStart,
         domContentLoaded: perfEntries.domContentLoadedEventEnd,
@@ -260,7 +271,7 @@ test.describe('Critical User Paths - Error Handling', () => {
 
     try {
       await page.goto('/', { waitUntil: 'commit', timeout: 5000 })
-    } catch (error) {
+    } catch {
       // Expected to fail
     }
 

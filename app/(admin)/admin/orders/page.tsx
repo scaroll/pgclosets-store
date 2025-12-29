@@ -55,7 +55,7 @@ export default async function AdminOrdersPage() {
                   <TableCell>${(order.total / 100).toFixed(2)}</TableCell>
                   <TableCell>{order._count.items}</TableCell>
                   <TableCell>
-                    <Badge variant="outline">{order.status}</Badge>
+                    <Badge variant="outline">{order.fulfillmentStatus}</Badge>
                   </TableCell>
                 </TableRow>
               ))

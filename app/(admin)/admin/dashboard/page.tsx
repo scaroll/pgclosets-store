@@ -8,14 +8,14 @@ export default async function DashboardPage() {
   const [totalRevenue, orderCount, userCount, bookingCount] = await Promise.all([
     prisma.order.aggregate({
       _sum: { total: true },
-      where: { status: { not: 'cancelled' } },
+      where: { fulfillmentStatus: { not: 'cancelled' } },
     }),
     prisma.order.count(),
     prisma.user.count(),
     prisma.booking.count(),
   ])
 
-  const revenue = totalRevenue._sum.total || 0
+  const revenue = totalRevenue._sum.total ?? 0
 
   return (
     <div className="space-y-8">
