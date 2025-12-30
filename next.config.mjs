@@ -20,11 +20,12 @@ const nextConfig = {
   },
 
   // TypeScript and ESLint configuration
+  // Enabled for production builds - ensure type safety
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
 
   // Fix workspace root warning
@@ -101,7 +102,6 @@ const nextConfig = {
     ],
   },
 
-  /*
   // Experimental Features for Next.js 15
   experimental: {
     // Optimize package imports for better tree-shaking
@@ -149,9 +149,7 @@ const nextConfig = {
           : ['localhost:3000', '127.0.0.1:3000'],
     },
   },
-  */
 
-  /*
   // Webpack Configuration for Advanced Optimizations
   webpack: (config, { webpack, isServer }) => {
     // Global compatibility
@@ -190,11 +188,11 @@ const nextConfig = {
             priority: 35,
             enforce: true,
           },
-          // Animation chunk (Framer Motion)
+          // Animation chunk (Framer Motion, GSAP)
           motion: {
             name: 'motion',
             chunks: 'async',
-            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+            test: /[\\/]node_modules[\\/](framer-motion|motion|gsap)[\\/]/,
             priority: 30,
             enforce: true,
           },
@@ -220,7 +218,6 @@ const nextConfig = {
 
     return config
   },
-  */
 
   // Comprehensive Security and Performance Headers
   async headers() {
