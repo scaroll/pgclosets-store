@@ -1,5 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import crypto from "crypto"
+import { prisma } from "@/lib/prisma"
+import { sendOrderConfirmation } from "@/lib/emails"
 
 // Paddle webhook signature verification
 function verifyPaddleWebhook(body: string, signature: string, publicKey: string): boolean {
@@ -38,7 +40,46 @@ export async function POST(request: NextRequest) {
           currency: data.currency,
           productId: data.product_id,
         })
-        // TODO: Update order status, send confirmation email, etc.
+
+        try {
+          // Find the order by paymentIntentId (which should store the Paddle Order ID)
+          const paddleOrderId = String(data.order_id)
+          const paddleCheckoutId = data.checkout_id ? String(data.checkout_id) : null
+
+          const order = await prisma.order.findFirst({
+            where: {
+              paymentIntentId: {
+                in: [paddleOrderId, paddleCheckoutId].filter(Boolean) as string[],
+              },
+            },
+            include: {
+              items: true,
+            },
+          })
+
+          if (order) {
+            // Update order status
+            await prisma.order.update({
+              where: { id: order.id },
+              data: {
+                status: "CONFIRMED",
+                paymentStatus: "PAID",
+              },
+            })
+
+            // Send confirmation email
+            await sendOrderConfirmation(order.email, order.orderNumber, {
+              total: Number(order.total),
+              itemCount: order.items.reduce((sum, item) => sum + item.quantity, 0),
+            })
+
+            console.log(`[v0] Order ${order.orderNumber} confirmed and email sent.`)
+          } else {
+            console.error(`[v0] Order not found for Paddle ID: ${paddleOrderId}`)
+          }
+        } catch (error) {
+          console.error("[v0] Error updating order:", error)
+        }
         break
 
       case "payment_failed":
