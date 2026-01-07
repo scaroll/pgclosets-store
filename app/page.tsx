@@ -1,18 +1,27 @@
 import { ProductCard } from '@/components/products/ProductCard'
 import { Button } from '@/components/ui/button'
-import { prisma } from '@/lib/db/client'
 import { ArrowRight, CheckCircle, MapPin, Star } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export const dynamic = 'force-dynamic'
 
+async function getFeaturedProducts() {
+  try {
+    const { prisma } = await import('@/lib/db/client')
+    return await prisma.product.findMany({
+      where: { status: 'active', featured: true },
+      take: 6,
+      include: { images: { take: 1, orderBy: { position: 'asc' } } },
+    })
+  } catch (error) {
+    console.warn('Database unavailable, showing placeholder products:', error)
+    return []
+  }
+}
+
 export default async function HomePage() {
-  const featuredProducts = await prisma.product.findMany({
-    where: { status: 'active', featured: true },
-    take: 6,
-    include: { images: { take: 1, orderBy: { position: 'asc' } } },
-  })
+  const featuredProducts = await getFeaturedProducts()
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -80,9 +89,14 @@ export default async function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {featuredProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {featuredProducts.length > 0 ? (
+            featuredProducts.map(product => <ProductCard key={product.id} product={product} />)
+          ) : (
+            <div className="col-span-full py-12 text-center text-gray-500">
+              <p className="text-lg">Featured products coming soon!</p>
+              <p className="mt-2 text-sm">Check back later or browse our full catalog.</p>
+            </div>
+          )}
         </div>
       </section>
 
