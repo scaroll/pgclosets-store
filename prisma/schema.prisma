@@ -57,8 +57,8 @@ model Product {
   orderItems  OrderItem[]
   reviews     Review[]
 
-  // AI
-  embedding   Unsupported("vector(1536)")? // pgvector for semantic search
+  // AI (requires pgvector extension - disabled for local dev)
+  // embedding   Unsupported("vector(1536)")? // pgvector for semantic search
 
   // Status
   status      String   @default("active") // active, draft, archived
