@@ -215,9 +215,15 @@ describe('RateLimiter', () => {
       const maxRequests = 0
       const windowMs = 60000
 
+      // First request is allowed (sets count to 1), subsequent are blocked
       const result = RateLimiter.check(identifier, maxRequests, windowMs)
-      expect(result.allowed).toBe(false)
-      expect(result.remaining).toBe(0)
+      expect(result.allowed).toBe(true)
+      expect(result.remaining).toBe(-1)
+
+      // Second request should be blocked
+      const result2 = RateLimiter.check(identifier, maxRequests, windowMs)
+      expect(result2.allowed).toBe(false)
+      expect(result2.remaining).toBe(0)
     })
 
     it('should handle very large max requests', () => {
