@@ -1,16 +1,17 @@
-// @ts-nocheck
 "use client"
 
 import * as React from "react"
 import Image from "next/image"
 import { X, Plus, Minus } from "lucide-react"
-import { useCartStore, type CartItem } from "@/lib/stores/cart-store"
+import { useCartStore } from "@/lib/stores/cart-store"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 
 interface CartItemsProps {
   onItemRemove?: (id: string) => void
 }
+
+const DEFAULT_IMAGE = "/placeholder.jpg"
 
 export function CartItems({ onItemRemove }: CartItemsProps) {
   const { items, removeItem, updateQuantity } = useCartStore()
@@ -31,7 +32,7 @@ export function CartItems({ onItemRemove }: CartItemsProps) {
           <div className="flex gap-6">
             <div className="relative h-32 w-32 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
               <Image
-                src={item.image}
+                src={item.image ?? DEFAULT_IMAGE}
                 alt={item.name}
                 fill
                 className="object-cover"

@@ -69,7 +69,7 @@ export function ProductFilters({ categories = [], className }: ProductFiltersPro
     // Reset to page 1 when filters change
     params.delete('page')
 
-    router.push(`${pathname}?${params.toString()}`)
+    void router.push(`${pathname}?${params.toString()}`)
   }
 
   const handleCategoryChange = (categoryValue: string) => {
@@ -103,7 +103,7 @@ export function ProductFilters({ categories = [], className }: ProductFiltersPro
     setSelectedCategories([])
     setPriceRange([0, 10000])
     setInStockOnly(false)
-    router.push(pathname)
+    void router.push(pathname)
   }
 
   const hasActiveFilters =

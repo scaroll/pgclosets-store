@@ -1,6 +1,18 @@
-// @ts-nocheck - Validation middleware with dynamic types
-import { NextRequest, NextResponse } from 'next/server';
-import { z, ZodSchema } from 'zod';
+// Validation middleware with dynamic types
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
+import type { ZodSchema } from 'zod';
+import { z } from 'zod';
+
+interface ValidationError {
+  path: string
+  message: string
+}
+
+interface ValidationErrorResponse {
+  error: string
+  details?: ValidationError[]
+}
 
 /**
  * Validate request body against a Zod schema
@@ -10,20 +22,22 @@ export async function validateBody<T>(
   schema: ZodSchema<T>
 ): Promise<{ success: true; data: T } | { success: false; error: NextResponse }> {
   try {
-    const body = await req.json();
+    const body: unknown = await req.json();
     const result = schema.safeParse(body);
 
     if (!result.success) {
+      const details: ValidationError[] = result.error.errors.map((e) => ({
+        path: e.path.join('.'),
+        message: e.message,
+      }));
+
       return {
         success: false,
         error: NextResponse.json(
           {
             error: 'Validation failed',
-            details: result.error.errors.map((e) => ({
-              path: e.path.join('.'),
-              message: e.message,
-            })),
-          },
+            details,
+          } as ValidationErrorResponse,
           { status: 400 }
         ),
       };
@@ -34,7 +48,7 @@ export async function validateBody<T>(
     return {
       success: false,
       error: NextResponse.json(
-        { error: 'Invalid JSON body' },
+        { error: 'Invalid JSON body' } as ValidationErrorResponse,
         { status: 400 }
       ),
     };
@@ -52,16 +66,18 @@ export function validateQuery<T>(
   const result = schema.safeParse(params);
 
   if (!result.success) {
+    const details: ValidationError[] = result.error.errors.map((e) => ({
+      path: e.path.join('.'),
+      message: e.message,
+    }));
+
     return {
       success: false,
       error: NextResponse.json(
         {
           error: 'Invalid query parameters',
-          details: result.error.errors.map((e) => ({
-            path: e.path.join('.'),
-            message: e.message,
-          })),
-        },
+          details,
+        } as ValidationErrorResponse,
         { status: 400 }
       ),
     };
@@ -131,7 +147,7 @@ export const rateLimitConfigs = {
 export function createProtectedRoute<T>(
   schema: ZodSchema<T>,
   handler: (req: NextRequest, data: T) => Promise<NextResponse>,
-  options?: {
+  _options?: {
     rateLimit?: { maxRequests: number; windowMs: number };
   }
 ): (req: NextRequest) => Promise<NextResponse> {

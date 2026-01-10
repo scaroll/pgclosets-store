@@ -248,7 +248,7 @@ export default function ContactClientPage({ contactEmbedEnabled = true }: { cont
                     </button>
                     <a
                       href="mailto:info@pgclosets.com?subject=Closet Door Project"
-                      className="border-2 border-[#1B4A9C] text-[#1B4A9C] px-8 py-3 font-semibold hover:bg-[#1B4A9C] hover:text-white transition-all text-center"
+                      className="inline-block border-2 border-[#1B4A9C] text-[#1B4A9C] px-8 py-3 font-semibold hover:bg-[#1B4A9C] hover:text-white transition-all text-center"
                     >
                       Email Directly
                     </a>

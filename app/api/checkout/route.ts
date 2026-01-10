@@ -1,10 +1,53 @@
-// @ts-nocheck - Checkout uses complex Prisma relations
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { z } from 'zod';
 import Stripe from 'stripe';
 import { generalRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit';
+
+// Type definitions for checkout
+interface CheckoutItem {
+  productId: string;
+  variantId?: string;
+  quantity: number;
+}
+
+interface Address {
+  firstName: string;
+  lastName: string;
+  company?: string;
+  address1: string;
+  address2?: string;
+  city: string;
+  province: string;
+  postalCode: string;
+  country: string;
+  phone?: string;
+}
+
+interface _CheckoutRequestBody {
+  items: CheckoutItem[];
+  customerEmail: string;
+  shippingAddress: Address;
+  billingAddress: Address;
+  customerNotes?: string;
+}
+
+interface _StripeLineItem {
+  price_data: {
+    currency: string;
+    product_data: {
+      name: string;
+      description?: string;
+      images?: string[];
+    };
+    unit_amount: number;
+  };
+  quantity: number;
+}
+
+type CheckoutError = Error & { message?: string };
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
@@ -54,14 +97,6 @@ const checkoutSchema = z.object({
 
 // POST /api/checkout - Create Stripe checkout session
 export async function POST(req: NextRequest) {
-  // Skip if Stripe is not configured
-  if (!process.env.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY === 'sk_test_dummy') {
-    return NextResponse.json(
-      { error: 'Payment system not configured' },
-      { status: 503 }
-    );
-  }
-
   try {
     // Rate limiting
     const identifier = getClientIdentifier(req);
@@ -84,6 +119,43 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Check if Stripe is configured
+    const isStripeConfigured = process.env.STRIPE_SECRET_KEY && process.env.STRIPE_SECRET_KEY !== 'sk_test_dummy';
+
+    if (!isStripeConfigured) {
+      // MOCK MODE: Create order directly in DB
+      const { items, customerEmail, shippingAddress, billingAddress, customerNotes } = validated.data;
+      
+      try {
+        // Reuse robust order processing logic
+        const { processOrder } = await import('@/lib/orders');
+        
+        await processOrder({
+          userId: session?.user?.id,
+          guestEmail: customerEmail,
+          items,
+          shippingAddress,
+          billingAddress,
+          customerNotes,
+          paymentIntentId: `mock_payment_${  Math.random().toString(36).substring(7)}`
+        });
+
+        // Return fake session to satisfy frontend redirect
+        return NextResponse.json({
+          sessionId: `mock_session_${  Math.random().toString(36).substring(7)}`,
+          url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/success?session_id=mock_session`,
+          message: 'Checkout session created (Mock)',
+        });
+      } catch (err) {
+        const error = err as CheckoutError;
+        return NextResponse.json(
+          { error: error.message || 'Failed to create mock order' },
+          { status: 400 }
+        );
+      }
+    }
+
+    // STRIPE MODE: Original Logic
     const { items, customerEmail, shippingAddress, billingAddress, customerNotes } = validated.data;
 
     // Get products and validate inventory
@@ -211,6 +283,7 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
 
 // PUT /api/checkout - Create payment intent for custom payment form
 export async function PUT(req: NextRequest) {

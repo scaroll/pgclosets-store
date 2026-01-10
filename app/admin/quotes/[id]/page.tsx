@@ -10,11 +10,8 @@ import {
   Phone,
   MapPin,
   FileText,
-  Calendar,
-  DollarSign,
   Package,
   Save,
-  CheckCircle,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -56,7 +53,7 @@ interface QuoteDetail {
 
 export default function QuoteDetailPage() {
   const params = useParams();
-  const router = useRouter();
+  const _router = useRouter();
   const [quote, setQuote] = useState<QuoteDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -67,7 +64,7 @@ export default function QuoteDetailPage() {
   const [source, quoteId] = id.split('-');
 
   useEffect(() => {
-    fetchQuoteDetail();
+    void fetchQuoteDetail();
   }, [id]);
 
   const fetchQuoteDetail = async () => {
@@ -160,7 +157,7 @@ export default function QuoteDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4" />
           <p className="text-muted-foreground">Loading quote details...</p>
         </div>
       </div>

@@ -94,17 +94,19 @@ export function sanitizeFilename(filename: string): string {
     .slice(0, 255);
 }
 
+type SanitizedRecord<T> = T extends Record<string, unknown> ? T : never;
+
 /**
  * Sanitize an object recursively
  */
-export function sanitizeObject<T extends Record<string, any>>(obj: T): T {
-  const sanitized: Record<string, any> = {};
+export function sanitizeObject<T extends Record<string, unknown>>(obj: T): T {
+  const sanitized: Record<string, unknown> = {};
 
   for (const [key, value] of Object.entries(obj)) {
     if (typeof value === 'string') {
       sanitized[key] = sanitizeString(value);
     } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-      sanitized[key] = sanitizeObject(value);
+      sanitized[key] = sanitizeObject(value as Record<string, unknown>);
     } else if (Array.isArray(value)) {
       sanitized[key] = value.map((item) =>
         typeof item === 'string' ? sanitizeString(item) : item
@@ -114,17 +116,19 @@ export function sanitizeObject<T extends Record<string, any>>(obj: T): T {
     }
   }
 
-  return sanitized as T;
+  return sanitized as SanitizedRecord<T>;
 }
+
+type SanitizationPreset = Record<string, string | Record<string, string>>;
 
 /**
  * Sanitize an object using a preset configuration
  */
-export function sanitizeWithPreset<T extends Record<string, any>>(
+export function sanitizeWithPreset<T extends Record<string, unknown>>(
   obj: T,
-  preset: Record<string, any>
+  preset: SanitizationPreset
 ): T {
-  const sanitized: Record<string, any> = {};
+  const sanitized: Record<string, unknown> = {};
 
   for (const [key, value] of Object.entries(obj)) {
     const sanitizationType = preset[key];
@@ -134,7 +138,7 @@ export function sanitizeWithPreset<T extends Record<string, any>>(
       if (typeof value === 'string') {
         sanitized[key] = sanitizeString(value);
       } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-        sanitized[key] = sanitizeObject(value);
+        sanitized[key] = sanitizeObject(value as Record<string, unknown>);
       } else {
         sanitized[key] = value;
       }
@@ -144,7 +148,7 @@ export function sanitizeWithPreset<T extends Record<string, any>>(
     // Handle nested objects
     if (typeof sanitizationType === 'object' && !Array.isArray(sanitizationType)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-        sanitized[key] = sanitizeWithPreset(value, sanitizationType);
+        sanitized[key] = sanitizeWithPreset(value as Record<string, unknown>, sanitizationType as SanitizationPreset);
       } else {
         sanitized[key] = value;
       }
@@ -184,7 +188,7 @@ export function sanitizeWithPreset<T extends Record<string, any>>(
     }
   }
 
-  return sanitized as T;
+  return sanitized as SanitizedRecord<T>;
 }
 
 /**
@@ -261,5 +265,5 @@ export const sanitizationPresets = {
       selectedOptions: 'object',
     },
     notes: 'string',
-  },
+  } as SanitizationPreset,
 };

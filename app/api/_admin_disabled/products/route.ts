@@ -1,5 +1,6 @@
 // @ts-nocheck - This route is disabled and references deprecated Prisma schema
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
 

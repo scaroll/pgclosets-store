@@ -1,7 +1,6 @@
 "use client"
 
-import type React from "react"
-import { createContext, useContext, useReducer, useEffect } from "react"
+import { createContext, useContext, useReducer, useEffect, type ReactNode } from "react"
 import type { Product } from "@/lib/renin-products"
 
 export interface CartItem {
@@ -42,9 +41,12 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
       if (existingItemIndex > -1) {
         const updatedItems = [...state.items]
-        updatedItems[existingItemIndex] = {
-          ...updatedItems[existingItemIndex]!,
-          quantity: updatedItems[existingItemIndex]!.quantity + quantity
+        const existingItem = updatedItems[existingItemIndex]
+        if (existingItem) {
+          updatedItems[existingItemIndex] = {
+            ...existingItem,
+            quantity: existingItem.quantity + quantity
+          }
         }
         return { ...state, items: updatedItems }
       }
@@ -132,10 +134,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   // Load cart from localStorage on mount
   useEffect(() => {
+    if (typeof window === "undefined") return
     const savedCart = localStorage.getItem("pgclosets-cart")
     if (savedCart) {
       try {
-        const parsedCart = JSON.parse(savedCart)
+        const parsedCart = JSON.parse(savedCart) as CartState
         dispatch({ type: "LOAD_CART", payload: parsedCart })
       } catch (error) {
         console.error("Failed to load cart from localStorage:", error)
@@ -145,6 +148,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
+    if (typeof window === "undefined") return
     localStorage.setItem("pgclosets-cart", JSON.stringify(state))
   }, [state])
 

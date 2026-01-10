@@ -1,8 +1,15 @@
-// @ts-nocheck - Product schema Decimal type issues
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 
-export async function GET(req: NextRequest) {
+// Type definitions
+interface ProductCategory {
+  name: string;
+  slug: string;
+  count: number;
+}
+
+export async function GET(_req: NextRequest) {
   try {
     const categories = await prisma.product.groupBy({
       by: ['category'],
@@ -17,7 +24,7 @@ export async function GET(req: NextRequest) {
       }
     });
 
-    const formattedCategories = categories.map(cat => ({
+    const formattedCategories: ProductCategory[] = categories.map(cat => ({
       name: cat.category,
       slug: cat.category.toLowerCase().replace(/\s+/g, '-'),
       count: cat._count.id,

@@ -6,11 +6,11 @@ export const medusaClient = {
     return { products: [] }
   },
 
-  async getProduct(id: string) {
+  async getProduct(_id: string) {
     return null
   },
 
-  async getProductByHandle(handle: string) {
+  async getProductByHandle(_handle: string) {
     return null
   },
 

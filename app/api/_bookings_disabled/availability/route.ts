@@ -1,10 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
 // Disabled route - required modules not available
 // import { PrismaClient } from '@prisma/client';
 // import { startOfDay, endOfDay, addMinutes } from 'date-fns';
 // import { getServiceBySlug } from '@/lib/services';
 
-export async function GET(_request: NextRequest) {
+export function GET(_request: NextRequest) {
   // This route is disabled - booking availability functionality not available
   return NextResponse.json(
     { error: "Booking availability route is disabled" },

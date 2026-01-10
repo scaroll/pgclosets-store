@@ -1,4 +1,5 @@
-import { type NextRequest, NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
+import { NextResponse } from "next/server"
 import crypto from "crypto"
 
 // Paddle webhook signature verification
@@ -26,11 +27,13 @@ export async function POST(request: NextRequest) {
     }
 
     const data = JSON.parse(body)
+    // eslint-disable-next-line no-console -- Webhook event logging for debugging
     console.log("[v0] Paddle webhook received:", data.alert_name)
 
     // Handle different webhook events
     switch (data.alert_name) {
       case "payment_succeeded":
+        // eslint-disable-next-line no-console -- Webhook event logging for debugging
         console.log("[v0] Payment succeeded:", {
           orderId: data.order_id,
           email: data.email,
@@ -42,6 +45,7 @@ export async function POST(request: NextRequest) {
         break
 
       case "payment_failed":
+        // eslint-disable-next-line no-console -- Webhook event logging for debugging
         console.log("[v0] Payment failed:", {
           orderId: data.order_id,
           email: data.email,
@@ -51,6 +55,7 @@ export async function POST(request: NextRequest) {
         break
 
       case "subscription_created":
+        // eslint-disable-next-line no-console -- Webhook event logging for debugging
         console.log("[v0] Subscription created:", {
           subscriptionId: data.subscription_id,
           email: data.email,
@@ -60,6 +65,7 @@ export async function POST(request: NextRequest) {
         break
 
       case "subscription_cancelled":
+        // eslint-disable-next-line no-console -- Webhook event logging for debugging
         console.log("[v0] Subscription cancelled:", {
           subscriptionId: data.subscription_id,
           email: data.email,
@@ -68,6 +74,7 @@ export async function POST(request: NextRequest) {
         break
 
       default:
+        // eslint-disable-next-line no-console -- Webhook event logging for debugging
         console.log("[v0] Unhandled webhook event:", data.alert_name)
     }
 
@@ -78,6 +85,6 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET() {
+export function GET() {
   return NextResponse.json({ message: "Paddle webhook endpoint" })
 }

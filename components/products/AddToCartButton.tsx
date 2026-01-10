@@ -31,7 +31,7 @@ export function AddToCartButton({ productId, variantId, price }: AddToCartButton
 
       if (!res.ok) {
         if (res.status === 401) {
-          router.push('/auth/signin')
+          void router.push('/auth/signin')
           return
         }
         throw new Error('Failed to add to cart')
@@ -39,7 +39,7 @@ export function AddToCartButton({ productId, variantId, price }: AddToCartButton
 
       toast.success('Added to cart')
       router.refresh() // Refresh server components (like cart count in header)
-    } catch (error) {
+    } catch (_error) {
       toast.error('Something went wrong. Please try again.')
     } finally {
       setLoading(false)

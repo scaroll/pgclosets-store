@@ -1,5 +1,7 @@
 import React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import Link from "next/link"
+import type { VariantProps } from "class-variance-authority"
+import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
@@ -50,12 +52,29 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, href, ...props }, ref) => {
+  ({ className, variant, size, asChild: _asChild = false, href, ...props }, ref) => {
     const buttonClasses = cn(buttonVariants({ variant, size, className }))
 
     if (href) {
+      // Check if it's an internal link (starts with /) or external link
+      const isInternalLink = href.startsWith('/')
+      const isAnchorLink = href.startsWith('#')
+
+      if (isInternalLink && !isAnchorLink) {
+        return (
+          <Link href={href} className={buttonClasses} {...(props as any)}>
+            {props.children}
+          </Link>
+        )
+      }
+
       return (
-        <a href={href} className={buttonClasses} {...(props as any)}>
+        <a
+          href={href}
+          className={buttonClasses}
+          {...(!isInternalLink && !isAnchorLink ? { rel: "noopener noreferrer" } : {})}
+          {...(props as any)}
+        >
           {props.children}
         </a>
       )

@@ -19,7 +19,7 @@ import { useLoadingState, useDelayedLoading, useOptimistic } from '@/lib/loading
 // ============================================================================
 
 export function ProductListExample() {
-  const { state, data, error, execute, retry } = useLoadingState<Product[]>({
+  const { state, data, error: _error, execute, retry } = useLoadingState<Product[]>({
     minLoadingTime: 400,
     autoRetry: true,
     maxRetries: 3
@@ -71,7 +71,7 @@ export function ProductListExample() {
 // ============================================================================
 
 export function ProductDetailExample({ slug }: { slug: string }) {
-  const { state, data, error, execute, retry } = useLoadingState<Product>({
+  const { state, data, error: _error, execute, retry } = useLoadingState<Product>({
     minLoadingTime: 400,
     maxLoadingTime: 10000
   })
@@ -352,7 +352,7 @@ export function ErrorBoundaryExample() {
 // ============================================================================
 
 export function PageTransitionExample({ children }: { children: React.ReactNode }) {
-  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [isTransitioning, _setIsTransitioning] = useState(false)
 
   // Hook into Next.js router events (pseudo-code)
   useEffect(() => {
@@ -393,5 +393,5 @@ interface CartItem {
 }
 
 // Placeholder components referenced in examples
-const ProductCard = (props: Product) => <div>Product Card</div>
-const ProductDetail = (props: { product: Product }) => <div>Product Detail</div>
+const ProductCard = (_props: Product) => <div>Product Card</div>
+const ProductDetail = (_props: { product: Product }) => <div>Product Detail</div>

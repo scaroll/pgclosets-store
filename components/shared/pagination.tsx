@@ -34,7 +34,7 @@ export function Pagination({
       params.set('page', page.toString())
     }
 
-    router.push(`${pathname}?${params.toString()}`)
+    void router.push(`${pathname}?${params.toString()}`)
   }
 
   const handleItemsPerPageChange = (value: number) => {
@@ -42,7 +42,7 @@ export function Pagination({
     params.set('limit', value.toString())
     params.delete('page') // Reset to first page
 
-    router.push(`${pathname}?${params.toString()}`)
+    void router.push(`${pathname}?${params.toString()}`)
     onItemsPerPageChange?.(value)
   }
 

@@ -1,4 +1,4 @@
-import { NextRequest } from 'next/server'
+import type { NextRequest } from 'next/server'
 
 function determineCategory(slug: string): { category: string; images: string[]; description: string } {
   const s = slug.toLowerCase()

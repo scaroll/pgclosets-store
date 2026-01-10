@@ -20,6 +20,19 @@ interface LoginCredentials {
   password: string
 }
 
+interface SessionResponse {
+  authenticated: boolean
+  user?: User
+  csrfToken?: string
+}
+
+interface LoginResponse {
+  success: boolean
+  user?: User
+  csrfToken?: string
+  error?: string
+}
+
 // Custom hook for authentication
 export function useAuth() {
   const [authState, setAuthState] = useState<AuthState>({
@@ -38,8 +51,8 @@ export function useAuth() {
 
       // Always process the response, even if it's an error
       if (response.ok) {
-        const data = await response.json()
-        if (data.authenticated) {
+        const data: SessionResponse = await response.json()
+        if (data.authenticated && data.user && data.csrfToken) {
           setAuthState({
             user: data.user,
             isAuthenticated: true,
@@ -87,9 +100,9 @@ export function useAuth() {
         body: JSON.stringify(credentials),
       })
 
-      const data = await response.json()
+      const data: LoginResponse = await response.json()
 
-      if (response.ok && data.success) {
+      if (response.ok && data.success && data.user && data.csrfToken) {
         setAuthState({
           user: data.user,
           isAuthenticated: true,
@@ -138,7 +151,7 @@ export function useAuth() {
 
   // Effect to check session on mount
   useEffect(() => {
-    checkSession()
+    void checkSession()
   }, [checkSession])
 
   return {

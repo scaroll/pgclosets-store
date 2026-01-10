@@ -47,7 +47,7 @@ export function AddToCartButton({
         name: product.name,
         price: typeof product.price === 'string' ? parseFloat(product.price) : product.price,
         image: product.image,
-        quantity: quantity,
+        quantity,
       })
 
       setIsAdded(true)

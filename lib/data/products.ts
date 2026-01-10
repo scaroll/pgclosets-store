@@ -1,8 +1,5 @@
-// @ts-nocheck - Product data loader
-/**
- * Product data loader for Renin products
- * Loads and normalizes products from JSON data files
- */
+// Product data loader for Renin products
+// Loads and normalizes products from JSON data files
 
 import simpleProducts from '@/data/simple-products.json'
 import reninProducts from '@/data/renin-products.json'
@@ -53,8 +50,8 @@ export interface NormalizedProduct {
   tags?: string[]
   variants?: ProductVariant[]
   media?: ProductImage[]
-  attributes?: Record<string, any>
-  specifications?: Record<string, any>
+  attributes?: Record<string, unknown>
+  specifications?: Record<string, unknown>
   createdAt?: string
   updatedAt?: string
 }
@@ -74,7 +71,7 @@ function normalizeSimpleProducts(): NormalizedProduct[] {
     title: product.title,
     brand: 'Renin',
     description: product.description,
-    shortDescription: product.description.substring(0, 150) + '...',
+    shortDescription: `${product.description.substring(0, 150)}...`,
     price: product.price, // Already in cents
     images: product.image ? [product.image] : [],
     category: product.category,
@@ -116,7 +113,7 @@ function normalizeReninProducts(): NormalizedProduct[] {
       title: product.name,
       brand: product.brand || 'Renin',
       description: product.description,
-      shortDescription: product.tagline || product.description.substring(0, 150) + '...',
+      shortDescription: product.tagline || `${product.description.substring(0, 150)}...`,
       price,
       salePrice,
       images,
@@ -289,8 +286,9 @@ export function filterAndSortProducts(
   // Apply sorting
   if (sort) {
     products.sort((a, b) => {
-      let aVal: any = a[sort.field]
-      let bVal: any = b[sort.field]
+      const sortKey = sort.field as keyof NormalizedProduct
+      let aVal: string | number | boolean | Date | undefined = a[sortKey]
+      let bVal: string | number | boolean | Date | undefined = b[sortKey]
 
       // Handle special cases
       if (sort.field === 'featured') {
@@ -299,9 +297,9 @@ export function filterAndSortProducts(
       }
 
       if (sort.direction === 'asc') {
-        return aVal > bVal ? 1 : aVal < bVal ? -1 : 0
+        return aVal! > bVal! ? 1 : aVal! < bVal! ? -1 : 0
       } else {
-        return aVal < bVal ? 1 : aVal > bVal ? -1 : 0
+        return aVal! < bVal! ? 1 : aVal! > bVal! ? -1 : 0
       }
     })
   } else {

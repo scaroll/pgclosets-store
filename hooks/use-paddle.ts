@@ -1,8 +1,20 @@
-// @ts-nocheck - Paddle hook with dynamic types
+// Paddle hook with dynamic types
 "use client"
 
 import { useEffect, useState } from "react"
 import { calculateTax } from "@/lib/renin-products"
+
+// Extend Window interface for Paddle
+declare global {
+  interface Window {
+    Paddle?: {
+      Setup: (config: { vendor: number; eventCallback?: (data: unknown) => void }) => void
+      Checkout: {
+        open: (options: PaddleCheckoutOptions) => void
+      }
+    }
+  }
+}
 
 interface PaddleInstance {
   Setup: (config: { vendor: number; eventCallback?: (data: unknown) => void }) => void;
@@ -54,6 +66,7 @@ export function usePaddle() {
         paddle.Setup({
           vendor: parseInt(config.vendorId, 10),
           eventCallback: (data: unknown) => {
+            // eslint-disable-next-line no-console -- Paddle SDK event logging
             console.log("[v0] Paddle event:", data)
           },
         })

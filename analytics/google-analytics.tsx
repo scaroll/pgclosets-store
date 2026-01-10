@@ -9,6 +9,7 @@ export function GoogleAnalytics({ gaId }: { gaId: string }) {
       <Script
         id="google-analytics"
         strategy="afterInteractive"
+        // eslint-disable-next-line react/no-danger -- Google Analytics tracking code - third-party script from trusted source
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];

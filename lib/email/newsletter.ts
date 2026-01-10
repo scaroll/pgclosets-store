@@ -27,10 +27,10 @@ export async function subscribeToNewsletter(data: NewsletterSubscriber): Promise
   subscribers.add(email.toLowerCase());
 
   // Send welcome email
-  await sendWelcomeEmail(email, name);
+  sendWelcomeEmail(email, name);
 
   // Notify admin
-  await notifyAdminNewSubscriber(email, name);
+  notifyAdminNewSubscriber(email, name);
 
   return {
     success: true,
@@ -41,7 +41,7 @@ export async function subscribeToNewsletter(data: NewsletterSubscriber): Promise
 /**
  * Unsubscribe from newsletter
  */
-export async function unsubscribeFromNewsletter(email: string): Promise<{ success: boolean; message: string }> {
+export function unsubscribeFromNewsletter(email: string): { success: boolean; message: string } {
   subscribers.delete(email.toLowerCase());
 
   return {
@@ -53,7 +53,7 @@ export async function unsubscribeFromNewsletter(email: string): Promise<{ succes
 /**
  * Send welcome email to new subscriber
  */
-async function sendWelcomeEmail(email: string, name?: string): Promise<boolean> {
+function sendWelcomeEmail(email: string, name?: string): boolean {
   const greeting = name ? `Hi ${name}` : 'Hi there';
 
   const html = `
@@ -90,7 +90,7 @@ async function sendWelcomeEmail(email: string, name?: string): Promise<boolean> 
 /**
  * Notify admin of new subscriber
  */
-async function notifyAdminNewSubscriber(email: string, name?: string): Promise<boolean> {
+function notifyAdminNewSubscriber(email: string, name?: string): boolean {
   const adminEmail = process.env.ADMIN_EMAIL || 'admin@pgclosets.com';
 
   const html = `

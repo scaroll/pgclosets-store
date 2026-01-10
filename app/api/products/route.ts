@@ -1,6 +1,40 @@
 import { products } from "@/app/products/products-data";
 import { NextResponse } from "next/server";
 
+// Type definitions
+interface ProductVariant {
+  id: string;
+  title: string;
+  sku: string;
+  price: number;
+  inventory_quantity: number;
+}
+
+interface ProductTag {
+  value: string;
+  count: number;
+}
+
+interface ProductCollection {
+  id: string;
+  title: string;
+  handle: string;
+}
+
+interface FormattedProduct {
+  id: string;
+  title: string;
+  handle: string;
+  description: string;
+  thumbnail: string;
+  created_at: string;
+  updated_at: string;
+  images: Array<{ url: string; altText: string }>;
+  variants: ProductVariant[];
+  tags: string[];
+  collection: ProductCollection;
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.get("query");
@@ -38,7 +72,7 @@ export async function GET(request: Request) {
     }
 
     // Transform to match the expected API response format
-    const formattedProducts = filteredProducts.map((product): any => ({
+    const formattedProducts: FormattedProduct[] = filteredProducts.map((product) => ({
       id: product.id,
       title: product.name,
       handle: product.name

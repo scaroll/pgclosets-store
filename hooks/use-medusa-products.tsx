@@ -2,11 +2,17 @@
 
 import { useState } from "react"
 
+// Stub types for removed Medusa integration
+interface MedusaProduct {
+  id: string
+  title: string
+}
+
 // Stub hook - Medusa removed
-export function useMedusaProducts(_params?: any) {
-  const [products, _setProducts] = useState<any[]>([])
-  const [loading, _setLoading] = useState(false)
-  const [error, _setError] = useState<string | null>(null)
+export function useMedusaProducts(_params?: Record<string, unknown>) {
+  const [products] = useState<MedusaProduct[]>([])
+  const [loading] = useState(false)
+  const [error] = useState<string | null>(null)
 
   return {
     products,
@@ -18,27 +24,27 @@ export function useMedusaProducts(_params?: any) {
 
 // Hook for fetching single product
 export function useMedusaProduct(_handle: string) {
-  const [product, _setProduct] = useState<any | null>(null)
-  const [loading, _setLoading] = useState(false)
-  const [error, _setError] = useState<string | null>(null)
+  const [product] = useState<MedusaProduct | null>(null)
+  const [loading] = useState(false)
+  const [error] = useState<string | null>(null)
 
   return { product, loading, error }
 }
 
 // Hook for fetching collections
 export function useMedusaCollections() {
-  const [collections, _setCollections] = useState<any[]>([])
-  const [loading, _setLoading] = useState(false)
-  const [error, _setError] = useState<string | null>(null)
+  const [collections] = useState<unknown[]>([])
+  const [loading] = useState(false)
+  const [error] = useState<string | null>(null)
 
   return { collections, loading, error }
 }
 
 // Hook for featured products
 export function useFeaturedProducts() {
-  const [products, _setProducts] = useState<any[]>([])
-  const [loading, _setLoading] = useState(false)
-  const [error, _setError] = useState<string | null>(null)
+  const [products] = useState<MedusaProduct[]>([])
+  const [loading] = useState(false)
+  const [error] = useState<string | null>(null)
 
   return { products, loading, error }
 }

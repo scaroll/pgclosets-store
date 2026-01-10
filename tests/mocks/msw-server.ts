@@ -86,7 +86,7 @@ export const handlers = [
 
   // Email API
   http.post('/api/email/send', async ({ request }) => {
-    const body = await request.json()
+    const _body = await request.json()
     return HttpResponse.json({
       success: true,
       messageId: 'email-123',
@@ -95,7 +95,7 @@ export const handlers = [
 
   // Contact Form API
   http.post('/api/contact', async ({ request }) => {
-    const body = await request.json()
+    const _body = await request.json()
     return HttpResponse.json({
       success: true,
       message: 'Message received successfully',

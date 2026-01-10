@@ -66,12 +66,12 @@ export default function AdminQuotesPage() {
   };
 
   useEffect(() => {
-    fetchQuotes();
+    void fetchQuotes();
   }, [statusFilter, sourceFilter]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    fetchQuotes();
+    void fetchQuotes();
   };
 
   const getStatusBadge = (status: string) => {

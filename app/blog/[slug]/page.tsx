@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, Share2, Facebook, Twitter, Linkedin, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
 import { getBlogPost, getRelatedPosts, blogPosts } from '@/lib/blog-data'
+import DOMPurify from 'isomorphic-dompurify'
 
 interface BlogPostPageProps {
   params: {
@@ -144,37 +145,40 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
           <article className="prose prose-lg max-w-none">
+            {/* eslint-disable-next-line react/no-danger -- Blog content sanitized with DOMPurify - content is from trusted data source */}
             <div
               className="space-y-6 text-lg leading-relaxed text-foreground"
               dangerouslySetInnerHTML={{
-                __html: post.content
-                  .split('\n')
-                  .map(line => {
-                    // Headers
-                    if (line.startsWith('# ')) {
-                      return `<h1 class="text-4xl font-bold mt-12 mb-6">${line.substring(2)}</h1>`
-                    }
-                    if (line.startsWith('## ')) {
-                      return `<h2 class="text-3xl font-bold mt-10 mb-5">${line.substring(3)}</h2>`
-                    }
-                    if (line.startsWith('### ')) {
-                      return `<h3 class="text-2xl font-bold mt-8 mb-4">${line.substring(4)}</h3>`
-                    }
-                    // Bold
-                    if (line.startsWith('**') && line.endsWith('**')) {
-                      return `<p class="font-bold text-xl mb-4">${line.substring(2, line.length - 2)}</p>`
-                    }
-                    // List items
-                    if (line.startsWith('- ')) {
-                      return `<li class="ml-6 mb-2">${line.substring(2)}</li>`
-                    }
-                    // Regular paragraphs
-                    if (line.trim()) {
-                      return `<p class="mb-4">${line}</p>`
-                    }
-                    return ''
-                  })
-                  .join('')
+                __html: DOMPurify.sanitize(
+                  post.content
+                    .split('\n')
+                    .map(line => {
+                      // Headers
+                      if (line.startsWith('# ')) {
+                        return `<h1 class="text-4xl font-bold mt-12 mb-6">${line.substring(2)}</h1>`
+                      }
+                      if (line.startsWith('## ')) {
+                        return `<h2 class="text-3xl font-bold mt-10 mb-5">${line.substring(3)}</h2>`
+                      }
+                      if (line.startsWith('### ')) {
+                        return `<h3 class="text-2xl font-bold mt-8 mb-4">${line.substring(4)}</h3>`
+                      }
+                      // Bold
+                      if (line.startsWith('**') && line.endsWith('**')) {
+                        return `<p class="font-bold text-xl mb-4">${line.substring(2, line.length - 2)}</p>`
+                      }
+                      // List items
+                      if (line.startsWith('- ')) {
+                        return `<li class="ml-6 mb-2">${line.substring(2)}</li>`
+                      }
+                      // Regular paragraphs
+                      if (line.trim()) {
+                        return `<p class="mb-4">${line}</p>`
+                      }
+                      return ''
+                    })
+                    .join('')
+                )
               }}
             />
           </article>

@@ -20,7 +20,7 @@ export default function SimpleCartPage() {
 
   async function handleCheckout() {
     alert("Checkout is stubbed. Implement in /app/api/simple-checkout/route.ts")
-    router.push("/")
+    void router.push("/")
   }
 
   return (
@@ -55,7 +55,11 @@ export default function SimpleCartPage() {
                     />
                   </div>
                 </div>
-                <button onClick={() => remove(i.id)} className="text-sm text-red-600 hover:underline">
+                <button
+                  onClick={() => remove(i.id)}
+                  className="text-sm text-red-600 hover:underline"
+                  aria-label={`Remove ${i.title} from cart`}
+                >
                   Remove
                 </button>
               </div>

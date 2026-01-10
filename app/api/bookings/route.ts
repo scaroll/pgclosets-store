@@ -1,11 +1,37 @@
-// @ts-nocheck - Booking models not yet in Prisma schema
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { z } from 'zod';
 import { generateBookingNumber } from '@/lib/bookings';
 import { bookingRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit';
 import { sendBookingConfirmationEmail } from '@/lib/emails';
+
+// Type definitions
+type ServiceType = 'consultation' | 'measurement' | 'installation';
+type LocationType = 'Ottawa' | 'Kanata' | 'Barrhaven' | 'Nepean' | 'Orleans';
+
+interface Measurements {
+  width: number;
+  height: number;
+  depth?: number;
+}
+
+interface CreateBookingInput {
+  service: ServiceType;
+  date: string;
+  timeStart: string;
+  location: LocationType;
+  guestName: string;
+  guestEmail: string;
+  guestPhone: string;
+  address?: string;
+  projectType?: string;
+  projectDescription?: string;
+  measurements?: Measurements;
+  budget?: number;
+  customerNotes?: string;
+}
 
 const createBookingSchema = z.object({
   service: z.enum(['consultation', 'measurement', 'installation']),
@@ -25,7 +51,7 @@ const createBookingSchema = z.object({
   }).optional(),
   budget: z.number().optional(),
   customerNotes: z.string().optional(),
-});
+}) as z.ZodType<CreateBookingInput>;
 
 const APPOINTMENT_DURATIONS = {
   consultation: 60, // 60 minutes

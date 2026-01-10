@@ -101,6 +101,7 @@ export function OrganizationSchema({
     sameAs,
   }
 
+  // eslint-disable-next-line react/no-danger -- JSON-LD structured data for SEO - static content only
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 }
 
@@ -203,6 +204,7 @@ export function LocalBusinessSchema({
     sameAs,
   }
 
+  // eslint-disable-next-line react/no-danger -- JSON-LD structured data for SEO - static content only
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 }
 
@@ -249,6 +251,7 @@ export function ProductSchema({ product }: ProductSchemaProps) {
     },
   }
 
+  // eslint-disable-next-line react/no-danger -- JSON-LD structured data for SEO - static content only
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 }
 
@@ -283,6 +286,7 @@ export function ReviewSchema({ reviews, product }: ReviewSchemaProps) {
     })),
   }
 
+  // eslint-disable-next-line react/no-danger -- JSON-LD structured data for SEO - static content only
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 }
 
@@ -300,6 +304,7 @@ export function FAQSchema({ faqs }: FAQSchemaProps) {
     })),
   }
 
+  // eslint-disable-next-line react/no-danger -- JSON-LD structured data for SEO - static content only
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 }
 
@@ -315,6 +320,7 @@ export function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
     })),
   }
 
+  // eslint-disable-next-line react/no-danger -- JSON-LD structured data for SEO - static content only
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 }
 
@@ -348,5 +354,6 @@ export function WebsiteSchema() {
     },
   }
 
+  // eslint-disable-next-line react/no-danger -- JSON-LD structured data for SEO - static content only
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 }

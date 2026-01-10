@@ -168,7 +168,7 @@ const handler = createMcpHandler(
               },
             ],
           }
-        } catch (e: any) {
+        } catch (_e: any) {
           return {
             content: [
               { type: 'text', text: JSON.stringify({ exists: false, path: rel }) },

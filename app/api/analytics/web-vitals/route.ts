@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 
 interface WebVitalsData {
@@ -7,7 +8,7 @@ interface WebVitalsData {
   url: string
   userAgent: string
   timestamp: number
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export async function POST(request: NextRequest) {
@@ -55,33 +56,32 @@ export async function POST(request: NextRequest) {
     }
 
     // Enhanced logging for performance monitoring
-    console.log(`📊 Web Vitals - ${body.metric.toUpperCase()}:`, {
-      value: body.value,
-      url: body.url,
-      timestamp: new Date(body.timestamp).toISOString(),
-      userAgent: userAgent.substring(0, 100) + '...'
-    })
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.info(`Web Vitals: ${body.metric}`, {
+        value: body.value,
+        url: body.url,
+        timestamp: new Date(body.timestamp).toISOString(),
+        userAgent: `${userAgent.substring(0, 100)}...`
+      })
+    }
 
     // Store metrics in your preferred analytics system
     // This could be Google Analytics, Vercel Analytics, or a custom database
 
     // Google Analytics 4 event
     if (process.env.NEXT_PUBLIC_GA_ID) {
-      const gaData = {
-        name: 'web_vitals',
-        params: {
-          metric_name: body.metric,
-          metric_value: Math.round(body.value),
-          page_location: body.url,
-          custom_parameter_1: body.metric === 'LCP' ? 'largest_contentful_paint' :
-                            body.metric === 'FID' ? 'first_input_delay' :
-                            body.metric === 'CLS' ? 'cumulative_layout_shift' :
-                            body.metric === 'FCP' ? 'first_contentful_paint' : 'unknown'
-        }
-      }
-
       // In production, you would send this to GA4
-      console.log('🎯 GA4 Event:', gaData)
+      // Example structure:
+      // const gaData = {
+      //   name: 'web_vitals',
+      //   params: {
+      //     metric_name: body.metric,
+      //     metric_value: Math.round(body.value),
+      //     page_location: body.url,
+      //   }
+      // }
+      // await gtag('event', gaData.name, { ...gaData.params })
     }
 
     // Performance alerting for poor metrics
@@ -139,7 +139,7 @@ export async function POST(request: NextRequest) {
 }
 
 // GET endpoint to retrieve aggregated metrics (optional)
-export async function GET(request: NextRequest) {
+export function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
     const metric = searchParams.get('metric')

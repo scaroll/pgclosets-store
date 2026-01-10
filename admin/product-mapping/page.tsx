@@ -66,7 +66,7 @@ export default function ProductMappingPage() {
   }
 
   useEffect(() => {
-    fetchBlobFiles()
+    void fetchBlobFiles()
   }, [])
 
   // Filter products
@@ -135,6 +135,7 @@ export default function ProductMappingPage() {
     setSaving(true)
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000))
+      // eslint-disable-next-line no-console -- Development logging for admin tool
       console.log("Product mappings saved:", productMappings)
       alert("Product mappings saved successfully!")
     } catch (error) {
@@ -265,14 +266,18 @@ export default function ProductMappingPage() {
                       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
                         {blobFiles.map((file) => (
                           <div key={file.url} className="space-y-2">
-                            <div className="aspect-square bg-gray-100 rounded-md overflow-hidden">
+                            <button
+                              type="button"
+                              className="aspect-square bg-gray-100 rounded-md overflow-hidden w-full"
+                              onClick={() => addBlobImage(product.slug, file.url)}
+                              aria-label={`Add ${file.filename} to product`}
+                            >
                               <img
                                 src={file.url || "/placeholder.svg"}
                                 alt={file.filename}
-                                className="w-full h-full object-cover cursor-pointer hover:opacity-80"
-                                onClick={() => addBlobImage(product.slug, file.url)}
+                                className="w-full h-full object-cover"
                               />
-                            </div>
+                            </button>
                             <p className="text-xs text-center truncate" title={file.filename}>
                               {file.filename}
                             </p>

@@ -1,4 +1,3 @@
-// @ts-nocheck - Responsive hook with dynamic breakpoint types
 /**
  * Advanced Responsive Breakpoint System
  *
@@ -155,7 +154,7 @@ export function useResponsiveBreakpoints(): ResponsiveState {
     }
   }
 
-  function detectDeviceType(width: number, height: number): DeviceType {
+  function detectDeviceType(width: number, _height: number): DeviceType {
     const userAgent = navigator.userAgent.toLowerCase()
 
     // TV detection
@@ -197,9 +196,9 @@ export function useResponsiveBreakpoints(): ResponsiveState {
   function detectTouchDevice(): boolean {
     return (
       'ontouchstart' in window ||
-      navigator.maxTouchPoints > 0 ||
-      // @ts-ignore - vendor prefix
-      navigator.msMaxTouchPoints > 0
+      (navigator.maxTouchPoints ?? 0) > 0 ||
+      // @ts-expect-error - vendor prefix
+      (navigator.msMaxTouchPoints ?? 0) > 0
     )
   }
 

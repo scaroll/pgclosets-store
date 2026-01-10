@@ -1,9 +1,18 @@
-// @ts-nocheck - Enhanced cart with optional product fields
+// Enhanced cart with optional product fields
 "use client"
 
 import { create } from "zustand"
 import { persist, subscribeWithSelector } from "zustand/middleware"
 import { immer } from "zustand/middleware/immer"
+
+// Product recommendation types
+interface RecommendedProduct {
+  id: string
+  name: string
+  price: number
+  image: string
+  description?: string
+}
 
 export interface CartItem {
   productId: string
@@ -96,8 +105,8 @@ interface CartState {
   estimateDelivery: () => { min: Date; max: Date }
 
   // AI Recommendations
-  getUpsellProducts: () => Promise<any[]>
-  getSimilarProducts: (productId: string) => Promise<any[]>
+  getUpsellProducts: () => Promise<RecommendedProduct[]>
+  getSimilarProducts: (productId: string) => Promise<RecommendedProduct[]>
 }
 
 // Mock promo codes database
@@ -212,7 +221,7 @@ export const useEnhancedCart = create<CartState>()(
             state.isOpen = false
           }),
 
-        applyPromoCode: async (code) => {
+        applyPromoCode(code) {
           const promo = VALID_PROMO_CODES[code.toUpperCase()]
           if (!promo) return false
 
@@ -356,9 +365,9 @@ export const useEnhancedCart = create<CartState>()(
           return { min, max }
         },
 
-        getUpsellProducts: async () => {
+        getUpsellProducts() {
           // Mock AI recommendations - in production, this would call an API
-          return [
+          return Promise.resolve([
             {
               id: "organizer-1",
               name: "Premium Drawer Organizer",
@@ -373,19 +382,19 @@ export const useEnhancedCart = create<CartState>()(
               image: "/images/products/led-lighting.jpg",
               description: "Illuminate your closet with smart lighting"
             }
-          ]
+          ])
         },
 
-        getSimilarProducts: async (productId) => {
+        getSimilarProducts() {
           // Mock similar products - in production, this would call an API
-          return [
+          return Promise.resolve([
             {
               id: "similar-1",
               name: "Alternative Door Style",
               price: 899,
               image: "/images/products/alt-door.jpg"
             }
-          ]
+          ])
         }
       })),
       {
@@ -408,7 +417,7 @@ export const useEnhancedCart = create<CartState>()(
 if (typeof window !== "undefined") {
   window.addEventListener("storage", (e) => {
     if (e.key === "pg-closets-enhanced-cart" && e.newValue) {
-      useEnhancedCart.persist.rehydrate()
+      void useEnhancedCart.persist.rehydrate()
     }
   })
 }

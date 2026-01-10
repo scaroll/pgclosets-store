@@ -1,6 +1,7 @@
 import { getAllStaticSlugs, getStaticPage } from '@/lib/data/static-pages'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import DOMPurify from 'isomorphic-dompurify'
 
 interface PageProps {
   params: {
@@ -51,7 +52,8 @@ export default function StaticPage({ params }: PageProps) {
 
       <div
         className="prose prose-lg dark:prose-invert max-w-none"
-        dangerouslySetInnerHTML={{ __html: page.content }}
+        // eslint-disable-next-line react/no-danger -- Static page content sanitized with DOMPurify - content is from trusted data source
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(page.content) }}
       />
     </article>
   )

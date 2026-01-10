@@ -1,4 +1,4 @@
-// @ts-nocheck - Quote email service
+// Quote email service
 import { Resend } from 'resend';
 
 // Lazy initialize Resend client
@@ -33,7 +33,7 @@ export interface QuoteEmailData {
     name: string;
     category: string;
     price?: number;
-    selectedOptions?: Record<string, any>;
+    selectedOptions?: Record<string, string | number>;
   };
   notes?: string;
 }
@@ -48,13 +48,12 @@ export async function sendQuoteConfirmationEmail(data: QuoteEmailData): Promise<
       console.warn('[QUOTE_EMAIL] Resend API key not configured. Email not sent.');
       // In development, just log the email details
       if (process.env.NODE_ENV !== 'production') {
-        console.log('[QUOTE_EMAIL] Would send confirmation to:', data.customer.email);
-        console.log('[QUOTE_EMAIL] Quote Number:', data.quote.quoteNumber);
+        console.log('[QUOTE_EMAIL] Would send email to:', data.customer.email);
       }
       return false;
     }
 
-    const { customer, quote, product, notes } = data;
+    const { customer, quote, product } = data;
 
     // Build customer confirmation HTML email
     const emailHtml = `
@@ -122,12 +121,6 @@ export async function sendQuoteConfirmationEmail(data: QuoteEmailData): Promise<
       console.error('[QUOTE_EMAIL] Failed to send confirmation email:', result.error);
       return false;
     }
-
-    console.log('[QUOTE_EMAIL] Confirmation email sent successfully:', {
-      emailId: result.data?.id,
-      to: data.customer.email,
-      quoteNumber: data.quote.quoteNumber,
-    });
 
     return true;
   } catch (error) {
@@ -315,12 +308,6 @@ export async function sendQuoteNotificationToSales(data: QuoteEmailData): Promis
       console.error('[QUOTE_EMAIL] Failed to send sales notification:', result.error);
       return false;
     }
-
-    console.log('[QUOTE_EMAIL] Sales notification sent successfully:', {
-      emailId: result.data?.id,
-      to: SALES_TEAM_EMAIL,
-      quoteNumber: quote.quoteNumber,
-    });
 
     return true;
   } catch (error) {

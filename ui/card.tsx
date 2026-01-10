@@ -1,7 +1,6 @@
 import type * as React from "react"
-import { cva, type VariantProps } from "@/lib/utils"
-
-import { cn } from "@/lib/utils"
+import type { VariantProps } from "@/lib/utils"
+import { cva, cn } from "@/lib/utils"
 
 const cardVariants = cva(
   "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border shadow-sm transition-all duration-300",

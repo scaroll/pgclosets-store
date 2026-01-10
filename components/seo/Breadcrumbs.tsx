@@ -32,6 +32,7 @@ export function Breadcrumbs({ items, className = '' }: BreadcrumbsProps) {
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
+        // eslint-disable-next-line react/no-danger -- JSON-LD schema from trusted source via renderSchema
         dangerouslySetInnerHTML={renderSchema(schema)}
       />
 

@@ -1,4 +1,3 @@
-// @ts-nocheck - Touch event type issues
 /**
  * Mobile Touch Interaction System
  *
@@ -9,6 +8,14 @@
 "use client"
 
 import { useState, useRef, useCallback, useEffect } from 'react'
+
+// Extend Navigator interface for vibrate
+declare global {
+  interface Navigator {
+    vibrate?: (pattern: number | number[]) => boolean
+    msMaxTouchPoints?: number
+  }
+}
 
 // Touch gesture types
 export type TouchGestureType =
@@ -152,7 +159,7 @@ export function useTouchInteraction(
   }, [onGesture, pinchThreshold])
 
   // Handle touch end
-  const handleTouchEnd = useCallback((e: TouchEvent) => {
+  const handleTouchEnd = useCallback((_e: TouchEvent) => {
     if (!isActive) return
 
     const endTime = Date.now()
@@ -260,9 +267,9 @@ export function PullToRefresh({ onRefresh, children }: {
         setPullDistance(0)
       }
     } else if (gesture.type === 'swipe-down' && gesture.direction === 'down') {
-      if (gesture.distance! > 50) {
+      if (gesture.distance !== undefined && gesture.distance > 50) {
         setIsPulling(true)
-        setPullDistance(Math.min(gesture.distance! - 50, 100))
+        setPullDistance(Math.min(gesture.distance - 50, 100))
       }
     }
   }, [onRefresh, isRefreshing])
@@ -328,7 +335,6 @@ export function SwipeableCard({
   rightAction?: React.ReactNode
 }) {
   const [translateX, setTranslateX] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
 
   const handleGesture = useCallback((gesture: TouchGesture) => {
     if (gesture.type === 'swipe-left' && onSwipeLeft) {
@@ -358,7 +364,7 @@ export function SwipeableCard({
 
       {/* Card content */}
       <div
-        className={`bg-white shadow-md transition-transform duration-300 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+        className="bg-white shadow-md transition-transform duration-300 cursor-grab"
         style={{ transform: `translateX(${translateX}%)` }}
       >
         {children}
@@ -413,12 +419,20 @@ export function TapArea({
       `}
       onTouchStart={() => setIsActive(true)}
       onTouchEnd={() => setIsActive(false)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onTap()
+        }
+      }}
       onClick={() => {
         if (haptic && 'vibrate' in window.navigator) {
           window.navigator.vibrate(5)
         }
         onTap()
       }}
+      role="button"
+      tabIndex={0}
     >
       {children}
     </div>

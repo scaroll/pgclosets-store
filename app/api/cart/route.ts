@@ -2,8 +2,9 @@ import { auth } from '@/auth'
 import { prisma } from '@/lib/db/client'
 import { checkRateLimit, generalRateLimiter, getClientIdentifier } from '@/lib/rate-limit'
 import { addToCartSchema } from '@/lib/validation/schemas'
-import { type NextRequest, NextResponse } from 'next/server'
-import { z } from 'zod'
+import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
+import type { z } from 'zod'
 
 export async function GET(req: NextRequest) {
   try {

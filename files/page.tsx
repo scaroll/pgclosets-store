@@ -51,7 +51,7 @@ export default function FilesPage() {
           title: "Success",
           description: "File uploaded successfully",
         })
-        fetchFiles() // Refresh the file list
+        void fetchFiles() // Refresh the file list
       } else {
         throw new Error("Upload failed")
       }
@@ -79,7 +79,7 @@ export default function FilesPage() {
           title: "Success",
           description: "File deleted successfully",
         })
-        fetchFiles() // Refresh the file list
+        void fetchFiles() // Refresh the file list
       } else {
         throw new Error("Delete failed")
       }
@@ -105,7 +105,7 @@ export default function FilesPage() {
   }
 
   useEffect(() => {
-    fetchFiles()
+    void fetchFiles()
   }, [])
 
   return (

@@ -1,5 +1,6 @@
 // @ts-nocheck - This route is disabled and references deprecated Prisma models
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
 
@@ -96,8 +97,7 @@ export async function PATCH(request: NextRequest) {
     // TODO: Send email notification if status changed to cancelled
     if (status === 'cancelled') {
       // Send cancellation email to customer
-      console.log('TODO: Send cancellation email for booking:', bookingId);
-    }
+}
 
     return NextResponse.json({
       success: true,
@@ -138,9 +138,7 @@ export async function DELETE(request: NextRequest) {
     });
 
     // TODO: Send cancellation email
-    console.log('TODO: Send cancellation email for booking:', bookingId);
-
-    return NextResponse.json({
+return NextResponse.json({
       success: true,
       message: 'Booking cancelled successfully',
       booking

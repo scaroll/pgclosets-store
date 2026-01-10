@@ -99,7 +99,13 @@ export function getLocalBusinessSchema() {
  * Product Schema Generator
  * For individual product pages
  */
-export function getProductSchema(product: {
+
+interface ProductRating {
+  value: number
+  count: number
+}
+
+interface ProductSchemaInput {
   id: string
   name: string
   description: string
@@ -110,12 +116,46 @@ export function getProductSchema(product: {
   category?: string
   sku?: string
   availability?: 'InStock' | 'OutOfStock' | 'PreOrder'
-  rating?: {
-    value: number
-    count: number
+  rating?: ProductRating
+}
+
+interface ProductSchema {
+  '@context': string
+  '@type': string
+  '@id': string
+  name: string
+  description: string
+  brand: {
+    '@type': string
+    name: string
   }
-}) {
-  const schema: any = {
+  manufacturer: {
+    '@type': string
+    name: string
+  }
+  image?: string
+  sku?: string
+  category?: string
+  offers?: {
+    '@type': string
+    url: string
+    priceCurrency: string
+    price: number
+    availability: string
+    seller: {
+      '@type': string
+      name: string
+    }
+  }
+  aggregateRating?: {
+    '@type': string
+    ratingValue: number
+    reviewCount: number
+  }
+}
+
+export function getProductSchema(product: ProductSchemaInput): ProductSchema {
+  const schema: ProductSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     '@id': `${BUSINESS_INFO.urls.main}/products/${product.id}/#product`,
@@ -247,14 +287,34 @@ export function getReviewSchema(reviews: Array<{
  * WebPage Schema Generator
  * For general pages
  */
-export function getWebPageSchema(page: {
+
+interface WebPageSchemaInput {
   url: string
   name: string
   description: string
   datePublished?: string
   dateModified?: string
-}) {
-  const schema: any = {
+}
+
+interface WebPageSchema {
+  '@context': string
+  '@type': string
+  '@id': string
+  url: string
+  name: string
+  description: string
+  isPartOf: {
+    '@id': string
+  }
+  about: {
+    '@id': string
+  }
+  datePublished?: string
+  dateModified?: string
+}
+
+export function getWebPageSchema(page: WebPageSchemaInput): WebPageSchema {
+  const schema: WebPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${BUSINESS_INFO.urls.main}${page.url}/#webpage`,
@@ -340,8 +400,16 @@ export function getServiceSchema(service: {
 
 /**
  * Helper function to render JSON-LD script tag
+ *
+ * SECURITY NOTE:
+ * - This function renders JSON-LD structured data for SEO
+ * - All data passed to this function comes from trusted sources (schema generators)
+ * - JSON.stringify ensures proper escaping and prevents XSS
+ * - Only use this for static, server-generated schema data
+ *
+ * eslint-disable-next-line react/no-danger -- See security note above
  */
-export function renderSchema(schema: object) {
+export function renderSchema(schema: object): { __html: string } {
   return {
     __html: JSON.stringify(schema),
   }

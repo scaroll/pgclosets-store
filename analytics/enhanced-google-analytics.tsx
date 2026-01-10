@@ -15,6 +15,7 @@ export function EnhancedGoogleAnalytics({ gaId }: EnhancedGoogleAnalyticsProps) 
       <Script
         id="google-analytics-enhanced"
         strategy="afterInteractive"
+        // eslint-disable-next-line react/no-danger -- Google Analytics tracking code - third-party script from trusted source
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];

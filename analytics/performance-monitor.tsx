@@ -12,6 +12,7 @@ export function PerformanceMonitor() {
     const observer = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
         if (entry.entryType === "largest-contentful-paint") {
+          // eslint-disable-next-line no-console -- Performance monitoring in development
           console.log("[v0] LCP:", entry.startTime)
           // Track LCP performance
           if (window.gtag) {
@@ -35,6 +36,7 @@ export function PerformanceMonitor() {
           clsValue += (entry as any).value
         }
       }
+      // eslint-disable-next-line no-console -- Performance monitoring in development
       console.log("[v0] CLS:", clsValue)
       if (window.gtag) {
         window.gtag("event", "web_vitals", {
@@ -50,6 +52,7 @@ export function PerformanceMonitor() {
     // Monitor First Input Delay (FID)
     const fidObserver = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
+        // eslint-disable-next-line no-console -- Performance monitoring in development
         console.log("[v0] FID:", (entry as any).processingStart - entry.startTime)
         if (window.gtag) {
           window.gtag("event", "web_vitals", {

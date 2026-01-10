@@ -252,7 +252,7 @@ describe('LuxuryQuoteForm', () => {
     it('should close modal when backdrop is clicked', async () => {
       const user = userEvent.setup()
 
-      const { container } = render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />)
+      render(<LuxuryQuoteForm open={true} onClose={mockOnClose} />)
 
       // Find backdrop by class - Radix portals outside container
       const backdrop = document.querySelector('.backdrop-blur-sm')

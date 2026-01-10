@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
 }
 
 // GET endpoint for error statistics (admin only)
-export async function GET(request: NextRequest) {
+export function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const period = searchParams.get('period') || '24h'
   

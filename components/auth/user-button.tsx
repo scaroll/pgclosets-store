@@ -1,9 +1,15 @@
-// @ts-nocheck
 "use client"
 
 import { signOut, useSession } from "next-auth/react"
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
+
+interface _SessionUser {
+  name?: string | null
+  email?: string | null
+  image?: string | null
+  role?: string
+}
 
 export function UserButton() {
   const { data: session, status } = useSession()
@@ -52,10 +58,10 @@ export function UserButton() {
 
   const userInitials = session.user.name
     ?.split(" ")
-    .map((n) => n[0])
+    .map((n) => n?.[0] ?? '')
     .join("")
     .toUpperCase()
-    .slice(0, 2) || session.user.email?.[0].toUpperCase() || "U"
+    .slice(0, 2) || session.user.email?.[0]?.toUpperCase() || "U"
 
   return (
     <div className="relative" ref={dropdownRef}>

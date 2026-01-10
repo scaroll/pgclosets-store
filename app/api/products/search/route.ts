@@ -1,9 +1,33 @@
-// @ts-nocheck - Product schema type issues
 import { NextRequest, NextResponse } from 'next/server';
-import { Product, ProductSearchResult } from '@/types/product';
+import type { Product, ProductSearchResult } from '@/types/product';
 import { createSecureHandler } from '@/lib/security/middleware';
 import { z } from 'zod';
 import { checkRateLimit, getClientIdentifier, generalRateLimiter } from '@/lib/rate-limit';
+
+// Type definitions
+interface SearchFilters {
+  categories?: string[];
+  priceRange?: {
+    min: number;
+    max: number;
+  };
+  inStock?: boolean;
+  onSale?: boolean;
+  styles?: string[];
+}
+
+interface SearchSort {
+  field: 'price' | 'name' | 'rating' | 'popularity' | 'featured';
+  order: 'asc' | 'desc';
+}
+
+interface _SearchRequestBody {
+  query?: string;
+  filters?: SearchFilters;
+  sort?: SearchSort;
+  page?: number;
+  limit?: number;
+}
 
 // Sample product data for demonstration
 const SAMPLE_PRODUCTS: Product[] = [
@@ -528,7 +552,7 @@ export async function GET(request: NextRequest) {
   const page = Math.min(Math.max(parseInt(searchParams.get('page') || '1'), 1), 100);
   const limit = Math.min(Math.max(parseInt(searchParams.get('limit') || '24'), 1), 50);
 
-  const filters: any = {};
+  const filters: SearchFilters = {};
   if (category) {
     filters.categories = [category];
   }

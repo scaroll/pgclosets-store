@@ -1,5 +1,6 @@
 // @ts-nocheck - Uses dynamic KV operations with implicit any types
-import { NextRequest, NextResponse } from 'next/server'
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 import { createClient } from '@vercel/kv'
 
@@ -169,7 +170,7 @@ export async function GET(request: NextRequest) {
 
 // Helper functions
 function generateEventId(): string {
-  return 'evt_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
+  return `evt_${  Date.now()  }_${  Math.random().toString(36).substr(2, 9)}`
 }
 
 function getStartTimeByRange(timeRange: string, endTime: number): number {
@@ -206,7 +207,7 @@ async function getDailyData(eventName: string, startTime: number, endTime: numbe
   const endDate = new Date(endTime).toISOString().split('T')[0]
   const data = []
 
-  let currentDate = new Date(startDate)
+  const currentDate = new Date(startDate)
   while (currentDate.toISOString().split('T')[0] <= endDate) {
     const dayKey = currentDate.toISOString().split('T')[0]
     const count = parseInt((await kv.get(`events:daily:${dayKey}:${eventName}`)) || '0')
@@ -221,7 +222,7 @@ async function getDailyData(eventName: string, startTime: number, endTime: numbe
   return data
 }
 
-async function getGeographicData(eventName: string, startTime: number, endTime: number): Promise<any[]> {
+async function getGeographicData(eventName: string, _startTime: number, _endTime: number): Promise<any[]> {
   const countries = ['CA', 'US', 'GB', 'FR', 'DE'] // Top countries
   const data = []
 
@@ -235,7 +236,7 @@ async function getGeographicData(eventName: string, startTime: number, endTime: 
   return data.sort((a, b) => b.count - a.count)
 }
 
-async function getSegmentData(eventName: string, startTime: number, endTime: number): Promise<any[]> {
+async function getSegmentData(eventName: string, _startTime: number, _endTime: number): Promise<any[]> {
   const segments = ['new_visitor', 'returning_visitor', 'mobile_user', 'organic_search', 'social']
   const data = []
 

@@ -44,7 +44,7 @@ export default function BlobAuditPage() {
   }
 
   useEffect(() => {
-    fetchBlobData()
+    void fetchBlobData()
   }, [])
 
   if (loading) {

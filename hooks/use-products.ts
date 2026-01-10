@@ -1,9 +1,21 @@
-// @ts-nocheck
 "use client"
 
 import { useMemo, useState, useEffect } from "react"
 import useSWR from "swr"
 import { usePerformanceTracking } from "@/components/performance/performance-monitor"
+
+// Simple product data interface from JSON
+interface SimpleProduct {
+  id?: string
+  title?: string
+  description?: string
+  price?: number
+  category?: string
+  image?: string
+  featured?: boolean
+  inStock?: boolean
+  specifications?: Record<string, string>
+}
 
 export interface Product {
   id: string
@@ -50,16 +62,16 @@ const productFetcher = async (url: string): Promise<Product[]> => {
   const products = await import("@/data/simple-products.json").then(module => module.default)
 
   // Transform and validate data
-  const transformedProducts: Product[] = products.map(product => ({
+  const transformedProducts: Product[] = (products as SimpleProduct[]).map(product => ({
     id: product.id || Math.random().toString(36),
     title: product.title || 'Untitled Product',
     description: product.description || '',
     price: product.price || 0,
     category: product.category || 'Uncategorized',
     image: product.image || '/placeholder.svg',
-    featured: (product as any).featured || false,
-    inStock: (product as any).inStock !== false, // Default to true if not specified
-    specifications: (product as any).specifications || {}
+    featured: product.featured || false,
+    inStock: product.inStock !== false, // Default to true if not specified
+    specifications: product.specifications || {}
   }))
 
   // Cache the result

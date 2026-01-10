@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
@@ -644,7 +645,7 @@ export default function WarrantyPage() {
               Every PG Closets product comes with our comprehensive lifetime warranty. Shop with confidence knowing we stand behind our quality.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <a
+              <Link
                 href="/products"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold hover:opacity-90 apple-transition text-lg"
               >
@@ -652,13 +653,13 @@ export default function WarrantyPage() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/book-measure"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-background border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-primary-foreground apple-transition text-lg"
               >
                 Book Consultation
-              </a>
+              </Link>
             </div>
           </div>
         </div>

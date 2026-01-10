@@ -44,7 +44,7 @@ export function ProductSort({
     // Reset to page 1 when sort changes
     params.delete('page')
 
-    router.push(`${pathname}?${params.toString()}`)
+    void router.push(`${pathname}?${params.toString()}`)
   }
 
   return (

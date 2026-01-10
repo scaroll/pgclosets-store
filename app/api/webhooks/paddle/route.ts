@@ -1,4 +1,5 @@
-import { type NextRequest, NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
+import { NextResponse } from "next/server"
 import crypto from "crypto"
 
 // Paddle webhook signature verification
@@ -26,50 +27,26 @@ export async function POST(request: NextRequest) {
     }
 
     const data = JSON.parse(body)
-    console.log("[v0] Paddle webhook received:", data.alert_name)
-
-    // Handle different webhook events
+// Handle different webhook events
     switch (data.alert_name) {
       case "payment_succeeded":
-        console.log("[v0] Payment succeeded:", {
-          orderId: data.order_id,
-          email: data.email,
-          amount: data.sale_gross,
-          currency: data.currency,
-          productId: data.product_id,
-        })
         // TODO: Update order status, send confirmation email, etc.
         break
 
       case "payment_failed":
-        console.log("[v0] Payment failed:", {
-          orderId: data.order_id,
-          email: data.email,
-          reason: data.reason,
-        })
         // TODO: Handle failed payment
         break
 
       case "subscription_created":
-        console.log("[v0] Subscription created:", {
-          subscriptionId: data.subscription_id,
-          email: data.email,
-          planId: data.subscription_plan_id,
-        })
         // TODO: Handle subscription creation
         break
 
       case "subscription_cancelled":
-        console.log("[v0] Subscription cancelled:", {
-          subscriptionId: data.subscription_id,
-          email: data.email,
-        })
         // TODO: Handle subscription cancellation
         break
 
       default:
-        console.log("[v0] Unhandled webhook event:", data.alert_name)
-    }
+}
 
     return NextResponse.json({ success: true })
   } catch (error) {

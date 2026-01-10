@@ -3,7 +3,8 @@ import type { NextRequest} from "next/server";
 import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 import { createProtectedRoute, rateLimitConfigs } from "@/lib/validation/middleware"
-import { quoteRequestSchema, type QuoteRequestData } from "@/lib/validation/schemas"
+import type { QuoteRequestData } from "@/lib/validation/schemas"
+import { quoteRequestSchema } from "@/lib/validation/schemas"
 import { sendQuoteEmails } from "@/lib/email/send-quote-email"
 
 const sendSlackNotification = async (payload: unknown) => {
@@ -119,13 +120,8 @@ async function handleQuoteRequest(
       selectedOptions: data.selectedOptions,
     } : undefined,
     notes: sanitizeString(data.additionalDetails),
-  }).then(({ customerEmailSent, salesEmailSent }) => {
-    console.log("[quotes/quick] Email notifications sent:", {
-      quoteNumber,
-      customerEmailSent,
-      salesEmailSent,
-    });
-  }).catch((error) => {
+  }).then(({ customerEmailSent: _customerEmailSent, salesEmailSent: _salesEmailSent }) => {
+    }).catch((error) => {
     console.error("[quotes/quick] Failed to send email notifications:", error);
     // Don't fail the request if emails fail
   });

@@ -8,7 +8,7 @@ import type { Config } from "tailwindcss";
  */
 
 // Design token integration functions
-const cssVar = (name: string) => `var(--${name})`;
+const _cssVar = (name: string) => `var(--${name})`;
 // const spacing = (name: string) => cssVar(`spacing-${name}`);
 // const text = (name: string) => cssVar(`text-${name}`);
 // const shadow = (name: string) => cssVar(`shadow-${name}`);

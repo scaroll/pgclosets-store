@@ -1,7 +1,26 @@
-// @ts-nocheck - Product schema Decimal type issues
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import { z } from 'zod';
+
+// Type definitions
+interface FeaturedProduct {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  category: string;
+  price: number;
+  salePrice: number | null;
+  compareAtPrice: number | null;
+  image: string;
+  altText: string;
+  sku: string;
+  inventory: number;
+  tags: string[];
+  rating: number;
+  reviewCount: number;
+}
 
 const featuredQuerySchema = z.object({
   limit: z.string().optional().transform(val => val ? parseInt(val) : 10),
@@ -41,7 +60,7 @@ export async function GET(req: NextRequest) {
       take: limit,
     });
 
-    const formattedProducts = products.map(product => ({
+    const formattedProducts: FeaturedProduct[] = products.map(product => ({
       id: product.id,
       name: product.name,
       slug: product.slug,

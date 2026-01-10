@@ -1,8 +1,26 @@
-// @ts-nocheck - User addresses with Prisma type issues
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { z } from 'zod';
+
+// Type definitions
+type AddressType = 'shipping' | 'billing';
+
+interface AddressInput {
+  type: AddressType;
+  firstName: string;
+  lastName: string;
+  company?: string;
+  address1: string;
+  address2?: string;
+  city: string;
+  province: string;
+  postalCode: string;
+  country?: string;
+  phone?: string;
+  isDefault?: boolean;
+}
 
 const createAddressSchema = z.object({
   type: z.enum(['shipping', 'billing']),
@@ -17,10 +35,10 @@ const createAddressSchema = z.object({
   country: z.string().default('CA'),
   phone: z.string().optional(),
   isDefault: z.boolean().default(false),
-});
+}) as z.ZodType<AddressInput>;
 
 // GET /api/user/addresses - Get user addresses
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   try {
     const session = await auth();
 

@@ -1,5 +1,11 @@
-// @ts-nocheck - Security middleware with dynamic headers
-import { NextRequest, NextResponse } from 'next/server';
+// Security middleware with dynamic headers
+import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
+
+// Extend NextRequest type to include ip property
+interface ExtendedNextRequest extends NextRequest {
+  ip?: string
+}
 
 /**
  * Security headers for API responses
@@ -100,13 +106,12 @@ export function checkRateLimit(
 /**
  * Get client IP from request
  */
-export function getClientIp(req: NextRequest): string {
-  return (
-    req.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
-    req.headers.get('x-real-ip') ||
-    req.ip ||
-    'unknown'
-  );
+export function getClientIp(req: NextRequest | ExtendedNextRequest): string {
+  const forwardedFor = req.headers.get('x-forwarded-for')
+  const firstIp = forwardedFor?.split(',')[0]?.trim()
+  const realIp = req.headers.get('x-real-ip')
+  const extendedReq = req as ExtendedNextRequest
+  return firstIp || realIp || extendedReq.ip || 'unknown'
 }
 
 /**
@@ -116,12 +121,15 @@ export function logSecurityEvent(event: {
   type: string;
   ip: string;
   path: string;
-  details?: any;
+  details?: unknown;
 }): void {
-  console.log('[SECURITY]', JSON.stringify({
-    timestamp: new Date().toISOString(),
-    ...event,
-  }));
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line no-console
+    console.log(`[Security] ${event.type}`, {
+      timestamp: new Date().toISOString(),
+      ...event,
+    });
+  }
 }
 
 /**
@@ -130,7 +138,7 @@ export function logSecurityEvent(event: {
  */
 export function createSecureHandler(
   handler: (req: NextRequest) => Promise<NextResponse>,
-  options?: {
+  _options?: {
     rateLimit?: { maxRequests: number; windowMs: number };
     validateOrigin?: boolean;
   }

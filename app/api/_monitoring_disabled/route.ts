@@ -22,7 +22,7 @@ interface MonitoringMetrics {
   };
 }
 
-export async function GET() {
+export function GET() {
   const startTime = Date.now();
 
   try {

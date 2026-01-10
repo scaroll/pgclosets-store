@@ -93,6 +93,7 @@ export default function BlogPage() {
     <main>
       <script
         type="application/ld+json"
+        // eslint-disable-next-line react/no-danger -- JSON-LD structured data for SEO - static content only
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",

@@ -12,7 +12,7 @@ export interface LeadData {
 /**
  * Send lead notification to admin
  */
-export async function sendLeadNotification(data: LeadData): Promise<boolean> {
+export function sendLeadNotification(data: LeadData): boolean {
   const adminEmail = process.env.ADMIN_EMAIL || 'admin@pgclosets.com';
 
   const html = `
@@ -43,7 +43,7 @@ export async function sendLeadNotification(data: LeadData): Promise<boolean> {
 /**
  * Send auto-response to lead
  */
-export async function sendLeadAutoResponse(data: LeadData): Promise<boolean> {
+export function sendLeadAutoResponse(data: LeadData): boolean {
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
       <h1 style="color: #1d1d1f;">Thank You for Contacting PG Closets</h1>

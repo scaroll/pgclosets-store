@@ -1,8 +1,16 @@
-// @ts-nocheck - Page models not yet in Prisma schema
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { z } from 'zod';
+
+// Type definitions
+type PageStatus = 'draft' | 'published';
+
+interface PageWhereInput {
+  status?: PageStatus;
+  slug?: string;
+}
 
 const createPageSchema = z.object({
   slug: z.string().min(1).regex(/^[a-z0-9-]+$/, 'Slug must contain only lowercase letters, numbers, and hyphens'),
@@ -22,8 +30,8 @@ export async function GET(req: NextRequest) {
     const status = searchParams.get('status');
     const slug = searchParams.get('slug');
 
-    const where: any = {};
-    if (status) where.status = status;
+    const where: PageWhereInput = {};
+    if (status) where.status = status as PageStatus;
     if (slug) where.slug = slug;
 
     const pages = await prisma.page.findMany({

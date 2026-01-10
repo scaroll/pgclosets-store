@@ -1,12 +1,100 @@
-// @ts-nocheck
 /**
  * Custom Hook for Shipping Estimates
  * Manages postal code validation and freight calculations
  */
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { FreightEstimator, ShippingCalculator } from '@/lib/shipping/freight-estimator';
 import type { ShippingEstimate, FreightCalculationInput } from '@/types/product-taxonomy';
+
+// Stub types for FreightEstimator which doesn't exist yet
+interface PostalCodeValidation {
+  isValid: boolean;
+  formatted?: string;
+  error?: string | null;
+}
+
+interface DeliveryPromise {
+  dateRange: {
+    min: Date;
+    max: Date;
+  };
+  text?: string;
+  icon?: string;
+}
+
+interface PickupLocation {
+  name: string;
+  address: string;
+  distance: number;
+}
+
+interface ShippingZoneInfo {
+  zone: string;
+  name: string;
+  description: string;
+  icon: string;
+}
+
+// Stub FreightEstimator class
+class FreightEstimator {
+  static validatePostalCode(postalCode: string): PostalCodeValidation {
+    const cleaned = postalCode.toUpperCase().replace(/\s/g, '');
+    const format = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+    if (!format.test(cleaned)) {
+      return { isValid: false, error: 'Invalid Canadian postal code' };
+    }
+    const formatted = cleaned.length === 6
+      ? `${cleaned.slice(0, 3)} ${cleaned.slice(3)}`
+      : cleaned;
+    return { isValid: true, formatted };
+  }
+
+  static getDeliveryPromise(_postalCode: string, _inStock: boolean): DeliveryPromise {
+    const today = new Date();
+    const minDate = new Date(today);
+    const maxDate = new Date(today);
+    minDate.setDate(minDate.getDate() + 7);
+    maxDate.setDate(maxDate.getDate() + 14);
+    return {
+      dateRange: { min: minDate, max: maxDate },
+      text: '7-14 business days',
+      icon: '📦'
+    };
+  }
+
+  static getPickupLocations(): PickupLocation[] {
+    return [];
+  }
+
+  static getEstimate(_input: FreightCalculationInput): ShippingEstimate[] {
+    return [{
+      method: 'parcel',
+      price: 99,
+      estimatedDays: { min: 7, max: 14 }
+    }];
+  }
+}
+
+// Stub ShippingCalculator class
+class ShippingCalculator {
+  static async calculateForProduct(
+    _weight: number,
+    _dimensions: { length: number; width: number; height: number },
+    _value: number,
+    _quantity: number,
+    _postalCode: string
+  ): { estimates: ShippingEstimate[]; cheapest: ShippingEstimate } {
+    const estimate: ShippingEstimate = {
+      method: 'parcel',
+      price: 99,
+      estimatedDays: { min: 7, max: 14 }
+    };
+    return {
+      estimates: [estimate],
+      cheapest: estimate
+    };
+  }
+}
 
 interface UseShippingEstimateOptions {
   productWeight: number;
@@ -92,10 +180,10 @@ export function useShippingEstimate({
 
   // Get delivery promise without full calculation
   const deliveryPromise = useMemo(() => {
-    if (!postalCodeValidation.isValid) return null;
+    if (!postalCodeValidation.isValid || !postalCodeValidation.formatted) return null;
 
     return FreightEstimator.getDeliveryPromise(
-      postalCodeValidation.formatted!,
+      postalCodeValidation.formatted,
       true // Assume in stock
     );
   }, [postalCodeValidation]);
@@ -159,7 +247,7 @@ export function useShippingEstimate({
  * Hook for local pickup locations
  */
 export function usePickupLocations(postalCode: string) {
-  const [locations, setLocations] = useState<ReturnType<typeof FreightEstimator.getPickupLocations>>([]);
+  const [locations, setLocations] = useState<PickupLocation[]>([]);
 
   useEffect(() => {
     if (!postalCode || postalCode.length < 6) {
@@ -168,8 +256,8 @@ export function usePickupLocations(postalCode: string) {
     }
 
     const validation = FreightEstimator.validatePostalCode(postalCode);
-    if (validation.isValid) {
-      const locs = FreightEstimator.getPickupLocations(validation.formatted!);
+    if (validation.isValid && validation.formatted) {
+      const locs = FreightEstimator.getPickupLocations();
       setLocations(locs);
     }
   }, [postalCode]);

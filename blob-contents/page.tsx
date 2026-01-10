@@ -34,7 +34,7 @@ export default function BlobContentsPage() {
   }
 
   useEffect(() => {
-    fetchFiles()
+    void fetchFiles()
   }, [])
 
   const getFileIcon = (filename: string) => {

@@ -1,8 +1,17 @@
-// @ts-nocheck - Review models not yet fully configured in Prisma schema
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { z } from 'zod';
+
+// Type definitions
+type ReviewStatus = 'pending' | 'approved' | 'rejected';
+
+interface ReviewWhereInput {
+  status?: ReviewStatus;
+  productId?: string;
+  rating?: number;
+}
 
 const createReviewSchema = z.object({
   productId: z.string(),
@@ -21,7 +30,7 @@ export async function GET(req: NextRequest) {
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '10');
 
-    const where: any = { status: status as any };
+    const where: ReviewWhereInput = { status: status as ReviewStatus };
     if (productId) where.productId = productId;
     if (rating) where.rating = parseInt(rating);
 

@@ -1,4 +1,3 @@
-// @ts-nocheck - Quote form component
 'use client'
 
 import { Button } from '@/components/ui/button'
@@ -79,6 +78,8 @@ export function LuxuryQuoteForm({ open, onClose, product, selectedOptions }: Lux
       }
     } catch (error) {
       console.error('Quote submission failed:', error)
+      const _errorMessage = error instanceof Error ? error.message : 'Failed to submit quote request'
+      // Could show error to user here if needed
     } finally {
       setIsSubmitting(false)
     }

@@ -1,7 +1,10 @@
 import { prisma } from '@/lib/db/client'
 import { checkRateLimit, generalRateLimiter, getClientIdentifier } from '@/lib/rate-limit'
 import { createBookingSchema } from '@/lib/validation/schemas'
-import { NextRequest, NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
+
+type BookingError = Error & { message?: string };
 
 export async function POST(req: NextRequest) {
   try {
@@ -72,9 +75,10 @@ export async function POST(req: NextRequest) {
       bookingId: booking.id,
       bookingNumber: booking.bookingNumber,
     })
-  } catch (error: any) {
+  } catch (error) {
+    const err = error as BookingError;
     console.error('[Booking Create API] Error:', error)
-    if (error.message === 'Slot no longer available') {
+    if (err.message === 'Slot no longer available') {
       return NextResponse.json({ error: 'Slot no longer available' }, { status: 409 })
     }
     return NextResponse.json({ error: 'Failed to create booking' }, { status: 500 })

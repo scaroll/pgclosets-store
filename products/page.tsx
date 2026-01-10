@@ -276,9 +276,11 @@ export default function ProductsPage() {
                   key={product.id}
                   className="group bg-white shadow-2xl overflow-hidden hover:shadow-3xl hover:-translate-y-3 transition-all duration-500 border-l-4 border-[#87ceeb]"
                 >
-                  <div
-                    className="aspect-square relative bg-gray-100 overflow-hidden cursor-pointer"
+                  <button
+                    type="button"
+                    className="aspect-square relative bg-gray-100 overflow-hidden cursor-pointer w-full"
                     onClick={() => setSelectedImage(product.image)}
+                    aria-label={`View larger image of ${product.title}`}
                   >
                     <Image
                       src={product.image || "/placeholder.svg?height=400&width=400&text=No+Image"}
@@ -304,7 +306,7 @@ export default function ProductsPage() {
                       <div className="bg-black/70 text-white p-2 text-xs font-bold">🔍 Click to Expand</div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </div>
+                  </button>
 
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#1e3a8a] transition-colors duration-300">
@@ -377,6 +379,9 @@ export default function ProductsPage() {
         <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image lightbox"
         >
           <div className="relative max-w-4xl max-h-full">
             <button
@@ -400,6 +405,9 @@ export default function ProductsPage() {
         <div
           className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedProduct(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Product details"
         >
           <div
             className="bg-white max-w-4xl max-h-full overflow-y-auto p-8 border-4 border-[#1e3a8a]"
@@ -410,6 +418,7 @@ export default function ProductsPage() {
               <button
                 onClick={() => setSelectedProduct(null)}
                 className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                aria-label="Close product details"
               >
                 ✕
               </button>

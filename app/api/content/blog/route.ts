@@ -1,8 +1,18 @@
-// @ts-nocheck - Blog models not yet in Prisma schema
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { z } from 'zod';
+
+// Type definitions
+type BlogPostStatus = 'draft' | 'published';
+
+interface BlogPostWhereInput {
+  status?: BlogPostStatus;
+  slug?: string;
+  tags?: { has: string };
+  featured?: boolean;
+}
 
 const createBlogPostSchema = z.object({
   slug: z.string().min(1).regex(/^[a-z0-9-]+$/, 'Slug must contain only lowercase letters, numbers, and hyphens'),
@@ -30,8 +40,8 @@ export async function GET(req: NextRequest) {
     const page = parseInt(searchParams.get('page') || '1');
     const featured = searchParams.get('featured') === 'true';
 
-    const where: any = {};
-    if (status) where.status = status;
+    const where: BlogPostWhereInput = {};
+    if (status) where.status = status as BlogPostStatus;
     if (slug) where.slug = slug;
     if (tag) where.tags = { has: tag };
     if (featured) where.featured = true;

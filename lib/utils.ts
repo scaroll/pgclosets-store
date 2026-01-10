@@ -1,6 +1,9 @@
-import { type ClassValue, clsx } from 'clsx'
+import type { ClassValue } from 'clsx'
+import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-export { cva, type VariantProps } from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
+export { cva } from 'class-variance-authority'
+export type { VariantProps } from 'class-variance-authority'
 
 /**
  * Merges Tailwind CSS classes with clsx and tailwind-merge
@@ -78,7 +81,7 @@ export function formatDate(date: Date | string): string {
  */
 export function truncate(str: string, length: number): string {
   if (str.length <= length) return str
-  return str.slice(0, length) + '...'
+  return `${str.slice(0, length)  }...`
 }
 
 /**

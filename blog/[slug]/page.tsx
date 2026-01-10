@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { notFound } from "next/navigation"
+import DOMPurify from "isomorphic-dompurify"
 
 // Sample blog posts data - in a real app, this would come from a CMS or database
 const blogPosts = {
@@ -330,6 +331,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     <main>
       <script
         type="application/ld+json"
+        // eslint-disable-next-line react/no-danger -- JSON-LD structured data for SEO - static content only
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -397,9 +399,10 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Article Content */}
+        {/* eslint-disable-next-line react/no-danger -- Blog content sanitized with DOMPurify - content is from trusted static source */}
         <div
           className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
         />
 
         {/* Tags */}

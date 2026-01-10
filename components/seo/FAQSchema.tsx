@@ -21,6 +21,7 @@ export function FAQSchema({ faqs }: FAQSchemaProps) {
   return (
     <script
       type="application/ld+json"
+      // eslint-disable-next-line react/no-danger -- JSON-LD schema from trusted source via renderSchema
       dangerouslySetInnerHTML={renderSchema(schema)}
     />
   )

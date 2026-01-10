@@ -2,8 +2,14 @@
 
 import { createContext, useContext, useState, type ReactNode } from "react"
 
+// Stub types for removed Medusa integration
+interface MedusaCart {
+  id: string
+  items: unknown[]
+}
+
 interface MedusaCartContextType {
-  cart: any | null
+  cart: MedusaCart | null
   loading: boolean
   error: string | null
   addToCart: (_variantId: string, _quantity: number) => Promise<void>
@@ -18,9 +24,9 @@ interface MedusaCartContextType {
 const MedusaCartContext = createContext<MedusaCartContextType | undefined>(undefined)
 
 export function MedusaCartProvider({ children }: { children: ReactNode }) {
-  const [cart, _setCart] = useState<any | null>(null)
-  const [loading, _setLoading] = useState(false)
-  const [error, _setError] = useState<string | null>(null)
+  const [cart] = useState<MedusaCart | null>(null)
+  const [loading] = useState(false)
+  const [error] = useState<string | null>(null)
 
   const addToCart = async (_variantId: string, _quantity: number) => {
     // Stub - Medusa removed

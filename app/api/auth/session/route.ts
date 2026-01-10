@@ -1,6 +1,22 @@
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import jwt from 'jsonwebtoken';
+
+// Type definitions
+interface JwtPayload {
+  userId: string;
+  email: string;
+  role?: string;
+  name?: string;
+}
+
+interface SessionUser {
+  id: string;
+  email: string;
+  role?: string;
+  name?: string | null;
+}
 
 export async function GET(req: NextRequest) {
   try {
@@ -17,8 +33,7 @@ export async function GET(req: NextRequest) {
           authType: 'nextauth'
         });
       }
-    } catch (nextAuthError) {
-      console.log('[NEXTAUTH_SESSION_ERROR]', nextAuthError);
+    } catch {
       // Continue to check custom auth
     }
 
@@ -29,24 +44,25 @@ export async function GET(req: NextRequest) {
       try {
         const secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET;
         if (secret) {
-          const decoded = jwt.verify(token, secret) as any;
+          const decoded = jwt.verify(token, secret) as JwtPayload;
 
           // If we have a valid token, return user info
+          const user: SessionUser = {
+            id: decoded.userId,
+            email: decoded.email,
+            role: decoded.role,
+            name: decoded.name || null
+          };
+
           return NextResponse.json({
             authenticated: true,
-            user: {
-              id: decoded.userId,
-              email: decoded.email,
-              role: decoded.role,
-              name: decoded.name || null
-            },
+            user,
             csrfToken: null,
             message: 'Active session found (JWT)',
             authType: 'jwt'
           });
         }
-      } catch (jwtError) {
-        console.log('[JWT_SESSION_ERROR]', jwtError);
+      } catch {
         // Invalid token, continue to return unauthenticated
       }
     }

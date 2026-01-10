@@ -10,7 +10,7 @@ import { NextResponse } from "next/server"
 // Disabled - helper functions not available
 
 // GET endpoint for checking availability
-export async function GET(_request: NextRequest) {
+export function GET(_request: NextRequest) {
   // This route is disabled - measurement booking functionality not available
   return NextResponse.json(
     { error: "Measurement booking route is disabled" },
@@ -19,7 +19,7 @@ export async function GET(_request: NextRequest) {
 }
 
 // POST endpoint for creating bookings
-export async function POST(_request: NextRequest) {
+export function POST(_request: NextRequest) {
   // This route is disabled - measurement booking functionality not available
   return NextResponse.json(
     { error: "Measurement booking route is disabled" },

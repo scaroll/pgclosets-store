@@ -35,7 +35,7 @@ export default function ClientPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetchBlobFiles()
+    void fetchBlobFiles()
   }, [])
 
   const fetchBlobFiles = async () => {
@@ -59,6 +59,7 @@ export default function ClientPage() {
     )
 
     // Here you would typically save to a database or update the JSON file
+    // eslint-disable-next-line no-console -- Development logging for admin tool
     console.log(`Assigned ${imageUrl} to product ${productSlug}`)
     setSelectedProduct(null)
   }
@@ -154,10 +155,12 @@ export default function ClientPage() {
                       </div>
                     ) : (
                       blobFiles.map((file) => (
-                        <div
+                        <button
                           key={file.url}
-                          className="relative aspect-square cursor-pointer border-2 border-transparent hover:border-pg-navy rounded-lg overflow-hidden"
+                          type="button"
+                          className="relative aspect-square border-2 border-transparent hover:border-pg-navy rounded-lg overflow-hidden cursor-pointer"
                           onClick={() => assignImageToProduct(product.slug, file.url)}
+                          aria-label={`Select image ${file.pathname.split("/").pop()}`}
                         >
                           <Image
                             src={file.url || "/placeholder.svg"}
@@ -173,7 +176,7 @@ export default function ClientPage() {
                           <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-2 text-xs">
                             {file.pathname.split("/").pop()}
                           </div>
-                        </div>
+                        </button>
                       ))
                     )}
                   </div>

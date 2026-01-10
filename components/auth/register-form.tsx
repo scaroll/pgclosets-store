@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 export function RegisterForm() {
   const router = useRouter()
@@ -53,12 +54,12 @@ export function RegisterForm() {
 
       if (result?.error) {
         setError("Registration successful, but auto sign-in failed. Please sign in manually.")
-        setTimeout(() => router.push("/login"), 2000)
+        setTimeout(() => void router.push("/login"), 2000)
       } else {
-        router.push("/account")
+        void router.push("/account")
         router.refresh()
       }
-    } catch (error) {
+    } catch (_error) {
       setError("An error occurred. Please try again.")
       setLoading(false)
     }
@@ -68,7 +69,7 @@ export function RegisterForm() {
     setLoading(true)
     try {
       await signIn("google", { callbackUrl: "/account" })
-    } catch (error) {
+    } catch (_error) {
       setError("An error occurred with Google sign-up")
       setLoading(false)
     }
@@ -80,9 +81,9 @@ export function RegisterForm() {
         <h2 className="text-3xl font-bold tracking-tight">Create your account</h2>
         <p className="mt-2 text-sm text-gray-600">
           Or{" "}
-          <a href="/login" className="font-medium text-blue-600 hover:text-blue-500">
+          <Link href="/login" className="font-medium text-blue-600 hover:text-blue-500">
             sign in to existing account
-          </a>
+          </Link>
         </p>
       </div>
 
@@ -213,13 +214,13 @@ export function RegisterForm() {
 
         <p className="text-center text-xs text-gray-500">
           By creating an account, you agree to our{" "}
-          <a href="/terms-of-service" className="text-blue-600 hover:text-blue-500">
+          <Link href="/terms-of-service" className="text-blue-600 hover:text-blue-500">
             Terms of Service
-          </a>{" "}
+          </Link>{" "}
           and{" "}
-          <a href="/privacy-policy" className="text-blue-600 hover:text-blue-500">
+          <Link href="/privacy-policy" className="text-blue-600 hover:text-blue-500">
             Privacy Policy
-          </a>
+          </Link>
         </p>
       </form>
     </div>

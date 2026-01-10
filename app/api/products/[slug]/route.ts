@@ -1,7 +1,23 @@
-// @ts-nocheck - Product schema includes reviews relation not in Prisma
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import { z } from 'zod';
+
+// Type definitions
+interface ProductParams {
+  slug: string;
+}
+
+interface ProductReview {
+  rating: number;
+}
+
+interface ProductWithReviews {
+  reviews: ProductReview[];
+  price: number;
+  salePrice: number | null;
+  compareAtPrice: number | null;
+}
 
 const slugSchema = z.string().min(1).max(255);
 
@@ -11,11 +27,11 @@ function isCuid(str: string): boolean {
 }
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: { slug: string } }
+  _req: NextRequest,
+  { params }: { params: Promise<ProductParams> }
 ) {
   try {
-    const { slug } = params;
+    const { slug } = await params;
     const validated = slugSchema.safeParse(slug);
 
     if (!validated.success) {
@@ -87,7 +103,7 @@ export async function GET(
 
     // Calculate average rating
     const averageRating = product.reviews.length > 0
-      ? product.reviews.reduce((sum, review) => sum + review.rating, 0) / product.reviews.length
+      ? product.reviews.reduce((sum: number, review: ProductReview) => sum + review.rating, 0) / product.reviews.length
       : 0;
 
     const formattedProduct = {

@@ -66,9 +66,10 @@ export function MedusaPaymentSection({
         {/* Payment Provider Selection */}
         <div className="space-y-3">
           {paymentSessions.map((session) => (
-            <div
+            <button
               key={session.provider_id}
-              className={`border rounded-lg p-4 cursor-pointer transition-colors ${
+              type="button"
+              className={`w-full border rounded-lg p-4 transition-colors text-left ${
                 selectedPaymentProvider === session.provider_id
                   ? "border-pg-blue bg-pg-blue/5"
                   : "border-pg-light hover:border-pg-gray"
@@ -81,10 +82,11 @@ export function MedusaPaymentSection({
                   checked={selectedPaymentProvider === session.provider_id}
                   onChange={() => handlePaymentProviderSelect(session.provider_id)}
                   className="text-pg-blue"
+                  onClick={(e) => e.stopPropagation()}
                 />
                 <span className="font-medium capitalize">{session.provider_id}</span>
               </div>
-            </div>
+            </button>
           ))}
         </div>
 
@@ -96,8 +98,11 @@ export function MedusaPaymentSection({
             {/* Simulated payment form */}
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Card Number</label>
+                <label htmlFor="cardNumber" className="block text-sm font-medium mb-2">
+                  Card Number
+                </label>
                 <input
+                  id="cardNumber"
                   type="text"
                   placeholder="1234 5678 9012 3456"
                   className="w-full px-3 py-2 border border-pg-light rounded-md"
@@ -106,16 +111,26 @@ export function MedusaPaymentSection({
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Expiry</label>
+                  <label htmlFor="expiry" className="block text-sm font-medium mb-2">
+                    Expiry
+                  </label>
                   <input
+                    id="expiry"
                     type="text"
                     placeholder="MM/YY"
                     className="w-full px-3 py-2 border border-pg-light rounded-md"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">CVC</label>
-                  <input type="text" placeholder="123" className="w-full px-3 py-2 border border-pg-light rounded-md" />
+                  <label htmlFor="cvc" className="block text-sm font-medium mb-2">
+                    CVC
+                  </label>
+                  <input
+                    id="cvc"
+                    type="text"
+                    placeholder="123"
+                    className="w-full px-3 py-2 border border-pg-light rounded-md"
+                  />
                 </div>
               </div>
             </div>

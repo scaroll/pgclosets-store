@@ -1,10 +1,40 @@
-// @ts-nocheck - Order schema Decimal type issues
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { z } from 'zod';
 import { generateOrderNumber } from '@/lib/orders';
 import { generalRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit';
+
+// Type definitions
+interface OrderItem {
+  productId: string;
+  variantId?: string;
+  quantity: number;
+}
+
+interface OrderAddress {
+  firstName: string;
+  lastName: string;
+  company?: string;
+  address1: string;
+  address2?: string;
+  city: string;
+  province: string;
+  postalCode: string;
+  country: string;
+  phone?: string;
+}
+
+interface CreateOrderInput {
+  items: OrderItem[];
+  shippingAddress: OrderAddress;
+  billingAddress: OrderAddress;
+  customerNotes?: string;
+  guestEmail?: string;
+  guestName?: string;
+  guestPhone?: string;
+}
 
 const createOrderSchema = z.object({
   items: z.array(z.object({
@@ -40,7 +70,7 @@ const createOrderSchema = z.object({
   guestEmail: z.string().email().optional(),
   guestName: z.string().optional(),
   guestPhone: z.string().optional(),
-});
+}) as z.ZodType<CreateOrderInput>;
 
 // GET /api/orders - Get user orders
 export async function GET(req: NextRequest) {

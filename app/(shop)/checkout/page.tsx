@@ -61,7 +61,7 @@ export default function CheckoutPage() {
   // Redirect if cart is empty
   React.useEffect(() => {
     if (items.length === 0) {
-      router.push("/cart")
+      void router.push("/cart")
     }
   }, [items, router])
 
@@ -85,7 +85,7 @@ export default function CheckoutPage() {
 
     // Clear cart and redirect to success page
     clearCart()
-    router.push("/checkout/success")
+    void router.push("/checkout/success")
   }
 
   if (items.length === 0) {
@@ -324,8 +324,9 @@ export default function CheckoutPage() {
                 {/* Step 3: Delivery Method */}
                 {currentStep === 3 && (
                   <div className="space-y-4">
-                    <div
-                      className={`border rounded-lg p-4 cursor-pointer transition-colors ${
+                    <button
+                      type="button"
+                      className={`w-full border rounded-lg p-4 transition-colors text-left ${
                         deliveryMethod === "standard"
                           ? "border-primary bg-primary/5"
                           : "border-gray-200 hover:border-gray-300"
@@ -343,9 +344,10 @@ export default function CheckoutPage() {
                           {total > 100 ? "FREE" : "$15.00"}
                         </div>
                       </div>
-                    </div>
-                    <div
-                      className={`border rounded-lg p-4 cursor-pointer transition-colors ${
+                    </button>
+                    <button
+                      type="button"
+                      className={`w-full border rounded-lg p-4 transition-colors text-left ${
                         deliveryMethod === "express"
                           ? "border-primary bg-primary/5"
                           : "border-gray-200 hover:border-gray-300"
@@ -361,9 +363,10 @@ export default function CheckoutPage() {
                         </div>
                         <div className="font-semibold">$35.00</div>
                       </div>
-                    </div>
-                    <div
-                      className={`border rounded-lg p-4 cursor-pointer transition-colors ${
+                    </button>
+                    <button
+                      type="button"
+                      className={`w-full border rounded-lg p-4 transition-colors text-left ${
                         deliveryMethod === "overnight"
                           ? "border-primary bg-primary/5"
                           : "border-gray-200 hover:border-gray-300"
@@ -379,7 +382,7 @@ export default function CheckoutPage() {
                         </div>
                         <div className="font-semibold">$50.00</div>
                       </div>
-                    </div>
+                    </button>
                   </div>
                 )}
 

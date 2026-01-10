@@ -21,22 +21,21 @@ export interface BookingEmailData {
   notes?: string;
 }
 
-const DEFAULT_FROM = process.env.EMAIL_FROM || 'PG Closets <noreply@pgclosets.com>';
+interface OrderDetails {
+  total: number
+  itemCount: number
+}
 
 /**
  * Send an email (stub implementation)
  */
-export async function sendEmail(options: EmailOptions): Promise<boolean> {
-  const { to, subject, html, text, from = DEFAULT_FROM } = options;
+export function sendEmail(options: EmailOptions): boolean {
+  const { to, subject } = options;
 
   // In development, just log the email
   if (process.env.NODE_ENV !== 'production') {
-    console.log('[EMAIL] Would send email:', {
-      from,
-      to,
-      subject,
-      preview: (text || html || '').substring(0, 100),
-    });
+    // eslint-disable-next-line no-console
+    console.log(`[Email] To: ${to}, Subject: ${subject}`);
     return true;
   }
 
@@ -47,7 +46,6 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
 
   try {
     // Placeholder for actual email sending
-    console.log('[EMAIL] Sending email to:', to);
     return true;
   } catch (error) {
     console.error('[EMAIL_ERROR]', error);
@@ -59,14 +57,14 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
  * Send booking confirmation email to customer
  * Alias for sendBookingConfirmationEmail
  */
-export async function sendBookingConfirmation(data: BookingEmailData): Promise<boolean> {
+export function sendBookingConfirmation(data: BookingEmailData): boolean {
   return sendBookingConfirmationEmail(data);
 }
 
 /**
  * Send booking confirmation email to customer
  */
-export async function sendBookingConfirmationEmail(data: BookingEmailData): Promise<boolean> {
+export function sendBookingConfirmationEmail(data: BookingEmailData): boolean {
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
       <h1 style="color: #1d1d1f;">Booking Confirmation</h1>
@@ -94,7 +92,7 @@ export async function sendBookingConfirmationEmail(data: BookingEmailData): Prom
 /**
  * Send booking notification to admin
  */
-export async function sendBookingNotification(data: BookingEmailData): Promise<boolean> {
+export function sendBookingNotification(data: BookingEmailData): boolean {
   const adminEmail = process.env.ADMIN_EMAIL || 'admin@pgclosets.com';
 
   const html = `
@@ -123,11 +121,11 @@ export async function sendBookingNotification(data: BookingEmailData): Promise<b
 /**
  * Send order confirmation email
  */
-export async function sendOrderConfirmation(
+export function sendOrderConfirmation(
   email: string,
   orderId: string,
-  orderDetails: any
-): Promise<boolean> {
+  orderDetails: OrderDetails
+): boolean {
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
       <h1 style="color: #1d1d1f;">Order Confirmation</h1>
@@ -152,7 +150,7 @@ export async function sendOrderConfirmation(
 /**
  * Send password reset email
  */
-export async function sendPasswordReset(email: string, resetToken: string): Promise<boolean> {
+export function sendPasswordReset(email: string, resetToken: string): boolean {
   const resetUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.pgclosets.com'}/reset-password?token=${resetToken}`;
 
   const html = `
@@ -178,12 +176,12 @@ export async function sendPasswordReset(email: string, resetToken: string): Prom
 /**
  * Send contact form notification
  */
-export async function sendContactNotification(data: {
+export function sendContactNotification(data: {
   name: string;
   email: string;
   phone?: string;
   message: string;
-}): Promise<boolean> {
+}): boolean {
   const adminEmail = process.env.ADMIN_EMAIL || 'admin@pgclosets.com';
 
   const html = `

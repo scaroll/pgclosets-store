@@ -183,10 +183,18 @@ export function FileUpload({
 
       {!file ? (
         <div
+          role="button"
+          tabIndex={disabled ? -1 : 0}
           onClick={openFileDialog}
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault()
+              openFileDialog()
+            }
+          }}
           className={cn(
             "border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-all duration-200",
             isDragging
@@ -194,6 +202,7 @@ export function FileUpload({
               : "border-border hover:border-primary/50 hover:bg-muted/30",
             disabled && "opacity-50 cursor-not-allowed",
           )}
+          aria-label={disabled ? "File upload disabled" : "Click to upload file or drag and drop"}
         >
           <div className="flex flex-col items-center space-y-4">
             <div

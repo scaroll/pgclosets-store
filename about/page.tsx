@@ -71,7 +71,7 @@ export default function AboutPage() {
                 <a href="tel:6134225800" className="text-[#1e3a8a] font-bold hover:text-[#87ceeb] transition-colors">
                   📞 (613) 422-5800
                 </a>
-                <button className="bg-[#87ceeb] text-white px-8 py-3 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-[#87ceeb] hover:border-[#1e3a8a]">
+                <button className="bg-[#87ceeb] text-white px-8 py-3 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-[#87ceeb] hover:border-[#1e3a8a]" type="button">
                   FREE QUOTE
                 </button>
               </div>
@@ -96,12 +96,12 @@ export default function AboutPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact">
-                  <button className="bg-[#87ceeb] text-white px-8 py-4 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-[#87ceeb] hover:border-[#1e3a8a]">
+                  <button className="bg-[#87ceeb] text-white px-8 py-4 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-[#87ceeb] hover:border-[#1e3a8a]" type="button">
                     GET FREE CONSULTATION
                   </button>
                 </Link>
                 <Link href="/products">
-                  <button className="border-2 border-[#1e3a8a] text-[#1e3a8a] px-8 py-4 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:text-[#87ceeb] transition-all duration-300">
+                  <button className="border-2 border-[#1e3a8a] text-[#1e3a8a] px-8 py-4 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:text-[#87ceeb] transition-all duration-300" type="button">
                     BROWSE PRODUCTS
                   </button>
                 </Link>
@@ -254,12 +254,12 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact">
-              <button className="bg-white text-[#1e3a8a] px-12 py-5 font-black text-xl uppercase tracking-wide hover:bg-gray-100 hover:scale-105 transition-all duration-300">
+              <button className="bg-white text-[#1e3a8a] px-12 py-5 font-black text-xl uppercase tracking-wide hover:bg-gray-100 hover:scale-105 transition-all duration-300" type="button">
                 START YOUR PROJECT
               </button>
             </Link>
             <Link href="/contact">
-              <button className="border-4 border-white text-white px-12 py-5 font-black text-xl uppercase tracking-wide hover:bg-white hover:text-[#1e3a8a] hover:scale-105 transition-all duration-300">
+              <button className="border-4 border-white text-white px-12 py-5 font-black text-xl uppercase tracking-wide hover:bg-white hover:text-[#1e3a8a] hover:scale-105 transition-all duration-300" type="button">
                 GET IN TOUCH
               </button>
             </Link>
@@ -358,15 +358,15 @@ export default function AboutPage() {
                 &copy; 2025 PG Closets. All rights reserved. | Licensed & Insured | A+ BBB Rating
               </p>
               <div className="flex space-x-6 text-sm">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/privacy-policy" className="text-gray-400 hover:text-white transition-colors">
                   Privacy Policy
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                </Link>
+                <Link href="/terms-of-service" className="text-gray-400 hover:text-white transition-colors">
                   Terms of Service
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                </Link>
+                <Link href="/warranty" className="text-gray-400 hover:text-white transition-colors">
                   Warranty
-                </a>
+                </Link>
               </div>
             </div>
           </div>

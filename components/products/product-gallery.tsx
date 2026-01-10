@@ -1,16 +1,16 @@
-// @ts-nocheck - Gallery with dynamic image types
 'use client'
 
 import { useState } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface ProductGalleryProps {
   images: string[]
   name: string
 }
+
+const DEFAULT_IMAGE = '/placeholder.jpg'
 
 export function ProductGallery({ images, name }: ProductGalleryProps) {
   const [selectedImage, setSelectedImage] = useState(0)
@@ -34,12 +34,15 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
     setMousePosition({ x, y })
   }
 
-  const handleTouchStart = (e: React.TouchEvent) => {
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     const touch = e.touches[0]
+    if (!touch) return
     const startX = touch.clientX
 
-    const handleTouchMove = (e: TouchEvent) => {
-      const touch = e.touches[0]
+    const handleTouchMove = (event: Event) => {
+      const touchEvent = event as TouchEvent
+      const touch = touchEvent.touches[0]
+      if (!touch) return
       const diff = startX - touch.clientX
 
       if (Math.abs(diff) > 50) {
@@ -71,7 +74,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
           onTouchStart={handleTouchStart}
         >
           <Image
-            src={images[selectedImage]}
+            src={images[selectedImage] ?? DEFAULT_IMAGE}
             alt={`${name} - Image ${selectedImage + 1}`}
             fill
             className={cn(
@@ -190,7 +193,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
           {/* Main Image */}
           <div className="relative w-full max-w-5xl aspect-square">
             <Image
-              src={images[selectedImage]}
+              src={images[selectedImage] ?? DEFAULT_IMAGE}
               alt={`${name} - Image ${selectedImage + 1}`}
               fill
               className="object-contain"

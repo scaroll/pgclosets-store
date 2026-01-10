@@ -1,4 +1,3 @@
-// @ts-nocheck - Product exports with component type issues
 // Product Card Components
 export {
   ProductCard,
@@ -11,8 +10,4 @@ export {
 export { ProductGallery } from './product-gallery'
 
 // Product Variant Components
-export {
-  ProductVariantSelector,
-  ProductColorSelector,
-  ProductSizeSelector,
-} from './product-variants'
+export { ProductVariants } from './product-variants'

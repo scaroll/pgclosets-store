@@ -71,20 +71,6 @@ export function InstantEstimateCalculator() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     // Here you would typically send the data to your API
-    console.log('Estimate submitted:', {
-      doorType,
-      sizeType,
-      customWidth,
-      customHeight,
-      material,
-      hardware,
-      installation,
-      estimate,
-      name,
-      email,
-      phone,
-      message,
-    })
     setSubmitted(true)
   }
 

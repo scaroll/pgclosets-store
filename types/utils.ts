@@ -2,7 +2,7 @@
  * Utility types and helper function interfaces
  */
 
-import { type ClassValue } from "clsx";
+import type { ClassValue } from "clsx";
 
 // Class variance authority types
 export interface VariantProps<_T extends (...args: any[]) => any> {

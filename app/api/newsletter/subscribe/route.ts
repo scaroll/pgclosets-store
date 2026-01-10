@@ -1,9 +1,15 @@
-// @ts-nocheck - Newsletter with async function issues
-import type { NextRequest} from 'next/server';
+import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { subscribeToNewsletter } from '@/lib/email/newsletter';
 import { checkRateLimit, getClientIdentifier, generalRateLimiter } from '@/lib/rate-limit';
 import { z } from 'zod';
+
+// Type definitions
+interface NewsletterSubscribeResult {
+  success: boolean;
+  message?: string;
+  error?: string;
+}
 
 // Input validation schema
 const newsletterSchema = z.object({
@@ -48,7 +54,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     let body: unknown;
     try {
       body = await request.json();
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         { success: false, error: 'Invalid request format' },
         { status: 400 }
@@ -80,18 +86,15 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     // Subscribe to newsletter
     const result = await subscribeToNewsletter({
-      email: email.toLowerCase().trim(), // Normalize email
+      email: email.toLowerCase().trim(),
       firstName: firstName?.trim(),
       lastName: lastName?.trim(),
       source: 'website'
     });
 
-    // Log subscription for monitoring (without PII)
-    console.log(`[Newsletter] New subscription attempt from IP: ${getClientIdentifier(request)}`);
-
     // Return result with appropriate status code and security headers
     return NextResponse.json(
-      result,
+      result as NewsletterSubscribeResult,
       {
         status: result.success ? 200 : 400,
         headers: {

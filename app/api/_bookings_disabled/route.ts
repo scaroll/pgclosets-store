@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
 // Disabled route - required modules not available
 // import { z } from 'zod';
 // import { format, addMinutes, startOfDay, endOfDay } from 'date-fns';
@@ -10,7 +11,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // Disabled - all helper functions and types not available
 
 // POST endpoint - Create new booking with transaction locking
-export async function POST(_request: NextRequest) {
+export function POST(_request: NextRequest) {
   // This route is disabled - booking functionality not available
   return NextResponse.json(
     { error: "Booking route is disabled" },
@@ -19,7 +20,7 @@ export async function POST(_request: NextRequest) {
 }
 
 // GET endpoint - Check availability
-export async function GET(_request: NextRequest) {
+export function GET(_request: NextRequest) {
   // This route is disabled - booking functionality not available
   return NextResponse.json(
     { error: "Booking route is disabled" },

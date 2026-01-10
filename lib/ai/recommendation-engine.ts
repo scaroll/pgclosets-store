@@ -166,10 +166,10 @@ class RecommendationEngine {
   /**
    * Get personalized recommendations
    */
-  async getRecommendations(
+  getRecommendations(
     userId: string,
     options: RecommendationOptions = {}
-  ): Promise<Recommendation[]> {
+  ): Recommendation[] {
     const {
       limit = 8,
       categories,

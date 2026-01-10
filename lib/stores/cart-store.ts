@@ -54,7 +54,10 @@ export const useCartStore = create<CartState>()(
         } else {
           // Add new item
           set({
-            items: [...currentItems, { ...item, id: Math.random().toString(36).substring(7) }],
+            items: [...currentItems, { 
+              ...item, 
+              id: typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(7) 
+            }],
             isOpen: true,
           })
         }

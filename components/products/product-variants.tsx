@@ -1,9 +1,12 @@
-// @ts-nocheck
 'use client'
 
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { Check } from 'lucide-react'
+
+interface VariantAttribute {
+  [key: string]: string
+}
 
 interface Variant {
   id: string
@@ -12,7 +15,7 @@ interface Variant {
   price: number
   image?: string | null
   inStock: boolean
-  attributes?: any
+  attributes?: VariantAttribute
 }
 
 interface ProductVariantsProps {
@@ -36,7 +39,10 @@ export function ProductVariants({ variants, onVariantChange }: ProductVariantsPr
         if (!attributesByType[key]) {
           attributesByType[key] = new Set()
         }
-        attributesByType[key].add(variant.attributes[key])
+        const attrValue = variant.attributes[key]
+        if (attrValue) {
+          attributesByType[key].add(attrValue)
+        }
       })
     }
   })
@@ -95,7 +101,7 @@ export function ProductVariants({ variants, onVariantChange }: ProductVariantsPr
   return (
     <div className="space-y-6">
       {Array.from(attributeTypes).map((attrType) => {
-        const values = Array.from(attributesByType[attrType])
+        const values = Array.from(attributesByType[attrType] ?? [])
         const isColorAttribute = attrType.toLowerCase().includes('color') || attrType.toLowerCase().includes('colour')
 
         return (

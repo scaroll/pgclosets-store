@@ -131,7 +131,11 @@ export function StickyHeader({ className = "" }: StickyHeaderProps) {
 
       {/* Mobile Menu Backdrop */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-black/20 z-40 lg:hidden" onClick={() => setMobileMenuOpen(false)} />
+        <button
+          className="fixed inset-0 bg-black/20 z-40 lg:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-label="Close menu"
+        />
       )}
     </>
   )

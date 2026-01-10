@@ -33,7 +33,7 @@ const RecommendationRequestSchema = z.object({
 });
 
 // Response schema
-const RecommendationsResponseSchema = z.object({
+const _RecommendationsResponseSchema = z.object({
   success: z.boolean(),
   recommendations: z.array(z.object({
     productId: z.string(),

@@ -1,4 +1,4 @@
-// @ts-nocheck - Bookings with dynamic Prisma types
+// Bookings with dynamic Prisma types
 import { prisma } from './prisma';
 
 /**
@@ -24,6 +24,19 @@ export interface BookingData {
 export interface TimeSlot {
   time: string;
   available: boolean;
+}
+
+export interface Appointment {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  address?: string | null;
+  date: Date;
+  time: string;
+  type: string;
+  notes?: string | null;
+  status: string;
 }
 
 /**
@@ -92,7 +105,7 @@ export async function getAvailableSlots(date: Date): Promise<TimeSlot[]> {
 /**
  * Create a new booking
  */
-export async function createBooking(data: BookingData) {
+export async function createBooking(data: BookingData): Promise<Appointment> {
   const appointment = await prisma.appointment.create({
     data: {
       name: data.name,
@@ -107,16 +120,16 @@ export async function createBooking(data: BookingData) {
     },
   });
 
-  return appointment;
+  return appointment as Appointment;
 }
 
 /**
  * Get booking by ID
  */
-export async function getBookingById(id: string) {
+export async function getBookingById(id: string): Promise<Appointment | null> {
   return prisma.appointment.findUnique({
     where: { id },
-  });
+  }) as Promise<Appointment | null>;
 }
 
 /**
@@ -125,16 +138,16 @@ export async function getBookingById(id: string) {
 export async function updateBookingStatus(
   id: string,
   status: 'PENDING' | 'CONFIRMED' | 'CANCELLED' | 'COMPLETED'
-) {
+): Promise<Appointment> {
   return prisma.appointment.update({
     where: { id },
     data: { status },
-  });
+  }) as Promise<Appointment>;
 }
 
 /**
  * Cancel a booking
  */
-export async function cancelBooking(id: string) {
+export async function cancelBooking(id: string): Promise<Appointment> {
   return updateBookingStatus(id, 'CANCELLED');
 }

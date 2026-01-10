@@ -1,4 +1,4 @@
-// @ts-nocheck - Supabase server client stub
+// Supabase server client stub
 // This is a placeholder for when Supabase is configured
 
 import { prisma } from '../prisma';
@@ -6,12 +6,67 @@ import { prisma } from '../prisma';
 // Re-export prisma as a fallback when Supabase isn't configured
 export { prisma };
 
+interface MockAuthUser {
+  id: string | null
+  email?: string | null
+}
+
+interface MockAuthResponse {
+  data: {
+    user: MockAuthUser | null
+    session: unknown | null
+  }
+  error: { message: string } | null
+}
+
+interface MockDataResponse<T = unknown> {
+  data: T | null
+  error: null
+}
+
+interface MockQueryBuilder {
+  eq: (_column: string, _value: unknown) => MockDataResponse
+  single: () => MockDataResponse<null>
+  order: (_column: string, _options?: unknown) => MockDataResponse
+  limit: (_count: number) => MockDataResponse
+}
+
+interface MockTable {
+  select: (_columns?: string) => MockQueryBuilder
+  insert: (_data: unknown) => MockDataResponse<null>
+  update: (_data: unknown) => {
+    eq: (_column: string, _value: unknown) => MockDataResponse<null>
+  }
+  delete: () => {
+    eq: (_column: string, _value: unknown) => MockDataResponse<null>
+  }
+}
+
+interface MockStorageBucket {
+  upload: (_path: string, _file: unknown) => MockDataResponse<null>
+  getPublicUrl: (_path: string) => { data: { publicUrl: string } }
+  remove: (_paths: string[]) => MockDataResponse<null>
+}
+
+interface MockSupabaseClient {
+  from: (_table: string) => MockTable
+  auth: {
+    getUser: () => Promise<MockAuthResponse>
+    signInWithPassword: (_credentials: unknown) => Promise<MockAuthResponse>
+    signUp: (_credentials: unknown) => Promise<MockAuthResponse>
+    signOut: () => Promise<{ error: null }>
+  }
+  storage: {
+    from: (_bucket: string) => MockStorageBucket
+  }
+}
+
 /**
  * Create a Supabase server client
  * When Supabase is configured, this will return an actual client
  * For now, it returns a mock that uses Prisma instead
  */
-export function createClient() {
+export function createClient(): MockSupabaseClient {
   // Check if Supabase is configured
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -31,36 +86,36 @@ export function createClient() {
 /**
  * Mock Supabase client for development without Supabase
  */
-function createMockClient() {
+function createMockClient(): MockSupabaseClient {
   return {
-    from: (table: string) => ({
-      select: (columns?: string) => ({
-        eq: (column: string, value: any) => Promise.resolve({ data: [], error: null }),
+    from: (_table: string) => ({
+      select: (_columns?: string) => ({
+        eq: (_column: string, _value: unknown) => Promise.resolve({ data: [], error: null }),
         single: () => Promise.resolve({ data: null, error: null }),
-        order: (column: string, options?: any) => Promise.resolve({ data: [], error: null }),
-        limit: (count: number) => Promise.resolve({ data: [], error: null }),
+        order: (_column: string, _options?: unknown) => Promise.resolve({ data: [], error: null }),
+        limit: (_count: number) => Promise.resolve({ data: [], error: null }),
       }),
-      insert: (data: any) => Promise.resolve({ data: null, error: null }),
-      update: (data: any) => ({
-        eq: (column: string, value: any) => Promise.resolve({ data: null, error: null }),
+      insert: (_data: unknown) => Promise.resolve({ data: null, error: null }),
+      update: (_data: unknown) => ({
+        eq: (_column: string, _value: unknown) => Promise.resolve({ data: null, error: null }),
       }),
       delete: () => ({
-        eq: (column: string, value: any) => Promise.resolve({ data: null, error: null }),
+        eq: (_column: string, _value: unknown) => Promise.resolve({ data: null, error: null }),
       }),
     }),
     auth: {
-      getUser: () => Promise.resolve({ data: { user: null }, error: null }),
-      signInWithPassword: (credentials: any) =>
+      getUser: () => Promise.resolve({ data: { user: null, session: null }, error: null }),
+      signInWithPassword: (_credentials: unknown) =>
         Promise.resolve({ data: { user: null, session: null }, error: { message: 'Auth not configured' } }),
-      signUp: (credentials: any) =>
+      signUp: (_credentials: unknown) =>
         Promise.resolve({ data: { user: null, session: null }, error: { message: 'Auth not configured' } }),
       signOut: () => Promise.resolve({ error: null }),
     },
     storage: {
-      from: (bucket: string) => ({
-        upload: (path: string, file: any) => Promise.resolve({ data: null, error: null }),
-        getPublicUrl: (path: string) => ({ data: { publicUrl: `/storage/${bucket}/${path}` } }),
-        remove: (paths: string[]) => Promise.resolve({ data: null, error: null }),
+      from: (_bucket: string) => ({
+        upload: (_path: string, _file: unknown) => Promise.resolve({ data: null, error: null }),
+        getPublicUrl: (_path: string) => ({ data: { publicUrl: `/storage/${_bucket}/${_path}` } }),
+        remove: (_paths: string[]) => Promise.resolve({ data: null, error: null }),
       }),
     },
   };
@@ -69,7 +124,7 @@ function createMockClient() {
 /**
  * Get user from request
  */
-export async function getUser() {
+export async function getUser(): Promise<MockAuthUser | null> {
   const client = createClient();
   const { data } = await client.auth.getUser();
   return data.user;

@@ -353,7 +353,7 @@ const boxLabel = {
   margin: '0 0 8px',
 };
 
-const quoteNumber = {
+const _quoteNumber = {
   color: '#1e3a8a',
   fontSize: '28px',
   fontWeight: '700',

@@ -136,12 +136,14 @@ export default function ProductManagement() {
             </CardHeader>
             <CardContent className="space-y-2 max-h-[600px] overflow-y-auto">
               {products.map((product) => (
-                <div
+                <button
                   key={product.slug}
-                  className={`p-3 rounded-lg border cursor-pointer transition-colors ${
+                  type="button"
+                  className={`w-full text-left p-3 rounded-lg border transition-colors ${
                     selectedProduct?.slug === product.slug ? "bg-primary/10 border-primary" : "hover:bg-muted"
                   }`}
                   onClick={() => setSelectedProduct(product)}
+                  aria-label={`Select product ${product.title}`}
                 >
                   <div className="flex items-center space-x-3">
                     <img
@@ -158,7 +160,7 @@ export default function ProductManagement() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </button>
               ))}
             </CardContent>
           </Card>

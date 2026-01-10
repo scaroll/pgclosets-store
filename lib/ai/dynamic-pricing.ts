@@ -1,4 +1,4 @@
-// @ts-nocheck - AI pricing with dynamic types
+// AI pricing with dynamic types
 import { z } from 'zod';
 
 // Product pricing schema
@@ -15,7 +15,7 @@ export const ProductPricingSchema = z.object({
     quantity: z.number(),
     price: z.number(),
   })).optional(),
-  attributes: z.record(z.any()).optional(),
+  attributes: z.record(z.unknown()).optional(),
 });
 
 // Market data schema
@@ -74,7 +74,7 @@ class DynamicPricingEngine {
   /**
    * Calculate optimal price for a product
    */
-  async calculateOptimalPrice(
+  calculateOptimalPrice(
     product: ProductPricing,
     marketData?: MarketData,
     businessRules?: {
@@ -84,7 +84,7 @@ class DynamicPricingEngine {
       priceCeiling?: number;
       strategy?: 'aggressive' | 'balanced' | 'conservative' | 'premium';
     }
-  ): Promise<PricingRecommendation> {
+  ): PricingRecommendation {
     const {
       minMargin = 0.2,
       maxPriceChange = 0.15,
@@ -94,7 +94,6 @@ class DynamicPricingEngine {
     } = businessRules || {};
 
     // Calculate base metrics
-    const currentMargin = (product.currentPrice - product.cost) / product.currentPrice;
     const competitorAvg = marketData?.competitorPrices
       ? marketData.competitorPrices.reduce((sum, c) => sum + c.price, 0) / marketData.competitorPrices.length
       : product.currentPrice;
@@ -178,15 +177,18 @@ class DynamicPricingEngine {
   /**
    * Optimize pricing for multiple products
    */
-  async optimizeBatchPricing(
+  optimizeBatchPricing(
     products: ProductPricing[],
     marketData?: MarketData,
-    businessRules?: any
-  ): Promise<PricingRecommendation[]> {
-    const recommendations = await Promise.all(
-      products.map(product => this.calculateOptimalPrice(product, marketData, businessRules))
-    );
-    return recommendations;
+    businessRules?: {
+      minMargin?: number;
+      maxPriceChange?: number;
+      priceFloor?: number;
+      priceCeiling?: number;
+      strategy?: 'aggressive' | 'balanced' | 'conservative' | 'premium';
+    }
+  ): PricingRecommendation[] {
+    return products.map(product => this.calculateOptimalPrice(product, marketData, businessRules));
   }
 
   /**

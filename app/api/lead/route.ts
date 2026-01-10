@@ -1,11 +1,74 @@
-// @ts-nocheck - Lead capture with dynamic types
-import type { NextRequest} from 'next/server';
+import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { checkRateLimit, getClientIdentifier, generalRateLimiter } from '@/lib/rate-limit';
 import { sendLeadNotification } from '@/lib/email/lead-notification';
 import { v4 as uuidv4 } from 'uuid';
 import { env } from '@/lib/env-validation';
+
+// Type definitions
+type DoorType = 'sliding' | 'bypass' | 'bifold' | 'pivot' | 'barn' | 'mirror';
+type ServiceType = 'measure' | 'quote' | 'general';
+type PreferredContact = 'email' | 'phone';
+
+interface DoorSelection {
+  series: string;
+  doorType: DoorType;
+  openingWidthIn: number;
+  openingHeightIn: number;
+  panelCount: number;
+  finish: string;
+  hardware: string;
+  softClose: boolean;
+  handles: string;
+  quantity: number;
+  notes?: string;
+  productUrl?: string;
+  images?: string[];
+}
+
+interface _LeadData {
+  name: string;
+  email: string;
+  phone: string;
+  location: string;
+  serviceType: ServiceType;
+  preferredContact: PreferredContact;
+  consent: boolean;
+  productInterest?: string;
+  message?: string;
+  doorSelection?: DoorSelection;
+}
+
+interface LeadNotificationData {
+  leadId: string;
+  name: string;
+  email: string;
+  phone: string;
+  location: string;
+  serviceType: ServiceType;
+  preferredContact: PreferredContact;
+  consent: boolean;
+  submittedAt: string;
+  ipAddress: string;
+  productInterest?: string;
+  message?: string;
+  doorSelection?: {
+    series: string;
+    doorType: DoorType;
+    openingWidthIn: number;
+    openingHeightIn: number;
+    panelCount: number;
+    finish: string;
+    hardware: string;
+    softClose: boolean;
+    handles: string;
+    quantity: number;
+    notes?: string;
+    productUrl?: string;
+    images?: string[];
+  };
+}
 
 // Door selection schema for quote requests
 const doorSelectionSchema = z.object({
@@ -24,7 +87,7 @@ const doorSelectionSchema = z.object({
   notes: z.string().max(1000, 'Notes too long').optional(),
   productUrl: z.string().url('Invalid product URL').optional(),
   images: z.array(z.string().url('Invalid image URL')).max(10, 'Maximum 10 images').optional(),
-});
+}) as z.ZodType<DoorSelection>;
 
 // Zod validation schema matching LeadFormData type
 const leadSchema = z.object({
@@ -198,18 +261,9 @@ export async function POST(request: NextRequest): Promise<NextResponse<LeadRespo
     // Generate unique lead ID
     const leadId = uuidv4();
 
-    // Log lead submission (sanitized)
-    console.log('[Lead API] New lead submission:', {
-      leadId,
-      serviceType: leadData.serviceType,
-      location: leadData.location,
-      timestamp: new Date().toISOString(),
-      ip,
-    });
-
     // Send email notification
     try {
-      const notificationData: any = {
+      const notificationData: LeadNotificationData = {
         leadId,
         name: leadData.name,
         email: leadData.email,
@@ -229,7 +283,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<LeadRespo
         notificationData.message = leadData.message;
       }
       if (leadData.doorSelection) {
-        const doorSelection: any = {
+        const doorSelection: LeadNotificationData['doorSelection'] = {
           series: leadData.doorSelection.series,
           doorType: leadData.doorSelection.doorType,
           openingWidthIn: leadData.doorSelection.openingWidthIn,

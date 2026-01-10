@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 export function LoginForm() {
   const router = useRouter()
@@ -26,10 +27,10 @@ export function LoginForm() {
       if (result?.error) {
         setError("Invalid email or password")
       } else {
-        router.push("/account")
+        void router.push("/account")
         router.refresh()
       }
-    } catch (error) {
+    } catch (_error) {
       setError("An error occurred. Please try again.")
     } finally {
       setLoading(false)
@@ -40,7 +41,7 @@ export function LoginForm() {
     setLoading(true)
     try {
       await signIn("google", { callbackUrl: "/account" })
-    } catch (error) {
+    } catch (_error) {
       setError("An error occurred with Google sign-in")
       setLoading(false)
     }
@@ -52,9 +53,9 @@ export function LoginForm() {
         <h2 className="text-3xl font-bold tracking-tight">Sign in to your account</h2>
         <p className="mt-2 text-sm text-gray-600">
           Or{" "}
-          <a href="/register" className="font-medium text-blue-600 hover:text-blue-500">
+          <Link href="/register" className="font-medium text-blue-600 hover:text-blue-500">
             create a new account
-          </a>
+          </Link>
         </p>
       </div>
 
@@ -115,9 +116,9 @@ export function LoginForm() {
           </div>
 
           <div className="text-sm">
-            <a href="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
+            <Link href="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
               Forgot your password?
-            </a>
+            </Link>
           </div>
         </div>
 

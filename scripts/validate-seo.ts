@@ -253,7 +253,7 @@ function validateWebSiteSchema(): ValidationResult {
 /**
  * Validate metadata generators
  */
-function validateMetadata(): ValidationResult {
+function _validateMetadata(): ValidationResult {
   const result: ValidationResult = {
     component: 'Metadata Generators',
     valid: true,

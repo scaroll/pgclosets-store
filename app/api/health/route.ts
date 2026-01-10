@@ -7,7 +7,8 @@
  * Compatible with UptimeRobot, Pingdom, Datadog, and similar tools
  */
 
-import { type NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 // Temporarily disabled edge runtime due to Next.js 15 build issues
 // export const runtime = "edge";
@@ -319,7 +320,7 @@ export async function HEAD(_request: NextRequest) {
         "Cache-Control": "no-store, no-cache, must-revalidate",
       },
     });
-  } catch (error) {
+  } catch (_error) {
     return new NextResponse(null, {
       status: 503,
       headers: {

@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client"
 
 import * as React from "react"
@@ -16,7 +15,8 @@ import {
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { cn } from "@/lib/utils"
+
+const DEFAULT_IMAGE = "/placeholder.jpg"
 
 export function CartDrawer() {
   const { items, removeItem, updateQuantity, total, itemCount } = useCartStore()
@@ -57,7 +57,7 @@ export function CartDrawer() {
                   <div key={item.id} className="flex gap-4">
                     <div className="relative h-20 w-20 rounded-md overflow-hidden bg-gray-100">
                       <Image
-                        src={item.image}
+                        src={item.image ?? DEFAULT_IMAGE}
                         alt={item.name}
                         fill
                         className="object-cover"

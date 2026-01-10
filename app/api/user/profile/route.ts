@@ -1,9 +1,16 @@
-// @ts-nocheck
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { z } from 'zod';
 import bcryptjs from 'bcryptjs';
+
+// Type definitions
+interface ProfileUpdateData {
+  name?: string;
+  phone?: string;
+  password?: string;
+}
 
 const updateProfileSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters').optional(),
@@ -21,7 +28,7 @@ const updateProfileSchema = z.object({
 });
 
 // GET /api/user/profile - Get user profile
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   try {
     const session = await auth();
 
@@ -87,7 +94,7 @@ export async function PUT(req: NextRequest) {
     }
 
     const { name, phone, currentPassword, newPassword } = validated.data;
-    const updateData: any = {};
+    const updateData: ProfileUpdateData = {};
 
     if (name) updateData.name = name;
     if (phone !== undefined) updateData.phone = phone;
