@@ -73,6 +73,7 @@
   "dependencies": {
     "@adyen/adyen-web": "^6.23.0",
     "@ai-sdk/openai": "2.0.52",
+    "@ai-sdk/react": "^3.0.29",
     "@auth/prisma-adapter": "^2.11.0",
     "@axe-core/react": "^4.10.2",
     "@hookform/resolvers": "^3.10.0",

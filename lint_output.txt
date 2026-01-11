@@ -1,0 +1,1110 @@
+
+> pg-closets-website@0.1.0 lint
+> next lint --max-warnings 0
+
+`next lint` is deprecated and will be removed in Next.js 16.
+For new projects, use create-next-app to choose your preferred linter.
+For existing projects, migrate to the ESLint CLI:
+npx @next/codemod@canary next-lint-to-eslint-cli .
+
+
+./app/(marketing)/[slug]/page.tsx
+12:8  Error: Async function 'generateStaticParams' has no 'await' expression.  @typescript-eslint/require-await
+19:8  Error: Async function 'generateMetadata' has no 'await' expression.  @typescript-eslint/require-await
+
+./app/(marketing)/about/page.tsx
+86:114  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+89:144  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+95:28  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+95:50  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+224:93  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+285:50  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./app/(marketing)/contact/page.tsx
+56:67  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+147:47  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+150:30  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+225:76  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+379:92  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+406:31  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+454:57  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./app/(marketing)/warranty/page.tsx
+188:71  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+296:71  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./app/(shop)/checkout/page.tsx
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+486:31  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./app/(shop)/collections/[category]/not-found.tsx
+17:27  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+17:51  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+17:99  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./app/(shop)/collections/[category]/page.tsx
+287:16  Error: Async function 'CategoryPage' has no 'await' expression.  @typescript-eslint/require-await
+
+./app/admin/layout.tsx
+43:30  Error: Async arrow function has no 'await' expression.  @typescript-eslint/require-await
+
+./app/admin/quotes/[id]/page.tsx
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+48:14  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+49:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+50:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+51:23  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+68:6  Warning: React Hook useEffect has a missing dependency: 'fetchQuoteDetail'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+76:13  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+78:16  Error: Unsafe member access .success on an `any` value.  @typescript-eslint/no-unsafe-member-access
+79:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+79:28  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+79:33  Error: Unsafe member access .quotes on an `any` value.  @typescript-eslint/no-unsafe-member-access
+83:20  Error: Unsafe argument of type `any` assigned to a parameter of type `SetStateAction<QuoteDetail | null>`.  @typescript-eslint/no-unsafe-argument
+84:24  Error: Unsafe argument of type `any` assigned to a parameter of type `SetStateAction<string>`.  @typescript-eslint/no-unsafe-argument
+84:35  Error: Unsafe member access .status on an `any` value.  @typescript-eslint/no-unsafe-member-access
+112:13  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+114:16  Error: Unsafe member access .success on an `any` value.  @typescript-eslint/no-unsafe-member-access
+174:26  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+174:47  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+266:67  Error: Unsafe member access .postalCode on an `any` value.  @typescript-eslint/no-unsafe-member-access
+273:71  Error: Unsafe member access .postalCode on an `any` value.  @typescript-eslint/no-unsafe-member-access
+283:42  Error: Unsafe member access .customerType on an `any` value.  @typescript-eslint/no-unsafe-member-access
+324:25  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+378:55  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+387:61  Error: Unsafe member access .productName on an `any` value.  @typescript-eslint/no-unsafe-member-access
+389:36  Error: Unsafe member access .productCategory on an `any` value.  @typescript-eslint/no-unsafe-member-access
+394:38  Error: Unsafe member access .width on an `any` value.  @typescript-eslint/no-unsafe-member-access
+394:44  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+394:57  Error: Unsafe member access .height on an `any` value.  @typescript-eslint/no-unsafe-member-access
+394:64  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+398:38  Error: Unsafe member access .quantity on an `any` value.  @typescript-eslint/no-unsafe-member-access
+402:42  Error: Unsafe argument of type `any` assigned to a parameter of type `number | null | undefined`.  @typescript-eslint/no-unsafe-argument
+402:50  Error: Unsafe member access .msrpPrice on an `any` value.  @typescript-eslint/no-unsafe-member-access
+408:38  Error: Unsafe member access .includeInstallation on an `any` value.  @typescript-eslint/no-unsafe-member-access
+419:44  Error: Unsafe argument of type `any` assigned to a parameter of type `number | null | undefined`.  @typescript-eslint/no-unsafe-argument
+419:68  Error: Unsafe member access .subtotal on an `any` value.  @typescript-eslint/no-unsafe-member-access
+424:40  Error: Unsafe argument of type `any` assigned to a parameter of type `number | null | undefined`.  @typescript-eslint/no-unsafe-argument
+424:64  Error: Unsafe member access .installationCost on an `any` value.  @typescript-eslint/no-unsafe-member-access
+430:40  Error: Unsafe argument of type `any` assigned to a parameter of type `number | null | undefined`.  @typescript-eslint/no-unsafe-argument
+430:64  Error: Unsafe member access .deliveryFee on an `any` value.  @typescript-eslint/no-unsafe-member-access
+435:44  Error: Unsafe argument of type `any` assigned to a parameter of type `number | null | undefined`.  @typescript-eslint/no-unsafe-argument
+435:68  Error: Unsafe member access .hst on an `any` value.  @typescript-eslint/no-unsafe-member-access
+439:44  Error: Unsafe argument of type `any` assigned to a parameter of type `number | null | undefined`.  @typescript-eslint/no-unsafe-argument
+439:68  Error: Unsafe member access .total on an `any` value.  @typescript-eslint/no-unsafe-member-access
+441:48  Error: Unsafe member access .savings on an `any` value.  @typescript-eslint/no-unsafe-member-access
+445:42  Error: Unsafe argument of type `any` assigned to a parameter of type `number | null | undefined`.  @typescript-eslint/no-unsafe-argument
+445:66  Error: Unsafe member access .savings on an `any` value.  @typescript-eslint/no-unsafe-member-access
+464:33  Error: Unsafe member access .ip on an `any` value.  @typescript-eslint/no-unsafe-member-access
+467:65  Error: Unsafe member access .ip on an `any` value.  @typescript-eslint/no-unsafe-member-access
+470:33  Error: Unsafe member access .userAgent on an `any` value.  @typescript-eslint/no-unsafe-member-access
+474:39  Error: Unsafe member access .userAgent on an `any` value.  @typescript-eslint/no-unsafe-member-access
+478:33  Error: Unsafe member access .referer on an `any` value.  @typescript-eslint/no-unsafe-member-access
+482:39  Error: Unsafe member access .referer on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/admin/quotes/page.tsx
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+56:13  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+58:16  Error: Unsafe member access .success on an `any` value.  @typescript-eslint/no-unsafe-member-access
+59:19  Error: Unsafe argument of type `any` assigned to a parameter of type `SetStateAction<Quote[]>`.  @typescript-eslint/no-unsafe-argument
+59:24  Error: Unsafe member access .quotes on an `any` value.  @typescript-eslint/no-unsafe-member-access
+70:6  Warning: React Hook useEffect has a missing dependency: 'fetchQuotes'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+181:27  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./app/api/_admin_disabled/bookings/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+24:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+25:23  Error: Unsafe member access .status on an `any` value.  @typescript-eslint/no-unsafe-member-access
+28:13  Error: Unsafe member access .date on an `any` value.  @typescript-eslint/no-unsafe-member-access
+33:24  Error: Unsafe member access .service on an `any` value.  @typescript-eslint/no-unsafe-member-access
+36:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+74:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/_admin_disabled/products/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+37:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+38:25  Error: Unsafe member access .category on an `any` value.  @typescript-eslint/no-unsafe-member-access
+39:23  Error: Unsafe member access .status on an `any` value.  @typescript-eslint/no-unsafe-member-access
+40:34  Error: Unsafe member access .featured on an `any` value.  @typescript-eslint/no-unsafe-member-access
+43:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+79:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+143:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/_auth_disabled/login/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/_auth_disabled/logout/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/_auth_disabled/register/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/_auth_disabled/reset-password/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/_auth_disabled/session/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/_bookings_disabled/availability/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/_bookings_disabled/measurement/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/_bookings_disabled/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/_chat_disabled/route.ts
+28:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+30:18  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+82:5  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/_errors_disabled/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+7:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+12:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+12:19  Error: Unsafe member access .error on an `any` value.  @typescript-eslint/no-unsafe-member-access
+13:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+13:23  Error: Unsafe member access .errorInfo on an `any` value.  @typescript-eslint/no-unsafe-member-access
+14:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+14:17  Error: Unsafe member access .url on an `any` value.  @typescript-eslint/no-unsafe-member-access
+15:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+15:23  Error: Unsafe member access .userAgent on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/_simplecheckout_disabled/route.ts
+4:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+5:40  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/admin/quotes/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+16:22  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+28:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+28:22  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+32:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+32:22  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+37:21  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+37:48  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+47:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+47:22  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+51:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+51:22  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+56:21  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+56:48  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+59:11  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+64:5  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+64:13  Error: Unsafe member access .forEach on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+71:9  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+71:14  Error: Unsafe member access .forEach on an `any` value.  @typescript-eslint/no-unsafe-member-access
+71:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+74:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+74:25  Error: Unsafe member access .id on an `any` value.  @typescript-eslint/no-unsafe-member-access
+75:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+75:35  Error: Unsafe member access .quote_number on an `any` value.  @typescript-eslint/no-unsafe-member-access
+77:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+77:36  Error: Unsafe member access .customer_name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+78:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+78:37  Error: Unsafe member access .customer_email on an `any` value.  @typescript-eslint/no-unsafe-member-access
+79:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+79:37  Error: Unsafe member access .customer_phone on an `any` value.  @typescript-eslint/no-unsafe-member-access
+80:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+80:35  Error: Unsafe member access .product_name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+81:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+81:39  Error: Unsafe member access .product_category on an `any` value.  @typescript-eslint/no-unsafe-member-access
+82:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+82:36  Error: Unsafe member access .product_price on an `any` value.  @typescript-eslint/no-unsafe-member-access
+83:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+83:29  Error: Unsafe member access .status on an `any` value.  @typescript-eslint/no-unsafe-member-access
+84:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+84:34  Error: Unsafe member access .received_at on an `any` value.  @typescript-eslint/no-unsafe-member-access
+85:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+85:28  Error: Unsafe member access .notes on an `any` value.  @typescript-eslint/no-unsafe-member-access
+86:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+86:31  Error: Unsafe member access .metadata on an `any` value.  @typescript-eslint/no-unsafe-member-access
+90:19  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+90:40  Error: Unsafe member access .customer_data on an `any` value.  @typescript-eslint/no-unsafe-member-access
+91:19  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+91:40  Error: Unsafe member access .products_data on an `any` value.  @typescript-eslint/no-unsafe-member-access
+92:19  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+92:34  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+92:34  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+92:47  Error: Unsafe member access .map on an `any` value.  @typescript-eslint/no-unsafe-member-access
+92:55  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+92:63  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+92:65  Error: Unsafe member access .productName on an `any` value.  @typescript-eslint/no-unsafe-member-access
+92:78  Error: Unsafe member access .join on an `any` value.  @typescript-eslint/no-unsafe-member-access
+95:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+95:25  Error: Unsafe member access .id on an `any` value.  @typescript-eslint/no-unsafe-member-access
+96:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+96:35  Error: Unsafe member access .quote_number on an `any` value.  @typescript-eslint/no-unsafe-member-access
+98:46  Error: Unsafe member access .firstName on an `any` value.  @typescript-eslint/no-unsafe-member-access
+98:78  Error: Unsafe member access .lastName on an `any` value.  @typescript-eslint/no-unsafe-member-access
+99:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+99:44  Error: Unsafe member access .email on an `any` value.  @typescript-eslint/no-unsafe-member-access
+101:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+103:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+103:36  Error: Unsafe member access .total_amount on an `any` value.  @typescript-eslint/no-unsafe-member-access
+104:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+104:29  Error: Unsafe member access .status on an `any` value.  @typescript-eslint/no-unsafe-member-access
+105:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+105:34  Error: Unsafe member access .received_at on an `any` value.  @typescript-eslint/no-unsafe-member-access
+106:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+106:28  Error: Unsafe member access .project_details on an `any` value.  @typescript-eslint/no-unsafe-member-access
+107:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+107:31  Error: Unsafe member access .metadata on an `any` value.  @typescript-eslint/no-unsafe-member-access
+108:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+109:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+110:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+110:40  Error: Unsafe member access .quote_calculation on an `any` value.  @typescript-eslint/no-unsafe-member-access
+119:30  Error: Unsafe argument of type `any` assigned to a parameter of type `string | number | Date`.  @typescript-eslint/no-unsafe-argument
+119:32  Error: Unsafe member access .received_at on an `any` value.  @typescript-eslint/no-unsafe-member-access
+120:30  Error: Unsafe argument of type `any` assigned to a parameter of type `string | number | Date`.  @typescript-eslint/no-unsafe-argument
+120:32  Error: Unsafe member access .received_at on an `any` value.  @typescript-eslint/no-unsafe-member-access
+141:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+142:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+151:22  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+154:23  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+159:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+159:18  Error: Unsafe member access .status on an `any` value.  @typescript-eslint/no-unsafe-member-access
+164:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+164:20  Error: Unsafe member access .admin_notes on an `any` value.  @typescript-eslint/no-unsafe-member-access
+166:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+166:20  Error: Unsafe member access .admin_notes on an `any` value.  @typescript-eslint/no-unsafe-member-access
+170:11  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+170:35  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+170:35  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+175:8  Error: Unsafe member access .single on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+187:7  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/ai/pricing/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+25:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+31:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+35:31  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+37:9  Error: Unsafe argument of type `any` assigned to a parameter of type `{ competitorPrices?: { price: number; competitor: string; availability: string; lastUpdated: Date; }[] | undefined; marketDemand?: number | undefined; seasonIndex?: number | undefined; economicIndicators?: { ...; } | undefined; trends?: { ...; }[] | undefined; } | undefined`.  @typescript-eslint/no-unsafe-argument
+54:30  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+56:9  Error: Unsafe argument of type `any` assigned to a parameter of type `{ competitorPrices?: { price: number; competitor: string; availability: string; lastUpdated: Date; }[] | undefined; marketDemand?: number | undefined; seasonIndex?: number | undefined; economicIndicators?: { ...; } | undefined; trends?: { ...; }[] | undefined; } | undefined`.  @typescript-eslint/no-unsafe-argument
+70:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+92:1  Error: Async function 'fetchMarketData' has no 'await' expression.  @typescript-eslint/require-await
+92:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./app/api/ai/recommendations/route.ts
+82:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+114:31  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+126:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+130:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+170:1  Error: Async function 'getProductDetails' has no 'await' expression.  @typescript-eslint/require-await
+170:62  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+174:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+281:20  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+283:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+288:11  Error: Unsafe object destructuring of a property with an `any` value.  @typescript-eslint/no-unsafe-assignment
+293:64  Error: Unsafe member access .name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+309:61  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+309:63  Error: Unsafe member access .category on an `any` value.  @typescript-eslint/no-unsafe-member-access
+315:60  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+315:68  Error: Unsafe member access .confidence on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/ai/search/route.ts
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+9:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+10:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+20:43  Error: Unsafe argument of type `any` assigned to a parameter of type `number`.  @typescript-eslint/no-unsafe-argument
+25:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+26:27  Error: Unsafe argument of type `any` assigned to a parameter of type `string`.  @typescript-eslint/no-unsafe-argument
+26:32  Error: Unsafe member access .query on an `any` value.  @typescript-eslint/no-unsafe-member-access
+26:50  Error: Unsafe member access .filters on an `any` value.  @typescript-eslint/no-unsafe-member-access
+26:65  Error: Unsafe argument of type `any` assigned to a parameter of type `number`.  @typescript-eslint/no-unsafe-argument
+26:70  Error: Unsafe member access .limit on an `any` value.  @typescript-eslint/no-unsafe-member-access
+33:49  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+47:15  Error: Unsafe member access .category on an `any` value.  @typescript-eslint/no-unsafe-member-access
+48:58  Error: Unsafe member access .category on an `any` value.  @typescript-eslint/no-unsafe-member-access
+50:15  Error: Unsafe member access .maxPrice on an `any` value.  @typescript-eslint/no-unsafe-member-access
+51:54  Error: Unsafe member access .maxPrice on an `any` value.  @typescript-eslint/no-unsafe-member-access
+53:15  Error: Unsafe member access .minPrice on an `any` value.  @typescript-eslint/no-unsafe-member-access
+54:54  Error: Unsafe member access .minPrice on an `any` value.  @typescript-eslint/no-unsafe-member-access
+63:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+63:25  Error: Unsafe member access .category on an `any` value.  @typescript-eslint/no-unsafe-member-access
+65:17  Error: Unsafe member access .minPrice on an `any` value.  @typescript-eslint/no-unsafe-member-access
+65:37  Error: Unsafe member access .maxPrice on an `any` value.  @typescript-eslint/no-unsafe-member-access
+67:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+67:28  Error: Unsafe member access .minPrice on an `any` value.  @typescript-eslint/no-unsafe-member-access
+68:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+68:28  Error: Unsafe member access .maxPrice on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/analytics/events/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+8:8  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+9:10  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+14:26  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+31:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+93:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+140:15  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+159:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+160:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+160:44  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+160:52  Error: Unsafe member access .count on an `any` value.  @typescript-eslint/no-unsafe-member-access
+187:94  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+205:93  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+225:100  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+239:97  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+253:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+253:41  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+254:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+254:47  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+254:55  Error: Unsafe member access .count on an `any` value.  @typescript-eslint/no-unsafe-member-access
+256:31  Error: Unsafe spread of an `any[]` array type.  @typescript-eslint/no-unsafe-argument
+256:48  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+256:50  Error: Unsafe member access .count on an `any` value.  @typescript-eslint/no-unsafe-member-access
+259:5  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+266:39  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+271:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+271:20  Error: Unsafe member access .timestamp on an `any` value.  @typescript-eslint/no-unsafe-member-access
+273:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+273:15  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+273:21  Error: Unsafe member access .name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+274:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+274:22  Error: Unsafe member access .params on an `any` value.  @typescript-eslint/no-unsafe-member-access
+275:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+275:25  Error: Unsafe member access .params on an `any` value.  @typescript-eslint/no-unsafe-member-access
+276:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+276:23  Error: Unsafe member access .userId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+277:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+277:26  Error: Unsafe member access .sessionId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+278:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+278:24  Error: Unsafe member access .country on an `any` value.  @typescript-eslint/no-unsafe-member-access
+279:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+279:26  Error: Unsafe member access .timestamp on an `any` value.  @typescript-eslint/no-unsafe-member-access
+285:32  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+285:38  Error: Unsafe member access .name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+289:13  Error: Unsafe member access .params on an `any` value.  @typescript-eslint/no-unsafe-member-access
+290:43  Error: Unsafe argument of type `any` assigned to a parameter of type `number`.  @typescript-eslint/no-unsafe-argument
+290:49  Error: Unsafe member access .params on an `any` value.  @typescript-eslint/no-unsafe-member-access
+294:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+297:26  Error: Unsafe member access .name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+299:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+299:20  Error: Unsafe member access .params on an `any` value.  @typescript-eslint/no-unsafe-member-access
+301:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+301:26  Error: Unsafe member access .timestamp on an `any` value.  @typescript-eslint/no-unsafe-member-access
+302:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+302:26  Error: Unsafe member access .sessionId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+303:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+303:20  Error: Unsafe member access .url on an `any` value.  @typescript-eslint/no-unsafe-member-access
+309:53  Error: Unsafe member access .name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+311:51  Error: Unsafe member access .name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+315:48  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+318:32  Error: Unsafe member access .name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+321:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+321:24  Error: Unsafe member access .timestamp on an `any` value.  @typescript-eslint/no-unsafe-member-access
+322:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+322:27  Error: Unsafe member access .params on an `any` value.  @typescript-eslint/no-unsafe-member-access
+328:42  Error: Unsafe member access .sessionId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+332:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+336:28  Error: Unsafe argument of type `any` assigned to a parameter of type `string`.  @typescript-eslint/no-unsafe-argument
+336:34  Error: Unsafe member access .name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+343:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+343:28  Error: Unsafe member access .name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+344:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+344:28  Error: Unsafe member access .timestamp on an `any` value.  @typescript-eslint/no-unsafe-member-access
+345:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+345:25  Error: Unsafe member access .params on an `any` value.  @typescript-eslint/no-unsafe-member-access
+346:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+346:28  Error: Unsafe member access .sessionId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/analytics/performance/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+8:8  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+9:10  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+15:14  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+28:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+147:15  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+154:17  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+154:32  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+159:17  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+159:32  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+159:32  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+159:39  Error: Unsafe member access .map on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+159:48  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+159:59  Error: Unsafe argument of type `any` assigned to a parameter of type `string`.  @typescript-eslint/no-unsafe-argument
+159:63  Error: Unsafe member access .map on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+159:72  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+159:74  Error: Unsafe member access .value on an `any` value.  @typescript-eslint/no-unsafe-member-access
+162:13  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+162:33  Error: Unsafe member access .length on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+163:35  Error: Unsafe member access .length on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+163:48  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+163:61  Error: Unsafe member access .reduce on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+163:78  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+163:103  Error: Unsafe member access .length on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+164:37  Error: Unsafe argument of type error typed assigned to a parameter of type `number[]`.  @typescript-eslint/no-unsafe-argument
+165:38  Error: Unsafe argument of type error typed assigned to a parameter of type `number[]`.  @typescript-eslint/no-unsafe-argument
+166:38  Error: Unsafe argument of type error typed assigned to a parameter of type `number[]`.  @typescript-eslint/no-unsafe-argument
+175:17  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+175:32  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+176:17  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+176:32  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+176:32  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+176:39  Error: Unsafe member access .map on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+176:48  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+176:59  Error: Unsafe argument of type `any` assigned to a parameter of type `string`.  @typescript-eslint/no-unsafe-argument
+176:63  Error: Unsafe member access .map on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+176:72  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+176:74  Error: Unsafe member access .value on an `any` value.  @typescript-eslint/no-unsafe-member-access
+181:13  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+181:33  Error: Unsafe member access .length on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+182:35  Error: Unsafe member access .length on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+182:48  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+182:61  Error: Unsafe member access .reduce on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+182:78  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+182:103  Error: Unsafe member access .length on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+191:7  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+197:11  Error: Unsafe return of a value of type error.  @typescript-eslint/no-unsafe-return
+197:18  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+197:18  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+201:13  Error: Unsafe member access .then on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+202:19  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+202:34  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+202:34  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+202:41  Error: Unsafe member access .map on an `any` value.  @typescript-eslint/no-unsafe-member-access
+202:50  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+202:61  Error: Unsafe argument of type `any` assigned to a parameter of type `string`.  @typescript-eslint/no-unsafe-argument
+202:65  Error: Unsafe member access .map on an `any` value.  @typescript-eslint/no-unsafe-member-access
+202:74  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+202:76  Error: Unsafe member access .value on an `any` value.  @typescript-eslint/no-unsafe-member-access
+205:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+205:35  Error: Unsafe member access .length on an `any` value.  @typescript-eslint/no-unsafe-member-access
+206:37  Error: Unsafe member access .length on an `any` value.  @typescript-eslint/no-unsafe-member-access
+206:50  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+206:63  Error: Unsafe member access .reduce on an `any` value.  @typescript-eslint/no-unsafe-member-access
+206:80  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+206:105  Error: Unsafe member access .length on an `any` value.  @typescript-eslint/no-unsafe-member-access
+207:39  Error: Unsafe argument of type `any` assigned to a parameter of type `number[]`.  @typescript-eslint/no-unsafe-argument
+208:40  Error: Unsafe argument of type `any` assigned to a parameter of type `number[]`.  @typescript-eslint/no-unsafe-argument
+220:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+277:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+277:41  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+278:39  Error: Unsafe return of a value of type `any[]`.  @typescript-eslint/no-unsafe-return
+278:42  Error: Unsafe member access .average on an `any` value.  @typescript-eslint/no-unsafe-member-access
+278:53  Error: Unsafe member access .p95 on an `any` value.  @typescript-eslint/no-unsafe-member-access
+280:5  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+280:43  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+280:51  Error: Unsafe member access .count on an `any` value.  @typescript-eslint/no-unsafe-member-access
+281:71  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+282:24  Error: Unsafe spread of an `any[]` array type.  @typescript-eslint/no-unsafe-argument
+282:41  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+282:43  Error: Unsafe member access .p95 on an `any` value.  @typescript-eslint/no-unsafe-member-access
+283:27  Error: Unsafe spread of an `any[]` array type.  @typescript-eslint/no-unsafe-argument
+283:49  Error: Unsafe member access .average on an `any` value.  @typescript-eslint/no-unsafe-member-access
+283:71  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+283:73  Error: Unsafe member access .average on an `any` value.  @typescript-eslint/no-unsafe-member-access
+328:88  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+335:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+335:35  Error: Unsafe member access .timestamp on an `any` value.  @typescript-eslint/no-unsafe-member-access
+336:37  Error: Unsafe member access .city on an `any` value.  @typescript-eslint/no-unsafe-member-access
+336:61  Error: Unsafe member access .country on an `any` value.  @typescript-eslint/no-unsafe-member-access
+337:31  Error: Unsafe argument of type `any` assigned to a parameter of type `string`.  @typescript-eslint/no-unsafe-argument
+337:46  Error: Unsafe member access .userAgent on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/analytics/summary/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+80:11  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+93:7  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+93:23  Error: Unsafe member access .count on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+98:7  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+98:7  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+98:23  Error: Unsafe member access .groupBy on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+101:10  Error: Unsafe member access .then on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+101:25  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+101:32  Error: Unsafe member access .length on an `any` value.  @typescript-eslint/no-unsafe-member-access
+104:7  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+104:26  Error: Unsafe member access .count on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+114:7  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+114:28  Error: Unsafe member access .count on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+119:7  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+119:23  Error: Unsafe member access .groupBy on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+128:7  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+128:26  Error: Unsafe member access .groupBy on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+146:7  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+146:7  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+146:23  Error: Unsafe member access .groupBy on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+149:10  Error: Unsafe member access .then on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+150:9  Error: Unsafe return of a value of type error.  @typescript-eslint/no-unsafe-return
+150:25  Error: Unsafe member access .length on an `any` value.  @typescript-eslint/no-unsafe-member-access
+151:14  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+151:14  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+151:35  Error: Unsafe member access .count on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+153:16  Error: Unsafe member access .then on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+153:56  Error: Unsafe member access .length on an `any` value.  @typescript-eslint/no-unsafe-member-access
+158:7  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+158:28  Error: Unsafe member access .aggregate on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+165:11  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+165:30  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+165:46  Error: Unsafe member access .groupBy on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+179:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+180:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+181:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+182:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+183:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+185:27  Error: Unsafe member access ._sum on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+188:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+188:16  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+188:25  Error: Unsafe member access .map on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+189:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+189:22  Error: Unsafe member access .path on an `any` value.  @typescript-eslint/no-unsafe-member-access
+190:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+190:23  Error: Unsafe member access ._count on an `any` value.  @typescript-eslint/no-unsafe-member-access
+192:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+192:19  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+192:31  Error: Unsafe member access .map on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+193:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+193:30  Error: Unsafe member access .productId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+194:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+194:26  Error: Unsafe member access ._count on an `any` value.  @typescript-eslint/no-unsafe-member-access
+196:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+196:19  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+196:31  Error: Unsafe member access .map on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+197:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+197:25  Error: Unsafe member access .query on an `any` value.  @typescript-eslint/no-unsafe-member-access
+198:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+198:25  Error: Unsafe member access ._count on an `any` value.  @typescript-eslint/no-unsafe-member-access
+202:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+202:21  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+202:32  Error: Unsafe member access .map on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+203:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+203:17  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+203:17  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+203:22  Error: Unsafe member access .timestamp on an `any` value.  @typescript-eslint/no-unsafe-member-access
+203:46  Error: Unsafe member access .split on an `any` value.  @typescript-eslint/no-unsafe-member-access
+203:57  Error: Unsafe member access [0] on an `any` value.  @typescript-eslint/no-unsafe-member-access
+204:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+204:23  Error: Unsafe member access ._count on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/analytics/track/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+18:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+31:11  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+36:11  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+36:33  Error: Unsafe member access .create on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+42:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+76:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+78:9  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+78:25  Error: Unsafe member access .create on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+80:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+80:24  Error: Unsafe member access .path on an `any` value.  @typescript-eslint/no-unsafe-member-access
+81:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+81:25  Error: Unsafe member access .title on an `any` value.  @typescript-eslint/no-unsafe-member-access
+89:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+91:18  Error: Unsafe member access .productId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+92:11  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+92:30  Error: Unsafe member access .create on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+94:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+94:31  Error: Unsafe member access .productId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+103:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+105:18  Error: Unsafe member access .productId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+106:11  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+106:28  Error: Unsafe member access .create on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+109:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+109:31  Error: Unsafe member access .productId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+110:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+110:31  Error: Unsafe member access .variantId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+111:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+111:30  Error: Unsafe member access .quantity on an `any` value.  @typescript-eslint/no-unsafe-member-access
+120:41  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+122:18  Error: Unsafe member access .query on an `any` value.  @typescript-eslint/no-unsafe-member-access
+125:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+125:27  Error: Unsafe member access .query on an `any` value.  @typescript-eslint/no-unsafe-member-access
+126:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+126:29  Error: Unsafe member access .filters on an `any` value.  @typescript-eslint/no-unsafe-member-access
+127:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+127:33  Error: Unsafe member access .resultCount on an `any` value.  @typescript-eslint/no-unsafe-member-access
+135:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+137:18  Error: Unsafe member access .orderId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+138:11  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+138:32  Error: Unsafe member access .create on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+140:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+140:29  Error: Unsafe member access .orderId on an `any` value.  @typescript-eslint/no-unsafe-member-access
+141:39  Error: Unsafe member access .total on an `any` value.  @typescript-eslint/no-unsafe-member-access
+142:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+142:30  Error: Unsafe member access .currency on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/analytics/web-vitals/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+48:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/assets/verify/route.ts
+14:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+61:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+61:69  Error: Unsafe member access .category on an `any` value.  @typescript-eslint/no-unsafe-member-access
+66:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+74:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+75:33  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+75:43  Error: Unsafe member access .message on an `any` value.  @typescript-eslint/no-unsafe-member-access
+85:46  Error: Unsafe member access .status on an `any` value.  @typescript-eslint/no-unsafe-member-access
+86:56  Error: Unsafe argument of type `any` assigned to a parameter of type `string`.  @typescript-eslint/no-unsafe-argument
+86:58  Error: Unsafe member access .path on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/auth/login/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+42:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/auth/register/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+16:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/auth/session/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/bookings/availability/route.ts
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+6:11  Warning: 'BookedSlot' is defined but never used. Allowed unused vars must match /^_/u.  unused-imports/no-unused-vars
+
+./app/api/bookings/create/route.ts
+5:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+18:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/bookings/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+126:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+219:5  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+
+./app/api/cart/route.ts
+6:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/chat/route.ts
+14:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+16:18  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+62:5  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/checkout/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+112:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+206:54  Error: Unsafe member access [0] on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+291:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+292:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/content/blog/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+98:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+175:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/content/pages/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+77:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+149:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/health/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+11:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+21:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+40:1  Error: Async function 'checkApplicationHealth' has no 'await' expression.  @typescript-eslint/require-await
+323:12  Warning: '_error' is defined but never used.  unused-imports/no-unused-vars
+
+./app/api/lead/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+159:8  Error: Async function 'OPTIONS' has no 'await' expression.  @typescript-eslint/require-await
+310:7  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+354:8  Error: Async function 'GET' has no 'await' expression.  @typescript-eslint/require-await
+
+./app/api/mcp/[transport]/route.ts
+93:16  Error: Async arrow function has no 'await' expression.  @typescript-eslint/require-await
+104:24  Error: Async arrow function has no 'await' expression.  @typescript-eslint/require-await
+121:16  Error: Async arrow function has no 'await' expression.  @typescript-eslint/require-await
+136:24  Error: Async arrow function has no 'await' expression.  @typescript-eslint/require-await
+137:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+138:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+138:40  Error: Unsafe member access .slug on an `any` value.  @typescript-eslint/no-unsafe-member-access
+138:59  Error: Unsafe member access .id on an `any` value.  @typescript-eslint/no-unsafe-member-access
+148:65  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+171:18  Warning: '_e' is defined but never used.  unused-imports/no-unused-vars
+171:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+186:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+187:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+187:44  Error: Unsafe member access .slug on an `any` value.  @typescript-eslint/no-unsafe-member-access
+187:63  Error: Unsafe member access .id on an `any` value.  @typescript-eslint/no-unsafe-member-access
+197:35  Error: Unsafe member access .media on an `any` value.  @typescript-eslint/no-unsafe-member-access
+198:35  Error: Unsafe member access .media on an `any` value.  @typescript-eslint/no-unsafe-member-access
+199:20  Error: Unsafe member access .url on an `any` value.  @typescript-eslint/no-unsafe-member-access
+199:44  Error: Unsafe member access .url on an `any` value.  @typescript-eslint/no-unsafe-member-access
+202:22  Error: Unsafe member access .seo on an `any` value.  @typescript-eslint/no-unsafe-member-access
+202:61  Error: Unsafe member access .seo on an `any` value.  @typescript-eslint/no-unsafe-member-access
+224:19  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+224:33  Error: Unsafe member access .slug on an `any` value.  @typescript-eslint/no-unsafe-member-access
+225:19  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+225:31  Error: Unsafe member access .id on an `any` value.  @typescript-eslint/no-unsafe-member-access
+243:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+246:24  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+248:17  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+250:31  Error: Unsafe member access .media on an `any` value.  @typescript-eslint/no-unsafe-member-access
+251:31  Error: Unsafe member access .media on an `any` value.  @typescript-eslint/no-unsafe-member-access
+251:45  Error: Unsafe member access .url on an `any` value.  @typescript-eslint/no-unsafe-member-access
+251:69  Error: Unsafe member access .url on an `any` value.  @typescript-eslint/no-unsafe-member-access
+253:18  Error: Unsafe member access .seo on an `any` value.  @typescript-eslint/no-unsafe-member-access
+253:51  Error: Unsafe member access .seo on an `any` value.  @typescript-eslint/no-unsafe-member-access
+265:28  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+265:36  Error: Unsafe member access .slug on an `any` value.  @typescript-eslint/no-unsafe-member-access
+265:42  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+265:48  Error: Unsafe member access .id on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/newsletter/subscribe/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/orders/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+164:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/products/[slug]/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+15:11  Warning: 'ProductWithReviews' is defined but never used. Allowed unused vars must match /^_/u.  unused-imports/no-unused-vars
+105:43  Error: Unsafe member access .length on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+106:9  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+106:25  Error: Unsafe member access .reduce on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+106:114  Error: Unsafe member access .length on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+115:7  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+115:36  Error: Unsafe member access .length on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/products/categories/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/products/featured/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./app/api/products/route.ts
+13:11  Warning: 'ProductTag' is defined but never used. Allowed unused vars must match /^_/u.  unused-imports/no-unused-vars
+38:8  Error: Async function 'GET' has no 'await' expression.  @typescript-eslint/require-await
+
+./app/api/products/search/route.ts
+385:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+477:18  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+
+./app/api/products/search/suggestions/route.ts
+149:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+150:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+153:33  Error: Unsafe member access .length on an `any` value.  @typescript-eslint/no-unsafe-member-access
+153:68  Error: Unsafe argument of type `any` assigned to a parameter of type `string`.  @typescript-eslint/no-unsafe-argument
+156:35  Error: Unsafe member access .length on an `any` value.  @typescript-eslint/no-unsafe-member-access
+157:36  Error: Unsafe member access .length on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/quotes/quick/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+7:1  Error: '@/lib/validation/schemas' import is duplicated.  no-duplicate-imports
+72:20  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+96:36  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+144:5  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/quotes/renin/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+148:5  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+353:20  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+373:36  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+447:3  Error: Unsafe argument of type `any` assigned to a parameter of type `ZodType<ReninQuoteRequest, ZodTypeDef, ReninQuoteRequest>`.  @typescript-eslint/no-unsafe-argument
+447:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+450:5  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/reviews/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+109:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+203:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+204:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+206:55  Error: Unsafe argument of type `any` assigned to a parameter of type `string`.  @typescript-eslint/no-unsafe-argument
+215:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/self-check/route.ts
+16:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+20:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+22:13  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+23:14  Error: Unsafe member access .slug on an `any` value.  @typescript-eslint/no-unsafe-member-access
+23:69  Error: Unsafe argument of type `any` assigned to a parameter of type `string | number | boolean`.  @typescript-eslint/no-unsafe-argument
+23:71  Error: Unsafe member access .slug on an `any` value.  @typescript-eslint/no-unsafe-member-access
+55:17  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+59:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+59:19  Error: Unsafe member access .message on an `any` value.  @typescript-eslint/no-unsafe-member-access
+74:9  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+74:31  Error: Unsafe member access .message on an `any` value.  @typescript-eslint/no-unsafe-member-access
+80:45  Error: Unsafe member access .healthy on an `any` value.  @typescript-eslint/no-unsafe-member-access
+81:52  Error: Unsafe member access .status on an `any` value.  @typescript-eslint/no-unsafe-member-access
+81:64  Error: Unsafe member access .status on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/status/route.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+13:22  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+16:47  Error: Unexpected `await` of a non-Promise (non-"Thenable") value.  @typescript-eslint/await-thenable
+32:11  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+62:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+63:44  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+63:44  Error: Require statement not part of import statement.  @typescript-eslint/no-var-requires
+63:44  Error: A `require()` style import is forbidden.  @typescript-eslint/no-require-imports
+63:58  Error: Unsafe member access .loadavg on an `any` value.  @typescript-eslint/no-unsafe-member-access
+78:21  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+78:26  Error: Unsafe member access .status on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./app/api/tools/get-product-images/route.ts
+83:8  Error: Async function 'GET' has no 'await' expression.  @typescript-eslint/require-await
+
+./app/api/user/addresses/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+79:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/user/profile/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+86:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+
+./app/api/webhooks/paddle/route.ts
+2:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+29:11  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+31:18  Error: Unsafe member access .alert_name on an `any` value.  @typescript-eslint/no-unsafe-member-access
+58:8  Error: Async function 'GET' has no 'await' expression.  @typescript-eslint/require-await
+
+./app/book-measure/page.tsx
+100:98  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+118:47  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+230:83  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+319:89  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+502:21  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+502:44  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./app/faq/faq-content.tsx
+107:14  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+107:36  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+110:9  Error: Do not use an `<a>` element to navigate to `/contact/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+./app/instant-estimate/calculator.tsx
+71:51  Error: Async arrow function 'handleSubmit' has no 'await' expression.  @typescript-eslint/require-await
+406:28  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+478:21  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./app/locations/[city]/page.tsx
+49:9  Warning: Dangerous property 'dangerouslySetInnerHTML' found  react/no-danger
+
+./app/page.test.tsx
+38:18  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/products/page.tsx
+7:1  Error: '@/lib/products' import is duplicated.  no-duplicate-imports
+36:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+40:5  Warning: Unexpected console statement.  no-console
+50:17  Error: Unsafe member access .categories on an `any` value.  @typescript-eslint/no-unsafe-member-access
+50:39  Error: Unsafe member access .categories on an `any` value.  @typescript-eslint/no-unsafe-member-access
+52:9  Error: Unsafe call of a(n) `any` typed value.  @typescript-eslint/no-unsafe-call
+52:17  Error: Unsafe member access .categories on an `any` value.  @typescript-eslint/no-unsafe-member-access
+59:17  Error: Unsafe member access .priceRange on an `any` value.  @typescript-eslint/no-unsafe-member-access
+60:13  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+60:34  Error: Unsafe member access .priceRange on an `any` value.  @typescript-eslint/no-unsafe-member-access
+87:37  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+87:45  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+
+./app/products/products-data.ts
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+
+./app/utils/test-utils.tsx
+2:1  Error: '@testing-library/react' import is duplicated.  no-duplicate-imports
+4:1  Error: 'react' import is duplicated.  no-duplicate-imports
+
+./components/admin/RecentOrders.tsx
+3:52  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+11:49  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+11:55  Error: Unsafe member access .id on an `any` value.  @typescript-eslint/no-unsafe-member-access
+14:37  Error: Unsafe member access .guestName on an `any` value.  @typescript-eslint/no-unsafe-member-access
+14:56  Error: Unsafe member access .user on an `any` value.  @typescript-eslint/no-unsafe-member-access
+14:75  Error: Unsafe member access [0] on an `any` value.  @typescript-eslint/no-unsafe-member-access
+17:68  Error: Unsafe member access .guestName on an `any` value.  @typescript-eslint/no-unsafe-member-access
+17:87  Error: Unsafe member access .user on an `any` value.  @typescript-eslint/no-unsafe-member-access
+18:65  Error: Unsafe member access .guestEmail on an `any` value.  @typescript-eslint/no-unsafe-member-access
+18:85  Error: Unsafe member access .user on an `any` value.  @typescript-eslint/no-unsafe-member-access
+21:24  Error: Unsafe member access .total on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./components/auth/login-form.tsx
+33:14  Warning: '_error' is defined but never used.  unused-imports/no-unused-vars
+44:14  Warning: '_error' is defined but never used.  unused-imports/no-unused-vars
+62:49  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+145:21  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./components/auth/register-form.tsx
+40:13  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+43:18  Error: Unsafe argument of type `any` assigned to a parameter of type `SetStateAction<string>`.  @typescript-eslint/no-unsafe-argument
+43:23  Error: Unsafe member access .error on an `any` value.  @typescript-eslint/no-unsafe-member-access
+62:14  Warning: '_error' is defined but never used.  unused-imports/no-unused-vars
+72:14  Warning: '_error' is defined but never used.  unused-imports/no-unused-vars
+90:49  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+189:21  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./components/auth/user-button.tsx
+124:23  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./components/booking/BookingForm.tsx
+140:26  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./components/checkout/checkout-flow.tsx
+101:32  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./components/products/AddToCartButton.tsx
+42:14  Warning: '_error' is defined but never used.  unused-imports/no-unused-vars
+51:15  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./components/products/add-to-cart-button.tsx
+96:17  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+120:17  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./components/products/product-filters.tsx
+10:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/products/product-gallery.tsx
+68:9  Warning: Visible, non-interactive elements with click handlers must have at least one keyboard listener.  jsx-a11y/click-events-have-key-events
+68:9  Warning: Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.  jsx-a11y/no-static-element-interactions
+
+./components/products/product-search.tsx
+24:64  Error: Async arrow function 'onSubmit' has no 'await' expression.  @typescript-eslint/require-await
+44:5  Error: The element form has an implicit role of form. Defining this explicitly is redundant and should be avoided.  jsx-a11y/no-redundant-roles
+45:16  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./components/ui/alert.tsx
+38:3  Error: Headings must have content and the content must be accessible by a screen reader.  jsx-a11y/heading-has-content
+
+./components/ui/breadcrumb.tsx
+44:3  Error: Anchors must have content and the content must be accessible by a screen reader.  jsx-a11y/anchor-has-content
+
+./components/ui/card.tsx
+36:3  Error: Headings must have content and the content must be accessible by a screen reader.  jsx-a11y/heading-has-content
+
+./components/ui/command.tsx
+23:11  Error: An interface declaring no members is equivalent to its supertype.  @typescript-eslint/no-empty-object-type
+
+./components/ui/form.tsx
+8:1  Error: 'react-hook-form' import is duplicated.  no-duplicate-imports
+
+./components/ui/hover-card.tsx
+5:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+5:38  Error: Unsafe member access .Root on an `any` value.  @typescript-eslint/no-unsafe-member-access
+7:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+7:45  Error: Unsafe member access .Trigger on an `any` value.  @typescript-eslint/no-unsafe-member-access
+15:12  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+16:17  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+24:1  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+24:51  Error: Unsafe member access .Content on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./components/ui/image-placeholder.tsx
+21:7  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/ui/input.tsx
+5:18  Error: An interface declaring no members is equivalent to its supertype.  @typescript-eslint/no-empty-object-type
+
+./components/ui/luxury-button.tsx
+56:11  Error: Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free.  @typescript-eslint/ban-ts-comment
+
+./components/ui/luxury-quote-form.tsx
+113:67  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+116:28  Error: Promise-returning function provided to attribute where a void return was expected.  @typescript-eslint/no-misused-promises
+
+./components/ui/menubar.tsx
+6:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+6:38  Error: Unsafe member access .Menu on an `any` value.  @typescript-eslint/no-unsafe-member-access
+8:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+8:39  Error: Unsafe member access .Group on an `any` value.  @typescript-eslint/no-unsafe-member-access
+10:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+10:40  Error: Unsafe member access .Portal on an `any` value.  @typescript-eslint/no-unsafe-member-access
+12:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+12:37  Error: Unsafe member access .Sub on an `any` value.  @typescript-eslint/no-unsafe-member-access
+14:7  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+14:44  Error: Unsafe member access .RadioGroup on an `any` value.  @typescript-eslint/no-unsafe-member-access
+29:1  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+29:40  Error: Unsafe member access .Root on an `any` value.  @typescript-eslint/no-unsafe-member-access
+44:1  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+44:47  Error: Unsafe member access .Trigger on an `any` value.  @typescript-eslint/no-unsafe-member-access
+65:1  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+65:50  Error: Unsafe member access .SubTrigger on an `any` value.  @typescript-eslint/no-unsafe-member-access
+80:1  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+80:50  Error: Unsafe member access .SubContent on an `any` value.  @typescript-eslint/no-unsafe-member-access
+93:16  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+94:22  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+95:21  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+105:1  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+105:47  Error: Unsafe member access .Content on an `any` value.  @typescript-eslint/no-unsafe-member-access
+123:1  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+123:44  Error: Unsafe member access .Item on an `any` value.  @typescript-eslint/no-unsafe-member-access
+135:14  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+146:1  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+146:52  Error: Unsafe member access .CheckboxItem on an `any` value.  @typescript-eslint/no-unsafe-member-access
+168:1  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+168:49  Error: Unsafe member access .RadioItem on an `any` value.  @typescript-eslint/no-unsafe-member-access
+186:1  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+186:45  Error: Unsafe member access .Label on an `any` value.  @typescript-eslint/no-unsafe-member-access
+198:1  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+198:49  Error: Unsafe member access .Separator on an `any` value.  @typescript-eslint/no-unsafe-member-access
+
+./components/ui/pagination.tsx
+5:1  Error: '@/components/ui/button' import is duplicated.  no-duplicate-imports
+48:3  Error: Anchors must have content and the content must be accessible by a screen reader.  jsx-a11y/anchor-has-content
+
+./components/ui/textarea.tsx
+5:18  Error: An interface declaring no members is equivalent to its supertype.  @typescript-eslint/no-empty-object-type
+
+./lib/bookings.ts
+67:11  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+67:28  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+67:47  Error: Unsafe member access .findMany on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+81:5  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+81:24  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+81:33  Error: Unsafe member access .map on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+81:44  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+81:46  Error: Unsafe member access .time on an `any` value.  @typescript-eslint/no-unsafe-member-access
+109:9  Error: Unsafe assignment of an error typed value.  @typescript-eslint/no-unsafe-assignment
+109:29  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+109:48  Error: Unsafe member access .create on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+130:10  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+130:29  Error: Unsafe member access .findUnique on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+142:10  Error: Unsafe call of a(n) `error` type typed value.  @typescript-eslint/no-unsafe-call
+142:29  Error: Unsafe member access .update on an `error` typed value.  @typescript-eslint/no-unsafe-member-access
+
+./lib/data/products.ts
+259:52  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+263:52  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+281:31  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+300:16  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+300:24  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+300:36  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+300:44  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+302:16  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+302:24  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+302:36  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+302:44  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+
+./lib/email/newsletter.ts
+15:8  Error: Async function 'subscribeToNewsletter' has no 'await' expression.  @typescript-eslint/require-await
+
+./lib/email/send-quote-email.ts
+51:9  Warning: Unexpected console statement.  no-console
+
+./lib/email/templates/quote-confirmation.tsx
+1:1  Error: Do not use "@ts-nocheck" because it alters compilation errors.  @typescript-eslint/ban-ts-comment
+29:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+59:71  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+75:60  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+168:57  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+238:87  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+250:34  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./lib/security/middleware.ts
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+
+./lib/supabase/server.ts
+17:14  Error: 'unknown' overrides all other types in this union type.  @typescript-eslint/no-redundant-type-constituents
+
+./lib/utils.ts
+2:1  Error: 'clsx' import is duplicated.  no-duplicate-imports
+
+./lib/validation/middleware.ts
+3:1  Error: 'next/server' import is duplicated.  no-duplicate-imports
+5:1  Error: 'zod' import is duplicated.  no-duplicate-imports
+
+./lib/validation/sanitization.ts
+112:9  Error: Unsafe return of a value of type `any`.  @typescript-eslint/no-unsafe-return
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
