@@ -14,50 +14,6 @@ const nextConfig = {
     webpackBuildWorker: true,
   },
 
-  // Webpack optimizations for better bundle size and performance
-  webpack: (config, { dev, isServer, webpack, nextRuntime }) => {
-    // Production optimizations
-    if (!dev) {
-      // Bundle analyzer for size monitoring
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-            maxSize: 500000,
-            minSize: 100000,
-          },
-          common: {
-            name: 'common',
-            minChunks: 2,
-            chunks: 'all',
-            maxSize: 300000,
-          },
-        },
-      }
-
-      // Tree shaking optimization
-      config.optimization.usedExports = true
-      config.optimization.sideEffects = false
-    }
-
-    // Image optimization
-    config.module.rules.push({
-      test: /\.(png|jpe?g|gif|svg)$/i,
-      use: [
-        {
-          loader: 'next/image-loader',
-          options: {
-            publicPath: '/_next/',
-          },
-        },
-      ],
-    })
-
-    return config
-  },
   
   // Image optimization
   images: {
