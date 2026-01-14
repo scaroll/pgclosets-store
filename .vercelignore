@@ -51,10 +51,25 @@ store
 testimonials
 upload
 
-# Root-level orphan tsx files
-*.tsx
-!app/**/*.tsx
-!components/**/*.tsx
-!lib/**/*.tsx
-!hooks/**/*.tsx
-!data/**/*.tsx
+# Root-level orphan tsx files (list individually)
+AuthContext.tsx
+BlobStorageViewer.tsx
+CartContext.tsx
+ClientHomePage.tsx
+ClientPage.tsx
+GoogleAnalytics.tsx
+HeroVideo.tsx
+InventoryContext.tsx
+LiveChat.tsx
+MediaGallery.tsx
+MediaSelector.tsx
+PgFooter.tsx
+PgHeader.tsx
+SecureImageUploader.tsx
+cart-context.tsx
+clientLayout.tsx
+layout.tsx
+loading.tsx
+not-found.tsx
+page.tsx
+simple-add-to-cart-button.tsx
