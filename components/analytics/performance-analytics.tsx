@@ -3,6 +3,13 @@
 import { useEffect } from "react"
 import Script from "next/script"
 
+// Declare gtag type for TypeScript
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
 interface PerformanceAnalyticsProps {
   gaId: string
 }
@@ -11,8 +18,7 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
   useEffect(() => {
     // Track Core Web Vitals
     const trackWebVitals = () => {
-      if (typeof window !== "undefined" && "gtag" in window) {
-        // @ts-ignore
+      if (typeof window !== "undefined" && window.gtag) {
         const gtag = window.gtag
 
         // Track Largest Contentful Paint (LCP)
@@ -30,7 +36,7 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
         // Track First Input Delay (FID)
         new PerformanceObserver((entryList) => {
           for (const entry of entryList.getEntries()) {
-            const fidEntry = entry as any // Type assertion for first-input entries
+            const fidEntry = entry as PerformanceEntry & { processingStart?: number }
             if (fidEntry.processingStart) {
               gtag("event", "web_vitals", {
                 event_category: "Web Vitals",
@@ -46,7 +52,7 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
         let clsValue = 0
         new PerformanceObserver((entryList) => {
           for (const entry of entryList.getEntries()) {
-            const clsEntry = entry as any // Type assertion for layout-shift entries
+            const clsEntry = entry as PerformanceEntry & { hadRecentInput?: boolean; value?: number }
             if (!clsEntry.hadRecentInput) {
               clsValue += clsEntry.value || 0
             }
@@ -75,7 +81,7 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
 
     // Wait for gtag to be available
     const checkGtag = () => {
-      if (typeof window !== "undefined" && "gtag" in window) {
+      if (typeof window !== "undefined" && window.gtag) {
         trackWebVitals()
       } else {
         setTimeout(checkGtag, 100)
@@ -90,8 +96,7 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
 
 export function SEOAnalytics({ gaId }: PerformanceAnalyticsProps) {
   useEffect(() => {
-    if (typeof window !== "undefined" && "gtag" in window) {
-      // @ts-ignore
+    if (typeof window !== "undefined" && window.gtag) {
       const gtag = window.gtag
 
       // Track SEO-specific events
@@ -162,8 +167,7 @@ export function SEOAnalytics({ gaId }: PerformanceAnalyticsProps) {
 
 export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
   useEffect(() => {
-    if (typeof window !== "undefined" && "gtag" in window) {
-      // @ts-ignore
+    if (typeof window !== "undefined" && window.gtag) {
       const gtag = window.gtag
 
       // Track SEO conversion events
