@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+// Removed shadcn import - using native HTML
 import { CheckCircle, Home, Download, Phone, Mail, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
@@ -9,18 +7,18 @@ export default function ConfirmationPage() {
   const estimatedDelivery = "February 15-22, 2025"
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-background/95 backdrop-blur-sm border-b border-border">
+      <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center relative">
-                <Home className="w-5 h-5 text-primary-foreground" />
+              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center relative">
+                <Home className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="text-xl font-bold text-foreground font-serif">PG Closets</span>
-                <p className="text-xs text-muted-foreground">Order Confirmation</p>
+                <span className="text-xl font-bold text-gray-900 font-serif">PG Closets</span>
+                <p className="text-xs text-gray-500">Order Confirmation</p>
               </div>
             </Link>
           </div>
@@ -33,188 +31,149 @@ export default function ConfirmationPage() {
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-12 h-12 text-green-600" />
           </div>
-          <h1 className="text-4xl font-bold text-foreground mb-4 font-serif">Order Confirmed!</h1>
-          <p className="text-xl text-muted-foreground mb-2">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4 font-serif">Order Confirmed!</h1>
+          <p className="text-xl text-gray-600 mb-2">
             Thank you for your purchase. Your order has been successfully placed.
           </p>
-          <p className="text-muted-foreground">
-            Order #{orderNumber} • Estimated delivery: {estimatedDelivery}
+          <p className="text-gray-500">
+            Order #{orderNumber} - Estimated delivery: {estimatedDelivery}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Order Details */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-serif">Order Details</CardTitle>
-              <CardDescription>Your premium closet solutions are on their way</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
-                  <div className="flex items-center space-x-4">
-                    <img
-                      src="/elegant-barn-door-closet.png"
-                      alt="Premium Barn Door System - Elegant sliding closet door with black hardware"
-                      className="w-16 h-16 object-cover rounded-lg"
-                      loading="lazy"
-                    />
-                    <div>
-                      <p className="font-medium">Premium Barn Door System</p>
-                      <p className="text-sm text-muted-foreground">Quantity: 1</p>
-                    </div>
-                  </div>
-                  <p className="font-medium">$899</p>
-                </div>
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h2 className="text-xl font-semibold mb-2">Order Details</h2>
+            <p className="text-gray-500 text-sm mb-6">Your premium closet solutions are on their way</p>
 
-                <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
-                  <div className="flex items-center space-x-4">
-                    <img
-                      src="/luxury-walk-in-closet.png"
-                      alt="Luxury Walk-In System - Premium closet organization system with custom shelving"
-                      className="w-16 h-16 object-cover rounded-lg"
-                      loading="lazy"
-                    />
-                    <div>
-                      <p className="font-medium">Luxury Walk-In System</p>
-                      <p className="text-sm text-muted-foreground">Quantity: 1</p>
-                    </div>
+            <div className="space-y-4 mb-6">
+              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 bg-gray-200 rounded-lg"></div>
+                  <div>
+                    <p className="font-medium">Premium Barn Door System</p>
+                    <p className="text-sm text-gray-500">Quantity: 1</p>
                   </div>
-                  <p className="font-medium">$2,499</p>
                 </div>
+                <p className="font-medium">$899</p>
               </div>
 
-              <div className="space-y-2 pt-4 border-t border-border">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Subtotal</span>
-                  <span>$3,398</span>
+              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 bg-gray-200 rounded-lg"></div>
+                  <div>
+                    <p className="font-medium">Luxury Walk-In System</p>
+                    <p className="text-sm text-gray-500">Quantity: 1</p>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Shipping</span>
-                  <span>Free</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Tax (HST)</span>
-                  <span>$441.74</span>
-                </div>
-                <div className="flex justify-between text-lg font-bold pt-2 border-t border-border">
-                  <span>Total</span>
-                  <span>$3,839.74</span>
-                </div>
+                <p className="font-medium">$2,499</p>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+
+            <div className="space-y-2 pt-4 border-t border-gray-200">
+              <div className="flex justify-between">
+                <span className="text-gray-500">Subtotal</span>
+                <span>$3,398</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500">Shipping</span>
+                <span>Free</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500">Tax (HST)</span>
+                <span>$441.74</span>
+              </div>
+              <div className="flex justify-between text-lg font-bold pt-2 border-t border-gray-200">
+                <span>Total</span>
+                <span>$3,839.74</span>
+              </div>
+            </div>
+          </div>
 
           {/* Next Steps */}
           <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-serif">What Happens Next?</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h2 className="text-xl font-semibold mb-4">What Happens Next?</h2>
+              <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-sm font-medium text-primary">1</span>
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-sm font-medium text-blue-600">1</span>
                   </div>
                   <div>
                     <p className="font-medium">Order Processing</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-gray-500">
                       We'll prepare your custom closet systems (1-2 business days)
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-sm font-medium text-primary">2</span>
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-sm font-medium text-blue-600">2</span>
                   </div>
                   <div>
                     <p className="font-medium">Design Consultation</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-gray-500">
                       Our team will contact you to schedule your consultation
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-sm font-medium text-primary">3</span>
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-sm font-medium text-blue-600">3</span>
                   </div>
                   <div>
                     <p className="font-medium">Manufacturing & Delivery</p>
-                    <p className="text-sm text-muted-foreground">Custom manufacturing and delivery (2-3 weeks)</p>
+                    <p className="text-sm text-gray-500">Custom manufacturing and delivery (2-3 weeks)</p>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-sm font-medium text-primary">4</span>
-                  </div>
-                  <div>
-                    <p className="font-medium">Professional Installation</p>
-                    <p className="text-sm text-muted-foreground">Expert installation and final walkthrough</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-serif">Need Help?</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h2 className="text-xl font-semibold mb-4">Need Help?</h2>
+              <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-accent" />
+                  <Phone className="w-5 h-5 text-blue-600" />
                   <div>
                     <p className="font-medium">(416) 555-CLOSET</p>
-                    <p className="text-sm text-muted-foreground">Mon-Sat 9AM-7PM</p>
+                    <p className="text-sm text-gray-500">Mon-Sat 9AM-7PM</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-accent" />
+                  <Mail className="w-5 h-5 text-blue-600" />
                   <div>
                     <p className="font-medium">orders@pgclosets.com</p>
-                    <p className="text-sm text-muted-foreground">24/7 Support</p>
+                    <p className="text-sm text-gray-500">24/7 Support</p>
                   </div>
                 </div>
 
                 <div className="pt-4">
-                  <Button variant="outline" className="w-full bg-transparent">
+                  <button className="w-full border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center">
                     <Download className="w-4 h-4 mr-2" />
                     Download Order Receipt
-                  </Button>
+                  </button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
           <Link href="/products">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary/5 bg-transparent"
-            >
+            <button className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors">
               Continue Shopping
-            </Button>
+            </button>
           </Link>
           <Link href="/">
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
+            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center">
               Back to Home
               <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            </button>
           </Link>
-        </div>
-
-        {/* Email Confirmation */}
-        <div className="mt-12 text-center">
-          <Badge className="bg-accent/20 text-accent-foreground">
-            <Mail className="w-3 h-3 mr-2" />
-            Order confirmation sent to your email
-          </Badge>
         </div>
       </div>
     </div>

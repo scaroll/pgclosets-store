@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation"
+import Image from "next/image"
 import { reninProducts } from "../../../data/renin-products"
 import { ProductJSONLD } from "../../../lib/seo"
 
@@ -36,14 +37,19 @@ export default async function PDP({ params }: { params: Promise<{ slug: string }
 
         <section className="grid lg:grid-cols-2 gap-10 mb-12">
           {/* Image block with exact specifications: white card, sky border, 16px radius, min-height requirements */}
-          <div className="card-apple p-0 overflow-hidden min-h-[320px] lg:min-h-[480px]">
-            <img
+          <div className="card-apple p-0 overflow-hidden min-h-[320px] lg:min-h-[480px] relative">
+            <Image
               src={
                 p.image ||
                 `/placeholder.svg?height=900&width=1200&query=${encodeURIComponent(p.name + " closet door") || "/placeholder.svg"}`
               }
               alt={`${p.name} - PG Closets Ottawa`}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority={true}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAABBQEBAQEBAQAAAAAAAAAEAQIDBQAGByETIv/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEQMSkf/aAAwDAQACEQMRAD8A0+yeuwiG+4lk5Y3N5YhZFpnelduG0cR7w3Pz0SudECH/2Q=="
             />
           </div>
 
@@ -117,14 +123,17 @@ export default async function PDP({ params }: { params: Promise<{ slug: string }
               {related.map((r) => (
                 <a key={r.id} href={`/products/${r.id}`} className="card-apple overflow-hidden group">
                   {/* Small height image (160px) as specified for related products */}
-                  <div className="h-40 overflow-hidden">
-                    <img
+                  <div className="h-40 overflow-hidden relative">
+                    <Image
                       src={
                         r.image ||
                         `/placeholder.svg?height=160&width=240&query=${encodeURIComponent(r.name + " closet door") || "/placeholder.svg"}`
                       }
                       alt={`${r.name} - PG Closets Ottawa`}
-                      className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-200 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading="lazy"
                     />
                   </div>
                   <div className="p-4">

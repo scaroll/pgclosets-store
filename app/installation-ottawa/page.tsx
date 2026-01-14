@@ -1,7 +1,7 @@
+// Removed shadcn import - using native HTML
 import type { Metadata } from "next"
 import PgHeader from "@/components/PgHeader"
 import PgFooter from "@/components/PgFooter"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 export const metadata: Metadata = {
@@ -62,10 +62,10 @@ export default function InstallationOttawaPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/configurator">
-              <Button className="btn-primary px-8 py-4 text-lg rounded-full">Schedule Installation</Button>
+              <button className="bg-pg-navy text-white px-8 py-4 text-lg rounded-full hover:bg-pg-navy/90 transition-colors">Schedule Installation</button>
             </Link>
             <Link href="/contact">
-              <Button className="btn-secondary px-8 py-4 text-lg rounded-full">Get Quote</Button>
+              <button className="border-2 border-pg-navy text-pg-navy px-8 py-4 text-lg rounded-full hover:bg-pg-navy hover:text-white transition-colors">Get Quote</button>
             </Link>
           </div>
         </div>

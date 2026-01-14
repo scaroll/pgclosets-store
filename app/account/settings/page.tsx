@@ -1,34 +1,27 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+// Removed shadcn import - using native HTML
 import { Settings, Bell, Shield, Globe, ArrowLeft, Trash2 } from "lucide-react"
 import Link from "next/link"
 
 export default function SettingsPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center relative">
-                <span className="text-primary-foreground font-bold text-sm">PG</span>
+              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">PG</span>
               </div>
               <div>
-                <span className="text-xl font-bold text-foreground font-serif">PG Closets</span>
-                <p className="text-xs text-muted-foreground">Premium Home Organization</p>
+                <span className="text-xl font-bold text-gray-900">PG Closets</span>
+                <p className="text-xs text-gray-500">Premium Home Organization</p>
               </div>
             </Link>
 
-            <Link href="/account">
-              <Button variant="ghost" className="flex items-center">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Account
-              </Button>
+            <Link href="/account" className="inline-flex items-center px-4 py-2 text-gray-600 hover:text-gray-900">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Account
             </Link>
           </div>
         </div>
@@ -36,242 +29,137 @@ export default function SettingsPage() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2 font-serif">Account Settings</h1>
-          <p className="text-muted-foreground">Manage your account preferences and security settings</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Account Settings</h1>
+          <p className="text-gray-500">Manage your account preferences and security settings</p>
         </div>
 
         <div className="space-y-8">
           {/* Notification Settings */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Bell className="w-5 h-5 mr-2 text-primary" />
-                Notifications
-              </CardTitle>
-              <CardDescription>Choose how you want to be notified</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="flex items-center justify-between">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+              <Bell className="w-5 h-5 mr-2 text-blue-600" />
+              Notifications
+            </h2>
+            <p className="text-gray-500 text-sm mb-6">Choose how you want to be notified</p>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div>
-                  <Label htmlFor="email-notifications" className="text-base font-medium">
-                    Email Notifications
-                  </Label>
-                  <p className="text-sm text-muted-foreground">Receive order updates and promotions via email</p>
+                  <p className="font-medium">Email Notifications</p>
+                  <p className="text-sm text-gray-500">Receive order updates and promotions via email</p>
                 </div>
-                <Switch id="email-notifications" defaultChecked />
+                <input type="checkbox" defaultChecked className="w-5 h-5 text-blue-600 rounded" />
               </div>
-
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div>
-                  <Label htmlFor="sms-notifications" className="text-base font-medium">
-                    SMS Notifications
-                  </Label>
-                  <p className="text-sm text-muted-foreground">Get text messages for important order updates</p>
+                  <p className="font-medium">SMS Notifications</p>
+                  <p className="text-sm text-gray-500">Get text messages for important order updates</p>
                 </div>
-                <Switch id="sms-notifications" />
+                <input type="checkbox" className="w-5 h-5 text-blue-600 rounded" />
               </div>
-
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div>
-                  <Label htmlFor="marketing-emails" className="text-base font-medium">
-                    Marketing Emails
-                  </Label>
-                  <p className="text-sm text-muted-foreground">Receive newsletters and promotional offers</p>
+                  <p className="font-medium">Marketing Emails</p>
+                  <p className="text-sm text-gray-500">Receive newsletters and promotional offers</p>
                 </div>
-                <Switch id="marketing-emails" defaultChecked />
+                <input type="checkbox" defaultChecked className="w-5 h-5 text-blue-600 rounded" />
               </div>
-
-              <div className="flex items-center justify-between">
-                <div>
-                  <Label htmlFor="push-notifications" className="text-base font-medium">
-                    Push Notifications
-                  </Label>
-                  <p className="text-sm text-muted-foreground">Browser notifications for real-time updates</p>
-                </div>
-                <Switch id="push-notifications" />
-              </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Privacy Settings */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Shield className="w-5 h-5 mr-2 text-primary" />
-                Privacy & Security
-              </CardTitle>
-              <CardDescription>Control your privacy and security preferences</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+              <Shield className="w-5 h-5 mr-2 text-blue-600" />
+              Privacy & Security
+            </h2>
+            <p className="text-gray-500 text-sm mb-6">Control your privacy and security preferences</p>
+            <div className="space-y-4">
               <div>
-                <Label htmlFor="current-password" className="text-base font-medium">
-                  Change Password
-                </Label>
-                <div className="space-y-3 mt-2">
-                  <Input id="current-password" type="password" placeholder="Current password" className="bg-muted/50" />
-                  <Input id="new-password" type="password" placeholder="New password" className="bg-muted/50" />
-                  <Input
-                    id="confirm-password"
-                    type="password"
-                    placeholder="Confirm new password"
-                    className="bg-muted/50"
-                  />
-                  <Button variant="outline" size="sm" className="bg-transparent">
+                <label className="font-medium block mb-2">Change Password</label>
+                <div className="space-y-3">
+                  <input type="password" placeholder="Current password" className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50" />
+                  <input type="password" placeholder="New password" className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50" />
+                  <input type="password" placeholder="Confirm new password" className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50" />
+                  <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
                     Update Password
-                  </Button>
+                  </button>
                 </div>
               </div>
-
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div>
-                  <Label htmlFor="two-factor" className="text-base font-medium">
-                    Two-Factor Authentication
-                  </Label>
-                  <p className="text-sm text-muted-foreground">Add an extra layer of security to your account</p>
+                  <p className="font-medium">Two-Factor Authentication</p>
+                  <p className="text-sm text-gray-500">Add an extra layer of security to your account</p>
                 </div>
-                <Button variant="outline" size="sm" className="bg-transparent">
+                <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">
                   Enable 2FA
-                </Button>
+                </button>
               </div>
-
-              <div className="flex items-center justify-between">
-                <div>
-                  <Label htmlFor="data-sharing" className="text-base font-medium">
-                    Data Sharing
-                  </Label>
-                  <p className="text-sm text-muted-foreground">Allow us to share anonymized data for improvements</p>
-                </div>
-                <Switch id="data-sharing" defaultChecked />
-              </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Preferences */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Globe className="w-5 h-5 mr-2 text-primary" />
-                Preferences
-              </CardTitle>
-              <CardDescription>Customize your experience</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="language">Language</Label>
-                  <Select defaultValue="en">
-                    <SelectTrigger className="bg-muted/50">
-                      <SelectValue placeholder="Select language" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="en">English</SelectItem>
-                      <SelectItem value="fr">Français</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label htmlFor="currency">Currency</Label>
-                  <Select defaultValue="cad">
-                    <SelectTrigger className="bg-muted/50">
-                      <SelectValue placeholder="Select currency" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="cad">CAD ($)</SelectItem>
-                      <SelectItem value="usd">USD ($)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+              <Globe className="w-5 h-5 mr-2 text-blue-600" />
+              Preferences
+            </h2>
+            <p className="text-gray-500 text-sm mb-6">Customize your experience</p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label className="font-medium block mb-2">Language</label>
+                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50">
+                  <option value="en">English</option>
+                  <option value="fr">Français</option>
+                </select>
               </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="timezone">Timezone</Label>
-                  <Select defaultValue="est">
-                    <SelectTrigger className="bg-muted/50">
-                      <SelectValue placeholder="Select timezone" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="est">Eastern Time (EST)</SelectItem>
-                      <SelectItem value="cst">Central Time (CST)</SelectItem>
-                      <SelectItem value="mst">Mountain Time (MST)</SelectItem>
-                      <SelectItem value="pst">Pacific Time (PST)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label htmlFor="theme">Theme</Label>
-                  <Select defaultValue="light">
-                    <SelectTrigger className="bg-muted/50">
-                      <SelectValue placeholder="Select theme" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="light">Light</SelectItem>
-                      <SelectItem value="dark">Dark</SelectItem>
-                      <SelectItem value="system">System</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div>
+                <label className="font-medium block mb-2">Currency</label>
+                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50">
+                  <option value="cad">CAD ($)</option>
+                  <option value="usd">USD ($)</option>
+                </select>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Account Management */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Settings className="w-5 h-5 mr-2 text-primary" />
-                Account Management
-              </CardTitle>
-              <CardDescription>Manage your account data and preferences</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="flex items-center justify-between">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-2 flex items-center">
+              <Settings className="w-5 h-5 mr-2 text-blue-600" />
+              Account Management
+            </h2>
+            <p className="text-gray-500 text-sm mb-6">Manage your account data and preferences</p>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div>
-                  <Label className="text-base font-medium">Download Account Data</Label>
-                  <p className="text-sm text-muted-foreground">
-                    Download a copy of all your account data and order history
-                  </p>
+                  <p className="font-medium">Download Account Data</p>
+                  <p className="text-sm text-gray-500">Download a copy of all your account data</p>
                 </div>
-                <Button variant="outline" className="bg-transparent">
+                <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">
                   Download Data
-                </Button>
+                </button>
               </div>
-
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
                 <div>
-                  <Label className="text-base font-medium">Deactivate Account</Label>
-                  <p className="text-sm text-muted-foreground">
-                    Temporarily deactivate your account (can be reactivated)
-                  </p>
+                  <p className="font-medium text-red-700">Delete Account</p>
+                  <p className="text-sm text-red-600">Permanently delete your account and all associated data</p>
                 </div>
-                <Button variant="outline" className="bg-transparent">
-                  Deactivate
-                </Button>
-              </div>
-
-              <div className="flex items-center justify-between pt-4 border-t border-destructive/20">
-                <div>
-                  <Label className="text-base font-medium text-destructive">Delete Account</Label>
-                  <p className="text-sm text-muted-foreground">
-                    Permanently delete your account and all associated data
-                  </p>
-                </div>
-                <Button variant="destructive" className="bg-destructive hover:bg-destructive/90">
+                <button className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 flex items-center">
                   <Trash2 className="w-4 h-4 mr-2" />
                   Delete Account
-                </Button>
+                </button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Save Changes */}
           <div className="flex justify-end space-x-4">
-            <Button variant="outline" className="bg-transparent">
+            <button className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
               Cancel
-            </Button>
-            <Button className="bg-primary hover:bg-primary/90">Save Changes</Button>
+            </button>
+            <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+              Save Changes
+            </button>
           </div>
         </div>
       </div>

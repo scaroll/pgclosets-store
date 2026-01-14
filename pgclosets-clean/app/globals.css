@@ -1,0 +1,4 @@
+/* Import the main globals.css from src */
+@import '../src/app/globals.css';
+
+/* Additional app-level styles can be added here if needed */

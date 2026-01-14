@@ -1,11 +1,7 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
-import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Home, Truck, Shield, Gift, Tag } from "lucide-react"
+// Removed shadcn import - using native HTML
+import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Home, Truck, Shield, Gift } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { useCart } from "@/contexts/CartContext"
@@ -28,18 +24,18 @@ export default function CartClientPage() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gray-50">
         {/* Header */}
-        <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+        <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <Link href="/" className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center relative">
-                  <Home className="w-5 h-5 text-primary-foreground" />
+                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                  <Home className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <span className="text-xl font-bold text-foreground font-serif">PG Closets</span>
-                  <p className="text-xs text-muted-foreground">Premium Home Organization</p>
+                  <span className="text-xl font-bold text-gray-900">PG Closets</span>
+                  <p className="text-xs text-gray-500">Premium Home Organization</p>
                 </div>
               </Link>
             </div>
@@ -48,28 +44,26 @@ export default function CartClientPage() {
 
         {/* Empty Cart */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-          <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
-            <ShoppingCart className="w-12 h-12 text-muted-foreground" />
+          <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+            <ShoppingCart className="w-12 h-12 text-gray-400" />
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-4 font-serif">Your Cart is Empty</h1>
-          <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">Your Cart is Empty</h1>
+          <p className="text-lg text-gray-500 mb-8 max-w-md mx-auto">
             Discover our premium closet solutions and start building your dream organization system.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/products">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 px-8 py-4">
-                Shop Products
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+            <Link
+              href="/products"
+              className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            >
+              Shop Products
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
-            <Link href="/">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary/5 px-8 py-4 bg-transparent"
-              >
-                Back to Home
-              </Button>
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50"
+            >
+              Back to Home
             </Link>
           </div>
         </div>
@@ -78,42 +72,38 @@ export default function CartClientPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center relative">
-                <Home className="w-5 h-5 text-primary-foreground" />
+              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                <Home className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="text-xl font-bold text-foreground font-serif">PG Closets</span>
-                <p className="text-xs text-muted-foreground">Premium Home Organization</p>
+                <span className="text-xl font-bold text-gray-900">PG Closets</span>
+                <p className="text-xs text-gray-500">Premium Home Organization</p>
               </div>
             </Link>
 
-            <div className="flex items-center space-x-3">
-              <Button variant="ghost" size="sm" className="relative hover:bg-accent/20">
-                <ShoppingCart className="w-4 h-4" />
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs rounded-full flex items-center justify-center">
-                  {cartItems.reduce((sum, item) => sum + item.quantity, 0)}
-                </span>
-              </Button>
+            <div className="relative p-2">
+              <ShoppingCart className="w-5 h-5 text-gray-600" />
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-orange-500 text-white text-xs rounded-full flex items-center justify-center">
+                {cartItems.reduce((sum, item) => sum + item.quantity, 0)}
+              </span>
             </div>
           </div>
         </div>
       </header>
 
       {/* Breadcrumb */}
-      <div className="bg-muted/30 py-4">
+      <div className="bg-gray-100 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <Link href="/" className="hover:text-primary">
-              Home
-            </Link>
+          <div className="flex items-center space-x-2 text-sm text-gray-500">
+            <Link href="/" className="hover:text-blue-600">Home</Link>
             <span>/</span>
-            <span className="text-foreground">Shopping Cart</span>
+            <span className="text-gray-900">Shopping Cart</span>
           </div>
         </div>
       </div>
@@ -123,121 +113,85 @@ export default function CartClientPage() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-6">
             <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-foreground font-serif">Shopping Cart</h1>
-              <p className="text-muted-foreground">
+              <h1 className="text-3xl font-bold text-gray-900">Shopping Cart</h1>
+              <p className="text-gray-500">
                 {cartItems.length} {cartItems.length === 1 ? "item" : "items"}
               </p>
             </div>
 
             <div className="space-y-4">
               {cartItems.map((item) => (
-                <Card key={item.id} className="overflow-hidden">
-                  <CardContent className="p-6">
-                    <div className="flex gap-6">
-                      <div className="w-24 h-24 bg-muted rounded-lg overflow-hidden flex-shrink-0">
-                        <img
-                          src={item.image || "/placeholder.svg"}
-                          alt={item.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+                <div key={item.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                  <div className="flex gap-6">
+                    <div className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                      <img
+                        src={item.image || "/placeholder.svg"}
+                        alt={item.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
 
-                      <div className="flex-1 space-y-3">
-                        <div className="flex items-start justify-between">
-                          <div>
-                            <p className="text-sm text-muted-foreground">Door</p>
-                            <h3 className="text-lg font-semibold text-foreground font-serif">{item.name}</h3>
-                            <div className="flex items-center space-x-2 mt-1">
-                              <span className="text-xl font-bold text-foreground">
-                                ${item.price.toLocaleString()} CAD
-                              </span>
-                            </div>
-                            {item.customizations && (
-                              <div className="text-sm text-muted-foreground mt-2">
-                                {item.customizations.width && item.customizations.height && (
-                                  <span>
-                                    Size: {item.customizations.width}" × {item.customizations.height}"
-                                  </span>
-                                )}
-                                {item.customizations.hardware && (
-                                  <span className="ml-2">Hardware: {item.customizations.hardware}</span>
-                                )}
-                                {item.customizations.installation && <span className="ml-2">+ Installation</span>}
-                              </div>
-                            )}
-                          </div>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => removeItem(item.id)}
-                            className="text-muted-foreground hover:text-destructive"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </Button>
-                        </div>
-
-                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                          <span className="flex items-center">
-                            <div className="w-1 h-1 bg-accent rounded-full mr-2"></div>
-                            Premium Quality
+                    <div className="flex-1 space-y-3">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <p className="text-sm text-gray-500">Door</p>
+                          <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
+                          <span className="text-xl font-bold text-gray-900">
+                            ${item.price.toLocaleString()} CAD
                           </span>
                         </div>
+                        <button
+                          onClick={() => removeItem(item.id)}
+                          className="p-2 text-gray-400 hover:text-red-500"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
 
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-1">
-                            <span className="text-sm text-muted-foreground mr-3">Quantity:</span>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                              className="w-8 h-8 p-0"
-                              disabled={item.quantity <= 1}
-                            >
-                              <Minus className="w-3 h-3" />
-                            </Button>
-                            <span className="w-12 text-center font-medium">{item.quantity}</span>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              className="w-8 h-8 p-0"
-                            >
-                              <Plus className="w-3 h-3" />
-                            </Button>
-                          </div>
-                          <div className="text-right">
-                            <p className="text-lg font-bold text-foreground">
-                              ${(item.price * item.quantity).toLocaleString()} CAD
-                            </p>
-                          </div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-1">
+                          <span className="text-sm text-gray-500 mr-3">Quantity:</span>
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-100"
+                            disabled={item.quantity <= 1}
+                          >
+                            <Minus className="w-3 h-3" />
+                          </button>
+                          <span className="w-12 text-center font-medium">{item.quantity}</span>
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-100"
+                          >
+                            <Plus className="w-3 h-3" />
+                          </button>
                         </div>
+                        <p className="text-lg font-bold text-gray-900">
+                          ${(item.price * item.quantity).toLocaleString()} CAD
+                        </p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
 
-            {/* Continue Shopping */}
-            <div className="pt-6">
-              <Link href="/products">
-                <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 bg-transparent">
-                  <ArrowRight className="w-4 h-4 mr-2 rotate-180" />
-                  Continue Shopping
-                </Button>
-              </Link>
-            </div>
+            <Link
+              href="/products"
+              className="inline-flex items-center px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50"
+            >
+              <ArrowRight className="w-4 h-4 mr-2 rotate-180" />
+              Continue Shopping
+            </Link>
           </div>
 
           {/* Order Summary */}
           <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-serif">Order Summary</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Order Summary</h2>
+              <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Subtotal</span>
+                  <span className="text-gray-500">Subtotal</span>
                   <span className="font-medium">${subtotal.toLocaleString()} CAD</span>
                 </div>
 
@@ -249,94 +203,70 @@ export default function CartClientPage() {
                 )}
 
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Shipping</span>
+                  <span className="text-gray-500">Shipping</span>
                   <span className="font-medium">{shipping === 0 ? "Free" : `$${shipping} CAD`}</span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Tax (HST)</span>
+                  <span className="text-gray-500">Tax (HST)</span>
                   <span className="font-medium">${tax.toFixed(2)} CAD</span>
                 </div>
 
-                <Separator />
+                <hr className="my-4" />
 
                 <div className="flex justify-between text-lg font-bold">
                   <span>Total</span>
                   <span>${finalTotal.toFixed(2)} CAD</span>
                 </div>
-
-                {shipping > 0 && (
-                  <div className="bg-accent/10 p-3 rounded-lg">
-                    <p className="text-sm text-accent-foreground">
-                      <Truck className="w-4 h-4 inline mr-2" />
-                      Add ${(500 - subtotal).toFixed(2)} more for free shipping
-                    </p>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Promo Code */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg font-serif">Promo Code</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex space-x-2">
-                  <Input
-                    placeholder="Enter promo code"
-                    value={promoCode}
-                    onChange={(e) => setPromoCode(e.target.value)}
-                    className="flex-1"
-                  />
-                  <Button onClick={applyPromoCode} variant="outline">
-                    <Tag className="w-4 h-4 mr-2" />
-                    Apply
-                  </Button>
-                </div>
-                {appliedPromo && (
-                  <p className="text-sm text-green-600 mt-2">Promo code {appliedPromo} applied! 10% off your order.</p>
-                )}
-              </CardContent>
-            </Card>
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Promo Code</h3>
+              <div className="flex space-x-2">
+                <input
+                  type="text"
+                  placeholder="Enter promo code"
+                  value={promoCode}
+                  onChange={(e) => setPromoCode(e.target.value)}
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <button
+                  onClick={applyPromoCode}
+                  className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100"
+                >
+                  Apply
+                </button>
+              </div>
+            </div>
 
             {/* Trust Signals */}
-            <Card>
-              <CardContent className="p-4">
-                <div className="space-y-3">
-                  <div className="flex items-center text-sm">
-                    <Shield className="w-4 h-4 text-accent mr-3" />
-                    <span className="text-muted-foreground">Secure checkout with SSL encryption</span>
-                  </div>
-                  <div className="flex items-center text-sm">
-                    <Truck className="w-4 h-4 text-accent mr-3" />
-                    <span className="text-muted-foreground">Free shipping on orders over $500</span>
-                  </div>
-                  <div className="flex items-center text-sm">
-                    <Gift className="w-4 h-4 text-accent mr-3" />
-                    <span className="text-muted-foreground">30-day return policy</span>
-                  </div>
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+              <div className="space-y-3">
+                <div className="flex items-center text-sm">
+                  <Shield className="w-4 h-4 text-orange-500 mr-3" />
+                  <span className="text-gray-500">Secure checkout with SSL encryption</span>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="flex items-center text-sm">
+                  <Truck className="w-4 h-4 text-orange-500 mr-3" />
+                  <span className="text-gray-500">Free shipping on orders over $500</span>
+                </div>
+                <div className="flex items-center text-sm">
+                  <Gift className="w-4 h-4 text-orange-500 mr-3" />
+                  <span className="text-gray-500">30-day return policy</span>
+                </div>
+              </div>
+            </div>
 
             {/* Checkout Button */}
-            <Link href="/checkout">
-              <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
-                Proceed to Checkout
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+            <Link
+              href="/checkout"
+              className="w-full inline-flex items-center justify-center px-6 py-4 bg-blue-600 text-white text-lg rounded-lg hover:bg-blue-700"
+            >
+              Proceed to Checkout
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
-
-            {/* Alternative Actions */}
-            <div className="space-y-2">
-              <Button variant="outline" size="lg" className="w-full bg-transparent">
-                Get Free Quote
-              </Button>
-              <Button variant="outline" size="lg" className="w-full bg-transparent">
-                Schedule Consultation
-              </Button>
-            </div>
           </div>
         </div>
       </div>

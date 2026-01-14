@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import type { Product } from "@/lib/renin-products"
 import { formatPrice } from "@/lib/renin-products"
 import { RequestQuoteButton } from "@/components/ui/request-quote-button"
@@ -21,11 +22,16 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Product Images */}
           <div className="space-y-4">
-            <div className="aspect-square overflow-hidden rounded-lg bg-gray-100">
-              <img
+            <div className="aspect-square overflow-hidden rounded-lg bg-gray-100 relative">
+              <Image
                 src={product.images[selectedImage] || "/placeholder.svg?height=600&width=600"}
                 alt={product.name}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority={true}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAABBQEBAQEBAQAAAAAAAAAEAQIDBQAGByETIv/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEQMSkf/aAAwDAQACEQMRAD8A0+yeuwiG+4lk5Y3N5YhZFpnelduG0cR7w3Pz0SudECH/2Q=="
               />
             </div>
 
@@ -35,14 +41,17 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-colors ${
+                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-colors relative ${
                       selectedImage === index ? "border-pg-sky" : "border-transparent"
                     }`}
                   >
-                    <img
+                    <Image
                       src={image || "/placeholder.svg"}
                       alt={`${product.name} view ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="80px"
+                      loading="lazy"
                     />
                   </button>
                 ))}

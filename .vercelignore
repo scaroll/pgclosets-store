@@ -1,0 +1,8 @@
+node_modules
+.next
+.git
+deploy
+pgclosets-clean
+pgclosets-website
+final-website
+deployment-backup

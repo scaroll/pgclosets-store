@@ -1,7 +1,7 @@
+// Removed shadcn import - using native HTML
 import type { Metadata } from "next"
 import PgHeader from "@/components/PgHeader"
 import PgFooter from "@/components/PgFooter"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 export const metadata: Metadata = {
@@ -177,15 +177,17 @@ export default function WhyPGPage() {
             Ready to see why Ottawa homeowners choose us for their door and closet needs?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <Button className="bg-white text-pg-navy hover:bg-pg-offwhite px-8 py-4 text-lg rounded-full font-semibold">
-                Request Work
-              </Button>
+            <Link
+              href="/contact"
+              className="inline-block bg-white text-pg-navy hover:bg-pg-offwhite px-8 py-4 text-lg rounded-full font-semibold text-center"
+            >
+              Request Work
             </Link>
-            <Link href="/contact">
-              <Button className="border-2 border-white text-white hover:bg-white hover:text-pg-navy px-8 py-4 text-lg rounded-full font-semibold bg-transparent">
-                Get Free Quote
-              </Button>
+            <Link
+              href="/contact"
+              className="inline-block border-2 border-white text-white hover:bg-white hover:text-pg-navy px-8 py-4 text-lg rounded-full font-semibold text-center"
+            >
+              Get Free Quote
             </Link>
           </div>
         </div>

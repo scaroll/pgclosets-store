@@ -50,7 +50,7 @@ export default function Home() {
                 PG
               </div>
               <div>
-                <h1 className="text-xl font-bold text-[#1B4A9C]">PG CLOSETS</h1>
+                <div className="text-xl font-bold text-[#1B4A9C]">PG CLOSETS</div>
                 <p className="text-xs text-[#9BC4E2] font-medium">Premium Solutions</p>
               </div>
             </a>
@@ -146,7 +146,7 @@ export default function Home() {
             </span>
           </div>
 
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">Premium Closet Doors for Ottawa Homes</h1>
+          <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">Custom Closets & Storage Solutions in Ottawa</h1>
           <p className="text-lg lg:text-xl mb-8 max-w-3xl mx-auto">
             Official Renin Dealer • 500+ Installations • Free Measurement
           </p>
@@ -271,9 +271,12 @@ export default function Home() {
                         <div className="aspect-square relative mb-3 overflow-hidden">
                           <Image
                             src={product.image || "/placeholder.svg"}
-                            alt={product.name}
+                            alt={`${product.name} closet door design`}
                             fill
                             className="object-cover"
+                            loading="lazy"
+                            sizes="(max-width: 768px) 50vw, 150px"
+                            quality={75}
                           />
                         </div>
                         <div className="font-semibold text-[#1B4A9C] mb-1 text-sm">{product.name}</div>

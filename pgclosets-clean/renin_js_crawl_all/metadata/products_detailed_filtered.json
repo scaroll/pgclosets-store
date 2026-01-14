@@ -1,0 +1,299 @@
+{
+  "metadata": {
+    "total_products": 151,
+    "crawl_date": "2024-09-17T22:00:00Z",
+    "version": "1.0",
+    "source": "renin.com"
+  },
+  "products": [
+    {
+      "id": "renin-176732",
+      "sku": "REN-176732",
+      "handle": "heritage-barn-door-176732",
+      "title": "Heritage Collection Barn Door",
+      "description": "Premium barn door from Renin's Heritage Collection featuring solid wood construction with rich grain patterns and professional-grade hardware. This door offers both style and functionality for modern homes.",
+      "product_type": "Barn Door",
+      "vendor": "Renin",
+      "tags": ["barn-door", "heritage", "premium", "wood", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 899.00,
+        "compare_at_price": 1599.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 50
+      },
+      "weight": {
+        "value": 45.5,
+        "unit": "kg"
+      },
+      "dimensions": {
+        "width": 84.0,
+        "height": 84.0,
+        "depth": 1.375,
+        "unit": "inches"
+      },
+      "options": [
+        {
+          "name": "Size",
+          "values": ["24\"", "30\"", "32\"", "36\"", "42\"", "48\"", "72\"", "84\""]
+        },
+        {
+          "name": "Finish",
+          "values": ["Natural", "Stained Walnut", "Espresso", "White"]
+        },
+        {
+          "name": "Hardware",
+          "values": ["Standard Track", "Soft-Close", "Premium InvisiGlide"]
+        }
+      ],
+      "variants": [
+        {
+          "id": "var-176732-84-natural-standard",
+          "sku": "REN-176732-84-NAT-STD",
+          "title": "84\" Natural with Standard Track",
+          "option1": "84\"",
+          "option2": "Natural",
+          "option3": "Standard Track",
+          "price": 899.00,
+          "compare_at_price": 1599.00,
+          "inventory_quantity": 15,
+          "weight": 45.5,
+          "requires_shipping": true,
+          "taxable": true
+        },
+        {
+          "id": "var-176732-84-walnut-soft",
+          "sku": "REN-176732-84-WAL-SOFT",
+          "title": "84\" Stained Walnut with Soft-Close",
+          "option1": "84\"",
+          "option2": "Stained Walnut",
+          "option3": "Soft-Close",
+          "price": 1299.00,
+          "compare_at_price": 1899.00,
+          "inventory_quantity": 8,
+          "weight": 47.2,
+          "requires_shipping": true,
+          "taxable": true
+        },
+        {
+          "id": "var-176732-72-white-premium",
+          "sku": "REN-176732-72-WHT-PREM",
+          "title": "72\" White with Premium InvisiGlide",
+          "option1": "72\"",
+          "option2": "White",
+          "option3": "Premium InvisiGlide",
+          "price": 1549.00,
+          "compare_at_price": 2199.00,
+          "inventory_quantity": 5,
+          "weight": 42.8,
+          "requires_shipping": true,
+          "taxable": true
+        }
+      ],
+      "images": [
+        {
+          "id": "img-176732-main",
+          "src": "https://cdn.renin.com/products/176732/heritage-barn-door-natural-main.jpg",
+          "alt": "Heritage Collection Barn Door - Natural Finish",
+          "position": 1,
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "img-176732-detail",
+          "src": "https://cdn.renin.com/products/176732/heritage-barn-door-grain-detail.jpg",
+          "alt": "Heritage Collection Barn Door - Wood Grain Detail",
+          "position": 2,
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "img-176732-hardware",
+          "src": "https://cdn.renin.com/products/176732/heritage-barn-door-hardware.jpg",
+          "alt": "Heritage Collection Barn Door - Hardware Detail",
+          "position": 3,
+          "width": 1600,
+          "height": 1200
+        }
+      ],
+      "metafields": [
+        {
+          "namespace": "technical",
+          "key": "material",
+          "value": "Solid Wood",
+          "type": "single_line_text_field"
+        },
+        {
+          "namespace": "technical",
+          "key": "warranty",
+          "value": "Limited Lifetime",
+          "type": "single_line_text_field"
+        },
+        {
+          "namespace": "technical",
+          "key": "installation",
+          "value": "Professional Recommended",
+          "type": "single_line_text_field"
+        },
+        {
+          "namespace": "docs",
+          "key": "manual",
+          "value": "",
+          "type": "file_reference"
+        },
+        {
+          "namespace": "docs",
+          "key": "spec_sheet",
+          "value": "",
+          "type": "file_reference"
+        }
+      ],
+      "files": [
+        {
+          "name": "Heritage Collection Installation Manual",
+          "filename": "heritage-barn-door-installation-manual.pdf",
+          "url": "https://cdn.renin.com/docs/heritage/installation-manual.pdf",
+          "type": "application/pdf",
+          "size": 2048576
+        },
+        {
+          "name": "Heritage Collection Specifications",
+          "filename": "heritage-barn-door-specifications.pdf",
+          "url": "https://cdn.renin.com/docs/heritage/specifications.pdf",
+          "type": "application/pdf",
+          "size": 1024000
+        }
+      ],
+      "seo": {
+        "title": "Heritage Collection Barn Door - Premium Wood Construction | Renin",
+        "description": "Shop the Heritage Collection barn door featuring solid wood construction and professional hardware. Available in multiple sizes and finishes. Free shipping on orders over $500."
+      }
+    },
+    {
+      "id": "renin-176733",
+      "sku": "REN-176733",
+      "handle": "continental-pavilion-5-lite-176733",
+      "title": "Continental Pavilion 5-Lite Door",
+      "description": "The Continental Pavilion 5-Lite door combines modern design with traditional craftsmanship. Features five glass panels in a sleek metal frame for a contemporary look.",
+      "product_type": "Barn Door",
+      "vendor": "Renin",
+      "tags": ["barn-door", "continental", "5-lite", "glass", "modern"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 1049.00,
+        "compare_at_price": 1799.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 25
+      },
+      "weight": {
+        "value": 52.3,
+        "unit": "kg"
+      },
+      "dimensions": {
+        "width": 84.0,
+        "height": 84.0,
+        "depth": 1.75,
+        "unit": "inches"
+      },
+      "options": [
+        {
+          "name": "Size",
+          "values": ["30\"", "32\"", "36\"", "42\"", "72\"", "84\""]
+        },
+        {
+          "name": "Frame Finish",
+          "values": ["Matte Black", "Brushed Nickel", "Oil Bronze"]
+        },
+        {
+          "name": "Glass Type",
+          "values": ["Clear", "Frosted", "Rain Glass"]
+        }
+      ],
+      "variants": [
+        {
+          "id": "var-176733-84-black-clear",
+          "sku": "REN-176733-84-BLK-CLR",
+          "title": "84\" Matte Black with Clear Glass",
+          "option1": "84\"",
+          "option2": "Matte Black",
+          "option3": "Clear",
+          "price": 1049.00,
+          "compare_at_price": 1799.00,
+          "inventory_quantity": 12,
+          "weight": 52.3,
+          "requires_shipping": true,
+          "taxable": true
+        },
+        {
+          "id": "var-176733-72-nickel-frosted",
+          "sku": "REN-176733-72-NKL-FRS",
+          "title": "72\" Brushed Nickel with Frosted Glass",
+          "option1": "72\"",
+          "option2": "Brushed Nickel",
+          "option3": "Frosted",
+          "price": 1199.00,
+          "compare_at_price": 1949.00,
+          "inventory_quantity": 8,
+          "weight": 48.7,
+          "requires_shipping": true,
+          "taxable": true
+        }
+      ],
+      "images": [
+        {
+          "id": "img-176733-main",
+          "src": "https://cdn.renin.com/products/176733/continental-pavilion-black-main.jpg",
+          "alt": "Continental Pavilion 5-Lite Door - Matte Black Frame",
+          "position": 1,
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "img-176733-glass",
+          "src": "https://cdn.renin.com/products/176733/continental-pavilion-glass-detail.jpg",
+          "alt": "Continental Pavilion 5-Lite Door - Glass Panel Detail",
+          "position": 2,
+          "width": 1600,
+          "height": 1200
+        }
+      ],
+      "metafields": [
+        {
+          "namespace": "technical",
+          "key": "material",
+          "value": "Steel Frame with Glass Panels",
+          "type": "single_line_text_field"
+        },
+        {
+          "namespace": "technical",
+          "key": "warranty",
+          "value": "5 Year Limited",
+          "type": "single_line_text_field"
+        }
+      ],
+      "files": [
+        {
+          "name": "Continental Series Installation Guide",
+          "filename": "continental-series-installation.pdf",
+          "url": "https://cdn.renin.com/docs/continental/installation-guide.pdf",
+          "type": "application/pdf",
+          "size": 1856432
+        }
+      ],
+      "seo": {
+        "title": "Continental Pavilion 5-Lite Door - Modern Glass Design | Renin",
+        "description": "Shop the Continental Pavilion 5-Lite door with sleek metal frame and glass panels. Multiple finishes available. Professional installation recommended."
+      }
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+import React from 'react'
+import { FeaturedProducts } from '../components/store/featured-products'
+import { ProductGrid } from '../components/store/product-grid'
+import { arcatProducts } from '../lib/enhanced-renin-products'
+
+export default function ShowcaseExample() {
+  // Get the first 6 products for the featured section
+  const featuredProducts = arcatProducts.slice(0, 3)
+
+  // Get all products for the grid
+  const allProducts = arcatProducts
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Page Header */}
+      <div className="bg-slate-50 py-16">
+        <div className="container-apple">
+          <div className="text-center">
+            <h1 className="text-4xl lg:text-6xl font-extralight tracking-tight mb-4">
+              Product Showcase Demo
+            </h1>
+            <p className="text-xl font-light text-slate-600 max-w-2xl mx-auto">
+              Demonstrating the exact design fidelity of the product showcase components
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Products Section */}
+      <FeaturedProducts products={featuredProducts} />
+
+      {/* All Products Grid Section */}
+      <section className="section-apple bg-slate-50">
+        <div className="container-apple">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-extralight tracking-tight mb-4">All Products</h2>
+            <p className="text-xl font-light text-slate-600 max-w-2xl mx-auto">
+              Complete product grid with responsive layout
+            </p>
+          </div>
+
+          <ProductGrid products={allProducts} />
+        </div>
+      </section>
+
+      {/* Design Notes */}
+      <section className="section-apple">
+        <div className="container-apple">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+            <h3 className="text-2xl font-bold mb-6">Design Excellence Features</h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div>
+                <h4 className="font-semibold mb-2">🎨 Exact Visual Fidelity</h4>
+                <p className="text-sm text-gray-600">Identical product card appearance with precise shadows, borders, and hover effects</p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-2">📱 Perfect Responsiveness</h4>
+                <p className="text-sm text-gray-600">Flawless grid behavior across all device sizes with proper breakpoints</p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-2">🖼️ Professional Images</h4>
+                <p className="text-sm text-gray-600">Optimized image presentation with lazy loading and fallback handling</p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-2">✨ Smooth Interactions</h4>
+                <p className="text-sm text-gray-600">Hover animations, button states, and touch-friendly mobile interactions</p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-2">🎯 Visual Hierarchy</h4>
+                <p className="text-sm text-gray-600">Perfect typography, spacing, and content organization</p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-2">🍎 Apple-Inspired Design</h4>
+                <p className="text-sm text-gray-600">Clean aesthetic with precise color palette and premium feel</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}

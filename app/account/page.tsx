@@ -1,12 +1,6 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+// Removed shadcn import - using native HTML
 import { User, Package, MapPin, CreditCard, Settings, Heart, ArrowRight, ShoppingBag, Clock, Star } from "lucide-react"
 import Link from "next/link"
-import { PageWrapper } from "@/components/layout/page-wrapper"
-import { PageHeader } from "@/components/layout/page-header"
-import { PageContainer } from "@/components/layout/page-container"
-import { H1, Body } from "@/components/typography/typography"
 
 export default function AccountPage() {
   const recentOrders = [
@@ -32,254 +26,180 @@ export default function AccountPage() {
   ]
 
   return (
-    <PageWrapper>
-      <PageHeader variant="simple" showMegaMenu={false} showActions={true} />
-
-      <section className="section-spacing-lg">
-        <PageContainer>
-          <div className="grid lg:grid-cols-4 grid-spacing-lg">
-            {/* Sidebar Navigation */}
-            <div className="lg:col-span-1">
-              <Card className="card-brand-elevated">
-                <CardHeader className="card-spacing-sm">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <User className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-h4">John Smith</CardTitle>
-                      <CardDescription>Premium Member</CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <nav className="content-spacing-xs">
-                    <Link
-                      href="/account"
-                      className="flex items-center space-x-3 px-3 py-2 rounded-lg bg-primary/10 text-primary font-medium"
-                    >
-                      <User className="w-4 h-4" />
-                      <span>Account Overview</span>
-                    </Link>
-                    <Link
-                      href="/account/profile"
-                      className="flex items-center space-x-3 px-3 py-2 rounded-lg text-muted-foreground hover:bg-muted/50 transition-colors"
-                    >
-                      <User className="w-4 h-4" />
-                      <span>Profile</span>
-                    </Link>
-                    <Link
-                      href="/account/orders"
-                      className="flex items-center space-x-3 px-3 py-2 rounded-lg text-muted-foreground hover:bg-muted/50 transition-colors"
-                    >
-                      <Package className="w-4 h-4" />
-                      <span>Orders</span>
-                    </Link>
-                    <Link
-                      href="/account/addresses"
-                      className="flex items-center space-x-3 px-3 py-2 rounded-lg text-muted-foreground hover:bg-muted/50 transition-colors"
-                    >
-                      <MapPin className="w-4 h-4" />
-                      <span>Addresses</span>
-                    </Link>
-                    <Link
-                      href="/account/payment-methods"
-                      className="flex items-center space-x-3 px-3 py-2 rounded-lg text-muted-foreground hover:bg-muted/50 transition-colors"
-                    >
-                      <CreditCard className="w-4 h-4" />
-                      <span>Payment Methods</span>
-                    </Link>
-                    <Link
-                      href="/wishlist"
-                      className="flex items-center space-x-3 px-3 py-2 rounded-lg text-muted-foreground hover:bg-muted/50 transition-colors"
-                    >
-                      <Heart className="w-4 h-4" />
-                      <span>Wishlist</span>
-                    </Link>
-                    <Link
-                      href="/account/settings"
-                      className="flex items-center space-x-3 px-3 py-2 rounded-lg text-muted-foreground hover:bg-muted/50 transition-colors"
-                    >
-                      <Settings className="w-4 h-4" />
-                      <span>Settings</span>
-                    </Link>
-                  </nav>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Main Content */}
-            <div className="lg:col-span-3 grid-spacing-lg">
-              {/* Welcome Section */}
-              <div className="content-spacing-sm">
-                <H1 className="heading-with-spacing">Welcome back, John!</H1>
-                <Body className="text-muted-foreground">Manage your account and track your orders</Body>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <Link href="/" className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">PG</span>
               </div>
-
-              {/* Quick Stats */}
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card>
-                  <CardContent className="pt-6">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <Package className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-2xl font-bold text-foreground">12</p>
-                        <p className="text-sm text-muted-foreground">Total Orders</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
-                        <Heart className="w-6 h-6 text-accent" />
-                      </div>
-                      <div>
-                        <p className="text-2xl font-bold text-foreground">8</p>
-                        <p className="text-sm text-muted-foreground">Wishlist Items</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                        <Star className="w-6 h-6 text-green-600" />
-                      </div>
-                      <div>
-                        <p className="text-2xl font-bold text-foreground">Premium</p>
-                        <p className="text-sm text-muted-foreground">Member Status</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <div>
+                <span className="text-xl font-bold text-gray-900">PG Closets</span>
+                <p className="text-xs text-gray-500">Premium Home Organization</p>
               </div>
+            </Link>
+            <Link href="/" className="text-gray-600 hover:text-gray-900">
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      </header>
 
-              {/* Recent Orders */}
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <div>
-                    <CardTitle className="font-serif">Recent Orders</CardTitle>
-                    <CardDescription>Your latest purchases and their status</CardDescription>
-                  </div>
-                  <Link href="/account/orders">
-                    <Button variant="outline" size="sm" className="bg-transparent">
-                      View All
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {recentOrders.map((order) => (
-                      <div key={order.id} className="flex items-center justify-between p-4 bg-muted/30 rounded-lg">
-                        <div className="flex items-center space-x-4">
-                          <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                            <ShoppingBag className="w-5 h-5 text-primary" />
-                          </div>
-                          <div>
-                            <p className="font-semibold text-foreground">{order.id}</p>
-                            <p className="text-sm text-muted-foreground">
-                              {order.date} • {order.items} items
-                            </p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="font-semibold text-foreground">{order.total}</p>
-                          <Badge
-                            className={
-                              order.status === "Delivered" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"
-                            }
-                          >
-                            {order.status}
-                          </Badge>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Wishlist Preview */}
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <div>
-                    <CardTitle className="font-serif">Wishlist</CardTitle>
-                    <CardDescription>Items you're interested in</CardDescription>
-                  </div>
-                  <Link href="/wishlist">
-                    <Button variant="outline" size="sm" className="bg-transparent">
-                      View All
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {wishlistItems.map((item) => (
-                      <div key={item.id} className="flex items-center space-x-4 p-4 bg-muted/30 rounded-lg">
-                        <div className="w-16 h-16 bg-muted rounded-lg overflow-hidden">
-                          <img
-                            src={item.image || "/placeholder.svg"}
-                            alt={item.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <p className="font-semibold text-foreground">{item.name}</p>
-                          <p className="text-primary font-semibold">{item.price}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Quick Actions */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="font-serif">Quick Actions</CardTitle>
-                  <CardDescription>Frequently used account features</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <Link href="/contact">
-                      <Button variant="outline" className="w-full justify-start bg-transparent">
-                        <Clock className="w-4 h-4 mr-2" />
-                        Schedule Consultation
-                      </Button>
-                    </Link>
-                    <Link href="/products">
-                      <Button variant="outline" className="w-full justify-start bg-transparent">
-                        <ShoppingBag className="w-4 h-4 mr-2" />
-                        Browse Products
-                      </Button>
-                    </Link>
-                    <Link href="/account/addresses">
-                      <Button variant="outline" className="w-full justify-start bg-transparent">
-                        <MapPin className="w-4 h-4 mr-2" />
-                        Manage Addresses
-                      </Button>
-                    </Link>
-                    <Link href="/contact">
-                      <Button variant="outline" className="w-full justify-start bg-transparent">
-                        <User className="w-4 h-4 mr-2" />
-                        Contact Support
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid lg:grid-cols-4 gap-8">
+          {/* Sidebar Navigation */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <User className="w-6 h-6 text-blue-600" />
+                </div>
+                <div>
+                  <h2 className="font-semibold text-gray-900">John Smith</h2>
+                  <p className="text-sm text-gray-500">Premium Member</p>
+                </div>
+              </div>
+              <nav className="space-y-2">
+                <Link href="/account" className="flex items-center space-x-3 px-3 py-2 rounded-lg bg-blue-100 text-blue-600 font-medium">
+                  <User className="w-4 h-4" />
+                  <span>Account Overview</span>
+                </Link>
+                <Link href="/account/orders" className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50">
+                  <Package className="w-4 h-4" />
+                  <span>Orders</span>
+                </Link>
+                <Link href="/account/addresses" className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50">
+                  <MapPin className="w-4 h-4" />
+                  <span>Addresses</span>
+                </Link>
+                <Link href="/account/payment-methods" className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50">
+                  <CreditCard className="w-4 h-4" />
+                  <span>Payment Methods</span>
+                </Link>
+                <Link href="/wishlist" className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50">
+                  <Heart className="w-4 h-4" />
+                  <span>Wishlist</span>
+                </Link>
+                <Link href="/account/settings" className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50">
+                  <Settings className="w-4 h-4" />
+                  <span>Settings</span>
+                </Link>
+              </nav>
             </div>
           </div>
-        </PageContainer>
-      </section>
-    </PageWrapper>
+
+          {/* Main Content */}
+          <div className="lg:col-span-3 space-y-8">
+            {/* Welcome Section */}
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back, John!</h1>
+              <p className="text-gray-500">Manage your account and track your orders</p>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <Package className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-gray-900">12</p>
+                    <p className="text-sm text-gray-500">Total Orders</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
+                    <Heart className="w-6 h-6 text-pink-600" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-gray-900">8</p>
+                    <p className="text-sm text-gray-500">Wishlist Items</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                    <Star className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-gray-900">Premium</p>
+                    <p className="text-sm text-gray-500">Member Status</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Recent Orders */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-900">Recent Orders</h2>
+                  <p className="text-sm text-gray-500">Your latest purchases and their status</p>
+                </div>
+                <Link href="/account/orders" className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-sm">
+                  View All
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </div>
+              <div className="space-y-4">
+                {recentOrders.map((order) => (
+                  <div key={order.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                        <ShoppingBag className="w-5 h-5 text-blue-600" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">{order.id}</p>
+                        <p className="text-sm text-gray-500">{order.date} - {order.items} items</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-semibold text-gray-900">{order.total}</p>
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        order.status === "Delivered" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"
+                      }`}>
+                        {order.status}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">Quick Actions</h2>
+              <p className="text-sm text-gray-500 mb-6">Frequently used account features</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/contact" className="flex items-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50">
+                  <Clock className="w-4 h-4 mr-2 text-gray-500" />
+                  Schedule Consultation
+                </Link>
+                <Link href="/products" className="flex items-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50">
+                  <ShoppingBag className="w-4 h-4 mr-2 text-gray-500" />
+                  Browse Products
+                </Link>
+                <Link href="/account/addresses" className="flex items-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50">
+                  <MapPin className="w-4 h-4 mr-2 text-gray-500" />
+                  Manage Addresses
+                </Link>
+                <Link href="/contact" className="flex items-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50">
+                  <User className="w-4 h-4 mr-2 text-gray-500" />
+                  Contact Support
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -1,10 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { RefreshCw, ImageIcon, FileText, Download } from "lucide-react"
+import Link from "next/link"
 
 interface BlobFile {
   url: string
@@ -49,9 +46,17 @@ export default function BlobAuditPage() {
 
   if (loading) {
     return (
-      <div className="container mx-auto p-6">
-        <div className="flex items-center justify-center min-h-[400px]">
-          <RefreshCw className="h-8 w-8 animate-spin" />
+      <div className="min-h-screen bg-gray-50 p-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
+            <div className="h-4 bg-gray-200 rounded w-1/2 mb-8"></div>
+            <div className="space-y-4">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-20 bg-gray-200 rounded"></div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -59,132 +64,110 @@ export default function BlobAuditPage() {
 
   if (error) {
     return (
-      <div className="container mx-auto p-6">
-        <Card>
-          <CardContent className="p-6">
-            <p className="text-red-600">Error: {error}</p>
-            <Button onClick={fetchBlobData} className="mt-4">
-              <RefreshCw className="h-4 w-4 mr-2" />
+      <div className="min-h-screen bg-gray-50 p-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-red-800">Error</h2>
+            <p className="text-red-600 mt-2">{error}</p>
+            <button
+              onClick={fetchBlobData}
+              className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+            >
               Retry
-            </Button>
-          </CardContent>
-        </Card>
+            </button>
+          </div>
+        </div>
       </div>
     )
   }
 
-  const imageFiles = auditData?.files.filter((f) => f.isImage) || []
-  const otherFiles = auditData?.files.filter((f) => !f.isImage) || []
-
   return (
-    <div className="container mx-auto p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Blob Storage Audit</h1>
-        <Button onClick={fetchBlobData} variant="outline">
-          <RefreshCw className="h-4 w-4 mr-2" />
-          Refresh
-        </Button>
-      </div>
-
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Total Files</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{auditData?.totalFiles || 0}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Image Files</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-blue-600">{imageFiles.length}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Total Storage</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {auditData ? Math.round((auditData.totalSize / 1024 / 1024) * 100) / 100 : 0} MB
+    <div className="min-h-screen bg-gray-50 p-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-8">
+          <Link href="/admin" className="text-blue-600 hover:underline mb-4 inline-block">
+            ← Back to Admin
+          </Link>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Blob Storage Audit</h1>
+              <p className="text-gray-600 mt-2">Review and manage blob storage files</p>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+            <button
+              onClick={fetchBlobData}
+              className="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              Refresh
+            </button>
+          </div>
+        </div>
 
-      {/* Image Files */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <ImageIcon className="h-5 w-5" />
-            Product Images ({imageFiles.length})
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {imageFiles.map((file) => (
-              <div key={file.url} className="border rounded-lg p-3 space-y-2">
-                <div className="aspect-square bg-gray-100 rounded-md overflow-hidden">
-                  <img
-                    src={file.url || "/placeholder.svg"}
-                    alt={file.filename}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm font-medium truncate" title={file.filename}>
-                    {file.filename}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <Badge variant="secondary" className="text-xs">
-                      {file.sizeFormatted}
-                    </Badge>
-                    <Button size="sm" variant="ghost" onClick={() => window.open(file.url, "_blank")}>
-                      <Download className="h-3 w-3" />
-                    </Button>
+        {/* Stats Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-sm font-medium text-gray-500">Total Files</h3>
+            <p className="text-2xl font-bold text-gray-900 mt-1">{auditData?.totalFiles || 0}</p>
+          </div>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-sm font-medium text-gray-500">Total Size</h3>
+            <p className="text-2xl font-bold text-gray-900 mt-1">
+              {auditData?.totalSize ? `${(auditData.totalSize / 1024 / 1024).toFixed(2)} MB` : "0 MB"}
+            </p>
+          </div>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-sm font-medium text-gray-500">Images</h3>
+            <p className="text-2xl font-bold text-gray-900 mt-1">
+              {auditData?.files.filter(f => f.isImage).length || 0}
+            </p>
+          </div>
+        </div>
+
+        {/* Files List */}
+        <div className="bg-white rounded-lg border border-gray-200">
+          <div className="p-6 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">Files</h2>
+          </div>
+          <div className="divide-y divide-gray-200">
+            {auditData?.files.map((file, index) => (
+              <div key={index} className="p-4 flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className={`w-10 h-10 rounded flex items-center justify-center ${file.isImage ? 'bg-blue-100' : 'bg-gray-100'}`}>
+                    {file.isImage ? (
+                      <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
+                    )}
                   </div>
-                  <p className="text-xs text-gray-500">{new Date(file.uploadedAt).toLocaleDateString()}</p>
+                  <div>
+                    <p className="font-medium text-gray-900">{file.filename}</p>
+                    <p className="text-sm text-gray-500">{file.sizeFormatted} • {file.contentType}</p>
+                  </div>
                 </div>
+                <a
+                  href={file.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded transition"
+                >
+                  View
+                </a>
               </div>
             ))}
+            {(!auditData?.files || auditData.files.length === 0) && (
+              <div className="p-8 text-center text-gray-500">
+                No files found in blob storage
+              </div>
+            )}
           </div>
-        </CardContent>
-      </Card>
-
-      {/* Other Files */}
-      {otherFiles.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FileText className="h-5 w-5" />
-              Other Files ({otherFiles.length})
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
-              {otherFiles.map((file) => (
-                <div key={file.url} className="flex items-center justify-between p-3 border rounded-lg">
-                  <div>
-                    <p className="font-medium">{file.filename}</p>
-                    <p className="text-sm text-gray-500">{file.contentType}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline">{file.sizeFormatted}</Badge>
-                    <Button size="sm" variant="ghost" onClick={() => window.open(file.url, "_blank")}>
-                      <Download className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      )}
+        </div>
+      </div>
     </div>
   )
 }

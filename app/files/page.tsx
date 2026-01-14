@@ -1,11 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { FileUpload } from "@/components/ui/file-upload"
-import { Trash2, Download, Eye } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
+import Link from "next/link"
 
 interface BlobFile {
   url: string
@@ -18,24 +14,24 @@ interface BlobFile {
 export default function FilesPage() {
   const [files, setFiles] = useState<BlobFile[]>([])
   const [loading, setLoading] = useState(true)
-  const { toast } = useToast()
+  const [message, setMessage] = useState<string | null>(null)
 
   const fetchFiles = async () => {
     try {
       const response = await fetch("/api/list")
       const data = await response.json()
       setFiles(data.files || [])
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to load files",
-      })
+    } catch {
+      setMessage("Failed to load files")
     } finally {
       setLoading(false)
     }
   }
 
-  const handleUpload = async (file: File) => {
+  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
     const formData = new FormData()
     formData.append("file", file)
 
@@ -46,19 +42,13 @@ export default function FilesPage() {
       })
 
       if (response.ok) {
-        toast({
-          title: "Success",
-          description: "File uploaded successfully",
-        })
-        fetchFiles() // Refresh the file list
+        setMessage("File uploaded successfully")
+        fetchFiles()
       } else {
         throw new Error("Upload failed")
       }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to upload file",
-      })
+    } catch {
+      setMessage("Failed to upload file")
     }
   }
 
@@ -66,26 +56,18 @@ export default function FilesPage() {
     try {
       const response = await fetch("/api/delete", {
         method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url }),
       })
 
       if (response.ok) {
-        toast({
-          title: "Success",
-          description: "File deleted successfully",
-        })
-        fetchFiles() // Refresh the file list
+        setMessage("File deleted successfully")
+        fetchFiles()
       } else {
         throw new Error("Delete failed")
       }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to delete file",
-      })
+    } catch {
+      setMessage("Failed to delete file")
     }
   }
 
@@ -106,37 +88,61 @@ export default function FilesPage() {
   }, [])
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gray-50">
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-4xl mx-auto px-4 py-4">
+          <Link href="/admin" className="text-blue-600 hover:underline text-sm">
+            ← Back to Admin
+          </Link>
+        </div>
+      </header>
+
+      <div className="max-w-4xl mx-auto py-8 px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">File Management</h1>
-          <p className="text-muted-foreground">Upload and manage your files in Vercel Blob storage</p>
+          <p className="text-gray-600">Upload and manage your files in Vercel Blob storage</p>
         </div>
 
+        {message && (
+          <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-800">
+            {message}
+            <button onClick={() => setMessage(null)} className="ml-4 text-blue-600 hover:underline">
+              Dismiss
+            </button>
+          </div>
+        )}
+
         {/* Upload Section */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>Upload Files</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <FileUpload
-              onUpload={handleUpload}
+        <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
+          <h2 className="text-lg font-semibold mb-4">Upload Files</h2>
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+            <input
+              type="file"
+              onChange={handleUpload}
               accept="image/*,.pdf,.doc,.docx,.txt"
-              maxSize={4.5 * 1024 * 1024} // 4.5MB limit for server uploads
+              className="hidden"
+              id="file-upload"
             />
-          </CardContent>
-        </Card>
+            <label
+              htmlFor="file-upload"
+              className="cursor-pointer inline-flex px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition"
+            >
+              Choose File to Upload
+            </label>
+            <p className="text-sm text-gray-500 mt-2">Max file size: 4.5MB</p>
+          </div>
+        </div>
 
         {/* Files List */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Your Files ({files.length})</CardTitle>
-          </CardHeader>
-          <CardContent>
+        <div className="bg-white rounded-lg border border-gray-200">
+          <div className="p-6 border-b border-gray-200">
+            <h2 className="text-lg font-semibold">Your Files ({files.length})</h2>
+          </div>
+          <div className="p-6">
             {loading ? (
-              <div className="text-center py-8">Loading files...</div>
+              <div className="text-center py-8 text-gray-500">Loading files...</div>
             ) : files.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
+              <div className="text-center py-8 text-gray-500">
                 No files uploaded yet. Upload your first file above.
               </div>
             ) : (
@@ -146,52 +152,49 @@ export default function FilesPage() {
                     <div className="flex items-center space-x-4">
                       {isImage(file.filename) && (
                         <img
-                          src={file.url || "/placeholder.svg"}
+                          src={file.url}
                           alt={file.filename}
                           className="w-12 h-12 object-cover rounded"
                         />
                       )}
                       <div>
                         <p className="font-medium">{file.filename}</p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-gray-500">
                           {formatFileSize(file.size)} • {new Date(file.uploadedAt).toLocaleDateString()}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Button variant="outline" size="sm" onClick={() => window.open(file.url, "_blank")}>
-                        <Eye className="w-4 h-4 mr-1" />
+                      <button
+                        onClick={() => window.open(file.url, "_blank")}
+                        className="px-3 py-1.5 text-sm border border-gray-200 rounded hover:bg-gray-50 transition"
+                      >
                         View
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
+                      </button>
+                      <button
                         onClick={() => {
                           const a = document.createElement("a")
                           a.href = file.url
                           a.download = file.filename
                           a.click()
                         }}
+                        className="px-3 py-1.5 text-sm border border-gray-200 rounded hover:bg-gray-50 transition"
                       >
-                        <Download className="w-4 h-4 mr-1" />
                         Download
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
+                      </button>
+                      <button
                         onClick={() => handleDelete(file.url)}
-                        className="text-red-600 hover:text-red-700"
+                        className="px-3 py-1.5 text-sm border border-red-200 text-red-600 rounded hover:bg-red-50 transition"
                       >
-                        <Trash2 className="w-4 h-4 mr-1" />
                         Delete
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 ))}
               </div>
             )}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Home, Truck, Shield, Gift, Tag } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { useCart } from "@/contexts/CartContext"
 
@@ -134,11 +135,14 @@ export default function CartClientPage() {
                 <Card key={item.id} className="overflow-hidden">
                   <CardContent className="p-6">
                     <div className="flex gap-6">
-                      <div className="w-24 h-24 bg-muted rounded-lg overflow-hidden flex-shrink-0">
-                        <img
+                      <div className="w-24 h-24 bg-muted rounded-lg overflow-hidden flex-shrink-0 relative">
+                        <Image
                           src={item.image || "/placeholder.svg"}
                           alt={item.name}
-                          className="w-full h-full object-cover"
+                          fill
+                          className="object-cover"
+                          sizes="96px"
+                          loading="lazy"
                         />
                       </div>
 

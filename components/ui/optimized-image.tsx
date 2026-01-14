@@ -2,7 +2,10 @@
 
 import Image from "next/image"
 import { useState } from "react"
-import { cn } from "@/lib/utils"
+// Simple className utility - inline to avoid dependency issues
+function cn(...classes: (string | undefined | null | false)[]): string {
+  return classes.filter(Boolean).join(" ")
+}
 
 interface OptimizedImageProps {
   src: string

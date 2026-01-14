@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button"
+// Removed shadcn import - using native HTML
+import Link from "next/link"
 
 export const metadata = {
   title: "Closet Doors Kanata | Professional Installation | PG Closets",
@@ -65,26 +66,22 @@ export default function KanataPage() {
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Premium Closet Doors in Kanata</h1>
             <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Serving Kanata Lakes, Bridlewood, Morgan's Grant, and all Kanata neighborhoods with professional Renin
+              Serving Kanata Lakes, Bridlewood, Morgan&apos;s Grant, and all Kanata neighborhoods with professional Renin
               closet door installation
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="primary"
-                size="lg"
+              <Link
                 href="/request-work"
-                className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
+                className="inline-block bg-white text-blue-600 hover:bg-gray-100 shadow-xl px-6 py-3 rounded-lg font-semibold text-center"
               >
-                Get Free Kanata Quote →
-              </Button>
-              <Button
-                variant="secondary"
-                size="lg"
+                Get Free Kanata Quote
+              </Link>
+              <Link
                 href="/products"
-                className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
+                className="inline-block border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-lg font-semibold text-center"
               >
                 Browse Products
-              </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -96,7 +93,7 @@ export default function KanataPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Kanata Communities We Serve</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Professional closet door installation throughout Kanata's family-friendly neighborhoods
+              Professional closet door installation throughout Kanata&apos;s family-friendly neighborhoods
             </p>
           </div>
 
@@ -121,109 +118,6 @@ export default function KanataPage() {
         </div>
       </section>
 
-      {/* Why Choose Us for Kanata */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Kanata Families Choose PG Closets</h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"
-                  />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 21l4-4 4 4" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 17V3" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Family-Focused Service</h3>
-              <p className="text-gray-600">
-                Understanding Kanata families' needs for functional, safe, and beautiful closet solutions
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Local Kanata Knowledge</h3>
-              <p className="text-gray-600">
-                Familiar with Kanata's home styles, from executive homes to family townhouses
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Convenient Scheduling</h3>
-              <p className="text-gray-600">Flexible installation times that work with busy Kanata family schedules</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Kanata-specific Content */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Closet Solutions for Kanata Homes</h2>
-          </div>
-
-          <div className="prose prose-lg mx-auto text-gray-600">
-            <p className="text-lg leading-relaxed mb-6">
-              Kanata's family-oriented communities feature a mix of executive homes, townhouses, and condos, each with
-              unique storage needs. From large walk-in closets in Kanata Lakes executive homes to space-saving solutions
-              in Bridlewood townhouses, we provide tailored closet door solutions for every Kanata home.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8 my-8">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Executive Home Solutions</h3>
-                <p>
-                  Luxury closet door installations for Kanata's upscale homes, featuring premium finishes and custom
-                  sizing to match your home's elegant design.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Family-Friendly Options</h3>
-                <p>
-                  Durable, safe closet doors perfect for busy Kanata families, with easy-to-clean finishes and
-                  child-safe hardware options.
-                </p>
-              </div>
-            </div>
-
-            <p className="text-lg leading-relaxed">
-              Our team understands Kanata's building standards and works efficiently to minimize disruption to your
-              family's routine. We're proud to serve this vibrant community with professional installation and ongoing
-              support.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -232,22 +126,18 @@ export default function KanataPage() {
             Join your Kanata neighbors who trust PG Closets for their home improvement needs
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              variant="primary"
-              size="lg"
+            <Link
               href="/request-work"
-              className="bg-white text-blue-600 hover:bg-gray-100"
+              className="inline-block bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold text-center"
             >
-              Get Free Kanata Quote →
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
+              Get Free Kanata Quote
+            </Link>
+            <a
               href="mailto:spencer@peoplesgrp.com"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
+              className="inline-block border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-lg font-semibold text-center"
             >
               Email: spencer@peoplesgrp.com
-            </Button>
+            </a>
           </div>
         </div>
       </section>

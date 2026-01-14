@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button"
+// Removed shadcn import - using native HTML
+import Link from "next/link"
 
 export const metadata = {
   title: "Closet Doors Nepean | Professional Installation | PG Closets",
@@ -69,22 +70,18 @@ export default function NepeanPage() {
               door installation
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="primary"
-                size="lg"
+              <Link
                 href="/request-work"
-                className="bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
+                className="inline-block bg-white text-blue-600 hover:bg-gray-100 shadow-xl px-6 py-3 rounded-lg font-semibold text-center"
               >
-                Get Free Nepean Quote →
-              </Button>
-              <Button
-                variant="secondary"
-                size="lg"
+                Get Free Nepean Quote
+              </Link>
+              <Link
                 href="/products"
-                className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
+                className="inline-block border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-lg font-semibold text-center"
               >
                 Browse Products
-              </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -96,7 +93,7 @@ export default function NepeanPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Nepean Communities We Serve</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Professional closet door installation throughout Nepean's diverse neighborhoods
+              Professional closet door installation throughout Nepean&apos;s diverse neighborhoods
             </p>
           </div>
 
@@ -121,70 +118,6 @@ export default function NepeanPage() {
         </div>
       </section>
 
-      {/* Why Choose Us for Nepean */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Nepean Residents Choose PG Closets</h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Suburban Expertise</h3>
-              <p className="text-gray-600">
-                Specialized in Nepean's suburban homes, from new builds to established properties
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Flexible Timing</h3>
-              <p className="text-gray-600">Convenient scheduling for busy Nepean families and professionals</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Community Focused</h3>
-              <p className="text-gray-600">Proud to serve Nepean's growing communities with reliable, local service</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -193,22 +126,18 @@ export default function NepeanPage() {
             Join thousands of satisfied Nepean homeowners who chose PG Closets
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              variant="primary"
-              size="lg"
+            <Link
               href="/request-work"
-              className="bg-white text-blue-600 hover:bg-gray-100"
+              className="inline-block bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold text-center"
             >
-              Get Free Nepean Quote →
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
+              Get Free Nepean Quote
+            </Link>
+            <a
               href="mailto:spencer@peoplesgrp.com"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600"
+              className="inline-block border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-lg font-semibold text-center"
             >
               Email: spencer@peoplesgrp.com
-            </Button>
+            </a>
           </div>
         </div>
       </section>

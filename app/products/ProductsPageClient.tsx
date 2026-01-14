@@ -6,7 +6,7 @@ import Image from "next/image"
 import PgHeader from "@/components/PgHeader"
 import PgFooter from "@/components/PgFooter"
 import { ProductFilters } from "@/components/store/product-filters"
-import { Button } from "@/components/ui/button"
+// Removed shadcn Button import - using native buttons
 
 const products = [
   // Bypass Doors
@@ -266,10 +266,10 @@ export default function ProductsPageClient() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link href="/contact">
-              <Button className="btn-primary px-8 py-4 text-lg rounded-full">Request Work</Button>
+              <button className="btn-primary px-8 py-4 text-lg rounded-full bg-slate-900 text-white hover:bg-slate-800 transition">Request Work</button>
             </Link>
             <Link href="/contact">
-              <Button className="btn-secondary px-8 py-4 text-lg rounded-full">Get Quote</Button>
+              <button className="btn-secondary px-8 py-4 text-lg rounded-full border border-slate-900 text-slate-900 hover:bg-slate-100 transition">Get Quote</button>
             </Link>
           </div>
         </div>
@@ -324,9 +324,9 @@ export default function ProductsPageClient() {
                     <p className="text-gray-600 mb-4">{product.description}</p>
                     <div className="flex items-center justify-between">
                       <span className="text-2xl font-bold text-blue-600">{product.priceRange}</span>
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                      <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition">
                         View Details
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -337,9 +337,9 @@ export default function ProductsPageClient() {
           {filteredProducts.length === 0 && (
             <div className="text-center py-16">
               <p className="text-xl text-pg-gray mb-4">No products found matching your criteria.</p>
-              <Button className="btn-secondary" onClick={() => setFilteredProducts(products)}>
+              <button className="btn-secondary border border-slate-900 text-slate-900 px-4 py-2 rounded hover:bg-slate-100 transition" onClick={() => setFilteredProducts(products)}>
                 Clear Filters
-              </Button>
+              </button>
             </div>
           )}
         </div>

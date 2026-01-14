@@ -9,7 +9,54 @@ const nextConfig = {
   
   // Performance optimizations
   experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+    optimizeCss: true,
+    webpackBuildWorker: true,
+  },
+
+  // Webpack optimizations for better bundle size and performance
+  webpack: (config, { dev, isServer, webpack, nextRuntime }) => {
+    // Production optimizations
+    if (!dev) {
+      // Bundle analyzer for size monitoring
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+            maxSize: 500000,
+            minSize: 100000,
+          },
+          common: {
+            name: 'common',
+            minChunks: 2,
+            chunks: 'all',
+            maxSize: 300000,
+          },
+        },
+      }
+
+      // Tree shaking optimization
+      config.optimization.usedExports = true
+      config.optimization.sideEffects = false
+    }
+
+    // Image optimization
+    config.module.rules.push({
+      test: /\.(png|jpe?g|gif|svg)$/i,
+      use: [
+        {
+          loader: 'next/image-loader',
+          options: {
+            publicPath: '/_next/',
+          },
+        },
+      ],
+    })
+
+    return config
   },
   
   // Image optimization
@@ -43,83 +90,6 @@ const nextConfig = {
   // Compression
   compress: true,
   
-  // Headers for performance and SEO
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=31536000; includeSubDomains',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://blob.vercel-storage.com https://d3ey4dbjkt2f6s.cloudfront.net; style-src 'self' 'unsafe-inline' https://d3ey4dbjkt2f6s.cloudfront.net; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://blob.vercel-storage.com https://clienthub.getjobber.com; media-src 'self' blob: https:; object-src 'none'; base-uri 'self'; form-action 'self' https://clienthub.getjobber.com; frame-ancestors 'none'; frame-src https://clienthub.getjobber.com;",
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-          },
-        ],
-      },
-      {
-        source: '/_next/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/sitemap.xml',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=86400, s-maxage=86400',
-          },
-          {
-            key: 'Content-Type',
-            value: 'application/xml',
-          },
-        ],
-      },
-      {
-        source: '/robots.txt',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=86400, s-maxage=86400',
-          },
-          {
-            key: 'Content-Type',
-            value: 'text/plain',
-          },
-        ],
-      },
-    ]
-  },
 }
 
 export default nextConfig

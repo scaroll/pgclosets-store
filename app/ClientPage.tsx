@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { LocalBusinessJSONLD } from "@/lib/seo"
-import { Button } from "@/components/ui/button"
+// Removed shadcn Button import - using native buttons
 
 export default function ClientPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -36,9 +36,9 @@ export default function ClientPage() {
               >
                 Contact
               </a>
-              <Button variant="default" size="sm" className="bg-blue-900 hover:bg-blue-700">
+              <button className="bg-blue-900 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm transition">
                 Get Quote
-              </Button>
+              </button>
             </nav>
 
             {/* Mobile menu button */}
@@ -66,9 +66,9 @@ export default function ClientPage() {
               <a href="/contact" className="block px-3 py-2 text-gray-900 hover:text-blue-700 font-medium">
                 Contact
               </a>
-              <Button variant="default" size="sm" className="mx-3 bg-blue-900 hover:bg-blue-700">
+              <button className="mx-3 bg-blue-900 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm transition">
                 Get Quote
-              </Button>
+              </button>
             </div>
           )}
         </div>
@@ -80,20 +80,16 @@ export default function ClientPage() {
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">Ottawa's Renin Closet Door Experts</h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">Official dealer • Professional installation</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              variant="default"
-              size="lg"
-              className="bg-white text-blue-900 hover:bg-gray-100 font-semibold px-8 py-3"
+            <button
+              className="bg-white text-blue-900 hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg transition"
             >
               Get Free Quote
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-white text-white hover:bg-white hover:text-blue-900 font-semibold px-8 py-3 bg-transparent"
+            </button>
+            <button
+              className="border border-white text-white hover:bg-white hover:text-blue-900 font-semibold px-8 py-3 bg-transparent rounded-lg transition"
             >
               View Products
-            </Button>
+            </button>
           </div>
         </div>
       </section>
@@ -143,9 +139,9 @@ export default function ClientPage() {
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{product.title}</h3>
                   <p className="text-blue-900 font-semibold mb-3">{product.subtitle}</p>
                   <p className="text-gray-600 mb-4">{product.description}</p>
-                  <Button variant="outline" className="w-full hover:bg-blue-900 hover:text-white bg-transparent">
+                  <button className="w-full hover:bg-blue-900 hover:text-white bg-transparent border border-blue-900 text-blue-900 py-2 rounded transition">
                     Learn More
-                  </Button>
+                  </button>
                 </div>
               </div>
             ))}
@@ -160,13 +156,11 @@ export default function ClientPage() {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Ready to upgrade your closet doors? Get a free consultation and quote today.
           </p>
-          <Button
-            variant="default"
-            size="lg"
-            className="bg-white text-blue-900 hover:bg-gray-100 font-semibold px-8 py-3"
+          <button
+            className="bg-white text-blue-900 hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg transition"
           >
             Get Your Quote
-          </Button>
+          </button>
         </div>
       </section>
 

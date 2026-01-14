@@ -1,10 +1,10 @@
 "use client"
+// Removed shadcn import - using native HTML
 import Image from "next/image"
 import Link from "next/link"
 import { useCart } from "@/lib/useCart"
 import { useRouter } from "next/navigation"
 import { useEffect, useState, Suspense } from "react"
-import { Button } from "@/components/ui/button"
 
 function SimpleCartContent() {
   const { items, remove, clear, setQty } = useCart()
@@ -29,7 +29,7 @@ function SimpleCartContent() {
         <div className="py-20 text-center">
           <p>Your cart is empty.</p>
           <Link href="/simple-products" className="inline-flex mt-4">
-            <Button>Shop products</Button>
+            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">Shop products</button>
           </Link>
         </div>
       ) : (
@@ -42,9 +42,9 @@ function SimpleCartContent() {
                 </div>
                 <div className="flex-1">
                   <div className="font-medium">{i.title}</div>
-                  <div className="text-sm text-muted-foreground">${(i.price / 100).toFixed(2)}</div>
+                  <div className="text-sm text-gray-500">${(i.price / 100).toFixed(2)}</div>
                   <div className="mt-2 flex items-center gap-2">
-                    <label className="text-sm text-muted-foreground">Qty</label>
+                    <label className="text-sm text-gray-500">Qty</label>
                     <input
                       type="number"
                       min={1}
@@ -59,7 +59,7 @@ function SimpleCartContent() {
                 </button>
               </div>
             ))}
-            <button onClick={clear} className="text-sm text-muted-foreground hover:underline">
+            <button onClick={clear} className="text-sm text-gray-500 hover:underline">
               Clear cart
             </button>
           </div>
@@ -68,7 +68,7 @@ function SimpleCartContent() {
               <span>Subtotal</span>
               <span>${(subtotal / 100).toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-muted-foreground">
+            <div className="flex justify-between text-gray-500">
               <span>Tax (13%)</span>
               <span>${(tax / 100).toFixed(2)}</span>
             </div>
@@ -76,10 +76,10 @@ function SimpleCartContent() {
               <span>Total</span>
               <span>${(total / 100).toFixed(2)}</span>
             </div>
-            <Button onClick={handleCheckout} className="w-full mt-2">
+            <button onClick={handleCheckout} className="w-full mt-2 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
               Checkout
-            </Button>
-            <p className="text-xs text-muted-foreground">
+            </button>
+            <p className="text-xs text-gray-500">
               Replace checkout logic in <code>/app/api/simple-checkout/route.ts</code> with your provider.
             </p>
           </aside>
@@ -95,8 +95,8 @@ export default function SimpleCartPage() {
       fallback={
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-            <p className="text-muted-foreground">Loading cart...</p>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-500">Loading cart...</p>
           </div>
         </div>
       }

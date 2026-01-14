@@ -1,5 +1,5 @@
+// Removed shadcn import - using native HTML
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 
 export const metadata = {
   title: "Closet Door Blog | Tips & Guides | PG Closets Ottawa",
@@ -50,39 +50,6 @@ const blogPosts = [
     image: "/images/arcat/renin_205739_Bypass_Closet_Doors_Euro_3_Lite.jpg",
     featured: false,
   },
-  {
-    id: "closet-door-installation-ottawa-winter",
-    title: "Closet Door Installation During Ottawa Winters",
-    excerpt:
-      "Tips for successful closet door installation during Ottawa's cold months. Learn about timing, preparation, and what to expect from your installer.",
-    date: "2023-12-20",
-    readTime: "7 min read",
-    category: "Installation Tips",
-    image: "/images/arcat/renin_205746_Bifold_Closet_Door_Euro_1_Lite.jpg",
-    featured: false,
-  },
-  {
-    id: "small-space-closet-solutions-ottawa-condos",
-    title: "Small Space Closet Solutions for Ottawa Condos",
-    excerpt:
-      "Maximize storage in Ottawa's downtown condos and apartments with smart closet door choices. Space-saving solutions that don't compromise on style.",
-    date: "2023-12-15",
-    readTime: "6 min read",
-    category: "Small Spaces",
-    image: "/images/arcat/renin_205741_Bypass_Closet_Doors_Harmony_1_Lite.jpg",
-    featured: false,
-  },
-  {
-    id: "heritage-home-closet-doors-ottawa",
-    title: "Closet Door Solutions for Ottawa's Heritage Homes",
-    excerpt:
-      "Preserve the character of your heritage Ottawa home while adding modern functionality. Expert tips for closet doors in historic properties.",
-    date: "2023-12-10",
-    readTime: "9 min read",
-    category: "Heritage Homes",
-    image: "/images/arcat/renin_205750_Bifold_Closet_Door_Georgian_6_Panel_Insert_Design.jpg",
-    featured: false,
-  },
 ]
 
 export default function BlogPage() {
@@ -91,35 +58,6 @@ export default function BlogPage() {
 
   return (
     <main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            name: "PG Closets Ottawa Blog",
-            description: "Expert tips and guides for closet doors and home improvement in Ottawa",
-            url: "https://pgclosets.com/blog",
-            publisher: {
-              "@type": "Organization",
-              name: "PG Closets Ottawa",
-              url: "https://pgclosets.com",
-            },
-            blogPost: blogPosts.map((post) => ({
-              "@type": "BlogPosting",
-              headline: post.title,
-              description: post.excerpt,
-              url: `https://pgclosets.com/blog/${post.id}`,
-              datePublished: post.date,
-              author: {
-                "@type": "Organization",
-                name: "PG Closets Ottawa",
-              },
-            })),
-          }),
-        }}
-      />
-
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -176,7 +114,7 @@ export default function BlogPage() {
                     href={`/blog/${post.id}`}
                     className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
                   >
-                    Read More →
+                    Read More
                   </Link>
                 </div>
               </article>
@@ -228,7 +166,7 @@ export default function BlogPage() {
                       href={`/blog/${post.id}`}
                       className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
                     >
-                      Read More →
+                      Read More
                     </Link>
                   </div>
                 </div>
@@ -247,9 +185,9 @@ export default function BlogPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <input type="email" placeholder="Enter your email" className="flex-1 px-4 py-3 rounded-lg text-gray-900" />
-            <Button className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium">
+            <button className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium">
               Subscribe
-            </Button>
+            </button>
           </div>
         </div>
       </section>
@@ -262,22 +200,16 @@ export default function BlogPage() {
             Get expert advice and professional installation from Ottawa's trusted Renin dealer
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              variant="primary"
-              size="lg"
-              href="/request-work"
-              className="bg-blue-600 text-white hover:bg-blue-700"
-            >
-              Get Free Quote →
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              href="/products"
-              className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-            >
-              Browse Products
-            </Button>
+            <Link href="/request-work">
+              <button className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 rounded-lg font-medium">
+                Get Free Quote
+              </button>
+            </Link>
+            <Link href="/products">
+              <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-medium">
+                Browse Products
+              </button>
+            </Link>
           </div>
         </div>
       </section>

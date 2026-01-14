@@ -3,7 +3,7 @@ import Script from "next/script"
 import { useEffect, useState } from "react"
 import Image from "next/image"
 
-export default function ContactClientPage() {
+export default function ContactClientPage({ contactEmbedEnabled = true }: { contactEmbedEnabled?: boolean }) {
   const [scriptLoaded, setScriptLoaded] = useState(false)
   const [scriptError, setScriptError] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -16,21 +16,39 @@ export default function ContactClientPage() {
   }
 
   useEffect(() => {
+    if (!contactEmbedEnabled) {
+      setScriptError(true)
+      return
+    }
     const link = document.createElement("link")
     link.rel = "stylesheet"
     link.href = "https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css"
     link.media = "screen"
+    link.onerror = () => setScriptError(true)
     document.head.appendChild(link)
 
-    const checkJobberForm = setTimeout(() => {
-      const jobberContainer = document.getElementById("83a3d24e-c18d-441c-80d1-d85419ea28ae")
-      if (jobberContainer && jobberContainer.children.length === 0) {
+    // Robust polling for the Jobber embed. We fallback to the native form
+    // if the widget doesn't attach within a reasonable time window or if
+    // the container is missing.
+    const START = Date.now()
+    const MAX_MS = 10000
+    const POLL_MS = 500
+    const containerId = "83a3d24e-c18d-441c-80d1-d85419ea28ae"
+
+    const poll = () => {
+      const el = document.getElementById(containerId)
+      const attached = !!el && el.children.length > 0
+      if (attached) return
+      if (Date.now() - START >= MAX_MS) {
         setScriptError(true)
+        setScriptLoaded(false)
+        return
       }
-    }, 5000)
+      setTimeout(poll, POLL_MS)
+    }
+    setTimeout(poll, POLL_MS)
 
     return () => {
-      clearTimeout(checkJobberForm)
       const existingLink = document.querySelector(
         'link[href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css"]',
       )
@@ -38,11 +56,12 @@ export default function ContactClientPage() {
         document.head.removeChild(existingLink)
       }
     }
-  }, [])
+  }, [contactEmbedEnabled])
 
   const handleScriptLoad = () => {
     setScriptLoaded(true)
-    setScriptError(false)
+    // Keep error state untouched; polling will decide whether to show the
+    // fallback if the widget doesn't attach despite script load.
   }
 
   const handleScriptError = () => {

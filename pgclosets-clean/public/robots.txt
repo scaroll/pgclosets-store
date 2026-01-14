@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# SEO-friendly crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://pgclosets.com/sitemap.xml
+
+# Block unnecessary directories
+Disallow: /api/
+Disallow: /_next/
+Disallow: /.vercel/
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important pages
+Allow: /products/
+Allow: /gallery/
+Allow: /about/
+Allow: /contact/
+Allow: /services/
+Allow: /quote/
+
+# Google-specific directives
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing-specific directives
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

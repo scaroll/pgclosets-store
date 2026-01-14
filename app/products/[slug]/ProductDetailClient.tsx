@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import PgHeader from "@/components/PgHeader"
 import PgFooter from "@/components/PgFooter"
-import { Button } from "@/components/ui/button"
+// Removed shadcn Button import - using native buttons
 import { getProductImages, handleImageError } from "@/lib/product-utils"
 
 interface Product {
@@ -147,10 +147,10 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
               <div className="flex gap-4">
                 <Link href="/contact" className="flex-1">
-                  <Button className="btn-primary w-full py-4 text-lg">Request Work</Button>
+                  <button className="btn-primary w-full py-4 text-lg bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition">Request Work</button>
                 </Link>
                 <Link href="/contact">
-                  <Button className="btn-secondary px-8 py-4 text-lg">Get a Quote</Button>
+                  <button className="btn-secondary px-8 py-4 text-lg border border-slate-900 text-slate-900 rounded-lg hover:bg-slate-100 transition">Get a Quote</button>
                 </Link>
               </div>
 
