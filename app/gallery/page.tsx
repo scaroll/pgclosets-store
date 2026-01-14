@@ -1,6 +1,63 @@
-import { MediaGallery } from "@/components/MediaGallery"
+"use client"
+
+import { useState } from "react"
+import Image from "next/image"
+
+const galleryImages = [
+  {
+    id: 1,
+    src: "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg",
+    alt: "Euro 1-Lite Bypass Door Installation",
+    title: "Modern Euro 1-Lite Bypass",
+    category: "Bypass Doors"
+  },
+  {
+    id: 2,
+    src: "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg",
+    alt: "Euro 3-Lite Bypass Door",
+    title: "Contemporary Euro 3-Lite",
+    category: "Bypass Doors"
+  },
+  {
+    id: 3,
+    src: "/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg",
+    alt: "Ashbury 2 Panel Design",
+    title: "Classic Ashbury Design",
+    category: "Bypass Doors"
+  },
+  {
+    id: 4,
+    src: "/images/arcat/renin_199064_hd.jpg",
+    alt: "Premium Bifold Door",
+    title: "Premium Bifold Installation",
+    category: "Bifold Doors"
+  },
+  {
+    id: 5,
+    src: "/images/arcat/renin_155725_hd.jpg",
+    alt: "Hardware Installation",
+    title: "Professional Hardware Install",
+    category: "Hardware"
+  },
+  {
+    id: 6,
+    src: "/images/arcat/renin_155732_hd.jpg",
+    alt: "Complete Closet System",
+    title: "Complete Closet Transformation",
+    category: "Projects"
+  }
+]
 
 export default function GalleryPage() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [filter, setFilter] = useState("all")
+
+  const filteredImages = filter === "all"
+    ? galleryImages
+    : galleryImages.filter(img => img.category === filter)
+
+  const categories = ["all", ...new Set(galleryImages.map(img => img.category))]
+
   return (
     <div className="min-h-screen bg-white font-sans">
       <header className="bg-white shadow-lg">
@@ -53,12 +110,12 @@ export default function GalleryPage() {
         </div>
       </header>
 
-      <div className="pt-24 pb-20">
+      <div className="pt-8 pb-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-[#1B4A9C]">Project Gallery</h1>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              See how we've transformed Ottawa homes with premium closet doors. Over 500 successful installations
+              See how we&apos;ve transformed Ottawa homes with premium closet doors. Over 500 successful installations
               showcasing our craftsmanship and attention to detail.
             </p>
           </div>
@@ -84,7 +141,53 @@ export default function GalleryPage() {
             </div>
           </div>
 
-          <MediaGallery />
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {categories.map(category => (
+              <button
+                key={category}
+                onClick={() => setFilter(category)}
+                className={`px-4 py-2 font-medium transition-all ${
+                  filter === category
+                    ? "bg-[#1B4A9C] text-white"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+              >
+                {category === "all" ? "All Projects" : category}
+              </button>
+            ))}
+          </div>
+
+          {/* Gallery Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredImages.map(image => (
+              <div
+                key={image.id}
+                className="group relative aspect-square bg-gray-100 overflow-hidden cursor-pointer shadow-lg hover:shadow-xl transition-all"
+                onClick={() => setSelectedImage(image.src)}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h3 className="font-bold text-lg">{image.title}</h3>
+                    <p className="text-sm text-gray-200">{image.category}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {filteredImages.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-gray-500 text-lg">No projects found in this category.</p>
+            </div>
+          )}
 
           <div className="text-center mt-12 bg-[#1B4A9C] text-white p-8">
             <h2 className="text-2xl font-bold mb-4">Ready to Transform Your Space?</h2>
@@ -109,6 +212,30 @@ export default function GalleryPage() {
         </div>
       </div>
 
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-gray-300 z-10"
+          >
+            ✕
+          </button>
+          <div className="relative max-w-4xl max-h-full w-full h-full flex items-center justify-center">
+            <Image
+              src={selectedImage}
+              alt="Gallery Image"
+              fill
+              className="object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
+
       <footer className="bg-[#1B4A9C] text-white py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -123,7 +250,7 @@ export default function GalleryPage() {
                 </div>
               </a>
               <p className="text-gray-300 mb-6">
-                Ottawa's premier closet door specialists, transforming homes with premium solutions.
+                Ottawa&apos;s premier closet door specialists, transforming homes with premium solutions.
               </p>
             </div>
 
@@ -153,7 +280,7 @@ export default function GalleryPage() {
               <div className="space-y-2 text-gray-300">
                 <div>(613) 422-5800</div>
                 <div>info@pgclosets.com</div>
-                <div>Ottawa & Surrounding Areas</div>
+                <div>Ottawa &amp; Surrounding Areas</div>
                 <div className="mt-4 pt-4 border-t border-gray-600">
                   <div className="text-sm">
                     <div className="font-semibold text-[#9BC4E2] mb-2">Business Hours:</div>
@@ -162,7 +289,7 @@ export default function GalleryPage() {
                     <div>Sun: By Appointment</div>
                   </div>
                 </div>
-                <div className="mt-2">Licensed & Insured</div>
+                <div className="mt-2">Licensed &amp; Insured</div>
               </div>
             </div>
           </div>
