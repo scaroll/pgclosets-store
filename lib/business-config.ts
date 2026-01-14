@@ -1,121 +1,29 @@
-/**
- * Centralized business information configuration
- * Single source of truth for all business details across the site
- */
-
+// Business configuration for PG Closets
 export const BUSINESS_INFO = {
-  // Core Business Identity
   name: "PG Closets",
-  tagline: "Official Renin Dealer",
-  fullName: "PG Closets - Official Renin Dealer",
-  
-  // Contact Information
-  email: "spencer@peoplesgrp.com", // Primary business email
-  phone: "(613) 555-0123", // Standard Ottawa format
-  phoneFormatted: "613-555-0123",
-  
-  // Business Address
+  tagline: "Ottawa's Premier Door Experts",
+  phone: "(613) 422-5800",
+  email: "info@pgclosets.com",
+  urls: {
+    main: "https://pgclosets.com",
+    ogImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PG%20Logo.jpg-PA2Pv0eQKuJGkzYoQf9wsC86lYSKGa.jpeg"
+  },
   address: {
-    street: "Ottawa, Ontario",
     city: "Ottawa",
-    province: "ON", 
-    postalCode: "K1P 5E9",
-    country: "CA",
-    full: "Ottawa, ON K1P 5E9"
+    province: "ON",
+    country: "Canada"
   },
-  
-  // Geographic Coordinates (Ottawa city center)
   coordinates: {
-    latitude: "45.4215",
-    longitude: "-75.6972"
+    latitude: 45.4215,
+    longitude: -75.6972
   },
-  
-  // Service Areas (Core Ottawa regions)
-  serviceAreas: [
-    "Ottawa",
-    "Kanata", 
-    "Barrhaven",
-    "Orleans",
-    "Nepean",
-    "Gloucester",
-    "Stittsville"
-  ],
-  
-  // Business Hours
   hours: {
-    monday: "9:00 AM - 6:00 PM",
-    tuesday: "9:00 AM - 6:00 PM", 
-    wednesday: "9:00 AM - 6:00 PM",
-    thursday: "9:00 AM - 6:00 PM",
-    friday: "9:00 AM - 6:00 PM",
+    weekdays: "9:00 AM - 6:00 PM",
     saturday: "10:00 AM - 4:00 PM",
     sunday: "Closed"
   },
-  
-  // Services
-  services: [
-    "Custom Closet Design",
-    "Closet Door Installation", 
-    "Storage Solutions",
-    "Pantry Organization",
-    "Renin Product Sales"
-  ],
-  
-  // Brand Values
-  values: [
-    "Professional Installation",
-    "Lifetime Warranty", 
-    "2-Week Delivery",
-    "Local Ottawa Service",
-    "Official Renin Partnership"
-  ],
-  
-  // Website URLs
-  urls: {
-    main: "https://www.pgclosets.com",
-    logo: "/logo.png",
-    ogImage: "/og-image.jpg"
-  },
-  
-  // Social Media (when available)
   social: {
-    facebook: "",
-    instagram: "",
-    linkedin: ""
+    facebook: "https://facebook.com/pgclosets",
+    instagram: "https://instagram.com/pgclosets"
   }
-} as const
-
-// Helper functions for consistent formatting
-export const formatBusinessName = (includeTagline: boolean = false) => {
-  return includeTagline ? BUSINESS_INFO.fullName : BUSINESS_INFO.name
 }
-
-export const formatAddress = (multiline: boolean = false) => {
-  const separator = multiline ? '\n' : ', '
-  return `${BUSINESS_INFO.address.city}${separator}${BUSINESS_INFO.address.province} ${BUSINESS_INFO.address.postalCode}`
-}
-
-export const formatServiceAreas = (limit?: number) => {
-  const areas = limit ? BUSINESS_INFO.serviceAreas.slice(0, limit) : BUSINESS_INFO.serviceAreas
-  return areas.join(', ')
-}
-
-// Schema.org helpers
-export const getSchemaAddress = () => ({
-  "@type": "PostalAddress",
-  addressLocality: BUSINESS_INFO.address.city,
-  addressRegion: BUSINESS_INFO.address.province,
-  addressCountry: BUSINESS_INFO.address.country
-})
-
-export const getSchemaGeo = () => ({
-  "@type": "GeoCoordinates", 
-  latitude: BUSINESS_INFO.coordinates.latitude,
-  longitude: BUSINESS_INFO.coordinates.longitude
-})
-
-export const getSchemaServiceAreas = () => 
-  BUSINESS_INFO.serviceAreas.map(area => ({
-    "@type": "City",
-    name: area
-  }))
