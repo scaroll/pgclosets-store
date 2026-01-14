@@ -65,7 +65,7 @@
     "framer-motion": "^11.11.1",
     "immer": "latest",
     "lucide-react": "^0.454.0",
-    "next": "15.3.2",
+    "next": "15.2.6",
     "posthog-node": "latest",
     "react": "^19",
     "react-dom": "^19",
