@@ -1,242 +1,214 @@
-"use client"
+import Image from 'next/image'
+import type { Metadata } from "next"
 
-import { useState } from "react"
-import Image from "next/image"
+// Enable ISR with 24 hour revalidation for homepage
+export const revalidate = 86400
 
-export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [quoteStep, setQuoteStep] = useState(0)
-  const [selectedProduct, setSelectedProduct] = useState("")
-  const [quotePrice, setQuotePrice] = useState(459)
+export const metadata: Metadata = {
+  title: 'PG Closets | Custom Closets & Storage Solutions in Ottawa',
+  description: 'Custom closets, pantries, and storage solutions in Ottawa and the NCR. Professional design, installation, and service by local experts. Request your free quote today.',
+  keywords: 'custom closets Ottawa, closet design Ottawa, storage solutions Ottawa, pantry organization, garage storage, closet installation, home organization Ottawa, custom storage NCR',
+  authors: [{ name: 'PG Closets' }],
+  creator: 'PG Closets',
+  publisher: 'PG Closets',
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+  other: {
+    'geo.region': 'CA-ON',
+    'geo.placename': 'Ottawa',
+    'geo.position': '45.4215;-75.6972',
+    'ICBM': '45.4215, -75.6972'
+  },
+  openGraph: {
+    title: 'PG Closets | Custom Closets & Storage Solutions in Ottawa',
+    description: 'Custom closets, pantries, and storage solutions in Ottawa and the NCR. Professional design, installation, and service by local experts.',
+    url: 'https://www.pgclosets.ca',
+    siteName: 'PG Closets',
+    locale: 'en_CA',
+    images: [
+      {
+        url: 'https://www.pgclosets.ca/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'PG Closets - Custom Storage Solutions Ottawa'
+      }
+    ],
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@pgclosets',
+    title: 'PG Closets | Custom Closets & Storage Solutions in Ottawa',
+    description: 'Custom closets, pantries, and storage solutions in Ottawa and the NCR. Professional design, installation, and service by local experts.',
+    images: ['https://www.pgclosets.ca/og-image.jpg']
+  },
+  alternates: {
+    canonical: 'https://www.pgclosets.ca'
+  },
+}
 
-  const products = [
-    {
-      name: "Continental",
-      price: 459,
-      image: "/images/arcat/renin_176732_hd.jpg",
-      specs: "Premium engineered wood core, durable laminate surface",
-    },
-    {
-      name: "Provincial",
-      price: 549,
-      image: "/images/arcat/renin_205750_hd.jpg",
-      specs: "Traditional styling, heavy-duty pivot hinges",
-    },
-    {
-      name: "Gatsby",
-      price: 799,
-      image: "/images/arcat/renin_205729_hd.jpg",
-      specs: "Modern barn door design, premium hardware included",
-    },
-    {
-      name: "Euro",
-      price: 899,
-      image: "/images/arcat/renin_199063_hd.jpg",
-      specs: "Contemporary European styling, soft-close mechanism",
-    },
-  ]
-
+export default function HomePage() {
   return (
     <div className="min-h-screen bg-white font-sans">
+      {/* Header */}
       <header className="fixed top-0 w-full z-50 bg-white shadow-lg">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gradient-to-r from-[#1B4A9C] to-[#4A5F8A] text-white text-center py-2 text-sm font-semibold">
-            ⭐ 5.0 • 🏠 500+ Installations • ⏰ 15+ Years • 98% Satisfaction
+          <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white text-center py-3 text-sm tracking-wide">
+            <div className="flex items-center justify-center space-x-8 text-xs uppercase font-light">
+              <span className="flex items-center space-x-1">
+                <span className="w-1 h-1 bg-amber-400 rounded-full"></span>
+                <span>Ottawa&apos;s Premier Atelier</span>
+              </span>
+              <span className="flex items-center space-x-1">
+                <span className="w-1 h-1 bg-amber-400 rounded-full"></span>
+                <span>500+ Luxury Installations</span>
+              </span>
+              <span className="flex items-center space-x-1">
+                <span className="w-1 h-1 bg-amber-400 rounded-full"></span>
+                <span>Award-Winning Design</span>
+              </span>
+            </div>
           </div>
-
           <div className="flex justify-between items-center h-20">
-            <a href="/" className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-[#1B4A9C] flex items-center justify-center text-white font-bold text-lg">
-                PG
-              </div>
+            <a href="/" className="flex items-center space-x-4">
+              <Image
+                alt="PG Closets"
+                width={48}
+                height={48}
+                className="w-12 h-12 object-contain"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PG%20Logo.jpg-PA2Pv0eQKuJGkzYoQf9wsC86lYSKGa.jpeg"
+              />
               <div>
-                <div className="text-xl font-bold text-[#1B4A9C]">PG CLOSETS</div>
-                <p className="text-xs text-[#9BC4E2] font-medium">Premium Solutions</p>
+                <h1 className="text-2xl font-light tracking-wide text-slate-900">PG CLOSETS</h1>
+                <p className="text-xs text-slate-500 font-light uppercase tracking-widest">Ottawa Design Atelier</p>
               </div>
             </a>
-
-            <nav className="hidden lg:flex items-center space-x-6">
-              <a href="/" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                Home
-              </a>
-              <a href="/products" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                Products
-              </a>
-              <a href="/about" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                About
-              </a>
-              <a href="/services" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                Services
-              </a>
-              <a href="/contact" className="text-[#1B4A9C] hover:text-[#9BC4E2] px-3 py-2 text-sm font-medium">
-                Contact
-              </a>
-
-              <div className="flex items-center space-x-4 ml-6">
-                <a href="tel:6134225800" className="text-[#9BC4E2] font-semibold hover:text-[#1B4A9C]">
-                  (613) 422-5800
-                </a>
-                <button
-                  onClick={() => setQuoteStep(1)}
-                  className="bg-[#9BC4E2] text-[#1B4A9C] px-6 py-2 font-semibold hover:bg-[#1B4A9C] hover:text-white transition-all"
-                >
-                  Get Quote
-                </button>
+            <nav className="hidden lg:flex items-center space-x-8">
+              <a href="/" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">Home</a>
+              <a href="/products" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">Collection</a>
+              <a href="/about" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">Atelier</a>
+              <a href="/services" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">Services</a>
+              <a href="/contact" className="text-slate-700 hover:text-slate-900 px-3 py-2 text-sm font-light tracking-wide transition-colors">Contact</a>
+              <div className="flex items-center space-x-6 ml-8 pl-8 border-l border-slate-200">
+                <a href="tel:6134225800" className="text-slate-600 hover:text-slate-900 font-light tracking-wide transition-colors">(613) 422-5800</a>
+                <button className="bg-slate-900 text-white px-8 py-2.5 text-sm font-light tracking-wide hover:bg-slate-800 transition-all duration-300">Schedule Consultation</button>
               </div>
             </nav>
-
             <div className="lg:hidden">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-[#1B4A9C] hover:text-[#9BC4E2] p-2"
-              >
+              <button className="text-slate-700 hover:text-slate-900 p-2">
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  {mobileMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
               </button>
             </div>
           </div>
-
-          {mobileMenuOpen && (
-            <div className="lg:hidden border-t py-4 space-y-2 bg-white">
-              <a href="/" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
-                Home
-              </a>
-              <a href="/products" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
-                Products
-              </a>
-              <a href="/about" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
-                About
-              </a>
-              <a href="/services" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
-                Services
-              </a>
-              <a href="/contact" className="block px-4 py-2 text-[#1B4A9C] hover:text-[#9BC4E2] font-medium">
-                Contact
-              </a>
-
-              <div className="px-4 pt-4 grid grid-cols-2 gap-2">
-                <a href="tel:6134225800" className="bg-[#1B4A9C] text-white py-3 text-center font-semibold">
-                  Call Now
-                </a>
-                <button
-                  onClick={() => {
-                    setQuoteStep(1)
-                    setMobileMenuOpen(false)
-                  }}
-                  className="bg-[#9BC4E2] text-[#1B4A9C] py-3 font-semibold"
-                >
-                  Get Quote
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       </header>
 
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#1B4A9C] via-[#4A5F8A] to-[#2C5AA0]">
-        <div className="relative z-20 text-center text-white px-4 max-w-6xl mx-auto">
-          <div className="mb-6">
-            <span className="inline-block bg-[#9BC4E2] text-[#1B4A9C] px-4 py-2 text-sm font-semibold">
-              ⚡ December: 3 Slots Left
-            </span>
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100"></div>
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-slate-400 rounded-full blur-3xl"></div>
+        </div>
+        <div className="relative z-20 text-center px-4 max-w-7xl mx-auto">
+          <div className="mb-8">
+            <div className="inline-flex items-center space-x-2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-light tracking-wide">
+              <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span>
+              <span>Exclusive December Availability • 3 Consultations Remaining</span>
+            </div>
           </div>
-
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">Custom Closets & Storage Solutions in Ottawa</h1>
-          <p className="text-lg lg:text-xl mb-8 max-w-3xl mx-auto">
-            Official Renin Dealer • 500+ Installations • Free Measurement
+          <h1 className="text-5xl lg:text-7xl font-extralight mb-8 leading-[1.1] text-slate-900 tracking-tight">
+            Bespoke Closet Doors
+            <br/>
+            <span className="text-slate-600">For Distinguished Homes</span>
+          </h1>
+          <p className="text-xl lg:text-2xl mb-12 max-w-4xl mx-auto text-slate-600 font-light leading-relaxed">
+            Ottawa&apos;s premier design atelier crafting luxury closet solutions with
+            <span className="text-slate-900 font-normal"> meticulous attention to detail</span>
+             and
+            <span className="text-slate-900 font-normal"> uncompromising quality</span>
           </p>
-
-          <div className="flex justify-center space-x-8 mb-8 text-[#9BC4E2]">
-            <div className="text-center">
-              <div className="text-2xl font-bold">500+</div>
-              <div className="text-sm">Ottawa Homes</div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto">
+            <div className="text-center group">
+              <div className="text-3xl lg:text-4xl font-light text-slate-900 mb-2">500+</div>
+              <div className="text-sm text-slate-500 uppercase tracking-widest font-light">Luxury Installations</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold">5.0★</div>
-              <div className="text-sm">Google Rating</div>
+            <div className="text-center group">
+              <div className="text-3xl lg:text-4xl font-light text-slate-900 mb-2">★★★★★</div>
+              <div className="text-sm text-slate-500 uppercase tracking-widest font-light">Client Satisfaction</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold">15+</div>
-              <div className="text-sm">Years Experience</div>
+            <div className="text-center group">
+              <div className="text-3xl lg:text-4xl font-light text-slate-900 mb-2">15+</div>
+              <div className="text-sm text-slate-500 uppercase tracking-widest font-light">Years Mastery</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold">98%</div>
-              <div className="text-sm">Satisfaction Rate</div>
+            <div className="text-center group">
+              <div className="text-3xl lg:text-4xl font-light text-slate-900 mb-2">Award</div>
+              <div className="text-sm text-slate-500 uppercase tracking-widest font-light">Winning Design</div>
             </div>
           </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => setQuoteStep(1)}
-              className="bg-[#9BC4E2] text-[#1B4A9C] hover:bg-white font-semibold px-8 py-4 shadow-lg hover:shadow-xl transition-all"
-            >
-              Calculate Quote →
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <button className="group bg-slate-900 text-white hover:bg-slate-800 font-light px-12 py-4 text-lg tracking-wide transition-all duration-500 hover:shadow-2xl hover:scale-105">
+              <span className="group-hover:hidden">Request Private Consultation</span>
+              <span className="hidden group-hover:inline-flex items-center space-x-2">
+                <span>Schedule Your Visit</span>
+                <span>→</span>
+              </span>
             </button>
-            <a
-              href="/products"
-              className="border-2 border-[#9BC4E2] text-[#9BC4E2] hover:bg-[#9BC4E2] hover:text-[#1B4A9C] font-semibold px-8 py-4 transition-all text-center"
-            >
-              View Products
+            <a href="/products" className="group border border-slate-300 text-slate-700 hover:border-slate-900 hover:text-slate-900 font-light px-12 py-4 text-lg tracking-wide transition-all duration-300 text-center">
+              <span className="group-hover:hidden">Explore Collection</span>
+              <span className="hidden group-hover:inline">View Curated Designs</span>
             </a>
           </div>
         </div>
       </section>
 
-      <section id="products" className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-[#1B4A9C]">Premium Door Collection</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Browse our complete selection of premium closet doors with instant pricing
+      {/* Products Section */}
+      <section id="products" className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="inline-block text-xs uppercase tracking-[0.3em] text-slate-500 font-light mb-4">Curated Collection</div>
+            <h2 className="text-4xl lg:text-5xl font-extralight mb-6 text-slate-900 tracking-tight">Signature Door Designs</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed">
+              Each piece in our collection represents the pinnacle of craftsmanship,
+              <span className="text-slate-900"> handpicked for discerning homeowners</span>
+               who appreciate exceptional design
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.map((product, index) => (
-              <div
-                key={product.name}
-                className="bg-white shadow-lg overflow-hidden hover:shadow-xl transition-all border border-[#E0E0E0]"
-              >
-                <div className="aspect-square relative overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { name: 'Continental', image: '/images/arcat/renin_176732_hd.jpg', price: 459, description: 'Premium engineered wood core, durable laminate surface' },
+              { name: 'Provincial', image: '/images/arcat/renin_205750_hd.jpg', price: 549, description: 'Traditional styling, heavy-duty pivot hinges' },
+              { name: 'Gatsby', image: '/images/arcat/renin_205729_hd.jpg', price: 799, description: 'Modern barn door design, premium hardware included' },
+              { name: 'Euro', image: '/images/arcat/renin_199063_hd.jpg', price: 899, description: 'Contemporary European styling, soft-close mechanism' }
+            ].map((product) => (
+              <div key={product.name} className="group bg-white overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                <div className="aspect-[4/5] relative overflow-hidden">
                   <Image
-                    src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     fill
-                    className="object-cover hover:scale-105 transition-transform duration-300"
-                    loading={index < 2 ? "eager" : "lazy"}
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
-                    quality={75}
+                    src={product.image}
                   />
-                  <div className="absolute top-2 left-2 bg-[#1B4A9C] text-white px-3 py-1 text-xs font-semibold">
-                    NEW
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="bg-black/70 backdrop-blur-sm text-white px-3 py-1.5 text-xs font-light tracking-wide">SIGNATURE PIECE</div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-[#2C3E50] mb-2">{product.name}</h3>
-                  <p className="text-[#6B7280] text-sm mb-4">{product.specs}</p>
-                  <div className="text-3xl font-bold text-[#1B4A9C] mb-6">${product.price}.00</div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => {
-                        setSelectedProduct(product.name)
-                        setQuotePrice(product.price)
-                        setQuoteStep(2)
-                      }}
-                      className="flex-1 bg-[#1B4A9C] text-white py-3 font-semibold hover:bg-[#153A7E] transition-all text-sm uppercase tracking-wide"
-                    >
-                      Get Quote
-                    </button>
-                    <a
-                      href="/products"
-                      className="px-4 py-3 border-2 border-[#1B4A9C] text-[#1B4A9C] hover:bg-[#1B4A9C] hover:text-white transition-all text-sm uppercase tracking-wide text-center"
-                    >
-                      Details
-                    </a>
+                <div className="p-8">
+                  <div className="text-xs uppercase tracking-[0.2em] text-slate-400 font-light mb-2">COLLECTION</div>
+                  <h3 className="text-2xl font-light text-slate-900 mb-3 tracking-wide">{product.name}</h3>
+                  <p className="text-slate-600 text-sm mb-6 leading-relaxed font-light">{product.description}</p>
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="text-2xl font-light text-slate-900">
+                      From ${product.price}
+                    </div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide">CAD</div>
+                  </div>
+                  <div className="space-y-3">
+                    <button className="w-full bg-slate-900 text-white py-3.5 font-light text-sm tracking-wide hover:bg-slate-800 transition-all duration-300">Request Consultation</button>
+                    <a href="/products" className="block w-full border border-slate-300 text-slate-700 hover:border-slate-900 hover:text-slate-900 py-3.5 font-light text-sm tracking-wide transition-all duration-300 text-center">View Details</a>
                   </div>
                 </div>
               </div>
@@ -244,136 +216,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {quoteStep > 0 && (
-        <section className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-[#1B4A9C]">Get Your Quote</h2>
-              <p className="text-lg text-gray-600">Professional installation included</p>
-            </div>
-
-            <div className="bg-[#F5F5F5] p-8 border-2 border-[#E0E0E0]">
-              {quoteStep === 1 && (
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold mb-8 text-[#1B4A9C]">Choose Your Door Style</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {products.map((product) => (
-                      <button
-                        key={product.name}
-                        onClick={() => {
-                          setSelectedProduct(product.name)
-                          setQuotePrice(product.price)
-                          setQuoteStep(2)
-                        }}
-                        className="p-4 bg-white border-2 border-[#E0E0E0] hover:border-[#1B4A9C] transition-all"
-                      >
-                        <div className="aspect-square relative mb-3 overflow-hidden">
-                          <Image
-                            src={product.image || "/placeholder.svg"}
-                            alt={`${product.name} closet door design`}
-                            fill
-                            className="object-cover"
-                            loading="lazy"
-                            sizes="(max-width: 768px) 50vw, 150px"
-                            quality={75}
-                          />
-                        </div>
-                        <div className="font-semibold text-[#1B4A9C] mb-1 text-sm">{product.name}</div>
-                        <div className="text-[#1B4A9C] font-bold text-lg">${product.price}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {quoteStep === 2 && (
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold mb-8 text-[#1B4A9C]">Your Quote: {selectedProduct}</h3>
-                  <div className="bg-white p-8 border-2 border-[#E0E0E0] mb-6">
-                    <div className="text-4xl font-bold text-[#1B4A9C] mb-6">${quotePrice}</div>
-                    <div className="text-sm text-gray-600 mb-6">
-                      ✓ Professional installation included
-                      <br />✓ Lifetime warranty
-                      <br />✓ 2-week delivery guarantee
-                    </div>
-                  </div>
-                  <a
-                    href="/contact"
-                    className="bg-[#1B4A9C] text-white px-8 py-3 font-semibold hover:bg-[#153A7E] transition-all uppercase tracking-wide inline-block"
-                  >
-                    Book Consultation
-                  </a>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-      )}
-
-      <footer className="bg-[#1B4A9C] text-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <a href="/" className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-[#9BC4E2] flex items-center justify-center text-[#1B4A9C] font-bold text-lg">
-                  PG
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">PG CLOSETS</h3>
-                  <p className="text-[#9BC4E2]">Premium Solutions</p>
-                </div>
-              </a>
-              <p className="text-gray-300 mb-6">
-                Ottawa's premier closet door specialists, transforming homes with premium solutions.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-[#9BC4E2]">Sitemap</h4>
-              <div className="space-y-2">
-                <a href="/" className="block text-gray-300 hover:text-white">
-                  Home
-                </a>
-                <a href="/products" className="block text-gray-300 hover:text-white">
-                  Products
-                </a>
-                <a href="/about" className="block text-gray-300 hover:text-white">
-                  About
-                </a>
-                <a href="/services" className="block text-gray-300 hover:text-white">
-                  Services
-                </a>
-                <a href="/contact" className="block text-gray-300 hover:text-white">
-                  Contact
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-[#9BC4E2]">Contact</h4>
-              <div className="space-y-2 text-gray-300">
-                <div>(613) 422-5800</div>
-                <div>info@pgclosets.com</div>
-                <div>Ottawa & Surrounding Areas</div>
-                <div className="mt-4 pt-4 border-t border-gray-600">
-                  <div className="text-sm">
-                    <div className="font-semibold text-[#9BC4E2] mb-2">Business Hours:</div>
-                    <div>Mon-Fri: 8:00 AM - 6:00 PM</div>
-                    <div>Sat: 9:00 AM - 4:00 PM</div>
-                    <div>Sun: By Appointment</div>
-                  </div>
-                </div>
-                <div className="mt-2">Licensed & Insured</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-600 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 PG Closets. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
