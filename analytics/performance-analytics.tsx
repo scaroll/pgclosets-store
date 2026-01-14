@@ -12,13 +12,12 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
     // Track Core Web Vitals
     const trackWebVitals = () => {
       if (typeof window !== "undefined" && "gtag" in window) {
-        // @ts-ignore
-        const gtag = window.gtag
+        const gtag = (window as any).gtag
 
         // Track Largest Contentful Paint (LCP)
         new PerformanceObserver((entryList) => {
           for (const entry of entryList.getEntries()) {
-            gtag("event", "web_vitals", {
+            gtag?.("event", "web_vitals", {
               event_category: "Web Vitals",
               event_label: "LCP",
               value: Math.round(entry.startTime),
@@ -30,7 +29,7 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
         // Track First Input Delay (FID)
         new PerformanceObserver((entryList) => {
           for (const entry of entryList.getEntries()) {
-            gtag("event", "web_vitals", {
+            gtag?.("event", "web_vitals", {
               event_category: "Web Vitals",
               event_label: "FID",
               value: Math.round((entry as any).processingStart - entry.startTime),
@@ -47,7 +46,7 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
               clsValue += (entry as any).value
             }
           }
-          gtag("event", "web_vitals", {
+          gtag?.("event", "web_vitals", {
             event_category: "Web Vitals",
             event_label: "CLS",
             value: Math.round(clsValue * 1000),
@@ -59,7 +58,7 @@ export function PerformanceAnalytics({ gaId }: PerformanceAnalyticsProps) {
         const navigationEntry = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming
         if (navigationEntry) {
           const ttfb = navigationEntry.responseStart - navigationEntry.requestStart
-          gtag("event", "web_vitals", {
+          gtag?.("event", "web_vitals", {
             event_category: "Web Vitals",
             event_label: "TTFB",
             value: Math.round(ttfb),
@@ -95,7 +94,7 @@ export function SEOAnalytics({ gaId }: PerformanceAnalyticsProps) {
         // Track organic search traffic
         const referrer = document.referrer
         if (referrer.includes("google.com") || referrer.includes("bing.com") || referrer.includes("yahoo.com")) {
-          gtag("event", "organic_search_visit", {
+          gtag?.("event", "organic_search_visit", {
             event_category: "SEO",
             event_label: "Organic Search Traffic",
             search_engine: referrer.includes("google.com")
@@ -108,7 +107,7 @@ export function SEOAnalytics({ gaId }: PerformanceAnalyticsProps) {
 
         // Track page depth for SEO analysis
         const pathDepth = window.location.pathname.split("/").filter(Boolean).length
-        gtag("event", "page_depth", {
+        gtag?.("event", "page_depth", {
           event_category: "SEO",
           event_label: "Page Depth",
           value: pathDepth,
@@ -118,7 +117,7 @@ export function SEOAnalytics({ gaId }: PerformanceAnalyticsProps) {
         const startTime = Date.now()
         const trackTimeOnPage = () => {
           const timeOnPage = Date.now() - startTime
-          gtag("event", "time_on_page", {
+          gtag?.("event", "time_on_page", {
             event_category: "SEO",
             event_label: "Engagement",
             value: Math.round(timeOnPage / 1000), // Convert to seconds
@@ -135,13 +134,13 @@ export function SEOAnalytics({ gaId }: PerformanceAnalyticsProps) {
           if (scrollPercent > maxScroll) {
             maxScroll = scrollPercent
             if (maxScroll >= 25 && maxScroll < 50) {
-              gtag("event", "scroll_depth_25", { event_category: "SEO", event_label: "Engagement" })
+              gtag?.("event", "scroll_depth_25", { event_category: "SEO", event_label: "Engagement" })
             } else if (maxScroll >= 50 && maxScroll < 75) {
-              gtag("event", "scroll_depth_50", { event_category: "SEO", event_label: "Engagement" })
+              gtag?.("event", "scroll_depth_50", { event_category: "SEO", event_label: "Engagement" })
             } else if (maxScroll >= 75 && maxScroll < 90) {
-              gtag("event", "scroll_depth_75", { event_category: "SEO", event_label: "Engagement" })
+              gtag?.("event", "scroll_depth_75", { event_category: "SEO", event_label: "Engagement" })
             } else if (maxScroll >= 90) {
-              gtag("event", "scroll_depth_90", { event_category: "SEO", event_label: "Engagement" })
+              gtag?.("event", "scroll_depth_90", { event_category: "SEO", event_label: "Engagement" })
             }
           }
         }
@@ -168,7 +167,7 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
         const contactForms = document.querySelectorAll('form[action*="contact"]')
         contactForms.forEach((form) => {
           form.addEventListener("submit", () => {
-            gtag("event", "contact_form_submit", {
+            gtag?.("event", "contact_form_submit", {
               event_category: "Conversions",
               event_label: "Contact Form",
               value: 1,
@@ -180,7 +179,7 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
         const quoteButtons = document.querySelectorAll('button:contains("Quote"), a:contains("Quote")')
         quoteButtons.forEach((button) => {
           button.addEventListener("click", () => {
-            gtag("event", "quote_request", {
+            gtag?.("event", "quote_request", {
               event_category: "Conversions",
               event_label: "Quote Request",
               value: 1,
@@ -192,7 +191,7 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
         const phoneLinks = document.querySelectorAll('a[href^="tel:"]')
         phoneLinks.forEach((link) => {
           link.addEventListener("click", () => {
-            gtag("event", "phone_click", {
+            gtag?.("event", "phone_click", {
               event_category: "Conversions",
               event_label: "Phone Call",
               value: 1,
@@ -204,7 +203,7 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
         const emailLinks = document.querySelectorAll('a[href^="mailto:"]')
         emailLinks.forEach((link) => {
           link.addEventListener("click", () => {
-            gtag("event", "email_click", {
+            gtag?.("event", "email_click", {
               event_category: "Conversions",
               event_label: "Email Contact",
               value: 1,
@@ -214,7 +213,7 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
 
         // Track product page views
         if (window.location.pathname.includes("/products/")) {
-          gtag("event", "product_view", {
+          gtag?.("event", "product_view", {
             event_category: "Conversions",
             event_label: "Product Page View",
             value: 1,
@@ -223,7 +222,7 @@ export function ConversionTracking({ gaId }: PerformanceAnalyticsProps) {
 
         // Track FAQ engagement
         if (window.location.pathname.includes("/faq")) {
-          gtag("event", "faq_visit", {
+          gtag?.("event", "faq_visit", {
             event_category: "Conversions",
             event_label: "FAQ Page Visit",
             value: 1,
