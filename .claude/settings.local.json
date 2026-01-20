@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "superpowers": {
+      "path": ".superpowers",
+      "enabled": true
+    }
+  }
+}
