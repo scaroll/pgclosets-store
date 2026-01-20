@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { createProtectedRoute, rateLimitConfigs } from "@/lib/validation/middleware";
 import { z } from "zod";
+import { sendQuoteEmails } from "@/lib/email/send-quote-email";
 import {
   OTTAWA_PRICING_CONFIG,
   FINANCING_OPTIONS,
@@ -348,6 +349,40 @@ async function handleReninQuoteRequest(
 
   // Send Slack notification
   await sendSlackNotification(sanitizedData, totalQuote, quoteNumber);
+
+  // Send email notifications (customer confirmation + sales team alert)
+  const emailData = {
+    name: `${sanitizedData.customer.firstName} ${sanitizedData.customer.lastName}`,
+    email: sanitizedData.customer.email,
+    phone: undefined,
+    productInterest: sanitizedData.products.map(p => p.productName).join(", "),
+    additionalDetails: sanitizedData.projectDetails?.additionalNotes,
+    product: {
+      name: sanitizedData.products[0]?.productName || "Renin Door Products",
+      price: totalQuote.total,
+    },
+    selectedOptions: {
+      customerType: sanitizedData.customer.customerType,
+      postalCode: sanitizedData.customer.postalCode,
+      includeFinancing: sanitizedData.includeFinancing,
+      timeline: sanitizedData.projectDetails?.timeline,
+      projectType: sanitizedData.projectDetails?.projectType,
+      totalProducts: sanitizedData.products.length,
+      quoteBreakdown: {
+        subtotal: totalQuote.subtotal,
+        installation: totalQuote.installationCost,
+        delivery: totalQuote.deliveryFee,
+        hst: totalQuote.hst,
+        total: totalQuote.total,
+        savings: totalQuote.savings,
+      },
+    },
+  };
+
+  // Send emails in background (don't block response)
+  sendQuoteEmails(emailData, quoteNumber).catch((err) => {
+    console.warn("[quotes/renin] Failed to send email notifications:", err);
+  });
 
   // Store in database
   const supabase = await createClient();
