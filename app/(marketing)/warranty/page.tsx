@@ -478,8 +478,8 @@ export default function WarrantyPage() {
                     <div>
                       <h3 className="font-semibold text-lg mb-1">Phone Support</h3>
                       <p className="text-muted-foreground mb-2">Call us for immediate assistance</p>
-                      <a href="tel:+16135551234" className="text-primary font-semibold text-lg hover:underline">
-                        (613) 555-1234
+                      <a href="tel:+16137016393" className="text-primary font-semibold text-lg hover:underline">
+                        (613) 701-6393
                       </a>
                       <p className="text-sm text-muted-foreground mt-1">
                         Mon-Fri: 9AM-6PM | Sat: 10AM-4PM

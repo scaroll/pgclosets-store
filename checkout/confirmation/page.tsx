@@ -166,7 +166,7 @@ export default function ConfirmationPage() {
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-accent" />
                   <div>
-                    <p className="font-medium">(416) 555-CLOSET</p>
+                    <p className="font-medium">(613) 701-6393</p>
                     <p className="text-sm text-muted-foreground">Mon-Sat 9AM-7PM</p>
                   </div>
                 </div>

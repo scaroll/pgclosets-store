@@ -127,7 +127,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <div className="p-4 border-t border-border space-y-3">
             <div className="flex items-center space-x-3 text-sm text-muted-foreground">
               <Phone className="w-4 h-4" />
-              <span>(416) 555-CLOSET</span>
+              <span>(613) 701-6393</span>
             </div>
             <div className="flex items-center space-x-3 text-sm text-muted-foreground">
               <Mail className="w-4 h-4" />

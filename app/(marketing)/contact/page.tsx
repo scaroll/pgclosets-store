@@ -19,20 +19,44 @@ export default function ContactPage() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string>('')
+  const [successMessage, setSuccessMessage] = useState<string>('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    setErrorMessage('')
+    setSuccessMessage('')
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-    setIsSubmitting(false)
-    setSubmitStatus('success')
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
+      const data = await response.json()
 
-    setTimeout(() => setSubmitStatus('idle'), 5000)
+      if (response.ok && data.success) {
+        setSubmitStatus('success')
+        setSuccessMessage(data.message || 'Thank you! We will be in touch soon.')
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
+        setTimeout(() => setSubmitStatus('idle'), 5000)
+      } else {
+        setSubmitStatus('error')
+        setErrorMessage(data.error || 'Something went wrong. Please try again.')
+        setTimeout(() => setSubmitStatus('idle'), 5000)
+      }
+    } catch {
+      setSubmitStatus('error')
+      setErrorMessage('Unable to send message. Please check your connection and try again.')
+      setTimeout(() => setSubmitStatus('idle'), 5000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (
@@ -221,14 +245,18 @@ export default function ContactPage() {
                 </div>
 
                 {submitStatus === 'success' && (
-                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-green-800 font-medium">Thank you! We'll be in touch soon.</p>
+                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg dark:bg-green-950 dark:border-green-800">
+                    <p className="text-green-800 dark:text-green-200 font-medium">
+                      {successMessage || "Thank you! We'll be in touch soon."}
+                    </p>
                   </div>
                 )}
 
                 {submitStatus === 'error' && (
-                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <p className="text-red-800 font-medium">Something went wrong. Please try again.</p>
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg dark:bg-red-950 dark:border-red-800">
+                    <p className="text-red-800 dark:text-red-200 font-medium">
+                      {errorMessage || 'Something went wrong. Please try again.'}
+                    </p>
                   </div>
                 )}
 

@@ -58,7 +58,7 @@ export async function sendLeadAutoResponse(data: LeadData): Promise<boolean> {
       <p>Best regards,<br>The PG Closets Team</p>
       <p style="color: #86868b; font-size: 12px;">
         PG Closets - Premium Closet Doors & Storage Solutions<br>
-        Ottawa, ON | (613) 555-0123
+        Ottawa, ON | (613) 701-6393
       </p>
     </div>
   `;

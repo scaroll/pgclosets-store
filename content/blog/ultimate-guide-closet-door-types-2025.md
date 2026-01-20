@@ -534,7 +534,7 @@ Don't settle for outdated or inadequate closet doors. Our free in-home consultat
 ✓ Detailed quote with no hidden fees
 ✓ Samples to preview in your home
 
-**Call us today at (613) 555-0100 or [request your free consultation](#) to get started.**
+**Call us today at (613) 701-6393 or [request your free consultation](#) to get started.**
 
 ---
 

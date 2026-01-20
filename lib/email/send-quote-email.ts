@@ -92,7 +92,7 @@ export async function sendQuoteConfirmationEmail(data: QuoteEmailData): Promise<
               </ol>
             </div>
 
-            <p style="font-size: 14px; color: #64748b; margin-top: 24px;">Questions? Contact us at <a href="mailto:sales@pgclosets.com" style="color: #2563eb;">sales@pgclosets.com</a> or call <a href="tel:+16135551234" style="color: #2563eb;">(613) 555-1234</a></p>
+            <p style="font-size: 14px; color: #64748b; margin-top: 24px;">Questions? Contact us at <a href="mailto:sales@pgclosets.com" style="color: #2563eb;">sales@pgclosets.com</a> or call <a href="tel:+16137016393" style="color: #2563eb;">(613) 701-6393</a></p>
           </div>
 
           <div style="margin-top: 30px; text-align: center; color: #64748b; font-size: 12px;">
