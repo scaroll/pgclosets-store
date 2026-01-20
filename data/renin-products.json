@@ -44,14 +44,14 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-barn-modern-01-hero.jpg",
+        "url": "/images/arcat/renin_176732_Continental_Dunmore_K_Lite.jpg",
         "alt": "Renin modern barn door in matte black with minimalist aluminum frame",
         "role": "hero",
         "width": 1200,
         "height": 900
       },
       {
-        "url": "/images/products/renin-barn-modern-01-detail.jpg",
+        "url": "/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg",
         "alt": "Detail of aluminum frame construction and matte black finish",
         "role": "detail",
         "width": 800,
@@ -150,14 +150,14 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-barn-rustic-01-hero.jpg",
+        "url": "/images/arcat/renin_192861_Heritage_Herringbone_Chevron_Design.jpg",
         "alt": "Renin rustic barn door with natural pine wood and traditional Z-brace design",
         "role": "hero",
         "width": 1200,
         "height": 900
       },
       {
-        "url": "/images/products/renin-barn-rustic-01-detail.jpg",
+        "url": "/images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg",
         "alt": "Close-up of natural wood grain and traditional Z-brace construction",
         "role": "detail",
         "width": 800,
@@ -256,14 +256,14 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-bifold-modern-01-hero.jpg",
+        "url": "/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite.jpg",
         "alt": "Renin modern white bifold door with smooth operation hardware",
         "role": "hero",
         "width": 1200,
         "height": 900
       },
       {
-        "url": "/images/products/renin-bifold-modern-01-detail.jpg",
+        "url": "/images/arcat/renin_155731_Bifold_Closet_Door_Euro_3_Lite.jpg",
         "alt": "Detail of bifold track system and smooth operation mechanism",
         "role": "detail",
         "width": 800,
@@ -363,14 +363,14 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-bypass-glass-01-hero.jpg",
+        "url": "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite.jpg",
         "alt": "Renin glass bypass door with frosted panels and brushed nickel frames",
         "role": "hero",
         "width": 1200,
         "height": 900
       },
       {
-        "url": "/images/products/renin-bypass-glass-01-detail.jpg",
+        "url": "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg",
         "alt": "Detail of frosted glass texture and aluminum frame construction",
         "role": "detail",
         "width": 800,
@@ -472,14 +472,14 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-pivot-modern-01-hero.jpg",
+        "url": "/images/renin-euro-1-lite-pivot.png",
         "alt": "Renin modern pivot door with matte black frame and clear glass panels",
         "role": "hero",
         "width": 1200,
         "height": 900
       },
       {
-        "url": "/images/products/renin-pivot-modern-01-detail.jpg",
+        "url": "/images/renin-euro-3-lite-pivot.png",
         "alt": "Detail of pivot mechanism and aluminum frame construction",
         "role": "detail",
         "width": 800,
@@ -582,14 +582,14 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-hardware-barn-01-hero.jpg",
+        "url": "/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg",
         "alt": "Renin barn door hardware kit with matte black finish and premium rollers",
         "role": "hero",
         "width": 1200,
         "height": 900
       },
       {
-        "url": "/images/products/renin-hardware-barn-01-detail.jpg",
+        "url": "/images/arcat/renin_199078_Barn_Door_Lock_Tear_Drop_Privacy_Latch.jpg",
         "alt": "Detail of premium roller construction and anti-jump design",
         "role": "detail",
         "width": 800,
@@ -692,14 +692,14 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-mirror-frame-01-hero.jpg",
+        "url": "/images/arcat/renin_205720_hd.jpg",
         "alt": "Renin frameless mirror with matte black aluminum frame and beveled edge",
         "role": "hero",
         "width": 1200,
         "height": 900
       },
       {
-        "url": "/images/products/renin-mirror-frame-01-detail.jpg",
+        "url": "/images/arcat/renin_205721_hd.jpg",
         "alt": "Detail of matte black frame and beveled mirror edge",
         "role": "detail",
         "width": 800,
@@ -798,7 +798,7 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-barn-modern-02-hero.jpg",
+        "url": "/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg",
         "alt": "Renin modern barn door in white with aluminum frame trim",
         "role": "hero",
         "width": 1200,
@@ -883,7 +883,7 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-barn-rustic-02-hero.jpg",
+        "url": "/images/arcat/renin_176737_Heritage_Salinas_Z_Design.jpg",
         "alt": "Renin rustic barn door with distressed white finish and traditional design",
         "role": "hero",
         "width": 1200,
@@ -968,7 +968,7 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-bifold-traditional-01-hero.jpg",
+        "url": "/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg",
         "alt": "Renin traditional oak bifold door with raised panel design",
         "role": "hero",
         "width": 1200,
@@ -1053,11 +1053,18 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-bypass-wood-01-hero.jpg",
+        "url": "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design.jpg",
         "alt": "Renin wood bypass doors in white with contemporary flat panel design",
         "role": "hero",
         "width": 1200,
         "height": 900
+      },
+      {
+        "url": "/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg",
+        "alt": "Detail of bypass track system and smooth panel design",
+        "role": "detail",
+        "width": 800,
+        "height": 600
       }
     ],
     "variants": [
@@ -1139,11 +1146,18 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-pivot-glass-01-hero.jpg",
+        "url": "/images/renin-provincial-pivot-door.png",
         "alt": "Renin glass pivot door with bronze aluminum frames and clear glass panels",
         "role": "hero",
         "width": 1200,
         "height": 900
+      },
+      {
+        "url": "/images/renin-euro-1-lite-pivot-door.png",
+        "alt": "Detail of pivot mechanism and bronze frame construction",
+        "role": "detail",
+        "width": 800,
+        "height": 600
       }
     ],
     "variants": [
@@ -1226,7 +1240,7 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-hardware-pivot-01-hero.jpg",
+        "url": "/images/arcat/renin_199077_Handles_Pulls_Cairns.jpg",
         "alt": "Renin pivot door hardware kit with innovative mechanism and floor plate",
         "role": "hero",
         "width": 1200,
@@ -1315,7 +1329,7 @@
     },
     "media": [
       {
-        "url": "/images/products/renin-mirror-frame-02-hero.jpg",
+        "url": "/images/arcat/renin_205720_hd.jpg",
         "alt": "Renin round mirror with bronze aluminum frame",
         "role": "hero",
         "width": 1200,
