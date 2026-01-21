@@ -1,18 +1,22 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { LuxuryQuoteForm } from '@/components/ui/luxury-quote-form'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { useCartStore } from '@/lib/stores/cart-store'
-import { formatPrice } from '../../lib/utils'
 import { Minus, Plus, ShoppingBag } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
+import { formatPrice } from '../../lib/utils'
 
 export function CartSheet() {
   const { items, removeItem, updateQuantity, totalPrice, isOpen, openCart, closeCart } =
     useCartStore()
+
+  const [quoteItem, setQuoteItem] = useState<{ name: string; price: number } | null>(null)
 
   const subtotal = totalPrice()
 
@@ -83,6 +87,21 @@ export function CartSheet() {
                           Remove
                         </button>
                       </div>
+                      <div className="mt-2 text-right">
+                        <Button
+                          variant="link"
+                          size="sm"
+                          className="h-auto p-0 text-xs text-muted-foreground hover:text-foreground"
+                          onClick={() =>
+                            setQuoteItem({
+                              name: item.name + (item.variantName ? ` - ${item.variantName}` : ''),
+                              price: item.price,
+                            })
+                          }
+                        >
+                          Request Custom Quote
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -129,6 +148,12 @@ export function CartSheet() {
           </div>
         )}
       </SheetContent>
+
+      <LuxuryQuoteForm
+        open={!!quoteItem}
+        onClose={() => setQuoteItem(null)}
+        product={quoteItem || undefined}
+      />
     </Sheet>
   )
 }

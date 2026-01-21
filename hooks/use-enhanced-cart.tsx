@@ -1,9 +1,9 @@
 // Enhanced cart with optional product fields
-"use client"
+'use client'
 
-import { create } from "zustand"
-import { persist, subscribeWithSelector } from "zustand/middleware"
-import { immer } from "zustand/middleware/immer"
+import { create } from 'zustand'
+import { persist, subscribeWithSelector } from 'zustand/middleware'
+import { immer } from 'zustand/middleware/immer'
 
 // Product recommendation types
 interface RecommendedProduct {
@@ -50,7 +50,7 @@ export interface Address {
 
 export interface PromoCode {
   code: string
-  discountType: "percentage" | "fixed"
+  discountType: 'percentage' | 'fixed'
   discountValue: number
   minimumPurchase?: number
   expiresAt?: string
@@ -68,7 +68,7 @@ interface CartState {
   specialInstructions?: string
 
   // Actions
-  addItem: (item: Omit<CartItem, "quantity"> & { quantity?: number }) => void
+  addItem: (item: Omit<CartItem, 'quantity'> & { quantity?: number }) => void
   removeItem: (productId: string, options?: Record<string, string>) => void
   updateQuantity: (productId: string, quantity: number, options?: Record<string, string>) => void
   clearCart: () => void
@@ -88,7 +88,11 @@ interface CartState {
   // Installation
   setInstallationDate: (date: string) => void
   setSpecialInstructions: (instructions: string) => void
-  toggleInstallation: (productId: string, include: boolean, options?: Record<string, string>) => void
+  toggleInstallation: (
+    productId: string,
+    include: boolean,
+    options?: Record<string, string>
+  ) => void
 
   // Calculations
   getSubtotal: () => number
@@ -111,24 +115,24 @@ interface CartState {
 
 // Mock promo codes database
 const VALID_PROMO_CODES: Record<string, PromoCode> = {
-  "WELCOME10": {
-    code: "WELCOME10",
-    discountType: "percentage",
+  WELCOME10: {
+    code: 'WELCOME10',
+    discountType: 'percentage',
     discountValue: 10,
-    minimumPurchase: 100
+    minimumPurchase: 100,
   },
-  "SAVE50": {
-    code: "SAVE50",
-    discountType: "fixed",
+  SAVE50: {
+    code: 'SAVE50',
+    discountType: 'fixed',
     discountValue: 50,
-    minimumPurchase: 500
+    minimumPurchase: 500,
   },
-  "INSTALL20": {
-    code: "INSTALL20",
-    discountType: "percentage",
+  INSTALL20: {
+    code: 'INSTALL20',
+    discountType: 'percentage',
     discountValue: 20,
-    minimumPurchase: 1000
-  }
+    minimumPurchase: 1000,
+  },
 }
 
 const TAX_RATE = 0.13 // Ontario HST
@@ -149,26 +153,29 @@ export const useEnhancedCart = create<CartState>()(
         installationDate: undefined,
         specialInstructions: undefined,
 
-        addItem: (item) =>
-          set((state) => {
+        addItem: item =>
+          set(state => {
             const { quantity = 1, ...itemData } = item
             const existingIndex = state.items.findIndex(
-              (i) =>
+              i =>
                 i.productId === itemData.productId &&
                 JSON.stringify(i.selectedOptions) === JSON.stringify(itemData.selectedOptions)
             )
 
             if (existingIndex >= 0) {
-              state.items[existingIndex].quantity += quantity
+              const item = state.items[existingIndex]
+              if (item) {
+                item.quantity += quantity
+              }
             } else {
               state.items.push({ ...itemData, quantity })
             }
           }),
 
         removeItem: (productId, options) =>
-          set((state) => {
+          set(state => {
             state.items = state.items.filter(
-              (item) =>
+              item =>
                 !(
                   item.productId === productId &&
                   (!options || JSON.stringify(item.selectedOptions) === JSON.stringify(options))
@@ -177,10 +184,10 @@ export const useEnhancedCart = create<CartState>()(
           }),
 
         updateQuantity: (productId, quantity, options) =>
-          set((state) => {
+          set(state => {
             if (quantity <= 0) {
               state.items = state.items.filter(
-                (item) =>
+                item =>
                   !(
                     item.productId === productId &&
                     (!options || JSON.stringify(item.selectedOptions) === JSON.stringify(options))
@@ -188,36 +195,41 @@ export const useEnhancedCart = create<CartState>()(
               )
             } else {
               const itemIndex = state.items.findIndex(
-                (item) =>
+                item =>
                   item.productId === productId &&
                   (!options || JSON.stringify(item.selectedOptions) === JSON.stringify(options))
               )
               if (itemIndex >= 0) {
-                state.items[itemIndex].quantity = quantity
+                const item = state.items[itemIndex]
+                if (item) {
+                  item.quantity = quantity
+                }
               }
             }
           }),
 
         clearCart: () =>
-          set((state) => {
-            state.items = []
-            state.promoCode = null
-            state.installationDate = undefined
-            state.specialInstructions = undefined
+          set(state => {
+            if (state) {
+              state.items = []
+              state.promoCode = null
+              state.installationDate = undefined
+              state.specialInstructions = undefined
+            }
           }),
 
         toggleCart: () =>
-          set((state) => {
+          set(state => {
             state.isOpen = !state.isOpen
           }),
 
         openCart: () =>
-          set((state) => {
+          set(state => {
             state.isOpen = true
           }),
 
         closeCart: () =>
-          set((state) => {
+          set(state => {
             state.isOpen = false
           }),
 
@@ -230,49 +242,49 @@ export const useEnhancedCart = create<CartState>()(
             return false
           }
 
-          set((state) => {
+          set(state => {
             state.promoCode = { ...promo, appliedAt: new Date().toISOString() }
           })
           return true
         },
 
         removePromoCode: () =>
-          set((state) => {
+          set(state => {
             state.promoCode = null
           }),
 
-        setShippingAddress: (address) =>
-          set((state) => {
+        setShippingAddress: address =>
+          set(state => {
             state.shippingAddress = address
           }),
 
-        setBillingAddress: (address) =>
-          set((state) => {
+        setBillingAddress: address =>
+          set(state => {
             state.billingAddress = address
           }),
 
-        setSameAsShipping: (same) =>
-          set((state) => {
+        setSameAsShipping: same =>
+          set(state => {
             state.sameAsShipping = same
             if (same) {
               state.billingAddress = null
             }
           }),
 
-        setInstallationDate: (date) =>
-          set((state) => {
+        setInstallationDate: date =>
+          set(state => {
             state.installationDate = date
           }),
 
-        setSpecialInstructions: (instructions) =>
-          set((state) => {
+        setSpecialInstructions: instructions =>
+          set(state => {
             state.specialInstructions = instructions
           }),
 
         toggleInstallation: (productId, include, options) =>
-          set((state) => {
+          set(state => {
             const itemIndex = state.items.findIndex(
-              (item) =>
+              item =>
                 item.productId === productId &&
                 (!options || JSON.stringify(item.selectedOptions) === JSON.stringify(options))
             )
@@ -282,8 +294,9 @@ export const useEnhancedCart = create<CartState>()(
           }),
 
         getSubtotal: () => {
-          const { items } = get()
-          return items.reduce((total, item) => total + item.price * item.quantity, 0)
+          const state = get()
+          if (!state || !state.items) return 0
+          return state.items.reduce((total, item) => total + item.price * item.quantity, 0)
         },
 
         getInstallationTotal: () => {
@@ -300,7 +313,7 @@ export const useEnhancedCart = create<CartState>()(
           if (!promoCode) return 0
 
           const subtotal = get().getSubtotal()
-          if (promoCode.discountType === "percentage") {
+          if (promoCode.discountType === 'percentage') {
             return (subtotal * promoCode.discountValue) / 100
           }
           return Math.min(promoCode.discountValue, subtotal)
@@ -336,13 +349,13 @@ export const useEnhancedCart = create<CartState>()(
         findItem: (productId, options) => {
           const { items } = get()
           return items.find(
-            (item) =>
+            item =>
               item.productId === productId &&
               (!options || JSON.stringify(item.selectedOptions) === JSON.stringify(options))
           )
         },
 
-        canApplyPromoCode: (code) => {
+        canApplyPromoCode: code => {
           const subtotal = get().getSubtotal()
           return !code.minimumPurchase || subtotal >= code.minimumPurchase
         },
@@ -369,19 +382,19 @@ export const useEnhancedCart = create<CartState>()(
           // Mock AI recommendations - in production, this would call an API
           return Promise.resolve([
             {
-              id: "organizer-1",
-              name: "Premium Drawer Organizer",
+              id: 'organizer-1',
+              name: 'Premium Drawer Organizer',
               price: 89,
-              image: "/images/products/organizer.jpg",
-              description: "Complete your closet with custom organizers"
+              image: '/images/products/organizer.jpg',
+              description: 'Complete your closet with custom organizers',
             },
             {
-              id: "lighting-1",
-              name: "LED Strip Lighting Kit",
+              id: 'lighting-1',
+              name: 'LED Strip Lighting Kit',
               price: 149,
-              image: "/images/products/led-lighting.jpg",
-              description: "Illuminate your closet with smart lighting"
-            }
+              image: '/images/products/led-lighting.jpg',
+              description: 'Illuminate your closet with smart lighting',
+            },
           ])
         },
 
@@ -389,34 +402,34 @@ export const useEnhancedCart = create<CartState>()(
           // Mock similar products - in production, this would call an API
           return Promise.resolve([
             {
-              id: "similar-1",
-              name: "Alternative Door Style",
+              id: 'similar-1',
+              name: 'Alternative Door Style',
               price: 899,
-              image: "/images/products/alt-door.jpg"
-            }
+              image: '/images/products/alt-door.jpg',
+            },
           ])
-        }
+        },
       })),
       {
-        name: "pg-closets-enhanced-cart",
-        partialize: (state) => ({
+        name: 'pg-closets-enhanced-cart',
+        partialize: state => ({
           items: state.items,
           promoCode: state.promoCode,
           shippingAddress: state.shippingAddress,
           billingAddress: state.billingAddress,
           sameAsShipping: state.sameAsShipping,
           installationDate: state.installationDate,
-          specialInstructions: state.specialInstructions
-        })
+          specialInstructions: state.specialInstructions,
+        }),
       }
     )
   )
 )
 
 // Subscribe to cart changes for cross-tab synchronization
-if (typeof window !== "undefined") {
-  window.addEventListener("storage", (e) => {
-    if (e.key === "pg-closets-enhanced-cart" && e.newValue) {
+if (typeof window !== 'undefined') {
+  window.addEventListener('storage', e => {
+    if (e.key === 'pg-closets-enhanced-cart' && e.newValue) {
       void useEnhancedCart.persist.rehydrate()
     }
   })

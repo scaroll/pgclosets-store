@@ -78,7 +78,7 @@ export function LuxuryQuoteForm({ open, onClose, product, selectedOptions }: Lux
       }
     } catch (error) {
       console.error('Quote submission failed:', error)
-      const _errorMessage = error instanceof Error ? error.message : 'Failed to submit quote request'
+      // const errorMessage = error instanceof Error ? error.message : 'Failed to submit quote request'
       // Could show error to user here if needed
     } finally {
       setIsSubmitting(false)
@@ -110,10 +110,10 @@ export function LuxuryQuoteForm({ open, onClose, product, selectedOptions }: Lux
           {isSuccess ? (
             <div className="py-8 text-center">
               <p className="text-lg font-medium text-green-600">Quote request received!</p>
-              <p className="mt-2 text-sm text-muted-foreground">We'll get back to you soon.</p>
+              <p className="mt-2 text-sm text-muted-foreground">We&apos;ll get back to you soon.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={e => void handleSubmit(e)} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Your Name</Label>
                 <Input

@@ -1,8 +1,8 @@
 // Product data loader for Renin products
 // Loads and normalizes products from JSON data files
 
-import simpleProducts from '@/data/simple-products.json'
 import reninProducts from '@/data/renin-products.json'
+import simpleProducts from '@/data/simple-products.json'
 
 // ============================================================================
 // Types
@@ -73,7 +73,9 @@ function normalizeSimpleProducts(): NormalizedProduct[] {
     description: product.description,
     shortDescription: `${product.description.substring(0, 150)}...`,
     price: product.price, // Already in cents
-    images: product.image ? [product.image] : [],
+    images: product.image
+      ? [typeof product.image === 'string' ? product.image : (product.image as { url: string }).url]
+      : [],
     category: product.category,
     inStock: true,
     featured: false,
@@ -102,7 +104,7 @@ function normalizeReninProducts(): NormalizedProduct[] {
     let price = 0
     let salePrice: number | undefined
 
-    if (product.variants && product.variants.length > 0) {
+    if (product.variants && product.variants.length > 0 && product.variants[0]) {
       price = product.variants[0].priceCAD * 100 // Convert to cents
     }
 
@@ -118,7 +120,7 @@ function normalizeReninProducts(): NormalizedProduct[] {
       salePrice,
       images,
       category: mapProductCategory(product.category),
-      inStock: product.variants?.[0]?.availability === 'InStock' ?? true,
+      inStock: (product.variants?.[0]?.availability ?? 'InStock') === 'InStock',
       featured: product.isFeatured ?? false,
       bestseller: product.isBestSeller ?? false,
       tags: product.badges || [],
@@ -256,11 +258,13 @@ export function filterAndSortProducts(
     }
 
     if (filters.minPrice !== undefined) {
-      products = products.filter((p) => p.price >= filters.minPrice! * 100)
+      const minPrice = filters.minPrice
+      products = products.filter((p) => p.price >= minPrice * 100)
     }
 
     if (filters.maxPrice !== undefined) {
-      products = products.filter((p) => p.price <= filters.maxPrice! * 100)
+      const maxPrice = filters.maxPrice
+      products = products.filter((p) => p.price <= maxPrice * 100)
     }
 
     if (filters.inStock !== undefined) {
@@ -277,8 +281,9 @@ export function filterAndSortProducts(
     }
 
     if (filters.tags && filters.tags.length > 0) {
+      const filterTags = filters.tags
       products = products.filter((p) =>
-        p.tags?.some((tag) => filters.tags!.includes(tag))
+        p.tags?.some((tag) => filterTags.includes(tag))
       )
     }
   }
@@ -286,21 +291,24 @@ export function filterAndSortProducts(
   // Apply sorting
   if (sort) {
     products.sort((a, b) => {
-      const sortKey = sort.field as keyof NormalizedProduct
-      let aVal: string | number | boolean | Date | undefined = a[sortKey]
-      let bVal: string | number | boolean | Date | undefined = b[sortKey]
+      const sortKey = sort.field
 
-      // Handle special cases
-      if (sort.field === 'featured') {
-        aVal = a.featured ? 1 : 0
-        bVal = b.featured ? 1 : 0
-      }
+        // Handle comparison based on field type
+        if (sortKey === 'price') {
+            return (a.price - b.price) * (sort.direction === 'asc' ? 1 : -1)
+        }
 
-      if (sort.direction === 'asc') {
-        return aVal! > bVal! ? 1 : aVal! < bVal! ? -1 : 0
-      } else {
-        return aVal! < bVal! ? 1 : aVal! > bVal! ? -1 : 0
-      }
+        if (sortKey === 'featured') {
+             const aVal = a.featured ? 1 : 0
+             const bVal = b.featured ? 1 : 0
+             return (aVal - bVal) * (sort.direction === 'asc' ? 1 : -1)
+        }
+
+        // String comparisons (name) or Date strings (createdAt)
+        const aVal = String(a[sortKey] || '')
+        const bVal = String(b[sortKey] || '')
+
+        return aVal.localeCompare(bVal) * (sort.direction === 'asc' ? 1 : -1)
     })
   } else {
     // Default sort: featured first, then by name
@@ -370,7 +378,8 @@ export function getProductCountByCategory(): Record<string, number> {
  */
 export function getProductImage(product: NormalizedProduct, index = 0): string {
   if (product.images && product.images.length > index) {
-    return product.images[index]
+    const img = product.images[index]
+    if (img) return img
   }
 
   // Fallback to placeholder

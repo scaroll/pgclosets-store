@@ -1,32 +1,19 @@
-import { NextRequest, NextResponse } from 'next/server';
-import type { Product, ProductSearchResult } from '@/types/product';
-import { createSecureHandler } from '@/lib/security/middleware';
-import { z } from 'zod';
-import { checkRateLimit, getClientIdentifier, generalRateLimiter } from '@/lib/rate-limit';
+import { checkRateLimit, generalRateLimiter, getClientIdentifier } from '@/lib/rate-limit'
+import { createSecureHandler } from '@/lib/security/middleware'
+import type { Product, ProductSearchResult } from '@/types/product'
+import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
 
 // Type definitions
 interface SearchFilters {
-  categories?: string[];
+  categories?: string[]
   priceRange?: {
-    min: number;
-    max: number;
-  };
-  inStock?: boolean;
-  onSale?: boolean;
-  styles?: string[];
-}
-
-interface SearchSort {
-  field: 'price' | 'name' | 'rating' | 'popularity' | 'featured';
-  order: 'asc' | 'desc';
-}
-
-interface _SearchRequestBody {
-  query?: string;
-  filters?: SearchFilters;
-  sort?: SearchSort;
-  page?: number;
-  limit?: number;
+    min: number
+    max: number
+  }
+  inStock?: boolean
+  onSale?: boolean
+  styles?: string[]
 }
 
 // Sample product data for demonstration
@@ -40,15 +27,21 @@ const SAMPLE_PRODUCTS: Product[] = [
     price: 89900,
     salePrice: 74900,
     images: ['/api/placeholder/600/800'],
-    description: 'Beautiful modern farmhouse style barn door with rustic wood finish and black hardware.',
-    features: ['Solid wood core', 'Pre-drilled for hardware', 'Reversible design', 'Lifetime warranty'],
+    description:
+      'Beautiful modern farmhouse style barn door with rustic wood finish and black hardware.',
+    features: [
+      'Solid wood core',
+      'Pre-drilled for hardware',
+      'Reversible design',
+      'Lifetime warranty',
+    ],
     specifications: {
       width: '36"',
       height: '80"',
       thickness: '1.75"',
       material: 'Solid Pine Wood',
       style: 'Modern Farmhouse',
-      weight: '75 lbs'
+      weight: '75 lbs',
     },
     rating: 4.8,
     reviewCount: 124,
@@ -56,7 +49,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     isNew: false,
     isFeatured: true,
     tags: ['farmhouse', 'rustic', 'wood', 'sliding'],
-    brand: 'Renin'
+    brand: 'Renin',
   },
   {
     id: 'barn-2',
@@ -73,7 +66,7 @@ const SAMPLE_PRODUCTS: Product[] = [
       thickness: '1.5"',
       material: 'Glass & Aluminum',
       style: 'Contemporary',
-      weight: '85 lbs'
+      weight: '85 lbs',
     },
     rating: 4.9,
     reviewCount: 89,
@@ -81,7 +74,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     isNew: true,
     isFeatured: false,
     tags: ['modern', 'glass', 'contemporary', 'aluminum'],
-    brand: 'Renin'
+    brand: 'Renin',
   },
 
   // Bifold Doors
@@ -93,14 +86,19 @@ const SAMPLE_PRODUCTS: Product[] = [
     price: 34900,
     images: ['/api/placeholder/600/800'],
     description: 'Traditional white bifold door perfect for closets and pantries.',
-    features: ['Pre-finished white', 'Easy installation', 'Smooth operation', 'Space-saving design'],
+    features: [
+      'Pre-finished white',
+      'Easy installation',
+      'Smooth operation',
+      'Space-saving design',
+    ],
     specifications: {
       width: '30"',
       height: '80"',
       thickness: '1.375"',
       material: 'MDF',
       style: 'Traditional',
-      weight: '45 lbs'
+      weight: '45 lbs',
     },
     rating: 4.5,
     reviewCount: 234,
@@ -108,7 +106,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     isNew: false,
     isFeatured: false,
     tags: ['traditional', 'white', 'closet', 'space-saving'],
-    brand: 'Renin'
+    brand: 'Renin',
   },
   {
     id: 'bifold-2',
@@ -119,14 +117,19 @@ const SAMPLE_PRODUCTS: Product[] = [
     salePrice: 39900,
     images: ['/api/placeholder/600/800'],
     description: 'Louvered pine bifold door for ventilation and classic style.',
-    features: ['Natural pine wood', 'Louvered design', 'Unfinished for customization', 'Durable construction'],
+    features: [
+      'Natural pine wood',
+      'Louvered design',
+      'Unfinished for customization',
+      'Durable construction',
+    ],
     specifications: {
       width: '36"',
       height: '80"',
       thickness: '1.375"',
       material: 'Pine Wood',
       style: 'Traditional',
-      weight: '55 lbs'
+      weight: '55 lbs',
     },
     rating: 4.6,
     reviewCount: 167,
@@ -134,7 +137,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     isNew: false,
     isFeatured: false,
     tags: ['louvered', 'pine', 'natural', 'ventilation'],
-    brand: 'Renin'
+    brand: 'Renin',
   },
 
   // Bypass Doors
@@ -153,7 +156,7 @@ const SAMPLE_PRODUCTS: Product[] = [
       thickness: '1"',
       material: 'Mirror & Aluminum',
       style: 'Modern',
-      weight: '120 lbs total'
+      weight: '120 lbs total',
     },
     rating: 4.7,
     reviewCount: 198,
@@ -161,7 +164,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     isNew: false,
     isFeatured: true,
     tags: ['mirror', 'modern', 'space-saving', 'closet'],
-    brand: 'Renin'
+    brand: 'Renin',
   },
   {
     id: 'bypass-2',
@@ -178,7 +181,7 @@ const SAMPLE_PRODUCTS: Product[] = [
       thickness: '1.25"',
       material: 'Frosted Glass',
       style: 'Contemporary',
-      weight: '100 lbs total'
+      weight: '100 lbs total',
     },
     rating: 4.8,
     reviewCount: 143,
@@ -186,7 +189,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     isNew: false,
     isFeatured: false,
     tags: ['glass', 'frosted', 'privacy', 'modern'],
-    brand: 'Renin'
+    brand: 'Renin',
   },
 
   // Pivot Doors
@@ -198,14 +201,19 @@ const SAMPLE_PRODUCTS: Product[] = [
     price: 189900,
     images: ['/api/placeholder/600/800'],
     description: 'Statement-making pivot door with contemporary design.',
-    features: ['Heavy-duty pivot hardware', 'Solid core', 'Architectural design', 'Smooth operation'],
+    features: [
+      'Heavy-duty pivot hardware',
+      'Solid core',
+      'Architectural design',
+      'Smooth operation',
+    ],
     specifications: {
       width: '42"',
       height: '96"',
       thickness: '2"',
       material: 'Solid Wood Core',
       style: 'Modern',
-      weight: '150 lbs'
+      weight: '150 lbs',
     },
     rating: 4.9,
     reviewCount: 67,
@@ -213,7 +221,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     isNew: true,
     isFeatured: true,
     tags: ['modern', 'pivot', 'statement', 'architectural'],
-    brand: 'Renin'
+    brand: 'Renin',
   },
 
   // Room Dividers
@@ -233,7 +241,7 @@ const SAMPLE_PRODUCTS: Product[] = [
       panels: '4',
       material: 'Wood & Rice Paper',
       style: 'Japanese',
-      weight: '35 lbs'
+      weight: '35 lbs',
     },
     rating: 4.6,
     reviewCount: 91,
@@ -241,7 +249,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     isNew: false,
     isFeatured: false,
     tags: ['japanese', 'room-divider', 'traditional', 'flexible'],
-    brand: 'Renin'
+    brand: 'Renin',
   },
 
   // Hardware
@@ -259,7 +267,7 @@ const SAMPLE_PRODUCTS: Product[] = [
       weightCapacity: '200 lbs',
       finish: 'Matte Black',
       material: 'Steel',
-      style: 'Industrial'
+      style: 'Industrial',
     },
     rating: 4.8,
     reviewCount: 312,
@@ -267,7 +275,7 @@ const SAMPLE_PRODUCTS: Product[] = [
     isNew: false,
     isFeatured: true,
     tags: ['hardware', 'black', 'barn-door', 'industrial'],
-    brand: 'Renin'
+    brand: 'Renin',
   },
 
   // Mirrors
@@ -286,7 +294,7 @@ const SAMPLE_PRODUCTS: Product[] = [
       thickness: '1"',
       material: 'Glass',
       style: 'Classic',
-      weight: '25 lbs'
+      weight: '25 lbs',
     },
     rating: 4.7,
     reviewCount: 189,
@@ -294,77 +302,83 @@ const SAMPLE_PRODUCTS: Product[] = [
     isNew: false,
     isFeatured: false,
     tags: ['mirror', 'full-length', 'wall', 'classic'],
-    brand: 'Renin'
-  }
-];
+    brand: 'Renin',
+  },
+]
 
 // Vector embeddings simulator (in production, use actual embeddings)
 function calculateSimilarity(query: string, text: string): number {
-  const queryLower = query.toLowerCase();
-  const textLower = text.toLowerCase();
+  const queryLower = query.toLowerCase()
+  const textLower = text.toLowerCase()
 
   // Simple keyword matching for demo
-  const queryWords = queryLower.split(' ');
-  const textWords = textLower.split(' ');
+  const queryWords = queryLower.split(' ')
+  const textWords = textLower.split(' ')
 
-  let matches = 0;
+  let matches = 0
   for (const qWord of queryWords) {
     if (textWords.includes(qWord) || textWords.some(tWord => tWord.includes(qWord))) {
-      matches++;
+      matches++
     }
   }
 
-  return matches / queryWords.length;
+  return matches / queryWords.length
 }
 
 // Semantic search function
 function semanticSearch(query: string, products: Product[]): Product[] {
-  if (!query) return products;
+  if (!query) return products
 
   const scoredProducts = products.map(product => {
     // Calculate relevance score based on multiple factors
-    const nameScore = calculateSimilarity(query, product.name) * 3;
-    const descScore = calculateSimilarity(query, product.description) * 2;
-    const categoryScore = calculateSimilarity(query, product.category.replace('-', ' '));
-    const tagsScore = product.tags ? calculateSimilarity(query, product.tags.join(' ')) * 1.5 : 0;
-    const featuresScore = calculateSimilarity(query, product.features.join(' '));
+    const nameScore = calculateSimilarity(query, product.name) * 3
+    const descScore = calculateSimilarity(query, product.description) * 2
+    const categoryScore = calculateSimilarity(query, product.category.replace('-', ' '))
+    const tagsScore = product.tags ? calculateSimilarity(query, product.tags.join(' ')) * 1.5 : 0
+    const featuresScore = calculateSimilarity(query, product.features.join(' '))
 
-    const totalScore = nameScore + descScore + categoryScore + tagsScore + featuresScore;
+    const totalScore = nameScore + descScore + categoryScore + tagsScore + featuresScore
 
-    return { product, score: totalScore };
-  });
+    return { product, score: totalScore }
+  })
 
   // Sort by score and filter out low relevance
   return scoredProducts
     .filter(item => item.score > 0.1)
     .sort((a, b) => b.score - a.score)
-    .map(item => item.product);
+    .map(item => item.product)
 }
 
 // Input validation schema
 const searchSchema = z.object({
   query: z.string().max(100, 'Query too long').optional(),
-  filters: z.object({
-    categories: z.array(z.string()).optional(),
-    priceRange: z.object({
-      min: z.number().min(0),
-      max: z.number().max(10000)
-    }).optional(),
-    inStock: z.boolean().optional(),
-    onSale: z.boolean().optional(),
-    styles: z.array(z.string()).optional(),
-  }).optional(),
-  sort: z.object({
-    field: z.enum(['price', 'name', 'rating', 'popularity', 'featured']),
-    order: z.enum(['asc', 'desc'])
-  }).optional(),
+  filters: z
+    .object({
+      categories: z.array(z.string()).optional(),
+      priceRange: z
+        .object({
+          min: z.number().min(0),
+          max: z.number().max(10000),
+        })
+        .optional(),
+      inStock: z.boolean().optional(),
+      onSale: z.boolean().optional(),
+      styles: z.array(z.string()).optional(),
+    })
+    .optional(),
+  sort: z
+    .object({
+      field: z.enum(['price', 'name', 'rating', 'popularity', 'featured']),
+      order: z.enum(['asc', 'desc']),
+    })
+    .optional(),
   page: z.coerce.number().int().min(1).max(100).optional(),
   limit: z.coerce.number().int().min(1).max(50).optional(),
-});
+})
 
 async function handleSearchRequest(request: NextRequest): Promise<NextResponse> {
   // Rate limiting
-  const rateLimitResult = await checkRateLimit(getClientIdentifier(request), generalRateLimiter);
+  const rateLimitResult = await checkRateLimit(getClientIdentifier(request), generalRateLimiter)
 
   if (!rateLimitResult.allowed) {
     return NextResponse.json(
@@ -376,24 +390,24 @@ async function handleSearchRequest(request: NextRequest): Promise<NextResponse> 
           'X-RateLimit-Limit': '20',
           'X-RateLimit-Remaining': String(rateLimitResult.remaining),
           'X-RateLimit-Reset': String(rateLimitResult.reset),
-        }
+        },
       }
-    );
+    )
   }
 
   try {
-    const body = await request.json();
+    const body = (await request.json()) as unknown
 
     // Validate input
-    const validation = searchSchema.safeParse(body);
+    const validation = searchSchema.safeParse(body)
     if (!validation.success) {
       return NextResponse.json(
         {
           error: 'Invalid search parameters',
-          details: validation.error.errors[0]?.message
+          details: validation.error.errors[0]?.message,
         },
         { status: 400 }
-      );
+      )
     }
 
     const {
@@ -401,107 +415,128 @@ async function handleSearchRequest(request: NextRequest): Promise<NextResponse> 
       filters = {},
       sort = { field: 'featured', order: 'desc' },
       page = 1,
-      limit = 24
-    } = validation.data;
+      limit = 24,
+    } = validation.data
 
     // Start with all products
-    let filteredProducts = [...SAMPLE_PRODUCTS];
+    let filteredProducts = [...SAMPLE_PRODUCTS]
 
     // Apply semantic search if query is provided
     if (query) {
-      filteredProducts = semanticSearch(query, filteredProducts);
+      filteredProducts = semanticSearch(query, filteredProducts)
     }
 
     // Apply filters
     if (filters.categories && filters.categories.length > 0) {
-      filteredProducts = filteredProducts.filter(p =>
-        filters.categories.includes(p.category)
-      );
+      const categories = filters.categories
+      filteredProducts = filteredProducts.filter(p => categories.includes(p.category))
     }
 
     if (filters.priceRange) {
+      const priceRange = filters.priceRange
       filteredProducts = filteredProducts.filter(p => {
-        const price = p.salePrice || p.price;
-        const minPrice = filters.priceRange.min * 100;
-        const maxPrice = filters.priceRange.max * 100;
-        return price >= minPrice && price <= maxPrice;
-      });
+        const price = p.salePrice || p.price
+        const minPrice = priceRange.min * 100
+        const maxPrice = priceRange.max * 100
+        return price >= minPrice && price <= maxPrice
+      })
     }
 
     if (filters.inStock) {
-      filteredProducts = filteredProducts.filter(p => p.inStock);
+      filteredProducts = filteredProducts.filter(p => p.inStock)
     }
 
     if (filters.onSale) {
-      filteredProducts = filteredProducts.filter(p => p.salePrice !== undefined);
+      filteredProducts = filteredProducts.filter(p => p.salePrice !== undefined)
     }
 
     if (filters.styles && filters.styles.length > 0) {
+      const styles = filters.styles
       filteredProducts = filteredProducts.filter(p => {
-        const productStyle = p.specifications?.style;
-        return productStyle && filters.styles.includes(String(productStyle));
-      });
+        const productStyle = p.specifications?.style
+        return productStyle && styles.includes(String(productStyle))
+      })
     }
 
     // Apply sorting
     filteredProducts.sort((a, b) => {
-      const order = sort.order === 'asc' ? 1 : -1;
+      const order = sort.order === 'asc' ? 1 : -1
 
       switch (sort.field) {
         case 'price':
-          return ((a.salePrice || a.price) - (b.salePrice || b.price)) * order;
+          return ((a.salePrice || a.price) - (b.salePrice || b.price)) * order
         case 'name':
-          return a.name.localeCompare(b.name) * order;
+          return a.name.localeCompare(b.name) * order
         case 'rating':
-          return (b.rating - a.rating) * order;
+          return (b.rating - a.rating) * order
         case 'popularity':
-          return (b.reviewCount - a.reviewCount) * order;
+          return (b.reviewCount - a.reviewCount) * order
         case 'featured':
         default:
-          if (a.isFeatured && !b.isFeatured) return -1;
-          if (!a.isFeatured && b.isFeatured) return 1;
-          return 0;
+          if (a.isFeatured && !b.isFeatured) return -1
+          if (!a.isFeatured && b.isFeatured) return 1
+          return 0
       }
-    });
+    })
 
     // Calculate facets
     const facets = {
-      categories: Array.from(new Set(SAMPLE_PRODUCTS.map(p => p.category)))
-        .map(cat => ({
-          id: cat,
-          name: cat.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()),
-          count: SAMPLE_PRODUCTS.filter(p => p.category === cat).length
-        })),
-      brands: Array.from(new Set(SAMPLE_PRODUCTS.map(p => p.brand).filter(Boolean)))
-        .map(brand => ({
-          value: brand!,
-          count: SAMPLE_PRODUCTS.filter(p => p.brand === brand).length
-        })),
+      categories: Array.from(new Set(SAMPLE_PRODUCTS.map(p => p.category))).map(cat => ({
+        id: cat,
+        name: cat.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()),
+        count: SAMPLE_PRODUCTS.filter(p => p.category === cat).length,
+      })),
+      brands: Array.from(
+        new Set(SAMPLE_PRODUCTS.map(p => p.brand).filter((b): b is string => !!b))
+      ).map(brand => ({
+        value: brand,
+        count: SAMPLE_PRODUCTS.filter(p => p.brand === brand).length,
+      })),
       priceRanges: [
-        { range: 'under-300', count: SAMPLE_PRODUCTS.filter(p => p.price < 30000).length, min: 0, max: 299 },
-        { range: '300-500', count: SAMPLE_PRODUCTS.filter(p => p.price >= 30000 && p.price < 50000).length, min: 300, max: 499 },
-        { range: '500-700', count: SAMPLE_PRODUCTS.filter(p => p.price >= 50000 && p.price < 70000).length, min: 500, max: 699 },
-        { range: 'over-700', count: SAMPLE_PRODUCTS.filter(p => p.price >= 70000).length, min: 700, max: 10000 },
+        {
+          range: 'under-300',
+          count: SAMPLE_PRODUCTS.filter(p => p.price < 30000).length,
+          min: 0,
+          max: 299,
+        },
+        {
+          range: '300-500',
+          count: SAMPLE_PRODUCTS.filter(p => p.price >= 30000 && p.price < 50000).length,
+          min: 300,
+          max: 499,
+        },
+        {
+          range: '500-700',
+          count: SAMPLE_PRODUCTS.filter(p => p.price >= 50000 && p.price < 70000).length,
+          min: 500,
+          max: 699,
+        },
+        {
+          range: 'over-700',
+          count: SAMPLE_PRODUCTS.filter(p => p.price >= 70000).length,
+          min: 700,
+          max: 10000,
+        },
       ],
       tags: Array.from(new Set(SAMPLE_PRODUCTS.flatMap(p => p.tags || [])))
         .map(tag => ({
           value: tag,
-          count: SAMPLE_PRODUCTS.filter(p => p.tags?.includes(tag)).length
+          count: SAMPLE_PRODUCTS.filter(p => p.tags?.includes(tag)).length,
         }))
         .sort((a, b) => b.count - a.count)
         .slice(0, 20),
       inStock: {
         available: SAMPLE_PRODUCTS.filter(p => p.inStock).length,
-        outOfStock: SAMPLE_PRODUCTS.filter(p => !p.inStock).length
-      }
-    };
+        outOfStock: SAMPLE_PRODUCTS.filter(p => !p.inStock).length,
+      },
+    }
 
     // Paginate results
-    const total = filteredProducts.length;
-    const totalPages = Math.ceil(total / limit);
-    const start = (page - 1) * limit;
-    const end = start + limit;
-    const paginatedProducts = filteredProducts.slice(start, end);
+    const total = filteredProducts.length
+    const totalPages = Math.ceil(total / limit)
+    const start = (page - 1) * limit
+    const end = start + limit
+    const paginatedProducts = filteredProducts.slice(start, end)
 
     const result: ProductSearchResult = {
       products: paginatedProducts,
@@ -510,8 +545,8 @@ async function handleSearchRequest(request: NextRequest): Promise<NextResponse> 
       limit,
       totalPages,
       hasMore: page < totalPages,
-      facets
-    };
+      facets,
+    }
 
     // Add search metadata
     const resultWithMeta = {
@@ -522,39 +557,34 @@ async function handleSearchRequest(request: NextRequest): Promise<NextResponse> 
         sort,
         processingTimeMs: Date.now(),
         rateLimitRemaining: rateLimitResult.remaining - 1,
-      }
-    };
+      },
+    }
 
-    return NextResponse.json(resultWithMeta);
+    return NextResponse.json(resultWithMeta)
   } catch (error) {
-    console.error('Search error:', error);
-    return NextResponse.json(
-      { error: 'Failed to search products' },
-      { status: 500 }
-    );
+    console.error('Search error:', error)
+    return NextResponse.json({ error: 'Failed to search products' }, { status: 500 })
   }
 }
 
 // Export secure handlers
 export const POST = createSecureHandler(handleSearchRequest, {
-  enableAudit: true,
-  enableRateLimiting: true,
-  riskThreshold: 80,
-});
+  rateLimit: { maxRequests: 20, windowMs: 60000 },
+})
 
 // GET endpoint for simple queries
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
+  const searchParams = request.nextUrl.searchParams
 
   // Validate query parameters
-  const query = searchParams.get('q')?.substring(0, 100) || '';
-  const category = searchParams.get('category')?.substring(0, 50) || '';
-  const page = Math.min(Math.max(parseInt(searchParams.get('page') || '1'), 1), 100);
-  const limit = Math.min(Math.max(parseInt(searchParams.get('limit') || '24'), 1), 50);
+  const query = searchParams.get('q')?.substring(0, 100) || ''
+  const category = searchParams.get('category')?.substring(0, 50) || ''
+  const page = Math.min(Math.max(parseInt(searchParams.get('page') || '1'), 1), 100)
+  const limit = Math.min(Math.max(parseInt(searchParams.get('limit') || '24'), 1), 50)
 
-  const filters: SearchFilters = {};
+  const filters: SearchFilters = {}
   if (category) {
-    filters.categories = [category];
+    filters.categories = [category]
   }
 
   // Create a POST request with the query parameters
@@ -567,9 +597,9 @@ export async function GET(request: NextRequest) {
       query,
       filters,
       page,
-      limit
-    })
-  });
+      limit,
+    }),
+  })
 
-  return handleSearchRequest(postRequest);
+  return handleSearchRequest(postRequest)
 }
