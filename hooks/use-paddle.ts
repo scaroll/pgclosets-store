@@ -1,31 +1,19 @@
 // Paddle hook with dynamic types
-"use client"
+'use client'
 
-import { useEffect, useState } from "react"
-import { calculateTax } from "@/lib/renin-products"
-
-// Extend Window interface for Paddle
-declare global {
-  interface Window {
-    Paddle?: {
-      Setup: (config: { vendor: number; eventCallback?: (data: unknown) => void }) => void
-      Checkout: {
-        open: (options: PaddleCheckoutOptions) => void
-      }
-    }
-  }
-}
+import { calculateTax } from '@/lib/renin-products'
+import { useEffect, useState } from 'react'
 
 interface PaddleInstance {
-  Setup: (config: { vendor: number; eventCallback?: (data: unknown) => void }) => void;
+  Setup: (config: { vendor: number; eventCallback?: (data: unknown) => void }) => void
   Checkout: {
-    open: (options: PaddleCheckoutOptions) => void;
-  };
+    open: (options: PaddleCheckoutOptions) => void
+  }
 }
 
 interface PaddleConfig {
   vendorId: string
-  environment: "sandbox" | "production"
+  environment: 'sandbox' | 'production'
 }
 
 interface PaddleCheckoutOptions {
@@ -51,23 +39,25 @@ export function usePaddle() {
   const [isLoading, setIsLoading] = useState(true)
 
   const config: PaddleConfig = {
-    vendorId: process.env.NEXT_PUBLIC_PADDLE_VENDOR_ID || "sandbox-vendor-id",
-    environment: (process.env.NEXT_PUBLIC_PADDLE_ENVIRONMENT as "sandbox" | "production") || "sandbox",
+    vendorId: process.env.NEXT_PUBLIC_PADDLE_VENDOR_ID || 'sandbox-vendor-id',
+    environment:
+      (process.env.NEXT_PUBLIC_PADDLE_ENVIRONMENT as 'sandbox' | 'production') || 'sandbox',
   }
 
   useEffect(() => {
     // Load Paddle.js script
-    const script = document.createElement("script")
-    script.src = "https://cdn.paddle.com/paddle/paddle.js"
+    const script = document.createElement('script')
+    script.src = 'https://cdn.paddle.com/paddle/paddle.js'
     script.async = true
     script.onload = () => {
-      const paddle = window.Paddle as unknown as PaddleInstance
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const paddle = (window as any).Paddle as PaddleInstance
       if (paddle) {
         paddle.Setup({
           vendor: parseInt(config.vendorId, 10),
           eventCallback: (data: unknown) => {
             // eslint-disable-next-line no-console -- Paddle SDK event logging
-            console.log("[v0] Paddle event:", data)
+            console.log('[v0] Paddle event:', data)
           },
         })
         setIsLoaded(true)
@@ -75,7 +65,7 @@ export function usePaddle() {
       }
     }
     script.onerror = () => {
-      console.error("[v0] Failed to load Paddle.js")
+      console.error('[v0] Failed to load Paddle.js')
       setIsLoading(false)
     }
 
@@ -87,25 +77,25 @@ export function usePaddle() {
   }, [config.vendorId])
 
   const openCheckout = (options: PaddleCheckoutOptions) => {
-    const paddle = window.Paddle as unknown as PaddleInstance
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const paddle = (window as any).Paddle as PaddleInstance
     if (!isLoaded || !paddle) {
-      console.error("[v0] Paddle not loaded")
+      console.error('[v0] Paddle not loaded')
       return
     }
 
     paddle.Checkout.open(options)
   }
 
-  const formatPriceForPaddle = (price: number, province = "ON"): string => {
+  const formatPriceForPaddle = (price: number): string => {
     // HST rate for Ontario is 13%
-    const taxRate = province === "ON" ? 0.13 : 0.13; // Default to ON rate
-    const tax = calculateTax(price, taxRate)
+    const tax = calculateTax(price)
     const totalPrice = price + tax
     return totalPrice.toFixed(2)
   }
 
-  const createCheckoutUrl = (productId: string, price: number, province = "ON"): string => {
-    const formattedPrice = formatPriceForPaddle(price, province)
+  const createCheckoutUrl = (productId: string, price: number): string => {
+    const formattedPrice = formatPriceForPaddle(price)
     return `https://checkout.paddle.com/checkout?vendor=${config.vendorId}&product=${productId}&price=${formattedPrice}`
   }
 

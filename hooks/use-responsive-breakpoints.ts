@@ -5,28 +5,28 @@
  * Includes device detection, viewport monitoring, and adaptive behavior
  */
 
-"use client"
+'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 // Breakpoint configuration
 export const BREAKPOINTS = {
-  'xs': 320,      // iPhone SE minimum
-  'xsm': 375,     // iPhone SE/mini
-  'sm': 430,      // iPhone 14 Pro/15
-  'sml': 480,     // Large phones/Foldable
-  'md': 640,      // Small tablets
-  'lmd': 736,     // iPad Air portrait
-  'lg': 768,      // iPad/Small tablets
-  'lgl': 834,     // iPad Pro 11"
-  'xl': 960,      // Large tablets/Small laptops
-  'lxl': 1024,    // iPad Pro 12.9"/Small desktop
-  '2xl': 1280,    // Standard desktop
-  '2xlx': 1366,   // Laptop standard
-  '3xl': 1440,    // Large desktop
-  '3xlx': 1536,   // MacBook Pro
-  '4xl': 1920,    // Full HD
-  '5xl': 2560,    // 4K
+  xs: 320, // iPhone SE minimum
+  xsm: 375, // iPhone SE/mini
+  sm: 430, // iPhone 14 Pro/15
+  sml: 480, // Large phones/Foldable
+  md: 640, // Small tablets
+  lmd: 736, // iPad Air portrait
+  lg: 768, // iPad/Small tablets
+  lgl: 834, // iPad Pro 11"
+  xl: 960, // Large tablets/Small laptops
+  lxl: 1024, // iPad Pro 12.9"/Small desktop
+  '2xl': 1280, // Standard desktop
+  '2xlx': 1366, // Laptop standard
+  '3xl': 1440, // Large desktop
+  '3xlx': 1536, // MacBook Pro
+  '4xl': 1920, // Full HD
+  '5xl': 2560, // 4K
 } as const
 
 // Device types
@@ -154,6 +154,14 @@ export function useResponsiveBreakpoints(): ResponsiveState {
     }
   }
 
+  // Handle window resize with debouncing
+  const handleResize = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      setState(updateResponsiveState(window))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   function detectDeviceType(width: number, _height: number): DeviceType {
     const userAgent = navigator.userAgent.toLowerCase()
 
@@ -197,8 +205,8 @@ export function useResponsiveBreakpoints(): ResponsiveState {
     return (
       'ontouchstart' in window ||
       (navigator.maxTouchPoints ?? 0) > 0 ||
-      // @ts-expect-error - vendor prefix
-      (navigator.msMaxTouchPoints ?? 0) > 0
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ((navigator as any).msMaxTouchPoints ?? 0) > 0
     )
   }
 
@@ -226,13 +234,6 @@ export function useResponsiveBreakpoints(): ResponsiveState {
 
     return 'xs'
   }
-
-  // Handle window resize with debouncing
-  const handleResize = useCallback(() => {
-    if (typeof window !== 'undefined') {
-      setState(updateResponsiveState(window))
-    }
-  }, [])
 
   // Handle orientation change
   const handleOrientationChange = useCallback(() => {
@@ -285,6 +286,7 @@ export function useResponsiveValue<T>(values: Partial<Record<keyof typeof BREAKP
   for (let i = currentIndex; i >= 0; i--) {
     const bp = breakpointNames[i]
     if (values[bp] !== undefined) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return values[bp]!
     }
   }
@@ -302,26 +304,32 @@ export function useResponsiveValue<T>(values: Partial<Record<keyof typeof BREAKP
 export function useResponsiveStyles() {
   const responsive = useResponsiveBreakpoints()
 
-  const getSpacing = useCallback((scale: number) => {
-    const baseSize = 4 // 4px base
-    const multiplier = responsive.isMobile ? 0.75 : responsive.isTablet ? 0.875 : 1
-    return `${baseSize * scale * multiplier}px`
-  }, [responsive])
+  const getSpacing = useCallback(
+    (scale: number) => {
+      const baseSize = 4 // 4px base
+      const multiplier = responsive.isMobile ? 0.75 : responsive.isTablet ? 0.875 : 1
+      return `${baseSize * scale * multiplier}px`
+    },
+    [responsive]
+  )
 
-  const getFontSize = useCallback((size: 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl') => {
-    const sizes = {
-      xs: responsive.isMobile ? 0.75 : 0.875,
-      sm: responsive.isMobile ? 0.875 : 1,
-      base: responsive.isMobile ? 1 : 1.125,
-      lg: responsive.isMobile ? 1.125 : 1.25,
-      xl: responsive.isMobile ? 1.25 : 1.5,
-      '2xl': responsive.isMobile ? 1.5 : 2,
-      '3xl': responsive.isMobile ? 1.875 : 2.25,
-      '4xl': responsive.isMobile ? 2.25 : 3,
-      '5xl': responsive.isMobile ? 3 : 4,
-    }
-    return `${sizes[size]}rem`
-  }, [responsive])
+  const getFontSize = useCallback(
+    (size: 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl') => {
+      const sizes = {
+        xs: responsive.isMobile ? 0.75 : 0.875,
+        sm: responsive.isMobile ? 0.875 : 1,
+        base: responsive.isMobile ? 1 : 1.125,
+        lg: responsive.isMobile ? 1.125 : 1.25,
+        xl: responsive.isMobile ? 1.25 : 1.5,
+        '2xl': responsive.isMobile ? 1.5 : 2,
+        '3xl': responsive.isMobile ? 1.875 : 2.25,
+        '4xl': responsive.isMobile ? 2.25 : 3,
+        '5xl': responsive.isMobile ? 3 : 4,
+      }
+      return `${sizes[size]}rem`
+    },
+    [responsive]
+  )
 
   const getContainerWidth = useCallback(() => {
     if (responsive.isMobile) return '100%'
@@ -329,11 +337,14 @@ export function useResponsiveStyles() {
     return '1200px'
   }, [responsive])
 
-  const getGridCols = useCallback((mobile: number, tablet?: number, desktop?: number) => {
-    if (responsive.isDesktop && desktop) return desktop
-    if (responsive.isTablet && tablet) return tablet
-    return mobile
-  }, [responsive])
+  const getGridCols = useCallback(
+    (mobile: number, tablet?: number, desktop?: number) => {
+      if (responsive.isDesktop && desktop) return desktop
+      if (responsive.isTablet && tablet) return tablet
+      return mobile
+    },
+    [responsive]
+  )
 
   return {
     ...responsive,

@@ -233,7 +233,8 @@ export const useEnhancedCart = create<CartState>()(
             state.isOpen = false
           }),
 
-        applyPromoCode(code) {
+        async applyPromoCode(code) {
+          await Promise.resolve() // Simulate async operation
           const promo = VALID_PROMO_CODES[code.toUpperCase()]
           if (!promo) return false
 
@@ -288,7 +289,7 @@ export const useEnhancedCart = create<CartState>()(
                 item.productId === productId &&
                 (!options || JSON.stringify(item.selectedOptions) === JSON.stringify(options))
             )
-            if (itemIndex >= 0) {
+            if (itemIndex >= 0 && state.items[itemIndex]) {
               state.items[itemIndex].installationIncluded = include
             }
           }),
