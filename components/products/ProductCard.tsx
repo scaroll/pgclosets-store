@@ -1,9 +1,12 @@
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import { FileText } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AddToCartButton } from './AddToCartButton'
+import { useQuoteBasketStore } from '@/lib/stores/quote-basket-store'
 
 interface Product {
   id: string
@@ -26,6 +29,19 @@ interface ProductCardProps {
 export function ProductCard({ product, className }: ProductCardProps) {
   const mainImage = product.images[0]?.url || '/placeholder.jpg'
   const displayPrice = product.salePrice || product.price
+  const { addItem: addToQuoteBasket } = useQuoteBasketStore()
+
+  const handleAddToQuote = () => {
+    addToQuoteBasket({
+      productId: product.id,
+      slug: product.slug,
+      name: product.name,
+      category: product.category,
+      price: displayPrice / 100, // Convert to dollars
+      image: mainImage,
+      quantity: 1,
+    })
+  }
 
   return (
     <Card className={cn("group flex h-full flex-col overflow-hidden border-0 bg-transparent shadow-none transition-all duration-500 hover:shadow-xl hover:shadow-black/5", className)}>
@@ -76,8 +92,17 @@ export function ProductCard({ product, className }: ProductCardProps) {
       </CardContent>
 
       <CardFooter className="px-1 pb-4 pt-0">
-         <div className="w-full opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+         <div className="flex w-full gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
            <AddToCartButton productId={product.id} price={displayPrice} />
+           <Button
+             onClick={handleAddToQuote}
+             variant="outline"
+             size="lg"
+             className="h-12 flex-1 border-apple-blue-200 text-apple-blue-700 hover:bg-apple-blue-50"
+           >
+             <FileText className="h-4 w-4 sm:mr-2" />
+             <span className="hidden sm:inline">Add to Quote</span>
+           </Button>
          </div>
       </CardFooter>
     </Card>

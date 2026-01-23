@@ -1,9 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
-import { ComponentResolver } from '../../lib/configurator/core/ComponentSystem'
 import { MultiplayerEngine } from '../../lib/configurator/multiplayer/MultiplayerEngine'
 import type { Layer } from '../../lib/configurator/types'
+import { PersuasionBanner } from '../ui/persuasion-banner'
 import WebGPURenderer from './renderer/WebGPURenderer'
 
 interface ConfiguratorProps {
@@ -16,7 +17,7 @@ export default function VisualConfiguratorWrapper({ productId, currentUser }: Co
 
   // Initialize engines
   const multiplayerEngine = useMemo(() => new MultiplayerEngine(currentUser), [currentUser])
-  const componentResolver = useMemo(() => new ComponentResolver(), [])
+  // const componentResolver = useMemo(() => new ComponentResolver(), [])
 
   useEffect(() => {
     // Subscribe to multiplayer updates
@@ -67,19 +68,15 @@ export default function VisualConfiguratorWrapper({ productId, currentUser }: Co
       ])
     }
 
-    useEffect(() => {
-      if (productId) {
-        console.log(`Initialized configurator for product ${productId}`)
-      }
-    }, [productId])
-
     return () => unsubscribe()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [multiplayerEngine])
 
-  const handlePropertyChange = (layerId: string, property: string, value: any) => {
-    // Send to multiplayer engine
-    multiplayerEngine.applyLocalChange(layerId, property, value)
-  }
+  useEffect(() => {
+    if (productId) {
+      console.log(`Initialized configurator for product ${productId}`)
+    }
+  }, [productId])
 
   return (
     <div className="flex flex-col gap-4 rounded-xl border bg-neutral-950 p-4 text-white shadow-2xl">
@@ -91,6 +88,7 @@ export default function VisualConfiguratorWrapper({ productId, currentUser }: Co
           <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
           <span>Multiplayer Active</span>
         </div>
+        <PersuasionBanner />
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">

@@ -9,11 +9,11 @@ interface HeroProps {
 }
 
 export function VideoHero({
-  headline,
-  subheadline,
   videoSrc: _videoSrc = '/videos/hero-closet.mp4',
   posterSrc: _posterSrc = '/images/hero-poster.jpg',
-  title: _title = 'Transform Your Space',
+  title: _title = "Ottawa's #1 Choice for Luxury Storage",
+  headline = 'The Storage System Preferred by Top Architects',
+  subheadline = 'Precision-engineered for the modern estate. Trusted by 500+ luxury homes.',
 }: HeroProps) {
   return (
     <section className="relative flex h-96 items-center justify-center bg-gray-800 text-white">

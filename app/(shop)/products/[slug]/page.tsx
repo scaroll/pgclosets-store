@@ -1,5 +1,6 @@
 import VisualConfiguratorWrapper from '@/components/configurator/VisualConfiguratorWrapper'
 import { AddToCartButton } from '@/components/products/add-to-cart-button'
+import { AddToQuoteButton } from '@/components/products/add-to-quote-button'
 import { ProductVariants } from '@/components/products/product-variants'
 import { QuantitySelector } from '@/components/products/quantity-selector'
 import { RelatedProducts } from '@/components/products/related-products'
@@ -148,6 +149,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   id: product.id,
                   name: product.name,
                   price: currentPrice,
+                  image: product.images[0] || '/placeholder.jpg',
+                }}
+                disabled={!product.inStock}
+              />
+
+              <AddToQuoteButton
+                product={{
+                  id: product.id,
+                  slug: product.slug,
+                  name: product.name,
+                  category: product.category,
+                  price: currentPrice / 100, // Convert to dollars
                   image: product.images[0] || '/placeholder.jpg',
                 }}
                 disabled={!product.inStock}

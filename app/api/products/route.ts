@@ -10,7 +10,7 @@ interface ProductVariant {
   inventory_quantity: number
 }
 
-interface _ProductTag {
+export interface ProductTag {
   value: string
   count: number
 }
@@ -82,7 +82,9 @@ export async function GET(request: Request) {
       thumbnail: product.images?.[0] || '/placeholder.jpg',
       created_at: new Date().toISOString(), // Mock date
       updated_at: new Date().toISOString(), // Mock date
-      images: product.images?.map(img => ({ url: img, altText: product.name })) || [{ url: '/placeholder.jpg', altText: product.name }],
+      images: product.images?.map(img => ({ url: img, altText: product.name })) || [
+        { url: '/placeholder.jpg', altText: product.name },
+      ],
       variants: [
         {
           id: `${product.id}-variant`,

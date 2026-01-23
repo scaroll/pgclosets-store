@@ -16,8 +16,12 @@ export function LuxuryQuoteFormServer({ product }: LuxuryQuoteFormServerProps) {
 
   return (
     <>
-      <Button variant="outline" className="w-full py-6 text-lg" onClick={() => setOpen(true)}>
-        Request a Quote
+      <Button
+        variant="outline"
+        className="w-full py-6 text-lg font-semibold tracking-wide"
+        onClick={() => setOpen(true)}
+      >
+        Secure My Design Consultation
       </Button>
       <LuxuryQuoteForm open={open} onClose={() => setOpen(false)} product={product} />
     </>

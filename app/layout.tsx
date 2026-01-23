@@ -1,4 +1,5 @@
 import { Header } from '@/components/layout/header'
+import { QuoteBasketProvider } from '@/components/quote/quote-basket-provider'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'sonner'
@@ -26,7 +27,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased">
         <Header />
-        {children}
+        <QuoteBasketProvider>{children}</QuoteBasketProvider>
         <Toaster position="bottom-right" />
       </body>
     </html>

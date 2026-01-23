@@ -37,6 +37,18 @@ export function formatPriceCAD(price: number): string {
 }
 
 /**
+ * Format currency value (already in dollars, not cents)
+ * @param value - Value in dollars
+ * @returns Formatted currency string
+ */
+export function formatCurrency(value: number): string {
+  return new Intl.NumberFormat('en-CA', {
+    style: 'currency',
+    currency: 'CAD',
+  }).format(value)
+}
+
+/**
  * Capitalize first letter of string
  * @param str - String to capitalize
  * @returns Capitalized string

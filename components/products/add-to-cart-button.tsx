@@ -101,7 +101,7 @@ export function AddToCartButton({
         {isAdded ? (
           <>
             <Check className="h-5 w-5" />
-            Added to Cart
+            Configuration Reserved
           </>
         ) : isAdding ? (
           <>
@@ -111,7 +111,7 @@ export function AddToCartButton({
         ) : (
           <>
             <ShoppingCart className="h-5 w-5" />
-            Add to Cart
+            Reserve Configuration
           </>
         )}
       </Button>

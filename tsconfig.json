@@ -54,7 +54,8 @@
     // Source maps for debugging
     "sourceMap": true,
     "declaration": false,
-    "declarationMap": false
+    "declarationMap": false,
+    "types": ["@webgpu/types"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "global.d.ts"],
   "exclude": [

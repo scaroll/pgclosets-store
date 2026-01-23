@@ -1,6 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+import { QuoteBasketButton } from '@/components/quote/quote-basket-button'
+import { FileText } from 'lucide-react'
 
 export function Header() {
   return (
@@ -43,6 +45,13 @@ export function Header() {
                 clipRule="evenodd"
               />
             </svg>
+          </Link>
+          <Link
+            href="/quote-basket"
+            className="relative text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white"
+          >
+            <span className="sr-only">Quote Basket</span>
+            <FileText className="h-4 w-4" />
           </Link>
           <Link
             href="/cart"
