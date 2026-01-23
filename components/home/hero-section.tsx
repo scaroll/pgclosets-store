@@ -10,7 +10,7 @@ export function HeroSection() {
       {/* Cinematic Background with Overlay */}
       <div className="absolute inset-0 z-0 opacity-60">
         <Image
-          src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+          src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=2070&auto=format&fit=crop"
           alt="Modern luxury closet"
           fill
           className="duration-[20s] object-cover transition-transform ease-linear hover:scale-105"
