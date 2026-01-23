@@ -1,6 +1,6 @@
 import { ProductCard } from '@/components/products/ProductCard'
 import { Button } from '@/components/ui/button'
-import { prisma } from '@/lib/db/client'
+import { getAllProducts } from '@/lib/data/products'
 import { ArrowRight, CheckCircle, MapPin, Star } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,11 +8,23 @@ import Link from 'next/link'
 export const dynamic = 'force-dynamic'
 
 export default async function HomePage() {
-  const featuredProducts = await prisma.product.findMany({
-    where: { status: 'active', featured: true },
-    take: 6,
-    include: { images: { take: 1, orderBy: { position: 'asc' } } },
-  })
+  // Temporarily use static data to prevent build/runtime errors due to missing DB
+  // const featuredProducts = await prisma.product.findMany(...)
+  const featuredProducts = getAllProducts()
+    .filter(p => p.featured)
+    .slice(0, 6)
+    .map(product => ({
+      id: product.id,
+      name: product.name,
+      slug: product.slug,
+      description: product.description,
+      price: product.price, // Already in cents
+      salePrice: product.salePrice || null,
+      images: product.images?.map(url => ({ url, alt: product.name })) || [],
+      category: product.category,
+      featured: true,
+      inventory: product.inStock ? 10 : 0,
+    }))
 
   return (
     <div className="flex min-h-screen flex-col">
