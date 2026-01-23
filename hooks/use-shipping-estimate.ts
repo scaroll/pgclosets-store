@@ -83,7 +83,7 @@ class ShippingCalculator {
     _value: number,
     _quantity: number,
     _postalCode: string
-  ): { estimates: ShippingEstimate[]; cheapest: ShippingEstimate } {
+  ): Promise<{ estimates: ShippingEstimate[]; cheapest: ShippingEstimate }> {
     const estimate: ShippingEstimate = {
       method: 'parcel',
       price: 99,

@@ -4,43 +4,38 @@
 
 @layer base {
   :root {
-    /* Apple Color System - Light Mode */
-    --color-primary: 0 0% 0%;
-    --color-secondary: 0 0% 29%;
-    --color-tertiary: 0 0% 51%;
-    --color-quaternary: 0 0% 71%;
+    /* Figma-Inspired Dark Mode System (Default) */
+    --background: 0 0% 12%; /* #1e1e1e - Figma Canvas Background */
+    --foreground: 0 0% 100%; /* White */
 
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --card: 0 0% 17%; /* #2c2c2c - Figma Panel Background */
+    --card-foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 17%;
+    --popover-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
-
-    --primary: 211 100% 50%; /* Apple Blue #0071E3 */
+    --primary: 211 100% 50%; /* Figma Blue Selection Color */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 0 0% 25%; /* Slightly lighter panel elements */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 211 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 89%;
-    --input: 0 0% 89%;
-    --ring: 211 100% 50%; /* Apple Blue focus ring */
+    --border: 0 0% 27%; /* Subtle panel borders */
+    --input: 0 0% 17%;
+    --ring: 211 100% 50%;
 
-    --radius: 1rem; /* 16px - Modern Apple-like radius */
+    --radius: 0.5rem; /* 8px - Cleaner, tighter radius */
 
-    /* Apple Spacing System */
+    /* Figma Spacing System - 8pt Grid */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
@@ -48,58 +43,13 @@
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
     --spacing-3xl: 4rem;
-
-    /* Apple Typography */
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-base: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.25rem;
-    --font-size-2xl: 1.5rem;
-    --font-size-3xl: 1.875rem;
-    --font-size-4xl: 2.25rem;
-    --font-size-5xl: 3rem;
-
-    --line-height-tight: 1.2;
-    --line-height-normal: 1.5;
-    --line-height-relaxed: 1.75;
-
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
   }
 
+  /* Force "Dark Mode" logic even without .dark class, but keep .dark for compatibility */
   .dark {
-    /* Apple Color System - Dark Mode (OLED Optimized) */
-    --background: 0 0% 0%;
+    /* Inherit root values as we are dark-first now */
+    --background: 0 0% 12%;
     --foreground: 0 0% 100%;
-
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 100%;
-
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 100%;
-
-    --primary: 211 100% 63%; /* Brighter Apple Blue #0A84FF for dark mode */
-    --primary-foreground: 0 0% 0%;
-
-    --secondary: 0 0% 14%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 64%;
-
-    --accent: 0 0% 14%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 211 100% 63%; /* Brighter blue focus ring for dark mode */
   }
 }
 

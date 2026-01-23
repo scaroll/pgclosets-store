@@ -1,5 +1,5 @@
+import VisualConfiguratorWrapper from '@/components/configurator/VisualConfiguratorWrapper'
 import { AddToCartButton } from '@/components/products/add-to-cart-button'
-import { ProductGallery } from '@/components/products/product-gallery'
 import { ProductVariants } from '@/components/products/product-variants'
 import { QuantitySelector } from '@/components/products/quantity-selector'
 import { RelatedProducts } from '@/components/products/related-products'
@@ -67,10 +67,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </nav>
 
         <div className="grid gap-12 lg:grid-cols-2">
-          {/* Product Gallery */}
-          <ProductGallery
-            images={product.images.length > 0 ? product.images : ['/placeholder.jpg']}
-            name={product.name}
+          {/* Visual Configurator (Replcaing Static Gallery) */}
+          <VisualConfiguratorWrapper
+            productId={product.id}
+            currentUser="demo-user" // In real app, get from session
           />
 
           {/* Product Info */}

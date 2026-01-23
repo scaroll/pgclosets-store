@@ -26,27 +26,6 @@ interface Address {
   phone?: string;
 }
 
-interface _CheckoutRequestBody {
-  items: CheckoutItem[];
-  customerEmail: string;
-  shippingAddress: Address;
-  billingAddress: Address;
-  customerNotes?: string;
-}
-
-interface _StripeLineItem {
-  price_data: {
-    currency: string;
-    product_data: {
-      name: string;
-      description?: string;
-      images?: string[];
-    };
-    unit_amount: number;
-  };
-  quantity: number;
-}
-
 type CheckoutError = Error & { message?: string };
 
 // Force dynamic rendering
@@ -58,7 +37,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 }
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_dummy', {
-  apiVersion: '2024-12-18.acacia',
+  apiVersion: '2025-08-27.basil',
 });
 
 const checkoutSchema = z.object({
@@ -133,17 +112,17 @@ export async function POST(req: NextRequest) {
         await processOrder({
           userId: session?.user?.id,
           guestEmail: customerEmail,
-          items,
+          items: items.map(({ productId, variantId, quantity }) => ({ productId, variantId, quantity })),
           shippingAddress,
           billingAddress,
           customerNotes,
-          paymentIntentId: `mock_payment_${  Math.random().toString(36).substring(7)}`
+          paymentIntentId: `mock_payment_${Math.random().toString(36).substring(7)}`
         });
 
         // Return fake session to satisfy frontend redirect
         return NextResponse.json({
-          sessionId: `mock_session_${  Math.random().toString(36).substring(7)}`,
-          url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/success?session_id=mock_session`,
+          sessionId: `mock_session_${Math.random().toString(36).substring(7)}`,
+          url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/checkout/success?session_id=mock_session`,
           message: 'Checkout session created (Mock)',
         });
       } catch (err) {
@@ -202,8 +181,7 @@ export async function POST(req: NextRequest) {
           currency: 'cad',
           product_data: {
             name: product.name,
-            description: product.description.substring(0, 500),
-            images: product.images ? [product.images[0].url] : [],
+            description: product.description?.substring(0, 500) || product.name,
           },
           unit_amount: price,
         },
@@ -254,8 +232,8 @@ export async function POST(req: NextRequest) {
       },
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/cancel`,
+      success_url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/checkout/cancel`,
       metadata: {
         userId: session?.user?.id || 'guest',
         customerEmail,

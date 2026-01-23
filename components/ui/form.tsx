@@ -4,7 +4,8 @@ import { Slot } from "@radix-ui/react-slot"
 import type {
   ControllerProps,
   FieldPath,
-  FieldValues} from "react-hook-form";
+  FieldValues,
+} from "react-hook-form"
 import {
   Controller,
   FormProvider,

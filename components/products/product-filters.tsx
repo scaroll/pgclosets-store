@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import * as React from 'react'
 
 interface ProductFiltersProps extends React.HTMLAttributes<HTMLDivElement> {
-  onFilterChange: (filters: any) => void
+  onFilterChange?: (filters: any) => void
 }
 
 export function ProductFilters({ className, onFilterChange, ...props }: ProductFiltersProps) {

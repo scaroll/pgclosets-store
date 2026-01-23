@@ -1,8 +1,6 @@
 // Validation middleware with dynamic types
-import type { NextRequest} from 'next/server';
-import { NextResponse } from 'next/server';
-import type { ZodSchema } from 'zod';
-import { z } from 'zod';
+import { type NextRequest, NextResponse } from 'next/server';
+import { type ZodSchema, z } from 'zod';
 
 interface ValidationError {
   path: string

@@ -79,10 +79,10 @@ export async function GET(request: Request) {
         .replace(/\s+/g, '-')
         .replace(/[^a-z0-9-]/g, ''),
       description: product.description,
-      thumbnail: product.image,
+      thumbnail: product.images?.[0] || '/placeholder.jpg',
       created_at: new Date().toISOString(), // Mock date
       updated_at: new Date().toISOString(), // Mock date
-      images: [{ url: product.image, altText: product.name }],
+      images: product.images?.map(img => ({ url: img, altText: product.name })) || [{ url: '/placeholder.jpg', altText: product.name }],
       variants: [
         {
           id: `${product.id}-variant`,
