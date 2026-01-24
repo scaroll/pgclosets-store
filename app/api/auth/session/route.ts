@@ -1,28 +1,30 @@
-import type { NextRequest } from 'next/server';
-import { NextResponse } from 'next/server';
-import { auth } from '@/auth';
-import jwt from 'jsonwebtoken';
+import { auth } from '@/auth'
+import jwt from 'jsonwebtoken'
+import { type NextRequest, NextResponse } from 'next/server'
+
+// Force Node.js runtime - auth() uses Prisma which is incompatible with Edge Runtime
+export const runtime = 'nodejs'
 
 // Type definitions
 interface JwtPayload {
-  userId: string;
-  email: string;
-  role?: string;
-  name?: string;
+  userId: string
+  email: string
+  role?: string
+  name?: string
 }
 
 interface SessionUser {
-  id: string;
-  email: string;
-  role?: string;
-  name?: string | null;
+  id: string
+  email: string
+  role?: string
+  name?: string | null
 }
 
 export async function GET(req: NextRequest) {
   try {
     // First try NextAuth session
     try {
-      const session = await auth();
+      const session = await auth()
 
       if (session) {
         return NextResponse.json({
@@ -30,37 +32,37 @@ export async function GET(req: NextRequest) {
           user: session.user,
           csrfToken: null, // NextAuth handles CSRF automatically
           message: 'Active session found',
-          authType: 'nextauth'
-        });
+          authType: 'nextauth',
+        })
       }
     } catch {
       // Continue to check custom auth
     }
 
     // Fallback: Check for custom JWT auth token
-    const token = req.cookies.get('auth-token')?.value;
+    const token = req.cookies.get('auth-token')?.value
 
     if (token) {
       try {
-        const secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET;
+        const secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET
         if (secret) {
-          const decoded = jwt.verify(token, secret) as JwtPayload;
+          const decoded = jwt.verify(token, secret) as JwtPayload
 
           // If we have a valid token, return user info
           const user: SessionUser = {
             id: decoded.userId,
             email: decoded.email,
             role: decoded.role,
-            name: decoded.name || null
-          };
+            name: decoded.name || null,
+          }
 
           return NextResponse.json({
             authenticated: true,
             user,
             csrfToken: null,
             message: 'Active session found (JWT)',
-            authType: 'jwt'
-          });
+            authType: 'jwt',
+          })
         }
       } catch {
         // Invalid token, continue to return unauthenticated
@@ -72,19 +74,18 @@ export async function GET(req: NextRequest) {
       authenticated: false,
       user: null,
       csrfToken: null,
-      message: 'No active session'
-    });
-
+      message: 'No active session',
+    })
   } catch (error) {
-    console.error('[SESSION_ERROR]', error);
+    console.error('[SESSION_ERROR]', error)
     return NextResponse.json(
       {
         authenticated: false,
         user: null,
         csrfToken: null,
-        error: 'Internal server error'
+        error: 'Internal server error',
       },
       { status: 500 }
-    );
+    )
   }
 }

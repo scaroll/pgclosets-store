@@ -1,15 +1,17 @@
-import type { NextRequest} from 'next/server';
-import { NextResponse } from 'next/server';
-import bcryptjs from 'bcryptjs';
-import { prisma } from '@/lib/prisma';
-import { z } from 'zod';
-import { authRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit';
-import jwt from 'jsonwebtoken';
+import { prisma } from '@/lib/prisma'
+import { authRateLimiter, checkRateLimit, getClientIdentifier } from '@/lib/rate-limit'
+import bcryptjs from 'bcryptjs'
+import jwt from 'jsonwebtoken'
+import { type NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
+
+// Force Node.js runtime - Prisma and bcryptjs are incompatible with Edge Runtime
+export const runtime = 'nodejs'
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
   password: z.string().min(1, 'Password is required'),
-});
+})
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,28 +21,28 @@ export async function POST(req: NextRequest) {
         {
           success: false,
           authenticated: false,
-          error: 'Login service temporarily unavailable'
+          error: 'Login service temporarily unavailable',
         },
         { status: 503 }
-      );
+      )
     }
 
     // Rate limiting
-    const identifier = getClientIdentifier(req);
-    const { allowed } = await checkRateLimit(identifier, authRateLimiter);
+    const identifier = getClientIdentifier(req)
+    const { allowed } = await checkRateLimit(identifier, authRateLimiter)
     if (!allowed) {
       return NextResponse.json(
         {
           success: false,
           authenticated: false,
-          error: 'Too many login attempts'
+          error: 'Too many login attempts',
         },
         { status: 429 }
-      );
+      )
     }
 
-    const body = await req.json();
-    const validated = loginSchema.safeParse(body);
+    const body = await req.json()
+    const validated = loginSchema.safeParse(body)
 
     if (!validated.success) {
       return NextResponse.json(
@@ -48,13 +50,13 @@ export async function POST(req: NextRequest) {
           success: false,
           authenticated: false,
           error: 'Invalid input',
-          details: validated.error.errors
+          details: validated.error.errors,
         },
         { status: 400 }
-      );
+      )
     }
 
-    const { email, password } = validated.data;
+    const { email, password } = validated.data
 
     // Find user
     const user = await prisma.user.findUnique({
@@ -66,35 +68,35 @@ export async function POST(req: NextRequest) {
         name: true,
         role: true,
       },
-    });
+    })
 
     if (!user || !user.password) {
       return NextResponse.json(
         {
           success: false,
           authenticated: false,
-          error: 'Invalid credentials'
+          error: 'Invalid credentials',
         },
         { status: 401 }
-      );
+      )
     }
 
     // Verify password
-    const isValidPassword = await bcryptjs.compare(password, user.password);
+    const isValidPassword = await bcryptjs.compare(password, user.password)
 
     if (!isValidPassword) {
       return NextResponse.json(
         {
           success: false,
           authenticated: false,
-          error: 'Invalid credentials'
+          error: 'Invalid credentials',
         },
         { status: 401 }
-      );
+      )
     }
 
     // Create JWT token
-    const secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET || 'fallback-secret';
+    const secret = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET || 'fallback-secret'
     const token = jwt.sign(
       {
         userId: user.id,
@@ -103,7 +105,7 @@ export async function POST(req: NextRequest) {
       },
       secret,
       { expiresIn: '7d' }
-    );
+    )
 
     // Set HTTP-only cookie
     const response = NextResponse.json({
@@ -117,25 +119,25 @@ export async function POST(req: NextRequest) {
       },
       csrfToken: null, // Not used in JWT auth
       message: 'Login successful',
-    });
+    })
 
     response.cookies.set('auth-token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60, // 7 days
-    });
+    })
 
-    return response;
+    return response
   } catch (error) {
-    console.error('[LOGIN_ERROR]', error);
+    console.error('[LOGIN_ERROR]', error)
     return NextResponse.json(
       {
         success: false,
         authenticated: false,
-        error: 'Internal server error'
+        error: 'Internal server error',
       },
       { status: 500 }
-    );
+    )
   }
 }

@@ -36,8 +36,27 @@ class InMemoryRateLimiter {
     return value // default ms
   }
 
-  async limit(identifier: string): Promise<{ success: boolean; limit: number; remaining: number; reset: number; pending: Promise<unknown> }> {
+  async limit(
+    identifier: string
+  ): Promise<{
+    success: boolean
+    limit: number
+    remaining: number
+    reset: number
+    pending: Promise<unknown>
+  }> {
     await Promise.resolve()
+
+    if (this.limitCount <= 0) {
+      return {
+        success: false,
+        limit: this.limitCount,
+        remaining: 0,
+        reset: Date.now() + this.windowMs,
+        pending: Promise.resolve(),
+      }
+    }
+
     const now = Date.now()
     const key = identifier
     const record = localStore.get(key)
@@ -86,12 +105,10 @@ if (isUpstash) {
 } else {
   // Only warn once in development
   if (process.env.NODE_ENV !== 'production') {
-     warn(
-      '⚠️  REDIS_URL is not an Upstash HTTPS URL. Using in-memory rate limiting.'
-    )
+    warn('⚠️  REDIS_URL is not an Upstash HTTPS URL. Using in-memory rate limiting.')
   }
-  
-  // Mock Redis for local dev to satisfy types if needed elsewhere, 
+
+  // Mock Redis for local dev to satisfy types if needed elsewhere,
   // but we will bypass it in createLimiter for the robust in-memory implementation.
   redis = {
     incr: () => Promise.resolve(1),
@@ -106,12 +123,15 @@ const createLimiter = (options: {
   analytics?: boolean
   prefix: string
   // We need to capture the window config to recreate logic for in-memory
-  // Since we can't easily extract it from the Ratelimit.slidingWindow return, 
+  // Since we can't easily extract it from the Ratelimit.slidingWindow return,
   // we might need to pass duration/limit explicitly if we want true parity.
   // BUT: standardizing to a simple interface is easier.
-  config: { limit: number; window: string } 
-}): { limit: (identifier: string) => Promise<{ success: boolean; limit: number; remaining: number; reset: number }> } => {
-  
+  config: { limit: number; window: string }
+}): {
+  limit: (
+    identifier: string
+  ) => Promise<{ success: boolean; limit: number; remaining: number; reset: number }>
+} => {
   if (!isUpstash) {
     // Return our robust in-memory limiter
     return new InMemoryRateLimiter(options.config.limit, options.config.window)
@@ -132,7 +152,7 @@ const createLimiter = (options: {
 // Different rate limiters for different endpoints
 // Note: We are passing explicit config for the fallback
 export const chatRateLimiter = createLimiter({
-  limiter: Ratelimit.slidingWindow(10, '1 m'), 
+  limiter: Ratelimit.slidingWindow(10, '1 m'),
   config: { limit: 10, window: '1m' },
   analytics: true,
   prefix: 'ratelimit:chat',
@@ -184,7 +204,11 @@ export function getClientIdentifier(req: Request): string {
 // We need to accept the generic return type of createLimiter
 export async function checkRateLimit(
   identifier: string,
-  limiter: { limit: (identifier: string) => Promise<{ success: boolean; limit: number; remaining: number; reset: number }> }
+  limiter: {
+    limit: (
+      identifier: string
+    ) => Promise<{ success: boolean; limit: number; remaining: number; reset: number }>
+  }
 ): Promise<{ allowed: boolean; remaining: number; reset: number }> {
   try {
     const { success, remaining, reset } = await limiter.limit(identifier)
@@ -204,31 +228,31 @@ export async function checkRateLimit(
 
 // In-memory helper for explicit usage if needed (keeping backward compatibility if referenced elsewhere)
 export class RateLimiterClass {
-   static check(
-    identifier: string, 
-    maxRequests: number = 100, 
-    windowMs: number = 900000
-   ) {
-      // Re-implementing checkLogic using the same static store approach as before for compatibility:
-      
-      const now = Date.now()
-      const existing = localStore.get(identifier)
+  static check(identifier: string, maxRequests: number = 100, windowMs: number = 900000) {
+    if (maxRequests <= 0) {
+      return { allowed: false, remaining: 0, reset: Date.now() + windowMs }
+    }
 
-      if (!existing || now > existing.resetTime) {
-        const resetTime = now + windowMs
-        localStore.set(identifier, { count: 1, resetTime })
-        return { allowed: true, remaining: maxRequests - 1, reset: resetTime }
-      }
+    // Re-implementing checkLogic using the same static store approach as before for compatibility:
 
-      if (existing.count >= maxRequests) {
-         return { allowed: false, remaining: 0, reset: existing.resetTime }
-      }
-      
-      existing.count++
-      return { allowed: true, remaining: maxRequests - existing.count, reset: existing.resetTime }
-   }
+    const now = Date.now()
+    const existing = localStore.get(identifier)
 
-   static reset(identifier: string): void {
+    if (!existing || now > existing.resetTime) {
+      const resetTime = now + windowMs
+      localStore.set(identifier, { count: 1, resetTime })
+      return { allowed: true, remaining: maxRequests - 1, reset: resetTime }
+    }
+
+    if (existing.count >= maxRequests) {
+      return { allowed: false, remaining: 0, reset: existing.resetTime }
+    }
+
+    existing.count++
+    return { allowed: true, remaining: maxRequests - existing.count, reset: existing.resetTime }
+  }
+
+  static reset(identifier: string): void {
     localStore.delete(identifier)
   }
 

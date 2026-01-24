@@ -1,11 +1,14 @@
-import Page from '@/app/products/[slug]/page'
-import { getProductBySlug } from '@/lib/products'
+import Page from '@/app/(shop)/products/[slug]/page'
+import { getProductBySlug } from '@/lib/data/products'
 import { render, screen } from '@testing-library/react'
 import { notFound } from 'next/navigation'
+import { afterEach, describe, expect, test, vi } from 'vitest'
 
 // Mock the product data
-vi.mock('@/lib/products', () => ({
+vi.mock('@/lib/data/products', () => ({
   getProductBySlug: vi.fn(),
+  formatProductPrice: vi.fn(price => `$${price}`),
+  getProductsByCategory: vi.fn(() => []),
 }))
 
 // Mock next/navigation
@@ -18,6 +21,8 @@ const mockProduct = {
   name: 'Test Product',
   description: 'A test product description',
   price: 100,
+  salePrice: null,
+  category: 'Test Category',
   images: ['/test.jpg'],
   features: ['Feature 1'],
 }
@@ -28,6 +33,7 @@ describe('Product Detail Page', () => {
   })
 
   test('renders product details found', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ;(getProductBySlug as any).mockReturnValue(mockProduct)
 
     // Page is async server component, but for unit test we can await it if we call it directly?
@@ -39,17 +45,18 @@ describe('Product Detail Page', () => {
     const ui = await Page({ params: Promise.resolve({ slug: 'test-product' }) })
     render(ui)
 
-    expect(screen.getByText('Test Product')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Test Product' })).toBeInTheDocument()
     expect(screen.getByText('A test product description')).toBeInTheDocument()
     expect(screen.getByText('$100')).toBeInTheDocument()
   })
 
   test('calls notFound if product missing', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ;(getProductBySlug as any).mockReturnValue(undefined)
 
     try {
       await Page({ params: Promise.resolve({ slug: 'missing' }) })
-    } catch (e) {
+    } catch {
       // notFound throws usually, or in mock we can verify call
     }
 

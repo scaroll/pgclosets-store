@@ -55,19 +55,10 @@
     "sourceMap": true,
     "declaration": false,
     "declarationMap": false,
-    "types": ["@webgpu/types"]
+    "types": ["@webgpu/types", "vitest/globals"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "global.d.ts"],
-  "exclude": [
-    "node_modules",
-    ".next",
-    "dist",
-    "build",
-    "coverage",
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "tests"
-  ],
+  "exclude": ["node_modules", ".next", "dist", "build", "coverage"],
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
