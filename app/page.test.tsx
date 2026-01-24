@@ -3,31 +3,15 @@ import { describe, expect, it, vi } from 'vitest'
 import HomePage from './page'
 
 // Mock the components to avoid deep rendering issues and speed up tests
-vi.mock('@/components/home/hero', () => ({
-  VideoHero: () => <div data-testid="video-hero">Video Hero</div>,
+vi.mock('@/components/home/hero-section', () => ({
+  HeroSection: () => <div data-testid="video-hero">Video Hero</div>,
 }))
 
 vi.mock('@/components/products/product-card', () => ({
   ProductCard: () => <div data-testid="product-card">Product Card</div>,
 }))
 
-vi.mock('@/components/shared/section-header', () => ({
-  SectionHeader: ({ title }: { title: string }) => <div data-testid="section-header">{title}</div>,
-}))
-
-vi.mock('@/components/shared/feature-card', () => ({
-  FeatureCard: ({ title }: { title: string }) => <div data-testid="feature-card">{title}</div>,
-}))
-
-vi.mock('@/components/shared/testimonial-card', () => ({
-  TestimonialCard: () => <div data-testid="testimonial-card">Testimonial Card</div>,
-}))
-
-vi.mock('@/components/shared/cta-section', () => ({
-  CTASection: () => <div data-testid="cta-section">CTA Section</div>,
-}))
-
-vi.mock('@/components/shared/bento-grid', () => ({
+vi.mock('@/components/ui/bento-grid', () => ({
   BentoGrid: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="bento-grid">{children}</div>
   ),
@@ -35,18 +19,31 @@ vi.mock('@/components/shared/bento-grid', () => ({
 }))
 
 vi.mock('next/image', () => ({
+  // eslint-disable-next-line @next/next/no-img-element
   default: () => <img alt="mock" />,
 }))
 
+// Mock IntersectionObserver
+const IntersectionObserverMock = vi.fn(() => ({
+  disconnect: vi.fn(),
+  observe: vi.fn(),
+  takeRecords: vi.fn(),
+  unobserve: vi.fn(),
+}))
+
+vi.stubGlobal('IntersectionObserver', IntersectionObserverMock)
+
 describe('HomePage', () => {
-  it('renders the hero section', () => {
-    render(<HomePage />)
+  it('renders the hero section', async () => {
+    const ResolvedHomePage = await HomePage()
+    render(ResolvedHomePage)
     expect(screen.getByTestId('video-hero')).toBeInTheDocument()
   })
 
-  it('renders section headers', () => {
-    render(<HomePage />)
-    expect(screen.getByText('Bestselling Products')).toBeInTheDocument()
-    expect(screen.getByText('Why Choose PG Closets')).toBeInTheDocument()
+  it('renders section headers', async () => {
+    const ResolvedHomePage = await HomePage()
+    render(ResolvedHomePage)
+    expect(screen.getByText('The Collection.')).toBeInTheDocument()
+    expect(screen.getByText('Lifetime Warranty')).toBeInTheDocument()
   })
 })

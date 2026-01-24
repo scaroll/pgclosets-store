@@ -21,7 +21,7 @@ function slugify(text: string): string {
     .replace(/^-+|-+$/g, '')
 }
 
-export function deriveSlug(product: Product): string {
+export function deriveSlug(product: Product): string | null {
   if (product.slug && product.slug !== 'undefined') {
     return product.slug
   }
@@ -31,7 +31,7 @@ export function deriveSlug(product: Product): string {
   if (product.title) {
     return slugify(product.title)
   }
-  return `product-${product.id}`
+  return null
 }
 
 export function QuickConfigureCard({ product }: { product: Product }) {
