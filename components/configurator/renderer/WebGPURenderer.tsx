@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Layer } from '../../../lib/configurator/types'
+import type { Layer } from '../../../lib/configurator/types'
 import { ShaderProcessor } from './ShaderProcessor'
 
 interface WebGPURendererProps {

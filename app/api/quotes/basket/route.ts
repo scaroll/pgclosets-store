@@ -52,7 +52,7 @@ const sendSlackNotification = async (payload: {
   const webhookUrl = process.env.SLACK_WEBHOOK_URL
   if (!webhookUrl) return
 
-  const { quoteNumber, receivedAt, customer, items, total, details } = payload
+  const { quoteNumber, receivedAt, customer, items, total } = payload
 
   const itemsList = items
     .map(

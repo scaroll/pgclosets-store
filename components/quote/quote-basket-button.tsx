@@ -6,7 +6,7 @@ import { FileText } from 'lucide-react'
 import Link from 'next/link'
 
 export function QuoteBasketButton() {
-  const { items, isOpen, openBasket, totalItems } = useQuoteBasketStore()
+  const { totalItems } = useQuoteBasketStore()
   const itemCount = totalItems()
 
   return (

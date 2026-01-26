@@ -1,11 +1,15 @@
-import {
+/* eslint-disable import/no-duplicates */
+import type {
   AutoLayoutProps,
-  ConstraintHorizontal,
   Constraints,
-  ConstraintVertical,
   Layer,
-  Rectangle,
+  Rectangle
+} from '../types';
+import {
+  ConstraintHorizontal,
+  ConstraintVertical
 } from '../types'
+/* eslint-enable import/no-duplicates */
 
 export class AutoLayoutCalculator {
   public calculateLayout(frame: Layer, children: Layer[]): { [layerId: string]: Rectangle } {
@@ -72,8 +76,8 @@ export class AutoLayoutCalculator {
       layouts[child.id] = {
         x: currentX,
         y: props.padding.top, // Simplified Y positioning
-        width: width,
-        height: height,
+        width,
+        height,
       }
 
       currentX += width + props.gap

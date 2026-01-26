@@ -26,19 +26,6 @@ interface DoorSelection {
   images?: string[]
 }
 
-interface _LeadData {
-  name: string
-  email: string
-  phone: string
-  location: string
-  serviceType: ServiceType
-  preferredContact: PreferredContact
-  consent: boolean
-  productInterest?: string
-  message?: string
-  doorSelection?: DoorSelection
-}
-
 interface LeadNotificationData {
   leadId: string
   name: string

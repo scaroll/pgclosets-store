@@ -2,12 +2,6 @@ import { prisma } from '@/lib/db/client'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-// Type definitions
-interface BookedSlot {
-  timeStart: Date;
-  timeEnd: Date;
-}
-
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url)

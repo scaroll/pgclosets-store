@@ -28,13 +28,6 @@ interface PickupLocation {
   distance: number;
 }
 
-interface ShippingZoneInfo {
-  zone: string;
-  name: string;
-  description: string;
-  icon: string;
-}
-
 // Stub FreightEstimator class
 class FreightEstimator {
   static validatePostalCode(postalCode: string): PostalCodeValidation {

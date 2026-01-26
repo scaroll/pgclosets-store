@@ -8,6 +8,14 @@
         "NODE_ENV": "production",
         "FRAMEWORK": "react"
       }
+    },
+    "vercel": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@vercel/mcp"],
+      "env": {
+        "VERCEL_TOKEN": "uviu7n5Qr5lCb3qmB961eZgr"
+      }
     }
   }
 }

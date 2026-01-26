@@ -1,4 +1,4 @@
-import { ComponentDefinition, ComponentInstance, Layer } from '../types'
+import type { ComponentDefinition, ComponentInstance, Layer } from '../types'
 
 export class ComponentResolver {
   private components: Map<string, ComponentDefinition> = new Map()

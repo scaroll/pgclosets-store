@@ -12,22 +12,25 @@ const hasDatabase = Boolean(process.env.DATABASE_URL)
 interface StubModel {
   findMany: () => Promise<unknown[]>
   findUnique: () => Promise<null>
+  findFirst: () => Promise<null>
   count?: () => Promise<number>
   create: () => Promise<never>
   update?: () => Promise<never>
+  delete?: () => Promise<never>
   insert?: () => Promise<never>
 }
 
 interface StubPrismaClient {
   product: StubModel
-  category: { findMany: () => Promise<unknown[]> }
+  category: StubModel
   review: StubModel
   user: StubModel
   order: StubModel
   booking: StubModel
   appointment: StubModel
-  testimonial: { findMany: () => Promise<unknown[]> }
-  blogPost: { findMany: () => Promise<unknown[]> }
+  testimonial: StubModel
+  blogPost: StubModel
+  blockedDate: StubModel
   $disconnect: () => Promise<void>
   [key: string]: unknown
 }
@@ -36,39 +39,68 @@ const createStub = (): StubPrismaClient => ({
   product: {
     findMany: () => Promise.resolve([]),
     findUnique: () => Promise.resolve(null),
+    findFirst: () => Promise.resolve(null),
     count: () => Promise.resolve(0),
     create: () => Promise.reject(new Error('DATABASE_URL not configured')),
     update: () => Promise.reject(new Error('DATABASE_URL not configured')),
+    delete: () => Promise.reject(new Error('DATABASE_URL not configured')),
   },
   category: {
     findMany: () => Promise.resolve([]),
+    findUnique: () => Promise.resolve(null),
+    findFirst: () => Promise.resolve(null),
+    create: () => Promise.reject(new Error('DATABASE_URL not configured')),
   },
   review: {
     findMany: () => Promise.resolve([]),
+    findUnique: () => Promise.resolve(null),
+    findFirst: () => Promise.resolve(null),
     create: () => Promise.reject(new Error('DATABASE_URL not configured')),
   },
   user: {
+    findMany: () => Promise.resolve([]),
     findUnique: () => Promise.resolve(null),
+    findFirst: () => Promise.resolve(null),
     create: () => Promise.reject(new Error('DATABASE_URL not configured')),
   },
   order: {
+    findMany: () => Promise.resolve([]),
+    findUnique: () => Promise.resolve(null),
+    findFirst: () => Promise.resolve(null),
     create: () => Promise.reject(new Error('DATABASE_URL not configured')),
   },
   booking: {
-    create: () => Promise.reject(new Error('DATABASE_URL not configured')),
-    findMany: () => Promise.resolve([]),
-  },
-  appointment: {
-    create: () => Promise.reject(new Error('DATABASE_URL not configured')),
     findMany: () => Promise.resolve([]),
     findUnique: () => Promise.resolve(null),
+    findFirst: () => Promise.resolve(null),
+    create: () => Promise.reject(new Error('DATABASE_URL not configured')),
+  },
+  appointment: {
+    findMany: () => Promise.resolve([]),
+    findUnique: () => Promise.resolve(null),
+    findFirst: () => Promise.resolve(null),
+    create: () => Promise.reject(new Error('DATABASE_URL not configured')),
     update: () => Promise.reject(new Error('DATABASE_URL not configured')),
   },
   testimonial: {
     findMany: () => Promise.resolve([]),
+    findUnique: () => Promise.resolve(null),
+    findFirst: () => Promise.resolve(null),
+    create: () => Promise.reject(new Error('DATABASE_URL not configured')),
   },
   blogPost: {
     findMany: () => Promise.resolve([]),
+    findUnique: () => Promise.resolve(null),
+    findFirst: () => Promise.resolve(null),
+    update: () => Promise.reject(new Error('DATABASE_URL not configured')),
+    create: () => Promise.reject(new Error('DATABASE_URL not configured')),
+    delete: () => Promise.reject(new Error('DATABASE_URL not configured')),
+  },
+  blockedDate: {
+    findMany: () => Promise.resolve([]),
+    findUnique: () => Promise.resolve(null),
+    findFirst: () => Promise.resolve(null),
+    create: () => Promise.reject(new Error('DATABASE_URL not configured')),
   },
   $disconnect: () => Promise.resolve(),
 })

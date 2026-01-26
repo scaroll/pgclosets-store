@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { QuoteBasketButton } from '@/components/quote/quote-basket-button'
 import { FileText } from 'lucide-react'
 
 export function Header() {
