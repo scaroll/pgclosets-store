@@ -35,6 +35,8 @@
     "hooks/**/*.tsx",
     "data/**/*.ts",
     "data/**/*.tsx",
+    "types/**/*.ts",
+    "types/**/*.tsx",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules", "deploy", "pgclosets-clean", "pgclosets-website", "final-website"]

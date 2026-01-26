@@ -4,7 +4,7 @@ import { useMedusaCart } from "@/hooks/use-medusa-cart"
 import { Button } from "@/components/ui/button"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import { X, Minus, Plus, ShoppingBag } from "@/components/ui/icons"
-import type { LineItem } from "@medusajs/medusa"
+import type { LineItem } from "@/types/medusa"
 
 interface CartDrawerProps {
   isOpen?: boolean

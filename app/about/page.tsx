@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { Button } from "../../components/ui/button"
 
 export const metadata: Metadata = {
   title: "About PG Closets | Official Renin Dealer Ottawa",
@@ -19,96 +20,33 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <header className="fixed top-0 w-full z-50 bg-white/98 backdrop-blur-md border-b-2 border-[#1e3a8a] shadow-xl">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gradient-to-r from-[#1e3a8a] to-[#87ceeb] text-white text-center py-3 text-sm font-bold tracking-wide">
-            ⭐ 5.0 • 🏠 500+ Installations • ⏰ 15+ Years • 98% Satisfaction
-          </div>
-
-          <div className="flex justify-between items-center h-20">
-            <div className="flex-shrink-0">
-              <div className="flex items-center space-x-4">
-                <div className="relative w-16 h-16 overflow-hidden border-2 border-[#87ceeb] shadow-lg">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PG%20Logo.jpg-PA2Pv0eQKuJGkzYoQf9wsC86lYSKGa.jpeg"
-                    alt="PG Closets Logo"
-                    fill
-                    className="object-contain"
-                    priority
-                  />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-black text-[#1e3a8a] tracking-tight">PG CLOSETS</h1>
-                  <p className="text-xs text-[#87ceeb] font-bold tracking-wider">PREMIUM SOLUTIONS</p>
-                </div>
-              </div>
-            </div>
-
-            <nav className="hidden lg:flex items-center space-x-8">
-              {[
-                { name: "Home", href: "/" },
-                { name: "Products", href: "/products" },
-                { name: "Gallery", href: "/gallery" },
-                { name: "Process", href: "/process" },
-                { name: "About", href: "/about" },
-                { name: "Contact", href: "/contact" },
-              ].map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`relative px-4 py-2 text-sm font-bold uppercase tracking-wide transition-all duration-300 group ${
-                    item.name === "About"
-                      ? "text-[#1e3a8a] border-b-2 border-[#87ceeb]"
-                      : "text-gray-800 hover:text-[#1e3a8a]"
-                  }`}
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-1 bg-[#87ceeb] transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              ))}
-              <div className="flex items-center space-x-4">
-                <a href="tel:6134225800" className="text-[#1e3a8a] font-bold hover:text-[#87ceeb] transition-colors">
-                  📞 (613) 422-5800
-                </a>
-                <button className="bg-[#87ceeb] text-white px-8 py-3 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-[#87ceeb] hover:border-[#1e3a8a]">
-                  FREE QUOTE
-                </button>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </header>
-
-      <section className="pt-32 pb-24 bg-gradient-to-br from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <main>
+      {/* Hero Section */}
+      <section className="section-lg bg-muted/30">
+        <div className="container-default">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block bg-[#1e3a8a] text-[#87ceeb] px-6 py-2 text-sm font-black uppercase tracking-wider mb-6">
-                OUR STORY
-              </span>
-              <h1 className="text-5xl md:text-6xl font-black text-[#1e3a8a] mb-8 tracking-tight leading-tight">
+              <p className="text-overline text-accent mb-4">Our Story</p>
+              <h1 className="text-display mb-6">
                 Family-Owned Excellence Since 2010
               </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Ottawa-operated and family-owned, PG Closets has been transforming homes across the region with premium
-                Renin door systems and exceptional service for over a decade.
+              <p className="text-body-lg text-muted-foreground mb-8">
+                Ottawa-operated and family-owned, PG Closets has been transforming
+                homes across the region with premium Renin door systems and
+                exceptional service for over a decade.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact">
-                  <button className="bg-[#87ceeb] text-white px-8 py-4 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-[#87ceeb] hover:border-[#1e3a8a]">
-                    GET FREE CONSULTATION
-                  </button>
-                </Link>
-                <Link href="/products">
-                  <button className="border-2 border-[#1e3a8a] text-[#1e3a8a] px-8 py-4 font-black uppercase tracking-wide hover:bg-[#1e3a8a] hover:text-[#87ceeb] transition-all duration-300">
-                    BROWSE PRODUCTS
-                  </button>
-                </Link>
+                <Button size="lg" href="/contact">
+                  Get Free Consultation
+                </Button>
+                <Button variant="outline" size="lg" href="/products">
+                  Browse Products
+                </Button>
               </div>
             </div>
+
             <div className="relative">
-              <div className="aspect-square overflow-hidden shadow-2xl border-4 border-[#87ceeb]">
+              <div className="card overflow-hidden aspect-square">
                 <Image
                   src="/images/arcat/renin_199065_hd.jpg"
                   alt="Premium Renin closet doors installed in Ottawa home"
@@ -117,45 +55,48 @@ export default function AboutPage() {
                   priority
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-white p-8 shadow-2xl border-2 border-[#87ceeb]">
-                <div className="text-center">
-                  <div className="text-3xl font-black text-[#1e3a8a] mb-2">500+</div>
-                  <div className="text-sm font-bold text-[#87ceeb] uppercase tracking-wide">INSTALLATIONS</div>
-                </div>
+              {/* Stats Badge */}
+              <div className="absolute -bottom-4 -right-4 card card-elevated p-6 text-center">
+                <div className="text-h2 text-primary mb-1">500+</div>
+                <div className="text-overline text-muted-foreground">Installations</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* Journey Section */}
+      <section className="section">
+        <div className="container-default">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl font-black text-[#1e3a8a] mb-8 tracking-tight">The PG Closets Journey</h2>
-              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+              <h2 className="text-h2 mb-8">The PG Closets Journey</h2>
+              <div className="space-y-6 text-body text-muted-foreground">
                 <p>
-                  What started as a small family business has grown into Ottawa's most trusted name in premium door
-                  systems. As an official Renin dealer, we combine the quality and innovation of Canada's leading door
-                  manufacturer with the personal touch and local expertise that only a family business can provide.
+                  What started as a small family business has grown into Ottawa's most
+                  trusted name in premium door systems. As an official Renin dealer,
+                  we combine the quality and innovation of Canada's leading door
+                  manufacturer with the personal touch and local expertise that only
+                  a family business can provide.
                 </p>
                 <p>
-                  Our commitment to excellence has earned us the trust of over 500 Ottawa families, and we're proud to
-                  maintain a 98% customer satisfaction rating. Every project, from a simple barn door to a complete
-                  closet system, receives the same attention to detail and dedication to quality that has defined our
-                  business from day one.
+                  Our commitment to excellence has earned us the trust of over 500
+                  Ottawa families, and we're proud to maintain a 98% customer
+                  satisfaction rating. Every project, from a simple barn door to a
+                  complete closet system, receives the same attention to detail and
+                  dedication to quality that has defined our business from day one.
                 </p>
                 <p>
-                  Today, we continue to grow while staying true to our founding principles: transparent pricing, quality
-                  products, professional installation, and exceptional customer service. When you choose PG Closets,
-                  you're not just getting a door system – you're joining a family of satisfied customers who trust us
-                  with their homes.
+                  Today, we continue to grow while staying true to our founding
+                  principles: transparent pricing, quality products, professional
+                  installation, and exceptional customer service.
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-6">
-              <div className="space-y-6">
-                <div className="aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-4">
+                <div className="card overflow-hidden aspect-square relative">
                   <Image
                     src="/images/arcat/renin_199063_hd.jpg"
                     alt="Georgian 6-Panel Design closet doors"
@@ -163,7 +104,7 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
+                <div className="card overflow-hidden aspect-square relative">
                   <Image
                     src="/images/arcat/renin_155701_Bifold_Closet_Door_Euro_1_Lite_v2.jpg"
                     alt="Euro 1-Lite bifold closet doors"
@@ -172,8 +113,8 @@ export default function AboutPage() {
                   />
                 </div>
               </div>
-              <div className="space-y-6 pt-12">
-                <div className="aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
+              <div className="space-y-4 pt-8">
+                <div className="card overflow-hidden aspect-square relative">
                   <Image
                     src="/images/arcat/renin_205721_hd.jpg"
                     alt="Crochet Multi-X Design barn door"
@@ -181,7 +122,7 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="aspect-square overflow-hidden shadow-xl border-2 border-[#87ceeb]">
+                <div className="card overflow-hidden aspect-square relative">
                   <Image
                     src="/images/arcat/renin_176733_Continental_Pavilion_5_Lite.jpg"
                     alt="Euro 5-Lite bypass closet doors"
@@ -195,183 +136,115 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="inline-block bg-[#1e3a8a] text-[#87ceeb] px-6 py-2 text-sm font-black uppercase tracking-wider mb-6">
-              OUR VALUES
-            </span>
-            <h2 className="text-5xl font-black text-[#1e3a8a] mb-8 tracking-tight">What Drives Us</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Our mission is simple: to provide Ottawa homeowners with premium door solutions that enhance both function
-              and beauty in their homes.
+      {/* Values Section */}
+      <section className="section bg-muted/30">
+        <div className="container-default">
+          <div className="text-center mb-12">
+            <p className="text-overline text-accent mb-3">Our Values</p>
+            <h2 className="text-h2 mb-4">What Drives Us</h2>
+            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+              Our mission is simple: to provide Ottawa homeowners with premium door
+              solutions that enhance both function and beauty in their homes.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-10 text-center shadow-2xl border-t-4 border-[#87ceeb] hover:shadow-3xl hover:-translate-y-2 transition-all duration-300">
-              <div className="w-20 h-20 bg-[#87ceeb]/10 flex items-center justify-center mx-auto mb-8 border-2 border-[#87ceeb]">
-                <span className="text-3xl">🏆</span>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                  </svg>
+                ),
+                title: "Quality First",
+                description:
+                  "We partner exclusively with Renin, Canada's premier door manufacturer, to ensure every product meets the highest standards of excellence and durability.",
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                  </svg>
+                ),
+                title: "Personal Service",
+                description:
+                  "As a family business, we treat every customer like family, providing personalized attention and care throughout your entire project journey.",
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                  </svg>
+                ),
+                title: "Local Focus",
+                description:
+                  "We're proud to call Ottawa home and are committed to serving our community with integrity, excellence, and unwavering dedication.",
+              },
+            ].map((value, index) => (
+              <div
+                key={index}
+                className="card card-elevated p-8 text-center"
+              >
+                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center text-accent">
+                  {value.icon}
+                </div>
+                <h3 className="text-h4 mb-4">{value.title}</h3>
+                <p className="text-body-sm text-muted-foreground">
+                  {value.description}
+                </p>
               </div>
-              <h3 className="text-2xl font-black text-[#1e3a8a] mb-6 uppercase tracking-wide">Quality First</h3>
-              <p className="text-gray-600 leading-relaxed">
-                We partner exclusively with Renin, Canada's premier door manufacturer, to ensure every product meets the
-                highest standards of excellence and durability.
-              </p>
-            </div>
-
-            <div className="bg-white p-10 text-center shadow-2xl border-t-4 border-[#87ceeb] hover:shadow-3xl hover:-translate-y-2 transition-all duration-300">
-              <div className="w-20 h-20 bg-[#87ceeb]/10 flex items-center justify-center mx-auto mb-8 border-2 border-[#87ceeb]">
-                <span className="text-3xl">🤝</span>
-              </div>
-              <h3 className="text-2xl font-black text-[#1e3a8a] mb-6 uppercase tracking-wide">Personal Service</h3>
-              <p className="text-gray-600 leading-relaxed">
-                As a family business, we treat every customer like family, providing personalized attention and care
-                throughout your entire project journey.
-              </p>
-            </div>
-
-            <div className="bg-white p-10 text-center shadow-2xl border-t-4 border-[#87ceeb] hover:shadow-3xl hover:-translate-y-2 transition-all duration-300">
-              <div className="w-20 h-20 bg-[#87ceeb]/10 flex items-center justify-center mx-auto mb-8 border-2 border-[#87ceeb]">
-                <span className="text-3xl">🎯</span>
-              </div>
-              <h3 className="text-2xl font-black text-[#1e3a8a] mb-6 uppercase tracking-wide">Local Focus</h3>
-              <p className="text-gray-600 leading-relaxed">
-                We're proud to call Ottawa home and are committed to serving our community with integrity, excellence,
-                and unwavering dedication.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-r from-[#1e3a8a] to-[#87ceeb] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-5xl font-black mb-8 tracking-tight">Ready to Work Together?</h2>
-          <p className="text-xl mb-12 leading-relaxed max-w-2xl mx-auto">
-            Experience the PG Closets difference for yourself. Let's create something beautiful and functional for your
-            home.
+      {/* Stats Section */}
+      <section className="section">
+        <div className="container-default">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { value: "15+", label: "Years Experience" },
+              { value: "500+", label: "Installations" },
+              { value: "98%", label: "Satisfaction Rate" },
+              { value: "5.0", label: "Google Rating" },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-display text-primary mb-2">{stat.value}</div>
+                <div className="text-overline text-muted-foreground">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section bg-primary text-primary-foreground">
+        <div className="container-narrow text-center">
+          <h2 className="text-h2 mb-4">Ready to Work Together?</h2>
+          <p className="text-body-lg text-primary-foreground/80 mb-8 max-w-xl mx-auto">
+            Experience the PG Closets difference for yourself. Let's create
+            something beautiful and functional for your home.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/contact">
-              <button className="bg-white text-[#1e3a8a] px-12 py-5 font-black text-xl uppercase tracking-wide hover:bg-gray-100 hover:scale-105 transition-all duration-300">
-                START YOUR PROJECT
-              </button>
-            </Link>
-            <Link href="/contact">
-              <button className="border-4 border-white text-white px-12 py-5 font-black text-xl uppercase tracking-wide hover:bg-white hover:text-[#1e3a8a] hover:scale-105 transition-all duration-300">
-                GET IN TOUCH
-              </button>
-            </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              variant="accent"
+              size="lg"
+              href="/contact"
+            >
+              Start Your Project
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              href="tel:6134225800"
+              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+            >
+              (613) 422-5800
+            </Button>
           </div>
         </div>
       </section>
-
-      <footer className="bg-[#1e3a8a] text-white py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-4 mb-8">
-                <div className="relative w-16 h-16 overflow-hidden border-2 border-[#87ceeb]">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PG%20Logo.jpg-PA2Pv0eQKuJGkzYoQf9wsC86lYSKGa.jpeg"
-                    alt="PG Closets Logo"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-3xl font-black tracking-tight">PG CLOSETS</h3>
-                  <p className="text-[#87ceeb] font-bold">PREMIUM SOLUTIONS</p>
-                </div>
-              </div>
-              <p className="text-gray-300 mb-8 leading-relaxed max-w-lg text-lg">
-                Ottawa's premier closet door specialists, transforming homes with premium Renin solutions and
-                award-winning professional installation services since 2010.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-xl font-black mb-8 text-[#87ceeb] uppercase tracking-wide">Navigation</h4>
-              <div className="space-y-4">
-                {[
-                  { name: "Home", href: "/" },
-                  { name: "Products", href: "/products" },
-                  { name: "Gallery", href: "/gallery" },
-                  { name: "Process", href: "/process" },
-                  { name: "About", href: "/about" },
-                  { name: "Contact", href: "/contact" },
-                ].map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 font-semibold"
-                  >
-                    → {link.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-xl font-black mb-8 text-[#87ceeb] uppercase tracking-wide">Contact</h4>
-              <div className="space-y-6 text-gray-300">
-                <div className="flex items-center space-x-4">
-                  <span className="text-[#87ceeb] text-xl">📧</span>
-                  <div>
-                    <div className="font-bold text-white">Email</div>
-                    <div>info@pgclosets.com</div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <span className="text-[#87ceeb] text-xl">📱</span>
-                  <div>
-                    <div className="font-bold text-white">Phone</div>
-                    <div>(613) 422-5800</div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <span className="text-[#87ceeb] text-xl">📍</span>
-                  <div>
-                    <div className="font-bold text-white">Service Area</div>
-                    <div>Ottawa & Surrounding Areas</div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <span className="text-[#87ceeb] text-xl">🕒</span>
-                  <div>
-                    <div className="font-bold text-white">Business Hours</div>
-                    <div className="text-sm">
-                      <div>Mon-Fri: 8:00 AM - 6:00 PM</div>
-                      <div>Sat: 9:00 AM - 4:00 PM</div>
-                      <div>Sun: By Appointment</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t-2 border-[#87ceeb]/30 mt-16 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-400 mb-4 md:mb-0">
-                &copy; 2025 PG Closets. All rights reserved. | Licensed & Insured | A+ BBB Rating
-              </p>
-              <div className="flex space-x-6 text-sm">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  Privacy Policy
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  Terms of Service
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  Warranty
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </main>
   )
 }

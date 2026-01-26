@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 import { medusaClient } from "@/lib/medusa-client"
-import type { Cart, LineItem } from "@medusajs/medusa"
+import type { Cart, LineItem } from "@/types/medusa"
 
 interface MedusaCartContextType {
   cart: Cart | null

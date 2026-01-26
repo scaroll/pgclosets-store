@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { medusaProducts } from "@/lib/medusa-products"
-import type { Product, ProductCollection } from "@medusajs/medusa"
+import type { Product, ProductCollection } from "@/types/medusa"
 
 // Hook for fetching products
 export function useMedusaProducts(params?: {

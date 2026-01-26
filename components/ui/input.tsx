@@ -1,45 +1,211 @@
-import React from "react"
-import { cva, type VariantProps } from "@/lib/utils"
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
+/**
+ * Apple-grade Input Component
+ *
+ * Design principles:
+ * - 44px minimum height (WCAG touch target)
+ * - Clean focus states
+ * - Consistent border radius (12px)
+ * - Proper placeholder contrast
+ */
+
 const inputVariants = cva(
-  "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  [
+    // Base styles
+    "flex w-full min-w-0",
+    "rounded-[var(--radius)] border border-input",
+    "bg-background px-4 py-3",
+    "text-base text-foreground",
+    "placeholder:text-muted-foreground",
+    // Transitions
+    "transition-[border-color,box-shadow] duration-150",
+    // Focus
+    "outline-none",
+    "focus:border-ring focus:ring-[3px] focus:ring-ring/10",
+    // Disabled
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-muted",
+    // File inputs
+    "file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground",
+    // Selection
+    "selection:bg-primary/20",
+  ],
   {
     variants: {
       variant: {
         default: "",
-        brand: "border-primary/30 focus-visible:border-primary focus-visible:ring-primary/20 hover:border-primary/50",
-        ghost: "border-transparent bg-muted/30 focus-visible:bg-background focus-visible:border-primary",
-        underline:
-          "border-0 border-b-2 border-muted-foreground/30 rounded-none focus-visible:border-primary focus-visible:ring-0 px-0",
+        // Ghost - minimal borders
+        ghost: [
+          "border-transparent bg-muted/50",
+          "focus:bg-background focus:border-ring",
+        ],
+        // Underline - material style
+        underline: [
+          "rounded-none border-0 border-b-2 border-muted",
+          "px-0 focus:border-ring focus:ring-0",
+        ],
       },
-      size: {
-        sm: "h-8 text-sm px-2",
-        default: "h-9",
-        lg: "h-11 px-4 text-base",
-        xl: "h-12 px-4 text-lg",
+      inputSize: {
+        sm: "h-9 px-3 text-sm",
+        default: "h-11",
+        lg: "h-[52px] px-5 text-lg",
+      },
+      state: {
+        default: "",
+        error: [
+          "border-destructive",
+          "focus:border-destructive focus:ring-destructive/10",
+        ],
+        success: [
+          "border-success",
+          "focus:border-success focus:ring-success/10",
+        ],
       },
     },
     defaultVariants: {
       variant: "default",
-      size: "default",
+      inputSize: "default",
+      state: "default",
     },
-  },
+  }
 )
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input"> & VariantProps<typeof inputVariants>>(
-  ({ className, type, variant, size, ...props }, ref) => {
+export interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
+    VariantProps<typeof inputVariants> {
+  error?: boolean
+}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, variant, inputSize, state, error, ...props }, ref) => {
+    // Map error prop to state
+    const effectiveState = error ? "error" : state
+
     return (
       <input
         type={type}
         data-slot="input"
-        className={cn(inputVariants({ variant, size }), className)}
+        className={cn(
+          inputVariants({ variant, inputSize, state: effectiveState }),
+          className
+        )}
         ref={ref}
         {...props}
       />
     )
-  },
+  }
 )
 Input.displayName = "Input"
 
-export { Input, inputVariants }
+// Textarea component
+const textareaVariants = cva(
+  [
+    "flex w-full min-w-0",
+    "rounded-[var(--radius)] border border-input",
+    "bg-background px-4 py-3",
+    "text-base text-foreground",
+    "placeholder:text-muted-foreground",
+    "transition-[border-color,box-shadow] duration-150",
+    "outline-none",
+    "focus:border-ring focus:ring-[3px] focus:ring-ring/10",
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-muted",
+    "resize-y min-h-[100px]",
+  ],
+  {
+    variants: {
+      state: {
+        default: "",
+        error: [
+          "border-destructive",
+          "focus:border-destructive focus:ring-destructive/10",
+        ],
+      },
+    },
+    defaultVariants: {
+      state: "default",
+    },
+  }
+)
+
+export interface TextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+    VariantProps<typeof textareaVariants> {
+  error?: boolean
+}
+
+const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ className, state, error, ...props }, ref) => {
+    const effectiveState = error ? "error" : state
+
+    return (
+      <textarea
+        data-slot="textarea"
+        className={cn(textareaVariants({ state: effectiveState }), className)}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Textarea.displayName = "Textarea"
+
+// Label component
+const Label = React.forwardRef<
+  HTMLLabelElement,
+  React.LabelHTMLAttributes<HTMLLabelElement> & {
+    required?: boolean
+  }
+>(({ className, children, required, ...props }, ref) => (
+  <label
+    ref={ref}
+    data-slot="label"
+    className={cn(
+      "text-sm font-medium text-foreground leading-none",
+      "peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    {required && <span className="text-destructive ml-1">*</span>}
+  </label>
+))
+Label.displayName = "Label"
+
+// Helper text component
+const HelperText = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement> & {
+    error?: boolean
+  }
+>(({ className, error, ...props }, ref) => (
+  <p
+    ref={ref}
+    data-slot="helper-text"
+    className={cn(
+      "text-[0.8125rem] mt-2",
+      error ? "text-destructive" : "text-muted-foreground",
+      className
+    )}
+    {...props}
+  />
+))
+HelperText.displayName = "HelperText"
+
+// Form field wrapper
+const FormField = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    data-slot="form-field"
+    className={cn("space-y-2", className)}
+    {...props}
+  />
+))
+FormField.displayName = "FormField"
+
+export { Input, Textarea, Label, HelperText, FormField, inputVariants, textareaVariants }

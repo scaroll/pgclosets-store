@@ -1,5 +1,12 @@
 "use client"
 
+// Extend Window interface for gtag
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void
+  }
+}
+
 // Performance monitoring utilities
 export class PerformanceMonitor {
   private static instance: PerformanceMonitor
@@ -25,7 +32,7 @@ export class PerformanceMonitor {
       firstPaint: this.getFirstPaint(),
       firstContentfulPaint: this.getFirstContentfulPaint(),
       largestContentfulPaint: this.getLargestContentfulPaint(),
-      totalLoadTime: navigation.loadEventEnd - navigation.navigationStart,
+      totalLoadTime: navigation.loadEventEnd - navigation.startTime,
       networkTime: navigation.responseEnd - navigation.requestStart,
       renderTime: navigation.loadEventEnd - navigation.responseEnd,
     }

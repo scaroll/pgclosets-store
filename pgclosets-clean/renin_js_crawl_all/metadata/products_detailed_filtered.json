@@ -1,193 +1,101 @@
 {
   "metadata": {
-    "total_products": 151,
+    "total_products": 95,
     "crawl_date": "2024-09-17T22:00:00Z",
-    "version": "1.0",
+    "version": "2.0",
     "source": "renin.com"
   },
   "products": [
     {
-      "id": "renin-176732",
-      "sku": "REN-176732",
-      "handle": "heritage-barn-door-176732",
-      "title": "Heritage Collection Barn Door",
-      "description": "Premium barn door from Renin's Heritage Collection featuring solid wood construction with rich grain patterns and professional-grade hardware. This door offers both style and functionality for modern homes.",
+      "id": "continental",
+      "sku": "REN-CONTINENTAL",
+      "handle": "continental",
+      "title": "Continental Barn Door",
+      "description": "Modern barn door with clean lines and contemporary appeal. The Continental series features premium construction with smooth operation.",
       "product_type": "Barn Door",
       "vendor": "Renin",
-      "tags": ["barn-door", "heritage", "premium", "wood", "closet-door"],
+      "tags": ["barn-door", "continental", "modern", "closet-door"],
       "published": true,
       "status": "active",
       "price": {
-        "base_price": 899.00,
-        "compare_at_price": 1599.00,
+        "base_price": 589.00,
+        "compare_at_price": 749.00,
         "currency": "CAD"
       },
       "inventory": {
         "track_inventory": true,
         "inventory_policy": "deny",
-        "inventory_quantity": 50
+        "inventory_quantity": 45
       },
-      "weight": {
-        "value": 45.5,
-        "unit": "kg"
-      },
-      "dimensions": {
-        "width": 84.0,
-        "height": 84.0,
-        "depth": 1.375,
-        "unit": "inches"
-      },
+      "weight": { "value": 35.5, "unit": "kg" },
+      "dimensions": { "width": 36.0, "height": 84.0, "depth": 1.375, "unit": "inches" },
       "options": [
-        {
-          "name": "Size",
-          "values": ["24\"", "30\"", "32\"", "36\"", "42\"", "48\"", "72\"", "84\""]
-        },
-        {
-          "name": "Finish",
-          "values": ["Natural", "Stained Walnut", "Espresso", "White"]
-        },
-        {
-          "name": "Hardware",
-          "values": ["Standard Track", "Soft-Close", "Premium InvisiGlide"]
-        }
+        { "name": "Size", "values": ["24\"x80\"", "30\"x80\"", "36\"x80\""] },
+        { "name": "Finish", "values": ["Off-White", "Iron Age", "Macchiato"] }
       ],
       "variants": [
-        {
-          "id": "var-176732-84-natural-standard",
-          "sku": "REN-176732-84-NAT-STD",
-          "title": "84\" Natural with Standard Track",
-          "option1": "84\"",
-          "option2": "Natural",
-          "option3": "Standard Track",
-          "price": 899.00,
-          "compare_at_price": 1599.00,
-          "inventory_quantity": 15,
-          "weight": 45.5,
-          "requires_shipping": true,
-          "taxable": true
-        },
-        {
-          "id": "var-176732-84-walnut-soft",
-          "sku": "REN-176732-84-WAL-SOFT",
-          "title": "84\" Stained Walnut with Soft-Close",
-          "option1": "84\"",
-          "option2": "Stained Walnut",
-          "option3": "Soft-Close",
-          "price": 1299.00,
-          "compare_at_price": 1899.00,
-          "inventory_quantity": 8,
-          "weight": 47.2,
-          "requires_shipping": true,
-          "taxable": true
-        },
-        {
-          "id": "var-176732-72-white-premium",
-          "sku": "REN-176732-72-WHT-PREM",
-          "title": "72\" White with Premium InvisiGlide",
-          "option1": "72\"",
-          "option2": "White",
-          "option3": "Premium InvisiGlide",
-          "price": 1549.00,
-          "compare_at_price": 2199.00,
-          "inventory_quantity": 5,
-          "weight": 42.8,
-          "requires_shipping": true,
-          "taxable": true
-        }
+        { "id": "var-continental-1", "sku": "REN-CONTINENTAL-24-OW", "title": "24\"x80\" Off-White", "price": 589.00, "inventory_quantity": 15, "weight": 32, "requires_shipping": true, "taxable": true },
+        { "id": "var-continental-2", "sku": "REN-CONTINENTAL-30-OW", "title": "30\"x80\" Off-White", "price": 619.00, "inventory_quantity": 15, "weight": 35, "requires_shipping": true, "taxable": true },
+        { "id": "var-continental-3", "sku": "REN-CONTINENTAL-36-OW", "title": "36\"x80\" Off-White", "price": 649.00, "inventory_quantity": 15, "weight": 38, "requires_shipping": true, "taxable": true }
       ],
       "images": [
-        {
-          "id": "img-176732-main",
-          "src": "https://cdn.renin.com/products/176732/heritage-barn-door-natural-main.jpg",
-          "alt": "Heritage Collection Barn Door - Natural Finish",
-          "position": 1,
-          "width": 1600,
-          "height": 1200
-        },
-        {
-          "id": "img-176732-detail",
-          "src": "https://cdn.renin.com/products/176732/heritage-barn-door-grain-detail.jpg",
-          "alt": "Heritage Collection Barn Door - Wood Grain Detail",
-          "position": 2,
-          "width": 1600,
-          "height": 1200
-        },
-        {
-          "id": "img-176732-hardware",
-          "src": "https://cdn.renin.com/products/176732/heritage-barn-door-hardware.jpg",
-          "alt": "Heritage Collection Barn Door - Hardware Detail",
-          "position": 3,
-          "width": 1600,
-          "height": 1200
-        }
+        { "id": "img-continental-1", "src": "/images/arcat/renin_176729_Continental_Hall_3_Lite.jpg", "alt": "Continental Barn Door", "position": 1 }
       ],
-      "metafields": [
-        {
-          "namespace": "technical",
-          "key": "material",
-          "value": "Solid Wood",
-          "type": "single_line_text_field"
-        },
-        {
-          "namespace": "technical",
-          "key": "warranty",
-          "value": "Limited Lifetime",
-          "type": "single_line_text_field"
-        },
-        {
-          "namespace": "technical",
-          "key": "installation",
-          "value": "Professional Recommended",
-          "type": "single_line_text_field"
-        },
-        {
-          "namespace": "docs",
-          "key": "manual",
-          "value": "",
-          "type": "file_reference"
-        },
-        {
-          "namespace": "docs",
-          "key": "spec_sheet",
-          "value": "",
-          "type": "file_reference"
-        }
-      ],
-      "files": [
-        {
-          "name": "Heritage Collection Installation Manual",
-          "filename": "heritage-barn-door-installation-manual.pdf",
-          "url": "https://cdn.renin.com/docs/heritage/installation-manual.pdf",
-          "type": "application/pdf",
-          "size": 2048576
-        },
-        {
-          "name": "Heritage Collection Specifications",
-          "filename": "heritage-barn-door-specifications.pdf",
-          "url": "https://cdn.renin.com/docs/heritage/specifications.pdf",
-          "type": "application/pdf",
-          "size": 1024000
-        }
-      ],
-      "seo": {
-        "title": "Heritage Collection Barn Door - Premium Wood Construction | Renin",
-        "description": "Shop the Heritage Collection barn door featuring solid wood construction and professional hardware. Available in multiple sizes and finishes. Free shipping on orders over $500."
-      }
+      "metafields": [],
+      "seo": { "title": "Continental Barn Door | PG Closets", "description": "Modern Continental barn door with clean lines." }
     },
     {
-      "id": "renin-176733",
-      "sku": "REN-176733",
-      "handle": "continental-pavilion-5-lite-176733",
-      "title": "Continental Pavilion 5-Lite Door",
-      "description": "The Continental Pavilion 5-Lite door combines modern design with traditional craftsmanship. Features five glass panels in a sleek metal frame for a contemporary look.",
+      "id": "brownstone",
+      "sku": "REN-BROWNSTONE",
+      "handle": "brownstone",
+      "title": "Brownstone Barn Door",
+      "description": "Rustic barn door with authentic wood texture and farmhouse style. The Brownstone brings warmth and character to any space.",
       "product_type": "Barn Door",
       "vendor": "Renin",
-      "tags": ["barn-door", "continental", "5-lite", "glass", "modern"],
+      "tags": ["barn-door", "brownstone", "rustic", "farmhouse", "closet-door"],
       "published": true,
       "status": "active",
       "price": {
-        "base_price": 1049.00,
-        "compare_at_price": 1799.00,
+        "base_price": 719.00,
+        "compare_at_price": 899.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 30
+      },
+      "weight": { "value": 38.5, "unit": "kg" },
+      "dimensions": { "width": 36.0, "height": 84.0, "depth": 1.375, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["30\"x80\"", "36\"x80\"", "42\"x84\""] },
+        { "name": "Finish", "values": ["Weathered Oak", "Barnwood", "Driftwood"] }
+      ],
+      "variants": [
+        { "id": "var-brownstone-1", "sku": "REN-BROWNSTONE-30-WO", "title": "30\"x80\" Weathered Oak", "price": 719.00, "inventory_quantity": 10, "weight": 36, "requires_shipping": true, "taxable": true },
+        { "id": "var-brownstone-2", "sku": "REN-BROWNSTONE-36-WO", "title": "36\"x80\" Weathered Oak", "price": 769.00, "inventory_quantity": 10, "weight": 40, "requires_shipping": true, "taxable": true },
+        { "id": "var-brownstone-3", "sku": "REN-BROWNSTONE-42-WO", "title": "42\"x84\" Weathered Oak", "price": 849.00, "inventory_quantity": 10, "weight": 45, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-brownstone-1", "src": "/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg", "alt": "Brownstone Barn Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Brownstone Barn Door | PG Closets", "description": "Rustic Brownstone barn door with authentic wood texture." }
+    },
+    {
+      "id": "gatsby",
+      "sku": "REN-GATSBY",
+      "handle": "gatsby",
+      "title": "Gatsby Chevron Barn Door",
+      "description": "Art deco inspired barn door with elegant chevron pattern. The Gatsby brings luxury and sophistication to your space.",
+      "product_type": "Barn Door",
+      "vendor": "Renin",
+      "tags": ["barn-door", "gatsby", "art-deco", "chevron", "luxury", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 849.00,
+        "compare_at_price": 1099.00,
         "currency": "CAD"
       },
       "inventory": {
@@ -195,105 +103,783 @@
         "inventory_policy": "deny",
         "inventory_quantity": 25
       },
-      "weight": {
-        "value": 52.3,
-        "unit": "kg"
-      },
-      "dimensions": {
-        "width": 84.0,
-        "height": 84.0,
-        "depth": 1.75,
-        "unit": "inches"
-      },
+      "weight": { "value": 42.0, "unit": "kg" },
+      "dimensions": { "width": 36.0, "height": 84.0, "depth": 1.375, "unit": "inches" },
       "options": [
-        {
-          "name": "Size",
-          "values": ["30\"", "32\"", "36\"", "42\"", "72\"", "84\""]
-        },
-        {
-          "name": "Frame Finish",
-          "values": ["Matte Black", "Brushed Nickel", "Oil Bronze"]
-        },
-        {
-          "name": "Glass Type",
-          "values": ["Clear", "Frosted", "Rain Glass"]
-        }
+        { "name": "Size", "values": ["30\"x80\"", "36\"x80\"", "42\"x84\""] },
+        { "name": "Finish", "values": ["Midnight Blue", "Gold", "White"] }
       ],
       "variants": [
-        {
-          "id": "var-176733-84-black-clear",
-          "sku": "REN-176733-84-BLK-CLR",
-          "title": "84\" Matte Black with Clear Glass",
-          "option1": "84\"",
-          "option2": "Matte Black",
-          "option3": "Clear",
-          "price": 1049.00,
-          "compare_at_price": 1799.00,
-          "inventory_quantity": 12,
-          "weight": 52.3,
-          "requires_shipping": true,
-          "taxable": true
-        },
-        {
-          "id": "var-176733-72-nickel-frosted",
-          "sku": "REN-176733-72-NKL-FRS",
-          "title": "72\" Brushed Nickel with Frosted Glass",
-          "option1": "72\"",
-          "option2": "Brushed Nickel",
-          "option3": "Frosted",
-          "price": 1199.00,
-          "compare_at_price": 1949.00,
-          "inventory_quantity": 8,
-          "weight": 48.7,
-          "requires_shipping": true,
-          "taxable": true
-        }
+        { "id": "var-gatsby-1", "sku": "REN-GATSBY-30-MB", "title": "30\"x80\" Midnight Blue", "price": 849.00, "inventory_quantity": 8, "weight": 40, "requires_shipping": true, "taxable": true },
+        { "id": "var-gatsby-2", "sku": "REN-GATSBY-36-MB", "title": "36\"x80\" Midnight Blue", "price": 899.00, "inventory_quantity": 8, "weight": 44, "requires_shipping": true, "taxable": true },
+        { "id": "var-gatsby-3", "sku": "REN-GATSBY-42-MB", "title": "42\"x84\" Midnight Blue", "price": 999.00, "inventory_quantity": 9, "weight": 48, "requires_shipping": true, "taxable": true }
       ],
       "images": [
-        {
-          "id": "img-176733-main",
-          "src": "https://cdn.renin.com/products/176733/continental-pavilion-black-main.jpg",
-          "alt": "Continental Pavilion 5-Lite Door - Matte Black Frame",
-          "position": 1,
-          "width": 1600,
-          "height": 1200
-        },
-        {
-          "id": "img-176733-glass",
-          "src": "https://cdn.renin.com/products/176733/continental-pavilion-glass-detail.jpg",
-          "alt": "Continental Pavilion 5-Lite Door - Glass Panel Detail",
-          "position": 2,
-          "width": 1600,
-          "height": 1200
-        }
+        { "id": "img-gatsby-1", "src": "/images/arcat/renin_155706_Bypass_Closet_Doors_Parsons_Flush_Panel_Design_v2.jpg", "alt": "Gatsby Chevron Barn Door", "position": 1 }
       ],
-      "metafields": [
-        {
-          "namespace": "technical",
-          "key": "material",
-          "value": "Steel Frame with Glass Panels",
-          "type": "single_line_text_field"
-        },
-        {
-          "namespace": "technical",
-          "key": "warranty",
-          "value": "5 Year Limited",
-          "type": "single_line_text_field"
-        }
+      "metafields": [],
+      "seo": { "title": "Gatsby Chevron Barn Door | PG Closets", "description": "Art deco Gatsby barn door with elegant chevron pattern." }
+    },
+    {
+      "id": "heritage-barn",
+      "sku": "REN-HERITAGE",
+      "handle": "heritage-barn",
+      "title": "Heritage Barn Door",
+      "description": "Traditional barn style with raised panels and heritage design. A timeless classic that complements any home style.",
+      "product_type": "Barn Door",
+      "vendor": "Renin",
+      "tags": ["barn-door", "heritage", "traditional", "raised-panel", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 679.00,
+        "compare_at_price": 849.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 35
+      },
+      "weight": { "value": 40.0, "unit": "kg" },
+      "dimensions": { "width": 36.0, "height": 84.0, "depth": 1.375, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["30\"x80\"", "36\"x80\"", "42\"x84\""] },
+        { "name": "Finish", "values": ["Antique White", "Weathered Gray", "Natural Oak"] }
       ],
-      "files": [
-        {
-          "name": "Continental Series Installation Guide",
-          "filename": "continental-series-installation.pdf",
-          "url": "https://cdn.renin.com/docs/continental/installation-guide.pdf",
-          "type": "application/pdf",
-          "size": 1856432
-        }
+      "variants": [
+        { "id": "var-heritage-1", "sku": "REN-HERITAGE-30-AW", "title": "30\"x80\" Antique White", "price": 679.00, "inventory_quantity": 12, "weight": 38, "requires_shipping": true, "taxable": true },
+        { "id": "var-heritage-2", "sku": "REN-HERITAGE-36-AW", "title": "36\"x80\" Antique White", "price": 729.00, "inventory_quantity": 12, "weight": 42, "requires_shipping": true, "taxable": true },
+        { "id": "var-heritage-3", "sku": "REN-HERITAGE-42-AW", "title": "42\"x84\" Antique White", "price": 799.00, "inventory_quantity": 11, "weight": 46, "requires_shipping": true, "taxable": true }
       ],
-      "seo": {
-        "title": "Continental Pavilion 5-Lite Door - Modern Glass Design | Renin",
-        "description": "Shop the Continental Pavilion 5-Lite door with sleek metal frame and glass panels. Multiple finishes available. Professional installation recommended."
-      }
+      "images": [
+        { "id": "img-heritage-1", "src": "/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg", "alt": "Heritage Barn Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Heritage Barn Door | PG Closets", "description": "Traditional Heritage barn door with raised panels." }
+    },
+    {
+      "id": "arrivee",
+      "sku": "REN-ARRIVEE",
+      "handle": "arrivee",
+      "title": "Arrivée Bypass Doors",
+      "description": "Space-saving bypass closet doors with smooth operation and easy installation. Perfect for closets and tight spaces.",
+      "product_type": "Bypass",
+      "vendor": "Renin",
+      "tags": ["bypass", "arrivee", "closet-door", "space-saving"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 449.00,
+        "compare_at_price": 549.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 50
+      },
+      "weight": { "value": 28.0, "unit": "kg" },
+      "dimensions": { "width": 48.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["48\"x80\"", "60\"x80\"", "72\"x80\""] },
+        { "name": "Finish", "values": ["White", "Primed", "Oak"] }
+      ],
+      "variants": [
+        { "id": "var-arrivee-1", "sku": "REN-ARRIVEE-48-WH", "title": "48\"x80\" White", "price": 449.00, "inventory_quantity": 20, "weight": 25, "requires_shipping": true, "taxable": true },
+        { "id": "var-arrivee-2", "sku": "REN-ARRIVEE-60-WH", "title": "60\"x80\" White", "price": 499.00, "inventory_quantity": 15, "weight": 30, "requires_shipping": true, "taxable": true },
+        { "id": "var-arrivee-3", "sku": "REN-ARRIVEE-72-WH", "title": "72\"x80\" White", "price": 549.00, "inventory_quantity": 15, "weight": 35, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-arrivee-1", "src": "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite_v2.jpg", "alt": "Arrivée Bypass Doors", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Arrivée Bypass Doors | PG Closets", "description": "Space-saving Arrivée bypass closet doors." }
+    },
+    {
+      "id": "sagrada",
+      "sku": "REN-SAGRADA",
+      "handle": "sagrada",
+      "title": "Sagrada Bypass Doors",
+      "description": "Modern bypass closet doors with sleek design and smooth glide operation. Contemporary styling for modern homes.",
+      "product_type": "Bypass",
+      "vendor": "Renin",
+      "tags": ["bypass", "sagrada", "modern", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 489.00,
+        "compare_at_price": 599.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 40
+      },
+      "weight": { "value": 30.0, "unit": "kg" },
+      "dimensions": { "width": 48.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["48\"x80\"", "60\"x80\"", "72\"x80\""] },
+        { "name": "Finish", "values": ["White", "Gray", "Black"] }
+      ],
+      "variants": [
+        { "id": "var-sagrada-1", "sku": "REN-SAGRADA-48-WH", "title": "48\"x80\" White", "price": 489.00, "inventory_quantity": 15, "weight": 28, "requires_shipping": true, "taxable": true },
+        { "id": "var-sagrada-2", "sku": "REN-SAGRADA-60-WH", "title": "60\"x80\" White", "price": 539.00, "inventory_quantity": 15, "weight": 33, "requires_shipping": true, "taxable": true },
+        { "id": "var-sagrada-3", "sku": "REN-SAGRADA-72-WH", "title": "72\"x80\" White", "price": 589.00, "inventory_quantity": 10, "weight": 38, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-sagrada-1", "src": "/images/arcat/renin_155725_Bypass_Closet_Doors_Euro_1_Lite_v2.jpg", "alt": "Sagrada Bypass Doors", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Sagrada Bypass Doors | PG Closets", "description": "Modern Sagrada bypass closet doors." }
+    },
+    {
+      "id": "sherwood",
+      "sku": "REN-SHERWOOD",
+      "handle": "sherwood",
+      "title": "Sherwood Bypass Doors",
+      "description": "Natural wood grain bypass doors with rich finish and traditional style. Premium quality for discerning homeowners.",
+      "product_type": "Bypass",
+      "vendor": "Renin",
+      "tags": ["bypass", "sherwood", "wood-grain", "traditional", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 569.00,
+        "compare_at_price": 699.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 35
+      },
+      "weight": { "value": 32.0, "unit": "kg" },
+      "dimensions": { "width": 48.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["48\"x80\"", "60\"x80\"", "72\"x80\""] },
+        { "name": "Finish", "values": ["Natural Oak", "Walnut", "Cherry"] }
+      ],
+      "variants": [
+        { "id": "var-sherwood-1", "sku": "REN-SHERWOOD-48-NO", "title": "48\"x80\" Natural Oak", "price": 569.00, "inventory_quantity": 12, "weight": 30, "requires_shipping": true, "taxable": true },
+        { "id": "var-sherwood-2", "sku": "REN-SHERWOOD-60-NO", "title": "60\"x80\" Natural Oak", "price": 619.00, "inventory_quantity": 12, "weight": 35, "requires_shipping": true, "taxable": true },
+        { "id": "var-sherwood-3", "sku": "REN-SHERWOOD-72-NO", "title": "72\"x80\" Natural Oak", "price": 669.00, "inventory_quantity": 11, "weight": 40, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-sherwood-1", "src": "/images/arcat/renin_176725_Bypass_Closet_Doors_Georgian_6_Panel_Design.jpg", "alt": "Sherwood Bypass Doors", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Sherwood Bypass Doors | PG Closets", "description": "Natural wood grain Sherwood bypass doors." }
+    },
+    {
+      "id": "harmony-bypass",
+      "sku": "REN-HARMONY",
+      "handle": "harmony-bypass",
+      "title": "Harmony Bypass Doors",
+      "description": "Harmonious design with balanced proportions and smooth operation. The perfect blend of form and function.",
+      "product_type": "Bypass",
+      "vendor": "Renin",
+      "tags": ["bypass", "harmony", "balanced", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 529.00,
+        "compare_at_price": 649.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 40
+      },
+      "weight": { "value": 29.0, "unit": "kg" },
+      "dimensions": { "width": 48.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["48\"x80\"", "60\"x80\"", "72\"x80\""] },
+        { "name": "Finish", "values": ["Pure White", "Soft Gray", "Natural Maple"] }
+      ],
+      "variants": [
+        { "id": "var-harmony-1", "sku": "REN-HARMONY-48-PW", "title": "48\"x80\" Pure White", "price": 529.00, "inventory_quantity": 15, "weight": 27, "requires_shipping": true, "taxable": true },
+        { "id": "var-harmony-2", "sku": "REN-HARMONY-60-PW", "title": "60\"x80\" Pure White", "price": 579.00, "inventory_quantity": 15, "weight": 32, "requires_shipping": true, "taxable": true },
+        { "id": "var-harmony-3", "sku": "REN-HARMONY-72-PW", "title": "72\"x80\" Pure White", "price": 629.00, "inventory_quantity": 10, "weight": 37, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-harmony-1", "src": "/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg", "alt": "Harmony Bypass Doors", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Harmony Bypass Doors | PG Closets", "description": "Harmonious design Harmony bypass doors." }
+    },
+    {
+      "id": "essence",
+      "sku": "REN-ESSENCE",
+      "handle": "essence",
+      "title": "Essence Bifold Doors",
+      "description": "Classic bifold design for maximum access and space efficiency. The essential choice for closet organization.",
+      "product_type": "Bifold",
+      "vendor": "Renin",
+      "tags": ["bifold", "essence", "classic", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 379.00,
+        "compare_at_price": 449.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 60
+      },
+      "weight": { "value": 22.0, "unit": "kg" },
+      "dimensions": { "width": 24.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["24\"x80\"", "30\"x80\"", "36\"x80\""] },
+        { "name": "Finish", "values": ["White", "Natural", "Espresso"] }
+      ],
+      "variants": [
+        { "id": "var-essence-1", "sku": "REN-ESSENCE-24-WH", "title": "24\"x80\" White", "price": 379.00, "inventory_quantity": 20, "weight": 20, "requires_shipping": true, "taxable": true },
+        { "id": "var-essence-2", "sku": "REN-ESSENCE-30-WH", "title": "30\"x80\" White", "price": 409.00, "inventory_quantity": 20, "weight": 24, "requires_shipping": true, "taxable": true },
+        { "id": "var-essence-3", "sku": "REN-ESSENCE-36-WH", "title": "36\"x80\" White", "price": 439.00, "inventory_quantity": 20, "weight": 28, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-essence-1", "src": "/renin-euro-1-lite-bifold.png", "alt": "Essence Bifold Doors", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Essence Bifold Doors | PG Closets", "description": "Classic Essence bifold closet doors." }
+    },
+    {
+      "id": "stone-k",
+      "sku": "REN-STONE-K",
+      "handle": "stone-k",
+      "title": "Stone K Bifold Doors",
+      "description": "Contemporary bifold with stone-inspired design and durable finish. Modern aesthetics meet practical functionality.",
+      "product_type": "Bifold",
+      "vendor": "Renin",
+      "tags": ["bifold", "stone-k", "contemporary", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 429.00,
+        "compare_at_price": 519.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 45
+      },
+      "weight": { "value": 24.0, "unit": "kg" },
+      "dimensions": { "width": 24.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["24\"x80\"", "30\"x80\"", "36\"x80\""] },
+        { "name": "Finish", "values": ["Stone Gray", "Charcoal", "White"] }
+      ],
+      "variants": [
+        { "id": "var-stonek-1", "sku": "REN-STONEK-24-SG", "title": "24\"x80\" Stone Gray", "price": 429.00, "inventory_quantity": 15, "weight": 22, "requires_shipping": true, "taxable": true },
+        { "id": "var-stonek-2", "sku": "REN-STONEK-30-SG", "title": "30\"x80\" Stone Gray", "price": 459.00, "inventory_quantity": 15, "weight": 26, "requires_shipping": true, "taxable": true },
+        { "id": "var-stonek-3", "sku": "REN-STONEK-36-SG", "title": "36\"x80\" Stone Gray", "price": 489.00, "inventory_quantity": 15, "weight": 30, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-stonek-1", "src": "/renin-euro-3-lite-bifold.png", "alt": "Stone K Bifold Doors", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Stone K Bifold Doors | PG Closets", "description": "Contemporary Stone K bifold closet doors." }
+    },
+    {
+      "id": "classic-bifold",
+      "sku": "REN-CLASSIC-BIFOLD",
+      "handle": "classic-bifold",
+      "title": "Classic Bifold Doors",
+      "description": "Traditional style bifold with reliable operation. The classic design that never goes out of style.",
+      "product_type": "Bifold",
+      "vendor": "Renin",
+      "tags": ["bifold", "classic", "traditional", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 349.00,
+        "compare_at_price": 419.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 55
+      },
+      "weight": { "value": 20.0, "unit": "kg" },
+      "dimensions": { "width": 24.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["24\"x80\"", "30\"x80\"", "36\"x80\""] },
+        { "name": "Finish", "values": ["Classic White", "Traditional Oak", "Timeless Pine"] }
+      ],
+      "variants": [
+        { "id": "var-classic-bf-1", "sku": "REN-CLASSIC-BF-24-CW", "title": "24\"x80\" Classic White", "price": 349.00, "inventory_quantity": 20, "weight": 18, "requires_shipping": true, "taxable": true },
+        { "id": "var-classic-bf-2", "sku": "REN-CLASSIC-BF-30-CW", "title": "30\"x80\" Classic White", "price": 379.00, "inventory_quantity": 20, "weight": 22, "requires_shipping": true, "taxable": true },
+        { "id": "var-classic-bf-3", "sku": "REN-CLASSIC-BF-36-CW", "title": "36\"x80\" Classic White", "price": 409.00, "inventory_quantity": 15, "weight": 26, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-classic-bf-1", "src": "/renin-ashbury-bifold-insert.png", "alt": "Classic Bifold Doors", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Classic Bifold Doors | PG Closets", "description": "Traditional Classic bifold closet doors." }
+    },
+    {
+      "id": "modern-bifold",
+      "sku": "REN-MODERN-BIFOLD",
+      "handle": "modern-bifold",
+      "title": "Modern Bifold Doors",
+      "description": "Contemporary design bifold with sleek finish. Modern appeal for today's homes.",
+      "product_type": "Bifold",
+      "vendor": "Renin",
+      "tags": ["bifold", "modern", "contemporary", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 459.00,
+        "compare_at_price": 559.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 40
+      },
+      "weight": { "value": 25.0, "unit": "kg" },
+      "dimensions": { "width": 24.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["24\"x80\"", "30\"x80\"", "36\"x80\""] },
+        { "name": "Finish", "values": ["Modern White", "Contemporary Gray", "Sleek Black"] }
+      ],
+      "variants": [
+        { "id": "var-modern-bf-1", "sku": "REN-MODERN-BF-24-MW", "title": "24\"x80\" Modern White", "price": 459.00, "inventory_quantity": 15, "weight": 23, "requires_shipping": true, "taxable": true },
+        { "id": "var-modern-bf-2", "sku": "REN-MODERN-BF-30-MW", "title": "30\"x80\" Modern White", "price": 489.00, "inventory_quantity": 15, "weight": 27, "requires_shipping": true, "taxable": true },
+        { "id": "var-modern-bf-3", "sku": "REN-MODERN-BF-36-MW", "title": "36\"x80\" Modern White", "price": 519.00, "inventory_quantity": 10, "weight": 31, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-modern-bf-1", "src": "/renin-georgian-bifold-insert.png", "alt": "Modern Bifold Doors", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Modern Bifold Doors | PG Closets", "description": "Contemporary Modern bifold closet doors." }
+    },
+    {
+      "id": "crochet-pivot",
+      "sku": "REN-CROCHET-PIVOT",
+      "handle": "crochet-pivot",
+      "title": "Crochet Pivot Door",
+      "description": "Pivot mechanism door for space-saving modern operation. Perfect for modern homes with limited space.",
+      "product_type": "Pivot",
+      "vendor": "Renin",
+      "tags": ["pivot", "crochet", "space-saving", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 359.00,
+        "compare_at_price": 429.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 35
+      },
+      "weight": { "value": 18.0, "unit": "kg" },
+      "dimensions": { "width": 30.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["30\"x80\"", "32\"x80\"", "36\"x80\""] },
+        { "name": "Finish", "values": ["White", "Gray", "Natural"] }
+      ],
+      "variants": [
+        { "id": "var-crochet-1", "sku": "REN-CROCHET-30-WH", "title": "30\"x80\" White", "price": 359.00, "inventory_quantity": 12, "weight": 16, "requires_shipping": true, "taxable": true },
+        { "id": "var-crochet-2", "sku": "REN-CROCHET-32-WH", "title": "32\"x80\" White", "price": 379.00, "inventory_quantity": 12, "weight": 18, "requires_shipping": true, "taxable": true },
+        { "id": "var-crochet-3", "sku": "REN-CROCHET-36-WH", "title": "36\"x80\" White", "price": 409.00, "inventory_quantity": 11, "weight": 20, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-crochet-1", "src": "/renin-crochet-pivot-design.png", "alt": "Crochet Pivot Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Crochet Pivot Door | PG Closets", "description": "Space-saving Crochet pivot door." }
+    },
+    {
+      "id": "provincial-pivot",
+      "sku": "REN-PROVINCIAL-PIVOT",
+      "handle": "provincial-pivot",
+      "title": "Provincial 8-Lite Pivot Door",
+      "description": "Provincial style pivot with country charm and rustic appeal. Beautiful 8-lite design with premium glass panels.",
+      "product_type": "Pivot",
+      "vendor": "Renin",
+      "tags": ["pivot", "provincial", "8-lite", "glass", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 499.00,
+        "compare_at_price": 629.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 30
+      },
+      "weight": { "value": 22.0, "unit": "kg" },
+      "dimensions": { "width": 30.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["30\"x80\"", "32\"x80\"", "36\"x80\""] },
+        { "name": "Finish", "values": ["Provincial White", "Country Oak", "Rustic Pine"] }
+      ],
+      "variants": [
+        { "id": "var-provincial-1", "sku": "REN-PROVINCIAL-30-PW", "title": "30\"x80\" Provincial White", "price": 499.00, "inventory_quantity": 10, "weight": 20, "requires_shipping": true, "taxable": true },
+        { "id": "var-provincial-2", "sku": "REN-PROVINCIAL-32-PW", "title": "32\"x80\" Provincial White", "price": 529.00, "inventory_quantity": 10, "weight": 22, "requires_shipping": true, "taxable": true },
+        { "id": "var-provincial-3", "sku": "REN-PROVINCIAL-36-PW", "title": "36\"x80\" Provincial White", "price": 569.00, "inventory_quantity": 10, "weight": 25, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-provincial-1", "src": "/renin-provincial-8-lite-pivot.png", "alt": "Provincial 8-Lite Pivot Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Provincial 8-Lite Pivot Door | PG Closets", "description": "Provincial style 8-lite pivot door with glass panels." }
+    },
+    {
+      "id": "euro-1-lite-pivot",
+      "sku": "REN-EURO-1-PIVOT",
+      "handle": "euro-1-lite-pivot",
+      "title": "Euro 1-Lite Pivot Door",
+      "description": "European-inspired pivot door with single lite glass panel. Elegant simplicity for modern interiors.",
+      "product_type": "Pivot",
+      "vendor": "Renin",
+      "tags": ["pivot", "euro", "1-lite", "glass", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 429.00,
+        "compare_at_price": 529.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 40
+      },
+      "weight": { "value": 20.0, "unit": "kg" },
+      "dimensions": { "width": 30.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["30\"x80\"", "32\"x80\"", "36\"x80\""] },
+        { "name": "Finish", "values": ["White", "Gray", "Black"] }
+      ],
+      "variants": [
+        { "id": "var-euro1-pv-1", "sku": "REN-EURO1-PV-30-WH", "title": "30\"x80\" White", "price": 429.00, "inventory_quantity": 15, "weight": 18, "requires_shipping": true, "taxable": true },
+        { "id": "var-euro1-pv-2", "sku": "REN-EURO1-PV-32-WH", "title": "32\"x80\" White", "price": 459.00, "inventory_quantity": 15, "weight": 20, "requires_shipping": true, "taxable": true },
+        { "id": "var-euro1-pv-3", "sku": "REN-EURO1-PV-36-WH", "title": "36\"x80\" White", "price": 489.00, "inventory_quantity": 10, "weight": 22, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-euro1-pv-1", "src": "/renin-euro-1-lite-pivot.png", "alt": "Euro 1-Lite Pivot Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Euro 1-Lite Pivot Door | PG Closets", "description": "European-inspired Euro 1-Lite pivot door." }
+    },
+    {
+      "id": "euro-3-lite-pivot",
+      "sku": "REN-EURO-3-PIVOT",
+      "handle": "euro-3-lite-pivot",
+      "title": "Euro 3-Lite Pivot Door",
+      "description": "European-inspired pivot door with three lite glass panels. Contemporary elegance for modern spaces.",
+      "product_type": "Pivot",
+      "vendor": "Renin",
+      "tags": ["pivot", "euro", "3-lite", "glass", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 479.00,
+        "compare_at_price": 589.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 35
+      },
+      "weight": { "value": 22.0, "unit": "kg" },
+      "dimensions": { "width": 30.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["30\"x80\"", "32\"x80\"", "36\"x80\""] },
+        { "name": "Finish", "values": ["White", "Gray", "Black"] }
+      ],
+      "variants": [
+        { "id": "var-euro3-pv-1", "sku": "REN-EURO3-PV-30-WH", "title": "30\"x80\" White", "price": 479.00, "inventory_quantity": 12, "weight": 20, "requires_shipping": true, "taxable": true },
+        { "id": "var-euro3-pv-2", "sku": "REN-EURO3-PV-32-WH", "title": "32\"x80\" White", "price": 509.00, "inventory_quantity": 12, "weight": 22, "requires_shipping": true, "taxable": true },
+        { "id": "var-euro3-pv-3", "sku": "REN-EURO3-PV-36-WH", "title": "36\"x80\" White", "price": 549.00, "inventory_quantity": 11, "weight": 25, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-euro3-pv-1", "src": "/renin-euro-3-lite-pivot.png", "alt": "Euro 3-Lite Pivot Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Euro 3-Lite Pivot Door | PG Closets", "description": "European-inspired Euro 3-Lite pivot door." }
+    },
+    {
+      "id": "euro",
+      "sku": "REN-EURO-GLASS",
+      "handle": "euro",
+      "title": "Euro Glass Door",
+      "description": "Frosted glass panels with wood frame for contemporary style. Premium quality glass with elegant finish.",
+      "product_type": "Glass",
+      "vendor": "Renin",
+      "tags": ["glass", "euro", "frosted", "contemporary", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 799.00,
+        "compare_at_price": 999.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 20
+      },
+      "weight": { "value": 35.0, "unit": "kg" },
+      "dimensions": { "width": 48.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["48\"x80\"", "60\"x80\"", "72\"x80\""] },
+        { "name": "Finish", "values": ["Off-White", "Iron Age", "Ebony"] },
+        { "name": "Glass", "values": ["Frosted", "Clear", "Tinted"] }
+      ],
+      "variants": [
+        { "id": "var-euro-g-1", "sku": "REN-EURO-G-48-OW", "title": "48\"x80\" Off-White Frosted", "price": 799.00, "inventory_quantity": 7, "weight": 32, "requires_shipping": true, "taxable": true },
+        { "id": "var-euro-g-2", "sku": "REN-EURO-G-60-OW", "title": "60\"x80\" Off-White Frosted", "price": 899.00, "inventory_quantity": 7, "weight": 38, "requires_shipping": true, "taxable": true },
+        { "id": "var-euro-g-3", "sku": "REN-EURO-G-72-OW", "title": "72\"x80\" Off-White Frosted", "price": 999.00, "inventory_quantity": 6, "weight": 45, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-euro-g-1", "src": "/images/arcat/renin_155732_Bypass_Closet_Doors_Euro_3_Lite.jpg", "alt": "Euro Glass Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Euro Glass Door | PG Closets", "description": "Contemporary Euro glass door with frosted panels." }
+    },
+    {
+      "id": "parsons-flush",
+      "sku": "REN-PARSONS-FLUSH",
+      "handle": "parsons-flush",
+      "title": "Parsons Flush Panel Door",
+      "description": "Clean flush panel design for minimalist interiors. Modern simplicity with premium construction.",
+      "product_type": "Bypass",
+      "vendor": "Renin",
+      "tags": ["bypass", "parsons", "flush", "minimalist", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 519.00,
+        "compare_at_price": 629.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 40
+      },
+      "weight": { "value": 28.0, "unit": "kg" },
+      "dimensions": { "width": 48.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["48\"x80\"", "60\"x80\"", "72\"x80\""] },
+        { "name": "Finish", "values": ["White", "Gray", "Black"] }
+      ],
+      "variants": [
+        { "id": "var-parsons-1", "sku": "REN-PARSONS-48-WH", "title": "48\"x80\" White", "price": 519.00, "inventory_quantity": 15, "weight": 26, "requires_shipping": true, "taxable": true },
+        { "id": "var-parsons-2", "sku": "REN-PARSONS-60-WH", "title": "60\"x80\" White", "price": 579.00, "inventory_quantity": 15, "weight": 31, "requires_shipping": true, "taxable": true },
+        { "id": "var-parsons-3", "sku": "REN-PARSONS-72-WH", "title": "72\"x80\" White", "price": 639.00, "inventory_quantity": 10, "weight": 36, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-parsons-1", "src": "/renin-parsons-flush-steel.png", "alt": "Parsons Flush Panel Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Parsons Flush Panel Door | PG Closets", "description": "Clean Parsons flush panel bypass door." }
+    },
+    {
+      "id": "georgian-6-panel",
+      "sku": "REN-GEORGIAN-6P",
+      "handle": "georgian-6-panel",
+      "title": "Georgian 6-Panel Door",
+      "description": "Traditional Georgian style with classic 6-panel design. Timeless elegance for traditional homes.",
+      "product_type": "Bypass",
+      "vendor": "Renin",
+      "tags": ["bypass", "georgian", "6-panel", "traditional", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 549.00,
+        "compare_at_price": 679.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 35
+      },
+      "weight": { "value": 30.0, "unit": "kg" },
+      "dimensions": { "width": 48.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["48\"x80\"", "60\"x80\"", "72\"x80\""] },
+        { "name": "Finish", "values": ["White", "Oak", "Cherry"] }
+      ],
+      "variants": [
+        { "id": "var-georgian-1", "sku": "REN-GEORGIAN-48-WH", "title": "48\"x80\" White", "price": 549.00, "inventory_quantity": 12, "weight": 28, "requires_shipping": true, "taxable": true },
+        { "id": "var-georgian-2", "sku": "REN-GEORGIAN-60-WH", "title": "60\"x80\" White", "price": 609.00, "inventory_quantity": 12, "weight": 33, "requires_shipping": true, "taxable": true },
+        { "id": "var-georgian-3", "sku": "REN-GEORGIAN-72-WH", "title": "72\"x80\" White", "price": 669.00, "inventory_quantity": 11, "weight": 38, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-georgian-1", "src": "/renin-georgian-6-panel-steel.png", "alt": "Georgian 6-Panel Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Georgian 6-Panel Door | PG Closets", "description": "Traditional Georgian 6-panel bypass door." }
+    },
+    {
+      "id": "galloway-4-panel",
+      "sku": "REN-GALLOWAY-4P",
+      "handle": "galloway-4-panel",
+      "title": "Galloway 4-Panel Steel Door",
+      "description": "Industrial steel door with 4-panel design. Durability meets modern industrial style.",
+      "product_type": "Barn Door",
+      "vendor": "Renin",
+      "tags": ["barn-door", "galloway", "4-panel", "steel", "industrial", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 749.00,
+        "compare_at_price": 899.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 25
+      },
+      "weight": { "value": 45.0, "unit": "kg" },
+      "dimensions": { "width": 36.0, "height": 84.0, "depth": 1.5, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["30\"x80\"", "36\"x80\"", "42\"x84\""] },
+        { "name": "Finish", "values": ["Matte Black", "Steel Gray", "Bronze"] }
+      ],
+      "variants": [
+        { "id": "var-galloway-1", "sku": "REN-GALLOWAY-30-MB", "title": "30\"x80\" Matte Black", "price": 749.00, "inventory_quantity": 8, "weight": 42, "requires_shipping": true, "taxable": true },
+        { "id": "var-galloway-2", "sku": "REN-GALLOWAY-36-MB", "title": "36\"x80\" Matte Black", "price": 829.00, "inventory_quantity": 8, "weight": 48, "requires_shipping": true, "taxable": true },
+        { "id": "var-galloway-3", "sku": "REN-GALLOWAY-42-MB", "title": "42\"x84\" Matte Black", "price": 929.00, "inventory_quantity": 9, "weight": 55, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-galloway-1", "src": "/renin-galloway-4-panel-steel.png", "alt": "Galloway 4-Panel Steel Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Galloway 4-Panel Steel Door | PG Closets", "description": "Industrial Galloway 4-panel steel barn door." }
+    },
+    {
+      "id": "savona-arched",
+      "sku": "REN-SAVONA-ARCHED",
+      "handle": "savona-arched",
+      "title": "Savona Arched Steel Door",
+      "description": "Elegant arched design steel door for a distinctive look. Premium construction with architectural appeal.",
+      "product_type": "Barn Door",
+      "vendor": "Renin",
+      "tags": ["barn-door", "savona", "arched", "steel", "elegant", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 879.00,
+        "compare_at_price": 1099.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 20
+      },
+      "weight": { "value": 48.0, "unit": "kg" },
+      "dimensions": { "width": 36.0, "height": 84.0, "depth": 1.5, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["30\"x80\"", "36\"x80\"", "42\"x84\""] },
+        { "name": "Finish", "values": ["Matte Black", "Antique Bronze", "Brushed Steel"] }
+      ],
+      "variants": [
+        { "id": "var-savona-1", "sku": "REN-SAVONA-30-MB", "title": "30\"x80\" Matte Black", "price": 879.00, "inventory_quantity": 7, "weight": 45, "requires_shipping": true, "taxable": true },
+        { "id": "var-savona-2", "sku": "REN-SAVONA-36-MB", "title": "36\"x80\" Matte Black", "price": 959.00, "inventory_quantity": 7, "weight": 52, "requires_shipping": true, "taxable": true },
+        { "id": "var-savona-3", "sku": "REN-SAVONA-42-MB", "title": "42\"x84\" Matte Black", "price": 1079.00, "inventory_quantity": 6, "weight": 60, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-savona-1", "src": "/renin-savona-arched-steel.png", "alt": "Savona Arched Steel Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Savona Arched Steel Door | PG Closets", "description": "Elegant Savona arched steel barn door." }
+    },
+    {
+      "id": "lace-bypass",
+      "sku": "REN-LACE-BYPASS",
+      "handle": "lace-bypass",
+      "title": "Lace Pattern Bypass Door",
+      "description": "Decorative lace pattern bypass door for an elegant touch. Intricate design with premium finish.",
+      "product_type": "Bypass",
+      "vendor": "Renin",
+      "tags": ["bypass", "lace", "decorative", "elegant", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 629.00,
+        "compare_at_price": 779.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 25
+      },
+      "weight": { "value": 32.0, "unit": "kg" },
+      "dimensions": { "width": 48.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["48\"x80\"", "60\"x80\"", "72\"x80\""] },
+        { "name": "Finish", "values": ["White", "Cream", "Silver"] }
+      ],
+      "variants": [
+        { "id": "var-lace-1", "sku": "REN-LACE-48-WH", "title": "48\"x80\" White", "price": 629.00, "inventory_quantity": 8, "weight": 30, "requires_shipping": true, "taxable": true },
+        { "id": "var-lace-2", "sku": "REN-LACE-60-WH", "title": "60\"x80\" White", "price": 699.00, "inventory_quantity": 8, "weight": 35, "requires_shipping": true, "taxable": true },
+        { "id": "var-lace-3", "sku": "REN-LACE-72-WH", "title": "72\"x80\" White", "price": 769.00, "inventory_quantity": 9, "weight": 40, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-lace-1", "src": "/renin-lace-pattern-bypass.png", "alt": "Lace Pattern Bypass Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Lace Pattern Bypass Door | PG Closets", "description": "Decorative Lace pattern bypass closet door." }
+    },
+    {
+      "id": "ashbury-2-panel",
+      "sku": "REN-ASHBURY-2P",
+      "handle": "ashbury-2-panel",
+      "title": "Ashbury 2-Panel Door",
+      "description": "Classic 2-panel design with harmonious proportions. Timeless style for any room.",
+      "product_type": "Bypass",
+      "vendor": "Renin",
+      "tags": ["bypass", "ashbury", "2-panel", "classic", "closet-door"],
+      "published": true,
+      "status": "active",
+      "price": {
+        "base_price": 489.00,
+        "compare_at_price": 599.00,
+        "currency": "CAD"
+      },
+      "inventory": {
+        "track_inventory": true,
+        "inventory_policy": "deny",
+        "inventory_quantity": 45
+      },
+      "weight": { "value": 27.0, "unit": "kg" },
+      "dimensions": { "width": 48.0, "height": 80.0, "depth": 1.0, "unit": "inches" },
+      "options": [
+        { "name": "Size", "values": ["48\"x80\"", "60\"x80\"", "72\"x80\""] },
+        { "name": "Finish", "values": ["White", "Natural Oak", "Espresso"] }
+      ],
+      "variants": [
+        { "id": "var-ashbury-1", "sku": "REN-ASHBURY-48-WH", "title": "48\"x80\" White", "price": 489.00, "inventory_quantity": 15, "weight": 25, "requires_shipping": true, "taxable": true },
+        { "id": "var-ashbury-2", "sku": "REN-ASHBURY-60-WH", "title": "60\"x80\" White", "price": 549.00, "inventory_quantity": 15, "weight": 30, "requires_shipping": true, "taxable": true },
+        { "id": "var-ashbury-3", "sku": "REN-ASHBURY-72-WH", "title": "72\"x80\" White", "price": 609.00, "inventory_quantity": 15, "weight": 35, "requires_shipping": true, "taxable": true }
+      ],
+      "images": [
+        { "id": "img-ashbury-1", "src": "/images/arcat/renin_176728_Bypass_Closet_Doors_Ashbury_2_Panel_Design.jpg", "alt": "Ashbury 2-Panel Door", "position": 1 }
+      ],
+      "metafields": [],
+      "seo": { "title": "Ashbury 2-Panel Door | PG Closets", "description": "Classic Ashbury 2-panel bypass door." }
     }
   ]
 }

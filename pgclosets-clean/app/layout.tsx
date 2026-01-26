@@ -1,12 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter'
-})
+// Use system font stack for production reliability
+const fontVariable = '--font-inter'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pgclosets.com'),
@@ -64,7 +60,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

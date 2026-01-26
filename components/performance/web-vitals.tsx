@@ -1,7 +1,10 @@
 "use client"
 
 import { useEffect } from 'react'
-import { getCLS, getFCP, getLCP, getTTFB, onCLS, onFCP, onLCP, onTTFB } from 'web-vitals'
+import { onCLS, onFCP, onLCP, onTTFB, onINP } from 'web-vitals'
+
+// Declare gtag for TypeScript
+declare function gtag(...args: any[]): void
 
 // Performance monitoring and Core Web Vitals tracking
 export function WebVitals() {
@@ -51,7 +54,7 @@ export function WebVitals() {
             request: perfData.responseStart - perfData.requestStart,
             response: perfData.responseEnd - perfData.responseStart,
             dom: perfData.domContentLoadedEventEnd - perfData.responseEnd,
-            total: perfData.loadEventEnd - perfData.navigationStart
+            total: perfData.loadEventEnd - perfData.startTime
           }
           
           console.log('Performance Metrics:', metrics)
@@ -116,8 +119,8 @@ export function PerformanceBudget() {
       }
 
       // Check against budgets
-      if (nav.loadEventEnd - nav.navigationStart > budgets.initialLoad) {
-        console.warn(`Performance Budget Exceeded: Load time ${nav.loadEventEnd - nav.navigationStart}ms > ${budgets.initialLoad}ms`)
+      if (nav.loadEventEnd - nav.startTime > budgets.initialLoad) {
+        console.warn(`Performance Budget Exceeded: Load time ${nav.loadEventEnd - nav.startTime}ms > ${budgets.initialLoad}ms`)
       }
 
       if (transferSize > budgets.transferSize) {

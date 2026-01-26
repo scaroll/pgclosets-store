@@ -1,5 +1,5 @@
 import { medusaClient } from "./medusa-client"
-import type { Product, ProductCollection } from "@medusajs/medusa"
+import type { Product, ProductCollection } from "@/types/medusa"
 
 // Product data adapter to convert local products to Medusa format
 export interface MedusaProductData {
