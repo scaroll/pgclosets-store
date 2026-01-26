@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { Loader2, ShoppingCart } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -9,10 +10,10 @@ import { toast } from 'sonner'
 interface AddToCartButtonProps {
   productId: string
   variantId?: string
-  price: number
+  className?: string
 }
 
-export function AddToCartButton({ productId, variantId, price }: AddToCartButtonProps) {
+export function AddToCartButton({ productId, variantId, className }: AddToCartButtonProps) {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
@@ -39,7 +40,7 @@ export function AddToCartButton({ productId, variantId, price }: AddToCartButton
 
       toast.success('Added to cart')
       router.refresh() // Refresh server components (like cart count in header)
-    } catch (_error) {
+    } catch {
       toast.error('Something went wrong. Please try again.')
     } finally {
       setLoading(false)
@@ -50,14 +51,18 @@ export function AddToCartButton({ productId, variantId, price }: AddToCartButton
     <Button
       onClick={addToCart}
       disabled={loading}
-      className="w-full bg-black text-white transition-colors duration-200 hover:bg-gray-800"
+      className={cn(
+        'apple-ease relative h-11 flex-1 rounded-full bg-foreground text-background transition-all active:scale-95 hover:bg-foreground/90',
+        className
+      )}
     >
       {loading ? (
         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
       ) : (
         <ShoppingCart className="mr-2 h-4 w-4" />
       )}
-      Add to Cart - ${(price / 100).toFixed(2)}
+      <span className="hidden sm:inline">Add to Cart</span>
+      <span className="sm:hidden">Add</span>
     </Button>
   )
 }

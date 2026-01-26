@@ -1,26 +1,32 @@
 'use client'
 
-import { useState } from 'react'
-import { SectionHeader } from '@/components/shared/section-header'
 import { FeatureCard } from '@/components/shared/feature-card'
+import { SectionHeader } from '@/components/shared/section-header'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Label } from '@/components/ui/label'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import {
-  Shield,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
+import {
   Award,
-  Clock,
   CheckCircle,
-  Phone,
+  Clock,
+  Heart,
   Mail,
   MapPin,
+  Phone,
+  Shield,
   Star,
   Wrench,
-  Heart,
 } from 'lucide-react'
+import { useState } from 'react'
 
 export function QuoteForm() {
   const [formData, setFormData] = useState({
@@ -100,14 +106,12 @@ export function QuoteForm() {
     }
   }
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   const handleSelectChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    setFormData(prev => ({ ...prev, [name]: value }))
   }
 
   return (
@@ -115,15 +119,16 @@ export function QuoteForm() {
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/10 via-primary/5 to-background py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-apple-13 font-semibold text-primary uppercase tracking-wider mb-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="mb-4 text-apple-13 font-semibold uppercase tracking-wider text-primary">
               Free Consultation
             </p>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            <h1 className="mb-6 font-sf-display text-4xl font-semibold tracking-[-0.02em] md:text-6xl">
               Request a Free Quote
             </h1>
             <p className="text-xl text-muted-foreground dark:text-apple-dark-text-secondary">
-              Get a personalized quote for your custom closet project. Our experts will help you design the perfect storage solution for your space.
+              Get a personalized quote for your custom closet project. Our experts will help you
+              design the perfect storage solution for your space.
             </p>
           </div>
         </div>
@@ -131,19 +136,20 @@ export function QuoteForm() {
 
       {/* Success Message */}
       {submitStatus === 'success' && (
-        <section className="py-8 bg-green-50 dark:bg-green-950/20 border-b border-green-200 dark:border-green-800">
+        <section className="border-b border-green-200 bg-green-50 py-8 dark:border-green-800 dark:bg-green-950/20">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="flex items-center justify-center mb-4">
-                <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                  <CheckCircle className="w-8 h-8 text-green-600 dark:text-green-400" />
+            <div className="mx-auto max-w-3xl text-center">
+              <div className="mb-4 flex items-center justify-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
+                  <CheckCircle className="h-8 w-8 text-green-600 dark:text-green-400" />
                 </div>
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-green-900 dark:text-green-100">
+              <h2 className="mb-3 text-2xl font-bold text-green-900 dark:text-green-100 md:text-3xl">
                 Quote Request Received!
               </h2>
               <p className="text-lg text-green-800 dark:text-green-200">
-                Thank you for your interest! Our team will review your request and contact you within 24 hours to discuss your project and provide a detailed quote.
+                Thank you for your interest! Our team will review your request and contact you
+                within 24 hours to discuss your project and provide a detailed quote.
               </p>
             </div>
           </div>
@@ -151,29 +157,35 @@ export function QuoteForm() {
       )}
 
       {/* Quote Form Section */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="bg-background py-32">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="mx-auto max-w-4xl">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
+              <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
                 Tell Us About Your Project
               </h2>
               <p className="text-lg text-muted-foreground dark:text-apple-dark-text-secondary">
-                Fill out the form below and we&apos;ll provide you with a customized quote tailored to your needs
+                Fill out the form below and we&apos;ll provide you with a customized quote tailored
+                to your needs
               </p>
             </div>
 
-            <Card className="bg-card dark:bg-apple-dark-bg-secondary shadow-xl">
+            <Card className="bg-card shadow-xl dark:bg-apple-dark-bg-secondary">
               <CardContent className="p-8 md:p-10">
-                <form onSubmit={(e) => { void handleSubmit(e) }} className="space-y-6">
+                <form
+                  onSubmit={e => {
+                    void handleSubmit(e)
+                  }}
+                  className="space-y-6"
+                >
                   {/* Contact Information */}
                   <div className="space-y-6">
-                    <h3 className="text-xl font-bold flex items-center gap-2">
-                      <Mail className="w-5 h-5 text-primary" />
+                    <h3 className="flex items-center gap-2 text-xl font-bold">
+                      <Mail className="h-5 w-5 text-primary" />
                       Contact Information
                     </h3>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="name">Your Name *</Label>
                         <Input
@@ -203,7 +215,7 @@ export function QuoteForm() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="phone">Phone Number *</Label>
                         <Input
@@ -234,18 +246,18 @@ export function QuoteForm() {
                   </div>
 
                   {/* Project Details */}
-                  <div className="space-y-6 pt-6 border-t">
-                    <h3 className="text-xl font-bold flex items-center gap-2">
-                      <Wrench className="w-5 h-5 text-primary" />
+                  <div className="space-y-6 border-t pt-6">
+                    <h3 className="flex items-center gap-2 text-xl font-bold">
+                      <Wrench className="h-5 w-5 text-primary" />
                       Project Details
                     </h3>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="projectType">Project Type *</Label>
                         <Select
                           value={formData.projectType}
-                          onValueChange={(value) => handleSelectChange('projectType', value)}
+                          onValueChange={value => handleSelectChange('projectType', value)}
                           required
                         >
                           <SelectTrigger className="apple-transition">
@@ -277,12 +289,12 @@ export function QuoteForm() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="budget">Budget Range</Label>
                         <Select
                           value={formData.budget}
-                          onValueChange={(value) => handleSelectChange('budget', value)}
+                          onValueChange={value => handleSelectChange('budget', value)}
                         >
                           <SelectTrigger className="apple-transition">
                             <SelectValue placeholder="Select budget range" />
@@ -301,7 +313,7 @@ export function QuoteForm() {
                         <Label htmlFor="timeline">Preferred Timeline</Label>
                         <Select
                           value={formData.timeline}
-                          onValueChange={(value) => handleSelectChange('timeline', value)}
+                          onValueChange={value => handleSelectChange('timeline', value)}
                         >
                           <SelectTrigger className="apple-transition">
                             <SelectValue placeholder="Select timeline" />
@@ -336,9 +348,10 @@ export function QuoteForm() {
 
                   {/* Error Message */}
                   {submitStatus === 'error' && (
-                    <div className="p-4 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-lg">
-                      <p className="text-red-800 dark:text-red-200 font-medium">
-                        Something went wrong. Please try again or contact us directly at (613) 701-6393.
+                    <div className="rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/20">
+                      <p className="font-medium text-red-800 dark:text-red-200">
+                        Something went wrong. Please try again or contact us directly at (613)
+                        701-6393.
                       </p>
                     </div>
                   )}
@@ -353,8 +366,9 @@ export function QuoteForm() {
                     {isSubmitting ? 'Submitting...' : 'Get Your Free Quote'}
                   </Button>
 
-                  <p className="text-sm text-center text-muted-foreground">
-                    By submitting this form, you agree to be contacted about your project. We respect your privacy and will never share your information.
+                  <p className="text-center text-sm text-muted-foreground">
+                    By submitting this form, you agree to be contacted about your project. We
+                    respect your privacy and will never share your information.
                   </p>
                 </form>
               </CardContent>
@@ -364,41 +378,41 @@ export function QuoteForm() {
       </section>
 
       {/* Why Choose PG Closets Section */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="bg-muted/30 py-32">
         <div className="container mx-auto px-4">
           <SectionHeader
             eyebrow="Why Choose PG Closets"
             title="Your Trusted Closet Experts"
             description="We're committed to delivering exceptional quality and service on every project"
           />
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <FeatureCard
-              icon={<Shield className="w-full h-full" />}
+              icon={<Shield className="h-full w-full" />}
               title="Lifetime Warranty"
               description="All our products come with a comprehensive lifetime warranty, giving you complete peace of mind for years to come."
             />
             <FeatureCard
-              icon={<Award className="w-full h-full" />}
+              icon={<Award className="h-full w-full" />}
               title="Expert Craftsmanship"
               description="Professional installation by certified experts ensures perfect fit, finish, and long-lasting quality."
             />
             <FeatureCard
-              icon={<Clock className="w-full h-full" />}
+              icon={<Clock className="h-full w-full" />}
               title="Fast Turnaround"
               description="Most installations completed in 1-2 days. We work efficiently without compromising on quality."
             />
             <FeatureCard
-              icon={<Star className="w-full h-full" />}
+              icon={<Star className="h-full w-full" />}
               title="Premium Materials"
               description="Partnership with leading manufacturers like Renin ensures top-tier materials and stunning finishes."
             />
             <FeatureCard
-              icon={<Heart className="w-full h-full" />}
+              icon={<Heart className="h-full w-full" />}
               title="Free Consultation"
               description="Personalized design consultation and in-home measurements at no cost to you."
             />
             <FeatureCard
-              icon={<MapPin className="w-full h-full" />}
+              icon={<MapPin className="h-full w-full" />}
               title="Local Service"
               description="Proudly serving Ottawa and surrounding areas with dedicated local support and service."
             />
@@ -407,23 +421,24 @@ export function QuoteForm() {
       </section>
 
       {/* Trust Badges Section */}
-      <section className="py-16 bg-background">
+      <section className="bg-background py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center tracking-tight">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-12 text-center font-sf-display text-3xl font-semibold tracking-[-0.02em] text-foreground md:text-4xl">
               What You Can Expect
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <Card className="apple-transition hover:shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-start gap-3">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-primary" />
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20">
+                      <Phone className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <h3 className="text-xl">24-Hour Response Time</h3>
-                      <p className="text-sm font-normal text-muted-foreground mt-1">
-                        We&apos;ll review your request and contact you within one business day to discuss your project.
+                      <p className="mt-1 text-sm font-normal text-muted-foreground">
+                        We&apos;ll review your request and contact you within one business day to
+                        discuss your project.
                       </p>
                     </div>
                   </CardTitle>
@@ -433,13 +448,14 @@ export function QuoteForm() {
               <Card className="apple-transition hover:shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-start gap-3">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-primary" />
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20">
+                      <MapPin className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <h3 className="text-xl">Free In-Home Consultation</h3>
-                      <p className="text-sm font-normal text-muted-foreground mt-1">
-                        We&apos;ll visit your space, take measurements, and discuss design options at no charge.
+                      <p className="mt-1 text-sm font-normal text-muted-foreground">
+                        We&apos;ll visit your space, take measurements, and discuss design options
+                        at no charge.
                       </p>
                     </div>
                   </CardTitle>
@@ -449,13 +465,14 @@ export function QuoteForm() {
               <Card className="apple-transition hover:shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-start gap-3">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <Award className="w-6 h-6 text-primary" />
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20">
+                      <Award className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <h3 className="text-xl">Detailed Quote</h3>
-                      <p className="text-sm font-normal text-muted-foreground mt-1">
-                        Receive a comprehensive quote with no hidden fees, including materials and installation.
+                      <p className="mt-1 text-sm font-normal text-muted-foreground">
+                        Receive a comprehensive quote with no hidden fees, including materials and
+                        installation.
                       </p>
                     </div>
                   </CardTitle>
@@ -465,12 +482,12 @@ export function QuoteForm() {
               <Card className="apple-transition hover:shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-start gap-3">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-6 h-6 text-primary" />
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20">
+                      <CheckCircle className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <h3 className="text-xl">No Obligation</h3>
-                      <p className="text-sm font-normal text-muted-foreground mt-1">
+                      <p className="mt-1 text-sm font-normal text-muted-foreground">
                         Get your quote with absolutely no pressure or obligation to move forward.
                       </p>
                     </div>
@@ -483,25 +500,23 @@ export function QuoteForm() {
       </section>
 
       {/* Contact CTA Section */}
-      <section className="py-16 bg-muted/30">
+      <section className="bg-muted/30 py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
-              Have Questions?
-            </h2>
-            <p className="text-xl text-muted-foreground dark:text-apple-dark-text-secondary mb-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">Have Questions?</h2>
+            <p className="mb-8 text-xl text-muted-foreground dark:text-apple-dark-text-secondary">
               Our team is here to help. Contact us directly for immediate assistance.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" variant="outline" className="text-lg px-8">
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <Button asChild size="lg" variant="outline" className="px-8 text-lg">
                 <a href="tel:+16137016393">
-                  <Phone className="w-5 h-5 mr-2" />
+                  <Phone className="mr-2 h-5 w-5" />
                   Call (613) 701-6393
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg px-8">
+              <Button asChild size="lg" variant="outline" className="px-8 text-lg">
                 <a href="mailto:info@pgclosets.com">
-                  <Mail className="w-5 h-5 mr-2" />
+                  <Mail className="mr-2 h-5 w-5" />
                   Email Us
                 </a>
               </Button>

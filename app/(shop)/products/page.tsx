@@ -57,22 +57,45 @@ export default async function ProductsPage({
   }))
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="mb-8 text-4xl font-bold">Our Products</h1>
-
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
-        <aside className="lg:col-span-1">
-          <ProductFilters />
-        </aside>
-
-        <main className="lg:col-span-3">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {products.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+    <div className="flex min-h-screen flex-col bg-background">
+      {/* Products Hero/Header Section */}
+      <section className="bg-apple-gray-50 pb-16 pt-32 dark:bg-apple-dark-bg-secondary">
+        <div className="container mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-apple-blue-600">
+              Collection
+            </p>
+            <h1 className="animate-fade-up font-sf-display text-4xl font-semibold tracking-[-0.03em] text-foreground md:text-5xl lg:text-6xl">
+              Our Products
+            </h1>
+            <p className="mt-6 animate-fade-up text-lg text-muted-foreground delay-100">
+              Precision-engineered closets and hardware designed for durability and architectural
+              elegance.
+            </p>
           </div>
-        </main>
-      </div>
+        </div>
+      </section>
+
+      {/* Main Content Grid */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-4">
+            <aside className="lg:col-span-1">
+              <div className="sticky top-28">
+                <ProductFilters />
+              </div>
+            </aside>
+
+            <main className="lg:col-span-3">
+              <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+                {products.map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            </main>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
