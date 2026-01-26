@@ -52,13 +52,21 @@ export async function GET(req: NextRequest) {
         orderBy: { publishedAt: 'desc' },
         skip: (page - 1) * limit,
         take: limit,
-        include: {
-          // Include author info if available
-          _count: {
-            select: {
-              // TODO: Add comments count when comments are implemented
-            },
-          },
+        select: {
+          id: true,
+          slug: true,
+          title: true,
+          excerpt: true,
+          content: true,
+          coverImage: true,
+          author: true,
+          tags: true,
+          metaTitle: true,
+          metaDescription: true,
+          status: true,
+          createdAt: true,
+          updatedAt: true,
+          publishedAt: true,
         },
       }),
       prisma.blogPost.count({ where }),
@@ -188,11 +196,11 @@ export async function PUT(req: NextRequest) {
     if (updateData.status === 'published') {
       const existingPost = await prisma.blogPost.findUnique({
         where: { id },
-        select: { status: true, publishedAt: true },
+        select: { status: true },
       });
 
-      if (existingPost?.status !== 'published' && !existingPost?.publishedAt) {
-        updateData.publishedAt = new Date();
+      if (existingPost?.status !== 'published') {
+        (updateData as { publishedAt?: Date }).publishedAt = new Date();
       }
     }
 

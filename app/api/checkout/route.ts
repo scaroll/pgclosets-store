@@ -6,26 +6,6 @@ import { z } from 'zod';
 import Stripe from 'stripe';
 import { generalRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit';
 
-// Type definitions for checkout
-interface CheckoutItem {
-  productId: string;
-  variantId?: string;
-  quantity: number;
-}
-
-interface Address {
-  firstName: string;
-  lastName: string;
-  company?: string;
-  address1: string;
-  address2?: string;
-  city: string;
-  province: string;
-  postalCode: string;
-  country: string;
-  phone?: string;
-}
-
 type CheckoutError = Error & { message?: string };
 
 // Force dynamic rendering
@@ -108,13 +88,33 @@ export async function POST(req: NextRequest) {
       try {
         // Reuse robust order processing logic
         const { processOrder } = await import('@/lib/orders');
-        
+
         await processOrder({
           userId: session?.user?.id,
           guestEmail: customerEmail,
           items: items.map(({ productId, variantId, quantity }) => ({ productId, variantId, quantity })),
-          shippingAddress,
-          billingAddress,
+          shippingAddress: {
+            firstName: shippingAddress.firstName ?? '',
+            lastName: shippingAddress.lastName ?? '',
+            address1: shippingAddress.address1 ?? '',
+            address2: shippingAddress.address2,
+            city: shippingAddress.city ?? '',
+            province: shippingAddress.province ?? '',
+            postalCode: shippingAddress.postalCode ?? '',
+            country: shippingAddress.country ?? 'CA',
+            phone: shippingAddress.phone,
+          },
+          billingAddress: {
+            firstName: billingAddress.firstName ?? '',
+            lastName: billingAddress.lastName ?? '',
+            address1: billingAddress.address1 ?? '',
+            address2: billingAddress.address2,
+            city: billingAddress.city ?? '',
+            province: billingAddress.province ?? '',
+            postalCode: billingAddress.postalCode ?? '',
+            country: billingAddress.country ?? 'CA',
+            phone: billingAddress.phone,
+          },
           customerNotes,
           paymentIntentId: `mock_payment_${Math.random().toString(36).substring(7)}`
         });

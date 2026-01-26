@@ -1,6 +1,6 @@
 import { ProductCard } from '@/components/products/ProductCard'
 import { ProductFilters } from '@/components/products/ProductFilters'
-import { getAllProducts } from '@/lib/data/products'
+import { SAMPLE_PRODUCTS } from '@/lib/products'
 
 export default async function ProductsPage({
   searchParams,
@@ -9,11 +9,9 @@ export default async function ProductsPage({
 }) {
   const { category, sort = 'featured', search } = searchParams
 
-  // Temporarily use static data to prevent build/runtime errors due to missing DB
-  // const products = await prisma.product.findMany(...)
-
+  // Use static sample products
   // Filter products in memory
-  let filteredProducts = getAllProducts().filter(product => {
+  let filteredProducts = SAMPLE_PRODUCTS.filter(product => {
     // Status check (assume all active for now)
     if (false) return false // No status field in SAMPLE_PRODUCTS
 
@@ -50,7 +48,7 @@ export default async function ProductsPage({
     name: product.name,
     slug: product.id,
     description: product.description,
-    price: product.price,
+    price: product.price * 100, // Convert dollars to cents
     salePrice: null,
     images: product.images?.map(url => ({ url, alt: product.name })) || [],
     category: product.category,

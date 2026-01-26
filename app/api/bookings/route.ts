@@ -15,6 +15,7 @@ interface Measurements {
   width: number;
   height: number;
   depth?: number;
+  [key: string]: number | undefined;
 }
 
 interface CreateBookingInput {
@@ -216,7 +217,16 @@ export async function POST(req: NextRequest) {
     });
 
     // Send confirmation email (async, don't await)
-    sendBookingConfirmationEmail(booking.guestEmail, booking).catch(console.error);
+    void sendBookingConfirmationEmail({
+      name: guestName,
+      email: guestEmail,
+      phone: guestPhone,
+      date: bookingDate.toISOString(),
+      time: bookingStartTime.toISOString(),
+      type: service,
+      address,
+      notes: customerNotes,
+    });
 
     return NextResponse.json({
       success: true,

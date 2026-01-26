@@ -25,27 +25,27 @@ interface MockDataResponse<T = unknown> {
 }
 
 interface MockQueryBuilder {
-  eq: (_column: string, _value: unknown) => MockDataResponse
-  single: () => MockDataResponse<null>
-  order: (_column: string, _options?: unknown) => MockDataResponse
-  limit: (_count: number) => MockDataResponse
+  eq: (_column: string, _value: unknown) => Promise<MockDataResponse>
+  single: () => Promise<MockDataResponse<null>>
+  order: (_column: string, _options?: unknown) => Promise<MockDataResponse>
+  limit: (_count: number) => Promise<MockDataResponse>
 }
 
 interface MockTable {
   select: (_columns?: string) => MockQueryBuilder
-  insert: (_data: unknown) => MockDataResponse<null>
+  insert: (_data: unknown) => Promise<MockDataResponse<null>>
   update: (_data: unknown) => {
-    eq: (_column: string, _value: unknown) => MockDataResponse<null>
+    eq: (_column: string, _value: unknown) => Promise<MockDataResponse<null>>
   }
   delete: () => {
-    eq: (_column: string, _value: unknown) => MockDataResponse<null>
+    eq: (_column: string, _value: unknown) => Promise<MockDataResponse<null>>
   }
 }
 
 interface MockStorageBucket {
-  upload: (_path: string, _file: unknown) => MockDataResponse<null>
+  upload: (_path: string, _file: unknown) => Promise<MockDataResponse<null>>
   getPublicUrl: (_path: string) => { data: { publicUrl: string } }
-  remove: (_paths: string[]) => MockDataResponse<null>
+  remove: (_paths: string[]) => Promise<MockDataResponse<null>>
 }
 
 interface MockSupabaseClient {
@@ -88,34 +88,34 @@ export function createClient(): MockSupabaseClient {
  */
 function createMockClient(): MockSupabaseClient {
   return {
-    from: (_table: string) => ({
-      select: (_columns?: string) => ({
-        eq: (_column: string, _value: unknown) => Promise.resolve({ data: [], error: null }),
+    from: () => ({
+      select: () => ({
+        eq: () => Promise.resolve({ data: [], error: null }),
         single: () => Promise.resolve({ data: null, error: null }),
-        order: (_column: string, _options?: unknown) => Promise.resolve({ data: [], error: null }),
-        limit: (_count: number) => Promise.resolve({ data: [], error: null }),
+        order: () => Promise.resolve({ data: [], error: null }),
+        limit: () => Promise.resolve({ data: [], error: null }),
       }),
-      insert: (_data: unknown) => Promise.resolve({ data: null, error: null }),
-      update: (_data: unknown) => ({
-        eq: (_column: string, _value: unknown) => Promise.resolve({ data: null, error: null }),
+      insert: () => Promise.resolve({ data: null, error: null }),
+      update: () => ({
+        eq: () => Promise.resolve({ data: null, error: null }),
       }),
       delete: () => ({
-        eq: (_column: string, _value: unknown) => Promise.resolve({ data: null, error: null }),
+        eq: () => Promise.resolve({ data: null, error: null }),
       }),
     }),
     auth: {
       getUser: () => Promise.resolve({ data: { user: null, session: null }, error: null }),
-      signInWithPassword: (_credentials: unknown) =>
+      signInWithPassword: () =>
         Promise.resolve({ data: { user: null, session: null }, error: { message: 'Auth not configured' } }),
-      signUp: (_credentials: unknown) =>
+      signUp: () =>
         Promise.resolve({ data: { user: null, session: null }, error: { message: 'Auth not configured' } }),
       signOut: () => Promise.resolve({ error: null }),
     },
     storage: {
-      from: (_bucket: string) => ({
-        upload: (_path: string, _file: unknown) => Promise.resolve({ data: null, error: null }),
-        getPublicUrl: (_path: string) => ({ data: { publicUrl: `/storage/${_bucket}/${_path}` } }),
-        remove: (_paths: string[]) => Promise.resolve({ data: null, error: null }),
+      from: () => ({
+        upload: () => Promise.resolve({ data: null, error: null }),
+        getPublicUrl: (_path: string) => ({ data: { publicUrl: `/storage/${_path}` } }),
+        remove: () => Promise.resolve({ data: null, error: null }),
       }),
     },
   };

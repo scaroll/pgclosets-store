@@ -97,7 +97,8 @@ export function withValidation<T>(
       return handler(req, validation.data)
     }
 
-    return validation.error
+    // Type narrowing: validation.error exists when success is false
+    return (validation as { success: false; error: NextResponse }).error
   }
 }
 
@@ -159,6 +160,7 @@ export function createProtectedRoute<T>(
       return handler(req, validation.data)
     }
 
-    return validation.error
+    // Type narrowing: validation.error exists when success is false
+    return (validation as { success: false; error: NextResponse }).error
   }
 }

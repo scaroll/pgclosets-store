@@ -63,10 +63,10 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<Produ
         },
       })
     } else {
-      // Search by handle
+      // Search by slug
       product = await prisma.product.findFirst({
         where: {
-          handle: validated.data,
+          slug: validated.data,
           status: 'active',
         },
         include: {

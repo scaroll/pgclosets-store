@@ -1,5 +1,5 @@
 export class ShaderProcessor {
-  public processShader(source: string): { flow: string; fragment: string } {
+  public processShader(_source: string): { flow: string; fragment: string } {
     // In a real implementation, this would use naga to compile GLSL/other to WGSL
     // For this demo, we return hardcoded WGSL shaders for our basic rendering needs
 

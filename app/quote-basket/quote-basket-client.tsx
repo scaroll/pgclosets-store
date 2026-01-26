@@ -12,14 +12,17 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { useQuoteBasketStore } from '@/lib/stores/quote-basket-store'
-import { formatCurrency } from '@/lib/utils'
+// Direct format function using Intl to avoid module resolution issues
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat('en-CA', {
+    style: 'currency',
+    currency: 'CAD',
+  }).format(value)
 import { ChevronRight, FileText, Plus, Minus, Trash2, ShoppingBag } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export function QuoteBasketClient() {
-  const router = useRouter()
   const { items, removeItem, updateQuantity, updateNotes, clearBasket, totalPrice } =
     useQuoteBasketStore()
 
@@ -394,6 +397,7 @@ function BasketItemCard({ item, onRemove, onUpdateQuantity, onUpdateNotes }: Bas
                 type="button"
                 onClick={() => onUpdateQuantity(item.id, Math.max(1, item.quantity - 1))}
                 className="rounded p-1 hover:bg-muted"
+                aria-label="Decrease quantity"
               >
                 <Minus className="h-3 w-3" />
               </button>
@@ -402,6 +406,7 @@ function BasketItemCard({ item, onRemove, onUpdateQuantity, onUpdateNotes }: Bas
                 type="button"
                 onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
                 className="rounded p-1 hover:bg-muted"
+                aria-label="Increase quantity"
               >
                 <Plus className="h-3 w-3" />
               </button>

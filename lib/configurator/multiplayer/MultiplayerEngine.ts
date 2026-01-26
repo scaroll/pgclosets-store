@@ -114,8 +114,8 @@ export class MultiplayerEngine {
     // Otherwise ignore older change (Last-Writer-Wins)
   }
 
-  // Handle incoming changes from server
-  private setupMessageHandling() {
+  // Handle incoming changes from server (called when WebSocket is set up)
+  public setupMessageHandling() {
     if (!this.websocket) return
 
     this.websocket.onmessage = event => {

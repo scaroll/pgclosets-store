@@ -1,26 +1,40 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import {
   Sheet,
   SheetContent,
-  SheetHeader,
-  SheetTitle,
   SheetDescription,
   SheetFooter,
+  SheetHeader,
+  SheetTitle,
 } from '@/components/ui/sheet'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { useQuoteBasketStore, QuoteBasketItem } from '@/lib/stores/quote-basket-store'
-import { formatCurrency } from '@/lib/utils'
-import { ChevronRight, FileText, Trash2, X, ShoppingBag } from 'lucide-react'
+import { useQuoteBasketStore, type QuoteBasketItem } from '@/lib/stores/quote-basket-store'
+import { ChevronRight, FileText, ShoppingBag, X } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
+// Direct format function using Intl to avoid module resolution issues
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat('en-CA', {
+    style: 'currency',
+    currency: 'CAD',
+  }).format(value)
+
 export function QuoteBasketDrawer() {
-  const { items, isOpen, closeBasket, removeItem, updateQuantity, updateNotes, clearBasket, totalPrice } =
-    useQuoteBasketStore()
+  const {
+    items,
+    isOpen,
+    closeBasket,
+    removeItem,
+    updateQuantity,
+    updateNotes,
+    clearBasket,
+    totalPrice,
+  } = useQuoteBasketStore()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
@@ -91,14 +105,12 @@ export function QuoteBasketDrawer() {
             <FileText className="h-5 w-5 text-apple-blue-600" />
             Quote Basket
             {items.length > 0 && (
-              <span className="ml-2 rounded-full bg-apple-blue-100 px-2.5 py-0.5 text-sm font-semibold text-apple-blue-700 dark:bg-apple-blue-900/30 dark:text-apple-blue-300">
+              <span className="bg-apple-blue-100 text-apple-blue-700 dark:bg-apple-blue-900/30 dark:text-apple-blue-300 ml-2 rounded-full px-2.5 py-0.5 text-sm font-semibold">
                 {items.reduce((sum, item) => sum + item.quantity, 0)} items
               </span>
             )}
           </SheetTitle>
-          <SheetDescription>
-            Add products and submit for a custom quote
-          </SheetDescription>
+          <SheetDescription>Add products and submit for a custom quote</SheetDescription>
         </SheetHeader>
 
         {isSuccess ? (
@@ -109,7 +121,7 @@ export function QuoteBasketDrawer() {
               </div>
               <h3 className="text-xl font-semibold">Quote Request Sent!</h3>
               <p className="mt-2 text-muted-foreground">
-                We'll get back to you within 24 hours.
+                We&apos;ll get back to you within 24 hours.
               </p>
             </div>
           </div>
@@ -226,14 +238,19 @@ interface QuoteBasketItemCardProps {
   onUpdateNotes: (itemId: string, notes: string) => void
 }
 
-function QuoteBasketItemCard({ item, onRemove, onUpdateQuantity, onUpdateNotes }: QuoteBasketItemCardProps) {
+function QuoteBasketItemCard({
+  item,
+  onRemove,
+  onUpdateQuantity,
+  onUpdateNotes,
+}: QuoteBasketItemCardProps) {
   const [notes, setNotes] = useState(item.notes || '')
 
   return (
-    <div className="group relative rounded-lg border bg-card p-3 transition-colors hover:border-apple-blue-200 dark:hover:border-apple-blue-900">
+    <div className="hover:border-apple-blue-200 dark:hover:border-apple-blue-900 group relative rounded-lg border bg-card p-3 transition-colors">
       <button
         onClick={() => onRemove(item.id)}
-        className="absolute right-2 top-2 rounded-full p-1 opacity-0 transition-opacity hover:bg-muted group-hover:opacity-100"
+        className="absolute right-2 top-2 rounded-full p-1 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-muted"
         aria-label="Remove item"
       >
         <X className="h-4 w-4" />
@@ -245,11 +262,13 @@ function QuoteBasketItemCard({ item, onRemove, onUpdateQuantity, onUpdateNotes }
           <Link
             href={`/products/${item.slug}`}
             className="flex-shrink-0"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
-            <img
+            <Image
               src={item.image}
               alt={item.name}
+              width={80}
+              height={80}
               className="h-20 w-20 rounded-md object-cover"
             />
           </Link>
@@ -264,15 +283,13 @@ function QuoteBasketItemCard({ item, onRemove, onUpdateQuantity, onUpdateNotes }
           <Link
             href={`/products/${item.slug}`}
             className="inline-flex items-center gap-1 text-sm font-medium hover:text-apple-blue-600"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             {item.name}
             <ChevronRight className="h-3 w-3" />
           </Link>
 
-          {item.variantName && (
-            <p className="text-xs text-muted-foreground">{item.variantName}</p>
-          )}
+          {item.variantName && <p className="text-xs text-muted-foreground">{item.variantName}</p>}
 
           <div className="mt-2 flex items-center justify-between">
             <div className="flex items-center gap-2 rounded-md border bg-background">

@@ -53,8 +53,6 @@ const LuxuryButton = React.forwardRef<HTMLButtonElement, LuxuryButtonProps>(
         <Link
           href={href}
           className={cn(buttonVariants({ variant, size, className }))}
-          // @ts-expect-error - Link doesn't accept ref to HTMLButtonElement seamlessly without casting
-          passHref
         >
           {icon && <span className="mr-2">{icon}</span>}
           {children}

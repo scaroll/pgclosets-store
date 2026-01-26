@@ -84,11 +84,13 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       );
     }
 
+    // Combine first and last name for the newsletter subscriber
+    const name = [firstName, lastName].filter(Boolean).join(' ');
+
     // Subscribe to newsletter
     const result = await subscribeToNewsletter({
       email: email.toLowerCase().trim(),
-      firstName: firstName?.trim(),
-      lastName: lastName?.trim(),
+      ...(name && { name }),
       source: 'website'
     });
 

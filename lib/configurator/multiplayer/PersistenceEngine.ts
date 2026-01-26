@@ -1,27 +1,16 @@
-import { DocumentState, PropertyChange } from './MultiplayerEngine'
+import type { DocumentState, PropertyChange } from './MultiplayerEngine'
 
 export class PersistenceEngine {
-  private journalQueue: PropertyChange[] = []
   private currentSequenceNumber: number = 0
-
-  // Mock clients for now
-  private dynamoDBClient: any = {}
-  private s3Client: any = {}
 
   constructor() {
     console.log('PersistenceEngine initialized (Mock Mode)')
   }
 
   // Checkpoint stored in S3 every 30 minutes
-  async saveCheckpoint(fileKey: string, state: DocumentState) {
-    const checkpoint = {
-      state: state,
-      sequenceNumber: this.currentSequenceNumber,
-      timestamp: Date.now(),
-    }
-
+  async saveCheckpoint(fileKey: string, _state: DocumentState) {
     console.log(`[Mock S3] Saving checkpoint for ${fileKey} at seq ${this.currentSequenceNumber}`)
-    // In real impl: await this.s3Client.putObject(...)
+    // In production: upload to S3 with state, sequenceNumber, and timestamp
   }
 
   // Journal stores every edit for fast recovery

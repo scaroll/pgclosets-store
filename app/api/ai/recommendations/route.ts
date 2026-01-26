@@ -33,7 +33,7 @@ const RecommendationRequestSchema = z.object({
 });
 
 // Response schema
-const _RecommendationsResponseSchema = z.object({
+const RecommendationsResponseSchema = z.object({
   success: z.boolean(),
   recommendations: z.array(z.object({
     productId: z.string(),
@@ -99,7 +99,7 @@ export async function POST(req: Request) {
         userId,
         viewedProducts: browsingHistory.map(item => item.productId),
         stylePreferences: style,
-        priceRange: budget,
+        priceRange: budget ? { min: budget.min ?? 0, max: budget.max ?? 999999 } : undefined,
       };
 
       recommendationEngine.updateUserBehavior(userId, userBehavior);
@@ -137,7 +137,7 @@ export async function POST(req: Request) {
     // Generate overall reasoning
     const overallReasoning = generateOverallReasoning(enrichedRecommendations, {
       currentProduct,
-      userPreferences: { style, budget },
+      userPreferences: { style, budget: budget ? { min: budget.min ?? 0, max: budget.max ?? 999999 } : undefined },
       categories,
     });
 

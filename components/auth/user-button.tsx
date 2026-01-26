@@ -4,13 +4,6 @@ import { signOut, useSession } from "next-auth/react"
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 
-interface _SessionUser {
-  name?: string | null
-  email?: string | null
-  image?: string | null
-  role?: string
-}
-
 export function UserButton() {
   const { data: session, status } = useSession()
   const [isOpen, setIsOpen] = useState(false)
