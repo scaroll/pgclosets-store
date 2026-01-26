@@ -1,44 +1,40 @@
-import type { NextRequest } from 'next/server';
-import { NextResponse } from 'next/server';
-import { auth } from '@/lib/auth';
-import { prisma } from '@/lib/db';
-import { z } from 'zod';
-import bcryptjs from 'bcryptjs';
-
+import { type NextRequest, NextResponse } from 'next/server'
+import { auth } from '@/lib/auth'
+import { prisma } from '@/lib/db'
+import { z } from 'zod'
+import bcryptjs from 'bcryptjs'
 // Type definitions
 interface ProfileUpdateData {
-  name?: string;
-  phone?: string;
-  password?: string;
+  name?: string
+  phone?: string
+  password?: string
 }
-
-const updateProfileSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters').optional(),
-  phone: z.string().optional(),
-  currentPassword: z.string().optional(),
-  newPassword: z.string().min(8, 'Password must be at least 8 characters').optional(),
-}).refine((data) => {
-  if (data.newPassword && !data.currentPassword) {
-    return false;
-  }
-  return true;
-}, {
-  message: "Current password is required when setting new password",
-  path: ["currentPassword"],
-});
-
+const updateProfileSchema = z
+  .object({
+    name: z.string().min(2, 'Name must be at least 2 characters').optional(),
+    phone: z.string().optional(),
+    currentPassword: z.string().optional(),
+    newPassword: z.string().min(8, 'Password must be at least 8 characters').optional(),
+  })
+  .refine(
+    data => {
+      if (data.newPassword && !data.currentPassword) {
+        return false
+      }
+      return true
+    },
+    {
+      message: 'Current password is required when setting new password',
+      path: ['currentPassword'],
+    }
+  )
 // GET /api/user/profile - Get user profile
 export async function GET(_req: NextRequest) {
   try {
-    const session = await auth();
-
+    const session = await auth()
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Authentication required' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
     }
-
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
       select: {
@@ -52,78 +48,50 @@ export async function GET(_req: NextRequest) {
           orderBy: { isDefault: 'desc' },
         },
       },
-    });
-
+    })
     if (!user) {
-      return NextResponse.json(
-        { error: 'User not found' },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'User not found' }, { status: 404 })
     }
-
-    return NextResponse.json(user);
+    return NextResponse.json(user)
   } catch (error) {
-    console.error('[PROFILE_GET_ERROR]', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('[PROFILE_GET_ERROR]', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
-
 // PUT /api/user/profile - Update user profile
 export async function PUT(req: NextRequest) {
   try {
-    const session = await auth();
-
+    const session = await auth()
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Authentication required' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
     }
-
-    const body = await req.json();
-    const validated = updateProfileSchema.safeParse(body);
-
+    const body = await req.json()
+    const validated = updateProfileSchema.safeParse(body)
     if (!validated.success) {
       return NextResponse.json(
         { error: 'Invalid input', details: validated.error.errors },
         { status: 400 }
-      );
+      )
     }
-
-    const { name, phone, currentPassword, newPassword } = validated.data;
-    const updateData: ProfileUpdateData = {};
-
-    if (name) updateData.name = name;
-    if (phone !== undefined) updateData.phone = phone;
-
+    const { name, phone, currentPassword, newPassword } = validated.data
+    const updateData: ProfileUpdateData = {}
+    if (name) updateData.name = name
+    if (phone !== undefined) updateData.phone = phone
     // Handle password change
     if (newPassword && currentPassword) {
       const user = await prisma.user.findUnique({
         where: { id: session.user.id },
         select: { password: true },
-      });
-
+      })
       if (!user?.password) {
-        return NextResponse.json(
-          { error: 'User password not found' },
-          { status: 400 }
-        );
+        return NextResponse.json({ error: 'User password not found' }, { status: 400 })
       }
-
-      const isValidPassword = await bcryptjs.compare(currentPassword, user.password);
+      const isValidPassword = await bcryptjs.compare(currentPassword, user.password)
       if (!isValidPassword) {
-        return NextResponse.json(
-          { error: 'Current password is incorrect' },
-          { status: 400 }
-        );
+        return NextResponse.json({ error: 'Current password is incorrect' }, { status: 400 })
       }
-
-      updateData.password = await bcryptjs.hash(newPassword, 12);
+      updateData.password = await bcryptjs.hash(newPassword, 12)
     }
-
     const updatedUser = await prisma.user.update({
       where: { id: session.user.id },
       data: updateData,
@@ -135,18 +103,14 @@ export async function PUT(req: NextRequest) {
         role: true,
         updatedAt: true,
       },
-    });
-
+    })
     return NextResponse.json({
       success: true,
       user: updatedUser,
       message: 'Profile updated successfully',
-    });
+    })
   } catch (error) {
-    console.error('[PROFILE_UPDATE_ERROR]', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('[PROFILE_UPDATE_ERROR]', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

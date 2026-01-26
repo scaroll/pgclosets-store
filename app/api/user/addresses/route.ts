@@ -1,27 +1,23 @@
-import type { NextRequest } from 'next/server';
-import { NextResponse } from 'next/server';
-import { auth } from '@/lib/auth';
-import { prisma } from '@/lib/db';
-import { z } from 'zod';
-
+import { type NextRequest, NextResponse } from 'next/server'
+import { auth } from '@/lib/auth'
+import { prisma } from '@/lib/db'
+import { z } from 'zod'
 // Type definitions
-type AddressType = 'shipping' | 'billing';
-
+type AddressType = 'shipping' | 'billing'
 interface AddressInput {
-  type: AddressType;
-  firstName: string;
-  lastName: string;
-  company?: string;
-  address1: string;
-  address2?: string;
-  city: string;
-  province: string;
-  postalCode: string;
-  country?: string;
-  phone?: string;
-  isDefault?: boolean;
+  type: AddressType
+  firstName: string
+  lastName: string
+  company?: string
+  address1: string
+  address2?: string
+  city: string
+  province: string
+  postalCode: string
+  country?: string
+  phone?: string
+  isDefault?: boolean
 }
-
 const createAddressSchema = z.object({
   type: z.enum(['shipping', 'billing']),
   firstName: z.string().min(1, 'First name is required'),
@@ -35,59 +31,40 @@ const createAddressSchema = z.object({
   country: z.string().default('CA'),
   phone: z.string().optional(),
   isDefault: z.boolean().default(false),
-}) as z.ZodType<AddressInput>;
-
+}) as z.ZodType<AddressInput>
 // GET /api/user/addresses - Get user addresses
 export async function GET(_req: NextRequest) {
   try {
-    const session = await auth();
-
+    const session = await auth()
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Authentication required' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
     }
-
     const addresses = await prisma.address.findMany({
       where: { userId: session.user.id },
       orderBy: { isDefault: 'desc' },
-    });
-
-    return NextResponse.json(addresses);
+    })
+    return NextResponse.json(addresses)
   } catch (error) {
-    console.error('[ADDRESSES_GET_ERROR]', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('[ADDRESSES_GET_ERROR]', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
-
 // POST /api/user/addresses - Create new address
 export async function POST(req: NextRequest) {
   try {
-    const session = await auth();
-
+    const session = await auth()
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Authentication required' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
     }
-
-    const body = await req.json();
-    const validated = createAddressSchema.safeParse(body);
-
+    const body = await req.json()
+    const validated = createAddressSchema.safeParse(body)
     if (!validated.success) {
       return NextResponse.json(
         { error: 'Invalid input', details: validated.error.errors },
         { status: 400 }
-      );
+      )
     }
-
-    const { isDefault, ...addressData } = validated.data;
-
+    const { isDefault, ...addressData } = validated.data
     // If setting as default, unset other default addresses of the same type
     if (isDefault) {
       await prisma.address.updateMany({
@@ -97,27 +74,22 @@ export async function POST(req: NextRequest) {
           isDefault: true,
         },
         data: { isDefault: false },
-      });
+      })
     }
-
     const address = await prisma.address.create({
       data: {
         ...addressData,
         userId: session.user.id,
         isDefault,
       },
-    });
-
+    })
     return NextResponse.json({
       success: true,
       address,
       message: 'Address created successfully',
-    });
+    })
   } catch (error) {
-    console.error('[ADDRESS_CREATE_ERROR]', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('[ADDRESS_CREATE_ERROR]', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

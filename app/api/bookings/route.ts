@@ -1,39 +1,34 @@
-import type { NextRequest } from 'next/server';
-import { NextResponse } from 'next/server';
-import { auth } from '@/lib/auth';
-import { prisma } from '@/lib/db';
-import { z } from 'zod';
-import { generateBookingNumber } from '@/lib/bookings';
-import { bookingRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit';
-import { sendBookingConfirmationEmail } from '@/lib/emails';
-
+import { type NextRequest, NextResponse } from 'next/server'
+import { auth } from '@/lib/auth'
+import { prisma } from '@/lib/db'
+import { z } from 'zod'
+import { generateBookingNumber } from '@/lib/bookings'
+import { bookingRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit'
+import { sendBookingConfirmationEmail } from '@/lib/emails'
 // Type definitions
-type ServiceType = 'consultation' | 'measurement' | 'installation';
-type LocationType = 'Ottawa' | 'Kanata' | 'Barrhaven' | 'Nepean' | 'Orleans';
-
+type ServiceType = 'consultation' | 'measurement' | 'installation'
+type LocationType = 'Ottawa' | 'Kanata' | 'Barrhaven' | 'Nepean' | 'Orleans'
 interface Measurements {
-  width: number;
-  height: number;
-  depth?: number;
-  [key: string]: number | undefined;
+  width: number
+  height: number
+  depth?: number
+  [key: string]: number | undefined
 }
-
 interface CreateBookingInput {
-  service: ServiceType;
-  date: string;
-  timeStart: string;
-  location: LocationType;
-  guestName: string;
-  guestEmail: string;
-  guestPhone: string;
-  address?: string;
-  projectType?: string;
-  projectDescription?: string;
-  measurements?: Measurements;
-  budget?: number;
-  customerNotes?: string;
+  service: ServiceType
+  date: string
+  timeStart: string
+  location: LocationType
+  guestName: string
+  guestEmail: string
+  guestPhone: string
+  address?: string
+  projectType?: string
+  projectDescription?: string
+  measurements?: Measurements
+  budget?: number
+  customerNotes?: string
 }
-
 const createBookingSchema = z.object({
   service: z.enum(['consultation', 'measurement', 'installation']),
   date: z.string().datetime(),
@@ -45,43 +40,36 @@ const createBookingSchema = z.object({
   address: z.string().optional(),
   projectType: z.string().optional(),
   projectDescription: z.string().optional(),
-  measurements: z.object({
-    width: z.number(),
-    height: z.number(),
-    depth: z.number().optional(),
-  }).optional(),
+  measurements: z
+    .object({
+      width: z.number(),
+      height: z.number(),
+      depth: z.number().optional(),
+    })
+    .optional(),
   budget: z.number().optional(),
   customerNotes: z.string().optional(),
-}) as z.ZodType<CreateBookingInput>;
-
+}) as z.ZodType<CreateBookingInput>
 const APPOINTMENT_DURATIONS = {
   consultation: 60, // 60 minutes
   measurement: 45, // 45 minutes
   installation: 120, // 120 minutes
-};
-
+}
 // GET /api/bookings - Get user bookings
 export async function GET(req: NextRequest) {
   try {
-    const session = await auth();
-
+    const session = await auth()
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Authentication required' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
     }
-
-    const { searchParams } = new URL(req.url);
-    const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '10');
-    const status = searchParams.get('status');
-
+    const { searchParams } = new URL(req.url)
+    const page = parseInt(searchParams.get('page') || '1')
+    const limit = parseInt(searchParams.get('limit') || '10')
+    const status = searchParams.get('status')
     const where = {
       userId: session.user.id,
       ...(status && { status }),
-    };
-
+    }
     const [bookings, total] = await Promise.all([
       prisma.booking.findMany({
         where,
@@ -90,8 +78,7 @@ export async function GET(req: NextRequest) {
         take: limit,
       }),
       prisma.booking.count({ where }),
-    ]);
-
+    ])
     return NextResponse.json({
       bookings,
       pagination: {
@@ -100,40 +87,30 @@ export async function GET(req: NextRequest) {
         total,
         pages: Math.ceil(total / limit),
       },
-    });
+    })
   } catch (error) {
-    console.error('[BOOKINGS_GET_ERROR]', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('[BOOKINGS_GET_ERROR]', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
-
 // POST /api/bookings - Create new booking
 export async function POST(req: NextRequest) {
   try {
     // Rate limiting
-    const identifier = getClientIdentifier(req);
-    const { allowed } = await checkRateLimit(identifier, bookingRateLimiter);
+    const identifier = getClientIdentifier(req)
+    const { allowed } = await checkRateLimit(identifier, bookingRateLimiter)
     if (!allowed) {
-      return NextResponse.json(
-        { error: 'Too many booking attempts' },
-        { status: 429 }
-      );
+      return NextResponse.json({ error: 'Too many booking attempts' }, { status: 429 })
     }
-
-    const session = await auth();
-    const body = await req.json();
-
-    const validated = createBookingSchema.safeParse(body);
+    const session = await auth()
+    const body = await req.json()
+    const validated = createBookingSchema.safeParse(body)
     if (!validated.success) {
       return NextResponse.json(
         { error: 'Invalid request data', details: validated.error.errors },
         { status: 400 }
-      );
+      )
     }
-
     const {
       service,
       date,
@@ -148,21 +125,15 @@ export async function POST(req: NextRequest) {
       measurements,
       budget,
       customerNotes,
-    } = validated.data;
-
-    const bookingDate = new Date(date);
-    const bookingStartTime = new Date(timeStart);
-    const duration = APPOINTMENT_DURATIONS[service];
-    const bookingEndTime = new Date(bookingStartTime.getTime() + duration * 60 * 1000);
-
+    } = validated.data
+    const bookingDate = new Date(date)
+    const bookingStartTime = new Date(timeStart)
+    const duration = APPOINTMENT_DURATIONS[service]
+    const bookingEndTime = new Date(bookingStartTime.getTime() + duration * 60 * 1000)
     // Validate booking time
     if (bookingStartTime <= new Date()) {
-      return NextResponse.json(
-        { error: 'Cannot book appointments in the past' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Cannot book appointments in the past' }, { status: 400 })
     }
-
     // Check for conflicting bookings
     const conflictingBooking = await prisma.booking.findFirst({
       where: {
@@ -172,27 +143,20 @@ export async function POST(req: NextRequest) {
         location,
         status: { notIn: ['cancelled', 'no-show'] },
       },
-    });
-
+    })
     if (conflictingBooking) {
-      return NextResponse.json(
-        { error: 'Selected time slot is already booked' },
-        { status: 409 }
-      );
+      return NextResponse.json({ error: 'Selected time slot is already booked' }, { status: 409 })
     }
-
     // Check if date is blocked
     const blockedDate = await prisma.blockedDate.findUnique({
       where: { date: bookingDate },
-    });
-
+    })
     if (blockedDate) {
       return NextResponse.json(
         { error: 'Selected date is not available', reason: blockedDate.reason },
         { status: 400 }
-      );
+      )
     }
-
     // Create booking
     const booking = await prisma.booking.create({
       data: {
@@ -214,8 +178,7 @@ export async function POST(req: NextRequest) {
         budget: budget ? Math.round(budget * 100) : null, // Convert to cents
         customerNotes,
       },
-    });
-
+    })
     // Send confirmation email (async, don't await)
     void sendBookingConfirmationEmail({
       name: guestName,
@@ -226,18 +189,14 @@ export async function POST(req: NextRequest) {
       type: service,
       address,
       notes: customerNotes,
-    });
-
+    })
     return NextResponse.json({
       success: true,
       booking,
       message: 'Booking created successfully',
-    });
+    })
   } catch (error) {
-    console.error('[BOOKING_CREATE_ERROR]', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('[BOOKING_CREATE_ERROR]', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

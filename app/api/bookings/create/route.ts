@@ -1,11 +1,8 @@
 import { prisma } from '@/lib/db/client'
 import { checkRateLimit, generalRateLimiter, getClientIdentifier } from '@/lib/rate-limit'
 import { createBookingSchema } from '@/lib/validation/schemas'
-import type { NextRequest } from 'next/server'
-import { NextResponse } from 'next/server'
-
-type BookingError = Error & { message?: string };
-
+import { type NextRequest, NextResponse } from 'next/server'
+type BookingError = Error & { message?: string }
 export async function POST(req: NextRequest) {
   try {
     // Rate limiting
@@ -14,24 +11,18 @@ export async function POST(req: NextRequest) {
     if (!allowed) {
       return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
     }
-
     const body = await req.json()
     const validated = createBookingSchema.safeParse(body)
-
     if (!validated.success) {
       return NextResponse.json({ error: validated.error }, { status: 400 })
     }
-
     const { service, date, guestName, guestEmail, guestPhone, location, projectDescription } =
       validated.data
-
     const bookingDate = new Date(date)
     // Determine duration based on service
     const serviceDuration = service === 'installation' ? 240 : service === 'measurement' ? 60 : 60
-
     const timeStart = bookingDate
     const timeEnd = new Date(timeStart.getTime() + serviceDuration * 60000)
-
     // Transaction to prevent race conditions
     const booking = await prisma.$transaction(async tx => {
       // Check for overlapping bookings
@@ -48,11 +39,9 @@ export async function POST(req: NextRequest) {
           ],
         },
       })
-
       if (existingBooking) {
         throw new Error('Slot no longer available')
       }
-
       return tx.booking.create({
         data: {
           bookingNumber: `BK-${Date.now()}-${crypto.randomUUID().slice(0, 8)}`,
@@ -69,14 +58,13 @@ export async function POST(req: NextRequest) {
         },
       })
     })
-
     return NextResponse.json({
       success: true,
       bookingId: booking.id,
       bookingNumber: booking.bookingNumber,
     })
   } catch (error) {
-    const err = error as BookingError;
+    const err = error as BookingError
     console.error('[Booking Create API] Error:', error)
     if (err.message === 'Slot no longer available') {
       return NextResponse.json({ error: 'Slot no longer available' }, { status: 409 })

@@ -1,46 +1,39 @@
-import type { NextRequest } from 'next/server';
-import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/db';
-import { z } from 'zod';
-
+import { type NextRequest, NextResponse } from 'next/server'
+import { prisma } from '@/lib/db'
+import { z } from 'zod'
 // Type definitions
 interface FeaturedProduct {
-  id: string;
-  name: string;
-  slug: string;
-  description: string;
-  category: string;
-  price: number;
-  salePrice: number | null;
-  compareAtPrice: number | null;
-  image: string;
-  altText: string;
-  sku: string;
-  inventory: number;
-  tags: string[];
-  rating: number;
-  reviewCount: number;
+  id: string
+  name: string
+  slug: string
+  description: string
+  category: string
+  price: number
+  salePrice: number | null
+  compareAtPrice: number | null
+  image: string
+  altText: string
+  sku: string
+  inventory: number
+  tags: string[]
+  rating: number
+  reviewCount: number
 }
-
 const featuredQuerySchema = z.object({
-  limit: z.string().optional().transform(val => val ? parseInt(val) : 10),
+  limit: z
+    .string()
+    .optional()
+    .transform(val => (val ? parseInt(val) : 10)),
   category: z.string().optional(),
-});
-
+})
 export async function GET(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url);
-    const query = featuredQuerySchema.safeParse(Object.fromEntries(searchParams));
-
+    const { searchParams } = new URL(req.url)
+    const query = featuredQuerySchema.safeParse(Object.fromEntries(searchParams))
     if (!query.success) {
-      return NextResponse.json(
-        { error: 'Invalid query parameters' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid query parameters' }, { status: 400 })
     }
-
-    const { limit, category } = query.data;
-
+    const { limit, category } = query.data
     const products = await prisma.product.findMany({
       where: {
         featured: true,
@@ -58,8 +51,7 @@ export async function GET(req: NextRequest) {
       },
       orderBy: { updatedAt: 'desc' },
       take: limit,
-    });
-
+    })
     const formattedProducts: FeaturedProduct[] = products.map(product => ({
       id: product.id,
       name: product.name,
@@ -76,14 +68,10 @@ export async function GET(req: NextRequest) {
       tags: product.tags,
       rating: 0, // TODO: Calculate from reviews
       reviewCount: 0, // TODO: Count from reviews
-    }));
-
-    return NextResponse.json(formattedProducts);
+    }))
+    return NextResponse.json(formattedProducts)
   } catch (error) {
-    console.error('[FEATURED_PRODUCTS_ERROR]', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('[FEATURED_PRODUCTS_ERROR]', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

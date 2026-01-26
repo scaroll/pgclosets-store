@@ -142,7 +142,7 @@
     "ai-elements": "^1.1.2",
     "awilix": "^11.0.0",
     "axe-core": "^4.11.0",
-    "axios": "^1.12.2",
+    "axios": "^1.7.9",
     "bcryptjs": "^3.0.2",
     "botid": "^1.5.10",
     "class-variance-authority": "^0.7.1",
@@ -288,5 +288,11 @@
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
+  },
+  "overrides": {
+    "axios": "^1.7.9",
+    "follow-redirects": "^1.15.9",
+    "path-to-regexp": "^6.3.0",
+    "node-fetch": "^2.7.0"
   }
 }

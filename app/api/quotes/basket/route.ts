@@ -1,7 +1,6 @@
-import type { NextRequest } from "next/server"
-import { NextResponse } from "next/server"
-import { createClient } from "@/lib/supabase/server"
-import { sendQuoteEmails } from "@/lib/email/send-quote-email"
+import { sendQuoteEmails } from '@/lib/email/send-quote-email'
+import { createClient } from '@/lib/supabase/server'
+import { type NextRequest, NextResponse } from 'next/server'
 
 interface BasketItem {
   productId: string
@@ -56,36 +55,37 @@ const sendSlackNotification = async (payload: {
 
   const itemsList = items
     .map(
-      item => `• ${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}${item.variantName ? ` - ${item.variantName}` : ''}${item.notes ? ` [Note: ${item.notes}]` : ''}`
+      item =>
+        `• ${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}${item.variantName ? ` - ${item.variantName}` : ''}${item.notes ? ` [Note: ${item.notes}]` : ''}`
     )
     .join('\n')
 
   try {
     await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         text: `📋 New basket quote request from ${customer.name}`,
         blocks: [
           {
-            type: "section",
+            type: 'section',
             text: {
-              type: "mrkdwn",
+              type: 'mrkdwn',
               text: `*New Basket Quote Request*\n• *Name:* ${customer.name}\n• *Email:* ${customer.email}\n• *Phone:* ${customer.phone || 'n/a'}\n• *Items:* ${items.length}\n• *Total:* $${total.toFixed(2)} CAD`,
             },
           },
           {
-            type: "section",
+            type: 'section',
             text: {
-              type: "mrkdwn",
+              type: 'mrkdwn',
               text: `*Quote Items:*\n${itemsList}`,
             },
           },
           {
-            type: "context",
+            type: 'context',
             elements: [
               {
-                type: "mrkdwn",
+                type: 'mrkdwn',
                 text: `Quote: ${quoteNumber} | Received: ${receivedAt}`,
               },
             ],
@@ -94,7 +94,7 @@ const sendSlackNotification = async (payload: {
       }),
     })
   } catch (error) {
-    console.warn("[quotes/basket] Failed to notify Slack", error)
+    console.warn('[quotes/basket] Failed to notify Slack', error)
   }
 }
 
@@ -103,13 +103,19 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
 
     if (!validateBasketQuoteRequest(body)) {
-      return NextResponse.json(
-        { success: false, error: "Invalid request data" },
-        { status: 400 }
-      )
+      return NextResponse.json({ success: false, error: 'Invalid request data' }, { status: 400 })
     }
 
-    const { name, email, phone, projectType, roomDimensions, preferredTimeline, additionalDetails, items } = body
+    const {
+      name,
+      email,
+      phone,
+      projectType,
+      roomDimensions,
+      preferredTimeline,
+      additionalDetails,
+      items,
+    } = body
 
     // Sanitize inputs
     const sanitizeString = (str: string | undefined) => str?.trim().substring(0, 1000)
@@ -138,7 +144,10 @@ export async function POST(request: NextRequest) {
     const record = {
       quote_number: quoteNumber,
       received_at: receivedAt,
-      product_name: `${items.length} items - ${items.map(i => i.name).join(', ')}`.substring(0, 500),
+      product_name: `${items.length} items - ${items.map(i => i.name).join(', ')}`.substring(
+        0,
+        500
+      ),
       product_category: projectType || 'Mixed',
       product_price: total,
       product_options: {
@@ -162,16 +171,16 @@ export async function POST(request: NextRequest) {
       customer_province: null,
       notes: sanitizeString(additionalDetails),
       metadata: {
-        userAgent: request.headers.get("user-agent")?.substring(0, 200),
-        referer: request.headers.get("referer") || request.headers.get("origin"),
-        ip: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown",
+        userAgent: request.headers.get('user-agent')?.substring(0, 200),
+        referer: request.headers.get('referer') || request.headers.get('origin'),
+        ip: request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown',
       },
     }
 
-    const { error: supabaseError } = await supabase.from("quote_requests").insert(record)
+    const { error: supabaseError } = await supabase.from('quote_requests').insert(record)
 
     if (supabaseError) {
-      console.warn("[quotes/basket] Failed to persist quote request", supabaseError)
+      console.warn('[quotes/basket] Failed to persist quote request', supabaseError)
     }
 
     // Send email notifications (don't block response)
@@ -195,8 +204,8 @@ export async function POST(request: NextRequest) {
         },
       },
       notes: sanitizeString(additionalDetails),
-    }).catch((error) => {
-      console.error("[quotes/basket] Failed to send email notifications:", error)
+    }).catch(error => {
+      console.error('[quotes/basket] Failed to send email notifications:', error)
     })
 
     return NextResponse.json({
@@ -207,10 +216,7 @@ export async function POST(request: NextRequest) {
       total,
     })
   } catch (error) {
-    console.error("[quotes/basket] Error processing request:", error)
-    return NextResponse.json(
-      { success: false, error: "Internal server error" },
-      { status: 500 }
-    )
+    console.error('[quotes/basket] Error processing request:', error)
+    return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 })
   }
 }

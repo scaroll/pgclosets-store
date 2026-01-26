@@ -99,6 +99,9 @@ export function LuxuryQuoteForm({ open, onClose, product, selectedOptions }: Lux
             <DialogPrimitive.Title className="text-lg font-semibold leading-none tracking-tight">
               Request a Quote
             </DialogPrimitive.Title>
+            <DialogPrimitive.Description className="text-sm text-muted-foreground">
+              Fill out the form below to receive a custom quote for your project.
+            </DialogPrimitive.Description>
             {product && (
               <div className="text-sm text-muted-foreground">
                 <div className="font-medium text-foreground">{product.name}</div>
