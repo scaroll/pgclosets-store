@@ -1,55 +1,70 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer base {
   :root {
-    /* Figma-Inspired Dark Mode System (Default) */
-    --background: 0 0% 12%; /* #1e1e1e - Figma Canvas Background */
-    --foreground: 0 0% 100%; /* White */
+    /* Apple-Grade Design System - Light Mode (Default) */
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 240 3% 11%; /* #1D1D1F (Apple Text) */
 
-    --card: 0 0% 17%; /* #2c2c2c - Figma Panel Background */
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 3% 11%;
 
-    --popover: 0 0% 17%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 3% 11%;
 
-    --primary: 211 100% 50%; /* Figma Blue Selection Color */
+    --primary: 211 100% 50%; /* #007aff (Apple Blue) */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 25%; /* Slightly lighter panel elements */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%; /* #F5F5F7 (Apple Secondary BG) */
+    --secondary-foreground: 240 3% 11%;
 
-    --muted: 0 0% 25%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 240 6% 90%; /* #E5E5EA */
+    --muted-foreground: 240 4% 46%; /* #737373 */
 
     --accent: 211 100% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 27%; /* Subtle panel borders */
-    --input: 0 0% 17%;
+    --border: 240 6% 90%; /* #E5E5EA */
+    --input: 240 6% 90%;
     --ring: 211 100% 50%;
 
-    --radius: 0.5rem; /* 8px - Cleaner, tighter radius */
+    --radius: 0.75rem; /* 12px - Apple rounded aesthetic */
 
-    /* Figma Spacing System - 8pt Grid */
-    --spacing-xs: 0.25rem;
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 1.5rem;
-    --spacing-xl: 2rem;
-    --spacing-2xl: 3rem;
-    --spacing-3xl: 4rem;
+    /* Typography Scale - Mobile First */
+    --font-heading: -0.02em; /* Tight tracking for headings */
+    --font-body: -0.01em; /* Slight tracking for body */
   }
 
-  /* Force "Dark Mode" logic even without .dark class, but keep .dark for compatibility */
   .dark {
-    /* Inherit root values as we are dark-first now */
-    --background: 0 0% 12%;
-    --foreground: 0 0% 100%;
+    /* Apple Dark Mode Palette */
+    --background: 0 0% 0%; /* #000000 */
+    --foreground: 0 0% 96%; /* #F5F5F7 */
+
+    --card: 240 4% 11%; /* #1C1C1E (Apple Dark Surface) */
+    --card-foreground: 0 0% 96%;
+
+    --popover: 240 4% 11%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 4% 16%; /* #2C2C2E */
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%; /* #A1A1A6 */
+
+    --accent: 211 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 96%;
+
+    --border: 240 4% 20%; /* #38383A */
+    --input: 240 4% 20%;
+    --ring: 211 100% 50%;
   }
 }
 
@@ -65,11 +80,28 @@
       'calt' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none; /* iOS physics fix */
   }
 
-  /* Apple-style smooth scrolling */
+  /* Apple-style smooth scrolling & typography */
   html {
     scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Typography Defaults */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight text-foreground;
+    letter-spacing: var(--font-heading);
+  }
+
+  p {
+    letter-spacing: var(--font-body);
   }
 
   /* Apple-style focus states */
@@ -81,13 +113,7 @@
 @layer utilities {
   /* Apple Glass Effect */
   .glass {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-  }
-
-  .dark .glass {
-    background: rgba(0, 0, 0, 0.8);
+    @apply saturate-180 border border-white/10 bg-white/70 backdrop-blur-xl dark:border-white/5 dark:bg-black/70;
   }
 
   /* Apple Text Styles */
@@ -95,17 +121,23 @@
     text-wrap: balance;
   }
 
-  /* Apple Animations */
-  .apple-transition {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Apple Animations & Easing */
+  .apple-ease {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); /* Custom Apple ease */
   }
 
-  .apple-scale-hover {
-    @apply transition-transform duration-200 ease-out;
+  .animate-fade-up {
+    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .apple-scale-hover:hover {
-    transform: scale(1.02);
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
   }
 
   /* Hide scrollbar but keep functionality */
