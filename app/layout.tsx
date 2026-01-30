@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 
 const inter = Inter({
@@ -46,6 +47,7 @@ export default function RootLayout({
           </div>
         </header>
         {children}
+        <Toaster />
         {/* Simple footer */}
         <footer className="mt-24 border-t border-border/40 bg-muted/30 py-12">
           <div className="mx-auto max-w-7xl px-6 text-center">

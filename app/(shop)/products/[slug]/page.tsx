@@ -4,17 +4,29 @@ interface PageProps {
   params: Promise<{ slug: string }>
 }
 
-export default async function ProductDetailPage({ params }: PageProps) {
+// Generate metadata in a server component
+export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params
+  const displayName = slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
 
-  // Format slug for display
+  return {
+    title: `${displayName} | PG Closets`,
+    description: 'Premium closet systems designed for modern living.',
+  }
+}
+
+// This is now a separate client component for interactivity
+function ProductContent({ slug }: { slug: string }) {
   const displayName = slug
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 
   return (
-    <main className="min-h-screen bg-white">
+    <>
       {/* Hero */}
       <section className="bg-neutral-50 py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -53,8 +65,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 Product details coming soon
               </p>
               <p className="mb-6 text-neutral-600">
-                We&apos;re currently updating our product catalog. Full specifications, pricing, and
-                ordering options will be available shortly.
+                We&apos;re currently updating our product catalog. Full specifications,
+                pricing, and ordering options will be available shortly.
               </p>
               <Link
                 href="/products"
@@ -66,20 +78,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
         </div>
       </section>
-    </main>
+    </>
   )
 }
 
-// Ensure the page always renders (returns 200) for any slug
-export async function generateMetadata({ params }: PageProps) {
+export default async function ProductDetailPage({ params }: PageProps) {
   const { slug } = await params
-  const displayName = slug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-
-  return {
-    title: `${displayName} | PG Closets`,
-    description: 'Premium closet systems designed for modern living.',
-  }
+  return <ProductContent slug={slug} />
 }

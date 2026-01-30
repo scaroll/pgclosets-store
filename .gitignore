@@ -42,3 +42,8 @@ public/renin/assets/css/*.css
 public/renin/assets/**
 public/renin/**/*.html
 public/renin/wp-content/**
+
+# Local SQLite database
+local.db
+local.db-shm
+local.db-wal
