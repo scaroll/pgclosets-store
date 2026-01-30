@@ -4,6 +4,8 @@ import { createProtectedRoute, rateLimitConfigs } from '@/lib/validation/middlew
 import { type QuoteRequestData, quoteRequestSchema } from '@/lib/validation/schemas'
 import { type NextRequest, NextResponse } from 'next/server'
 
+export const maxDuration = 30
+
 const sendSlackNotification = async (payload: unknown) => {
   const webhookUrl = process.env.SLACK_WEBHOOK_URL
   if (!webhookUrl) return

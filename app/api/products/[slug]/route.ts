@@ -1,6 +1,9 @@
 import { prisma } from '@/lib/db'
 import { type NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
+
+export const maxDuration = 30
+
 // Type definitions
 interface ProductParams {
   slug: string

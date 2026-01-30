@@ -3,8 +3,8 @@ import { describe, expect, it, vi } from 'vitest'
 import HomePage from './page'
 
 // Mock the components to avoid deep rendering issues and speed up tests
-vi.mock('@/components/home/hero-section', () => ({
-  HeroSection: () => <div data-testid="video-hero">Video Hero</div>,
+vi.mock('@/components/home/hero', () => ({
+  VideoHero: () => <div data-testid="video-hero">Video Hero</div>,
 }))
 
 vi.mock('@/components/products/product-card', () => ({

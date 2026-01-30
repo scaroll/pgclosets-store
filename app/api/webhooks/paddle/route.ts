@@ -1,6 +1,8 @@
 import crypto from 'crypto'
 import { type NextRequest, NextResponse } from 'next/server'
 
+export const maxDuration = 30
+
 // Paddle webhook signature verification
 function verifyPaddleWebhook(body: string, signature: string, publicKey: string): boolean {
   try {

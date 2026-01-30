@@ -2,6 +2,9 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { subscribeToNewsletter } from '@/lib/email/newsletter'
 import { checkRateLimit, getClientIdentifier, generalRateLimiter } from '@/lib/rate-limit'
 import { z } from 'zod'
+
+export const maxDuration = 30
+
 // Type definitions
 interface NewsletterSubscribeResult {
   success: boolean

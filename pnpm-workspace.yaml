@@ -1,0 +1,2 @@
+# Isolated workspace - prevents parent workspace dependencies from interfering
+packages: []

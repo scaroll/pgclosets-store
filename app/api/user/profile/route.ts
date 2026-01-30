@@ -3,6 +3,9 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import { z } from 'zod'
 import bcryptjs from 'bcryptjs'
+
+export const maxDuration = 30
+
 // Type definitions
 interface ProfileUpdateData {
   name?: string

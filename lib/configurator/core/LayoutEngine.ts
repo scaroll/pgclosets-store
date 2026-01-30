@@ -1,15 +1,11 @@
-/* eslint-disable import/no-duplicates */
-import type {
-  AutoLayoutProps,
-  Constraints,
-  Layer,
-  Rectangle
-} from '../types';
 import {
+  type AutoLayoutProps,
+  type Constraints,
+  type Layer,
+  type Rectangle,
   ConstraintHorizontal,
   ConstraintVertical
-} from '../types'
-/* eslint-enable import/no-duplicates */
+} from '../types';
 
 export class AutoLayoutCalculator {
   public calculateLayout(frame: Layer, children: Layer[]): { [layerId: string]: Rectangle } {

@@ -4,6 +4,9 @@ import { checkRateLimit, generalRateLimiter, getClientIdentifier } from '@/lib/r
 import { addToCartSchema } from '@/lib/validation/schemas'
 import { type NextRequest, NextResponse } from 'next/server'
 import type { z } from 'zod'
+
+export const maxDuration = 30
+
 export async function GET(req: NextRequest) {
   try {
     const session = await auth()

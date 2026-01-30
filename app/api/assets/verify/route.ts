@@ -1,6 +1,8 @@
 import products from '../../../../data/pgclosets-products.json'
 import { reninProducts } from '../../../../data/renin-products'
 
+export const maxDuration = 30
+
 export async function GET(req: Request) {
   const url = new URL(req.url)
   const host = url.host
@@ -11,7 +13,9 @@ export async function GET(req: Request) {
 
   // Skip deep product media URLs for verification to avoid false negatives during ingestion.
   // We verify core category fallbacks and service images below.
-  try { void (products as any[]) } catch {}
+  try {
+    void (products as any[])
+  } catch {}
 
   ;[
     '/images/products/barn-door-main.jpg',
@@ -45,7 +49,7 @@ export async function GET(req: Request) {
     '/images/services/installation-hero.jpg',
     '/images/services/consultation-hero.jpg',
     '/images/services/custom-design-hero.jpg',
-  ].forEach((p) => expected.add(p))
+  ].forEach(p => expected.add(p))
 
   // Include Renin category fallback images (treat product images as optional until fully ingested)
   try {
@@ -66,7 +70,7 @@ export async function GET(req: Request) {
   const results: any[] = []
 
   await Promise.all(
-    targets.map(async (p) => {
+    targets.map(async p => {
       const href = `${origin}${p}`
       try {
         const r = await fetch(href, { method: 'HEAD', cache: 'no-store' })
@@ -74,7 +78,7 @@ export async function GET(req: Request) {
       } catch (e: any) {
         results.push({ path: p, error: e?.message || String(e) })
       }
-    }),
+    })
   )
 
   const ignore = new Set<string>([
@@ -82,7 +86,7 @@ export async function GET(req: Request) {
     '/images/products/pivot-frosted-contemporary-lifestyle.jpg',
     '/images/products/bypass-mirror-traditional-detail.jpg',
   ])
-  const missingRaw = results.filter((r) => r.status !== 200)
-  const missing = missingRaw.filter((r) => !ignore.has(r.path))
+  const missingRaw = results.filter(r => r.status !== 200)
+  const missing = missingRaw.filter(r => !ignore.has(r.path))
   return Response.json({ ok: missing.length === 0, checked: results.length, missing, results })
 }

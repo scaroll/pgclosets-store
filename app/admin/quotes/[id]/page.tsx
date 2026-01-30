@@ -1,4 +1,4 @@
-// @ts-nocheck - Admin quote detail page
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -171,7 +171,7 @@ export default function QuoteDetailPage() {
           <FileText className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-2">Quote Not Found</h2>
           <p className="text-muted-foreground mb-4">
-            The quote you're looking for doesn't exist.
+            The quote you&apos;re looking for doesn&apos;t exist.
           </p>
           <Button asChild>
             <Link href="/admin/quotes">
@@ -391,7 +391,7 @@ export default function QuoteDetailPage() {
                         <div className="grid grid-cols-2 gap-2 mt-2 text-sm">
                           <div>
                             <span className="text-muted-foreground">Size:</span>{' '}
-                            {product.width}" x {product.height}"
+                            {product.width}&quot; x {product.height}&quot;
                           </div>
                           <div>
                             <span className="text-muted-foreground">Quantity:</span>{' '}

@@ -1,69 +1,80 @@
-import { NextResponse } from 'next/server';
-import { z } from 'zod';
-import { recommendationEngine } from '@/lib/ai/recommendation-engine';
+import { NextResponse } from 'next/server'
+import { z } from 'zod'
+import { recommendationEngine } from '@/lib/ai/recommendation-engine'
 
-export const maxDuration = 30; // Increased for AI processing
-export const dynamic = 'force-dynamic';
+export const maxDuration = 30
+
+export const dynamic = 'force-dynamic'
 
 // Request schema with extended context
 const RecommendationRequestSchema = z.object({
   userId: z.string().optional(),
-  browsingHistory: z.array(z.object({
-    productId: z.string(),
-    name: z.string(),
-    category: z.string(),
-    price: z.number(),
-    viewedAt: z.string().optional(),
-  })).optional(),
-  budget: z.object({
-    min: z.number(),
-    max: z.number(),
-  }).optional(),
+  browsingHistory: z
+    .array(
+      z.object({
+        productId: z.string(),
+        name: z.string(),
+        category: z.string(),
+        price: z.number(),
+        viewedAt: z.string().optional(),
+      })
+    )
+    .optional(),
+  budget: z
+    .object({
+      min: z.number(),
+      max: z.number(),
+    })
+    .optional(),
   style: z.array(z.string()).optional(),
-  currentProduct: z.object({
-    id: z.string(),
-    name: z.string(),
-    category: z.string(),
-    price: z.number(),
-    features: z.array(z.string()).optional(),
-  }).optional(),
-  maxRecommendations: z.number().min(1).max(20).default(8),
-  categories: z.array(z.string()).optional(),
-  includeComplementary: z.boolean().default(false),
-});
-
-// Response schema
-const RecommendationsResponseSchema = z.object({
-  success: z.boolean(),
-  recommendations: z.array(z.object({
-    productId: z.string(),
-    product: z.object({
+  currentProduct: z
+    .object({
       id: z.string(),
       name: z.string(),
       category: z.string(),
       price: z.number(),
-      description: z.string().optional(),
-      features: z.array(z.string()).default([]),
-      style: z.array(z.string()).default([]),
-      materials: z.array(z.string()).default([]),
-      colors: z.array(z.string()).default([]),
-      rating: z.number().default(0),
-      reviewCount: z.number().default(0),
-      image: z.string().optional(),
-    }),
-    score: z.number(),
-    reasoning: z.string(),
-    category: z.enum(['collaborative', 'content', 'style', 'popular', 'complementary']),
-    confidence: z.number(),
-  })),
+      features: z.array(z.string()).optional(),
+    })
+    .optional(),
+  maxRecommendations: z.number().min(1).max(20).default(8),
+  categories: z.array(z.string()).optional(),
+  includeComplementary: z.boolean().default(false),
+})
+
+// Response schema
+const RecommendationsResponseSchema = z.object({
+  success: z.boolean(),
+  recommendations: z.array(
+    z.object({
+      productId: z.string(),
+      product: z.object({
+        id: z.string(),
+        name: z.string(),
+        category: z.string(),
+        price: z.number(),
+        description: z.string().optional(),
+        features: z.array(z.string()).default([]),
+        style: z.array(z.string()).default([]),
+        materials: z.array(z.string()).default([]),
+        colors: z.array(z.string()).default([]),
+        rating: z.number().default(0),
+        reviewCount: z.number().default(0),
+        image: z.string().optional(),
+      }),
+      score: z.number(),
+      reasoning: z.string(),
+      category: z.enum(['collaborative', 'content', 'style', 'popular', 'complementary']),
+      confidence: z.number(),
+    })
+  ),
   overallReasoning: z.string().optional(),
   processingTime: z.number(),
-});
+})
 
-type RecommendationsResponse = z.infer<typeof RecommendationsResponseSchema>;
+type RecommendationsResponse = z.infer<typeof RecommendationsResponseSchema>
 
 export async function POST(req: Request) {
-  const startTime = Date.now();
+  const startTime = Date.now()
 
   // Skip if OpenAI is not configured
   if (!process.env.OPENAI_API_KEY) {
@@ -75,12 +86,12 @@ export async function POST(req: Request) {
         processingTime: Date.now() - startTime,
       },
       { status: 200 }
-    );
+    )
   }
 
   try {
-    const body = await req.json();
-    const validatedData = RecommendationRequestSchema.parse(body);
+    const body = await req.json()
+    const validatedData = RecommendationRequestSchema.parse(body)
 
     const {
       userId = 'anonymous',
@@ -91,7 +102,7 @@ export async function POST(req: Request) {
       browsingHistory = [],
       style = [],
       budget,
-    } = validatedData;
+    } = validatedData
 
     // Update user behavior based on browsing history
     if (browsingHistory.length > 0 && userId !== 'anonymous') {
@@ -100,14 +111,14 @@ export async function POST(req: Request) {
         viewedProducts: browsingHistory.map(item => item.productId),
         stylePreferences: style,
         priceRange: budget ? { min: budget.min ?? 0, max: budget.max ?? 999999 } : undefined,
-      };
+      }
 
-      recommendationEngine.updateUserBehavior(userId, userBehavior);
+      recommendationEngine.updateUserBehavior(userId, userBehavior)
 
       // Track individual product views
       browsingHistory.forEach(item => {
-        recommendationEngine.trackProductView(userId, item.productId);
-      });
+        recommendationEngine.trackProductView(userId, item.productId)
+      })
     }
 
     // Get AI recommendations
@@ -117,41 +128,43 @@ export async function POST(req: Request) {
       excludeIds: currentProduct ? [currentProduct.id] : [],
       includeComplementary: includeComplementary && currentProduct?.id,
       currentProductId: currentProduct?.id,
-    });
+    })
 
     // Enrich recommendations with product details
     const enrichedRecommendations = await Promise.all(
-      aiRecommendations.map(async (rec) => {
+      aiRecommendations.map(async rec => {
         // Get product details - in a real app, this would come from your database
-        const productDetails = await getProductDetails(rec.productId);
+        const productDetails = await getProductDetails(rec.productId)
 
         return {
           ...rec,
           product: productDetails,
-        };
+        }
       })
-    );
+    )
 
-    const processingTime = Date.now() - startTime;
+    const processingTime = Date.now() - startTime
 
     // Generate overall reasoning
     const overallReasoning = generateOverallReasoning(enrichedRecommendations, {
       currentProduct,
-      userPreferences: { style, budget: budget ? { min: budget.min ?? 0, max: budget.max ?? 999999 } : undefined },
+      userPreferences: {
+        style,
+        budget: budget ? { min: budget.min ?? 0, max: budget.max ?? 999999 } : undefined,
+      },
       categories,
-    });
+    })
 
     const response: RecommendationsResponse = {
       success: true,
       recommendations: enrichedRecommendations,
       overallReasoning,
       processingTime,
-    };
+    }
 
-    return NextResponse.json(response);
-
+    return NextResponse.json(response)
   } catch (error) {
-    console.error('Recommendation API Error:', error);
+    console.error('Recommendation API Error:', error)
 
     return NextResponse.json(
       {
@@ -160,7 +173,7 @@ export async function POST(req: Request) {
         details: process.env.NODE_ENV === 'development' ? String(error) : undefined,
       },
       { status: 500 }
-    );
+    )
   }
 }
 
@@ -256,22 +269,24 @@ async function getProductDetails(productId: string): Promise<any> {
       reviewCount: 92,
       image: '/images/products/mirror-1.jpg',
     },
-  };
+  }
 
-  return mockProducts[productId] || {
-    id: productId,
-    name: 'Premium Product',
-    category: 'General',
-    price: 999,
-    description: 'High-quality product from PG Closets',
-    features: ['Premium quality', 'Professional installation'],
-    style: ['modern'],
-    materials: ['premium materials'],
-    colors: ['various'],
-    rating: 4.5,
-    reviewCount: 50,
-    image: '/images/products/placeholder.jpg',
-  };
+  return (
+    mockProducts[productId] || {
+      id: productId,
+      name: 'Premium Product',
+      category: 'General',
+      price: 999,
+      description: 'High-quality product from PG Closets',
+      features: ['Premium quality', 'Professional installation'],
+      style: ['modern'],
+      materials: ['premium materials'],
+      colors: ['various'],
+      rating: 4.5,
+      reviewCount: 50,
+      image: '/images/products/placeholder.jpg',
+    }
+  )
 }
 
 /**
@@ -280,42 +295,54 @@ async function getProductDetails(productId: string): Promise<any> {
 function generateOverallReasoning(
   recommendations: any[],
   context: {
-    currentProduct?: any;
-    userPreferences?: { style?: string[]; budget?: { min: number; max: number } };
-    categories?: string[];
+    currentProduct?: any
+    userPreferences?: { style?: string[]; budget?: { min: number; max: number } }
+    categories?: string[]
   }
 ): string {
-  const { currentProduct, userPreferences, categories } = context;
+  const { currentProduct, userPreferences, categories } = context
 
-  const parts: string[] = [];
+  const parts: string[] = []
 
   if (currentProduct) {
-    parts.push(`Based on your interest in the ${currentProduct.name}, I've selected items that complement it perfectly.`);
+    parts.push(
+      `Based on your interest in the ${currentProduct.name}, I've selected items that complement it perfectly.`
+    )
   }
 
   if (userPreferences?.style && userPreferences.style.length > 0) {
-    parts.push(`All recommendations match your preferred ${userPreferences.style.join(', ')} style.`);
+    parts.push(
+      `All recommendations match your preferred ${userPreferences.style.join(', ')} style.`
+    )
   }
 
   if (userPreferences?.budget) {
-    parts.push(`Each item falls within your budget range of $${userPreferences.budget.min} - $${userPreferences.budget.max}.`);
+    parts.push(
+      `Each item falls within your budget range of $${userPreferences.budget.min} - $${userPreferences.budget.max}.`
+    )
   }
 
   if (categories && categories.length > 0) {
-    parts.push(`I've focused on ${categories.join(', ')} categories as requested.`);
+    parts.push(`I've focused on ${categories.join(', ')} categories as requested.`)
   }
 
   // Analyze recommendation types
-  const categories_found = new Set(recommendations.map(r => r.category));
+  const categories_found = new Set(recommendations.map(r => r.category))
   if (categories_found.size > 1) {
-    parts.push('I\'ve included a mix of personalized suggestions based on similar customers\' preferences and products that match your viewing history.');
+    parts.push(
+      "I've included a mix of personalized suggestions based on similar customers' preferences and products that match your viewing history."
+    )
   }
 
   // Add confidence statement
-  const avgConfidence = recommendations.reduce((sum, r) => sum + r.confidence, 0) / recommendations.length;
+  const avgConfidence =
+    recommendations.reduce((sum, r) => sum + r.confidence, 0) / recommendations.length
   if (avgConfidence > 0.8) {
-    parts.push('These recommendations have a high match confidence based on your preferences.');
+    parts.push('These recommendations have a high match confidence based on your preferences.')
   }
 
-  return parts.join(' ') || 'Here are some personalized recommendations for you based on your browsing history and preferences.';
+  return (
+    parts.join(' ') ||
+    'Here are some personalized recommendations for you based on your browsing history and preferences.'
+  )
 }

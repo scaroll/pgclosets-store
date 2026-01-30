@@ -4,6 +4,9 @@ import { prisma } from '@/lib/db'
 import { z } from 'zod'
 import Stripe from 'stripe'
 import { generalRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit'
+
+export const maxDuration = 30
+
 type CheckoutError = Error & { message?: string }
 // Force dynamic rendering
 export const dynamic = 'force-dynamic'

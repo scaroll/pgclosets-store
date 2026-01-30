@@ -1,5 +1,7 @@
 import products from '../../../data/pgclosets-products.json'
 
+export const maxDuration = 30
+
 const PAGES = [
   '/',
   '/about',
@@ -27,7 +29,7 @@ export async function GET() {
   const targets = [...PAGES, ...slugs]
 
   // Check pages in parallel with timeout
-  const checkPromises = targets.map(async (path) => {
+  const checkPromises = targets.map(async path => {
     const url = (base ? base.replace(/\/$/, '') : '') + path
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 10000) // 10s timeout
@@ -38,8 +40,8 @@ export async function GET() {
         cache: 'no-store',
         signal: controller.signal,
         headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; Self-Check/1.0)'
-        }
+          'User-Agent': 'Mozilla/5.0 (compatible; Self-Check/1.0)',
+        },
       })
       clearTimeout(timeoutId)
 
@@ -50,7 +52,7 @@ export async function GET() {
         path,
         status: res.status,
         healthy: isHealthy,
-        responseTime: Date.now()
+        responseTime: Date.now(),
       }
     } catch (e: any) {
       clearTimeout(timeoutId)
@@ -58,7 +60,7 @@ export async function GET() {
         path,
         error: e?.message || String(e),
         healthy: false,
-        responseTime: Date.now()
+        responseTime: Date.now(),
       }
     }
   })
@@ -72,13 +74,13 @@ export async function GET() {
       results.push({
         path: 'unknown',
         error: result.reason?.message || 'Check failed',
-        healthy: false
+        healthy: false,
       })
     }
   }
 
-  const failures = results.filter((r) => !r.healthy)
-  const criticalFailures = results.filter((r) => r.status && r.status >= 500)
+  const failures = results.filter(r => !r.healthy)
+  const criticalFailures = results.filter(r => r.status && r.status >= 500)
 
   return Response.json({
     ok: criticalFailures.length === 0,
@@ -88,8 +90,7 @@ export async function GET() {
       total: results.length,
       healthy: results.length - failures.length,
       degraded: failures.length,
-      critical: criticalFailures.length
-    }
+      critical: criticalFailures.length,
+    },
   })
 }
-

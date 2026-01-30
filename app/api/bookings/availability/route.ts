@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/db/client'
-import type { NextRequest } from 'next/server'
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
+
+export const maxDuration = 30
 
 export async function GET(req: NextRequest) {
   try {

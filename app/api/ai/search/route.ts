@@ -1,6 +1,5 @@
 import { SAMPLE_PRODUCTS } from '@/lib/products'
-import type { NextRequest } from 'next/server'
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 
 export const maxDuration = 10
 

@@ -1,8 +1,8 @@
-// @ts-nocheck - Uses dynamic KV operations with implicit any types
-import type { NextRequest} from 'next/server';
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 import { createClient } from '@vercel/kv'
+
+export const maxDuration = 30
 
 const kv = createClient({
   url: process.env.KV_REST_API_URL!,
@@ -32,10 +32,7 @@ export async function POST(request: NextRequest) {
 
     // Validate event data
     if (!body.name || !body.sessionId) {
-      return NextResponse.json(
-        { error: 'Invalid event data' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Invalid event data' }, { status: 400 })
     }
 
     // Enrich event with server-side data
@@ -53,13 +50,10 @@ export async function POST(request: NextRequest) {
     // Store event in multiple formats for different analysis needs
 
     // 1. Store raw event for detailed analysis
-    await kv.zadd(
-      `events:raw:${enrichedEvent.name}`,
-      {
-        score: enrichedEvent.timestamp,
-        member: JSON.stringify(enrichedEvent),
-      }
-    )
+    await kv.zadd(`events:raw:${enrichedEvent.name}`, {
+      score: enrichedEvent.timestamp,
+      member: JSON.stringify(enrichedEvent),
+    })
 
     // 2. Store in daily aggregation
     const dayKey = new Date(enrichedEvent.timestamp).toISOString().split('T')[0]
@@ -72,17 +66,14 @@ export async function POST(request: NextRequest) {
     await kv.expire(`events:hourly:${hourKey}:${enrichedEvent.name}`, 60 * 60 * 24 * 30) // 30 days
 
     // 4. Store user session events
-    await kv.zadd(
-      `session:${enrichedEvent.sessionId}:events`,
-      {
-        score: enrichedEvent.timestamp,
-        member: JSON.stringify({
-          name: enrichedEvent.name,
-          params: enrichedEvent.params,
-          timestamp: enrichedEvent.timestamp,
-        }),
-      }
-    )
+    await kv.zadd(`session:${enrichedEvent.sessionId}:events`, {
+      score: enrichedEvent.timestamp,
+      member: JSON.stringify({
+        name: enrichedEvent.name,
+        params: enrichedEvent.params,
+        timestamp: enrichedEvent.timestamp,
+      }),
+    })
     await kv.expire(`session:${enrichedEvent.sessionId}:events`, 60 * 60 * 24 * 7) // 7 days
 
     // 5. Store geographic breakdown
@@ -100,7 +91,11 @@ export async function POST(request: NextRequest) {
     }
 
     // 8. Special handling for performance events
-    if (['largest_contentful_paint', 'first_input_delay', 'cumulative_layout_shift'].includes(enrichedEvent.name)) {
+    if (
+      ['largest_contentful_paint', 'first_input_delay', 'cumulative_layout_shift'].includes(
+        enrichedEvent.name
+      )
+    ) {
       await trackPerformanceMetric(enrichedEvent)
     }
 
@@ -113,10 +108,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true, eventId: generateEventId() })
   } catch (error) {
     console.error('Analytics event processing error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -128,10 +120,7 @@ export async function GET(request: NextRequest) {
     const breakdown = searchParams.get('breakdown') // 'hourly', 'daily', 'geo', 'segment'
 
     if (!eventName) {
-      return NextResponse.json(
-        { error: 'Event name parameter is required' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Event name parameter is required' }, { status: 400 })
     }
 
     const endTime = Date.now()
@@ -161,16 +150,13 @@ export async function GET(request: NextRequest) {
     })
   } catch (error) {
     console.error('Analytics data retrieval error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
 // Helper functions
 function generateEventId(): string {
-  return `evt_${  Date.now()  }_${  Math.random().toString(36).substr(2, 9)}`
+  return `evt_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
 }
 
 function getStartTimeByRange(timeRange: string, endTime: number): number {
@@ -184,7 +170,11 @@ function getStartTimeByRange(timeRange: string, endTime: number): number {
   return endTime - (ranges[timeRange as keyof typeof ranges] || ranges['24h'])
 }
 
-async function getHourlyData(eventName: string, startTime: number, endTime: number): Promise<any[]> {
+async function getHourlyData(
+  eventName: string,
+  startTime: number,
+  endTime: number
+): Promise<any[]> {
   const startHour = Math.floor(startTime / (1000 * 60 * 60))
   const endHour = Math.floor(endTime / (1000 * 60 * 60))
   const data = []
@@ -222,7 +212,11 @@ async function getDailyData(eventName: string, startTime: number, endTime: numbe
   return data
 }
 
-async function getGeographicData(eventName: string, _startTime: number, _endTime: number): Promise<any[]> {
+async function getGeographicData(
+  eventName: string,
+  _startTime: number,
+  _endTime: number
+): Promise<any[]> {
   const countries = ['CA', 'US', 'GB', 'FR', 'DE'] // Top countries
   const data = []
 
@@ -236,7 +230,11 @@ async function getGeographicData(eventName: string, _startTime: number, _endTime
   return data.sort((a, b) => b.count - a.count)
 }
 
-async function getSegmentData(eventName: string, _startTime: number, _endTime: number): Promise<any[]> {
+async function getSegmentData(
+  eventName: string,
+  _startTime: number,
+  _endTime: number
+): Promise<any[]> {
   const segments = ['new_visitor', 'returning_visitor', 'mobile_user', 'organic_search', 'social']
   const data = []
 
@@ -265,21 +263,18 @@ function calculateSummary(data: any[]): any {
 
 async function trackConversion(event: any) {
   // Store conversion events with special handling
-  await kv.zadd(
-    'conversions:all',
-    {
-      score: event.timestamp,
-      member: JSON.stringify({
-        type: event.name.replace('conversion_', ''),
-        value: event.params.value,
-        currency: event.params.currency,
-        userId: event.userId,
-        sessionId: event.sessionId,
-        country: event.country,
-        timestamp: event.timestamp,
-      }),
-    }
-  )
+  await kv.zadd('conversions:all', {
+    score: event.timestamp,
+    member: JSON.stringify({
+      type: event.name.replace('conversion_', ''),
+      value: event.params.value,
+      currency: event.params.currency,
+      userId: event.userId,
+      sessionId: event.sessionId,
+      country: event.country,
+      timestamp: event.timestamp,
+    }),
+  })
 
   // Update conversion counters
   await kv.incr(`conversions:${event.name.replace('conversion_', '')}`)
@@ -293,17 +288,14 @@ async function trackConversion(event: any) {
 
 async function trackPerformanceMetric(event: any) {
   // Store performance metrics in percentiles
-  await kv.zadd(
-    `performance:${event.name}`,
-    {
-      score: event.params.value,
-      member: JSON.stringify({
-        timestamp: event.timestamp,
-        sessionId: event.sessionId,
-        url: event.url,
-      }),
-    }
-  )
+  await kv.zadd(`performance:${event.name}`, {
+    score: event.params.value,
+    member: JSON.stringify({
+      timestamp: event.timestamp,
+      sessionId: event.sessionId,
+      url: event.url,
+    }),
+  })
 
   // Keep only last 1000 measurements per metric
   const count = await kv.zcard(`performance:${event.name}`)

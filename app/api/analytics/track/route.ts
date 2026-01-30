@@ -1,36 +1,33 @@
-// @ts-nocheck - Analytics models not yet in Prisma schema
-import type { NextRequest} from 'next/server';
-import { NextResponse } from 'next/server';
-import { headers } from 'next/headers';
-import { prisma } from '@/lib/prisma';
-import { z } from 'zod';
+import { type NextRequest, NextResponse } from 'next/server'
+import { headers } from 'next/headers'
+import { prisma } from '@/lib/prisma'
+import { z } from 'zod'
+
+export const maxDuration = 30
 
 const trackEventSchema = z.object({
   event: z.string(),
   properties: z.record(z.any()).optional(),
   userId: z.string().optional(),
   sessionId: z.string().optional(),
-});
+})
 
 export async function POST(req: NextRequest) {
   try {
-    const headersList = await headers();
-    const body = await req.json();
+    const headersList = await headers()
+    const body = await req.json()
 
-    const validated = trackEventSchema.safeParse(body);
+    const validated = trackEventSchema.safeParse(body)
     if (!validated.success) {
-      return NextResponse.json(
-        { error: 'Invalid event data' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid event data' }, { status: 400 })
     }
 
-    const { event, properties, userId, sessionId } = validated.data;
+    const { event, properties, userId, sessionId } = validated.data
 
     // Get client info
-    const ip = req.ip || headersList.get('x-forwarded-for') || 'unknown';
-    const userAgent = headersList.get('user-agent') || 'unknown';
-    const referer = headersList.get('referer') || null;
+    const ip = req.ip || headersList.get('x-forwarded-for') || 'unknown'
+    const userAgent = headersList.get('user-agent') || 'unknown'
+    const referer = headersList.get('referer') || null
 
     // Store event in database (you could also send to a service like Segment, Mixpanel, etc.)
     await prisma.analyticsEvent.create({
@@ -44,32 +41,32 @@ export async function POST(req: NextRequest) {
         referer,
         timestamp: new Date(),
       },
-    });
+    })
 
     // Handle specific events
     switch (event) {
       case 'page_view':
-        await handlePageView(properties, userId, sessionId);
-        break;
+        await handlePageView(properties, userId, sessionId)
+        break
       case 'product_view':
-        await handleProductView(properties, userId, sessionId);
-        break;
+        await handleProductView(properties, userId, sessionId)
+        break
       case 'add_to_cart':
-        await handleAddToCart(properties, userId, sessionId);
-        break;
+        await handleAddToCart(properties, userId, sessionId)
+        break
       case 'search':
-        await handleSearch(properties, userId, sessionId);
-        break;
+        await handleSearch(properties, userId, sessionId)
+        break
       case 'purchase':
-        await handlePurchase(properties, userId, sessionId);
-        break;
+        await handlePurchase(properties, userId, sessionId)
+        break
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('[ANALYTICS_TRACK_ERROR]', error);
+    console.error('[ANALYTICS_TRACK_ERROR]', error)
     // Don't expose internal errors to the client
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true })
   }
 }
 
@@ -83,7 +80,7 @@ async function handlePageView(properties: any, userId?: string, sessionId?: stri
       sessionId,
       timestamp: new Date(),
     },
-  });
+  })
 }
 
 async function handleProductView(properties: any, userId?: string, sessionId?: string) {
@@ -96,7 +93,7 @@ async function handleProductView(properties: any, userId?: string, sessionId?: s
         sessionId,
         timestamp: new Date(),
       },
-    });
+    })
   }
 }
 
@@ -113,7 +110,7 @@ async function handleAddToCart(properties: any, userId?: string, sessionId?: str
         sessionId,
         timestamp: new Date(),
       },
-    });
+    })
   }
 }
 
@@ -128,7 +125,7 @@ async function handleSearch(properties: any, userId?: string, sessionId?: string
         userId,
         sessionId,
       },
-    });
+    })
   }
 }
 
@@ -144,6 +141,6 @@ async function handlePurchase(properties: any, userId?: string, sessionId?: stri
         sessionId,
         timestamp: new Date(),
       },
-    });
+    })
   }
 }

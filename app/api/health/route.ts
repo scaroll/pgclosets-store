@@ -1,3 +1,5 @@
+export const maxDuration = 30
+
 /**
  * Enhanced Health Check API Endpoint
  * Agent #49: Infrastructure Monitoring Specialist

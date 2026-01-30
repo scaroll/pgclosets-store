@@ -1,22 +1,22 @@
-// @ts-nocheck - Analytics models not yet in Prisma schema
-import type { NextRequest} from 'next/server';
-import { NextResponse } from 'next/server';
-import { auth } from '@/auth';
-import { prisma } from '@/lib/prisma';
-import { z } from 'zod';
-import { subDays, startOfDay, endOfDay } from 'date-fns';
+import { type NextRequest, NextResponse } from 'next/server'
+import { auth } from '@/auth'
+import { prisma } from '@/lib/prisma'
+import { z } from 'zod'
+import { subDays, startOfDay, endOfDay } from 'date-fns'
+
+export const maxDuration = 30
 
 const summaryQuerySchema = z.object({
   period: z.enum(['24h', '7d', '30d', '90d']).default('7d'),
-});
+})
 
 export async function GET(req: NextRequest) {
   try {
     // Test database connection first
     try {
-      await prisma.$queryRaw`SELECT 1`;
+      await prisma.$queryRaw`SELECT 1`
     } catch (dbError) {
-      console.error('[DATABASE_CONNECTION_ERROR]', dbError);
+      console.error('[DATABASE_CONNECTION_ERROR]', dbError)
       return NextResponse.json(
         {
           error: 'Database temporarily unavailable',
@@ -29,52 +29,49 @@ export async function GET(req: NextRequest) {
               searches: 0,
               purchases: 0,
               conversionRate: 0,
-              revenue: 0
+              revenue: 0,
             },
             topContent: { pages: [], products: [], searches: [] },
-            trends: { dailyViews: [] }
-          }
+            trends: { dailyViews: [] },
+          },
         },
         { status: 503 }
-      );
+      )
     }
 
-    const session = await auth();
+    const session = await auth()
 
     // Only allow authenticated users
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Authentication required' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
     }
 
-    const { searchParams } = new URL(req.url);
-    const { period } = summaryQuerySchema.parse(Object.fromEntries(searchParams));
+    const { searchParams } = new URL(req.url)
+    const { period } = summaryQuerySchema.parse(Object.fromEntries(searchParams))
 
     // Calculate date range
-    const now = new Date();
-    let startDate: Date;
+    const now = new Date()
+    let startDate: Date
 
     switch (period) {
       case '24h':
-        startDate = subDays(now, 1);
-        break;
+        startDate = subDays(now, 1)
+        break
       case '7d':
-        startDate = subDays(now, 7);
-        break;
+        startDate = subDays(now, 7)
+        break
       case '30d':
-        startDate = subDays(now, 30);
-        break;
+        startDate = subDays(now, 30)
+        break
       case '90d':
-        startDate = subDays(now, 90);
-        break;
+        startDate = subDays(now, 90)
+        break
     }
 
     const dateRange = {
       gte: startOfDay(startDate),
       lte: endOfDay(now),
-    };
+    }
 
     // Fetch analytics data in parallel
     const [
@@ -95,10 +92,12 @@ export async function GET(req: NextRequest) {
       }),
 
       // Unique visitors
-      prisma.pageView.groupBy({
-        by: ['sessionId'],
-        where: { timestamp: dateRange },
-      }).then(result => result.length),
+      prisma.pageView
+        .groupBy({
+          by: ['sessionId'],
+          where: { timestamp: dateRange },
+        })
+        .then(result => result.length),
 
       // Total product views
       prisma.productView.count({
@@ -143,30 +142,34 @@ export async function GET(req: NextRequest) {
       }),
 
       // Conversion rate (purchases / sessions)
-      prisma.pageView.groupBy({
-        by: ['sessionId'],
-        where: { timestamp: dateRange },
-      }).then(sessions => {
-        return sessions.length > 0
-          ? (prisma.purchaseEvent.count({
-              where: { timestamp: dateRange },
-            }).then(purchases => (purchases / sessions.length) * 100))
-          : 0;
-      }),
+      prisma.pageView
+        .groupBy({
+          by: ['sessionId'],
+          where: { timestamp: dateRange },
+        })
+        .then(sessions => {
+          return sessions.length > 0
+            ? prisma.purchaseEvent
+                .count({
+                  where: { timestamp: dateRange },
+                })
+                .then(purchases => (purchases / sessions.length) * 100)
+            : 0
+        }),
 
       // Total revenue
       prisma.purchaseEvent.aggregate({
         where: { timestamp: dateRange },
         _sum: { total: true },
       }),
-    ]);
+    ])
 
     // Get daily page views trend
     const dailyViews = await prisma.pageView.groupBy({
       by: ['timestamp'],
       where: { timestamp: dateRange },
       _count: { timestamp: true },
-    });
+    })
 
     // Format the response
     const summary = {
@@ -181,7 +184,8 @@ export async function GET(req: NextRequest) {
         productViews: totalProductViews,
         searches: totalSearches,
         purchases: totalPurchases,
-        conversionRate: typeof conversionRate === 'number' ? Math.round(conversionRate * 100) / 100 : 0,
+        conversionRate:
+          typeof conversionRate === 'number' ? Math.round(conversionRate * 100) / 100 : 0,
         revenue: (revenue._sum.total || 0) / 100, // Convert from cents to dollars
       },
       topContent: {
@@ -204,14 +208,11 @@ export async function GET(req: NextRequest) {
           views: view._count.timestamp,
         })),
       },
-    };
+    }
 
-    return NextResponse.json(summary);
+    return NextResponse.json(summary)
   } catch (error) {
-    console.error('[ANALYTICS_SUMMARY_ERROR]', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('[ANALYTICS_SUMMARY_ERROR]', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

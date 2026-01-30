@@ -1,29 +1,31 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
+
+export const maxDuration = 30
 
 // Temporarily disabled edge runtime due to Next.js 15 build issues
 // export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'
 
 interface MonitoringMetrics {
-  timestamp: string;
-  uptime: number;
+  timestamp: string
+  uptime: number
   memory?: {
-    used: number;
-    total: number;
-    rss: number;
-  };
+    used: number
+    total: number
+    rss: number
+  }
   environment: {
-    nodeEnv: string;
-    vercelEnv: string;
-    region: string;
-  };
+    nodeEnv: string
+    vercelEnv: string
+    region: string
+  }
   performance: {
-    responseTime: number;
-  };
+    responseTime: number
+  }
 }
 
 export function GET() {
-  const startTime = Date.now();
+  const startTime = Date.now()
 
   try {
     const metrics: MonitoringMetrics = {
@@ -42,10 +44,10 @@ export function GET() {
     return NextResponse.json(metrics, {
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0',
+        Pragma: 'no-cache',
+        Expires: '0',
       },
-    });
+    })
   } catch (error) {
     return NextResponse.json(
       {
@@ -54,6 +56,6 @@ export function GET() {
         timestamp: new Date().toISOString(),
       },
       { status: 500 }
-    );
+    )
   }
 }

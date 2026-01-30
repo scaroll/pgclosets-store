@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server'
 import { type NextRequest, NextResponse } from 'next/server'
 import os from 'os'
 
+export const maxDuration = 30
+
 // Changed to Node.js runtime for process APIs and os.loadavg()
 export const runtime = 'nodejs'
 

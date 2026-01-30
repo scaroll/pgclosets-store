@@ -4,7 +4,13 @@ import path from 'node:path'
 import products from '../../../../data/pgclosets-products.json'
 import { z } from 'zod'
 
-function determineCategory(slug: string): { category: string; images: string[]; description: string } {
+export const maxDuration = 30
+
+function determineCategory(slug: string): {
+  category: string
+  images: string[]
+  description: string
+} {
   const s = slug.toLowerCase()
   if (s.includes('barn'))
     return {
@@ -85,17 +91,10 @@ function determineCategory(slug: string): { category: string; images: string[]; 
 }
 
 const handler = createMcpHandler(
-  (server) => {
-    server.tool(
-      'ping',
-      'Health check tool; returns pong with timestamp',
-      {},
-      async () => ({
-        content: [
-          { type: 'text', text: `pong ${new Date().toISOString()}` },
-        ],
-      }),
-    )
+  server => {
+    server.tool('ping', 'Health check tool; returns pong with timestamp', {}, async () => ({
+      content: [{ type: 'text', text: `pong ${new Date().toISOString()}` }],
+    }))
 
     server.tool(
       'get_product_images',
@@ -111,7 +110,7 @@ const handler = createMcpHandler(
             },
           ],
         }
-      },
+      }
     )
 
     server.tool(
@@ -122,11 +121,10 @@ const handler = createMcpHandler(
         content: [
           {
             type: 'text',
-            text:
-              'In Vercel Dashboard → Project → Settings → Domains → Purge Cache. Add /images/products/* and /images/services/*, then Redeploy from latest. 404s for these assets were cached; vercel.json now sets no-store for /404 to prevent sticky 404s.',
+            text: 'In Vercel Dashboard → Project → Settings → Domains → Purge Cache. Add /images/products/* and /images/services/*, then Redeploy from latest. 404s for these assets were cached; vercel.json now sets no-store for /404 to prevent sticky 404s.',
           },
         ],
-      }),
+      })
     )
 
     server.tool(
@@ -134,21 +132,17 @@ const handler = createMcpHandler(
       'Return product metadata from pgclosets-products.json by slug',
       { slug: z.string().min(1) },
       async ({ slug }) => {
-        const list = (products as any[])
-        const hit = list.find((p) => p.slug === slug || p.id === slug)
+        const list = products as any[]
+        const hit = list.find(p => p.slug === slug || p.id === slug)
         if (!hit) {
           return {
-            content: [
-              { type: 'text', text: JSON.stringify({ found: false }) },
-            ],
+            content: [{ type: 'text', text: JSON.stringify({ found: false }) }],
           }
         }
         return {
-          content: [
-            { type: 'text', text: JSON.stringify({ found: true, product: hit }) },
-          ],
+          content: [{ type: 'text', text: JSON.stringify({ found: true, product: hit }) }],
         }
-      },
+      }
     )
 
     server.tool(
@@ -170,12 +164,10 @@ const handler = createMcpHandler(
           }
         } catch (_e: any) {
           return {
-            content: [
-              { type: 'text', text: JSON.stringify({ exists: false, path: rel }) },
-            ],
+            content: [{ type: 'text', text: JSON.stringify({ exists: false, path: rel }) }],
           }
         }
-      },
+      }
     )
 
     server.tool(
@@ -184,12 +176,10 @@ const handler = createMcpHandler(
       { slug: z.string().min(1) },
       async ({ slug }) => {
         const list = products as any[]
-        const product = list.find((p) => p.slug === slug || p.id === slug)
+        const product = list.find(p => p.slug === slug || p.id === slug)
         if (!product) {
           return {
-            content: [
-              { type: 'text', text: JSON.stringify({ found: false, slug }) },
-            ],
+            content: [{ type: 'text', text: JSON.stringify({ found: false, slug }) }],
           }
         }
 
@@ -213,7 +203,7 @@ const handler = createMcpHandler(
             results.push({ path: u, exists: false })
           }
         }
-        const missing = results.filter((r) => !r.exists)
+        const missing = results.filter(r => !r.exists)
         return {
           content: [
             {
@@ -227,12 +217,12 @@ const handler = createMcpHandler(
                   missing,
                 },
                 null,
-                2,
+                2
               ),
             },
           ],
         }
-      },
+      }
     )
 
     server.tool(
@@ -240,7 +230,7 @@ const handler = createMcpHandler(
       'Scan multiple products for missing media (default limit 100)',
       { limit: z.number().int().min(1).max(2000).optional() },
       async ({ limit }) => {
-        const list = (products as any[])
+        const list = products as any[]
         const max = Math.min(list.length, limit ?? 100)
         const root = process.cwd()
         const summary: any[] = []
@@ -276,12 +266,12 @@ const handler = createMcpHandler(
                   items: summary,
                 },
                 null,
-                2,
+                2
               ),
             },
           ],
         }
-      },
+      }
     )
   },
   {
@@ -291,7 +281,7 @@ const handler = createMcpHandler(
     basePath: '/api/mcp',
     verboseLogs: true,
     maxDuration: 60,
-  },
+  }
 )
 
 export { handler as GET, handler as POST }

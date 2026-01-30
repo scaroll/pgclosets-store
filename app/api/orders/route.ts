@@ -4,6 +4,9 @@ import { prisma } from '@/lib/db'
 import { z } from 'zod'
 import { generateOrderNumber } from '@/lib/orders'
 import { generalRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit'
+
+export const maxDuration = 30
+
 // Type definitions
 interface OrderItem {
   productId: string

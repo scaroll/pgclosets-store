@@ -1,6 +1,12 @@
 import type { NextRequest } from 'next/server'
 
-function determineCategory(slug: string): { category: string; images: string[]; description: string } {
+export const maxDuration = 30
+
+function determineCategory(slug: string): {
+  category: string
+  images: string[]
+  description: string
+} {
   const s = slug.toLowerCase()
   if (s.includes('barn'))
     return {
@@ -87,4 +93,3 @@ export async function GET(req: NextRequest) {
   const result = determineCategory(slug)
   return Response.json(result)
 }
-

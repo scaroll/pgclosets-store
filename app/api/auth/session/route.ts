@@ -2,6 +2,8 @@ import { auth } from '@/auth'
 import jwt from 'jsonwebtoken'
 import { type NextRequest, NextResponse } from 'next/server'
 
+export const maxDuration = 30
+
 // Force Node.js runtime - auth() uses Prisma which is incompatible with Edge Runtime
 export const runtime = 'nodejs'
 

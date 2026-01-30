@@ -1,6 +1,8 @@
 import { SAMPLE_PRODUCTS as products } from '@/lib/products'
 import { NextResponse } from 'next/server'
 
+export const maxDuration = 30
+
 // Type definitions
 interface ProductVariant {
   id: string

@@ -5,6 +5,8 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { v4 as uuidv4 } from 'uuid'
 import { z } from 'zod'
 
+export const maxDuration = 30
+
 // Type definitions
 type DoorType = 'sliding' | 'bypass' | 'bifold' | 'pivot' | 'barn' | 'mirror'
 type ServiceType = 'measure' | 'quote' | 'general'

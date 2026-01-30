@@ -1,8 +1,8 @@
-// @ts-nocheck - Uses dynamic KV operations with implicit any types
-import type { NextRequest} from 'next/server';
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 import { createClient } from '@vercel/kv'
+
+export const maxDuration = 30
 
 const kv = createClient({
   url: process.env.KV_REST_API_URL!,
@@ -29,10 +29,7 @@ export async function POST(request: NextRequest) {
 
     // Validate the metric data
     if (!body.name || typeof body.value !== 'number') {
-      return NextResponse.json(
-        { error: 'Invalid metric data' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Invalid metric data' }, { status: 400 })
     }
 
     // Add server-side metadata
@@ -49,62 +46,47 @@ export async function POST(request: NextRequest) {
     // Store in different data structures for different query patterns
 
     // 1. Store raw metric for detailed analysis
-    await kv.zadd(
-      `metrics:${body.name}:raw`,
-      {
-        score: enrichedMetric.timestamp,
-        member: JSON.stringify(enrichedMetric),
-      }
-    )
+    await kv.zadd(`metrics:${body.name}:raw`, {
+      score: enrichedMetric.timestamp,
+      member: JSON.stringify(enrichedMetric),
+    })
 
     // 2. Store aggregated metrics for quick access
     const hourKey = Math.floor(enrichedMetric.timestamp / (1000 * 60 * 60))
-    await kv.zadd(
-      `metrics:${body.name}:hourly:${hourKey}`,
-      {
-        score: enrichedMetric.timestamp,
-        member: JSON.stringify({
-          value: body.value,
-          sessionId: body.sessionId,
-        }),
-      }
-    )
+    await kv.zadd(`metrics:${body.name}:hourly:${hourKey}`, {
+      score: enrichedMetric.timestamp,
+      member: JSON.stringify({
+        value: body.value,
+        sessionId: body.sessionId,
+      }),
+    })
 
     // 3. Store user session metrics
-    await kv.hset(
-      `session:${body.sessionId}:metrics`,
-      {
-        [body.name]: JSON.stringify({
-          value: body.value,
-          timestamp: enrichedMetric.timestamp,
-        }),
-      }
-    )
+    await kv.hset(`session:${body.sessionId}:metrics`, {
+      [body.name]: JSON.stringify({
+        value: body.value,
+        timestamp: enrichedMetric.timestamp,
+      }),
+    })
 
     // 4. Store geographic breakdown
     const geoKey = `${enrichedMetric.country}:${enrichedMetric.region}`
-    await kv.zadd(
-      `metrics:${body.name}:geo:${geoKey}`,
-      {
-        score: enrichedMetric.timestamp,
-        member: JSON.stringify({
-          value: body.value,
-          city: enrichedMetric.city,
-        }),
-      }
-    )
+    await kv.zadd(`metrics:${body.name}:geo:${geoKey}`, {
+      score: enrichedMetric.timestamp,
+      member: JSON.stringify({
+        value: body.value,
+        city: enrichedMetric.city,
+      }),
+    })
 
     // 5. Store device type breakdown
     const deviceType = getDeviceType(body.userAgent)
-    await kv.zadd(
-      `metrics:${body.name}:device:${deviceType}`,
-      {
-        score: enrichedMetric.timestamp,
-        member: JSON.stringify({
-          value: body.value,
-        }),
-      }
-    )
+    await kv.zadd(`metrics:${body.name}:device:${deviceType}`, {
+      score: enrichedMetric.timestamp,
+      member: JSON.stringify({
+        value: body.value,
+      }),
+    })
 
     // 6. Set expiration for data cleanup (keep for 30 days)
     await kv.expire(`metrics:${body.name}:raw`, 60 * 60 * 24 * 30)
@@ -120,10 +102,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Performance metric storage error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -135,10 +114,7 @@ export async function GET(request: NextRequest) {
     const breakdown = searchParams.get('breakdown') // 'device', 'geo', 'session'
 
     if (!metric) {
-      return NextResponse.json(
-        { error: 'Metric parameter is required' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Metric parameter is required' }, { status: 400 })
     }
 
     const endTime = Date.now()
@@ -150,7 +126,7 @@ export async function GET(request: NextRequest) {
       // Get device breakdown
       const devices = ['mobile', 'tablet', 'desktop']
       data = await Promise.all(
-        devices.map(async (device) => {
+        devices.map(async device => {
           const values = await kv.zrangebyscore(
             `metrics:${metric}:device:${device}`,
             startTime,
@@ -160,7 +136,10 @@ export async function GET(request: NextRequest) {
           return {
             device,
             count: parsedValues.length,
-            average: parsedValues.length > 0 ? parsedValues.reduce((a, b) => a + b, 0) / parsedValues.length : 0,
+            average:
+              parsedValues.length > 0
+                ? parsedValues.reduce((a, b) => a + b, 0) / parsedValues.length
+                : 0,
             median: calculateMedian(parsedValues),
             p95: calculatePercentile(parsedValues, 95),
             p99: calculatePercentile(parsedValues, 99),
@@ -171,7 +150,7 @@ export async function GET(request: NextRequest) {
       // Get geographic breakdown (top countries)
       const geoKeys = await kv.keys(`metrics:${metric}:geo:*`)
       data = await Promise.all(
-        geoKeys.slice(0, 10).map(async (key) => {
+        geoKeys.slice(0, 10).map(async key => {
           const values = await kv.zrangebyscore(key, startTime, endTime)
           const parsedValues = values.map(v => JSON.parse(v)).map(v => v.value)
           const [country, region] = key.split(':').slice(2)
@@ -179,7 +158,10 @@ export async function GET(request: NextRequest) {
             country,
             region,
             count: parsedValues.length,
-            average: parsedValues.length > 0 ? parsedValues.reduce((a, b) => a + b, 0) / parsedValues.length : 0,
+            average:
+              parsedValues.length > 0
+                ? parsedValues.reduce((a, b) => a + b, 0) / parsedValues.length
+                : 0,
           }
         })
       )
@@ -190,24 +172,25 @@ export async function GET(request: NextRequest) {
 
       data = await Promise.all(
         Array.from({ length: Math.min(intervals, 100) }, (_, i) => {
-          const intervalStart = startTime + (i * interval)
+          const intervalStart = startTime + i * interval
           const intervalEnd = intervalStart + interval
           const hourKey = Math.floor(intervalStart / (1000 * 60 * 60))
 
-          return kv.zrangebyscore(
-            `metrics:${metric}:hourly:${hourKey}`,
-            intervalStart,
-            intervalEnd
-          ).then(values => {
-            const parsedValues = values.map(v => JSON.parse(v)).map(v => v.value)
-            return {
-              timestamp: intervalStart,
-              count: parsedValues.length,
-              average: parsedValues.length > 0 ? parsedValues.reduce((a, b) => a + b, 0) / parsedValues.length : 0,
-              median: calculateMedian(parsedValues),
-              p95: calculatePercentile(parsedValues, 95),
-            }
-          })
+          return kv
+            .zrangebyscore(`metrics:${metric}:hourly:${hourKey}`, intervalStart, intervalEnd)
+            .then(values => {
+              const parsedValues = values.map(v => JSON.parse(v)).map(v => v.value)
+              return {
+                timestamp: intervalStart,
+                count: parsedValues.length,
+                average:
+                  parsedValues.length > 0
+                    ? parsedValues.reduce((a, b) => a + b, 0) / parsedValues.length
+                    : 0,
+                median: calculateMedian(parsedValues),
+                p95: calculatePercentile(parsedValues, 95),
+              }
+            })
         })
       )
     }
@@ -221,10 +204,7 @@ export async function GET(request: NextRequest) {
     })
   } catch (error) {
     console.error('Performance metric retrieval error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -278,7 +258,8 @@ function calculateSummary(data: any[]): any {
   const allValues = data.flatMap(d => [d.average, d.p95].filter(v => v > 0))
   return {
     totalSamples: data.reduce((sum, d) => sum + d.count, 0),
-    overallAverage: allValues.length > 0 ? allValues.reduce((a, b) => a + b, 0) / allValues.length : 0,
+    overallAverage:
+      allValues.length > 0 ? allValues.reduce((a, b) => a + b, 0) / allValues.length : 0,
     worstP95: Math.max(...data.map(d => d.p95 || 0)),
     bestAverage: Math.min(...data.filter(d => d.average > 0).map(d => d.average)),
   }
@@ -305,7 +286,12 @@ async function checkPerformanceThresholds(metric: string, value: number) {
   }
 }
 
-async function sendAlert(level: 'warning' | 'critical', metric: string, value: number, threshold: number) {
+async function sendAlert(
+  level: 'warning' | 'critical',
+  metric: string,
+  value: number,
+  threshold: number
+) {
   // Send alert to monitoring system
   try {
     await fetch('/api/monitoring/alerts', {

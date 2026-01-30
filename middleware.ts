@@ -1,5 +1,5 @@
 // Phase 0: Minimal middleware - NO auth, NO database calls
-// Security headers only
+// Security headers only - redeploy trigger
 import { type NextRequest, NextResponse } from 'next/server'
 
 export async function middleware(req: NextRequest) {

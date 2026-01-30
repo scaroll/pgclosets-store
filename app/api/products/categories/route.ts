@@ -1,5 +1,8 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
+
+export const maxDuration = 30
+
 // Type definitions
 interface ProductCategory {
   name: string

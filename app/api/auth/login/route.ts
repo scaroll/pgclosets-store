@@ -5,6 +5,8 @@ import jwt from 'jsonwebtoken'
 import { type NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
+export const maxDuration = 30
+
 // Force Node.js runtime - Prisma and bcryptjs are incompatible with Edge Runtime
 export const runtime = 'nodejs'
 

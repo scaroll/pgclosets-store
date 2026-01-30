@@ -3,10 +3,9 @@
   "root": true,
   "extends": [
     "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["@typescript-eslint", "jsx-a11y", "react-hooks", "unused-imports"],
+  "plugins": ["@typescript-eslint", "jsx-a11y", "unused-imports"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",

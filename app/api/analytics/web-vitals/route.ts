@@ -1,6 +1,7 @@
-import type { NextRequest } from 'next/server'
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import { headers } from 'next/headers'
+
+export const maxDuration = 30
 
 interface WebVitalsData {
   metric: string
@@ -25,7 +26,7 @@ export async function POST(request: NextRequest) {
       'https://pgclosets-store.vercel.app',
       'https://www.pgclosets.com',
       'https://pgclosets.ca',
-      'https://www.pgclosets.ca'
+      'https://www.pgclosets.ca',
     ]
 
     // Check if origin is allowed (also allow Vercel preview deployments)
@@ -39,20 +40,14 @@ export async function POST(request: NextRequest) {
     }
 
     if (!isAllowedOrigin(origin)) {
-      return NextResponse.json(
-        { error: 'Unauthorized origin' },
-        { status: 403 }
-      )
+      return NextResponse.json({ error: 'Unauthorized origin' }, { status: 403 })
     }
 
     const body: WebVitalsData = await request.json()
 
     // Validate required fields
     if (!body.metric || typeof body.value !== 'number' || !body.url) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
     // Enhanced logging for performance monitoring
@@ -62,7 +57,7 @@ export async function POST(request: NextRequest) {
         value: body.value,
         url: body.url,
         timestamp: new Date(body.timestamp).toISOString(),
-        userAgent: `${userAgent.substring(0, 100)}...`
+        userAgent: `${userAgent.substring(0, 100)}...`,
       })
     }
 
@@ -86,16 +81,18 @@ export async function POST(request: NextRequest) {
 
     // Performance alerting for poor metrics
     const thresholds = {
-      LCP: 2500,  // Poor: >4.0s
-      FID: 100,   // Poor: >300ms
-      CLS: 0.1,   // Poor: >0.25
-      FCP: 1800,  // Poor: >3.0s
-      TTFB: 800   // Poor: >1800ms
+      LCP: 2500, // Poor: >4.0s
+      FID: 100, // Poor: >300ms
+      CLS: 0.1, // Poor: >0.25
+      FCP: 1800, // Poor: >3.0s
+      TTFB: 800, // Poor: >1800ms
     }
 
     const threshold = thresholds[body.metric as keyof typeof thresholds]
     if (threshold && body.value > threshold * 1.5) {
-      console.warn(`🚨 Performance Alert: ${body.metric} (${body.value.toFixed(2)}) significantly exceeds threshold (${threshold})`)
+      console.warn(
+        `🚨 Performance Alert: ${body.metric} (${body.value.toFixed(2)}) significantly exceeds threshold (${threshold})`
+      )
 
       // In production, you could send alerts to Slack, Discord, or monitoring services
       if (process.env.NODE_ENV === 'production') {
@@ -125,16 +122,12 @@ export async function POST(request: NextRequest) {
       message: 'Web vitals recorded successfully',
       metric: body.metric,
       value: body.value,
-      status: body.value <= threshold ? 'good' : 'needs-improvement'
+      status: body.value <= threshold ? 'good' : 'needs-improvement',
     })
-
   } catch (error) {
     console.error('❌ Web Vitals API Error:', error)
 
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -152,7 +145,7 @@ export function GET(request: NextRequest) {
       FID: { avg: 45, p75: 85, count: 980 },
       CLS: { avg: 0.08, p75: 0.15, count: 1320 },
       FCP: { avg: 1500, p75: 2100, count: 1400 },
-      TTFB: { avg: 450, p75: 680, count: 1150 }
+      TTFB: { avg: 450, p75: 680, count: 1150 },
     }
 
     const data = metric ? { [metric]: mockData[metric as keyof typeof mockData] } : mockData
@@ -161,15 +154,11 @@ export function GET(request: NextRequest) {
       success: true,
       period,
       data,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     })
-
   } catch (error) {
     console.error('❌ Web Vitals GET Error:', error)
 
-    return NextResponse.json(
-      { error: 'Failed to retrieve metrics' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Failed to retrieve metrics' }, { status: 500 })
   }
 }

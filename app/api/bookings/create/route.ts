@@ -2,6 +2,9 @@ import { prisma } from '@/lib/db/client'
 import { checkRateLimit, generalRateLimiter, getClientIdentifier } from '@/lib/rate-limit'
 import { createBookingSchema } from '@/lib/validation/schemas'
 import { type NextRequest, NextResponse } from 'next/server'
+
+export const maxDuration = 30
+
 type BookingError = Error & { message?: string }
 export async function POST(req: NextRequest) {
   try {

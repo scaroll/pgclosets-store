@@ -1,4 +1,4 @@
-// @ts-nocheck - Admin quotes page
+
 'use client';
 
 import { useEffect, useState } from 'react';

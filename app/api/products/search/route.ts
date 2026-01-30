@@ -4,6 +4,8 @@ import type { Product, ProductSearchResult } from '@/types/product'
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
+export const maxDuration = 30
+
 // Type definitions
 interface SearchFilters {
   categories?: string[]

@@ -1,31 +1,31 @@
-import { createOpenAI } from '@ai-sdk/openai';
-import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai'
+import { streamText } from 'ai'
 import {
   searchProductsTool,
   getProductDetailsTool,
   compareProductsTool,
   recommendProductsTool,
-} from '@/lib/ai/tools/product-search';
+} from '@/lib/ai/tools/product-search'
 import {
   checkAvailabilityTool,
   bookAppointmentTool,
   getBookingStatusTool,
   rescheduleAppointmentTool,
-} from '@/lib/ai/tools/booking';
+} from '@/lib/ai/tools/booking'
 import {
   calculatePricingTool,
   getFinancingOptionsTool,
   comparePricingTool,
-} from '@/lib/ai/tools/pricing';
+} from '@/lib/ai/tools/pricing'
+
+export const maxDuration = 30
 
 const openai = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-});
-
-export const maxDuration = 30;
+})
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
+  const { messages } = await req.json()
 
   const result = await streamText({
     model: openai('gpt-4-turbo'),
@@ -98,7 +98,7 @@ Always prioritize customer satisfaction and guide them toward the best solution 
       getFinancingOptions: getFinancingOptionsTool,
       comparePricing: comparePricingTool,
     },
-  });
+  })
 
-  return result.toTextStreamResponse();
+  return result.toTextStreamResponse()
 }

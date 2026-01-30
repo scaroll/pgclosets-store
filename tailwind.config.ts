@@ -16,6 +16,11 @@ const config: Config = {
     './styles/**/*.{css,scss}',
     '*.{js,ts,jsx,tsx,mdx}',
   ],
+  // Prevent `delay-*` ambiguity between Tailwind's transition-delay utilities and
+  // tailwindcss-animate's animation-delay utilities.
+  corePlugins: {
+    transitionDelay: false,
+  },
   theme: {
     // Advanced Mobile-First Breakpoint System
     screens: {

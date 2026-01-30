@@ -2,6 +2,8 @@ import { sendQuoteEmails } from '@/lib/email/send-quote-email'
 import { createClient } from '@/lib/supabase/server'
 import { type NextRequest, NextResponse } from 'next/server'
 
+export const maxDuration = 30
+
 interface BasketItem {
   productId: string
   slug: string

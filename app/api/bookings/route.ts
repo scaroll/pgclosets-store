@@ -5,6 +5,9 @@ import { z } from 'zod'
 import { generateBookingNumber } from '@/lib/bookings'
 import { bookingRateLimiter, getClientIdentifier, checkRateLimit } from '@/lib/rate-limit'
 import { sendBookingConfirmationEmail } from '@/lib/emails'
+
+export const maxDuration = 30
+
 // Type definitions
 type ServiceType = 'consultation' | 'measurement' | 'installation'
 type LocationType = 'Ottawa' | 'Kanata' | 'Barrhaven' | 'Nepean' | 'Orleans'

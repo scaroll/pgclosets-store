@@ -13,7 +13,7 @@ export function HeroSection() {
           src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=2070&auto=format&fit=crop"
           alt="Modern luxury closet"
           fill
-          className="duration-[20s] object-cover transition-transform ease-linear hover:scale-105"
+          className="object-cover transition-transform [transition-duration:20s] ease-linear hover:scale-105"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40" />

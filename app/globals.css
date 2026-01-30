@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base {
   :root {
     /* Apple-Grade Design System - Light Mode (Default) */
@@ -113,7 +117,7 @@
 @layer utilities {
   /* Apple Glass Effect */
   .glass {
-    @apply saturate-180 border border-white/10 bg-white/70 backdrop-blur-xl dark:border-white/5 dark:bg-black/70;
+    @apply saturate-150 border border-white/10 bg-white/70 backdrop-blur-xl dark:border-white/5 dark:bg-black/70;
   }
 
   /* Apple Text Styles */

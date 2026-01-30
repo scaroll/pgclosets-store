@@ -1,9 +1,8 @@
 {
-  "scope": "peoples-group",
   "framework": "nextjs",
-  "buildCommand": "npm run build",
+  "buildCommand": "pnpm db:generate && pnpm build",
   "outputDirectory": ".next",
-  "installCommand": "npm install --legacy-peer-deps",
+  "installCommand": "pnpm install",
   "devCommand": "npm run dev",
   "regions": ["iad1"],
   "public": true,
@@ -31,17 +30,6 @@
       "schedule": "0 4 * * 1,4"
     }
   ],
-  "functions": {
-    "app/api/**": {
-      "maxDuration": 30
-    },
-    "app/api/cron/**": {
-      "maxDuration": 60
-    },
-    "app/api/chat/**": {
-      "maxDuration": 45
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",

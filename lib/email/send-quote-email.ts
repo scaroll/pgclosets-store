@@ -48,7 +48,7 @@ export async function sendQuoteConfirmationEmail(data: QuoteEmailData): Promise<
       console.warn('[QUOTE_EMAIL] Resend API key not configured. Email not sent.');
       // In development, just log the email details
       if (process.env.NODE_ENV !== 'production') {
-        console.log('[QUOTE_EMAIL] Would send email to:', data.customer.email);
+        console.warn('[QUOTE_EMAIL] Would send email to:', data.customer.email);
       }
       return false;
     }

@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 
+export const maxDuration = 30
+
 // Force Node.js runtime for consistency with other auth routes
 export const runtime = 'nodejs'
 

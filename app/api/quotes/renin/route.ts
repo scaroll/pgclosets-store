@@ -13,6 +13,8 @@ import {
 import { type NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
+export const maxDuration = 30
+
 // Validation schema for Renin quote requests
 const reninQuoteRequestSchema = z.object({
   customer: z.object({

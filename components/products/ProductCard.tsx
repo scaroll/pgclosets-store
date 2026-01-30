@@ -58,7 +58,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
           src={mainImage}
           alt={product.images[0]?.alt || product.name}
           fill
-          className="ease-[cubic-bezier(0.25,0.1,0.25,1)] object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {product.salePrice && (
