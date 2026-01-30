@@ -1,29 +1,13 @@
-import { auth } from '@/auth'
-import type { NextRequest } from 'next/server'
-import { NextResponse } from 'next/server'
-
-const PROTECTED_ADMIN_ROUTES = ['/admin']
+// Phase 0: Minimal middleware - NO auth, NO database calls
+// Security headers only
+import { type NextRequest, NextResponse } from 'next/server'
 
 export async function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl
-
-  // Security headers
   const headers = new Headers(req.headers)
-  headers.set('X-Frame-Options', 'DENY')
+  // Basic security headers
+  headers.set('X-Frame-Options', 'SAMEORIGIN')
   headers.set('X-Content-Type-Options', 'nosniff')
   headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
-  headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
-
-  // Check if route is protected
-  const isAdminRoute = PROTECTED_ADMIN_ROUTES.some(route => pathname.startsWith(route))
-
-  if (isAdminRoute) {
-    const session = await auth()
-
-    if (!session || session.user.role !== 'admin') {
-      return NextResponse.redirect(new URL('/auth/signin', req.url))
-    }
-  }
 
   return NextResponse.next({ headers })
 }

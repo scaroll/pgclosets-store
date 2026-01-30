@@ -1,101 +1,64 @@
-import { ProductCard } from '@/components/products/ProductCard'
-import { ProductFilters } from '@/components/products/ProductFilters'
-import { SAMPLE_PRODUCTS } from '@/lib/products'
+import Link from 'next/link'
 
-export default async function ProductsPage({
-  searchParams,
-}: {
-  searchParams: { category?: string; sort?: string; search?: string }
-}) {
-  const { category, sort = 'featured', search } = searchParams
+const PLACEHOLDER_PRODUCTS = [
+  { id: '1', name: 'Classic Wardrobe', price: 2499, slug: 'classic-wardrobe' },
+  { id: '2', name: 'Modern Reach-In', price: 1899, slug: 'modern-reach-in' },
+  { id: '3', name: 'Walk-In Closet System', price: 3499, slug: 'walk-in-closet-system' },
+  { id: '4', name: 'Corner Unit', price: 1299, slug: 'corner-unit' },
+  { id: '5', name: 'Double Hanging Rod', price: 899, slug: 'double-hanging-rod' },
+  { id: '6', name: 'Shelving Module', price: 699, slug: 'shelving-module' },
+]
 
-  // Use static sample products
-  // Filter products in memory
-  let filteredProducts = SAMPLE_PRODUCTS.filter(product => {
-    // Status check (assume all active for now)
-    if (false) return false // No status field in SAMPLE_PRODUCTS
-
-    // Category filter
-    if (category && product.category !== category) return false
-
-    // Search filter
-    if (search) {
-      const searchLower = search.toLowerCase()
-      const matchesName = product.name.toLowerCase().includes(searchLower)
-      const matchesDesc = product.description.toLowerCase().includes(searchLower)
-      if (!matchesName && !matchesDesc) return false
-    }
-
-    return true
-  })
-
-  // Sort products
-  filteredProducts = filteredProducts.sort((a, b) => {
-    switch (sort) {
-      case 'price-asc':
-        return a.price - b.price
-      case 'price-desc':
-        return b.price - a.price
-      // case 'newest': // No createdAt in SAMPLE_PRODUCTS
-      //   return 0
-      default: // featured
-        return 0 // Preserve order
-    }
-  })
-
-  const products = filteredProducts.map(product => ({
-    id: product.id,
-    name: product.name,
-    slug: product.id,
-    description: product.description,
-    price: product.price * 100, // Convert dollars to cents
-    salePrice: null,
-    images: product.images?.map(url => ({ url, alt: product.name })) || [],
-    category: product.category,
-    featured: true,
-    inventory: 10,
-  }))
-
+export default function ProductsPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      {/* Products Hero/Header Section */}
-      <section className="bg-apple-gray-50 pb-16 pt-32 dark:bg-apple-dark-bg-secondary">
-        <div className="container mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-apple-blue-600">
-              Collection
-            </p>
-            <h1 className="animate-fade-up font-sf-display text-4xl font-semibold tracking-[-0.03em] text-foreground md:text-5xl lg:text-6xl">
-              Our Products
-            </h1>
-            <p className="mt-6 animate-fade-up text-lg text-muted-foreground delay-100">
-              Precision-engineered closets and hardware designed for durability and architectural
-              elegance.
-            </p>
-          </div>
+    <main className="min-h-screen bg-white">
+      {/* Hero */}
+      <section className="bg-neutral-50 py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <h1 className="text-center text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl">
+            Our Collection
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-neutral-600">
+            Premium closet systems designed for modern living. Crafted with precision, built to
+            last.
+          </p>
         </div>
       </section>
 
-      {/* Main Content Grid */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-4">
-            <aside className="lg:col-span-1">
-              <div className="sticky top-28">
-                <ProductFilters />
-              </div>
-            </aside>
+      {/* Products Grid */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+            {PLACEHOLDER_PRODUCTS.map(product => (
+              <Link
+                key={product.id}
+                href={`/products/${product.slug}`}
+                className="group block overflow-hidden rounded-xl border border-neutral-200 bg-white transition-colors hover:border-neutral-400"
+              >
+                {/* Image Placeholder */}
+                <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
+                  <span className="text-sm text-neutral-400">Product Image</span>
+                </div>
 
-            <main className="lg:col-span-3">
-              <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-                {products.map(product => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            </main>
+                {/* Product Info */}
+                <div className="p-5">
+                  <h3 className="text-lg font-medium text-neutral-900 transition-colors group-hover:text-neutral-700">
+                    {product.name}
+                  </h3>
+                  <div className="mt-2 flex items-center justify-between">
+                    <p className="text-lg font-semibold text-neutral-900">
+                      ${product.price.toLocaleString()}
+                    </p>
+                    <span className="text-sm text-blue-600 transition-colors group-hover:text-blue-700">
+                      View Details
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
-    </div>
+    </main>
   )
 }
